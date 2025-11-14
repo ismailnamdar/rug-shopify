@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-no-title-template",
+      "settings": {}
+    },
+    "custom_liquid_44EhFa": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width:1200px;margin:0 auto;padding:60px 20px;font-family:sans-serif;line-height:1.7;color:#111;\">\n  \n  <h2 style=\"font-size:2.2rem;font-weight:700;margin-bottom:1rem;\">Our Story</h2>\n  <p style=\"margin-bottom:1.5rem;\">\n    Rugtomize was born from five generations of Persian rug craftsmanship and a rebellious drive to shake things up. We saw a market flooded with cookie-cutter home décor — so we built something different. A fully personalized, design-first rug platform where creativity isn’t optional — it’s the whole point.\n  </p>\n\n  <div style=\"display:flex;gap:20px;flex-wrap:wrap;margin:40px 0;\">\n    <img src=\"{{ 'rug-factory-1.jpg' | asset_url }}\" alt=\"Smiley Rug Sample\" style=\"width:32%;border-radius:8px;\">\n    <img src=\"{{ 'rug-factory-2.jpg' | asset_url }}\" alt=\"Rug being crafted\" style=\"width:32%;border-radius:8px;\">\n    <img src=\"{{ 'rug-factory-3.jpg' | asset_url }}\" alt=\"Rug material\" style=\"width:32%;border-radius:8px;\">\n  </div>\n\n  <h2 style=\"font-size:1.8rem;font-weight:700;margin:40px 0 1rem;\">Built in California, Backed by Innovation</h2>\n  <p style=\"margin-bottom:1.5rem;\">\n    Everything is made in our vertically integrated facility in Orange County. Our team blends heritage craftsmanship with modern tech to create ultra-high resolution custom rugs, made for businesses, collectors, and creatives alike.\n  </p>\n\n  <blockquote style=\"background:#f7f7f7;padding:20px 30px;margin:40px 0;border-left:4px solid #ffbf00;\">\n    <em>“Weaving Dreams: The Rugtomize Journey” — From pandemic pivots to the Woven show, we’ve turned challenges into breakthroughs. What started as an idea in a family shop became a movement to turn rugs into a medium of self-expression and branding.</em>\n  </blockquote>\n\n  <p style=\"margin-bottom:2rem;\">\n    With clients like Netflix, Spotify, and Disney on board, Rugtomize is scaling fast — and still obsessed with the details. Our platform gives anyone the tools to design, approve, and receive a one-of-a-kind rug. All we need is your vision.\n  </p>\n\n  <a href=\"/collections/all-custom-rugs\" style=\"display:inline-block;padding:0.75rem 1.5rem;background:#000;color:#fff;text-decoration:none;font-weight:bold;border-radius:4px;\">Shop Custom Rugs</a>\n\n  <h2 style=\"font-size:2rem;font-weight:700;margin-bottom:0.5rem;\">Our Mission</h2>\n  <p style=\"margin-bottom:2rem;\">\n    To innovate the rug-making process, making limitless customization accessible — faster, more affordable, and built around identity. We’re here to help people express who they are from the ground up.\n  </p>\n\n  <h2 style=\"font-size:2rem;font-weight:700;margin-bottom:0.5rem;\">Our Vision</h2>\n  <p style=\"margin-bottom:2rem;\">\n    Rugs should speak. Our vision is to transform rugs into personal statements — merging art, branding, and identity underfoot.\n  </p>\n\n  <div style=\"margin:40px 0;\">\n    <video controls style=\"width:100%;border-radius:8px;\">\n      <source src=\"{{ 'about-us-video.mp4' | asset_url }}\" type=\"video/mp4\">\n      Your browser does not support the video tag.\n    </video>\n  </div>\n\n  <blockquote style=\"background:#f2f2f2;padding:20px 30px;border-left:4px solid #000;font-style:italic;\">\n    Our goal is to pioneer and reinvent the rug industry. For centuries, rugs have been hand-knotted by tradition. Now, we’re designing with precision, speed, and customization at scale — tailored to your taste.\n  </blockquote>\n\n  <h2 style=\"font-size:2rem;font-weight:700;margin-bottom:1.5rem;\">Meet the Team</h2>\n  <div style=\"display:flex;flex-wrap:wrap;gap:40px;justify-content:center;\">\n\n    <div style=\"text-align:center;\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Founder.jpg?v=1721879168\" style=\"width:200px;border-radius:50%;margin-bottom:1rem;\">\n      <div><strong>Iman Nian</strong><br>Founder</div>\n    </div>\n\n    <div style=\"text-align:center;\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/FullSizeRender.jpg?v=1686618701\" style=\"width:200px;border-radius:50%;margin-bottom:1rem;\">\n      <div><strong>John Sho</strong><br>Production</div>\n    </div>\n\n    <div style=\"text-align:center;\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Mason_linkdin.jpg?v=1713233801\" style=\"width:200px;border-radius:50%;margin-bottom:1rem;\">\n      <div><strong>Mason Littlejohn</strong><br>CMO</div>\n    </div>\n\n    <div style=\"text-align:center;\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/christian_apodaca_linkdin.jpg?v=1720047206\" style=\"width:200px;border-radius:50%;margin-bottom:1rem;\">\n      <div><strong>Christian Apodaca</strong><br>CFO</div>\n    </div>\n\n  </div>\n</div>",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_44EhFa"
+  ]
+}

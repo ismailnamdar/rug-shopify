@@ -1,0 +1,308 @@
+<style>
+  @media(max-width: 768px){
+    .shapeImg img {
+   /* aspect-ratio: 0 !important;
+    object-fit: unset !important;
+    width:400px !important;
+    height:430px !important;*/
+  }
+  }
+  .ctm_sizeGuideModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  .ctm_sizeGuide {
+    position: relative;
+    max-width: 420px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #babbbf;
+    letter-spacing: 3px;
+  }
+
+  .ctm_sizeGuide_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 22px;
+    border-bottom: 2px solid #b0b0b0;
+  }
+
+  .ctm_sizeGuide_header > * {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 3px;
+  }
+
+  .ctm_shapeOptions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .shapeOption {
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .shapeOption.active {
+    border-bottom: 2px solid #212121;
+    background-color: transparent !important;
+  }
+
+  .ctm_shapeImages{
+    min-height: 350px;
+  }
+
+  .ctm_shapeImages > div {
+    display: none;
+  }
+
+  .ctm_shapeImages > div[shape-active='true'] {
+    display: grid;
+   /* grid-template-columns: 1fr 1fr;*/
+    grid-template-rows: auto;
+    gap: 15px;
+  }
+
+  .shapeImg {
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  /*  border: 2px solid #ccc;
+    border-radius: 8px;*/
+    padding: 10px;
+    padding-top:0 !important;
+    padding-bottom: 0 !important;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .shapeImg img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    display: block;
+  }
+
+  .shapeImg.active {
+    border-color: #000000;
+    background-color: transparent !important;
+  }
+
+  .ctm_selectSize {
+    text-align: center;
+  }
+
+  .ctm_selectSize div {
+    background-color: #313131;
+    color: white;
+    border: none;
+    letter-spacing: 3px;
+    width: 100%;
+    padding: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .ctm_sizeGuide_body {
+    padding: 30px 20px;
+    padding-bottom:10px !important;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .open-size-guide-btn {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .ctm_cross {
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .ctm_sizeGuide_body {
+    display: none ;
+  }
+
+  .ctm_sizeGuideModal [data-custom-rug-carpet],
+  .ctm_sizeGuideModal [data-custom-circle],
+  .ctm_sizeGuideModal [data-custom-runners],
+  .ctm_sizeGuideModal [data-custom-area-rugs] {
+    display: grid;
+  }
+
+  .size_guide_model_open #chatra__iframe-wrapper {
+    display: none !important;
+  }
+
+  body.size_guide_model_open {
+    overflow: hidden;
+  }
+
+  .pr_short_des a span em strong {
+    display: none;
+  }
+
+  @media (min-width: 767px) {
+    .size_guide_wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+</style>
+
+<div class="ctm_sizeGuideModal" id="sizeGuideModal">
+  <div class="ctm_sizeGuide">
+    <div class="ctm_sizeGuide_header">
+      <h4>SIZE GUIDE</h4>
+      <span class="ctm_cross" id="closeModal">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.46411 8.53509L8.53611 1.46509M1.46411 1.46509L8.53611 8.53509" stroke="black" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </span>
+    </div>
+
+    {% assign prd_title = product.title |  handleize %}
+
+    <div class="ctm_sizeGuide_body" {% if prd_title == 'custom-rug-carpet' %}data-custom-rug-carpet data-active{% endif %}>
+      <div class="ctm_shapeOptions">
+        <span class="shapeOption active" data-shape="Rectangle">RECTANGLE</span>
+        <span class="shapeOption" data-shape="Circle">CIRCLE</span>
+        <span class="shapeOption" data-shape="Runner">RUNNER</span>
+      </div>
+      <div class="ctm_shapeImages">
+        <div class="rectangle" data-image-shape="Rectangle" shape-active="true">
+          <div class="shapeImg" data-size="2'x3'">
+            <img src="{{ 'Square.png' |  asset_url }}">
+          </div>
+      {% comment %}    <div class="shapeImg" data-size="3'x5'">
+            <img src="{{ 'rectangle-new.png' |  asset_url }}" width="100%" height="100%">
+          </div>
+          <div class="shapeImg" data-size="5'x7'">
+            <img src="{{ 'rectangleImg 5x7.jpg' |  asset_url }}" width="100%" height="100%">
+          </div>
+          <div class="shapeImg" data-size="8'x10'">
+            <img src="{{ 'rectangleImg 8x10.png' |  asset_url }}" width="100%" height="100%">
+          </div>{% endcomment %}
+        </div>
+        <div class="circle" data-image-shape="Circle">
+          <div class="shapeImg" data-size="3'x3'">
+            <img src="{{ 'Circle-combine.png' |  asset_url }}">
+          </div>
+     {% comment %}     <div class="shapeImg" data-size="4'x4'">
+            <img src="{{ 'circleImg 4x4.png' |  asset_url }}" width="100%" height="100%">
+          </div>
+          <div class="shapeImg" data-size="6'x6'">
+            <img src="{{ 'circleImg 6x6.png' |  asset_url }}" width="100%" height="100%">
+          </div>
+          <div class="shapeImg" data-size="8'x8'">
+            <img src="{{ 'circleImg 8x8.png' |  asset_url }}" width="100%" height="100%">
+          </div>{% endcomment %}
+          
+        </div>
+        <div class="runner" data-image-shape="Runner">
+          <div class="shapeImg" data-size="2.5'x7'">
+            <img src="{{ 'Runner.png' |  asset_url }}">
+          </div>
+      {% comment %}    <div class="shapeImg" data-size="2.5'x10'">
+            <img src="{{ 'runnerImg 2.5x10.png' |  asset_url }}" width="100%" height="100%">
+          </div>{% endcomment %}
+        </div>
+      </div>
+{% comment %}      <div class="ctm_selectSize">
+        <div>SELECT SIZE</div>
+      </div>{% endcomment %}
+    </div>
+    {% comment %} /////////////////// CUSTOM RUG CARPET //////////////////// {% endcomment %}
+
+    <div class="ctm_sizeGuide_body" {% if prd_title == 'custom-area-rugs' %}data-custom-area-rugs data-active{% endif %}>
+      <div class="ctm_shapeOptions">
+        <span class="shapeOption active" data-shape="Rectangle">RECTANGLE</span>
+      </div>
+      <div class="ctm_shapeImages">
+        <div class="rectangle" data-image-shape="Rectangle" shape-active="true">
+          <div class="shapeImg active" data-size="2’x3’">
+            <img src="{{ 'Square.png' |  asset_url }}">
+          </div>
+  {% comment %}        <div class="shapeImg" data-size="3’x5’">
+            <img src="{{ 'rectangleImg 3x5.png' |  asset_url }}" width="100%" height="100%">
+          </div>
+          <div class="shapeImg" data-size="5’x7’">
+            <img src="{{ 'rectangleImg 5x7.jpg' |  asset_url }}" width="100%" height="100%">
+          </div>
+          <div class="shapeImg" data-size="8’x10’">
+            <img src="{{ 'rectangleImg 8x10.png' |  asset_url }}" width="100%" height="100%">
+          </div>{% endcomment %}
+          
+        </div>
+      </div>
+    {% comment %}  <div class="ctm_selectSize">
+        <div>SELECT SIZE</div>
+      </div>{% endcomment %}
+    </div>
+    {% comment %} /////////////////// Custom Area Rugs //////////////////// {% endcomment %}
+
+    <div class="ctm_sizeGuide_body" {% if prd_title == 'custom-runners' %}data-custom-runners data-active{% endif %}>
+      <div class="ctm_shapeOptions">
+        <span class="shapeOption active" data-shape="Runner">RUNNER</span>
+      </div>
+      <div class="ctm_shapeImages">
+        <div class="runner" data-image-shape="Runner" shape-active="true">
+          <div class="shapeImg active" data-size="2.5’x7’">
+            <img src="{{ 'Runner.png' |  asset_url }}">
+          </div>
+    {% comment %}      <div class="shapeImg" data-size="2.5’x10’">
+            <img src="{{ 'runnerImg 2.5x10.png' |  asset_url }}" width="100%" height="100%">
+          </div>{% endcomment %}
+          
+        </div>
+      </div>
+   {% comment %}   <div class="ctm_selectSize">
+        <div>SELECT SIZE</div>
+      </div>{% endcomment %}
+    </div>
+    {% comment %} ////////////////// CUSTOM RUNNER///////////////////// {% endcomment %}
+
+    <div class="ctm_sizeGuide_body" {% if prd_title == 'custom-circle-rugs' %}data-custom-circle data-active{% endif %}>
+      <div class="ctm_shapeOptions">
+        <span class="shapeOption active" data-shape="Circle">CIRCLE</span>
+      </div>
+      <div class="ctm_shapeImages">
+        <div class="circle" data-image-shape="Circle" shape-active="true">
+          <div class="shapeImg active" data-size="3’">
+            <img src="{{ 'Circle-combine.png' |  asset_url }}">
+          </div>
+  {% comment %}        <div class="shapeImg" data-size="4’">
+            <img src="{{ 'circleImg 4x4.png' |  asset_url }}" width="100%" height="100%">
+          </div>
+          <div class="shapeImg" data-size="6’">
+            <img src="{{ 'circleImg 6x6.png' |  asset_url }}" width="100%" height="100%">
+          </div>
+          <div class="shapeImg" data-size="8’">
+            <img src="{{ 'circleImg 8x8.png' |  asset_url }}" width="100%" height="100%">
+          </div>{% endcomment %}
+          
+        </div>
+      </div>
+ {% comment %}     <div class="ctm_selectSize">
+        <div>SELECT SIZE</div>
+      </div>{% endcomment %}
+    </div>
+    {% comment %} ////////////////// CUSTOM CIRCLE RUGS //////////////////// {% endcomment %}
+  </div>
+</div>  

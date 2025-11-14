@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-template",
+      "disabled": true,
+      "settings": {}
+    },
+    "loox_all_reviews_beq3f7": {
+      "type": "loox-all-reviews",
+      "disabled": true,
+      "settings": {
+        "only_photos": false,
+        "hide_thumbnails": false,
+        "product_handle": "",
+        "aggregated": true,
+        "data-limit": 20,
+        "maxwidth": 1080
+      }
+    },
+    "featured_text_Y9cttx": {
+      "type": "featured-text",
+      "settings": {
+        "title": "Rugtomize Reviews",
+        "content": "",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "custom_html_nPE8ic": {
+      "type": "custom-html",
+      "settings": {
+        "custom_html": "<style>\n.stamped-full-page-tabs ul li{display:none !important;}\n.stamped-full-page-tabs ul li.active,\n.stamped-full-page-tabs ul li:first-of-type{display:inline-block !important; margin-right:0;}\n</style>",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "17403979996981f6b9": {
+      "type": "apps",
+      "blocks": {
+        "okendo_media_grid_ANbiHq": {
+          "type": "shopify://apps/okendo/blocks/media-grid/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "okendo_media_grid_ANbiHq"
+      ],
+      "custom_css": [],
+      "settings": {}
+    },
+    "1750720194bac8893e": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_8UyyKa": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_8UyyKa"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "loox_all_reviews_beq3f7",
+    "featured_text_Y9cttx",
+    "custom_html_nPE8ic",
+    "17403979996981f6b9",
+    "1750720194bac8893e"
+  ]
+}

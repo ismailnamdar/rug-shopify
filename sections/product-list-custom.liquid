@@ -1,0 +1,118 @@
+{% comment %}
+  sections/product-list.liquid
+  A dynamic product list section with selectable products
+{% endcomment %}
+
+<section id="product-list-{{ section.id }}" class="product-list">
+  <div class="wrapper">
+    {% if section.settings.title != blank %}
+      <h2 class="section-heading">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="products-grid">
+      {% for block in section.blocks %}
+        {% if block.settings.product %}
+          {% assign product = all_products[ block.settings.product ] %}
+          <a href="{{ product.url }}" class="product-card">
+            <div class="card-image">
+              {% if product.featured_image %}
+                <img 
+                  src="{{ product.featured_image | img_url: '480x480' }}" 
+                  alt="{{ product.title | escape }}"
+                />
+              {% endif %}
+            </div>
+            <div class="card-info">
+              <h3 class="product-title">{{ product.title }}</h3>
+              <span class="product-price">{{ product.price | money }}</span>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    /* wrapper */
+    #product-list-{{ section.id }} .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* heading */
+    #product-list-{{ section.id }} .section-heading {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    /* grid */
+    #product-list-{{ section.id }} .products-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    /* card */
+    #product-list-{{ section.id }} .product-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    #product-list-{{ section.id }} .product-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    /* image */
+    #product-list-{{ section.id }} .card-image img {
+      width: 100%;
+      display: block;
+    }
+    /* info */
+    #product-list-{{ section.id }} .card-info {
+      padding: 10px;
+      text-align: center;
+    }
+    #product-list-{{ section.id }} .product-title {
+      font-size: 1rem;
+      margin: 0 0 .5rem;
+    }
+    #product-list-{{ section.id }} .product-price {
+      font-weight: bold;
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Product List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Featured Products"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Product List",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

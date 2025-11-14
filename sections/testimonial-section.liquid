@@ -1,0 +1,280 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .testimonial_header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 28px;
+  }
+
+  .testimonial_image,
+  .testimonial_block {
+    width: 100%;
+    height: 100%;
+  }
+
+  .testimonial_image .testimonial_img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+  }
+
+  .testimonial_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .testimonial_block_content_container {
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .tst_author_name {
+    font-weight: 600;
+  }
+
+  .testimonial_section .swiper-button-next,
+  .testimonial_section .swiper-button-prev {
+    background-color: #ffffff;
+    width: 40px;
+    height: 40px;
+    padding: 12px;
+    color: #000;
+    border: 1px solid #212121;
+    border-radius: 100%;
+    position: relative !important;
+    left: unset !important;
+    right: unset !important;
+    top: unset !important;
+    bottom: unset !important;
+    margin-top: 0px !important;
+  }
+
+  .testimonial_section .swiper-button-next:after,
+  .testimonial_section .swiper-button-prev:after {
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  .testimonial_slider_button_container{
+    text-align: center;
+  }
+
+  .slider_button_wrapper{
+    display: inline-flex;
+    position: relative;
+    gap: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+  }
+</style>
+
+<div class="testimonial_section">
+  <div class="testimonial_section_container section-{{ section.id }}-padding">
+    <div class="testimonial_header">
+      {% if section.settings.title != blank %}
+        <div class="testimonial_title">
+          {{ section.settings.title }}
+        </div>
+      {% else %}
+        {% if section.settings.subtitle != blank %}
+          <div class="testimonial_subtitle">
+            {{ section.settings.subtitle }}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="testimonial_slider_body">
+      <div class="testimonial_block_container swiper testimonial_swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="testimonial_block swiper-slide">
+              <div class="testimonial_image">
+                {% if block.settings.testimonial_image != blank %}
+                  {{ block.settings.testimonial_image | image_url: width: 600 | image_tag: class: 'testimonial_img' }}
+                {% else %}
+                  {{ 'lifestyle-2' | placeholder_svg_tag: 'testimonial_img' }}
+                {% endif %}
+              </div>
+              <div class="testimonial_block_content_container">
+                {% render 'star-count', block: block %}
+                <div class="testimonial_rich_text">
+                  {% if block.settings.feature_text != blank %}
+                    {{ block.settings.feature_text }}
+                  {% endif %}
+                </div>
+                <div class="testimonial_author">
+                  {% if block.settings.subtitle_author != blank %}
+                    <p class="tst_author_name">{{ block.settings.subtitle_author }}</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="testimonial_slider_button_container">
+          <div class="slider_button_wrapper">
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "testimonial section",
+  "tag": "section",
+  "class": "testimonial_section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "<h2>Trusted by many rug Lovers!</h2>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial-block",
+      "name": "testimonial block",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Testimonial block"
+        },
+        {
+          "type": "range",
+          "id": "stars_count",
+          "min": 0,
+          "max": 5,
+          "step": 0.5,
+          "label": "Stars Count",
+          "default": 5
+        },
+        {
+          "type": "color",
+          "label": "Card Stars Color",
+          "id": "stars_color",
+          "default": "#592E2D"
+        },
+        {
+          "type": "image_picker",
+          "id": "testimonial_image",
+          "label": "Testimonial Image"
+        },
+        {
+          "type": "richtext",
+          "id": "feature_text",
+          "label": "Item text (richtext)",
+          "default": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>"
+        },
+        {
+          "type": "text",
+          "id": "subtitle_author",
+          "label": "Subtitle Author Name",
+          "default": "Tony F."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "testimonial section",
+      "blocks": [
+        {
+          "type": "testimonial-block"
+        },
+        {
+          "type": "testimonial-block"
+        },
+        {
+          "type": "testimonial-block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.testimonial_swiper', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      freeMode: true,
+      loop: true,
+      grabCursor: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        1020: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 40,
+        },
+      }
+    });
+  });
+</script>

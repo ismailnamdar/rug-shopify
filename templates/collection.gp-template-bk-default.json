@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "order": [
+    "featured_collection_bx6efa",
+    "main",
+    "1655132661c12c77fa",
+    "loox_all_reviews_d7eb6d"
+  ],
+  "sections": {
+    "1655132661c12c77fa": {
+      "disabled": true,
+      "settings": {
+        "css_class": "",
+        "custom_css": "",
+        "search_section_text_align": "center",
+        "search_term": "Search...",
+        "search_text": "",
+        "search_title": "Search our shop",
+        "wide_display": true
+      },
+      "type": "search"
+    },
+    "featured_collection_bx6efa": {
+      "disabled": true,
+      "settings": {
+        "collection": "all-custom-rugs",
+        "collection_description": false,
+        "collection_style": "grid",
+        "css_class": "",
+        "custom_css": "",
+        "products_limit": 9,
+        "products_per": 3,
+        "title": "Featured collection"
+      },
+      "type": "featured-collection"
+    },
+    "loox_all_reviews_d7eb6d": {
+      "settings": {
+        "aggregated": true,
+        "data-limit": 20,
+        "hide_thumbnails": false,
+        "maxwidth": 1320,
+        "only_photos": false,
+        "product_handle": ""
+      },
+      "type": "loox-all-reviews"
+    },
+    "main": {
+      "custom_css": [
+        ".section_select .tag_filter,.section_select .sort_by {color: inherit;}",
+        ".section_select .sort_by {padding-right: 25px;}",
+        ".current_price{display:flex; justify-content:center;gap: 1rem;}"
+      ],
+      "settings": {
+        "caption_content_background": "original",
+        "collection_breadcrumb": false,
+        "collection_description": false,
+        "collection_sort": true,
+        "collection_tags": false,
+        "display_collection_title": false,
+        "featured_collection_image": false,
+        "pagination_limit": 6,
+        "products_per_row": 4,
+        "toggle": false,
+        "wide_display": false
+      },
+      "type": "collection-template"
+    }
+  }
+}

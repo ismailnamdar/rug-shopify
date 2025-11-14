@@ -1,0 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured_collection_bx6efa": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured collection",
+        "collection_description": false,
+        "collection": "all-custom-rugs",
+        "collection_style": "grid",
+        "products_per": 3,
+        "products_limit": 9,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "collection-template",
+      "custom_css": [
+        ".section_select .tag_filter,.section_select .sort_by {color: inherit;}",
+        ".section_select .sort_by {padding-right: 25px;}"
+      ],
+      "settings": {
+        "collection_description": false,
+        "featured_collection_image": false,
+        "wide_display": false,
+        "caption_content_background": "original",
+        "display_collection_title": true,
+        "collection_breadcrumb": false,
+        "collection_tags": false,
+        "collection_sort": true,
+        "products_per_row": 3,
+        "pagination_limit": 6,
+        "toggle": false
+      }
+    },
+    "1655132661c12c77fa": {
+      "type": "search",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "search_title": "Search our shop",
+        "search_text": "",
+        "search_section_text_align": "center",
+        "search_term": "Search...",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "loox_all_reviews_d7eb6d": {
+      "type": "loox-all-reviews",
+      "settings": {
+        "only_photos": false,
+        "hide_thumbnails": false,
+        "product_handle": "",
+        "aggregated": true,
+        "data-limit": 20,
+        "maxwidth": 1320
+      }
+    }
+  },
+  "order": [
+    "featured_collection_bx6efa",
+    "main",
+    "1655132661c12c77fa",
+    "loox_all_reviews_d7eb6d"
+  ]
+}

@@ -1,0 +1,210 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "16479010988896cd50": {
+      "type": "video",
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": false,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https://www.youtube.com/watch?v=mIK55-6a9fk&feature=youtu.be",
+        "html5_video": "",
+        "image": "shopify://shop_images/slide3_2000x.progressive_b7ceb256-6688-4ed6-9eae-faeaa53d13ee.jpg",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "This is our calling",
+        "subheading": "",
+        "button1_label": "Play Video",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "16479016029a2069a1": {
+      "type": "divider",
+      "settings": {
+        "divider_spacing": 20,
+        "divider_border": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1647901106921cdfa2": {
+      "type": "image-text",
+      "blocks": {
+        "164790110618d1bf6e-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/geoffrey.jpg",
+            "title": "the brand",
+            "text": "<p>Launched in 2016 by Geoffrey and Alex Ciantar, DUBAI is a luxury leather goods and jewelry label that explores the relationship between high end functionality and artisanal craftsmanship.</p><p>Designer Alex Ciantar studied the art of bag making in Florence under some of Italy’s leading leather workers and designers. Geoffrey worked under his father from a young age, and has designed collections for other leading brands in the industry. Inspired to carry on this enduring tradition, DUBAI practises traditional Italian expertise under ultramodern design sensibility.</p>",
+            "button_label": "",
+            "link": "",
+            "bg_color": "",
+            "text_color": ""
+          }
+        },
+        "164790110618d1bf6e-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/alex.jpg",
+            "title": "",
+            "text": "<p>With a design-led approach to luxury, DUBAI goes beyond fashion trends and offers timeless, exceptional pieces that complement a modern lifestyle. DUBAI encourages those who delve away from the limitations of fast fashion and run toward the openness and honesty of consciously produced products. Based on the southeast coast of the Persian Gulf, DUBAI heralds a slower approach to manufacturing and a strong commitment to sustainability.</p><p>With their first release of leather handbags and jewelry, DUBAI reconnects their customer with artisanship, quality and subtlety. The products' blank canvas-like quality encourages true freedom for the wearer’s own creativity and individualism. The DUBAI collector wears a bag, bracelet or ring, not as a sign of inclusion, but as a way of self-expression.</p>",
+            "button_label": "",
+            "link": "",
+            "bg_color": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "164790110618d1bf6e-0",
+        "164790110618d1bf6e-1"
+      ],
+      "settings": {
+        "wide_display": false,
+        "featured_links_per_row": "1",
+        "frontpage_text_align": "left",
+        "frontpage_image_position": "row",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1657911585a8eb0a76": {
+      "type": "logo-bar",
+      "blocks": {
+        "165791158516dbcb63-0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/instyle.webp",
+            "link": ""
+          }
+        },
+        "165791158516dbcb63-1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/GQBlackAndGoldLogo.webp",
+            "link": ""
+          }
+        },
+        "165791158516dbcb63-2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/elle-can-dark.png",
+            "link": ""
+          }
+        },
+        "165791158516dbcb63-3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify://shop_images/VOGUE_LOGO.svg_2000x_59a733b7-857f-4ee0-b2b7-e87410189499.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "165791158516dbcb63-0",
+        "165791158516dbcb63-1",
+        "165791158516dbcb63-2",
+        "165791158516dbcb63-3"
+      ],
+      "settings": {
+        "title": "",
+        "layout": "slider",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1647901218b3850a8d": {
+      "type": "contact-form",
+      "blocks": {
+        "1647901218ed17b44f-1": {
+          "type": "richtext",
+          "settings": {
+            "label": "",
+            "placeholder": "Email",
+            "required": true,
+            "field_type": "email"
+          }
+        },
+        "9d26888e-44c6-4d59-a1f2-075cf0eb97d3": {
+          "type": "custom",
+          "settings": {
+            "label": "",
+            "placeholder": "Area of inquiry",
+            "required": false,
+            "options_1": "Product - Jewellery",
+            "options_2": "Product - Handbags",
+            "options_3": "Upcoming Events",
+            "options_4": "Job Openings",
+            "options_5": "",
+            "options_6": "",
+            "field_type": "drop_down"
+          }
+        },
+        "1647901218ed17b44f-2": {
+          "type": "richtext",
+          "settings": {
+            "label": "",
+            "placeholder": "Message",
+            "required": false,
+            "field_type": "textarea"
+          }
+        }
+      },
+      "block_order": [
+        "1647901218ed17b44f-1",
+        "9d26888e-44c6-4d59-a1f2-075cf0eb97d3",
+        "1647901218ed17b44f-2"
+      ],
+      "settings": {
+        "contact_heading": "",
+        "contact_subheading": "drop us a line",
+        "contact_content": "<p>We're keen to hear from our fan base and get to know what your needs, loves and dislikes are. We are always inspired by real people and real stories, so if you have any requests or suggestions for future products, please do not hesitate to reach out and let us know.</p>",
+        "contact_text_position": "center",
+        "contact_text_alignment": "left",
+        "contact_social_buttons": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "164790145083a8dc50": {
+      "type": "divider",
+      "settings": {
+        "divider_spacing": 20,
+        "divider_border": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "16479010988896cd50",
+    "16479016029a2069a1",
+    "1647901106921cdfa2",
+    "1657911585a8eb0a76",
+    "1647901218b3850a8d",
+    "164790145083a8dc50"
+  ]
+}

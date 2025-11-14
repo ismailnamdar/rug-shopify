@@ -1,0 +1,14 @@
+{% comment %}
+Required values
+price: <product price>
+{% endcomment %}
+
+{% if money_without_trailing_zeros %}
+  {{ price | money_without_trailing_zeros }}
+{% else %}
+  {% if settings.currency_format == 'money_with_currency_format' %}
+    {{ price | money_with_currency }}
+  {% else %}
+    {{ price | money }}
+  {% endif %}
+{% endif %}
