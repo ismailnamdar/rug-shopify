@@ -1,0 +1,196 @@
+{% comment %}
+  sections/hero-trust-section.liquid
+{% endcomment %}
+
+<style>
+  /* Background section */
+  .trust-bg {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .trust-bg__stars { display: inline-flex; align-items: center; gap: 4px; margin-bottom: 4px; }
+  .trust-bg__stars svg { width:18px; height:18px; fill:#ffbf00; }
+  .trust-bg__rating,
+  .trust-bg__title,
+  .trust-bg__sub { color: #fff; }
+  .trust-bg__rating { font-size:.9rem; font-weight:bold; margin-left:8px; }
+  .trust-bg__title { font-size:2rem; font-weight:700; margin:8px 0 16px; }
+  .trust-bg__sub { font-size:1.1rem; margin-bottom:24px; }
+  .trust-bg__cta {
+    display:inline-block;
+    background-color:#ffbf00;
+    color:#000;
+    font-weight:bold;
+    text-decoration:none;
+    padding:0.75rem 1.5rem;
+    border-radius:6px;
+    margin-bottom:40px;
+  }
+
+  /* Value‐props section */
+  .trust-props {
+    max-width:1200px;
+    margin:0 auto;
+    padding:24px 20px 30px;
+    text-align:center;
+  }
+  .trust-props__grid {
+    display:flex;
+    justify-content:space-between;
+    gap:32px;
+    overflow-x:auto;
+    padding-bottom:10px;
+  }
+  .trust-props__grid::-webkit-scrollbar { display:none; }
+  .trust-props__item {
+    flex:0 0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .trust-props__item-icon { width:60px; height:60px; margin-bottom:12px; }
+  .trust-props__item-text { font-size:1rem; font-weight:600; color:#333; }
+
+  /* Mobile tweaks */
+  @media screen and (max-width:768px) {
+    .trust-bg { 
+      padding:40px 16px; 
+      }
+    .trust-bg__title { font-size:1.6rem; }
+    .trust-bg__sub { font-size:1rem; }
+    .trust-bg__cta { width:100%; text-align:center; }
+    .trust-props__grid { gap:12px; }
+    .trust-props__item-icon { width:38px; height:38px; margin-bottom:8px; }
+    .trust-props__item-text{
+      font-size:.9rem;
+      max-width: 75px;
+    }
+  }
+</style>
+
+<!-- Background + text -->
+<section
+  class="trust-bg"
+  {% if section.settings.bg_image %}
+    style="
+      background:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)),
+        url({{ section.settings.bg_image | img_url:'2000x' }})
+        center/cover no-repeat;
+    "
+  {% endif %}
+>
+  <div class="trust-bg__stars">
+    {% for i in (1..5) %}
+      <svg viewBox="0 0 20 20">
+        <polygon points="10,1 12.6,7.3 19.5,7.3 13.9,11.8 16.4,18 10,14 3.6,18 6.1,11.8 0.5,7.3 7.4,7.3"/>
+      </svg>
+    {% endfor %}
+    <div class="trust-bg__rating">{{ section.settings.rating_text }}</div>
+  </div>
+
+  <h2 class="trust-bg__title">{{ section.settings.heading }}</h2>
+  <div class="trust-bg__sub">{{ section.settings.subheading }}</div>
+
+  <a href="{{ section.settings.cta_link }}" class="trust-bg__cta">
+    {{ section.settings.cta_text }}
+  </a>
+</section>
+
+<!-- Value props below -->
+<div class="trust-props">
+  <div class="trust-props__grid">
+    {% for block in section.blocks %}
+      <div class="trust-props__item">
+        {% if block.settings.icon %}
+          <img
+            src="{{ block.settings.icon | img_url:'60x60' }}"
+            alt=""
+            class="trust-props__item-icon"
+          />
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="trust-props__item-text">{{ block.settings.text }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Trust Section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "id": "bg_image",
+      "type": "image_picker",
+      "label": "Background Image"
+    },
+    {
+      "id": "rating_text",
+      "type": "text",
+      "label": "Rating Text",
+      "default": "5,000+ Reviews"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Main Heading",
+      "default": "Because First Impressions Start at the Floor"
+    },
+    {
+      "id": "subheading",
+      "type": "text",
+      "label": "Subheading",
+      "default": "Custom business rugs made to impress, built to last."
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "Button Text",
+      "default": "Design Yours Now →"
+    },
+    {
+      "id": "cta_link",
+      "type": "url",
+      "label": "Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_prop",
+      "name": "Value Prop",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Text (leave blank for icon-only)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Trust Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

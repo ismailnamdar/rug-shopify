@@ -1,0 +1,317 @@
+{% comment %}
+  sections/hero-trust-figma.liquid
+  Hero section powered by Figma nodes (14:95 video bg, 14:56 trust, 14:81 h1, 14:82 subhead, 14:83 CTA, 14:137 features)
+  - All CSS is inline in this section file per request.
+  - Minimal settings; avoids unused options from hero-trust.
+{% endcomment %}
+
+<style>
+  .section--rugtomize-image-grid {
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+  }
+  .hf-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    min-height: 68vh;
+    padding: 56px 16px;
+    overflow: hidden;
+  }
+
+  .hf-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .hf-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--hf-overlay-opacity, 0.4));
+  }
+
+  .hf-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Trust line + rating stars */
+  .hf-trust {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .hf-trust__line {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .hf-stars {
+    display: inline-flex;
+    gap: 2px;
+  }
+
+  .hf-stars svg {
+    width: 24px;
+    height: 24px;
+    fill: #febf00;
+    display: block;
+  }
+
+  .hf-rating {
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .hf-trust__text {
+    font-size: 24px;
+    line-height: normal;
+    max-width: 476px;
+  }
+
+  /* Main heading */
+  .hf-title {
+    font-size: 48px;
+    margin: 64px 0 24px;
+    color: white;
+    font-style: normal;
+    line-height: 56px;
+    text-transform: none;
+    max-width: 850px;
+    font-weight: 400;
+    letter-spacing: 0px;
+  }
+
+  /* Subhead */
+  .hf-sub {
+    font-size: 32px;
+    line-height: normal;
+    margin-bottom: 64px;
+  }
+
+  /* CTA */
+  .hf-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #febf00;
+    color: #000;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    min-width: 310px;
+    min-height: 64px;
+    justify-content: center;
+  }
+
+  .hf-cta span {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  /* Features row */
+  .hf-features {
+    background: #f3f3f3;
+  }
+
+  .hf-features__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  .hf-features__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .hf-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hf-feature__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hf-feature__text {
+    font-weight: 700;
+    color: #111;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hf-title {
+      font-size: 36px;
+      margin: 8px 0 42px;
+      line-height: normal;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hf-hero {
+      min-height: 60vh;
+      padding: 40px 16px;
+    }
+
+    .hf-trust__text {
+      display: none;}
+
+    .hf-title {
+      font-size: 30px;
+      margin: 8px 0 30px;
+      line-height: normal;
+    }
+
+    .hf-sub {
+      display: none;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .hf-features__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+
+<section class="hf-hero" style="--hf-overlay-opacity: {{ section.settings.overlay_opacity | default: 40 | divided_by: 100.0 }}">
+  {% comment %} Video background: prefer uploaded video; fallback to external URL; optional poster {% endcomment %}
+  {% if section.settings.video != blank %}
+    {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'hf-hero__video' }}
+  {% elsif section.settings.video_url != blank %}
+    <video class="hf-hero__video" autoplay loop muted playsinline {% if section.settings.poster %}poster="{{ section.settings.poster | img_url: '2000x' }}"{% endif %}>
+      <source src="{{ section.settings.video_url }}" type="video/mp4">
+    </video>
+  {% elsif section.settings.poster %}
+    <img class="hf-hero__video" src="{{ section.settings.poster | img_url: '2000x' }}" alt="" />
+  {% endif %}
+  <div class="hf-hero__overlay" aria-hidden="true"></div>
+
+  <div class="hf-hero__inner">
+    <div class="hf-trust">
+      <div class="hf-trust__line">
+        <span class="hf-stars" aria-hidden="true">
+          {% for i in (1..5) %}
+            {% if forloop.index == 5 %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <mask id="mask0_136_2035" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                  <rect width="24" height="24" fill="#D9D9D9"/>
+                </mask>
+                <g mask="url(#mask0_136_2035)">
+                  <path d="M14.675 16.175L13.95 13.15L16.325 11.1L13.225 10.825L12 7.94998V14.55L14.675 16.175ZM6.07501 20.6365L7.65776 13.8922L2.42126 9.36923L9.31151 8.79623L12 2.45398L14.6885 8.79623L21.5788 9.36923L16.3423 13.8922L17.925 20.6365L12 17.0635L6.07501 20.6365Z" fill="#FEBF00"/>
+                </g>
+              </svg>
+            {% else %}
+              <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polygon points="10,1 12.6,7.3 19.5,7.3 13.9,11.8 16.4,18 10,14 3.6,18 6.1,11.8 0.5,7.3 7.4,7.3"/></svg>
+            {% endif %}
+          {% endfor %}
+        </span>
+        {% if section.settings.rating_value != blank %}<span class="hf-rating">{{ section.settings.rating_value }}</span>{% endif %}
+      </div>
+      {% if section.settings.trust_text != blank %}<div class="hf-trust__text">{{ section.settings.trust_text }}</div>{% endif %}
+    </div>
+
+    {% if section.settings.title != blank %}
+      <h1 class="hf-title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.subhead != blank %}
+      <div class="hf-sub">{{ section.settings.subhead }}</div>
+    {% endif %}
+
+    {% if section.settings.cta_text != blank %}
+      <a class="hf-cta" href="{{ section.settings.cta_link | default: '#' }}">
+        <span>{{ section.settings.cta_text }}</span>
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% if section.settings.show_features %}
+  <div class="hf-features">
+    <div class="hf-features__inner">
+      <div class="hf-features__grid">
+        {% for block in section.blocks %}
+          <div class="hf-feature" {{ block.shopify_attributes }}>
+            {% if block.settings.icon != blank %}
+              <img class="hf-feature__icon" src="{{ block.settings.icon | img_url: '80x' }}" alt="" />
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <div class="hf-feature__text">{{ block.settings.text }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Hero Trust with Video",
+  "settings": [
+    { "type": "video", "id": "video", "label": "Background video (uploaded)" },
+    { "type": "url", "id": "video_url", "label": "Background video URL (mp4)" },
+    { "type": "image_picker", "id": "poster", "label": "Fallback poster image" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 40 },
+
+    { "type": "text", "id": "rating_value", "label": "Rating value", "default": "4.55" },
+    { "type": "text", "id": "trust_text", "label": "Trust line", "default": "Trusted by 10,000+ businesses and fans of unique spaces" },
+    { "type": "text", "id": "title", "label": "Main headline", "default": "Your Design. Our Craftsmanship. Commercial-Grade Premium Rugs Hand-Tailored in USA." },
+    { "type": "text", "id": "subhead", "label": "Subheadline", "default": "From Image to Iconic Rug." },
+    { "type": "text", "id": "cta_text", "label": "Button text", "default": "CREATE MY RUG" },
+    { "type": "url", "id": "cta_link", "label": "Button link", "default": "/collections/all" },
+
+    { "type": "checkbox", "id": "show_features", "label": "Show features row", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 4,
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Feature" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Trust with Video",
+      "category": "Custom",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "Fast Turnaround" } },
+        { "type": "feature", "settings": { "text": "Made in USA" } },
+        { "type": "feature", "settings": { "text": "Durable & Easy-Clean" } },
+        { "type": "feature", "settings": { "text": "4.9★ User Satisfaction" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

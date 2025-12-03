@@ -1,37 +1,81 @@
-<div class="account-content-container">
-<div class="content-box form-elements-alt activate-account">
-<h1 class="h1">{{ 'customer.activate_account.title' | t }}</h1>
-<p>{{ 'customer.activate_account.subtext' | t }}</p>
+<section class="section">
+  <div class="container content">
+    <div
+      class="
+        one-whole
+        column
+        collection_nav
+      "
+    >
+      <h1>{{ 'customer.activate_account.title' | t }}</h1>
+      <div class="feature-divider"></div>
+    </div>
 
-{% form 'activate_customer_password' %}
-  {{ form.errors | default_errors }}
-  <input type="hidden" name="return_to" value="/account?login=true">
-  <div class="acct-field-row">
-    <label for="CustomerPassword" class="acct-label">
-      {{ 'customer.activate_account.password' | t }}
-    </label>
-    <input type="password"
-      name="customer[password]"
-      id="CustomerPassword"
-      placeholder="{{ 'customer.activate_account.password' | t }}">
-  </div>
+    <div
+      class="
+        one-half
+        column
+        medium-down--one-whole
+        offset-by-four
+        is-hidden-offset-mobile-only
+      "
+    >
+      <p><em>{{ 'customer.activate_account.subtext' | t }}</em></p>
 
-  <div class="acct-field-row">
-    <label for="CustomerPasswordConfirmation" class="acct-label">
-      {{ 'customer.activate_account.password_confirm' | t }}
-    </label>
-    <input type="password"
-      name="customer[password_confirmation]"
-      id="CustomerPasswordConfirmation"
-      placeholder="{{ 'customer.activate_account.password_confirm' | t }}">
-  </div>
+      {% form 'activate_customer_password' %}
+        {{ form.errors | default_errors }}
 
-  <div class="acct-option-row">
-  <input class="button-tertiary" type="submit" class="button" value="{{ 'customer.activate_account.submit' | t }}">
+        <div id="password">
+          <label for="password">
+            {{ 'customer.activate_account.password' | t }}
+          </label>
+          <input
+            class="password"
+            id="customer_password"
+            name="customer[password]"
+            type="password"
+            value=""
+            size="16"
+          >
+        </div>
+
+        <div id="password_confirm">
+          <label for="password_confirmation">
+            {{ 'customer.activate_account.password_confirm' | t }}
+          </label>
+          <input
+            class="password"
+            id="customer_password_confirmation"
+            name="customer[password_confirmation]"
+            type="password"
+            value=""
+            size="16"
+          >
+        </div>
+
+        <input
+          class="
+            global-button
+            global-button--primary
+          "
+          type="submit"
+          value="{{ 'customer.activate_account.submit' | t }}"
+        >
+        <input
+          class="
+            cancel
+            button
+          "
+          id="customer_decline"
+          name="decline"
+          type="submit"
+          value="{{ 'customer.activate_account.cancel' | t }}"
+        >
+      {% endform %}
+    </div>
+    <br />
+    <br />
   </div>
-  <div class="acct-option-row">
-  <input type="submit" class="button-text btn-decline" name="decline" value="{{ 'customer.activate_account.cancel' | t }}">
-</div>
-{% endform %}
-</div>
-</div>
+</section>
+
+{% section 'newsletter' %}

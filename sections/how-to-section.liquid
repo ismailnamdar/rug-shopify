@@ -1,0 +1,175 @@
+<style>
+  .how-to-section__wrapper {
+    text-align: center;
+    padding-block: 4rem;
+  }
+
+  .howTo_section__header {
+    margin-bottom: 28px;
+  }
+
+  .howTo_section_container { 
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+  }
+ 
+  .howTo_box__image {
+    max-width: 42px;
+    height: 42px;
+  }
+
+  .howTo_box__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    display: block;
+  }
+
+  .how_to_block {
+    width: 100%;
+    color: #fff;
+    background-color: #393939;
+    display: grid;
+    gap: 10px;
+    align-items: center;
+    grid-template-columns: 14% 1fr;
+    padding: 12px 24px;
+    text-align: left;
+    border-radius: 15px;
+  }
+  
+  .howTo_content_wrapper {
+    display: grid;
+  }
+
+  .howTo_block_description p{
+    margin: 0;
+  }
+
+  .howTo_block_description {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .howTo_block_description {
+      font-size: 13px;
+    }
+
+    .howTo_section_container {
+      flex-direction: column;
+    }
+
+    .howTo_box__image {
+      max-width: 30px;
+      height: 30px;
+    }
+
+    .how_to_block {
+      min-height: 65px;
+      gap: 2px;
+    }
+
+    .how-to-section__wrapper {
+      padding-block: 2rem;
+    }
+
+    .how_to_block {
+      padding: 6px 20px;
+    }
+  }
+
+</style>
+<div class="how_section_{{ section.id }}">
+    <div class="section-{{ section.id }}-settings how-to-section__wrapper">
+        <div class="howTo_section__header">
+            <h2 class="howTo_section__title">{{ section.settings.title }}</h2>
+            <p class="howTo_section__subtitle">{{ section.settings.subtitle }}</p>
+        </div>
+        <div class="howTo_section_container">
+          {%- for block in section.blocks -%}
+            <div class="how_to_block">
+              <div class="howTo_box__image">
+                  {%- if block.settings.feature_image != blank -%}
+                    <img src="{{ block.settings.feature_image | image_url }}"  width="200px" height="200px">
+                  {%- else -%}
+                    <img src="{{ 'placeholder.png' | asset_url }}" alt="placeholder image" width="200px" height="200px">
+                  {%- endif -%}
+              </div>
+              <div class="howTo_content_wrapper">
+                  <div class="howTo_block_title">{{ block.settings.feature_title }}</div>
+                  <div class="howTo_block_description">{{ block.settings.feature_text }}</div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+  </div>
+</div>
+
+{% schema %}
+{
+    "name":"how to section",
+    "tag":"section",
+    "class":"how_to_section_main",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Title",
+        "default": "<h2>How it works</h2>"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Customise your dream rug in 3 easy steps"
+      }
+    ],
+    "blocks":[
+       {
+          "type":"image",
+          "name":"How-to Section",
+          "settings":[
+             {
+                "type":"richtext",
+                "id":"feature_text",
+                "label":"Item text (richtext)",
+                "default":"<p>Item text</p>"
+             },
+             {
+                "type":"image_picker",
+                "id":"feature_image",
+                "label":"Icon"
+             }
+          ]
+       }
+    ],
+    "presets":[
+       {
+          "name":"How-to Section",
+          "blocks":[   
+             {
+                "type":"image",
+                "settings":{
+                   "feature_text":"<p>Order today, receive tomorrow</p>"
+                  }
+             },
+             {
+                "type":"image",
+                "settings":{
+                   "feature_text": "<p>Safe money when ordering with us</p>"
+                }
+             },
+             {
+                "type":"image",
+                "settings":{
+                   "feature_text": "<p>Receive a slip for exchanges</p>"
+              }
+             }
+          ]
+       }
+    ]
+ }
+{% endschema %}

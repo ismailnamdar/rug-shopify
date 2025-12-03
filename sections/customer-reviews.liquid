@@ -1,307 +1,204 @@
+{% comment %}
+  sections/customer-reviews.liquid
+  – Turbo 9.4.0
+{% endcomment %}
 
-<div class="reviews" style="background: {{section.settings.background_color}};">
-  <div class="reviews__heading">
-    {% if section.settings.title != blank %}
-      <h2 class="h1 reviews__title">{{section.settings.title}}</h2>
-    {% endif %}
-    {% if section.settings.subtitle != blank %}
-      <h2 class="reviews__subtitle">{{section.settings.subtitle}}</h2>
-    {% endif %}
-  </div>
-  <div class="reviews__container">
-    {% for block in section.blocks %}
-      <div class="review__element raddish-card" style="max-width: {{ block.settings.width }}px; --mobile-width: {{ block.settings.mobile_width }}%;">
-        {% render 'image', _image: block.settings.image, alt: block.settings.image.alt %}
-        <div class="review__stars">
-          {% assign max = block.settings.stars | minus: 1 %}
-          {% for i in (0..max) %}
-            {% render "icon-star" %}
-          {% endfor %}
+<section id="customer-reviews" class="section--customer-reviews">
+  <div class="page-width">
+    <div class="section-header text-center">
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.link_text != blank %}
+        <a href="{{ section.settings.link_url }}" class="reviews-link">
+          {{ section.settings.link_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="reviews-grid">
+      {% for block in section.blocks %}
+        <div class="review-card">
+          <div class="stars">
+            {% for i in (1..block.settings.rating) %}
+              <span class="star">★</span>
+            {% endfor %}
+          </div>
+          <p class="review-text">{{ block.settings.text }}</p>
+          <p class="reviewer">
+            <strong>{{ block.settings.reviewer | strip}}</strong>
+            {% if block.settings.subtitle != blank %}, {{ block.settings.subtitle }}{% endif %}
+          </p>
         </div>
-        <div class="review__text">{{block.settings.review}}</div>
-        <div class="review__author">{{block.settings.author}}</div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
+  <style>
+/* Container centering & bottom padding */
+.section--customer-reviews {
+  max-width: 1400px;
+  margin: 0 auto;     /* already there, but just in case */
+  padding: 0 1rem;     /* give it some breathing room on the sides */
+}
 
-<style>
-  {% if section.settings.display_type == 'grid' %}
-  .reviews__container {
+/* mobile: single-column stack */
+.section--customer-reviews .reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* desktop: horizontal, no wrap, scrollable */
+@media (min-width: 768px) {
+  .section--customer-reviews .reviews-grid {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 20px;
-    row-gap: 35px;
-    justify-content: center; 
+    flex-wrap: nowrap;
+    justify-content: center;  /* center the row */
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
   }
-  .review__element {
-    margin: 0 !important;
-    justify-content: flex-start !important;
+
+  .section--customer-reviews .review-card {
+    /* start at 380px, but allow shrinking & growing */
+    flex: 1 1 380px;
+    /* remove fixed width */
+    width: auto;
+    /* optional cap so cards don't get massive */
+    max-width: 380px;
   }
-  .reviews {
-    padding-right: 40px !important;
-    padding-left: 40px !important;
-  }
-  @media screen and (max-width: 768px) {
-    .reviews__container {
-      column-gap: unset;
-      justify-content: space-between;
+}
+
+/* make the shadow more pronounced */
+.section--customer-reviews .review-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);  /* deeper shadow */
+  text-align: center;
+}
+
+/* rest of your styles */
+.section--customer-reviews .star {
+  color: #ffc107;
+  font-size: 1.25rem;
+  margin: 0 .1rem;
+}
+
+.section--customer-reviews .review-text {
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+
+.section--customer-reviews .reviewer {
+  color: #2a2aeb;
+  font-weight: 500;
+}
+
+.section--customer-reviews .section-header h2 {
+  font-size: 2rem;
+  margin-bottom: .25rem;
+}
+
+.section--customer-reviews .reviews-link {
+  font-size: .9rem;
+  text-decoration: underline;
+  color: #333;
+}
+  </style>
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "More Reviews"
+    },
+    {
+      "type": "text",
+      "id": "link_url",
+      "label": "Link URL",
+      "default": "#"
     }
-
-    .review__element {
-      width: var(--mobile-width);
-      max-width: 100% !important;
-    }
-  }
-  {% endif %}
-
-  .reviews {
-    padding: 40px 0;
-  }
-
-  .reviews__heading {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
-    margin-bottom: 18px;
-  }
-
-  .review__element { 
-    margin: 0 8px;
-  }
-  .review__element img {
-    /* border: 1px solid rgba(77, 77, 77, 0.19971); */
-    border-radius: 8px;
-    width: 100%;
-    max-width: 175px;
-    margin: 0 auto;
-  }
-  .review__stars {
-      display: flex;
-      margin: 14px auto;
-      width: 100%;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-
-  .review__stars svg {
-      width: 20px;
-      margin: 0 2px;
-  }
-
-  .review__element {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.6rem;
-  }
-
-  .review__text {
-      font-style: normal;
-      font-weight: 900;
-      font-size: 15px;
-      line-height: 20px;
-      text-align: center;
-      color: #4D4D4D;
-      margin-bottom: 6px;
-  }
-
-  .review__author {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 16px;
-      text-align: center;
-      color: #4D4D4D;
-  }
-
-  .reviews__title {
-    margin: 0;
-    font-size: 24px;
-    line-height: 50px;
-    text-align: center;
-  }
-
-  .reviews__subtitle {
-    color: #4D4D4D;
-    text-align: center;
-    font-family: "KG HAPPY Solid", sans serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 26px;
-    letter-spacing: 0px;
-    margin: 0;
-  }
-
-  @media screen and (min-width: 750px) {
-    .reviews {
-      padding: 40px 0 65px;
-    }
-    .review__element img {
-      /* max-width: none; */
-    }
-    .review__stars { 
-      margin: 13px auto;
-    }
-    .reviews__heading {
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    .reviews__title {
-      font-size: 32px;
-    }
-    .reviews__subtitle {
-      font-size: 22px;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    {% if section.settings.display_type == 'grid' %}
-      return;
-    {% endif %}
-
-    $("#shopify-section-{{section.id}}  .reviews__container").slick({
-      slidesToShow: 5,
-      // slidesToScroll: 1,
-      autoplay: true,
-      infinite: true,
-      centerMode: true,
-      autoplaySpeed: {{section.settings.rotation_speed | times: 1000 | json }},
-      infinite: true,
-      arrows: false,
-      centerPadding: '120px',
-      responsive: [
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review Card",
+      "settings": [
         {
-          breakpoint: 768,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '60px',
-            slidesToShow: 3
+          "type": "range",
+          "id": "rating",
+          "label": "Rating (1–5 stars)",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "Rugtomize went above and beyond…"
+        },
+        {
+          "type": "text",
+          "id": "reviewer",
+          "label": "Reviewer Name",
+          "default": "Reka N"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Verified Buyer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "category": "Testimonials",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Rugtomize went above and beyond…",
+            "reviewer": "Reka N",
+            "subtitle": "Verified Buyer"
           }
         },
         {
-          breakpoint: 480,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: '60px',
-            slidesToShow: 1
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "I went on the chat to make sure…",
+            "reviewer": "Lineo Y",
+            "subtitle": "Verified Buyer"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Our order was processed fast…",
+            "reviewer": "William C",
+            "subtitle": "Verified Buyer"
           }
         }
       ]
-      // centerPadding: '10px',
-      // variableWidth: true
-    })
-  })
-</script>
-
-{% schema %}
-  {
-    "name": "Testimonials",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title",
-        "default": "Testimonials"
-      },
-      {
-        "type": "text",
-        "id": "subtitle",
-        "label": "Subtitle"
-      },
-      {
-        "type": "color",
-        "id": "background_color",
-        "label": "Background Color"
-      },
-      {
-        "type": "select",
-        "id": "display_type",
-        "label": "Display Type",
-        "options": [
-          {
-            "value": "carousel",
-            "label": "Carousel"
-          },
-          {
-            "value": "grid",
-            "label": "Grid"
-          }
-        ],
-        "default": "carousel"
-      },
-      {
-        "type": "range",
-        "id": "rotation_speed",
-        "min": 1,
-        "max": 10,
-        "step": 1,
-        "unit": "sec",
-        "label": "Animation Speed",
-        "default": 3
-      }
-    ],
-    "blocks": [
-      {
-        "type": "review",
-        "name": "Review",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          },
-          {
-            "type": "textarea",
-            "id": "review",
-            "label": "Review"
-          },
-          {
-            "type": "text",
-            "id": "author",
-            "label": "Author"
-          },
-          {
-            "type": "text",
-            "id": "stars",
-            "label": "Stars",
-            "info": "From 0 to 5",
-            "default": "5"
-          },
-          {
-            "type": "text",
-            "id": "width",
-            "label": "Width (px)",
-            "info": "This is useful to make the review card wider.",
-            "default": "260"
-          },
-          {
-            "type": "number",
-            "id": "mobile_width",
-            "label": "Mobile Width (%)",
-            "info": "This is useful to make the review card wider in \"Grid\" mode.",
-            "default": 48
-          },
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Testimonials",
-        "category": "Homepage"
-      }
-    ]
-  }
+    }
+  ]
+}
 {% endschema %}

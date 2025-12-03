@@ -1,0 +1,136 @@
+{% comment %}
+  sections/three-image-showcase.liquid
+  A simple 3-image showcase with a title, mobile-optimized
+{% endcomment %}
+
+<section id="three-image-showcase-{{ section.id }}" class="three-image-showcase">
+  <div class="wrapper">
+    {% if section.settings.title != blank %}
+      <div class="section-header">
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        {% if section.settings.subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="images-grid">
+      {% for i in (1..3) %}
+        {% capture img_key %}image_{{ i }}{% endcapture %}
+        {% capture alt_key %}alt_{{ i }}{% endcapture %}
+        {% assign img = section.settings[img_key] %}
+        {% assign alt = section.settings[alt_key] %}
+        {% if img %}
+          <div class="image-item">
+            <img
+              src="{{ img | img_url: 'master' }}"
+              alt="{{ alt | escape }}"
+            />
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    #three-image-showcase-{{ section.id }} .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* header */
+    #three-image-showcase-{{ section.id }} .section-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #three-image-showcase-{{ section.id }} .section-title {
+      font-size: 1.75rem;
+      margin: 0;
+       margin-top:3rem;
+    }
+    #three-image-showcase-{{ section.id }} .section-subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin: 5px 0 0;
+    }
+
+    /* grid */
+    #three-image-showcase-{{ section.id }} .images-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* images */
+    #three-image-showcase-{{ section.id }} .image-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+    #three-image-showcase-{{ section.id }} h2.section-title{
+      font-size: 28px;
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Three Image Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Design. Approve. Impress."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "test"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "alt_1",
+      "label": "Alt text for image 1",
+      "default": "test"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "alt_2",
+      "label": "Alt text for image 2",
+      "default": "test"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "alt_3",
+      "label": "Alt text for image 3",
+      "default": "test"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three Image Showcase",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

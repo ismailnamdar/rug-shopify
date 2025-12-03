@@ -1,0 +1,824 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_trust_cmEnqt": {
+      "type": "hero-trust",
+      "blocks": {
+        "value_prop_Gg8ewD": {
+          "type": "value_prop",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/durable.png",
+            "text": "Commercial-Grade Durability"
+          }
+        },
+        "value_prop_Gt8YXD": {
+          "type": "value_prop",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/no-sun.png",
+            "text": "Fade-Resistant Colors"
+          }
+        },
+        "value_prop_PyCkLV": {
+          "type": "value_prop",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/fabric.png",
+            "text": "Non-Slip Backing"
+          }
+        },
+        "value_prop_wtkBXm": {
+          "type": "value_prop",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/hand-washer.png",
+            "text": "Easy Clean & Care"
+          }
+        }
+      },
+      "block_order": [
+        "value_prop_Gg8ewD",
+        "value_prop_Gt8YXD",
+        "value_prop_PyCkLV",
+        "value_prop_wtkBXm"
+      ],
+      "name": "Hero Trust Section",
+      "settings": {
+        "bg_image": "shopify:\/\/shop_images\/Banner.png",
+        "rating_text": "5,000+ businesses",
+        "heading": "Because First Impressions Start at the Floor",
+        "subheading": "Custom business rugs made to impress, built to last.",
+        "cta_text": "Design Yours Now →",
+        "cta_link": "shopify:\/\/products\/custom-rug-carpet"
+      }
+    },
+    "image_with_text_overlay_mDcnki": {
+      "type": "image-with-text-overlay",
+      "disabled": true,
+      "custom_css": [
+        ".section-reviews {display: flex; align-items: center; gap: 5em; margin-bottom: 0.5em;}",
+        ".interactive-stars {display: flex; gap: 4px; font-size: 20px; color: #f4b233; margin-bottom: 0px; margin-right: 10px;}",
+        ".interactive-stars span {color: #f4b233; font-size: inherit; cursor: pointer;}",
+        ".reviews-text {margin-left: 10px; font-size: 16px; font-weight: 600; color: #ffffff; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); margin: 0;}"
+      ],
+      "settings": {
+        "wide_display": true,
+        "image": "shopify:\/\/shop_images\/Banner.png",
+        "pretext": "",
+        "title": "Because First Impressions Start at the Floor",
+        "show_stars": true,
+        "show_review_text": true,
+        "review_count_text": "4.8 Average Rating from Over 5,000 Businesses",
+        "subtitle": "<p><em>Custom business rugs made to impress, built to last.<\/em><\/p>",
+        "button1": "Design Yours Now →",
+        "button1_link": "shopify:\/\/products\/custom-rug-carpet",
+        "button1_style": "global-button--primary",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "left",
+        "text_align": "left",
+        "caption_content_background": "darken_bg",
+        "mobile_image": "shopify:\/\/shop_images\/RectangleDh_1.jpg",
+        "mobile_image_crop": false,
+        "mobile_text_below_image": true,
+        "show_extra_icons": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_FFQe7y": {
+      "type": "featured-text",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Icon_Banner.png",
+        "mobile_image": "shopify:\/\/shop_images\/IconBanner.png",
+        "title": "",
+        "content": "",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_collection_73XJeH": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Choose Your Rug Style",
+        "collection_description": true,
+        "collection": "all-custom-rugs",
+        "collection_style": "grid",
+        "products_per": 4,
+        "products_limit": 4,
+        "css_class": "featured-collection",
+        "custom_css": ".current_price{\ndisplay:flex;\n    justify-content:center;\ngap: 1rem;\n}"
+      }
+    },
+    "testimonial_JETp39": {
+      "type": "testimonial",
+      "blocks": {
+        "image_3c3xwG": {
+          "type": "image",
+          "settings": {
+            "title": "",
+            "testimonial": "<p>Rugtomize went above and beyond to help me with a quick turn around order for a trade show. Not only was the rug BEAUTIFUL, but the customer service was top notch.   The rug was better than what I had hoped for!!!<\/p>",
+            "name": "Reka N, Verified Buyer",
+            "store_name": "",
+            "link": "shopify:\/\/pages\/custom-rug-reviews",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "text_box"
+          }
+        },
+        "image_4HMNxY": {
+          "type": "image",
+          "settings": {
+            "title": "",
+            "testimonial": "<p>I went on the chat to make sure this site was really real, and they showed and proved that for sure, my wife surprised and overjoyed.<\/p>",
+            "name": "Lineo Y, Verified Buyer",
+            "store_name": "",
+            "link": "shopify:\/\/pages\/custom-rug-reviews",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "text_box"
+          }
+        },
+        "image_JcT4NR": {
+          "type": "image",
+          "settings": {
+            "title": "",
+            "testimonial": "<p>Our order was process fast. I received my 15 rugs within 2 weeks of placing the order. The rugs wasn't what I expected. They actually exceeded my level of expectation. Colors, and sizes match exactly what I wanted. Customer Service over the phone was super helpful and friendly. Excellent job all round.<\/p>",
+            "name": "William C, Verified Buyer",
+            "store_name": "",
+            "link": "shopify:\/\/pages\/custom-rug-reviews",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "text_box"
+          }
+        }
+      },
+      "block_order": [
+        "image_3c3xwG",
+        "image_4HMNxY",
+        "image_JcT4NR"
+      ],
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "testimonial_text_animation": "",
+        "testimonial_speed": 0,
+        "activate_adaptiveHeight": false,
+        "mobile_text_below_image": false,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "scrolling_logo_UJgRfe": {
+      "type": "scrolling-logo",
+      "blocks": {
+        "logo_HaAAUd": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/d68a1aedc74f2cb4fe847aeab99bb6a037be2e7a.png"
+          }
+        },
+        "logo_XVWXhg": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/677af9d6be0fb430510125fad94d81bce2887f41_1.png"
+          }
+        },
+        "logo_3mpBdR": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/ab507baffa4f7429042504e35ed98c40cc070969_1.png"
+          }
+        },
+        "logo_CmkTDA": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/301e617d39210c32b4577a0844002ce9089d8120_1.png"
+          }
+        },
+        "logo_QmWww8": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/5c49c83c0dcdce66934e8b243d29edbf29d613bf_1_c76c37d0-50f6-42fa-b9d4-db31bea7b71c.png"
+          }
+        },
+        "logo_zg7RxP": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/ea59227e2824e4cca5da6436df743ecf97e23034_1_10e55c46-d461-40ab-be95-f7303c4ea559.png"
+          }
+        },
+        "logo_YiT3LN": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/bb877b9f8c4d19aaf727c88d9f34247655ae36e3_2_4f1ac694-c0ac-4f4e-b472-b50b9c53df11.png"
+          }
+        },
+        "logo_EURxVX": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/74fd17074ebc7ee30fd9fcc5eb1996d4dddaf766_1_ce1eea3f-ad85-48ab-88d5-1b193c92b2cf.png"
+          }
+        },
+        "logo_XiyQpb": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/11296c63744c830c40b748623a17ef2779114fa6_1_9be3882f-79f6-405e-8c89-a3f6c428d787.png"
+          }
+        },
+        "logo_66UEyT": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/a471016b0919e6351bd8bc8d7564cef3920e1f4e_1_2_f62e0ae9-11e7-4c28-b38f-a90cd33f84ed.png"
+          }
+        },
+        "logo_7cDV79": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/3c599e649f8de1acdc66eb6a1c85e7cd8905b078_1_e5619242-2b16-4239-a8a4-ed0f468875c9.png"
+          }
+        },
+        "logo_ttRWVf": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/5b5550b657ea6670b78181097d5050b15dab620f_2_6f25b0d0-0651-4fed-bc9e-4977b8de0dcf.png"
+          }
+        },
+        "logo_KNUxtB": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/bdb67cdcd7a8da04421b9d683c7b4ffe348d7421_1_6a0b2fbe-c780-4cee-a1de-d29d75690490.png"
+          }
+        },
+        "logo_fwkmCW": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/57b02dcbfa3073179a2a0e115f22e92c8e18b510_2_262b17cc-3b91-4abf-9f2d-ae0e422bae3a.png"
+          }
+        },
+        "logo_ypfAzY": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/7eecc99920eb4a7179b1db49da1e6fd2933b2580_1_b43f4706-14a0-43b0-8c82-784280c8b44a.png"
+          }
+        },
+        "logo_PTFxXp": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/9d9bef12cc2d922121b7fb2390ffd67e50e0cfd3_1_eb8c7e4a-9a2a-423f-bc1f-cdd336c8162d.png"
+          }
+        },
+        "logo_V6FcYA": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/2f5b9cb69a452731c364f25d02fb3e36500f813c_1_1_088b7417-565c-460c-96c7-2ecabea4a800.png"
+          }
+        },
+        "logo_fcCdXg": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/c2333c4315bb2488bfe6e791b49640a00d89ae0e_1_76e65999-f764-4244-b14a-cf251294eba4.png"
+          }
+        },
+        "logo_3VHPXh": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/6831a68ac4bc310292c1625763799fd47fe54725_1_b37b2670-a975-407f-9cb4-06c4202ec1a9.png"
+          }
+        },
+        "logo_FWnXKn": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/3d09b282d0dfc371dc57859aa404f4c50127c22d_1_d1567012-09f5-4c45-a594-352dd3f7852f.png"
+          }
+        },
+        "logo_zyCEA7": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/db29a2734e42c08e4eeed5f9a2b6b7df6dccef06_1_651083ae-ea06-437f-81a3-e86b35c7115f.png"
+          }
+        },
+        "logo_HRFUVF": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/83497d46b24140155e6f03dd14a5fda4cedf5e31_3_1.png"
+          }
+        },
+        "logo_dEkdgY": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/e02c36316a41d6a20b795702685bb2dfb423e5cd_1_3500751e-75e1-40f7-84b9-57bc08e47fa9.png"
+          }
+        },
+        "logo_Ek4zen": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/cf6b3bfc882cf6273121af78224c154979945f79_56e6ed2a-73d3-431f-8c5c-2e7ff4dd9bb1.png"
+          }
+        },
+        "logo_Y7pCBh": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify:\/\/shop_images\/1d86d4f8d7c445bd87ea4eb9eef0b8b288922615_1_2a5ac73f-e45b-4c35-8bdf-5fc884376fda.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_HaAAUd",
+        "logo_XVWXhg",
+        "logo_3mpBdR",
+        "logo_CmkTDA",
+        "logo_QmWww8",
+        "logo_zg7RxP",
+        "logo_YiT3LN",
+        "logo_EURxVX",
+        "logo_XiyQpb",
+        "logo_66UEyT",
+        "logo_7cDV79",
+        "logo_ttRWVf",
+        "logo_KNUxtB",
+        "logo_fwkmCW",
+        "logo_ypfAzY",
+        "logo_PTFxXp",
+        "logo_V6FcYA",
+        "logo_fcCdXg",
+        "logo_3VHPXh",
+        "logo_FWnXKn",
+        "logo_zyCEA7",
+        "logo_HRFUVF",
+        "logo_dEkdgY",
+        "logo_Ek4zen",
+        "logo_Y7pCBh"
+      ],
+      "name": "Scrolling Logo Row",
+      "settings": {
+        "section_title": "Trusted By"
+      }
+    },
+    "featured_text_ywNgnp": {
+      "type": "featured-text",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/TrustedBy_5bd3770b-703e-4fd5-827c-f9eab969756a.png",
+        "mobile_image": "shopify:\/\/shop_images\/TrustedBy_5bd3770b-703e-4fd5-827c-f9eab969756a.png",
+        "title": "",
+        "content": "",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "custom_liquid_x3mfXd": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<style>\nsection{\n    margin:auto;\n}\n  .hero-section {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    gap: 40px;\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 60px 20px;\n  }\n\n  .hero-section__col {\n    flex: 1;\n    max-width: 600px;\n  }\n\n  .hero-section__video,\n  .hero-section__video video {\n    width: 100%;\n    border-radius: 10px;\n    display: block;\n  }\n\n  .hero-section__title {\n    font-size: 2rem;\n    font-weight: 700;\n    margin-bottom: 1rem;\n  }\n\n  .hero-section__text {\n    font-size: 1.1rem;\n    line-height: 1.6;\n    margin-bottom: 1.5rem;\n  }\n\n  .hero-section__cta {\n    display: inline-block;\n    padding: 0.75rem 1.5rem;\n    background-color: #ffbf00;\n    color: black;\n    font-weight: bold;\n    text-decoration: none;\n    border-radius: 6px;\n  }\n\n  .hero-section__subtext {\n    font-size: 0.9rem;\n    margin-top: 0.5rem;\n    color: #555;\n  }\n\n  \/* Mobile tweaks *\/\n  @media screen and (max-width: 768px) {\n    .hero-section {\n      flex-direction: column;\n      padding: 40px 16px;\n      gap: 24px;\n    }\n    .hero-section__title {\n      font-size: 1.6rem;\n    }\n    .hero-section__text {\n      font-size: 1rem;\n    }\n    .hero-section__cta {\n      width: 100%;\n      text-align: center;\n      padding: 0.75rem;\n    }\n    .hero-section__subtext {\n      text-align: center;\n    }\n  }\n<\/style>\n\n<div class=\"hero-section\">\n  <!-- Video Column -->\n  <div class=\"hero-section__col hero-section__video\">\n    <video controls autoplay muted playsinline>\n      <source src=\"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/bb1d06c113ed416f97bc8e8b37b255ff.mp4\" type=\"video\/mp4\">\n      Your browser does not support the video tag.\n    <\/video>\n  <\/div>\n\n  <!-- Text Column -->\n  <div class=\"hero-section__col\">\n    <h2 class=\"hero-section__title\">From Heritage to Hype<\/h2>\n\n    <p class=\"hero-section__text\">\n      Rugtomize was born from <strong>5 generations of Persian rug craftsmanship<\/strong> and a rebellious push to break the mold. We didn’t just want to make rugs. We wanted to create <strong>identity pieces<\/strong> that hit different.\n    <\/p>\n\n    <p class=\"hero-section__text\">\n      <strong>Crafted in California<\/strong>, built for modern creators and brands, our rugs are used to <strong>elevate spaces, launch collections<\/strong>, and create unforgettable first impressions. You dream it, we help you step on it.\n    <\/p>\n\n    <a href=\"\/pages\/about-us\" class=\"hero-section__cta\">Learn More<\/a>\n\n    <p class=\"hero-section__subtext\">\n      Explore our story and see how we’re redefining rugs for the bold.\n    <\/p>\n  <\/div>\n<\/div>",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "ugc_section_ALNbxE": {
+      "type": "ugc-section",
+      "blocks": {
+        "ugc_video_tD6Lyh": {
+          "type": "ugc_video",
+          "settings": {
+            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/887ddbdfae704377920149e22a9ea526.mp4",
+            "caption": ""
+          }
+        },
+        "ugc_video_yJHTTj": {
+          "type": "ugc_video",
+          "settings": {
+            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/d3ac8118529d4d28a4201e1a08c67b8f.mp4",
+            "caption": ""
+          }
+        },
+        "ugc_video_kktYje": {
+          "type": "ugc_video",
+          "settings": {
+            "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/23936fe3b25d4cb8a43a590f90b1172d.mp4",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "ugc_video_tD6Lyh",
+        "ugc_video_yJHTTj",
+        "ugc_video_kktYje"
+      ],
+      "name": "UGC Videos",
+      "settings": {
+        "title": "Real Rugs, Real Customers",
+        "bg_color": "#ffffff",
+        "text_color": "#333333"
+      }
+    },
+    "three_image_showcase_AYELMM": {
+      "type": "three-image-showcase",
+      "name": "Three Image Showcase",
+      "settings": {
+        "title": "Design. Approve. Impress.",
+        "subtitle": "",
+        "image_1": "shopify:\/\/shop_images\/UPLOAD.png",
+        "alt_1": "",
+        "image_2": "shopify:\/\/shop_images\/ReDESIGN.png",
+        "alt_2": "",
+        "image_3": "shopify:\/\/shop_images\/FINAL.png",
+        "alt_3": ""
+      }
+    },
+    "comparison_chart_JPqPFF": {
+      "type": "comparison-chart",
+      "name": "Comparison Chart",
+      "settings": {}
+    },
+    "customer_reviews_xgWmeN": {
+      "type": "customer-reviews",
+      "blocks": {
+        "review_fh3Pht": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Rugtomize went above and beyond to help me  with a quick turnaround order for a trade show. Not only was the rug BEAUTIFUL, but the customer service was top notch. the rug was better than what i had Hoped for!!!",
+            "reviewer": "Reka N",
+            "subtitle": "Verified Buyer"
+          }
+        },
+        "review_PWaeDL": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "I went on the chat to make sure this site was really real, and they showed and proved that for sure, my wife was surprised and overjoyed.",
+            "reviewer": "Lineo Y",
+            "subtitle": "Verified Buyer"
+          }
+        },
+        "review_wQNHJC": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Our order was processed fast. I received my 15 rugs within 2 weeks of placing the order. The rugs wasn't what I expected . they actually exceeded ,y level of expectation. Colors, and sizes match exactly what i wanted. customer service over the phone was super helpful and friendly. Excellent job all round",
+            "reviewer": "William C",
+            "subtitle": "Verified Buyer"
+          }
+        }
+      },
+      "block_order": [
+        "review_fh3Pht",
+        "review_PWaeDL",
+        "review_wQNHJC"
+      ],
+      "name": "Customer Reviews",
+      "settings": {
+        "heading": "Real Reviews from Rug Lovers Like You",
+        "link_text": "Ships Fast. Risk-Free Proof. Satisfaction Guaranteed.",
+        "link_url": "\/pages\/reviews"
+      }
+    },
+    "gallery_8zmBEQ": {
+      "type": "gallery",
+      "blocks": {
+        "image_dzqxrH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/nypd.png"
+          }
+        },
+        "image_kCfX87": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Spotify.png"
+          }
+        },
+        "image_3wh6BL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/3d09b282d0dfc371dc57859aa404f4c50127c22d_1_d1567012-09f5-4c45-a594-352dd3f7852f.png"
+          }
+        },
+        "image_hLt4rG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/8dc5d913378640c65bb37013bb4a4391a1124db8_1_71d93aee-359d-4f2c-b8f6-45fd0a52e7b4.png"
+          }
+        },
+        "image_aAcwfQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/11296c63744c830c40b748623a17ef2779114fa6_1.png"
+          }
+        },
+        "image_RrPt3k": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6831a68ac4bc310292c1625763799fd47fe54725_1_b37b2670-a975-407f-9cb4-06c4202ec1a9.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_dzqxrH",
+        "image_kCfX87",
+        "image_3wh6BL",
+        "image_hLt4rG",
+        "image_aAcwfQ",
+        "image_RrPt3k"
+      ],
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "title": "",
+        "gallery_type": "horizontal",
+        "grid-size": 4,
+        "enable_lightbox": false,
+        "css_class": "gallery",
+        "custom_css": "\/* 1. make the row horizontally scrollable & give it some bottom-padding *\/\n.gallery-horizontal {\n  display: flex !important;\n  flex-wrap: nowrap !important;\n  justify-content: flex-start !important;\n  align-items: center !important;     \/* vertically center logos *\/\n  overflow-x: auto !important;\n  -webkit-overflow-scrolling: touch !important;\n  gap: 1rem !important;\n  padding: 1rem 0 8rem !important;     \/* top\/bottom padding (2rem bottom) *\/\n}\n\n\/* 2. force exactly 4 logos at a time and center each *\/\n.gallery-horizontal .gallery-image-wrapper {\n  flex: 0 0 25% !important;\n  max-width: 25% !important;\n  display: flex !important;\n  justify-content: center !important;\n  align-items: center !important;\n  padding: 0 !important;              \/* remove old bottom-padding *\/\n}\n\n\/* 3. ensure each image scales to fit its wrapper *\/\n.gallery-horizontal .gallery__image {\n  max-width: 100% !important;\n  height: auto !important;\n}\n\n\/* 4. hide the scrollbar (optional) *\/\n.gallery-horizontal::-webkit-scrollbar {\n  display: none !important;\n}"
+      }
+    },
+    "image_with_text_overlay_MiK4gr": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "wide_display": true,
+        "image": "shopify:\/\/shop_images\/T.Banner.2.png",
+        "pretext": "",
+        "title": "Custom Rugs. Zero Guesswork. Trusted by many brands.",
+        "show_stars": false,
+        "show_review_text": false,
+        "review_count_text": "",
+        "subtitle": "<p>Ships Fast, Free Proof Before We Print, No Risk<\/p>",
+        "button1": "Create My Rug →",
+        "button1_link": "shopify:\/\/products\/custom-rug-carpet",
+        "button1_style": "global-button--primary",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "darken_bg",
+        "mobile_image": "shopify:\/\/shop_images\/SmallerBanner.png",
+        "mobile_image_crop": false,
+        "mobile_text_below_image": false,
+        "show_extra_icons": false,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "text_columns_with_images_gJncTB": {
+      "type": "text-columns-with-images",
+      "blocks": {
+        "text_block_arU37p": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/RectangleDh_1.jpg",
+            "title": "All Custom Rugs",
+            "heading_size": "regular_text",
+            "text": "<p><a href=\"\/products\/custom-rug-carpet\" title=\"Custom Rug Carpet\">From $149<\/a><\/p>",
+            "button_label": "CREATE NOW",
+            "button_link": "shopify:\/\/products\/custom-rug-carpet",
+            "align_text": "center",
+            "border_style": "none"
+          }
+        },
+        "text_block_eRPF93": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/narea_530e9ef9-2fd2-4d44-b2c8-d12a05fa33e8.jpg",
+            "title": "Custom Area Rugs",
+            "heading_size": "regular_text",
+            "text": "<p><a href=\"\/products\/custom-area-rugs\" title=\"Custom Area Rugs\">From $149<\/a><\/p>",
+            "button_label": "CREATE NOW",
+            "button_link": "shopify:\/\/products\/custom-area-rugs",
+            "align_text": "center",
+            "border_style": "none"
+          }
+        },
+        "text_block_3gUXQn": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/Circledh_da8e81c7-aef3-48fc-9d34-3c3ee517c554.jpg",
+            "title": "Custom Circle Rugs",
+            "heading_size": "regular_text",
+            "text": "<p><a href=\"\/products\/custom-circle-rug-1\" title=\"Custom Circle Rugs\">From $199<\/a><\/p>",
+            "button_label": "CREATE NOW",
+            "button_link": "shopify:\/\/products\/custom-circle-rug-1",
+            "align_text": "center",
+            "border_style": "none"
+          }
+        },
+        "text_block_MnwQbm": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/uploadhere_1_1.jpg",
+            "title": "Custom Runners",
+            "heading_size": "regular_text",
+            "text": "<p><a href=\"\/products\/custom-runners\" title=\"Custom Runners\">From $399.00<\/a><\/p>",
+            "button_label": "CREATE NOW",
+            "button_link": "shopify:\/\/products\/custom-runners",
+            "align_text": "center",
+            "border_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_arU37p",
+        "text_block_eRPF93",
+        "text_block_3gUXQn",
+        "text_block_MnwQbm"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "title": "Custom Rug Styles",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "image_text_7bakpK": {
+      "type": "image-text",
+      "blocks": {
+        "image_b3z6C9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/yph2.jpg",
+            "title": "Custom Rug",
+            "text": "<p>Design Your Area, Circle, or Runner Rug<\/p>",
+            "button_label": "CREATE NOW",
+            "link": "shopify:\/\/products\/custom-rug-carpet",
+            "bg_color": "rgba(0,0,0,0)",
+            "text_color": "#000000"
+          }
+        },
+        "image_gfhtia": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/narea_530e9ef9-2fd2-4d44-b2c8-d12a05fa33e8.jpg",
+            "title": "Custom Area",
+            "text": "<p>Design Your Area Rug<\/p>",
+            "button_label": "CREATE NOW",
+            "link": "shopify:\/\/products\/custom-circle-rug-1",
+            "bg_color": "rgba(0,0,0,0)",
+            "text_color": "#000000"
+          }
+        },
+        "image_JinnPF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Circledh_da8e81c7-aef3-48fc-9d34-3c3ee517c554.jpg",
+            "title": "Custom Circle",
+            "text": "<p>Design Your Circle Rug<\/p>",
+            "button_label": "CREATE NOW",
+            "link": "shopify:\/\/products\/custom-circle-rug-1",
+            "bg_color": "rgba(0,0,0,0)",
+            "text_color": "#000000"
+          }
+        },
+        "image_NJAUP3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/uploadhere_1_1.jpg",
+            "title": "Custom Runner",
+            "text": "<p>Design Your Runner Rug<\/p>",
+            "button_label": "CREATE NOW",
+            "link": "shopify:\/\/products\/custom-runners",
+            "bg_color": "rgba(0,0,0,0)",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "image_b3z6C9",
+        "image_gfhtia",
+        "image_JinnPF",
+        "image_NJAUP3"
+      ],
+      "disabled": true,
+      "settings": {
+        "wide_display": false,
+        "featured_links_per_row": "2",
+        "frontpage_text_align": "center",
+        "frontpage_image_position": "row",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "16578947146adc5094": {
+      "type": "shoppable-image",
+      "blocks": {
+        "shoppable_image_Ek8C8t": {
+          "type": "shoppable-image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/SmallerBanner.png",
+            "card_styling": "square",
+            "elements_outline": false,
+            "hotspot_color": "",
+            "product_1": "custom-rug-carpet",
+            "image_alignment_1": "center-center",
+            "x_axis_1": 8,
+            "y_axis_1": 50,
+            "button_label_1": "View product",
+            "product_2": "custom-area-rugs",
+            "image_alignment_2": "center-center",
+            "x_axis_2": 36,
+            "y_axis_2": 25,
+            "button_label_2": "View product",
+            "product_3": "custom-circle-rug-1",
+            "image_alignment_3": "center-center",
+            "x_axis_3": 60,
+            "y_axis_3": 50,
+            "button_label_3": "View product",
+            "product_4": "custom-runners",
+            "image_alignment_4": "center-center",
+            "x_axis_4": 88,
+            "y_axis_4": 25,
+            "button_label_4": "View product",
+            "call_to_action": "Your call-to-action",
+            "subtitle": "",
+            "text_align": "center",
+            "button_label": "View collection",
+            "button_link": "shopify:\/\/collections\/all-custom-rugs",
+            "button_style": "global-button--banner-text-highlighted",
+            "cta_bg_color": "#f2f2f2"
+          }
+        }
+      },
+      "block_order": [
+        "shoppable_image_Ek8C8t"
+      ],
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "slideshow_text_animation": "fadeInDown",
+        "slideshow_animation": "fade",
+        "slideshow_speed": 0,
+        "title": "Shop the look",
+        "quick_view": true,
+        "bottom_bar": true,
+        "product_thumbnails": true,
+        "cta": false,
+        "bottom_bar_image_style": "natural",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "16311289696647e6b7": {
+      "type": "blog-posts",
+      "disabled": true,
+      "settings": {
+        "title": "RugBlogs",
+        "blog_widget_select": "news",
+        "home_page_articles": 3,
+        "blog_tags": false,
+        "blog_author": false,
+        "read_time": true,
+        "blog_date": false,
+        "blog_comment_count": false,
+        "read_more_link": true,
+        "excerpt_display": "full_excerpt",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "hero_trust_cmEnqt",
+    "image_with_text_overlay_mDcnki",
+    "featured_text_FFQe7y",
+    "featured_collection_73XJeH",
+    "testimonial_JETp39",
+    "scrolling_logo_UJgRfe",
+    "featured_text_ywNgnp",
+    "custom_liquid_x3mfXd",
+    "ugc_section_ALNbxE",
+    "three_image_showcase_AYELMM",
+    "comparison_chart_JPqPFF",
+    "customer_reviews_xgWmeN",
+    "gallery_8zmBEQ",
+    "image_with_text_overlay_MiK4gr",
+    "text_columns_with_images_gJncTB",
+    "image_text_7bakpK",
+    "16578947146adc5094",
+    "16311289696647e6b7"
+  ]
+}

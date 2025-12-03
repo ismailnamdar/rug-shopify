@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer_0": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Rugtomize_logo_wht.png",
+            "text_align": "left",
+            "social_icons_footer": false
+          }
+        },
+        "footer_2": {
+          "type": "link_list",
+          "settings": {
+            "menu": "main-menu-1",
+            "social_icons_footer": false
+          }
+        },
+        "footer_3": {
+          "type": "text",
+          "settings": {
+            "title": "Shipping",
+            "content": "<p><em>*Shipping Exclusions Apply</em></p><p>Excluding Hawaii, Alaska, U.S. Territories, and Canada. We do not ship to P.O. Boxes (including APO and FPO) or the U.S. Territories.</p><p><a href=\"/policies/shipping-policy\" title=\"Shipping Policy\">Shipping Policy</a></p><p><a href=\"tel:9494784886\" target=\"_blank\" title=\"tel:9494784886\">+1 (949)-478-4886</a></p>",
+            "social_icons_footer": false
+          }
+        },
+        "footer_1": {
+          "type": "link_list",
+          "settings": {
+            "menu": "footer-turbo",
+            "social_icons_footer": false
+          }
+        },
+        "newsletter_3bGdjx": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Subscribe",
+            "newsletter_text": "",
+            "footer_flag": "shopify://shop_images/pnghut_united-states-map-clip-art-green_09ffa632-8bd4-4848-86e5-4df4f31c1747.png",
+            "show_firstname": false,
+            "show_lastname": false,
+            "show_social": false
+          }
+        }
+      },
+      "block_order": [
+        "footer_0",
+        "footer_2",
+        "footer_3",
+        "footer_1",
+        "newsletter_3bGdjx"
+      ],
+      "custom_css": [],
+      "settings": {
+        "copyright_text": "",
+        "display_designed_by": false,
+        "display_payment_methods": false,
+        "enable_follow_on_shop": false,
+        "show_locale_selector": false,
+        "show_currency_selector": false
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

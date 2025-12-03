@@ -1,369 +1,129 @@
-{% assign is_login = false %}
-{% assign view = "" %}
-{% assign page_params = content_for_header| split:'"pageurl":"' | last | split:'"' | first | split: "?" | last | split: "\u0026" %}
-{% for param in page_params %}
-  {% assign parts = param | split: "=" %}
-  {% if parts[0] == "login" %} {% assign is_login = true %} {% endif %}
-  {% if parts[0] == "view" %} {% assign view = pars[1] %} {% endif %}
-{% endfor %}
-
-{% if is_login %}
-  {%- comment -%}
-  {%- endcomment -%}
-  {% if customer.metafields.subscriptions.customer_string %}
-    <script>window.location.href ="/tools/recurring/login"</script>
-  {% endif %}
-{% endif %}
-
-<script>
-
-  if(document.referrer.includes("account/login") || document.referrer.includes("account/register")){
-//     document.querySelector(".acct-main-nav-container").classList.add("hide");
-    localStorage.setItem("new_login", true);
-    document.addEventListener("DOMContentLoaded", function(){
-      console.log("/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}");
-      var goTo = document.querySelector('.nav-item-alt[name="billing"]').getAttribute("href");
-    window.location.href = goTo;
-  });
-  } else {
-    document.addEventListener("DOMContentLoaded", function(){
-      if(!document.querySelector(".acct-orders .page-width.hide")) return;
-      document.querySelector(".acct-orders .page-width.hide").classList.remove("hide");
-      var rollers = document.querySelectorAll(".lds-roller");
-      for (let i = 0; i < rollers.length; i++) {
-        var element = rollers[i];
-        element.classList.add("hide");
-      }
-    });
-  }
-
-var customerID = {{ customer.id }};
-
-</script>
-
-{% assign has_one_store_order = false %}
-
-{% for order in customer.orders%}
-  {% if order.tags contains "Subscription" %}
-    {% continue %}
-  {% endif %}
-  {% assign has_one_store_order = true %}
-  {% break %}
-{% endfor %}
-
-
-<script>var acctPageName = "Orders";</script>
-{% unless has_one_store_order %}
-  <div class="acct-subscriptions-empty">
-    <div class="acct-subscriptions-empty-inner">
-      <div class="subs-list-header no-store-orders">
-        <div class="subs-list-title">
-          <h3 class="header">Store Orders</h3>
-        </div>
+{% paginate customer.orders by 20 %}
+  <section class="section">
+    <div class="container content">
+      <div
+        class="
+          one-half
+          column
+          medium-down--one-whole
+        "
+      >
+        <h1>
+          {{ 'customer.account.details' | t }}
+        </h1>
       </div>
-      <div>
-        You have no active store orders. <br>
-        Get started by shopping our <a href="collections/shop-all">Best Products</a>.
+
+      <div
+        class="
+          one-half
+          column
+          medium-down--one-whole
+          account-header-logout
+        "
+      >
+        <span>
+          <a href="{{ routes.account_logout_url }}" id="customer_logout_link">
+            {{ 'layout.customer.log_out' | t }}
+          </a>
+        </span>
       </div>
-    </div>
-  </div>
-{% else %}
-  <div class="acct-orders">
-      <div class="page-width hide">
-      <div class="row recent-orders-success">
-        <div class = "customer-overview-titles">
-          <h2 class="h4-alt">Store Orders</h2>
-        </div>
 
-        <div class="acct-order-container">
-          <div class="acct-headline acct-headline__bar">
-            <div class="acct-order-headline">
-              {%- comment -%}
-              <div class="acct-order-date">
-                <div class="acct-order-title h6-alt ">Date Shipped</div>
-              </div>
-              <div class="acct-order-number">
-                <div class="acct-order-title h6-alt ">Order Number</div>
-              </div>
-              <div class="acct-order-status">
-                <div class="acct-order-title h6-alt ">Status</div>
-              </div>
-              <div class="acct-order-tracking">
-                <div class="acct-order-title h6-alt  tracking-number__title">Tracking Number</div>
-              </div>
-              <div class="acct-item-headline">
-                <div class="acct-order-title h6-alt ">Item</div>
-              </div>
-              {%- endcomment -%}
-          </div>
-        </div>
+      <div class="one-whole column">
+        <div class="feature-divider"></div>
+      </div>
 
+      <aside
+        class="
+          one-third
+          column
+          medium-down--one-whole
+          account-sidebar
+        "
+      >
+        <h4 class="name">
+          <a href="{{ routes.account_url }}" title="{{ 'layout.customer.my_account' | t }}">
+            {{ customer.name }}
+          </a>
+        </h4>
 
+        <p class="email note">
+          {{ customer.email }}
+        </p>
 
-        {% assign lastOrderCreatedAt = blank %}
-        {% assign toShow = 5 %}
-        {% assign hasMore = false %}
-        {% for order in customer.orders%}
-          {% if order.tags contains "Subscription" %}
-            {% continue %}
-          {% endif %}
-          {% if toShow <= 0 %}
-            {% assign hasMore = true %}
-            {% break %}
-          {% endif %}
-          {% assign toShow = toShow | minus: 1 %}
-          {% assign lastOrderCreatedAt = order.created_at %}
-          {% assign order_delivered = false %}
-          {% for tag in order.tags %}
-            {% if tag == 'order_delivered' %}
-              {% assign order_delivered = true %}
+        <h4>{{ 'customer.addresses.primary' | t }}</h4>
+
+        <div class="address note">
+          {% if customer.default_address != nil %}
+            <p>{{ customer.default_address.address1 }}</p>
+
+            {% if customer.default_address.address2 != "" %}
+              <p>{{ customer.default_address.address2 }}</p>
             {% endif %}
-          {% endfor %}
 
-          <div class="acct-headline line-item-detail">
+            <p>{{ customer.default_address.city }}{% if customer.default_address.province_code %}, {{ customer.default_address.province_code }}{% endif %} {{ customer.default_address.zip }}</p>
 
-              <div class="acct-order-title h6-alt date">
-                <p class="recent-order_date p-alt"><span>Date Shipped:</span> {{ order.created_at | date: "%B %d, %Y" }}</p>
-                </div>
-              <div class="acct-order-title h6-alt order-num">
-            <a href="{{ order.customer_url }}">
-              <p class="acct-order-number p-alt">{{ order.name | replace: "#", ""}}</p>
+            <p>{{ customer.default_address.country }}</p>
+
+            <p>{{ customer.default_address.phone }}</p>
+          {% else %}
+            <p>{{ 'customer.addresses.no_addresses' | t }}</p>
+          {% endif %}
+
+          <p>
+            <a href="{{ routes.account_addresses_url }}">
+              {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
             </a>
-                </div>
+          </p>
+        </div>
+      </aside>
 
-              <div class="acct-order-title h6-alt status {% if order.line_items.first.fulfillment.tracking_number %}delivered{% endif %}">
-            <div class="acct-text-info p-alt">
-                  {% if order_delivered %}
-                    <span>Status: </span>
-                    {%- comment -%}
-                    {% include 'icon-check-green' %}
-                    {%- endcomment -%}
-                    Delivered
-                  {% elsif order.line_items.first.fulfillment.tracking_number %}
-                    <span>Status:</span>{{ order.financial_status | replace: 'paid', 'Shipped' | replace: 'refunded', 'Refunded' | replace: 'partially_refunded', 'Partially Refunded' }}
-                  {% elsif order.cancelled %}
-                    <span>Status:</span> Cancelled
-                  {% else %}
-                    <span>Status:</span> Processing
-                  {% endif %}
-                </div>
-              </div>
-              <div class="acct-order-title h6-alt tracking-num {% if order_delivered %} delivered {% elsif order.line_items.first.fulfillment.tracking_number %}status-colored{% endif %}">
-            {% if order.line_items.first.fulfillment.tracking_number %}
-                <p class="recent-order_total">
-                  <a href="{{ order.line_items.first.fulfillment.tracking_url }}">{{ order.line_items.first.fulfillment.tracking_number }}</a></p>
-                {% else %}
-                <p class="no-tracking p-alt">Pending</p>
-            {% endif %}
-              </div>
-                {% assign order-items = order.line_items | size %}
-                <p class="acct-order"> <span class="item-title">{{ order.line_items.first.product.title }}</span>
-                  {% if order-items > 1 %}
-                  <span> +{{ order-items | minus: 1 }} more</span>
-                  {% endif %}
-                </p>
+      <main
+        class="
+          two-thirds
+          columns
+          medium-down--one-whole
+          account-main
+        "
+      >
+        <h4>{{ 'customer.orders.title' | t }}</h4>
 
-                <div class="order-link">
-                  <a href="{{ order.customer_url }}">View Details</a>
-                </div>
-          </div>
-        {% endfor %}
+        {% if customer.orders.size != 0 %}
+          <table id="customer-orders" class="collapsible-table">
+            <thead>
+              <tr>
+                <th>{{ 'customer.orders.order_number' | t }}</th>
+                <th>{{ 'customer.orders.date' | t }}</th>
+                <th>{{ 'customer.orders.payment_status' | t }}</th>
+                <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th>{{ 'customer.orders.total' | t }}</th>
+              </tr>
+            </thead>
 
-        {% if hasMore %}
-          {% include 'loading-roller' %}
-          <button class="load-more-store-orders btn" next="{{lastOrderCreatedAt}}" count="{{ customer.orders_count }}">View More</button>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+                  <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+                  <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: "month_day_year" }}</td>
+                  <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.total' | t }}">
+                    <span class="money">{% render 'price-element', price: order.total_price %}</span>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>{{ 'customer.orders.none' | t }}</p>
         {% endif %}
-      </div>
-      {% if customer.orders.size > 0 %}
-      <div class="recent-orders-footer">
-        <div class = "customer-overview-titles customer-overview-titles--shop">
-          <h2 class="h4-alt">Shop kits and accessories</h2>
-        </div>
-        <a href="collections/shop-all" class="btn">SHOP NOW</a>
-      </div>
-      {% endif %}
-      </div>
 
-      {%- comment -%}
-      {% else %}
-      <div class="acct-subscriptions-empty">
-        <div class="acct-subscriptions-empty-inner">
-          <div class="subs-list-header">
-            <div class="subs-list-title">
-              <h3 class="header">Active Memberships</h3>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-      {% endif %}
-      {%- endcomment -%}
+        {%
+          render 'pagination',
+          paginate: paginate,
+        %}
+      </main>
     </div>
-  </div>
-  {% include 'loading-roller' %}
-{% endunless %}
+  </section>
+{% endpaginate %}
 
-
-<style>
-  .acct-orders .acct-order-container .load-more-store-orders {
-    margin: 20px auto 0;
-    display: block;
-    background: transparent;
-    color: #f3576b;
-    border: 2px solid #f3576b;
-    padding: 4px 27px;
-    font-size: 14px;
-    text-transform: capitalize;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-family: Avenir,sans-serif;
-  }
-  .acct-order-headline {
-    height: 40px;
-  }
-  /* .acct-headline:nth-child(2) .acct-order-title,
-  .acct-headline:nth-child(2) .acct-order {
-    position: relative;
-    overflow: visible;
-  } */
-
-  .acct-headline:nth-child(2) .acct-order-title:before,
-  .acct-headline:nth-child(2) .acct-order:before {
-      position: absolute;
-      top: -30px;
-      z-index: 1;
-  }
-  .acct-headline.line-item-detail:nth-child(2) {
-      position: relative;
-      overflow: visible;
-  }
-  .acct-headline:nth-child(2) .acct-order-title.h6-alt.date:before {
-      content: "Date Shipped";
-  }
-  .acct-headline:nth-child(2) .acct-order-title.h6-alt.order-num:before {
-      content: "Order Number";
-  }
-  .acct-headline:nth-child(2) .acct-order-title.h6-alt.tracking-num:before {
-      content: "Tracking Number";
-  }
-  .acct-headline:nth-child(2) .acct-order-title.h6-alt.status:before {
-      content: "Status";
-  }
-  .acct-headline:nth-child(2) .acct-order:before {
-      content: "Item";
-  }
-
-  .acct-order .item-title {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: block;
-  }
-</style>
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", load_more_orders_ajax)
-
-  function load_more_orders_ajax() {
-   const posts_per_page = 1;
-   $('.load-more-store-orders').on('click', () => {
-
-     $('.acct-order-container').addClass('loading');
-     $('.acct-order-container .lds-roller').removeClass('hide');
-     const since_id = $('.load-more-store-orders').attr('next');
-    console.log(since_id)
-     if (customerID) {
-        $.ajax({
-           url: 'https://recharge-middleware.herokuapp.com/get-shopify-store-orders',
-          // url: 'https://65254ee44d73.ngrok.io/get-shopify-store-orders',
-          type: 'post',
-          dataType: 'json',
-          data: {
-            id: customerID,
-            since_id: since_id,
-          },
-          complete(response) {
-            $('.acct-order-container .lds-roller').addClass('hide');
-            $('.acct-order-container').removeClass('loading');
-            var jsonText = response.responseText;
-            const jsonObject = JSON.parse(jsonText);
-            // Set up Order info
-           for (let i = 0; i < jsonObject.length; i++) {
-             const el = jsonObject[i];
-
-             const $order = {
-               number: el.name,
-               status: el.financial_status,
-               shipping_status: el.fulfillment_status,
-               shipments: el.fulfillments,
-               token: el.token,
-               name: el.line_items[0].name,
-             };
-
-            // Remove # from order number
-             const numWithPound = $order.number;
-             const numArray = numWithPound.split('#');
-             $order.number = numArray[1];
-
-             if ($order.status == 'partially_refunded') {
-               $order.status = 'Partially Refunded';
-             }
-
-            // If there has been a shipment
-             if (el.fulfillments[0]) {
-               $order.tracking_number = el.fulfillments[0].tracking_number;
-               $order.tracking_url = el.fulfillments[0].tracking_url;
-               $order.tracking_company = el.fulfillments[0].tracking_company;
-               $order.shipping_date = new Date(el.fulfillments[0].created_at);
-               $order.tracking_class = 'status-colored';
-               $order.shipping_status = `<a href="${$order.tracking_url}">${$order.tracking_number}</a>`;
-
-               const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-               $order.shipping_date = `${months[$order.shipping_date.getMonth()]} ${$order.shipping_date.getDate()}, ${$order.shipping_date.getFullYear()}`;
-
-             } else {
-               $order.tracking_number = 'None';
-               $order.tracking_url = '';
-               $order.tracking_company = '';
-               $order.shipping_date = 'None';
-               $order.tracking_class = 'no-tracking';
-               $order.shipping_status = 'None';
-             }
-
-
-             const $html =
-    `<div class="acct-headline line-item-detail"><div class="acct-order-title h6-alt date"><p class="recent-order_date p-alt"><span>Date Shipped:</span> ${$order.shipping_date}</p></div>` +
-    `<div class="acct-order-title h6-alt order-num"><a href="https://www.raddishkids.com/account/orders/${$order.token}"><p class="acct-order-number p-alt">${$order.number}</p></a></div>` +
-    `<div class="acct-order-title h6-alt status "><div class="acct-text-info p-alt">${$order.status}</div></div>` +
-    `<div class="acct-order-title h6-alt tracking-num "><p class="${$order.tracking_class} p-alt">${$order.shipping_status}</p></div><p class="acct-order">${$order.name}</p>` +
-    `<div class="order-link"><a href="https://www.raddishkids.com/account/orders/${$order.token}">View Details</a></div></div>`;
-
-
-             $('.acct-order-container .load-more-store-orders').before($html);
-
-           }
-
-           const totalCount = $('.load-more').attr('count');
-
-          // Hide button when there are no more orders to load
-           if (jsonObject.length === 0) {
-             $('.load-more-store-orders').hide();
-           } else if(jsonObject.length) {
-            $('.load-more-store-orders').attr('next', jsonObject[jsonObject.length - 1].created_at)
-           }
-
-         },
-         error(error) {
-           console.log(error);
-           console.log(`Error:  ${error}!`);
-         },
-
-       });
-     }
-   });
- }
-</script>
-
-{% if customer != blank %}
-  {% render "recharge-token" %}
-{% endif %}
+{% section 'newsletter' %}

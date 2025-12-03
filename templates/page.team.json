@@ -1,0 +1,365 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_overlay_XXUMd8": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "wide_display": true,
+        "image": "shopify://shop_images/T.Banner.1.png",
+        "pretext": "",
+        "title": "A Platform of Limitless Rugabilities",
+        "subtitle": "",
+        "button1": "",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "darken_bg",
+        "mobile_image_crop": false,
+        "mobile_text_below_image": false,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "divider_pdHXnQ": {
+      "type": "divider",
+      "settings": {
+        "divider_spacing": 20,
+        "divider_border": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "gallery_bk7yE8": {
+      "type": "gallery",
+      "blocks": {
+        "image_bxzYhW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ChapPic.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_bxzYhW"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "",
+        "gallery_type": "classic",
+        "grid-size": 2,
+        "enable_lightbox": true,
+        "css_class": "",
+        "custom_css": ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;}"
+      }
+    },
+    "featured_text_aTFNPh": {
+      "type": "featured-text",
+      "settings": {
+        "title": "Slogan",
+        "content": "<p><strong>The Original Custom Rug Company</strong></p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "gallery_bpfNBK": {
+      "type": "gallery",
+      "blocks": {
+        "image_zzWiMx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_zzWiMx"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": true,
+        "css_class": "",
+        "custom_css": ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;"
+      }
+    },
+    "featured_text_eKBpa8": {
+      "type": "featured-text",
+      "settings": {
+        "title": "Mission",
+        "content": "<p>To innovate the process allowing limitless customization at competitive pricing with drastically reduced Lead-time. Cultivating ambiance through expressing identity.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "regular_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "gallery_m4nJaG": {
+      "type": "gallery",
+      "blocks": {
+        "image_8RPVgK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3.png"
+          }
+        },
+        "image_W8thUe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4_86fea587-5944-4a20-b0d4-9b814e94dc37.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_8RPVgK",
+        "image_W8thUe"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": true,
+        "css_class": "",
+        "custom_css": ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;"
+      }
+    },
+    "featured_text_6JTLK4": {
+      "type": "featured-text",
+      "settings": {
+        "title": "Vision",
+        "content": "<p>Transcend the traditional rug into personal statements by representing individuals unique tastes and preferences.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "regular_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "video_dc9UpK": {
+      "type": "video",
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": false,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "",
+        "html5_video": "https://cdn.shopify.com/videos/c/o/v/bb1d06c113ed416f97bc8e8b37b255ff.mp4",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "Play",
+        "button1_link": "",
+        "button1_style": "global-button--primary",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--primary",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_text_below_image": false,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "testimonial_ragtfL": {
+      "type": "testimonial",
+      "blocks": {
+        "image_FNwtPP": {
+          "type": "image",
+          "settings": {
+            "title": "",
+            "testimonial": "<p><em><strong>\"Our goal is to pioneer and reinvent the industry. For centuries, rugs have been handmade and crafted by the traditional knot and weave method. After years of R & D an opportunity surfaced from the demand of customization to the limited selection of the existing market. We saw an opportunity in crafting unique, personalized rug. Tailored to the owners tastes & preferences.\"</strong></em></p>",
+            "name": "",
+            "store_name": "",
+            "link": "",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "original"
+          }
+        }
+      },
+      "block_order": [
+        "image_FNwtPP"
+      ],
+      "settings": {
+        "wide_display": true,
+        "testimonial_text_animation": "",
+        "testimonial_speed": 6,
+        "activate_adaptiveHeight": false,
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "main": {
+      "type": "page-team-template",
+      "blocks": {
+        "block-1": {
+          "type": "employee",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Mario.jpg",
+            "title": "Mario Leone",
+            "job_title": "Advisor",
+            "description": "",
+            "twitter": ""
+          }
+        },
+        "employee_krCYnL": {
+          "type": "employee",
+          "settings": {
+            "image": "shopify://shop_images/Joshua_Tatum.webp",
+            "title": "Joshua Tatum",
+            "job_title": "Advisor",
+            "description": "",
+            "twitter": ""
+          }
+        },
+        "employee_mWDJiw": {
+          "type": "employee",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Ryan_okeef.jpg",
+            "title": "Ryan O'Keef",
+            "job_title": "Administrator",
+            "description": "",
+            "twitter": ""
+          }
+        },
+        "employee_EWEYdd": {
+          "type": "employee",
+          "settings": {
+            "image": "shopify://shop_images/christian_apodaca_linkdin.jpg",
+            "title": "Christian Apodaca",
+            "job_title": "CFO",
+            "description": "",
+            "twitter": ""
+          }
+        },
+        "employee_ECAnbe": {
+          "type": "employee",
+          "settings": {
+            "image": "shopify://shop_images/Mason_linkdin.jpg",
+            "title": "Mason Littlejohn",
+            "job_title": "CMO",
+            "description": "",
+            "twitter": ""
+          }
+        },
+        "employee_gnTtgp": {
+          "type": "employee",
+          "settings": {
+            "image": "shopify://shop_images/FullSizeRender.jpg",
+            "title": "John Sho.",
+            "job_title": "Production / Design",
+            "description": "",
+            "twitter": ""
+          }
+        },
+        "employee_CJkbpK": {
+          "type": "employee",
+          "settings": {
+            "image": "shopify://shop_images/IMG_7497.jpg",
+            "title": "Iman Nian",
+            "job_title": "Founder",
+            "description": "",
+            "twitter": ""
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "employee_krCYnL",
+        "employee_mWDJiw",
+        "employee_EWEYdd",
+        "employee_ECAnbe",
+        "employee_gnTtgp",
+        "employee_CJkbpK"
+      ],
+      "custom_css": [
+        ".container {display: flex; justify-content: center; flex-wrap: wrap;}"
+      ],
+      "settings": {
+        "image_position": "left",
+        "title": "The Team",
+        "text": "",
+        "text_position": "center",
+        "employee_per_row": 4,
+        "member_color": "#ffffff",
+        "member_accent_color": "#f2f2f2",
+        "member_overlay_color": "#000000"
+      }
+    },
+    "divider_C3iiBr": {
+      "type": "divider",
+      "disabled": true,
+      "settings": {
+        "divider_spacing": 20,
+        "divider_border": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "content_page_yWqmre": {
+      "type": "content-page",
+      "settings": {
+        "content_page": "about-us",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "divider_iQGxN9": {
+      "type": "divider",
+      "settings": {
+        "divider_spacing": 20,
+        "divider_border": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_XXUMd8",
+    "divider_pdHXnQ",
+    "gallery_bk7yE8",
+    "featured_text_aTFNPh",
+    "gallery_bpfNBK",
+    "featured_text_eKBpa8",
+    "gallery_m4nJaG",
+    "featured_text_6JTLK4",
+    "video_dc9UpK",
+    "testimonial_ragtfL",
+    "main",
+    "divider_C3iiBr",
+    "content_page_yWqmre",
+    "divider_iQGxN9"
+  ]
+}

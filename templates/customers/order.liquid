@@ -1,380 +1,283 @@
-{% comment %}
-The data-label attributes on <td> elements are mobile-friendly
-helpers used for responsive-table labels
-{% endcomment %}
+<section class="section">
+  <div class="container content">
+    <div
+      class="
+        one-half
+        column
+        medium-down--one-whole
+      "
+    >
+      <h1>
+        <a href="{{ routes.account_url }}">
+          {{ 'customer.account.details' | t }}
+        </a>
+      </h1>
+    </div>
 
-{% comment %} Checks for specific Order Tag to determine if Order is Delivered {% endcomment %}
-<script>
-  var acctPageName = "orderDetail";
-</script>
-{% assign order_delivered = false %}
-{% for tag in order.tags %}
-  {% if tag == 'order_delivered' %}     
-    {% assign order_delivered = true %}
-  {% endif %}
-{% endfor %}
+    <div
+      class="
+        one-half
+        column
+        medium-down--one-whole
+        account-header-logout
+        has-padding-bottom
+      "
+    >
+      <a href="{{ routes.account_url }}">{{ 'customer.account.return' | t }}</a> / <span><a href="{{ routes.account_logout_url }}" id="customer_logout_link">{{ 'layout.customer.log_out' | t }}</a></span>
+    </div>
 
-{% assign total_reoccuring_cost = 0 %}
+    <div class="one-whole column">
+      <div class="feature-divider"></div>
+    </div>
 
-{% for item in order.line_items %}
-  {% comment %} Assign Variables to determine plan/subscription types {% endcomment %}
-  {% for property in item.properties %}
-    {% if property.first == 'shipping_interval_frequency' %}
-      {% assign order_has_subscription = true %}
-      {% assign total_reoccuring_cost = total_reoccuring_cost | plus: item.final_price %}
-    {% endif %}
-    {% if property.first == 'plan' %}
-      {% assign order_has_plan = true %}
-    {% endif %}
-    {% if property.first == 'plan' and property.last != '1' %}
-      {% assign order_has_prepaid_plan = true %}
-    {% endif %}
-    {% if property.first == 'charge_interval_frequency' and property.last != 1 %}
-      {% assign order_prepaid_frequency = property.last %}
-      {% assign order_prepaid_price == item.final_line_price %}
-    {% endif %}
-  {% endfor %}
-{% endfor %}
+    <div class="one-whole column">
+      <h4>{{ 'customer.order.title' | t: name: order.name }}</h4>
 
-<div class="order-detail-header">
-  <div class="order-detail-header-inner">
-    {%- comment -%}{%- endcomment -%}
-    {% if order.tags contains "Subscription" %}
-      <a data-recharge-token href="/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}/subscriptions#memberships" class="button-text-with-arrow" data-recover-toggle="">
-        {% include 'icon-arrow-left' %}
-        Back to All Membership Orders
-      </a>
-      <div class="h3">{{ order.name }}</div>
-    {% else %}
-      <a href="/account" class="button-text-with-arrow" data-recover-toggle="">
-        {% include 'icon-arrow-left' %}
-        Back to All Store Orders
-      </a>
-      <div class="h3">{{ order.name }}</div>
-      {% if order.line_items.first.fulfillment.tracking_url != blank %}
-        <a href="{{ order.line_items.first.fulfillment.tracking_url }}" target="_blank" class="acct-order-detail-track-cta button-tertiary medium">Track Shipment</a>
+      <p>{{ 'customer.order.date' | t: date: order.created_at | date: "%B %d, %Y %I:%M%p" }}</p>
+
+      {% if order.cancelled %}
+        <div class="errors">
+          {%- assign cancelled_at = order.cancelled_at | date: "%B %d, %Y %I:%M%p" -%}
+
+          <p class="h5">{{ 'customer.order.cancelled' | t: date: cancelled_at }}</p>
+
+          <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason }}</p>
+        </div>
       {% endif %}
-    {% endif %}
-  </div>
-</div>
 
-<div class="acct-order-detail-container">
-  <div class="acct-order-detail-container-inner content-box cb-large">
-  <div class="acct-order-detail-details">
-    <div class="acct-order-detail-status">
+      <table id="order-details" class="collapsible-table">
+        <thead>
+          <tr>
+            <th>{{ 'customer.order.product' | t }}</th>
+            <th>{{ 'customer.order.sku' | t }}</th>
+            <th>{{ 'customer.order.price' | t }}</th>
+            <th>{{ 'customer.order.quantity' | t }}</th>
+            <th>{{ 'customer.order.total' | t }}</th>
+          </tr>
+        </thead>
 
-      <div class="acct-order-detail-section">
-        <div class="acct-text-label text-label-small">Order Date:</div>
-        <div class="acct-text-info">{{ order.created_at | date: "%b %d, %Y" }}</div>
-      </div>
+        <tbody>
+          {% for line_item in order.line_items %}
+            <tr id="{{ line_item.id }}">
+              <td data-label="{{ 'customer.order.product' | t }}">
+                <div class="order-details__product">
+                  {{ line_item.title | link_to: line_item.product.url }}
 
-      <div class="acct-order-detail-section">
-        <div class="acct-text-label text-label-small">Status:</div>
-        <div class="acct-order-detail-status">
-          {% if order.cancelled %}
-            <div class="acct-order-detail-status-type">Cancelled</div>
-          {% elsif order.line_items.first.fulfillment.tracking_number %}
-            <div class="acct-order-detail-status-type">
-              {% if order_delivered %}{% include 'icon-check-green' %}Delivered{% else %}Shipped{% endif %}
-            </div>
-            <div class="acct-order-detail-status-track {% if order_delivered %} delivered{% endif %}">
-              Carrier {{ order.line_items.first.fulfillment.tracking_company }}, Tracking #<a href="{{ order.line_items.first.fulfillment.tracking_url }}" target="_blank">{{ order.line_items.first.fulfillment.tracking_number }}</a>
-            </div>
-          {% else %}
-            <div class="acct-order-detail-status-type">{{ order.financial_status | replace: 'paid', 'Paid' | replace: 'refunded', 'Refunded' | replace: 'partially_refunded', 'Partially Refunded' }}</div>
-          {% endif %}
-        </div>
-      </div>
+                  {% if line_item.selling_plan_allocation.selling_plan %}
+                    <p class="order-details__selling-plan">{{ line_item.selling_plan_allocation.selling_plan.name }}</p>
+                  {% endif %}
 
-      <div class="acct-order-detail-section last">
-        <div class="acct-text-label text-label-small">Total</div>
-        <div class="acct-tt-container">
-          <div class="acct-tt-price">${{ order.total_price | money_without_currency }}</div>
-            {% if order_has_prepaid_plan %}
-              <div class="acct-tt-prepaid text-small">
-                {% include 'icon-clock' %}
-                This is a pre-paid kit that auto-renews after {{ order_prepaid_frequency }} months
-              </div>
-            {% endif %}
-        </div>
-      </div>
+                  {% if line_item.fulfillment %}
+                    <div class="note">
+                      {%- assign created_at = line_item.fulfillment.created_at | date: "%b %d" -%}
 
-    </div>
+                      {{ 'customer.order.fulfilled_at' | t: date: created_at }}
 
-    <div class="acct-order-detail-shipping">
-      <div class="acct-order-detail-section">
-        <div class="acct-text-label text-label-small">Shipping Information:</div>
-        <p class="info-text">
-          {{ order.shipping_address.name }}<br>
-          {% unless order.shipping_address.compan == blank %}
-          {{ order.shipping_address.company }}<br>
-          {% endunless %}
-          {{ order.shipping_address.address1 }}<br>
-          {% unless order.shipping_address.address2 == blank %}
-          {{ order.shipping_address.address2 }}<br>
-          {% endunless %}
-          {{ order.shipping_address.city }}, {{ order.shipping_address.province_code }}, {{ order.shipping_address.zip }}<br>
-        </p>
-      </div>
-
-      <div class="acct-order-detail-section last">
-        <div class="acct-text-label text-label-small">Email Address:</div>
-        {{ order.email }}
-      </div>
-
-    </div>
-
-    <div class="acct-order-detail-billing">
-      <div class="acct-order-detail-section last">
-        <div class="acct-text-label text-label-small">Billing Information:</div>
-        <p class="info-text">
-          {{ order.billing_address.name }}<br>
-          {{ order.billing_address.address1 }}<br>
-          {% unless order.billing_address.address2 == blank %}
-          {{ order.billing_address.address2 }}<br>
-          {% endunless %}
-          {{ order.billing_address.city }}, {{ order.billing_address.province_code }}, {{ order.billing_address.zip }}<br>
-        </p>
-        {% if order.tags contains "Subscription" %}
-        <p class="order-detail-payment-information order-detail-payment-information--recharge info-text">
-          <span class="hidden" data-mastercard>
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28"><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><circle fill="#EB001B" cx="15" cy="12" r="7"/><circle fill="#F79E1B" cx="23" cy="12" r="7"/><path fill="#FF5F00" d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"/></svg>
-            Mastercard <span data-recharge-credit-card></span>
-          </span>
-          <span class="hidden" data-discover>
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28"><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><path fill="#EDA024" d="M36.2 24c.7 0 1.8-.7 1.8-2v-6s-4.9 5.9-20.3 8h18.5z"/><path fill="#494949" d="M9 11h20v2H9z"/><path fill="#EDA024" d="M22 12c0 1.7-1.3 3-3 3s-3-1.4-3-3 1.4-3 3-3c1.7 0 3 1.3 3 3z"/></svg>
-            Discover <span data-recharge-credit-card></span>
-          </span>
-          <span class="hidden" data-amex>
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28"><path fill="#3086C8" d="M2.339 0C1.047 0 0 .914 0 2.042v19.916C0 23.086 1.047 24 2.339 24h33.159C36.88 24 38 23.086 38 21.958V2.042C38 .914 36.88 0 35.498 0H2.339zm15.104 13.305l-1.538-3.275h-2.078v4.718L11.74 10.03h-1.664l-2.213 4.944h1.299l.491-1.232h2.509l.498 1.226h2.464v-3.7l1.747 3.709h1.143l1.595-3.648v3.652h1.489V10.03h-2.113l-1.542 3.275zm-7.315-.611l.75-1.656.781 1.656h-1.531zm17.224-1.087l-1.401-1.576h-3.997v4.934h3.836l1.516-1.595 1.481 1.606h1.14V14.5l-1.783-2.023 1.783-1.893v-.559h-1.128l-1.447 1.582zm-2.222 2.34h-1.894V12.92h1.785v-.85h-1.785v-1.011l2.054.006 1.229 1.412-1.389 1.47zM31 10.716L29.291 12.5 31 14.284V16h-1.073v-.001h-1.671l-.909-1.064-.972 1.064H21.53V16h-2.564v-.047h-.022v-.526l-.262.571h-2.265l-.284-.61v.61H11.9l-.501-1.23h-.848l-.529 1.23H7.855V16H7v-1.853l.855-1.647v.004l1.581-3.503h3.08l.432.994v-.986h3.769l.829 1.674.81-1.681h2.961V9h.427v.001h-.427v.019h5.155l.949 1.031.972-1.031h1.534V9H31v1.716z"/></svg>
-            American Express <span data-recharge-credit-card></span>
-          </span>
-          <span class="hidden" data-visa>
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28"><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><g fill="#142688"><path d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"/></g></svg>
-            Visa <span data-recharge-credit-card></span>
-          </span>
-          <span class="hidden" data-unknown>
-
-          </span>
-        </p>
-        {% else %}
-        <p class="order-detail-payment-information info-text">
-          {% for transaction in order.transactions %}
-            {% if transaction.payment_details.credit_card_company == "Mastercard" or transaction.payment_details.credit_card_company contains "mastercard" %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28"><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><circle fill="#EB001B" cx="15" cy="12" r="7"/><circle fill="#F79E1B" cx="23" cy="12" r="7"/><path fill="#FF5F00" d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"/></svg>
-            {% elsif transaction.payment_details.credit_card_company == "Discover" or transaction.payment_details.credit_card_company contains "discover" %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28"><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><path fill="#EDA024" d="M36.2 24c.7 0 1.8-.7 1.8-2v-6s-4.9 5.9-20.3 8h18.5z"/><path fill="#494949" d="M9 11h20v2H9z"/><path fill="#EDA024" d="M22 12c0 1.7-1.3 3-3 3s-3-1.4-3-3 1.4-3 3-3c1.7 0 3 1.3 3 3z"/></svg>
-            {% elsif transaction.payment_details.credit_card_company == "American Express" or transaction.payment_details.credit_card_company contains "american express" %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28"><path fill="#3086C8" d="M2.339 0C1.047 0 0 .914 0 2.042v19.916C0 23.086 1.047 24 2.339 24h33.159C36.88 24 38 23.086 38 21.958V2.042C38 .914 36.88 0 35.498 0H2.339zm15.104 13.305l-1.538-3.275h-2.078v4.718L11.74 10.03h-1.664l-2.213 4.944h1.299l.491-1.232h2.509l.498 1.226h2.464v-3.7l1.747 3.709h1.143l1.595-3.648v3.652h1.489V10.03h-2.113l-1.542 3.275zm-7.315-.611l.75-1.656.781 1.656h-1.531zm17.224-1.087l-1.401-1.576h-3.997v4.934h3.836l1.516-1.595 1.481 1.606h1.14V14.5l-1.783-2.023 1.783-1.893v-.559h-1.128l-1.447 1.582zm-2.222 2.34h-1.894V12.92h1.785v-.85h-1.785v-1.011l2.054.006 1.229 1.412-1.389 1.47zM31 10.716L29.291 12.5 31 14.284V16h-1.073v-.001h-1.671l-.909-1.064-.972 1.064H21.53V16h-2.564v-.047h-.022v-.526l-.262.571h-2.265l-.284-.61v.61H11.9l-.501-1.23h-.848l-.529 1.23H7.855V16H7v-1.853l.855-1.647v.004l1.581-3.503h3.08l.432.994v-.986h3.769l.829 1.674.81-1.681h2.961V9h.427v.001h-.427v.019h5.155l.949 1.031.972-1.031h1.534V9H31v1.716z"/></svg>
-            {% elsif transaction.payment_details.credit_card_company == "Visa" or transaction.payment_details.credit_card_company contains "visa" %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" viewBox="0 0 45 28"><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><g fill="#142688"><path d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"/></g></svg>
-            {% endif %}
-
-            {{ transaction.payment_details.credit_card_company }} {{ transaction.payment_details.credit_card_number }}
-          {% endfor %}
-        </p>
-        {% endif %}
-
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="acct-order-summary-container">
-    <div class="acct-order-summary-orders">
-      {% for item in order.line_items %}
-
-        {% assign product_title = " " %}
-        {% if item.title contains "Monthly Membership" %}
-          {% assign product_title = "Monthly Membership" %}
-        {% elsif item.title contains "3 Month Membership" %}
-          {% assign product_title = "3 Month Membership" %}
-        {% elsif item.title contains "6 Month Membership" %}
-          {% assign product_title = "6 Month Membership" %}
-        {% elsif item.title contains "12 Month Membership" %}
-          {% assign product_title = "12 Month Membership" %}
-        {% else %}
-          {% assign product_title = item.title %}
-        {% endif %}
-
-        {% if item.title contains "+3 Sibling Bundle" %}
-          {% assign sibling_title = "+3 Sibling Bundle" %}
-        {% elsif item.title contains "+2 Sibling Bundle" %}
-          {% assign sibling_title = "+2 Sibling Bundle" %}
-        {% elsif item.title contains "+1 Sibling Bundle" %}
-          {% assign sibling_title = "+1 Sibling Bundle" %}
-        {% else %}
-          {% assign sibling_title = "none" %}
-        {% endif %}
-
-        <div class="acct-order-summary-order {% if forloop.last == true %}last-order-item{% endif %}">
-          <div class="acct-order-summary-order-image">
-            <img src="{{ item | img_url: '260x' }}" alt="{{ product.title | escape }}">
-          </div>
-
-          <div class="acct-order-summary-order-col-info">
-            <div class="acct-order-summary-product-title">
-              {{ product_title }}
-            </div>
-            
-            {% if sibling_title == "none" %}
-              <div class="acct-order-summary-qty">
-                QTY: {{ item.quantity }}
-              </div>
-            {% else %}
-              <div class="acct-order-summary-plan-siblings">
-                <img src="https://cdn.shopify.com/s/files/1/0300/1545/files/icon-sibling.svg?v=1597753724"/>
-                {{ sibling_title }}
-              </div>
-            {% endif %}
-            {% if item.final_price == 0 %}
-              <div class="acct-order-subscription-price">
-                FREE
-              </div>
-            {% elsif item_is_subscription %}
-              <div class="acct-order-subscription-price">
-                {{ item.final_price | money }}/Month
-              </div>
-            {% endif %}
-
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-
-        <div class="acct-order-detail-summary content-box-flat">
-          <div class="acct-order-detail-summary-title">Order Summary</div>
-          <div class="invoice-data">
-
-            {% for discount_application in order.cart_level_discount_applications %}
-              {% assign discount_code = discount_application.title %}
-              {% assign discount_amount = discount_application.total_allocated_amount %}
-            {% endfor %}
-            {% for item in order.line_items %}
-              {% unless item.title contains "Membership" %}
-              <div class="invoice-reocurring-fee">
-                  <p>{{ item.title }}</p>
-                  <span>${{ item.final_price | money_without_currency }}</span>
-              </div>  
-              {% endunless %}
-            {% endfor %}
-            {% if order_has_subscription %}
-              <label>Recurring Fee {% if order_prepaid_frequency %}(every {{ order_prepaid_frequency }} months){% else %}(every month){% endif %}</label>
-              <div class="invoice-reocurring-fee">
-                
-                  {% for item in order.line_items %}
-                    {% for property in item.properties %}
-                      {% if property.first == 'plan' %}
-                        <p>{% if order_prepaid_frequency %}Prepaid {% endif %}Membership </p>
-                        <span>${{ item.final_price | money_without_currency }}</span>
+                      {% if line_item.fulfillment.tracking_number %}
+                        <a href="{{ line_item.fulfillment.tracking_url }}">{{ line_item.fulfillment.tracking_company }} #{{ line_item.fulfillment.tracking_number }}</a>
                       {% endif %}
-                    {% endfor %}
-                      
-                  {% endfor %}
-                  
-              </div>
-
-            {% else %}
-              
-            {% endif %}
-
-
-            <div class="invoice-summary-container">
-              {% if discount_amount > 0 %}
-                <div class="invoice-discount">
-                  <p>Discounts</p>
-                  <span>${{ discount_amount | money_without_currency }} ({{ discount_code }})</span>
+                    </div>
+                  {% endif %}
                 </div>
-              {% endif %}
-              <div class="invoice-subtotal">
-                <p>Subtotal</p>
-                <span>${{ order.subtotal_price | money_without_currency }}</span>
-              </div>
-              <div class="invoice-taxes">
-                <p>Taxes</p>
-                <span>${{ order.tax_price | money_without_currency }}</span>
-              </div>
-              <div class="invoice-shipping">
-                <p>Shipping</p>
-                <span>${{ order.shipping_price | money_without_currency }}</span>
-              </div>
-              <div class="invoice-total">
-                <p>Total</p>
-                <span>${{ order.total_price | money_without_currency }}</span>
-              </div>
-              {% if order.financial_status == "refunded" or order.financial_status == "partially_refunded" %}
+              </td>
 
-              <div class="invoice-subtotal invoice-refunded">
-                <p>Total Refunded</p>
-                <span>-${{ order.total_refunded_amount | money_without_currency }}</span>
-              </div>
+              <td data-label="{{ 'customer.order.sku' | t }}">
+                {{ line_item.sku }}
+              </td>
 
-              <div class="invoice-subtotal invoice-net-payment">
-                <p>Total Net Payment</p>
-                <span>${{ order.total_net_amount | money_without_currency }}</span>
-              </div>
+              <td data-label="{{ 'customer.order.price' | t }}">
+                <div class="order-details__discount">
+                  {% if line_item.original_price > 0 %}
+                    <span class="money">
+                      {% render 'price-element', price: line_item.final_price %}
+                    </span>
+                  {% else %}
+                    {{ settings.free_price_text }}
+                  {% endif %}
 
-              {% endif %}
-            </div>
+                  {%
+                    render 'unit-price',
+                    item: line_item,
+                    variant: line_item.variant,
+                    product: line_item.product,
+                    class: 'order-details__unit-price'
+                  %}
 
-            
-          </div>
-        </div>
+                  {% if line_item.line_level_discount_allocations != blank %}
+                    <span class="money {% if line_item.line_level_discount_allocations != blank %}was_price{% endif %}">
+                      {% render 'price-element', price: line_item.original_price %}
+                    </span>
 
+                    <div class="order-details__discount-block">
+                      {% for discount_allocation in line_item.line_level_discount_allocations %}
+                        <strong>{{ 'customer.order.discount' | t }}:</strong> {{ discount_allocation.discount_application.title }} (-<span class="money">{% render 'price-element', price: discount_allocation.amount %}</span>)
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </td>
+
+              <td data-label="{{ 'customer.order.quantity' | t }}">
+                {{ line_item.quantity }}
+              </td>
+
+              <td data-label="{{ 'customer.order.total' | t }}">
+                <div class="order-details__total">
+                  {% if line_item.line_level_discount_allocations != blank %}
+                    <span class="order-discount money">
+                      {% render 'price-element', price: line_item.final_line_price %}
+                    </span>
+                  {% endif %}
+
+                  <span class="money {% if line_item.line_level_discount_allocations != blank %}was_price{% endif %}">
+                    {% render 'price-element', price: line_item.original_line_price %}
+                  </span>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="4" class="mobile_hidden align_right">
+              {{ 'customer.order.subtotal' | t }}
+            </td>
+
+            <td data-label="{{ 'customer.order.subtotal' | t }}">
+              <span class="money">
+                {% render 'price-element', price: order.subtotal_price %}
+              </span>
+            </td>
+          </tr>
+
+          {% if order.cart_level_discount_applications != blank %}
+            <tr class="order_summary discount">
+              <td colspan="4" class="mobile_hidden align_right">
+                {% for discount_application in order.cart_level_discount_applications %}
+                  {{ 'customer.order.discount' | t }}: {{ discount_application.title }}
+                {% endfor %}
+              </td>
+
+              <td data-label="{% for discount_application in order.cart_level_discount_applications %}{{ 'customer.order.discount' | t }}: {{ discount_application.title }}{% endfor %}">
+                {% for discount_application in order.cart_level_discount_applications %}
+                  <span class="money">
+                    -{% render 'price-element', price: discount_application.total_allocated_amount %}
+                  </span>
+                {% endfor %}
+              </td>
+            </tr>
+          {% endif %}
+
+          {% for shipping_method in order.shipping_methods %}
+            <tr>
+              <td colspan="4" class="mobile_hidden align_right">
+                {{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})
+              </td>
+
+              <td data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">
+                <span class="money">
+                  {% render 'price-element', price: shipping_method.price %}
+                </span>
+              </td>
+            </tr>
+          {% endfor %}
+
+          {% for tax_line in order.tax_lines %}
+            <tr>
+              <td colspan="4" class="mobile_hidden align_right">
+                {{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)
+              </td>
+
+              <td data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)">
+                <span class="money">
+                  {% render 'price-element', price: tax_line.price %}
+                </span>
+              </td>
+            </tr>
+          {% endfor %}
+
+          <tr>
+            <td colspan="4" class="mobile_hidden align_right">
+              <strong>{{ 'customer.order.total' | t }}</strong>
+            </td>
+
+            <td data-label="{{ 'customer.order.total' | t }}">
+              <strong>
+                <span class="money">
+                  {% render 'price-element', price: order.total_price %}
+                </span>
+
+                <span class="selected-currency">
+                  {{ order.currency }}
+                </span>
+              </strong>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="one-third column medium-down--one-whole">
+      <h4>{{ 'customer.order.billing_address' | t }}</h4>
+
+      <p><strong>{{ 'customer.order.payment_status' | t }}:</strong> {{ order.financial_status_label }}</p>
+
+      <strong>{{ order.billing_address.name }}</strong>
+
+      <p>
+        {% if order.billing_address.company != '' %}
+          {{ order.billing_address.company }}<br>
+        {% endif %}
+
+        {{ order.billing_address.street }}<br>
+        {{ order.billing_address.city }}<br>
+
+        {% if order.billing_address.province != '' %}
+          {{ order.billing_address.province }}<br>
+        {% endif %}
+
+        {{ order.billing_address.zip | upcase }}<br>
+        {{ order.billing_address.country }}<br>
+        {{ order.billing_address.phone }}
+      </p>
+    </div>
+
+    <div class="one-third column medium-down--one-whole">
+      <h4>{{ 'customer.order.shipping_address' | t }}</h4>
+
+      <p><strong>{{ 'customer.order.fulfillment_status' | t }}:</strong> {{ order.fulfillment_status_label }}</p>
+
+      <strong>{{ order.shipping_address.name }}</strong>
+
+      <p>
+        {% if order.shipping_address.company != '' %}
+          {{ order.shipping_address.company }}<br>
+        {% endif %}
+
+        {{ order.shipping_address.street }}<br>
+        {{ order.shipping_address.city }}<br>
+
+        {% if order.shipping_address.province != '' %}
+          {{ order.shipping_address.province }}<br>
+        {% endif %}
+
+        {{ order.shipping_address.zip | upcase }}<br>
+        {{ order.shipping_address.country }}<br>
+        {{ order.shipping_address.phone }}
+      </p>
+    </div>
+
+    <div class="one-third column medium-down--one-whole">
+      <h4>{{ 'customer.order.note' | t }}</h4>
+
+      {% if order.note != blank %}
+        {{ order.note }}
+      {% else %}
+        {{ 'customer.order.note_placeholder' | t }}
+      {% endif %}
+    </div>
   </div>
-</div>
-<style>
-  .order-detail-payment-information--recharge span {
-    display: flex;
-    align-items: center;
-  }
-  .order-detail-payment-information--recharge span:last-child {
-    text-transform: capitalize;
-  }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script>
-  $.ajax({
-      url: '/tools/recurring/portal/{{ customer.metafields.subscriptions.customer_string }}/request_objects' + '?token=' + window.customerToken,
-      type: 'get',
-      dataType: 'json',
-      data: { schema: '{ "orders": [], "charges": [], "payment_sources": [], "addresses": []}' }
-    }).done(function(response) {
-      // Successful request made
-      console.log({response});
-      const currentOrderId = "{{order.id}}"
-      var chargeId = ""
-      var addressId = ""
-      var paymentMethod = ""
-      // for (var j = 0; j < response.orders.length; j++) {
-      //   if(response.orders[j].shopify_order_id == currentOrderId) {
-      //     console.log(response.orders[j])
-      //     chargeId = response.orders[j].charge_id
-      //   }
-      // }
-      for (var j = 0; j < response.charges.length; j++) {
-        if(response.charges[j].shopify_order_id == currentOrderId) {
-          console.log('charge', response.charges[j])
-          addressId = response.charges[j].address_id
-        }
-      }
-      for (var j = 0; j < response.addresses.length; j++) {
-        if(response.addresses[j].id == addressId) {
-          console.log('address', response.addresses[j])
-          paymentMethod = response.addresses[j].include.payment_methods[0]
-        }
-      }
-      if(paymentMethod) {
-        if($(`[data-${paymentMethod.payment_details.brand}]`).length) {
-          $(`[data-${paymentMethod.payment_details.brand}]`).removeClass("hidden").find("[data-recharge-credit-card]").html("&nbsp;•••• •••• •••• " + paymentMethod.payment_details.last4)
-        } else {
-          $(`[data-unknown]`).removeClass("hidden").html(paymentMethod.payment_details.brand + "&nbsp;•••• •••• •••• " + paymentMethod.payment_details.last4)
-        }
-        console.log("paymentMethod", paymentMethod)
-      }
-    }).fail(function(response) {
+</section>
 
-      console.log(response);
-    });
-</script>
+{% section 'newsletter' %}

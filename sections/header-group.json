@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "promo_text": "<p><a href=\"/products/custom-rug-carpet\" title=\"/products/custom-rug-carpet\">Buy 2+ Rugs Get 15% Off  - use code BUYGET15 →</a></p>",
+        "social_icons_header": false,
+        "phone_number": "Concierge team: (949) 478-4886",
+        "top_bar_menu": "",
+        "show_cart": true,
+        "cart_icon": "cart",
+        "show_locale_selector": true,
+        "show_currency_selector": false,
+        "logo_display_width": 205,
+        "logo": "shopify://shop_images/Rugtomize_logo_blk_4fa09a25-cffb-44d2-8a61-e96932009aca.png",
+        "main_linklist": "main-menu-for-turbo-theme-v3-isaac",
+        "main_linklist2": "",
+        "vertical_menu": true,
+        "dropdown_click": false,
+        "search_enabled": false,
+        "fixed_header": true,
+        "logo_position": "center",
+        "logo_alignment": "center",
+        "menu_position": "block",
+        "menu_alignment": "center",
+        "svg_icon1": "shopify://shop_images/fast_turn_around.svg",
+        "svg_icon2": "shopify://shop_images/satisfaction.svg"
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

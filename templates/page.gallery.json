@@ -1,0 +1,406 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_overlay_nVJgTH": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "wide_display": true,
+        "image": "shopify://shop_images/H.100.Banner.png",
+        "pretext": "",
+        "title": "Hollywood 100 Collection",
+        "subtitle": "",
+        "button1": "",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "darken_bg",
+        "mobile_image": "shopify://shop_images/H.100.Banner.png",
+        "mobile_image_crop": false,
+        "mobile_text_below_image": false,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_CYiKJA": {
+      "type": "featured-text",
+      "settings": {
+        "title": "Hollywood 100 X ONCH X Rugtomize",
+        "content": "<p>In 2023, The Hollywood Sign Trust celebrated the 100th anniversary of Hollywood's biggest star with one of the most talented LA Based Artists, ONCH.</p><p>ONCH is the creative force behind the \"ONCH\" brand (previously known as ONCH Movement).</p><p>While going up in Asia, ONCH unleashed his world of imagination and possibilities via various collections as well as collaborations with notable brands for a selective VIP client list.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1631197649ba4856ad": {
+      "type": "gallery",
+      "blocks": {
+        "image_NDQG6n": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1.5x6HollywoodBlvd_RugtomizeXONCH.2.jpg"
+          }
+        },
+        "2b730197-dd67-4d59-a03f-4a18e3faf26d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1.5x6HollywoodBlvd_RugtomizeXONCH.1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_NDQG6n",
+        "2b730197-dd67-4d59-a03f-4a18e3faf26d"
+      ],
+      "custom_css": [
+        ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;}"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "Hollywood BLVD",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_CKiFhL": {
+      "type": "featured-text",
+      "settings": {
+        "title": "",
+        "content": "<p>The custom 1.5x6 foot runner featuring a Hollywood Bivd street sign. Should look familiar, while stuck in bumper to bumper traffic, hoping the light stays green.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "gallery_bQYBkw": {
+      "type": "gallery",
+      "blocks": {
+        "image_XFaJQB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3x2.5HollywoodMovie_RugtomizeXONCH.1.jpg"
+          }
+        },
+        "image_cY6Qkr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3x2.5HollywoodMovie_RugtomizeXONCH.2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_XFaJQB",
+        "image_cY6Qkr"
+      ],
+      "custom_css": [
+        ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;}"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "Movie Clapper",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_LYrJFg": {
+      "type": "featured-text",
+      "settings": {
+        "title": "",
+        "content": "<p>Lights, Camera, Action! Check out the exclusive 3x2.5 foot rug featuring a Hollywood 100 movie clapper.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "gallery_NegLWa": {
+      "type": "gallery",
+      "blocks": {
+        "image_GXqtDm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2x8HollywoodSign_RugtomizeXONCH.1.jpg"
+          }
+        },
+        "image_rGdYHB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2x8HollywoodSign_RugtomizeXONCH.2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_GXqtDm",
+        "image_rGdYHB"
+      ],
+      "custom_css": [
+        ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;}"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "Hollywood Sign",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_tKJQtt": {
+      "type": "featured-text",
+      "settings": {
+        "title": "",
+        "content": "<p>The custom 2x8 foot runner featuring The Hollywood Sign, after dark.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "gallery_7ahdhL": {
+      "type": "gallery",
+      "blocks": {
+        "image_idUjh8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4x6SpaceshipSkyline_Hollywood_RugtomizeXONCH.2.jpg"
+          }
+        },
+        "image_D4rweJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4x6SpaceshipSkyline_Hollywood_RugtomizeXONCH.1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_idUjh8",
+        "image_D4rweJ"
+      ],
+      "custom_css": [
+        ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;}"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "Spaceship Skyline",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_LhK3qQ": {
+      "type": "featured-text",
+      "settings": {
+        "title": "",
+        "content": "<p>An exclusive 4x6 foot rug featuring a yellow Hollywood Sign on the Hollywood Hills, behind palm trees, with a UFO watching over during a beautiful sunset. SoCal Vibe at its finest.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "gallery_Dakit3": {
+      "type": "gallery",
+      "blocks": {
+        "image_xXDXac": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2x3HollywoodPlate_RugtomizeXONCH.1_9cf8da17-ae4c-4eb3-93d0-fb5e09054db1.jpg"
+          }
+        },
+        "image_PKmU99": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2x3HollywoodPlate_RugtomizeXONCH.2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_xXDXac",
+        "image_PKmU99"
+      ],
+      "custom_css": [
+        ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;}"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "Hollywood License Plate",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_qLG3Y4": {
+      "type": "featured-text",
+      "settings": {
+        "title": "",
+        "content": "<p>Speaking of LA traffic, here's a 2x3 custom rug featuring a Hollywood License Plate.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "gallery_JJpaAN": {
+      "type": "gallery",
+      "blocks": {
+        "image_HEEhww": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3x4HollywoodPopcornBucket_RugtomizeXONCH.2.jpg"
+          }
+        },
+        "image_HAB8D6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3x4HollywoodPopcornBucket_RugtomizeXONCH.1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_HEEhww",
+        "image_HAB8D6"
+      ],
+      "custom_css": [
+        ".gallery-section {display: flex; justify-content: center; flex-wrap: wrap;}"
+      ],
+      "settings": {
+        "wide_display": false,
+        "title": "Popcorn Bucket",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": false,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_PDBkcw": {
+      "type": "featured-text",
+      "settings": {
+        "title": "",
+        "content": "<p>Check out this exclusive 3x4 foot rug featuring a custom Hollywood popcorn bucket. Perfect rug for watching Netflix and even chilling.</p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "video_bqfqXx": {
+      "type": "video",
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "4:3",
+        "autoplay": false,
+        "autoloop": false,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "",
+        "html5_video": "https://cdn.shopify.com/videos/c/o/v/4ee606c2f25f407fa8a11789ff96cb83.mov",
+        "image": "shopify://shop_images/H.100.Cover.png",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "Play",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image": "shopify://shop_images/H.100.Cover.png",
+        "mobile_text_below_image": false,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_text_FpR4Ve": {
+      "type": "featured-text",
+      "settings": {
+        "title": "Your Custom Rug  Awaits",
+        "content": "<p>Choose Your Shape. Choose Your Size. Upload Your Image.</p>",
+        "button_label": "Rugtomize Now",
+        "button_link": "shopify://products/custom-rug-carpet",
+        "text_size": "featured_text",
+        "text_alignment": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured_collection_jyV7a7": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Featured Rugs",
+        "collection_description": false,
+        "collection": "all-custom-rugs",
+        "collection_style": "grid",
+        "products_per": 4,
+        "products_limit": 4,
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_nVJgTH",
+    "featured_text_CYiKJA",
+    "1631197649ba4856ad",
+    "featured_text_CKiFhL",
+    "gallery_bQYBkw",
+    "featured_text_LYrJFg",
+    "gallery_NegLWa",
+    "featured_text_tKJQtt",
+    "gallery_7ahdhL",
+    "featured_text_LhK3qQ",
+    "gallery_Dakit3",
+    "featured_text_qLG3Y4",
+    "gallery_JJpaAN",
+    "featured_text_PDBkcw",
+    "video_bqfqXx",
+    "featured_text_FpR4Ve",
+    "featured_collection_jyV7a7"
+  ]
+}

@@ -1,0 +1,100 @@
+{% comment %}
+  sections/rugtomize-image-grid.liquid
+  Flexible image grid with block image pickers.
+  CSS is scoped within this section.
+{% endcomment %}
+
+{% assign section_id = 'rugtomize-image-grid-' | append: section.id %}
+
+<section id="{{ section_id }}" class="section--rugtomize-image-grid">
+  <div class="page-width">
+    <div class="rig-grid"
+         style="--rig-gap: {{ section.settings.gap | default: 24 }}px; --rig-cols: {{ section.settings.columns_desktop | default: 7 }};">
+      {% for block in section.blocks %}
+        {% assign img = block.settings.image %}
+        {% assign alt_text = block.settings.alt | default: img.alt | default: '' %}
+        {% assign alt_text_escaped = alt_text | escape %}
+        {% if img != blank %}
+          <div class="rig-media {% if section.settings.contain_images %}is-contain{% else %}is-cover{% endif %}">
+            {{ img | image_url: width: 800 | image_tag: loading: 'lazy', alt: alt_text_escaped, class: 'rig-logo' }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    /* Scope all styles to this section */
+    #{{ section_id }} {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    #{{ section_id }} .rig-grid {
+      display: flex;
+      gap: var(--rig-gap, 24px);
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+
+    #{{ section_id }} .rig-item {
+      position: relative;
+      display: block;
+    }
+
+    #{{ section_id }} .rig-logo {
+      width: auto;
+      height: 72px;
+      display: block;
+      object-fit: contain;
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Rugtomize Image Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 4,
+      "max": 14,
+      "step": 1,
+      "default": 7
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Grid gap (px)",
+      "min": 0,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "contain_images",
+      "label": "Contain images (no crop)",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "alt", "label": "Alt text" }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    { "name": "Rugtomize Image Grid", "category": "Image" }
+  ]
+}
+{% endschema %}

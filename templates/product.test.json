@@ -1,0 +1,473 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div.shopify-section-wrapper.section",
+  "sections": {
+    "sidebar": {
+      "type": "product-sidebar",
+      "disabled": true,
+      "settings": {
+        "toggle": false
+      }
+    },
+    "main": {
+      "type": "product-template",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "custom_liquid_Mpf7m8": {
+          "type": "custom-liquid",
+          "name": "Formatting",
+          "settings": {
+            "custom_liquid": "<div style=\"padding-top:15px\"></div>"
+          }
+        },
+        "okendo_star_rating_eceRFY": {
+          "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "custom-rug-carpets"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "display_savings": true
+          }
+        },
+        "afterpay_on_site_messaging_payments_messaging_VExiYb": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "disabled": true,
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "form": {
+          "type": "form",
+          "disabled": true,
+          "settings": {
+            "show_gift_card_recipient_form": false
+          }
+        },
+        "custom_liquid_3xThF9": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"widget-step-title\">STEP 1: UPLOAD YOUR IMAGE</div>\n\n<div id=\"uploadTop\"></div>\n<div class=\"container\">\n  <div class=\"upload-container\" id=\"uploadStickyContainer\">\n    <button class=\"upload-button\" id=\"uploadButton\">\n      SEE YOUR RUG\n      <svg class=\"upload-icon\" viewBox=\"0 0 24 24\">\n        <path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/>\n        <polyline points=\"17,8 12,3 7,8\"/>\n        <line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"15\"/>\n      </svg>\n    </button>\n    <div class=\"tooltip\">\n      <div class=\"info-icon\">i</div>\n      <span class=\"tooltiptext\">Upload an image to get started with your design</span>\n    </div>\n    <input type=\"file\" id=\"fileInput\" accept=\"image/*\" />\n  </div>\n\n  <!-- <div class=\"file-count\" id=\"fileCount\">No image uploaded</div> -->\n\n  \n</div>\n\n<div class=\"file-count\" id=\"fileCount\">No image uploaded</div>\n<div class=\"image-grid\" id=\"imageGrid\" style=\"width: fit-content; margin: 0 auto;\"></div>\n<div class=\"stylist-disclaimer\" id=\"stylistDisclaimer\"></div>\n\n\n\n<!-- Move modal OUTSIDE of .container -->\n<div class=\"modal\" id=\"modal\">\n    <span class=\"close-btn\" id=\"closeBtn\">&times;</span>\n    <div class=\"modal-content extended-preview-modal\">\n      \n      <div class=\"design-section top\">\n        <h2>Our Design Team Will</h2>\n        <ul>\n          <li>✅ Center Image Appropriately</li>\n          <li>✅ Enhance Image Quality</li>\n        </ul>\n      </div>\n  \n      <div class=\"modal-image-wrapper\">\n        <img id=\"modalImage\" src=\"\" alt=\"Custom Rug Preview\">\n      </div>\n  \n      <div class=\"design-section bottom\">\n        <h2>Post Purchase We Can</h2>\n        <ul>\n          <li>✅ Modify Background Color</li>\n          <li>✅ Provide Proof Before Production</li>\n        </ul>\n      </div>\n  \n    </div>\n</div>\n\n\n  \n\n<!-- Triggers the stickiness for the upload button -->\n<div id=\"uploadTrigger\"></div>\n\n<style>\n  * {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n  }\n\n  h1 {\n    font-size: 1.1rem;\n    letter-spacing: 2px\n    color: #374151;\n    text-align: left;\n    margin-bottom: 4px;\n  }\n\n  .upload-container {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 10px;\n    margin: 0 auto 20px;\n  }\n\n  .upload-button {\n    background-color: #FFC107;\n    color: #000;\n    border: none;\n    padding: 12px 20px;\n    font-weight: bold;\n    font-size: 14px;\n    letter-spacing: 0.5px;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    border-radius: 4px;\n    transition: background-color 0.2s;\n  }\n\n  .upload-button:hover {\n    background-color: #FFB300;\n    color: #000000;\n  }\n\n  .upload-icon {\n    width: 16px;\n    height: 16px;\n    stroke: currentColor;\n    fill: none;\n    stroke-width: 2;\n  }\n\n  .info-icon {\n    width: 20px;\n    height: 20px;\n    border: 2px solid #666;\n    border-radius: 50%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-weight: bold;\n    color: #666;\n    cursor: pointer;\n    font-size: 14px;\n  }\n\n  .info-icon:hover {\n    border-color: #333;\n    color: #333;\n  }\n\n  .tooltip {\n    position: relative;\n    display: inline-block;\n  }\n\n  .tooltip .tooltiptext {\n    visibility: hidden;\n    width: 200px;\n    background-color: #333;\n    color: #fff;\n    text-align: center;\n    border-radius: 6px;\n    padding: 8px;\n    position: absolute;\n    z-index: 1;\n    bottom: 125%;\n    left: 50%;\n    margin-left: -100px;\n    opacity: 0;\n    transition: opacity 0.3s;\n    font-size: 12px;\n  }\n\n  .tooltip .tooltiptext::after {\n    content: \"\";\n    position: absolute;\n    top: 100%;\n    left: 50%;\n    margin-left: -5px;\n    border-width: 5px;\n    border-style: solid;\n    border-color: #333 transparent transparent transparent;\n  }\n\n  .tooltip:hover .tooltiptext {\n    visibility: visible;\n    opacity: 1;\n  }\n\n  #fileInput {\n    display: none;\n  }\n\n  .file-count {\n    text-align: center;\n    margin: 20px 0;\n    font-size: 18px;\n    color: #6b7280;\n    display: block;\n  }\n\n  .image-grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr); /* Force 3 columns */\n    gap: 12px;\n    justify-items: center;\n  }\n\n  .image-item {\n    position: relative;\n    border-radius: 12px;\n    overflow: hidden;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\n    transition: transform 0.2s ease;\n  }\n\n  .image-item:hover {\n    transform: translateY(-2px);\n  }\n\n  .image-item img {\n    width: 100%;\n    height: 100px;\n    object-fit: contain;\n    cursor: pointer;\n    background: #f9fafb;\n  }\n\n  .modal {\n    display: none;\n    position: fixed !important;\n    z-index: 9999 !important;\n    left: 0;\n    top: 0;\n    width: 100vw;\n    height: 100vh;\n    background-color: rgba(0, 0, 0, 0.8);\n    justify-content: center;\n    align-items: center;\n  }\n\n  .modal.show {\n    display: flex !important;\n  }\n\n  .modal-content {\n    max-width: 90%;\n    max-height: 90%;\n    border-radius: 12px;\n    overflow: hidden;\n  }\n\n  .modal img {\n    width: 100%;\n    height: 100%;\n    object-fit: contain;\n  }\n\n  .close-btn {\n    position: absolute;\n    top: 20px;\n    right: 30px;\n    color: white;\n    font-size: 40px;\n    font-weight: bold;\n    cursor: pointer;\n    z-index: 10001;\n  }\n\n  .close-btn:hover {\n    opacity: 0.7;\n  }\n\n.widget-step {\n    margin-bottom: 30px;\n}\n\n.widget-step-title {\n    font-size: 16px;\n    font-weight: bold;\n    color: #333;\n    margin-bottom: 15px;\n    letter-spacing: 0.5px;\n    margin-top: 20px;\nfont-family: Arial, sans-serif;\n}\n\n/* Spinner style */\n.inline-spinner {\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  border: 2px solid #000;\n  border-top: 2px solid #FFC107;\n  border-radius: 50%;\n  animation: spin 0.7s linear infinite;\n  vertical-align: middle;\n  margin-left: 6px;\n}\n\n/* @keyframes spin {\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n} */\n\n.inline-progress-bar {\n  display: inline-block;\n  width: 50px;\n  height: 6px;\n  background-color: #e0e0e0;\n  border-radius: 4px;\n  overflow: hidden;\n  margin-left: 8px;\n  vertical-align: middle;\n  position: relative;\n}\n\n.inline-progress-fill {\n  height: 100%;\n  width: 0%;\n  background-color: #FFC107;\n  animation: fill-bar 14s ease-in;\n}\n\n@keyframes fill-bar {\n  0% { width: 0%; }\n  50% { width: 100%; }\n  100% { width: 0%; }\n}\n\n/* Sticky Upload Button */\n#uploadStickyContainer.sticky {\n  position: fixed;\n  bottom: 20px;\n  left: 50%;\n  transform: translateX(-50%);\n  z-index: 999;\n  background: transparent;\n  box-shadow: none; /* remove extra shadow if not needed */\n  border-radius: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 10px;\n  padding: 12px 20px;\n  width: 300px;\n}\n\n.extended-preview-modal {\n  background-color: #000 !important;\n  color: #fff;\n  padding: 24px;\n  text-align: center;\n  border-radius: 16px;\n  max-width: 600px;\n  width: 90%;\n  box-shadow: 0 8px 24px rgba(0,0,0,0.4);\n}\n\n.design-section h2 {\n  font-size: 21px;\n  font-weight: 900;\n  color: #fff;\n  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);\n  margin-bottom: 16px;\n  font-family: 'Arial Black', Impact, sans-serif;\n}\n\n.design-section li {\n  font-size: 16px;\n  margin: 6px 0;\n  list-style: none;\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  color: #fff;\n  font-family: 'Arial', sans-serif;\n}\n.modal-image-wrapper {\n  background-color: #e0e0e0; /* Light gray background */\n  padding: 16px;\n  border-radius: 8px;\n  display: inline-block;\n  margin: 20px auto;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);\n  max-width: 100%;\n  text-align: center;\n}\n\n\n\n/* font-size: 14px;\n    letter-spacing: 0.5px;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    border-radius: 4px;\n    transition: background-color 0.2s; */\n\n\n\n</style>\n\n<script>\n  class ImageUploader {\n    constructor() {\n      this.uploadButton = document.getElementById('uploadButton');\n      this.fileInput = document.getElementById('fileInput');\n      this.fileCount = document.getElementById('fileCount');\n      this.imageGrid = document.getElementById('imageGrid');\n      this.modal = document.getElementById('modal');\n      this.modalImage = document.getElementById('modalImage');\n      this.closeBtn = document.getElementById('closeBtn');\n\n      this.initEventListeners();\n    }\n\n    initEventListeners() {\n      this.uploadButton.addEventListener('click', () => this.fileInput.click());\n\n      this.fileInput.addEventListener('change', async (e) => {\n        const file = e.target.files[0];\n        if (!file) return;\n\n        if (file.type === \"image/svg+xml\" || file.name.endsWith(\".svg\")) {\n          const svgText = await file.text();\n          const pngBlob = await this.convertSvgToPng(svgText);\n          this.uploadToServer(new File([pngBlob], \"converted.png\", { type: \"image/png\" }));\n        } else {\n          this.uploadToServer(file);\n        }\n      });\n\n\n      this.closeBtn.addEventListener('click', () => this.hideModal());\n      this.modal.addEventListener('click', (e) => {\n        if (e.target === this.modal) this.hideModal();\n      });\n\n      document.addEventListener('keydown', (e) => {\n        if (e.key === 'Escape' && this.modal.classList.contains('show')) {\n          this.hideModal();\n        }\n      });\n    }\n\n    async convertSvgToPng(svgText) {\n      return new Promise((resolve, reject) => {\n        const svgBlob = new Blob([svgText], { type: \"image/svg+xml\" });\n        const url = URL.createObjectURL(svgBlob);\n\n        const img = new Image();\n        img.onload = () => {\n          const canvas = document.createElement(\"canvas\");\n          canvas.width = img.width;\n          canvas.height = img.height;\n\n          const ctx = canvas.getContext(\"2d\");\n          ctx.drawImage(img, 0, 0);\n\n          canvas.toBlob(blob => {\n            URL.revokeObjectURL(url);\n            if (blob) resolve(blob);\n            else reject(new Error(\"SVG to PNG conversion failed\"));\n          }, \"image/png\");\n        };\n\n        img.onerror = () => reject(new Error(\"Failed to load SVG into image\"));\n        img.src = url;\n      });\n    }\n\n\n    async uploadToServer(file) {\n      const formData = new FormData();\n      formData.append(\"logo\", file);\n      let sessionId = localStorage.getItem('shop_session_id');\n      if (!sessionId) {\n        sessionId = crypto.randomUUID(); // or use a small UUID lib\n        localStorage.setItem('shop_session_id', sessionId);\n      }\n      formData.append(\"session_id\", sessionId);\n\n      this.fileCount.innerHTML = `\n      <div style=\"display: inline-block;\">\n        Crafting your Rug\n        <div class=\"inline-progress-bar\">\n          <div class=\"inline-progress-fill\"></div>\n        </div>\n      </div>`;\n\n\n      try {\n        const res = await fetch(\"https://rug-shop-549043154988.europe-west1.run.app/run-generation4\", {\n          method: \"POST\",\n          body: formData\n        });\n\n        if (!res.ok) throw new Error(\"Server error\");\n\n        const data = await res.json();\n\n        this.imageGrid.innerHTML = '';\n        this.fileCount.textContent = `Preview your Rug in different shapes:`;\n\n        console.log(data);\n\n        if(data[\"type\"] == 0) {\n            console.log(\"type 0\");\n            [\"rectangle\"].forEach(shape => {\n                const img = document.createElement(\"img\");\n                img.src = `data:image/png;base64,${data[shape]}`;\n                img.alt = shape;\n                img.onclick = () => this.showModal(img.src);\n\n                const wrapper = document.createElement(\"div\");\n                wrapper.className = \"image-item\";\n                wrapper.appendChild(img);\n                this.imageGrid.appendChild(wrapper);\n                \n            });\n        } else if(data[\"type\"] == 1) {\n            console.log(\"type 1\");\n            [\"runner\", \"rectangle\", \"circle\"].forEach(shape => {\n                const img = document.createElement(\"img\");\n                img.src = `data:image/png;base64,${data[shape]}`;\n                img.alt = shape;\n                img.onclick = () => this.showModal(img.src);\n\n                const wrapper = document.createElement(\"div\");\n                wrapper.className = \"image-item\";\n                wrapper.appendChild(img);\n                this.imageGrid.appendChild(wrapper);\n                \n            });\n        }\n\n        \n\n        const stylistDisclaimer = document.getElementById(\"stylistDisclaimer\");\n        \n        stylistDisclaimer.innerHTML = \"\";\n        stylistDisclaimer.style.color = \"#862934\";\n        stylistDisclaimer.style.fontSize = \"14px\";\n        stylistDisclaimer.style.fontWeight = \"bold\";\n        stylistDisclaimer.style.textAlign = \"center\";\n        stylistDisclaimer.style.marginTop = \"20px\";\n        stylistDisclaimer.style.marginBottom = \"20px\";\n        \n\n      } catch (err) {\n        console.error(err);\n        this.fileCount.textContent = \"Failed to upload image.\";\n      }\n    }\n\n    showModal(imageSrc) {\n      this.modalImage.src = imageSrc;\n      this.modal.classList.add('show');\n    }\n\n    hideModal() {\n      this.modal.classList.remove('show');\n      this.modalImage.src = '';\n    }\n  }\n\n  const uploader = new ImageUploader();\n\n//   // Sticky Upload Button\n//   document.addEventListener('DOMContentLoaded', () => {\n//   const uploadSticky = document.getElementById('uploadStickyContainer');\n//   const trigger = document.getElementById('uploadTrigger');\n\n//   const observer = new IntersectionObserver(entries => {\n//     entries.forEach(entry => {\n//       if (!entry.isIntersecting) {\n//         uploadSticky.classList.add('sticky');\n//       } else {\n//         uploadSticky.classList.remove('sticky');\n//       }\n//     });\n//   }, {\n//     threshold: 0\n//   });\n\n//   if (trigger && uploadSticky) {\n//     observer.observe(trigger);\n//   }\n// });\n\ndocument.addEventListener('DOMContentLoaded', () => {\n  const stickyContainer = document.getElementById('uploadStickyContainer');\n  const triggerTop = document.getElementById('uploadTop');\n  const triggerBottom = document.getElementById('uploadTrigger');\n\n  let isAbove = false;\n  let isBelow = false;\n\n  const checkSticky = () => {\n    if (!isAbove && isBelow) {\n      stickyContainer.classList.add('sticky');\n    } else {\n      stickyContainer.classList.remove('sticky');\n    }\n  };\n\n  const observerTop = new IntersectionObserver(entries => {\n    entries.forEach(entry => {\n      isAbove = entry.isIntersecting;\n      checkSticky();\n    });\n  });\n\n  const observerBottom = new IntersectionObserver(entries => {\n    entries.forEach(entry => {\n      isBelow = !entry.isIntersecting;\n      checkSticky();\n    });\n  });\n\n  if (triggerTop) observerTop.observe(triggerTop);\n  if (triggerBottom) observerBottom.observe(triggerBottom);\n});\n\n</script>\n\n<script>\n    document.addEventListener(\"DOMContentLoaded\", function () {\n      const priceEl = document.querySelector(\".product-block .price\");\n      if (priceEl) {\n        priceEl.innerHTML = `<span class=\"money\" data-price=\"$149.00\" data-currency-original=\"$149.00\" data-currency-usd=\"$149.00\" data-currency=\"USD\">$149.00</span>`;\n      }\n    });\n</script>"
+          }
+        },
+        "custom_liquid_NatVnk": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Product Selector with Pricing</title>\n</head>\n<body>\n\n<!-- HTML - Add this where you want the form to appear -->\n<div class=\"product-selector-widget\">\n    <form id=\"productForm\" onsubmit=\"addToShopifyCart(event)\">\n        <div class=\"widget-step\">\n            <div class=\"widget-step-title\">STEP 2: CHOOSE YOUR SHAPE</div>\n            <div class=\"widget-button-group\">\n                <input type=\"radio\" name=\"shape\" value=\"RECTANGLE\" id=\"rectangle\" checked style=\"display: none;\">\n                <label for=\"rectangle\" class=\"widget-option-button widget-rectangle-btn widget-selected\" onclick=\"selectWidgetShape(this, 'rectangle')\">RECTANGLE</label>\n                \n                <input type=\"radio\" name=\"shape\" value=\"CIRCLE\" id=\"circle\" style=\"display: none;\">\n                <label for=\"circle\" class=\"widget-option-button\" onclick=\"selectWidgetShape(this, 'circle')\">CIRCLE</label>\n                \n                <input type=\"radio\" name=\"shape\" value=\"RUNNER\" id=\"runner\" style=\"display: none;\">\n                <label for=\"runner\" class=\"widget-option-button\" onclick=\"selectWidgetShape(this, 'runner')\">RUNNER</label>\n            </div>\n        </div>\n        \n        <div class=\"widget-step\">\n            <div class=\"widget-step-title-3\">STEP 3: CHOOSE YOUR SIZE</div>\n            <div class=\"size-guide\" onclick=\"openSizeGuide()\">Size Guide</div>\n            <div class=\"widget-button-group\" id=\"size-options\">\n          \n              <!-- RECTANGLE Sizes -->\n              <div class=\"size-set rectangle-sizes\">\n                <input type=\"radio\" name=\"size\" value=\"2'X3'\" id=\"size1\" checked style=\"display: none;\">\n                <label for=\"size1\" class=\"widget-option-button widget-size-btn widget-selected\" onclick=\"selectWidgetSize(this, 'size1')\">2'X3'</label>\n          \n                <input type=\"radio\" name=\"size\" value=\"3'X5'\" id=\"size2\" style=\"display: none;\">\n                <label for=\"size2\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'size2')\">3'X5'</label>\n          \n                <input type=\"radio\" name=\"size\" value=\"5'X7'\" id=\"size3\" style=\"display: none;\">\n                <label for=\"size3\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'size3')\">5'X7'</label>\n          \n                <input type=\"radio\" name=\"size\" value=\"8'X10'\" id=\"size4\" style=\"display: none;\">\n                <label for=\"size4\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'size4')\">8'X10'</label>\n              </div>\n          \n              <!-- CIRCLE Sizes -->\n              <div class=\"size-set circle-sizes\" style=\"display: none;\">\n                <input type=\"radio\" name=\"size\" value=\"3'X3'\" id=\"circle1\" style=\"display: none;\">\n                <label for=\"circle1\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'circle1')\">3'X3'</label>\n          \n                <input type=\"radio\" name=\"size\" value=\"4'X4'\" id=\"circle2\" style=\"display: none;\">\n                <label for=\"circle2\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'circle2')\">4'X4'</label>\n          \n                <input type=\"radio\" name=\"size\" value=\"5'X5'\" id=\"circle3\" style=\"display: none;\">\n                <label for=\"circle3\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'circle3')\">5'X5'</label>\n          \n                <input type=\"radio\" name=\"size\" value=\"6'X6'\" id=\"circle4\" style=\"display: none;\">\n                <label for=\"circle4\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'circle4')\">6'X6'</label>\n          \n                <input type=\"radio\" name=\"size\" value=\"8'X8'\" id=\"circle5\" style=\"display: none;\">\n                <label for=\"circle5\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'circle5')\">8'X8'</label>\n              </div>\n          \n              <!-- RUNNER Sizes -->\n              <div class=\"size-set runner-sizes\" style=\"display: none;\">\n                <input type=\"radio\" name=\"size\" value=\"2.5'X7'\" id=\"runner1\" style=\"display: none;\">\n                <label for=\"runner1\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'runner1')\">2.5'X7'</label>\n          \n                <input type=\"radio\" name=\"size\" value=\"2.5'X10'\" id=\"runner2\" style=\"display: none;\">\n                <label for=\"runner2\" class=\"widget-option-button widget-size-btn\" onclick=\"selectWidgetSize(this, 'runner2')\">2.5'X10'</label>\n              </div>\n          \n            </div>\n        </div>\n        <div><label class=\"pplrlabel\" style=\"text-align: center;\">Comments / Adjustments Requests <span class=\"pplr_option_price_span\"></span></label></div>\n        <textarea id=\"custom-comment\" style=\"min-height: 75px; width: 100%;\"></textarea>\n        <!-- Wrapper to center -->\n<div style=\"display: flex; justify-content: center;\">\n    <div class=\"shipping-badge\">\n      <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"\n        stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"truck-icon\">\n        <path d=\"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2\" />\n        <path d=\"M15 18H9\" />\n        <path d=\"M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14\" />\n        <circle cx=\"17\" cy=\"18\" r=\"2\" />\n        <circle cx=\"7\" cy=\"18\" r=\"2\" />\n      </svg>\n      <span class=\"shipping-text\"><strong>FREE</strong> Delivery</span>\n    </div>\n  </div>\n\n        <div class=\"widget-add-to-cart-section\">\n            <button type=\"submit\" class=\"widget-add-to-cart-btn margin-bottom-custom\" id=\"addToCartBtn\">ADD TO CART</button>\n        </div>\n    </form>\n</div>\n\n<style>\n/* .design-comment-box {\n    width: 100%;\n    max-width: 400px;\n    height: 30px;\n    border: 1px solid #232222;\n    border-radius: 4px;\n    font-size: 14px;\n    color: #333;\n    background-color: #fff;\n    box-sizing: border-box;\n    resize: vertical;\n} */\n\n/* CSS - Add this to your stylesheet or in a <style> tag */\n.product-selector-widget {\n    max-width: 500px;\n    margin: 20px 0;\n    font-family: Arial, sans-serif;\n}\n\n.widget-step {\n    margin-bottom: 30px;\n}\n\n.margin-bottom-custom {\n    margin-bottom: 10px;\n}\n\n.widget-step-title {\n    font-size: 16px;\n    font-weight: bold;\n    color: #333;\n    margin-bottom: 15px;\n    letter-spacing: 0.5px;\n}\n\n.widget-step-title-3 {\n    font-size: 16px;\n    font-weight: bold;\n    color: #333;\n    margin-bottom: 0px;\n    letter-spacing: 0.5px;\n}\n\n.size-guide {\n    margin-bottom: 5px;\n    text-decoration: underline;\n    cursor: pointer;\n    text-align: center;\n}\n\n.widget-button-group {\n    display: flex;\n    gap: 10px;\n    flex-wrap: wrap;\n}\n\n.widget-option-button {\n    padding: 6px 12px;\n    border: 2px solid #333;\n    background-color: white;\n    color: #333;\n    font-size: 14px;\n    font-weight: bold;\n    cursor: pointer;\n    border-radius: 0;\n    transition: all 0.2s ease;\n    text-decoration: none;\n    display: inline-block;\n}\n\n.widget-option-button:hover {\n    background-color: #f0f0f0;\n}\n\n.widget-option-button.widget-selected {\n    background-color: #ffbc04;\n    color: black;\n    border-color: #333;\n}\n\n.widget-pricing-section {\n    margin: 20px 0;\n    text-align: center;\n}\n\n.widget-price-display {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    gap: 10px;\n}\n\n.widget-current-price {\n    font-size: 24px;\n    font-weight: bold;\n    color: #333;\n}\n\n.widget-original-price {\n    font-size: 18px;\n    color: #999;\n    text-decoration: line-through;\n}\n\n.widget-add-to-cart-section {\n    margin-top: 10px;\n}\n\n.widget-add-to-cart-btn {\n    width: 100%;\n    padding: 12px 20px;\n    background-color: #ffbc04;\n    color: black;\n    border: none;\n    font-size: 16px;\n    font-weight: bold;\n    cursor: pointer;\n    letter-spacing: 0.5px;\n    border-radius: 0;\n    transition: background-color 0.2s ease;\n}\n\n.widget-add-to-cart-btn:hover {\n    background-color: #e6a603;\n}\n\n.widget-add-to-cart-btn:disabled {\n    opacity: 0.7;\n    cursor: not-allowed;\n}\n\n/* Adds spacing between different shape size sections */\n.size-set {\n  gap: 10px;\n  flex-wrap: wrap;\n  margin-bottom: 15px;\n}\n\n/* Make the default one (rectangle) visible and styled properly on first load */\n.rectangle-sizes {\n  display: flex;\n}\n\n/* Size Guide Modal */\n.modal-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.5);\n  display: flex; /* This ensures center alignment */\n  justify-content: center;\n  align-items: center;\n  z-index: 9999;\n}\n\n.modal-content {\n  background: #fff;\n  width: 90%;\n  max-width: 500px;\n  border-radius: 8px;\n  padding: 20px;\n  position: relative;\n  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);\n}\n\n.modal-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 18px;\n  font-weight: bold;\n  margin-bottom: 12px;\n}\n\n.modal-close {\n  font-size: 22px;\n  cursor: pointer;\n}\n\n.modal-tabs {\n  display: flex;\n  justify-content: space-around;\n  margin-bottom: 15px;\n}\n\n.tab-btn {\n  background: none;\n  border: none;\n  border-bottom: 2px solid transparent;\n  padding: 10px 12px;\n  font-weight: bold;\n  cursor: pointer;\n  font-size: 14px;\n}\n\n.tab-btn.active {\n  border-bottom: 2px solid #000;\n}\n\n.modal-body {\n  text-align: center;\n}\n\n</style>\n\n\n  \n  <style>\n  .shipping-badge {\n    display: inline-flex;\n    align-items: center;\n    background-color: #f2f2f2;\n    border-radius: 20px;\n    padding: 5px 12px;\n    font-family: Arial, sans-serif;\n    font-size: 13px;\n    font-weight: 500;\n    color: #000;\n    margin-bottom: 0px;\n  }\n  \n  .truck-icon {\n    width: 18px;\n    height: 18px;\n    margin-right: 6px;\n    stroke: #000;\n  }\n\n  .ar-button {\n  display: inline-block;\n  background-color: #ffbc04;\n  color: #000;\n  font-family: Arial, sans-serif;\n  font-size: 14px;\n  font-weight: 700;\n  padding: 10px 18px;\n  text-decoration: none;\n  border: none;\n  border-radius: 0;\n  cursor: pointer;\n  margin-top: 16px;\n  letter-spacing: 0.5px;\n  transition: background-color 0.2s ease;\n}\n\n.ar-button:hover {\n  background-color: #e6a603;\n}\n\n.upload-icon {\n  font-size: 16px;\n  margin-left: 6px;\n  position: relative;\n  top: -1px;\n}\n.eye-icon {\n  display: inline-flex;\n  align-items: center;\n  margin-left: 6px;\n  position: relative;\n  top: 3px;\n}\n.eye-icon svg {\n  stroke: #000;\n}\n\n/* Center step titles */\n.widget-step-title,\n.widget-step-title-3 {\n  text-align: center;\n}\n\n/* Center shape buttons */\n.widget-button-group {\n  justify-content: center; /* center the flex items */\n}\n\n/* Center each size set group (rectangle, circle, runner) */\n.size-set {\n  display: flex;\n  justify-content: center;\n}\n  </style>\n  \n\n<script>\n// Pricing data for each variant\nconst pricingData = {\n    // RECTANGLE\n    \"RECTANGLE_2'X3'\": { current: 149.00, original: null },\n    \"RECTANGLE_3'X5'\": { current: 325.00, original: null },\n    \"RECTANGLE_5'X7'\": { current: 745.00, original: null },\n    \"RECTANGLE_8'X10'\": { current: 989.00, original: null },\n\n    // CIRCLE\n    \"CIRCLE_3'X3'\": { current: 199.00, original: null },\n    \"CIRCLE_4'X4'\": { current: 335.00, original: null },\n    \"CIRCLE_5'X5'\": { current: 475.00, original: null },\n    \"CIRCLE_6'X6'\": { current: 689.00, original: null },\n    \"CIRCLE_8'X8'\": { current: 839.00, original: null },\n\n    // RUNNER\n    \"RUNNER_2.5'X7'\": { current: 399.00, original: null },\n    \"RUNNER_2.5'X10'\": { current: 489.00, original: null }\n};\n\nfunction updatePricing() {\n    const shape = document.querySelector('input[name=\"shape\"]:checked').value;\n    const size = document.querySelector('input[name=\"size\"]:checked').value;\n    const key = `${shape}_${size}`;\n    const pricing = pricingData[key];\n    console.log(\"pricing\", pricing);\n    \n    if (pricing) {\n        // const currentPriceEl = document.getElementById('currentPrice');\n        const test = document.getElementById('test');\n        // const originalPriceEl = document.getElementById('originalPrice');\n        // const addToCartBtn = document.getElementById('addToCartBtn');\n        \n        // Update current price\n        // currentPriceEl.textContent = `$${Math.round(pricing.current)}`;\n        \n        // Update original price (show only if there's a sale)\n        // if (pricing.original) {\n        //     originalPriceEl.textContent = `$${Math.round(pricing.original)}`;\n        //     originalPriceEl.style.display = 'inline';\n        // } else {\n        //     originalPriceEl.style.display = 'none';\n        // }\n        \n        // Update add to cart button text\n        //addToCartBtn.textContent = `ADD TO CART - $${Math.round(pricing.current)}`;\n\n        updateTopPrice(pricing.current);\n\n        test.textContent = `$${Math.round(pricing.current)}`;\n    }\n}\n\n// Using querySelectorAll with escaped \"@\" in the class name\nconst items = document.querySelectorAll('.product-block.product-block--\\\\@app');\n\n// To verify, you can log the results to the console:\nconsole.log(items);\n\n// block the extra 5 stars\nfunction blockExtraStars() {\n  const stars = document.querySelectorAll('.product-block.product-block--\\\\@app');\n  stars[1].style.display = 'none';\n}\n\nblockExtraStars();\n\nfunction updateTopPrice(price) {\n  console.log(\"price\", price);\n  const priceEl = document.querySelector(\".product-block .price\");\n  console.log(\"priceEl\", priceEl);\n  if (priceEl) {\n    priceEl.innerHTML = `<span class=\"money\" data-price=\"${price}\" data-currency-original=\"${price}\" data-currency-usd=\"${price}\" data-currency=\"USD\">$${String(price)+\".00\"}</span>`;\n  }\n};\n\nfunction updateSizeOptions(shape) {\n  const allSets = document.querySelectorAll('.size-set');\n  allSets.forEach(set => set.style.display = 'none');\n\n  // Remove any previously selected size styles\n  document.querySelectorAll('.widget-size-btn').forEach(btn => {\n    btn.classList.remove('widget-selected');\n  });\n\n  if (shape === 'CIRCLE') {\n    document.querySelector('.circle-sizes').style.display = 'flex';\n    document.getElementById(\"circle1\").checked = true;\n    selectWidgetSize(document.querySelector('label[for=\"circle1\"]'), 'circle1');\n  } else if (shape === 'RUNNER') {\n    document.querySelector('.runner-sizes').style.display = 'flex';\n    document.getElementById(\"runner1\").checked = true;\n    selectWidgetSize(document.querySelector('label[for=\"runner1\"]'), 'runner1');\n  } else {\n    document.querySelector('.rectangle-sizes').style.display = 'flex';\n    document.getElementById(\"size1\").checked = true;\n    selectWidgetSize(document.querySelector('label[for=\"size1\"]'), 'size1');\n  }\n  \n  // Update pricing after changing shape\n  updatePricing();\n}\n\nfunction selectWidgetShape(label, radioId) {\n  document.querySelectorAll('.product-selector-widget .widget-step:first-child .widget-option-button')\n    .forEach(btn => btn.classList.remove('widget-selected'));\n\n  label.classList.add('widget-selected');\n  document.getElementById(radioId).checked = true;\n\n  const shape = document.getElementById(radioId).value;\n  updateSizeOptions(shape);\n}\n\nfunction selectWidgetSize(label, radioId) {\n    // Remove selected class from all size buttons\n    document.querySelectorAll('.widget-size-btn').forEach(btn => {\n        btn.classList.remove('widget-selected');\n    });\n    // Add selected class to clicked button\n    label.classList.add('widget-selected');\n    // Check the corresponding radio button\n    document.getElementById(radioId).checked = true;\n    \n    // Update pricing after changing size\n    updatePricing();\n}\n\nasync function addToShopifyCart(event) {\n    const shape = document.querySelector('input[name=\"shape\"]:checked').value;\n    const size = document.querySelector('input[name=\"size\"]:checked').value;\n    const variantId = getWidgetVariantId(shape, size);\n    const comment = document.getElementById(\"custom-comment\").value;\n\n    console.log(shape, size, variantId);\n    event.preventDefault()\n    fetch('/cart/add.js', {\n        method: 'POST',\n        headers: {\n            'Content-Type': 'application/json',\n            'Accept': 'application/json'\n        },\n        body: JSON.stringify({\n            items: [{\n                quantity: 1,\n                id: variantId,\n                properties: {\n                    \"Comments\": comment\n                }\n            }]\n        })\n        })\n        .then(response => response.json())\n        .then(data => {\n            console.log('Added to cart:', data);\n            console.log(new Date().toLocaleString());\n            window.location.href = '/checkout';\n            setTimeout(() => {\n                refreshCart();\n            }, 1000);\n        }).catch(error => {\n            console.error('Error adding to cart:', error);\n            alert('Oops! Something went wrong.');\n        });\n}\n\nfunction refreshCart() {\n    $.ajax({\n        url: '/cart.js',\n        dataType: 'json',\n        success(cart) {\n            console.log(cart);\n            rebuildCartDrawer(cart);\n            openCartDrawer();\n        }\n    });\n}\n\nfunction rebuildCartDrawer(cart) {\n    let cartCountEl = document.querySelector('.cart_count');\n    if (cartCountEl) {\n        let count = 0;\n        for (let i = 0; i < cart.items.length; i++) {\n            count += cart.items[i].quantity;\n        }\n        cartCountEl.textContent = count;\n    }\n    let cartItemsHTML = '';\n    console.log(\"cart.items\", cart.items);\n\n    // $.each(cart.items, (index, item) => {\n    //     console.log(\"item inside cart loop\", item);\n    //     cartItemsHTML += `<li class=\"mini-cart__item\" data-cart-item data-line-id=\"${index}\" ...>`;\n        \n    //     // Image\n    //     cartItemsHTML += `<div class=\"cart_image\"><img src=\"${item.image}\" /></div>`;\n\n    //     // Title and size\n    //     cartItemsHTML += `<strong>${item.product_title}</strong>`;\n    //     cartItemsHTML += `<strong>Size:</strong> ${item.options_with_values.find(i => i.name.includes('Size'))?.value}`;\n\n    //     // Custom properties (e.g., preview images or uploads)\n    //     $.each(item.properties, (title, value) => {\n    //         if (value && value !== 'on') {\n    //         cartItemsHTML += `<div class=\"mini-cart__item-property\">${title}: ${value}</div>`;\n    //         }\n    //     });\n\n    //     // Price (sale or regular)\n    //     if (item.price > item.final_price) {\n    //         cartItemsHTML += `<span class=\"money sale\">${Shopify.formatMoney(item.price)}</span>`;\n    //     } else {\n    //         cartItemsHTML += `<span class=\"money\">${Shopify.formatMoney(item.price)}</span>`;\n    //     }\n\n    //     // Quantity box\n    //     cartItemsHTML += `\n    //         <div class=\"product-quantity-box ctm\">\n    //         <span class=\"ss-icon product-minus js-change-quantity\" data-func=\"minus\"></span>\n    //         <input type=\"number\" value=\"${item.quantity}\" />\n    //         <span class=\"ss-icon product-plus js-change-quantity\" data-func=\"plus\"></span>\n    //         </div>\n    //     `;\n\n    //     // Remove link\n    //     cartItemsHTML += `<a href=\"/cart/change?line=${index}&quantity=0\" class=\"js-cart-remove-btn\">Remove</a>`;\n    //     cartItemsHTML += `</li>`;\n    // });\n\n    cartItemsHTML = ``\n\n    template = `<li class=\"mini-cart__item pplr_cart_row\" data-cart-item=\"\" data-line-id=\"[line_id]\" data-variant-id=\"[variant_id]\" data_pplr_row=\"[line_id]\">\n                            <a href=\"[product_url]\">\n                                <div class=\"cart_image\">\n                                    <img src=\"[image_url]\" alt=\"[alt_text]\">\n                                </div>\n                            </a>\n                            <div class=\"mini-cart__item-content\">\n                                <div class=\"mini-cart__item-title\">\n                                    <a class=\"mini-cart__item-title__text\" href=\"[product_url]\">\n                                    <span>\n                                    <strong>[product_title]</strong>\n                                    </span>\n                                    <br>\n                                    <strong>Size:</strong> [product_size]\n                                    </a>\n                                    <div class=\"mini-cart__item-properties\"></div>\n                                </div>\n                                <div class=\"mini-cart__item-price-quantity-container\">\n                                    <div class=\"mini-cart__item-price\">\n                                    <span class=\"money\">[product_price]</span>\n                                    </div>\n                                    <div class=\"product-quantity-box ctm\">\n                                    <span class=\"ss-icon product-minus js-change-quantity\" data-func=\"minus\">\n                                    <span class=\"icon-minus\"></span>\n                                    </span>\n                                    <input type=\"number\" min=\"0\" class=\"quantity\" name=\"updates[]\" id=\"updates_50260425965889\" value=\"[product_quantity]\" data-cart-quantity-input=\"mini-cart\">\n                                    <span class=\"ss-icon product-plus js-change-quantity\" data-func=\"plus\">\n                                    <span class=\"icon-plus\"></span>\n                                    </span>\n                                    </div>\n                                </div>\n                            </div>\n                            <a href=\"/cart/change?line=1&amp;quantity=0\" class=\"js-cart-remove-btn cart__remove-btn\" data-line-id=\"1\" data-remove-item=\"mini-cart\">\n                            <span class=\"remove-icon\">\n                            <i style=\"font-size:20px\" class=\"fa\"></i>\n                            </span>\n                            </a>\n                        </li>`\n\n    for (let i = 1; i <= cart.items.length; i++) {\n        let instance = template;\n        item = cart.items[i-1];\n        instance = instance.replaceAll('[line_id]', i);\n        instance = instance.replace('[variant_id]', item.id);\n        instance = instance.replace('[image_url]', item.image);\n        instance = instance.replace('[alt_text]', item.featured_image.alt);\n        instance = instance.replace('[product_price]', '$' + String(item.original_price).substring(0,3));\n        instance = instance.replace('[product_size]', item.variant_options[1]);\n        instance = instance.replace('[product_title]', item.product_title);\n        instance = instance.replace('[product_quantity]', item.quantity);\n        cartItemsHTML += instance;\n    }\n    cartItemsHTML += ``\n\n    console.log(\"cartItemsHTML Before\", $('.js-cart_items'));\n\n    $('.js-cart_items').html(cartItemsHTML);\n\n    console.log(\"Empty Cart Message Before\", $('.js-empty-cart__message'));\n    $('.js-empty-cart__message').addClass('hidden');\n    console.log(\"Empty Cart Message After\", $('.js-empty-cart__message'));\n\n    console.log(\"cartItemsHTML After\", $('.js-cart_items'));\n\n    $('.pplr_cart_form_n').removeClass('hidden');\n    // 1. Select the form using its unique data attribute\n    const cartForm = document.querySelector('form[data-cart-form=\"mini-cart\"]');\n\n    // 2. Remove the 'hidden' class\n    if (cartForm) {\n        cartForm.classList.remove('hidden');\n    }\n\n    \n\n    setTimeout(() => {\n        cartCountEl = document.querySelector('.cart_count');\n        if (cartCountEl) {\n            let count = 0;\n            for (let i = 0; i < cart.items.length; i++) {\n                count += cart.items[i].quantity;\n            }\n            cartCountEl.textContent = count;\n        }\n\n        console.log(\"cartCountEl\", cartCountEl);\n    }, 1000);\n}\n\nfunction openCartDrawer() {\n    if ($('#header').is(':visible')) {\n        $('#header .cart-container').addClass('active_link');\n    } else if ($('.sticky_nav--stick').length) {\n        $('.sticky_nav .cart-container').addClass('active_link');\n    } else {\n        $('.top-bar .cart-container').addClass('active_link');\n    }\n}\n\n// Map your shape/size combinations to Shopify variant IDs\nfunction getWidgetVariantId(shape, size) {\n    const variantMap = {\n        // RECTANGLE\n        \"RECTANGLE_2'X3'\": '50260425933121',\n        \"RECTANGLE_3'X5'\": '50260425965889',\n        \"RECTANGLE_5'X7'\": '50260425998657',\n        \"RECTANGLE_8'X10'\": '50260426031425',\n\n        // CIRCLE\n        \"CIRCLE_3'X3'\": '50260426064193',\n        \"CIRCLE_4'X4'\": '50260426096961',\n        \"CIRCLE_5'X5'\": '50260426129729',\n        \"CIRCLE_6'X6'\": '50260426162497',\n        \"CIRCLE_8'X8'\": '50260426195265',\n\n        // RUNNER\n        \"RUNNER_2.5'X7'\": '50260426228033',\n        \"RUNNER_2.5'X10'\": '50260426260801',\n    };\n\n    const key = `${shape}_${size}`;\n    return variantMap[key];\n}\n\n// Initialize pricing on page load\ndocument.addEventListener('DOMContentLoaded', function() {\n    updatePricing();\n});\n</script>\n\n<!-- Size Guide Modal -->\n<div id=\"sizeGuideModal\" class=\"modal-overlay\" style=\"display:none;\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <span class=\"modal-title\">SIZE GUIDE</span>\n        <span class=\"modal-close\" onclick=\"closeSizeGuide()\">&times;</span>\n      </div>\n      <div class=\"modal-tabs\">\n        <button class=\"tab-btn active\" onclick=\"showSizeTab('rectangle')\">RECTANGLE</button>\n        <button class=\"tab-btn\" onclick=\"showSizeTab('circle')\">CIRCLE</button>\n        <button class=\"tab-btn\" onclick=\"showSizeTab('runner')\">RUNNER</button>\n      </div>\n      <div class=\"modal-body\">\n        <img id=\"sizeImage\" src=\"{{ 'Area.SG.V.png' | file_url }}\" alt=\"Size Guide\" style=\"width: 100%; max-width: 400px; margin: auto;\">\n        <a href=\"https://cdn.shopify.com/3d/models/ea4a00dd5b43aefd/chinese_restaurant_3_by_5_1_.usdz\" rel=\"ar\" class=\"ar-button\">\n          SEE IN YOUR ROOM<span class=\"eye-icon\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\"\n              stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" viewBox=\"0 0 24 24\">\n              <path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\" />\n              <circle cx=\"12\" cy=\"12\" r=\"3\" />\n            </svg>\n          </span>\n        </a>\n        <div>\n          <span id=\"rugDescription\" style=\"font-family: sans-serif; color: #6e6e6e; font-size: 16px;\">\n            3'X5' rectangle rug\n          </span>\n        </div>        \n        \n      </div>\n    </div>\n</div>\n<script>\n  const rugLinks = {\n    rectangle: \"https://cdn.shopify.com/3d/models/ea4a00dd5b43aefd/chinese_restaurant_3_by_5_1_.usdz\",\n    circle: \"https://cdn.shopify.com/3d/models/793d9e022d40acea/circle-3-rug.usdz\",\n    runner: \"https://cdn.shopify.com/3d/models/0976a20bafebeeca/run-rug.usdz\"\n  };\n</script>\n\n<script>\n    function openSizeGuide() {\n        document.getElementById('sizeGuideModal').style.display = 'flex';\n    }\n    \n    function closeSizeGuide() {\n        document.getElementById('sizeGuideModal').style.display = 'none';\n    }\n    \n    function showSizeTab(type) {\n      const img = document.getElementById('sizeImage');\n      const buttons = document.querySelectorAll('.tab-btn');\n      const arLink = document.querySelector('.ar-button');\n\n      // Remove all active tab styles\n      buttons.forEach(btn => btn.classList.remove('active'));\n\n      // Activate selected tab\n      if (type === 'rectangle') {\n          img.src = \"{{ 'Area.SG.V.png' | file_url }}\";\n          buttons[0].classList.add('active');\n      } else if (type === 'circle') {\n          img.src = \"{{ 'Circle.SG.V.png' | file_url }}\";\n          buttons[1].classList.add('active');\n      } else if (type === 'runner') {\n          img.src = \"{{ 'Run.SG.V.png' | file_url }}\";\n          buttons[2].classList.add('active');\n      }\n\n      // ?? Update AR button link\n      if (rugLinks[type]) {\n          arLink.href = rugLinks[type];\n      }\n\n      // 🧠 Set default size ID for each shape\n      const rugDescriptions = {\n        rectangle: \"3'X5' rectangle rug\",\n        circle: \"4'X4' circle rug\",\n        runner: \"2.5'X10' runner rug\"\n      };\n\n\n      document.getElementById('rugDescription').textContent = rugDescriptions[type] || 'No image uploaded';\n    }\n\n\n    // document.addEventListener(\"DOMContentLoaded\", function () {\n    //     const cartCountEl = document.querySelector(\".cart_count\");\n\n    //     if (!cartCountEl) return;\n\n    //     const observer = new MutationObserver(() => {\n    //         console.log(\"Cart count changed to:\", cartCountEl.textContent);\n    //         CTM_Cart_refresh(); // Optional: Only if you want to trigger full cart refresh\n    //     });\n\n    //     observer.observe(cartCountEl, { childList: true });\n    // });\n\n\n</script>\n    \n</body>\n</html>"
+          }
+        },
+        "logo_scroller_wfqgzj": {
+          "type": "logo_scroller",
+          "settings": {
+            "scroll_speed": 100,
+            "logo_1": "shopify://shop_images/fca9587268c8ec3a43da560dd32b338d8e26cf12_1.png",
+            "logo_2": "shopify://shop_images/e02c36316a41d6a20b795702685bb2dfb423e5cd_1_3500751e-75e1-40f7-84b9-57bc08e47fa9.png",
+            "logo_3": "shopify://shop_images/d68a1aedc74f2cb4fe847aeab99bb6a037be2e7a_1.png",
+            "logo_4": "shopify://shop_images/bee4875588c4da8365c4ee7c04327ab74abd1ba7.png",
+            "logo_5": "shopify://shop_images/7eecc99920eb4a7179b1db49da1e6fd2933b2580.png",
+            "logo_6": "shopify://shop_images/8dc5d913378640c65bb37013bb4a4391a1124db8_1_71d93aee-359d-4f2c-b8f6-45fd0a52e7b4.png",
+            "logo_7": "shopify://shop_images/301e617d39210c32b4577a0844002ce9089d8120_1_9c4cc32c-c822-4110-b384-5cf46a4b97eb.png",
+            "logo_8": "shopify://shop_images/1d86d4f8d7c445bd87ea4eb9eef0b8b288922615.png",
+            "logo_9": "shopify://shop_images/ab507baffa4f7429042504e35ed98c40cc070969_1.png",
+            "logo_10": "shopify://shop_images/11296c63744c830c40b748623a17ef2779114fa6_1.png",
+            "logo_11": "shopify://shop_images/9d9bef12cc2d922121b7fb2390ffd67e50e0cfd3_1.png",
+            "logo_12": "shopify://shop_images/cf6b3bfc882cf6273121af78224c154979945f79_a7faba03-fc64-4f59-aa6b-857711ccd015.png",
+            "logo_13": "shopify://shop_images/74fd17074ebc7ee30fd9fcc5eb1996d4dddaf766_1_ce1eea3f-ad85-48ab-88d5-1b193c92b2cf.png",
+            "logo_14": "shopify://shop_images/bdb67cdcd7a8da04421b9d683c7b4ffe348d7421_1.png",
+            "logo_15": "shopify://shop_images/3d09b282d0dfc371dc57859aa404f4c50127c22d.png",
+            "logo_16": "shopify://shop_images/a471016b0919e6351bd8bc8d7564cef3920e1f4e_1.png",
+            "logo_17": "shopify://shop_images/db29a2734e42c08e4eeed5f9a2b6b7df6dccef06_1.png",
+            "logo_18": "shopify://shop_images/6831a68ac4bc310292c1625763799fd47fe54725_1.png",
+            "logo_19": "shopify://shop_images/677af9d6be0fb430510125fad94d81bce2887f41.png"
+          }
+        },
+        "custom_image_znAtUH": {
+          "type": "Custom_image",
+          "disabled": true,
+          "settings": {
+            "image_item": "shopify://shop_images/TrustedBy_5bd3770b-703e-4fd5-827c-f9eab969756a.png"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible_tab_qNTFGV": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "Material Details",
+            "collapsible_tab_text": "<p>Our signature Canvas rug comes with a beautiful Moroccan style woven material and a soft cotton backing to give it a plush underfoot feel.</p>"
+          }
+        },
+        "collapsible_tab_JztnGb": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "What Type of Image and Resolution is Needed?",
+            "collapsible_tab_text": "<p>You can use JPG/JPEG,PNG, Webp, SVG images. Any other format can be emailed to us post purchase.<br/><br/>Higher resolution = Better quality rug.<br/><a href=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/2nd_version_Main.jpg?v=1749842569\" title=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/2nd_version_Main.jpg?v=1749842569\"><strong>Click For Size Guide</strong></a></p>"
+          }
+        },
+        "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "How It Works",
+            "collapsible_tab_text": "<p>Customize your dream rug in 3 easy steps.<br/>1.  Choose Your Shape<br/>2. Select Your Size <br/>3. Upload Your Image</p>"
+          }
+        },
+        "collapsible_tab_UF4WJG": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "Productions Timeline",
+            "collapsible_tab_text": "<p>Each rug takes 3~5 business days to manufacture, they are meticulously hand tailored in California.</p>"
+          }
+        },
+        "collapsible_tab_ijFrJi": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "Design Requests?",
+            "collapsible_tab_text": "<p>Once your order is placed, reply to your confirmation email right away with any changes you want made on your custom rug. (i.e. Black Background)</p>"
+          }
+        },
+        "collapsible_tab_kE8Q4j": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "Talk to a Rug Expert Now",
+            "collapsible_tab_text": "<p>We are here to answer any questions you may have <a href=\"tel:9494784886\">(949) 478-4886</a>.</p>"
+          }
+        },
+        "collapsible_tab_pgfAaK": {
+          "type": "collapsible-tab",
+          "disabled": true,
+          "settings": {
+            "collapsible_tab_heading": "Our Rugs",
+            "collapsible_tab_text": "<p>Our signature Canvas rug comes with a beautiful Moroccan style woven material and a soft cotton backing to give it a plush underfoot feel.</p>"
+          }
+        },
+        "custom_image_qBF7Kb": {
+          "type": "Custom_image",
+          "disabled": true,
+          "settings": {
+            "image_item": "shopify://shop_images/Trusted_by.webp"
+          }
+        },
+        "blinking_icon_text_zKgJqG": {
+          "type": "blinking_icon_text",
+          "settings": {}
+        },
+        "order_LYi88b": {
+          "type": "order",
+          "disabled": true,
+          "settings": {
+            "icon": "2",
+            "icon_name": "truck",
+            "fade": true,
+            "txt": "Order in the next 30 min to get it between  [date_start] and [date_end]",
+            "ds": 10,
+            "de": 15,
+            "cut": "SAT,SUN",
+            "frm": "1",
+            "timezone": false,
+            "time": "16:00:00",
+            "hr": "hours",
+            "min": "minutes"
+          }
+        },
+        "ctm_icon_with_text_VDDAnc": {
+          "type": "ctm_icon_with_text",
+          "disabled": true,
+          "settings": {
+            "icon_text_img_1": "shopify://shop_images/image_6.png",
+            "icon_text_text_1": "<p>Hand Tailored in USA</p>",
+            "icon_text_img_2": "shopify://shop_images/image_11.png",
+            "icon_text_text_2": "<p>Free Shipping</p>",
+            "icon_text_img_3": "shopify://shop_images/quality-medal-svgrepo-com.svg",
+            "icon_text_text_3": "<p>100% Customer Satisfaction</p>"
+          }
+        },
+        "feature_icons_gmbqDa": {
+          "type": "feature-icons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "custom_liquid_Mpf7m8",
+        "okendo_star_rating_eceRFY",
+        "price",
+        "afterpay_on_site_messaging_payments_messaging_VExiYb",
+        "form",
+        "custom_liquid_3xThF9",
+        "custom_liquid_NatVnk",
+        "logo_scroller_wfqgzj",
+        "custom_image_znAtUH",
+        "description",
+        "collapsible_tab_qNTFGV",
+        "collapsible_tab_JztnGb",
+        "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c",
+        "collapsible_tab_UF4WJG",
+        "collapsible_tab_ijFrJi",
+        "collapsible_tab_kE8Q4j",
+        "collapsible_tab_pgfAaK",
+        "custom_image_qBF7Kb",
+        "blinking_icon_text_zKgJqG",
+        "order_LYi88b",
+        "ctm_icon_with_text_VDDAnc",
+        "feature_icons_gmbqDa"
+      ],
+      "custom_css": [
+        ".feature-divider {display: none !important;}",
+        ".loox-rating .loox-rating-content {gap: 6px; margin-bottom: 12px;}",
+        "#shopify-block-AdDZ5WVl0Wm4rRDJPa__okendo_star_rating_eceRFY-1 {display: none;}"
+      ],
+      "settings": {
+        "product_breadcrumb": false,
+        "media_position": "is-flex-row",
+        "show_free_shipping": true,
+        "set_product_height": false,
+        "product_height": 390,
+        "video_looping": false,
+        "product_thumbs": true,
+        "gallery_arrows": false,
+        "enable_product_lightbox": false,
+        "activate_zoom": false,
+        "slideshow_speed": 0,
+        "slideshow_animation": "slide",
+        "thumbnail_position": "bottom",
+        "enable_thumbnail_slider": true
+      }
+    },
+    "comparison_chart_j4iAJX": {
+      "type": "comparison-chart",
+      "name": "Comparison Chart",
+      "settings": {}
+    },
+    "gallery_FxBPUD": {
+      "type": "gallery",
+      "blocks": {
+        "image_CnRXaC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/UPLOAD.png"
+          }
+        },
+        "image_iYYW7F": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ReDESIGN.png"
+          }
+        },
+        "image_TWHnGx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/FINAL.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_CnRXaC",
+        "image_iYYW7F",
+        "image_TWHnGx"
+      ],
+      "name": "Gallery",
+      "settings": {
+        "wide_display": false,
+        "title": "Design. Approve. Impress.",
+        "gallery_type": "classic",
+        "grid-size": 3,
+        "enable_lightbox": true,
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "testimonial_section_aCmWcJ": {
+      "type": "testimonial-section",
+      "blocks": {
+        "testimonial_block_36YwVG": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/Improvedversion.png",
+            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
+            "subtitle_author": "Antonio R."
+          }
+        },
+        "testimonial_block_rRrAU4": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 4.5,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/image6.jpg",
+            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
+            "subtitle_author": "Lineo Y."
+          }
+        },
+        "testimonial_block_9WFjUY": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 4,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/image4.jpg",
+            "feature_text": "<p>Plush and handsome, right from the photo we supplied!! Very happy with the product and thank you!!</p>",
+            "subtitle_author": "Jessica C."
+          }
+        },
+        "testimonial_block_p63U33": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 4,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/image3.png",
+            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
+            "subtitle_author": "Tony F."
+          }
+        },
+        "testimonial_block_NC6bV9": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/gempages_547641604358276043-47570370-fc3f-4f0f-bd37-bfd048c0f836.jpg",
+            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
+            "subtitle_author": "Lineo Y."
+          }
+        },
+        "testimonial_block_xY3PRH": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/PDP.8.jpg",
+            "feature_text": "<p>Easy to upload graphic… high quality item shipped fast!  Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
+            "subtitle_author": "Daniel W"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_block_36YwVG",
+        "testimonial_block_rRrAU4",
+        "testimonial_block_9WFjUY",
+        "testimonial_block_p63U33",
+        "testimonial_block_NC6bV9",
+        "testimonial_block_xY3PRH"
+      ],
+      "settings": {
+        "title": "<h2>Trusted by many rug Lovers!</h2>",
+        "subtitle": "",
+        "padding_top": 10,
+        "padding_bottom": 30
+      }
+    },
+    "image_with_text_overlay_EtXBR6": {
+      "type": "image-with-text-overlay",
+      "name": "Image with text overlay",
+      "settings": {
+        "wide_display": true,
+        "image": "shopify://shop_images/top5_benefits.png",
+        "pretext": "",
+        "title": "",
+        "show_stars": true,
+        "show_review_text": true,
+        "review_count_text": "",
+        "subtitle": "",
+        "button1": "",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": false,
+        "mobile_text_below_image": true,
+        "show_extra_icons": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "17496056993e01ea80": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_mzKjK9": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "custom-area-rugs",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_mzKjK9"
+      ],
+      "settings": {}
+    },
+    "custom_liquid_JEpPmQ": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<style>\n  .faq-section {\n    padding: 40px 20px;\n    max-width: 900px;\n    margin: auto;\n  }\n  .faq-title {\n    font-size: 28px;\n    margin-bottom: 20px;\n  }\n  .faq-item {\n    border-top: 1px solid #000;\n  }\n  .faq-question {\n    display: flex;\n    justify-content: space-between;\n    padding: 16px 0;\n    font-weight: bold;\n    font-size: 16px;\n    cursor: pointer;\n  }\n  .faq-icon {\n    transition: transform 0.3s ease;\n  }\n  .faq-answer {\n    display: none;\n    font-size: 15px;\n    padding-bottom: 16px;\n    line-height: 1.5;\n  }\n  .faq-item.open .faq-answer {\n    display: block;\n  }\n  .faq-item.open .faq-icon {\n    transform: rotate(45deg);\n  }\n  .nested-group {\n    padding-left: 15px;\n    border-left: 2px solid #ccc;\n    margin-top: 10px;\n  }\n  .nested-item {\n    border-top: 1px solid #ccc;\n  }\n  .nested-question {\n    padding: 12px 0;\n    font-weight: bold;\n    cursor: pointer;\n    font-size: 15px;\n    display: flex;\n    justify-content: space-between;\n  }\n  .nested-answer {\n    display: none;\n    padding-bottom: 12px;\n    font-size: 14px;\n  }\n  .nested-item.open .nested-answer {\n    display: block;\n  }\n  .nested-item.open .faq-icon {\n    transform: rotate(45deg);\n  }\n</style>\n\n<div class=\"faq-section\">\n  <h2 class=\"faq-title\">FAQs</h2>\n\n  <!-- Section 1 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>1. Trust & Satisfaction (Proofs, Guarantees, Design Assurance)</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I see a free proof or mockup before production?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes! You can request a 100% free digital proof by adding a note in the comment section during checkout or replying to your confirmation email within 24 hours of placing your order.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I request a refund if I don’t like the proof?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely. If the design proof doesn’t meet your expectations and you decide not to move forward, reply to your confirmation email within 24 hours and we’ll issue a full refund before production begins.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How long do I have to request design or color changes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            You have 24 hours after placing your order to submit design or color change requests—unless included at checkout.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What happens if I don't submit design instructions?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            If you don’t provide any notes or follow-up after checkout, we will proceed with production based on your uploaded artwork and our professional design standards.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How many design variations can I request?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            You may request up to 4 design variations per rug to ensure your vision is met without slowing production.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Section 2 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>2. Customization & Design Options</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer design assistance?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes! We offer free design help for logo cleanup, layout, color guidance, and complete concept creation.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will my design be centered and sized correctly?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes. Every design is manually adjusted by our team for centering, scaling, and balance.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I add text, numbers, images, or multiple logos?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely. Upload them or reply to your confirmation email and we’ll combine everything into a cohesive proof.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can you rotate my design?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes. We can rotate it in any direction. Just let us know.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n<!-- Section 3 -->\n<div class=\"faq-item\">\n  <div class=\"faq-question\">\n    <span>3. Backgrounds, Color, & Logo Styling</span>\n    <span class=\"faq-icon\">+</span>\n  </div>\n  <div class=\"faq-answer\">\n    <div class=\"nested-group\">\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>How do I choose or change the background color?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Include your desired color in the checkout comment section or reply to your confirmation email within 24 hours with a hex code or reference image.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Can I change the background color after placing the order?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes, as long as it’s requested within 24 hours.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Can I request a black or grey background with a white logo?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes, this is a popular option. Just specify it during checkout or by email.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Can you invert my logo?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes. Just let us know to flip light-to-dark or vice versa.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Will the colors and design match the final result?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          We target 95–100% color accuracy, but some variation can occur based on texture and screens.\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Section 4 -->\n<div class=\"faq-item\">\n  <div class=\"faq-question\">\n    <span>4. Shapes & Sizes</span>\n    <span class=\"faq-icon\">+</span>\n  </div>\n  <div class=\"faq-answer\">\n    <div class=\"nested-group\">\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Do you offer custom shapes?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes. Include your shape request at checkout or by email.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Do you offer custom sizes?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes. Pick the closest listed size and tell us your real dimensions — we’ll invoice custom if needed.\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Section 5 -->\n<div class=\"faq-item\">\n  <div class=\"faq-question\">\n    <span>5. Product Details & Quality</span>\n    <span class=\"faq-icon\">+</span>\n  </div>\n  <div class=\"faq-answer\">\n    <div class=\"nested-group\">\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>What are your rugs made of?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Durable, commercial-grade polyester with a non-slip rubber or vinyl backing.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Will the rugs stay flat in high-traffic areas?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yep — weight-balanced and reinforced for stability.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Are the rugs durable enough for daily use?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Absolutely. Built for stores, gyms, and heavy traffic.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Are they easy to clean?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yup. Vacuum regularly, or hose down with soap if needed.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Can they be used outdoors?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes — fade- and moisture-resistant, great for patios.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Do they have non-slip backing?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yup — every rug includes an anti-slip base.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>How thick are the rugs?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          About 0.4\\\" (10mm) — ADA-compliant and door-safe.\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Section 6 -->\n<div class=\"faq-item\">\n  <div class=\"faq-question\">\n    <span>6. Ordering & File Upload Help</span>\n    <span class=\"faq-icon\">+</span>\n  </div>\n  <div class=\"faq-answer\">\n    <div class=\"nested-group\">\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>What file types do you accept?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          PNG, JPEG, SVG, PDF, WebP — between 200KB and 20MB (2MB+ preferred).\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Can I check out without uploading my design?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes. Place your order and email us the file within 24 hours.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>I’m having trouble uploading—what should I do?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Just finish checkout and send us the file later — we’ll confirm.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>I can't complete checkout—what should I do?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Refresh or try a different browser. If that fails, contact us to place it manually.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Can I cancel or modify my order after placing it?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes — within 24 hours and before production begins.\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Section 7 -->\n<div class=\"faq-item\">\n  <div class=\"faq-question\">\n    <span>7. Discounts & Bulk Orders</span>\n    <span class=\"faq-icon\">+</span>\n  </div>\n  <div class=\"faq-answer\">\n    <div class=\"nested-group\">\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>My discount code isn’t working—what should I do?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Just complete the order and mention the code — we’ll refund the difference manually.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Do you offer bulk pricing?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Yes! For 10, 50, 100, 200+, contact us and we’ll send a quote.\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Section 8 -->\n<div class=\"faq-item\">\n  <div class=\"faq-question\">\n    <span>8. Production, Shipping & Delivery</span>\n    <span class=\"faq-icon\">+</span>\n  </div>\n  <div class=\"faq-answer\">\n    <div class=\"nested-group\">\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>What is the production and shipping turnaround time?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Production takes 3–5 business days, then it ships express ground.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>Where do you ship from?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          Orange County, California.\n        </div>\n      </div>\n      <div class=\"nested-item\">\n        <div class=\"nested-question\">\n          <span>How do I track my order?</span>\n          <span class=\"faq-icon\">+</span>\n        </div>\n        <div class=\"nested-answer\">\n          We’ll email tracking when it ships. If not received, reply to your order confirmation.\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n</div>\n<script>\n  document.querySelectorAll('.faq-question').forEach(q => {\n    q.addEventListener('click', () => {\n      const parent = q.parentElement;\n      document.querySelectorAll('.faq-item').forEach(item => {\n        if (item !== parent) item.classList.remove('open');\n      });\n      parent.classList.toggle('open');\n    });\n  });\n\n  document.querySelectorAll('.nested-question').forEach(q => {\n    q.addEventListener('click', () => {\n      const parent = q.parentElement;\n      const group = parent.parentElement;\n      group.querySelectorAll('.nested-item').forEach(item => {\n        if (item !== parent) item.classList.remove('open');\n      });\n      parent.classList.toggle('open');\n    });\n  });\n</script>",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        ".current_price {display: flex; justify-content: center; gap: 1rem;}"
+      ],
+      "settings": {
+        "show_product_recommendations": true,
+        "wide_display": false,
+        "product_recommendations_style": "grid",
+        "product_recommendations_heading": "You may also like",
+        "products_per_row": 4,
+        "recommended_products_limit": 4
+      }
+    }
+  },
+  "order": [
+    "sidebar",
+    "main",
+    "comparison_chart_j4iAJX",
+    "gallery_FxBPUD",
+    "testimonial_section_aCmWcJ",
+    "image_with_text_overlay_EtXBR6",
+    "17496056993e01ea80",
+    "custom_liquid_JEpPmQ",
+    "recommendations"
+  ]
+}

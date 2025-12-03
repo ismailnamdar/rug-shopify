@@ -1,0 +1,97 @@
+{% schema %}
+{
+  "name": "Scrolling Logo Row",
+  "max_blocks": 25,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Scrolling"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Logo Row",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .logo-scroll-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px 0;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .logo-scroll-wrapper::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .logo-scroll-track {
+    display: flex;
+    gap: 40px;
+    animation: scroll-logos 20s linear infinite;
+  }
+
+  .logo-scroll-track img {
+    max-height: 120px;
+    object-fit: contain;
+    display: block;
+  }
+
+  @keyframes scroll-logos {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media(max-width: 600px) {
+    .logo-scroll-track {
+      gap: 20px;
+    }
+
+    .logo-scroll-track img {
+      max-height: 75px;
+    }
+  }
+</style>
+
+{% if section.settings.section_title != blank %}
+  <h2 style="text-align:center;">{{ section.settings.section_title }}</h2>
+{% endif %}
+
+<div class="logo-scroll-wrapper">
+  <div class="logo-scroll-track">
+    {% for block in section.blocks %}
+      {% if block.settings.logo_image != blank %}
+        <img src="{{ block.settings.logo_image | image_url: width: 300 }}" alt="Logo">
+      {% endif %}
+    {% endfor %}
+    {% comment %} Duplicate for smooth infinite scroll effect {% endcomment %}
+    {% for block in section.blocks %}
+      {% if block.settings.logo_image != blank %}
+        <img src="{{ block.settings.logo_image | image_url: width: 300 }}" alt="Logo">
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

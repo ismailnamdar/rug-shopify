@@ -1,9 +1,0 @@
-{% for block in _blocks %}
-  {% assign _block = block.settings %}
-
-  {% if _block.image != blank %}
-    <div class="section__image">
-      <img src="{{ _block.image | img_url: '918x' }}" alt="{{ _block.image.alt}}">
-    </div><!-- /.section__image -->
-  {% endif %}
-{% endfor %}
