@@ -1,0 +1,79 @@
+<div class="section-jobs">
+  <div class="section__shell">
+    <h1 class="section__title">{{section.settings.section-title}}</h1><!-- /.ection__title -->
+    <div class="section__content">
+      <ul class="list-jobs">
+        {%- for block in section.blocks -%}
+          {%- assign _block = block.settings -%}
+          {%- assign block_job_title = _block.job-title -%}
+          {%- assign block_job_content = _block.job-content -%}
+          {%- assign block_button_text = _block.button-text -%}
+          {%- assign block_button_link = _block.button-link -%}
+          <li>
+
+            {% if block_job_title != blank %}
+              <h4>
+                {{- block_job_title -}}
+              </h4>
+            {% endif %}
+            {% if block_job_content != blank %}
+              <p>
+                {{- block_job_content | newline_to_br -}}
+              </p>
+            {% endif %}
+            {% if block_button_text != blank and block_button_link != blank %}
+            <a class="btn" href="{{- block_button_link -}}">{{- block_button_text -}}</a><!-- /.btn -->
+            {% endif %}
+          </li>
+        {%- endfor -%}
+      </ul><!-- /.list-jobs -->
+    </div><!-- /.section__content -->
+    <div class="section__action">{{section.settings.job-contact}}</div><!-- /.section__action -->
+  </div><!-- /.section__shell -->
+</div><!-- /.section-jobs -->
+
+{% schema %}
+{
+  "name": "Jobs",
+  "blocks": [
+  {
+    "type": "step",
+    "name": "Job",
+      "settings": [
+        {
+          "type": "text",
+           "id": "job-title",
+           "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "job-content",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "button-text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button-link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+    "settings": [
+    {
+      "type": "text",
+      "id": "section-title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "job-contact",
+      "label": "Text"
+    }
+  ]
+}
+{% endschema %}

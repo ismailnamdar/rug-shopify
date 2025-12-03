@@ -1,0 +1,112 @@
+{%- assign _section = section.settings -%}
+{%- assign section_background = _section.background -%}
+{%- assign section_title = _section.title -%}
+
+<div {% include 'image', _image: section_background, size: '2048', background: true, inline: true, classes: 'section-how-it-works' %}>
+  <div class="page-width">
+    <div class="section__inner">
+      {% if section_title != blank %}
+        <div class="section__head">
+          <h2 class="section__title">
+            {{- section_title -}}
+          </h2>
+        </div><!-- /.section__head -->
+      {% endif %}
+
+      <div class="section__body">
+
+        <ul class="list-steps">
+          {%- for block in section.blocks -%}
+            {%- assign _block = block.settings -%}
+            {%- assign block_image = _block.image -%}
+            {%- assign block_number = _block.number -%}
+            {%- assign block_title = _block.title -%}
+            {%- assign block_text = _block.text -%}
+    
+            <li>
+              {% if block_image != blank %}
+                <figure>
+                  {% include 'image', _image: block_image, size: '440', alt: block_image.alt %}
+                </figure>
+              {% endif %}
+    
+              {% if block_number != blank %}
+                <span>
+                  {{- block_number -}}
+                </span>
+              {% endif %}
+    
+              {% if block_title != blank %}
+                <h3>
+                  {{- block_title -}}
+                </h3>
+              {% endif %}
+    
+              {% if block_text != blank %}
+                <p>
+                  {{- block_text | newline_to_br -}}
+                </p>
+              {% endif %}
+            </li>
+          {%- endfor -%}
+        </ul><!-- /.list-steps -->
+      </div><!-- /.section__body -->
+    </div><!-- /.section__inner -->
+  </div><!-- /.page-width -->
+</div><!-- /.section-how-it-works -->
+
+
+
+
+{% schema %}
+{
+  "name": "How It Works v2",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step Number"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works v2",
+      "category": "Home Sections"
+    }
+  ]
+}
+{% endschema %}

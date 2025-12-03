@@ -1,0 +1,96 @@
+<div {% include 'image', _image: section.settings.image, size: '2048', background: true, inline: true, classes: 'page hero', sizes: '600,1024,2048' %}>
+  {% include 'image', _image: section.settings.image, size: '2048', sizes: '600,1024,2048', alt: page.title %}
+</div>
+<div class="page-width">
+  <h1 class="heading select-subscription text-center">{{ section.settings.heading }}</h1>
+  <h2 class="subheading shipping-notice text-center">{{ section.settings.shipping-notice }}</h2>
+  {% assign block_count = 0 %}
+  {% for block in section.blocks %}
+    {% assign block_count = block_count | plus: 1 %}
+  {% endfor %}
+  {% assign second_to_last = block_count | minus: 1 %}
+  <div class="plans flex space wrap" data-count="{{ block_count }}">
+    {% for block in section.blocks %}
+      <div class="plan flex column space{% if forloop.index == second_to_last %} selected{% endif %}">
+        <a href="{{ block.settings.url }}" class="flex column space appendCC item{{forloop.index}}">
+          <div>
+            {{ block.settings.image | img_url: '500x' | img_tag }}
+            <div class="plan-heading">
+              <h2>{{ block.settings.title }}</h2>
+              <span>{{ block.settings.price }}</span>
+            </div>
+            <div class="plan-detail flex column space">
+              <div>{{ block.settings.info }}</div>
+            </div>
+          </div>
+        </a>
+        <div class="btn-holder"><a class="btn appendCC item{{forloop.index}}" href="{{ block.settings.url }}">{{ section.settings.cta }}</a></div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Join: Intro/Sign Up",
+    "class": "join-page intro",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Hero Image",
+        "info": "Recommended aspect ratio is 3:2. Recommended minimum width is 1600 px."
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Membership Selection Heading"
+      },
+      {
+        "type": "text",
+        "id": "shipping-notice",
+        "label": "Shipping Notice",
+        "default": "Free shipping on all orders!"
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "\"Choose Plan\" Button Text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Plan",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Membership Name"
+          },
+          {
+            "type": "text",
+            "id": "price",
+            "label": "Price"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Box Image"
+          },
+          {
+            "type": "richtext",
+            "id": "info",
+            "label": "Additional Plan Information",
+            "info": "Bold makes the font size slightly larger (to accentuate the price), and italic makes the font color pink."
+          },
+          {
+            "type": "text",
+            "id": "url",
+            "label": "Signup URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

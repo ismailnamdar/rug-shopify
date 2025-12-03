@@ -1,0 +1,52 @@
+<div class="page-width">
+  <h2 class="sub-heading text-center">{{ section.settings.heading }}</h2>
+  <div class="flex align-center baseline categories">
+    {% for block in section.blocks %}
+      <div class="category">
+        <a href="{{ block.settings.url }}"{% if block.settings.url contains 'collections' %} class="collection"{% endif %}>
+          {{ block.settings.image | img_url: '600x' | img_tag }}
+          <span>{{ block.settings.title }}</span>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Featured Categories",
+    "class": "featured-categories",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "category",
+        "limit": 3,
+        "name": "Category",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Recommended dimensions: 600x400px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Category Title"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

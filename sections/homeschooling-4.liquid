@@ -1,0 +1,163 @@
+{%- assign _blocks = section.blocks -%}
+
+<div class="partnership-page">
+  {%- for block in _blocks -%}
+    {%- assign _block = block.settings -%}
+    {% assign block_name = 'homeschooling-' | append: block.type %}
+
+    {% if _block.show_section or block.type == 'separator' %}
+      {% include block_name, _block: _block custom_class: 'section-banner--partnersip' %}
+    {% endif %}
+  {%- endfor -%}
+</div><!-- /.partnership -->
+
+{% schema %}
+{
+  "name": "Partnerships",
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color",
+          "default": "#aedfe5"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_section",
+          "label": "Show Section",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "columns",
+      "name": "Columns text",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_section",
+          "label": "Show Section",
+          "default": true
+        },      
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "title_image",
+          "label": "Title icon"
+        },
+        {
+          "type": "richtext",
+          "id": "left_column",
+          "label": "Left column"
+        },
+        {
+          "type": "richtext",
+          "id": "right_column",
+          "label": "Right column"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "name": "Callout 50/50",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_section",
+          "label": "Show Section",
+          "default": true
+        },
+        {
+          "type": "radio",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" },
+            { "value": "center", "label": "Center" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "checkbox",
+          "id": "reversed",
+          "label": "Image to the left",
+          "default": false,
+          "info": "Reversed layout: image to the left, text to the right."
+        },
+        {
+          "type": "checkbox",
+          "id": "cenered",
+          "label": "Centered layout",
+          "default": false,
+          "info": "No image layout"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "title_image",
+          "label": "Title image",
+          "info": "This will replace the title text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA button text"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "CTA button url"
+        }
+      ]
+    },
+    {
+      "type": "separator",
+      "name": "Separator",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows the green dots separator"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

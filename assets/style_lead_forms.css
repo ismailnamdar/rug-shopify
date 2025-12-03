@@ -1,0 +1,520 @@
+@font-face {
+  font-family: 'KGHAPPYSolid';
+  src: url(https://cdn.shopify.com/s/files/1/0300/1545/t/41/assets/34A7C4_0_0.eot?39);
+  src: url(https://cdn.shopify.com/s/files/1/0300/1545/t/41/assets/34A7C4_0_0.eot?%23iefix&39) format('embedded-opentype'),
+    url(https://cdn.shopify.com/s/files/1/0300/1545/t/41/assets/34A7C4_0_0.woff2?39) format('woff2'),
+    url(https://cdn.shopify.com/s/files/1/0300/1545/t/41/assets/34A7C4_0_0.woff?39) format('woff'),
+    url(https://cdn.shopify.com/s/files/1/0300/1545/t/41/assets/34A7C4_0_0.ttf?39) format('truetype');
+}
+
+#LeadFormsDemo {
+  color: #212529;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.modal {
+  z-index: 99999999 !important;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.modal-backdrop.fade {
+  opacity: 0;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
+#LeadFormsDemo .modal-backdrop {
+  background-color: red;
+}
+#LeadFormsDemo input,
+textarea,
+button,
+select {
+  -webkit-font-smoothing: auto !important;
+}
+
+#LeadFormsDemo h1,
+h2,
+h3,
+h4,
+h6 {
+  font-weight: 500;
+  margin-block-end: 8px;
+  margin-bottom: 8px;
+}
+
+#LeadFormsDemo .px-4 {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* Lead Form O */
+#LeadFormO #popup {
+  background-image: url(//cdn2.shopify.com/s/files/1/0300/1545/files/popup-bg_2x_1058b49e-a41a-4482-968d-9433baf42da2.jpg?v=1510246825);
+  padding: 24px;
+  margin: 44px 0;
+}
+
+#LeadFormsDemo .modal-body {
+  padding: 16px;
+}
+
+#LeadFormsDemo .green-border-top {
+  border-top: 8px solid #a9dd61;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+#LeadFormsDemo .close {
+  color: #58595b;
+  font-family: 'Avenir', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#LeadFormsDemo .work-sans-bold {
+  font-family: 'Avenir', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+#LeadFormsDemo .modal-content h1 {
+  font-family: 'KGHappySolid', sans-serif;
+  color: #f3576b;
+  font-size: 1.4em;
+  line-height: 1.4;
+  text-align: center;
+}
+
+#LeadFormsDemo .modal-content .description {
+  font-family: 'Avenir', sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  text-align: center;
+}
+
+#LeadFormsDemo .modal-footer a {
+  color: #4596eb !important;
+  text-decoration: underline !important;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  margin: 0 auto;
+}
+
+#LeadFormsDemo .form-group input {
+  border: 1px solid #e2e2e2;
+  height: 60px;
+  padding: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+}
+
+#LeadFormsDemo .form-group input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #a4a5b0;
+  opacity: 1; /* Firefox */
+}
+
+#LeadFormsDemo .form-group input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #a4a5b0;
+}
+
+#LeadFormsDemo .form-group input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #a4a5b0;
+}
+
+#LeadFormsDemo .form-group input[type='email'] {
+  font-size: 16px;
+}
+
+#LeadFormsDemo .btn-primary,
+.btn-secondary {
+  color: #fff !important;
+  background-color: #e84b5f !important;
+  border: none;
+  font-family: 'Avenir', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: capitalize;
+  letter-spacing: 0;
+  font-size: 17px !important;
+  line-height: 27px !important;
+  height: 55px;
+}
+
+#LeadFormsDemo .btn-primary:hover,
+.btn-secondary:hover {
+  color: #fff;
+  background-color: #a9dd61 !important;
+  border-color: #a9dd61;
+}
+
+#LeadFormsDemo small {
+  font-family: 'Avenir', sans-serif;
+  font-size: 0.7em;
+  color: #58595b;
+  margin: 15px auto;
+  text-align: center;
+}
+
+/* Lead Form A */
+
+#LeadFormA .modal-content {
+  position: relative;
+  border-radius: 8px;
+}
+
+#LeadFormA .modal-content button.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 9999;
+  opacity: 1;
+}
+
+#LeadFormA small {
+  display: block;
+  font-family: 'Avenir', sans-serif;
+  font-size: 11px;
+  color: #58595b;
+}
+
+#LeadFormA .modal-content .modal-footer {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 992px) {
+  #LeadFormA .modal-lg {
+    max-width: 600px;
+  }
+}
+
+/* Lead Form E */
+
+#LeadFormE .modal-content button.close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  z-index: 999;
+  opacity: 1;
+  text-shadow: none;
+  color: #f3576b;
+}
+
+/* Lead Form I */
+
+#LeadFormI {
+  background-color: rgba(1, 188, 190, 0.95);
+}
+
+#LeadFormI .modal-content {
+  background-color: transparent;
+  border: 0;
+}
+
+#LeadFormI .modal-content .close {
+  color: #fff;
+  font-size: 2em;
+  opacity: 1;
+  right: 15px;
+  top: -15px;
+  z-index: 9999;
+}
+
+#LeadFormI .modal-content .modal-body h1 {
+  color: #fff;
+}
+#LeadFormI .modal-content .modal-body .description {
+  color: #156a6b;
+}
+#LeadFormI .modal-content .modal-footer a {
+  color: #fff !important;
+}
+
+@media (max-width: 576px) {
+  #LeadFormI .modal-content {
+    margin-top: -3em;
+  }
+  #LeadFormI #LeadFormIimg {
+    max-width: 75%;
+  }
+}
+.modal-footer {
+  border-top: 0px;
+}
+/* Lead Form H */
+
+#LeadFormH button.close {
+  position: absolute;
+  right: 0px;
+  top: -25px;
+  z-index: 999;
+  opacity: 1;
+  text-shadow: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+#LeadFormH .mobile-form {
+  margin-top: -2em;
+}
+
+/* Thank You */
+
+#LeadFormTY .modal-content h1 {
+  font-size: 1.4em !important;
+}
+
+#LeadFormTY .modal-content button.close {
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  z-index: 9999;
+  opacity: 1;
+  font-size: 3em;
+}
+
+#LeadFormTY .btn-primary {
+  padding: 6px 48px !important;
+}
+
+#LeadFormTY .modal-body {
+  padding: 24px 16px !important;
+}
+
+#LeadFormTY .coupon {
+  font-family: 'KGHappySolid', sans-serif;
+  color: #01bcbe;
+  font-size: 1.8em !important;
+  line-height: 1.4 !important;
+  padding: 24px 0 !important;
+  margin: 24px 0 !important;
+  text-align: center;
+  border: 2px dashed #01bcbe;
+  background-color: #edfafc;
+}
+
+@media (min-width: 992px) {
+  #LeadFormTY .modal-lg {
+    max-width: 600px;
+  }
+}
+
+/* iPhone 5 */
+@media (max-width: 320px) {
+  #LeadFormE .modal-content h1 {
+    font-size: 1.1em;
+  }
+  #LeadFormE .modal-content .description {
+    font-size: 0.8em;
+  }
+  #LeadFormI .modal-body #LeadFormIimg {
+    padding: 0 30px !important;
+  }
+  #LeadFormI small {
+    margin: 0 0 15px 0;
+  }
+  #LeadFormH .modal-content h1 {
+    font-size: 1.1em !important;
+  }
+  #LeadFormH .description {
+    font-size: 0.8em !important;
+  }
+  #LeadFormH small {
+    font-size: 0.6em !important;
+  }
+  #LeadFormH .modal-content {
+    max-width: 350px;
+  }
+}
+
+/* Galaxy S5 */
+@media (min-width: 321px) and (max-width: 360px) {
+  #LeadFormE small {
+    font-size: 0.6em;
+  }
+  #LeadFormE .form-group input.form-control {
+    height: 60px;
+  }
+  #LeadFormE .modal-content h1 {
+    font-size: 1.3em;
+  }
+  #LeadFormE .modal-content .description {
+    font-size: 0.8em;
+  }
+  #LeadFormI .modal-content h1 {
+    font-size: 1.5em !important;
+  }
+  #LeadFormH .modal-content h1 {
+    font-size: 1em !important;
+  }
+  #LeadFormH .description {
+    font-size: 0.8em !important;
+  }
+  #LeadFormH small {
+    font-size: 0.6em !important;
+  }
+  #LeadFormH .modal-content {
+    max-width: 350px;
+  }
+}
+
+/* Pixel 2, Pixel 2 XL */
+@media (min-width: 361px) and (max-width: 575px) {
+  #LeadFormE .modal-content h1 {
+    font-size: 1.5em;
+  }
+  #LeadFormE .modal-content .description {
+    font-size: 0.8em;
+  }
+  #LeadFormI .modal-content h1 {
+    font-size: 1.7em !important;
+  }
+  #LeadFormH .modal-content h1 {
+    font-size: 1em !important;
+  }
+  #LeadFormH .description {
+    font-size: 0.8em !important;
+  }
+  #LeadFormH small {
+    font-size: 0.6em !important;
+  }
+  #LeadFormH .modal-content {
+    max-width: 350px;
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  #LeadFormsDemo .modal-content h1 {
+    font-size: 1.8em;
+  }
+  #LeadFormE .modal-content {
+    height: 400px;
+    width: 600px;
+  }
+  #LeadFormE .modal-content h1 {
+    font-size: 1.7em;
+  }
+  #LeadFormE img.raddish-box {
+    height: 210px;
+  }
+  #LeadFormI .modal-body {
+    width: 400px;
+  }
+  #LeadFormI .description {
+    font-size: 1.1em;
+  }
+  #LeadFormI small {
+    font-size: 0.8em;
+  }
+  #LeadFormI .modal-content h1 {
+    font-size: 2em !important;
+  }
+  #LeadFormH .modal-content {
+    max-width: 350px;
+  }
+  #LeadFormH .modal-content h1 {
+    font-size: 1em !important;
+  }
+  #LeadFormH .description {
+    font-size: 0.8em !important;
+  }
+  #LeadFormH small {
+    font-size: 0.6em !important;
+  }
+  #LeadFormH .modal-content {
+    max-width: 350px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  #LeadFormsDemo .modal-content h1 {
+    font-size: 1.8em;
+  }
+  #LeadFormE .modal-content {
+    height: 410px;
+    width: 600px;
+  }
+  #LeadFormE .modal-content h1 {
+    font-size: 1.7em;
+  }
+  #LeadFormE img.raddish-box {
+    height: 210px;
+  }
+  #LeadFormH .modal-dialog,
+  #LeadFormH .modal-content,
+  #LeadFormH .modal-body {
+    max-width: 700px !important;
+  }
+  #LeadFormH .modal-content h1 {
+    font-size: 1.6em !important;
+  }
+  #LeadFormH .modal-content .description {
+    font-size: 1em !important;
+    text-align: left !important;
+  }
+  #LeadFormH .modal-content .description strong {
+    font-size: 1.2em !important;
+  }
+  #LeadFormH .modal-body {
+    border-top: 8px solid #a9dd61;
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  #LeadFormsDemo .modal-content h1 {
+    font-size: 2em;
+  }
+  #LeadFormE .modal-content h1 {
+    font-size: 1.7em;
+  }
+  #LeadFormE img.raddish-box {
+    height: 210px;
+  }
+  #LeadFormE .modal-body .container-fluid {
+    padding: 0 50px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #LeadFormsDemo .modal-content h1 {
+    font-size: 2em;
+  }
+  #LeadFormH .modal-content h1 {
+    font-size: 1.7em;
+  }
+  #LeadFormE .modal-content h1 {
+    font-size: 1.7em;
+  }
+  #LeadFormE img.raddish-box {
+    height: 210px;
+  }
+  #LeadFormE .modal-body .container-fluid {
+    padding: 0 50px;
+  }
+}

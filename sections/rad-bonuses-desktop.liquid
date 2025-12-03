@@ -1,0 +1,220 @@
+<div class="rad-bonuses-desktop {% unless section.settings.show_mobile %} hidden-xs {% endunless %}{% unless section.settings.show_desktop %}hidden-sm hidden-md hidden-lg{% endunless %}">
+  <div {% render 'image', _image: section.settings.background, size: '2048', background: true, inline: true %}>
+    <div class="raddish-card">
+      <h2 class="h2">
+        {{section.settings.title}}
+      </h2>
+      <div class="list-bonuses">
+        {% for block in section.blocks %}
+        <a href="{{block.settings.url}}" class="bonus-container raddish-card">
+          <div class="bonus-image">
+            {% render 'image': _image: block.settings.icon, classes: "aspect-ratio-box" %}
+          </div>
+          <div class="bonus-description">
+            <h4 class="h4">{{block.settings.title}}</h4>
+            <div>{{block.settings.description}}</div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .rad-bonuses-desktop .bonus-container {
+    display: flex;
+  }
+  .rad-bonuses-desktop .responsive-background-image {
+    padding: 32px 32px 40px;
+  }
+  .bonus-container span {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+  }
+  
+  .rad-bonuses-desktop .raddish-card:not(.bonus-container) {
+    padding:25px  66px ;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .rad-bonuses-desktop img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    filter: drop-shadow(0px 2px 4px rgba(77, 77, 77, 0.201868));
+  }
+  .rad-bonuses-desktop .aspect-ratio-box:after {
+    padding-bottom: 80%;
+  }
+  .rad-bonuses-desktop .bonus-description {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  .rad-bonuses-desktop .bonus-description > div {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.75px;
+    line-height: 23px;
+    text-align: center;
+    color: #4D4D4D;
+    padding: 0px 8px 13px;
+  }
+
+  .rad-bonuses-desktop .list-bonuses {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 28px;
+    gap: 4rem;
+    text-align: center;
+  }
+  .rad-bonuses-desktop .bonus-image {
+  width: 100%;
+}
+.rad-bonuses-desktop .bonus-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    height: 100%;
+}
+
+.rad-bonuses-desktop .bonus-description h4 {
+    text-align: center;
+    width: 100%;
+    margin-top: .8rem;
+    margin-bottom: .75rem;
+}
+  .rad-bonuses-desktop h2 {
+    margin-bottom: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    /* color: #4D4D4D; */
+  }
+  
+  .bonus-description {
+      margin-left: 1.6rem;
+  }
+  
+  .rad-bonuses-desktop .bonus-container:not(:last-child) {
+    /* margin-bottom: 1.6rem; */
+  }
+  .bonus-description > div {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+  }
+
+  .rad-bonuses-icon img {
+    max-width: 65px;
+}
+
+.rad-bonuses-icon {
+    width: 95px;
+    height: 95px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.875px solid rgba(77, 77, 77, 0.19971);
+    box-shadow: 0px 2px 4px rgba(77, 77, 77, 0.201868);
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rad-bonuses-desktop {
+    position: relative;
+}
+
+.bonus-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.bonus-description h4 {
+    font-size: 14px;
+    margin-bottom: 0;
+    color: #F3576B;
+}
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Rad Bonuses - Desktop",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_mobile",
+      "label": "Show Mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desktop",
+      "label": "Show Desktop",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Rad Bonuses"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rad Bonuses - Desktop",
+      "category": "Landing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Bonus",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

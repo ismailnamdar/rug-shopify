@@ -1,0 +1,47 @@
+{% assign is_limited = false %}
+{% if product != blank %}
+  {% if settings.limited_product != blank and product.handle == settings.limited_product %}
+    {% assign is_limited = true %}
+  {% endif %}
+{% endif %}
+
+{% if item != blank %}
+  <pre>{{item.handle}}</pre>
+  {% if settings.limited_product != blank and item.product.handle == settings.limited_product %}
+    {% assign is_limited = true %}
+  {% endif %}
+{% endif %}
+
+<div class="quantity js-quantity">
+  <a
+    href="#line-item-loop-{%- if is_template -%}{% raw %}{{itemId}}{% endraw %}{%- else -%}{{- item.key -}}{%- endif -%}"
+    class="js-quantity-decrease"
+  >-</a>
+
+  <input
+    type="number"
+    name="quantity"
+    {%- if is_template -%}
+      class="js-quantity-update-on-change"
+    {%- else -%}
+      {%- if has_ajax_update -%}
+        class="js-quantity-update-on-change"
+      {%- endif -%}
+    {%- endif -%}
+    value="{%- if is_template -%}{% raw %}{{itemQuantity}}{% endraw %}{%- elsif item -%}{{- item.quantity -}}{%- else -%}1{%- endif -%}"
+    data-key="{%- if is_template -%}{% raw %}{{itemKey}}{% endraw %}{%- else -%}{{- item.key -}}{%- endif -%}"
+    {%- if is_template == false -%}
+      min="0"
+      max="{{- item.variant.inventory_quantity -}}"
+    {%- endif -%}
+    id="quantity"
+    {% if is_limited %}
+      max="1"
+    {% endif %}
+  >
+
+  <a
+    href="#line-item-loop-{%- if is_template -%}{% raw %}{{itemId}}{% endraw %}{%- else -%}{{- item.key -}}{%- endif -%}"
+    class="js-quantity-increase"
+  >+</a>
+</div><!-- /.quantity -->

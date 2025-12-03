@@ -1,0 +1,97 @@
+<div class="fancybox-close-small"></div>
+<div class="primary-screen">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="content">{{ section.settings.content }}</div>
+  <!-- Begin MailChimp Signup Form -->
+  <div id="mc_embed_signup">
+    <form method="post" id="popupForm" name="mc-embedded-subscribe-form subscribe-form" class="validate mcForm subscribe-form" target="_blank" novalidate>
+      <div id="mce-responses" class="clear success-message">
+      <div class="response" id="mce-mobile-error-response" style="display: none;"></div>
+      </div>
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_5e82c510b3bed646057235346_0fd431310d" tabindex="-1" value=""></div>
+      <div class="flex space">
+        <input type="email" value="" name="EMAIL" class="required email mobileEmail" id="mce-EMAIL" placeholder="{{ section.settings.placeholder }}">
+        <input type="submit" value="{{ section.settings.cta }}" name="subscribe" id="mc-embedded-subscribe" class="btn koriSendLeadConversion">
+      </div>
+    </form>
+    <p class="small-print">{{ section.settings.small-print }}</p>
+  </div>
+  <!--End mc_embed_signup-->
+</div>
+
+<div class="confirmation" style="display: none;">
+  <h2>{{ section.settings.confirmation-heading }}</h2>
+  <div class="content">{{ section.settings.confirmation }}</div>
+  <div class="illustration">{{ section.settings.illustration | img_url: 'master' | img_tag }}</div>
+  <div class="content">{{ section.settings.confirmation-2 }}</div>
+  <div class="discount">{{ section.settings.discount }}</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Mobile Popup",
+    "class": "mobile-popup",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Initial Popup"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Newsletter Description"
+      },
+      {
+        "type": "text",
+        "id": "placeholder",
+        "label": "Email Placeholder"
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "Submit Button Text"
+      },
+      {
+        "type": "text",
+        "id": "small-print",
+        "label": "Small Print"
+      },
+      {
+        "type": "header",
+        "content": "Confirmation Popup"
+      },
+      {
+        "type": "text",
+        "id": "confirmation-heading",
+        "label": "Confirmation Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "illustration",
+        "label": "Illustration"
+      },
+      {
+        "type": "text",
+        "id": "confirmation",
+        "label": "Confirmation Message"
+      },
+      {
+        "type": "text",
+        "id": "confirmation-2",
+        "label": "Confirmation Message, Line 2"
+      },
+      {
+        "type": "text",
+        "id": "discount",
+        "label": "Discount Code"
+      }
+    ]
+  }
+
+{% endschema %}

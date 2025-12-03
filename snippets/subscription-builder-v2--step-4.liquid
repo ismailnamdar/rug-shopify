@@ -1,0 +1,167 @@
+<div class="subscription-step subscription-step-v2--4" rv-class-needsreview="state.lastStepStateChanged">
+  <h2 class="subscription-step-v2--4__title"><span  role="button" aria-label="go back" style="padding-right: 4px; cursor: pointer;" rv-on-click="methods.goBack" > < </span>{{steps.step_4_title}}</h2>
+  <div class="subscription-step-v2--4__content {{ card_class }}" style="position: relative;">
+    <div id="step-4-summary">
+    </div>
+    <div id="step-4-note" ></div>
+    <div id="step-4-share-tracking-note"></div>
+  </div>
+  <div class="gift-message-saved" rv-if="state.parent.email">
+    <p>
+      <span>
+        <span>{{steps.step_4_gifts_label}}</span>
+      </span> <span id="gift-message-edit" data-content-id="gift-options-modal" rv-on-click="methods.openModalOnLastStep">Edit</span> <span class="delete-button" rv-on-click="methods.updateParentProperty | args 'email' ''">Delete</span> </p>
+    <p rv-text="state.parent.email"></p>
+  </div>
+  {% if steps.enable_bnsl_edit %}
+  <div class="gift-message-saved 3" rv-if="state.shipDecember | or state.shipJanuary | or state.shipNow">
+    <p>
+      <span>
+        <span>{{steps.step_4_buy_ship_later_label}}</span>
+      </span> <span id="gift-message-edit" data-content-id="gift-options-modal" rv-on-click="methods.openModalOnLastStep">Edit</span> <span class="delete-button hidden" rv-on-click="methods.updateBuyNowShipLater | args false">Delete</span> </p>
+      <p rv-if="state.shipDecember">{{steps.step_4_buy_ship_later_text_december}}</p>
+      <p rv-if="state.shipJanuary">{{steps.step_4_buy_ship_later_text_january}}</p>
+      <p rv-if="state.shipNow">{{steps.step_4_buy_ship_now_text}}</p>
+  </div>
+  {% endif %}
+  <div class="gift-message-saved gift-message-saved--sbo" rv-if="state.sbo">
+      <p rv-if="state.sbo">{{steps.step_4_sbo_text}}</p>
+  </div>
+  {% if steps.enable_bnsl_edit %}
+  <div class="gift-message-saved 3" rv-if="state.shipDecember | or state.shipJanuary | or state.shipNow">
+    <p>
+      <span>
+        <span>{{steps.step_4_buy_ship_later_label}}</span>
+      </span> <span id="gift-message-edit" data-content-id="gift-options-modal" rv-on-click="methods.openModalOnLastStep">Edit</span> <span class="delete-button hidden" rv-on-click="methods.updateBuyNowShipLater | args false">Delete</span> </p>
+      <p rv-if="state.shipDecember">{{steps.step_4_buy_ship_later_text_december}}</p>
+      <p rv-if="state.shipJanuary">{{steps.step_4_buy_ship_later_text_january}}</p>
+      <p rv-if="state.shipNow">{{steps.step_4_buy_ship_now_text}}</p>
+  </div>
+  {% endif %}
+  <div class="gift-message-saved gift-message-saved--sbo" rv-if="state.sbo">
+      <p rv-if="state.sbo">{{steps.step_4_sbo_text}}</p>
+  </div>
+  <div id="step-4-buttons"></div>
+</div>
+
+<style>
+  .subscription-step-v2--4 {
+    position: relative;
+  }
+
+  .subscription-step-v2--4__content {
+    background-color: white;
+    padding: 18px 88px 16px !important;
+    box-shadow: unset !important;
+    width: 100%;
+    max-width: 658px;
+    margin: 0 auto;
+  }
+  
+  .subscription-step-v2--4__checkout {
+    width: 100%;
+    max-width: 303px;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    height: 54px;
+  }
+
+  .subscription-step-v2--4__title { 
+    font-family: "KG HAPPY Solid", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 26px;
+  }
+
+  .subscription-step-v2--4 .cart-items.cart-items--ajax .cart-item__name {
+    text-align: left;
+  }
+
+  .subscription-step-v2--4 .cart-items.cart-items--ajax .cart-item__details .product-option {
+    font-size: 12px;
+  }
+  .subscription-step-v2--4 .cart-items.cart-items--ajax .quantity__input {
+    text-align: left;
+  }
+  .subscription-step-v2--4 .cart-items.cart-items--ajax quantity-input.quantity {
+    border: none;
+    padding: 0;
+  }
+
+  .subscription-step-v2--4 .cart-items.cart-items--ajax quantity-input button {
+    display: none;
+  }
+
+  .subscription-step-v2--4 .cart-items.cart-items--ajax quantity-input button,
+  .subscription-step-v2--4 .cart__close--mobile,
+  .subscription-step-v2--4 .cart__close,
+  .subscription-step-v2--4 .cart__threshold-goal,
+  .subscription-step-v2--4 .title-wrapper-with-link,
+  .subscription-step-v2--4 .shipping__totals,
+  .subscription-step-v2--4 .order__totals {
+    display: none !important;
+  }
+
+  .subscription-step-v2--4 .cart__footer {
+    padding-top: 0;
+  }
+
+  .subscription-step-v2--4 .cart__ctas {
+    margin-top: 30px;
+  }
+
+  .subscription-step-v2--4 #CartItem-1 {
+    border-top-width: 0px;
+  }
+
+  .subscription-step-v2--4 .cart-items.cart-items--ajax .product-option {
+    text-align: left;
+  }
+  .subscription-step-v2--4 .gift-message-button {
+    width: 100%;
+    max-width: 303px;
+    margin: 0 auto;
+  }
+  .subscription-step-v2--4 .share-tracking-button {
+    width: 100%;
+    max-width: 303px;
+    margin: 15px auto 0;
+  }
+  .subscription-step-v2--4 .cart-item__actions
+  {
+    display: none !important;
+  }
+
+  .subscription-step-v2--4 .cart-item__link {
+    pointer-events: none;
+  }
+  .subscription-step-v2--4 .cart-item__name {
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .subscription-step-v2--4 .subscription-builder-v2-card {
+      border: none !important;
+      padding: 0 !important;
+      margin: 0 auto !important;
+    }
+    .subscription-step-v2--4 .gift-message-button {      
+      max-width: unset;
+    }
+    .subscription-step-v2--4 .share-tracking-button {
+      max-width: unset;
+    }
+    .subscription-step-v2--4__checkout {
+      max-width: unset;
+      margin: 0 0 26px 0; 
+      padding: 0
+    }
+    .subscription-step-v2--4 .cart__ctas {
+      margin-top: 0;
+    }
+  }
+</style>

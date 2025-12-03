@@ -1,0 +1,223 @@
+<style>
+  {% comment %} Override 'bw-option' class to put 4 card in to step. {% endcomment %}
+  @media screen and (min-width: 876px) {
+    .bw-option {
+  		flex-basis: calc(25% - 26px);
+  	}
+  }
+</style>
+{% for block in section.blocks %}
+
+  {% comment %} Plan Option 1 {% endcomment %}
+  {% if block.type == 'pb-option-1' %}
+    {% assign plan_option = 'plan' %}
+    {% assign prod_id = all_products[block.settings.pb_option_prod].variants[0].id %}
+    <div class="bw-option bw-option-{{ plan_option }} container-box" data-option-id="{{prod_id}}" data-option-price="{{block.settings.pb_option_price}}">
+      <div class="bw-option-img">
+        <img src="{{ block.settings.pb_option_img | img_url: '144x144' }}">
+      </div>
+      <div class="bw-option-title">
+        {{ block.settings.title }}
+      </div>
+      <div class="bw-option-description">
+        {{ block.settings.pb_option_desc }}
+      </div>
+      <div class="quick-switch-container">
+        <button rv-if="state.extraItems.{{prod_id}} | not " class="quick-add-button bw-siblings-initial bw-option-atc" rv-on-click="methods.addExtraItem | args {{prod_id}}">
+          {% include 'icon-add' %}
+          <span class="bw-option-atc-text">Add</span>
+        </button>
+        <div class="quick-switch-qty-container" rv-show="state.extraItems.{{prod_id}}">
+            <div class="quick-add-qty">
+              <span class="plan-switch-minus" rv-on-click="methods.removeExtraItem | args {{prod_id}}">
+                {% include 'icon-minus-qty' %}
+              </span>
+              <span class="plan-switch-qty-display" rv-text="state.extraItems.{{prod_id}}"></span>
+              <span class="plan-switch-plus" rv-on-click="methods.addExtraItem | args {{prod_id}}" rv-if="state.extraItems.{{prod_id}} | gt 1 | not">
+                {% include 'icon-plus-qty' %}
+              </span>
+              <span class="quick-add-qty-plus" rv-if="state.extraItems.{{prod_id}} | gt 1" style="opacity: .4; pointer-events: none;">
+                {% include 'icon-plus-qty' %}
+              </span>
+            </div>
+          </div>
+      </div>
+    </div>
+
+  {% comment %} Plan Option 2 {% endcomment %}
+  {% elsif block.type == 'pb-option-2' %}
+    {% assign plan_option = 'addon' %}
+    {% assign prod_id = block.settings.pb_option2_var %}
+    <div class="bw-option bw-option-{{ plan_option }} container-box option2-option-main" data-option-id="{{prod_id}}" data-option-price="{{block.settings.pb_option_price}}">
+      <div class="bw-option-img">
+        <img src="{{ block.settings.pb_option2_img | img_url: '144x144' }}">
+      </div>
+      <div class="bw-option-title">
+        {{ block.settings.title }}
+      </div>
+      <div class="bw-option-description">
+        {{ block.settings.pb_option2_desc }}
+      </div>
+      <div class="quick-add-container">
+        <button class="quick-add-button bw-option-atc" rv-on-click="methods.addExtraItem | args {{prod_id}}" rv-if="state.extraItems.{{prod_id}} | not ">
+          {% include 'icon-add' %}
+          <span class="bw-option-atc-text">Add</span>
+        </button>
+        <div class="quick-add-qty-container" rv-if="state.extraItems.{{prod_id}}">
+          <div class="quick-add-qty">
+            <span class="quick-add-qty-minus" rv-on-click="methods.removeExtraItem | args {{prod_id}}">
+              {% include 'icon-minus-qty' %}
+            </span>
+            <span class="quick-add-qty-display" rv-text="state.extraItems.{{prod_id}}"></span>
+            <span class="quick-add-qty-plus" rv-on-click="methods.addExtraItem | args {{prod_id}}">
+              {% include 'icon-plus-qty' %}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {% comment %} Plan Option 3 {% endcomment %}
+  {% elsif block.type == 'pb-option-3' %}
+    {% assign plan_option = 'addon' %}
+    {% assign prod_id = block.settings.pb_option3_var %}
+    <div class="bw-option bw-option-{{ plan_option }} container-box option-3" data-option-id="{{prod_id}}" data-option-price="{{block.settings.pb_option_price}}">
+      <div class="bw-option-img">
+        <img src="{{ block.settings.pb_option3_img | img_url: '144x144' }}">
+      </div>
+      <div class="bw-option-title">
+        {{ block.settings.title }}
+      </div>
+      <div class="bw-option-description">
+        {{ block.settings.pb_option3_desc }}
+      </div>
+      <div class="quick-add-container">
+        <button class="quick-add-button bw-option-atc" rv-on-click="methods.addExtraItem | args {{prod_id}}" rv-if="state.extraItems.{{prod_id}} | not ">
+          {% include 'icon-add' %}
+          <span class="bw-option-atc-text">Add</span>
+        </button>
+        <div class="quick-add-qty-container" rv-if="state.extraItems.{{prod_id}}">
+            <div class="quick-add-qty">
+              <span class="quick-add-qty-minus" rv-on-click="methods.removeExtraItem | args {{prod_id}}">
+                {% include 'icon-minus-qty' %}
+              </span>
+              <span class="quick-add-qty-display" rv-text="state.extraItems.{{prod_id}}"></span>
+              <span class="quick-add-qty-plus" rv-on-click="methods.addExtraItem | args {{prod_id}}">
+                {% include 'icon-plus-qty' %}
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
+  {% comment %} Raddish Plus {% endcomment %}
+  {% elsif block.type == 'pb-option-4' %}
+    {% assign plan_option = 'addon' %}
+    {% assign productID = all_products[block.settings.pb_option_prod].variants[0].id %}
+    {% assign subID = 2120631 %}
+    <div class="bw-option bw-option-{{ plan_option }} container-box" data-option-id="{{productID}}" data-option-price="{{block.settings.pb_option_price}}">
+      <div class="bw-option-img">
+        <img src="{{ block.settings.pb_option_img | img_url: '144x144' }}">
+      </div>
+      <div class="bw-option-title">
+        {{ block.settings.title }}
+      </div>
+      <div class="bw-option-description">
+        {{ block.settings.pb_option_desc }}
+      </div>
+      <div class="quick-switch-container max">
+        {% comment %} We are attaching click event listener to handle adding Rad Plus to cart manually because it is a different product then any other. {% endcomment %}
+        <button rv-if="state.raddishPlus | eq 0" 
+                class="quick-add-button" 
+                rv-on-click="methods.changeRaddishPlus | args 1 {{productID}}, "
+                data-id="raddish-plus-button">
+          {% include 'icon-add' %}
+          <span class="bw-option-atc-text">Add</span>
+        </button>
+        <div class="quick-add-qty-container" id="raddish-plus-quantity-selector" rv-if="state.raddishPlus | eq 0 | not" >
+            <div class="quick-add-qty">
+              <span class="quick-add-qty-minus" rv-on-click="methods.changeRaddishPlus | args -1">
+                {% include 'icon-minus-qty' %}
+              </span>
+              <span class="quick-add-qty-display" rv-text="state.raddishPlus"></span>
+              {% comment %} Disable plus button because Raddish Plus can be added only once {% endcomment %}
+              <span class="quick-add-qty-plus" style="opacity: .4; pointer-events: none;">
+                {% include 'icon-plus-qty' %}
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
+    {%- comment -%}
+    <script>  
+        async function addRaddishPlusToCart () {
+          var properties = {
+            "shipping_interval_frequency": 1,
+            "shipping_interval_unit_type": "Months",
+            "subscription_id": {{subID}},
+            // Adding this parameter to not show quantity in cart page
+            "digital_plan": "Raddish Plus"
+          };
+          var options ={
+            "success": function(data, textStatus, jqXHR) {
+              showRaddishPlusQuantity(true);
+            },
+            "error": function(jqXHR, textStatus, errorThrown) {
+              console.error(errorThrown);
+            }
+          }
+          CartJS.addItem({{productID}}, 1, properties, options);
+        }
+  
+        function showRaddishPlusQuantity(shouldShow) {
+      var buttonEl = document.querySelector("button[data-id=raddish-plus-button]");
+          var quantityEl = document.getElementById("raddish-plus-quantity-selector");
+          
+          if (shouldShow) {
+            if (buttonEl != null) {
+            buttonEl.style.display = "none";
+            }
+            quantityEl.style.display = "block";
+          } else {
+            if (buttonEl != null) {
+            buttonEl.style.display = "block";
+            }
+            quantityEl.style.display = "none";
+          }
+        }
+         
+          
+        document.addEventListener('DOMContentLoaded', function () {
+          var buttonEl = document.querySelector("button[data-id=raddish-plus-button]");
+          buttonEl.addEventListener('click', addRaddishPlusToCart);
+          
+          function checkRadPlus (cart) {
+            // Check if rad plus is already added to cart
+            var isRadPlusAdded = false; 
+            for (var i = 0; i < cart.items.length; i++) {
+              isRadPlusAdded = cart.items[i].variant_id === {{productID}};
+              if (isRadPlusAdded) {
+                showRaddishPlusQuantity(true);
+                break;
+              }
+            }
+            if (!isRadPlusAdded) {
+              showRaddishPlusQuantity(false);
+            }
+          }
+          // Set the initial state of Raddish Plus
+          $(document).on('cart.ready', function(event, cart) {
+            checkRadPlus(cart);
+      });
+          
+          // Set the state of Raddish Plus after every request queue complete
+          $(document).on('cart.requestComplete', function(event, cart) {
+            checkRadPlus(cart);
+      });
+        })
+    </script>
+    {%- endcomment -%}
+  {% endif %}
+{% endfor %}
+<div class="step-3-trigger-container">
+  <button rv-on-click="methods.moveToNextStep" class="button-primary step-3-trigger">Next</button>
+</div>

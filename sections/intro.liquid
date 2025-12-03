@@ -1,0 +1,179 @@
+{%- assign _section = section.settings -%}
+{%- assign section_image = _section.image -%}
+{%- assign section_mobile = _section.mobile -%}
+{%- assign section_title = _section.title -%}
+{%- assign section_text = _section.text -%}
+{%- assign section_btn_text = _section.btn_text -%}
+{%- assign section_btn_url = _section.btn_url -%}
+
+<div {% include 'image', _image: section_image, background: true, size: '2048', sizes: '600,1024,2048' classes: 'intro', inline: true %}>
+  <div class="hidden-xs" style="width: 100%;">
+    <div class="page-width">
+      <div class="intro__inner">
+        {% if section_title != blank %}
+          <h2 class="intro__title">
+            {{- section_title -}}
+          </h2><!-- /.intro__title -->
+        {% endif %}
+
+        {% if section_text != blank %}
+          <p class="intro__description">
+            {{- section_text | newline_to_br -}}
+          </p><!-- /.intro__description -->
+        {% endif %}
+
+        {% if section_btn_text != blank and section_btn_url != blank %}
+          <a href="{{- section_btn_url -}}" class="btn intro__btn">
+            {{- section_btn_text -}}
+          </a>
+        {% endif %}
+      </div><!-- /.intro__inner -->
+    </div><!-- /.page-width -->
+  </div><!-- /.hidden-xs -->
+
+  <div class="visible-xs-block">
+    <div class="intro__image">
+      <img src="{{- section_mobile | img_url: '1534x' -}}" alt="{{- section_mobile.alt -}}">
+    </div><!-- /.intro__image -->
+
+    <div class="intro__inner">
+      {% if section_title != blank %}
+        <h2 class="intro__title">
+          {{- section_title -}}
+        </h2><!-- /.intro__title -->
+      {% endif %}
+
+      {% if section_text != blank %}
+        <p class="intro__description">
+          {{- section_text | newline_to_br -}}
+        </p><!-- /.intro__description -->
+      {% endif %}
+
+      {% if section_btn_text != blank and section_btn_url != blank %}
+        <a href="{{- section_btn_url -}}" class="btn intro__btn">
+          {{- section_btn_text -}}
+        </a>
+      {% endif %}
+    </div><!-- /.intro__inner -->
+  </div><!-- /.visible-xs-block -->
+</div><!-- /.intro -->
+
+{% if _section.banner_title != blank and _section.banner_toggle %}
+  <section class="section-banner-home" style="background-color: {{ _section.bg_color }}; color: {{ _section.text_color }};">
+    <div class="section__inner">
+      {% if _section.banner_image != blank and _section.show_image %}
+        <div class="section__image">
+          {% include 'image', _image: _section.banner_image, size: '200' %}
+        </div><!-- /.section__image -->
+      {% endif %}
+
+      <div class="section__content">
+        <h2>{{ _section.banner_title | escape }}</h2>
+
+        {% if _section.description != blank %}
+          <div class="description hidden-xs">
+            {{ _section.description }}
+          </div>
+        {% endif %}
+
+        {% if _section.description_mobile != blank %}
+          <div class="description hidden-md hidden-sm hidden-lg">
+            {{ _section.description_mobile }}
+          </div>
+        {% endif %}
+      </div><!-- /.section__content -->
+    </div><!-- /.section__inner -->
+  </section><!-- /.section-banner-home -->
+{% endif %}
+
+{% schema %}
+{
+  "name": "Intro",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image - Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile",
+      "label": "Image - Mobile"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button - Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button - URL"
+    },
+    {
+      "type": "header",
+      "content": "Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "banner_toggle",
+      "label": "Show/Hide",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#01bcbe"
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "richtext",
+      "id": "description_mobile",
+      "label": "Description Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Image",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Intro",
+      "category": "Home Sections"
+    }
+  ]
+}
+{% endschema %}

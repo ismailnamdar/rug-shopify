@@ -1,0 +1,88 @@
+{% if settings.limited_product != blank %}
+  <div class="modal fade" id="limited-product-modal" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered mx-auto" role="document">
+      <div class="modal-content mx-auto position-relative">
+        <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">x</span>
+        </button>
+        <div class="modal-body mx-auto p-0 text-center">
+          {{settings.limited_modal_copy}}
+        </div><!-- .modal-body -->
+      </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
+  </div><!-- #LeadFormI -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      $(`form[action="/cart/add" data-productid="{{ product.id }}"]`).on("submit", function(event) {
+        var limitedProdHandle = "{{settings.limited_product}}";
+        // console.log($(this).data("product-handle")=="{{settings.limited_product}}", $(this).data("product-handle"),"{{settings.limited_product}}")
+        if($(this).data("product-handle") == limitedProdHandle) {
+          // console.log($(this).data("product-handle"))
+          const itemInCart = CartJS.cart.items.find(item => item.handle == limitedProdHandle);
+          if(itemInCart) {
+            event.preventDefault();
+            event.stopPropagation();
+            jquery2("#limited-product-modal").bsModal('show');
+          }
+        }
+      })
+
+      $("#limited-product-modal .close").on("click", function() {
+        jquery2("#limited-product-modal").bsModal('hide');
+      })
+    })
+  </script>
+
+  <style>
+    #limited-product-modal {
+      display: none;
+    }
+    #limited-product-modal {
+    display: none;
+    position: fixed;
+    top: 25vh;
+    width: 100%;
+    background: white;
+    max-width: 500px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    border: 2px solid rgba(77,77,77,.2);
+  }
+
+  #limited-product-modal .modal-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+  #limited-product-modal button.close span {
+    width: 100%;
+    display: block;
+  }
+  #limited-product-modal button.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: white;
+    background: #f3576b;
+    bordeR: none;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+  }
+
+  #limited-product-modal .modal-body > div {
+    width: 50%;
+  }
+  </style>
+{% endif %}

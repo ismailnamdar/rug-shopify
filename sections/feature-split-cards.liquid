@@ -1,0 +1,260 @@
+{% comment %}
+  Section: Feature Split Card (generic)
+  - Image (left or right on desktop)
+  - Title, Description
+  - Primary Button (text + link)
+  - Secondary Link (text + url)
+  - Desktop max width 1180px, Mobile max width 277px
+{% endcomment %}
+
+<section class="feature-split-card-wrapper">
+  {%- for block in section.blocks -%}
+  <div class="feature-split-card container {% if block.settings.image_side == 'left' %}feature-split-card__img-left{% else %}feature-split-card__img-right{% endif %}">
+    <div class="feature-split-card__media">
+      {% if block.settings.image != blank %}
+        {{ block.settings.image | image_url: width: 1400 | image_tag:
+          loading: 'lazy',
+          class: 'feature-split-card__img',
+          alt: block.settings.title | escape }}
+      {% else %}
+        <div class="feature-split-card__placeholder" aria-hidden="true"></div>
+      {% endif %}
+    </div>
+
+    <div class="feature-split-card__content {% if block.settings.image_side == 'left' %}feature-split-card__content-right{% else %}feature-split-card__content-left{% endif %}">
+      {% if block.settings.title != blank %}
+        <h2 class="feature-split-card__title">{{ block.settings.title }}</h2>
+      {% endif %}
+
+      {% if block.settings.body != blank %}
+        <div class="feature-split-card__body">{{ block.settings.body }}</div>
+      {% endif %}
+
+      {% if block.settings.btn_text != blank and block.settings.btn_link != blank %}
+        <div>
+            <a class="btn" style="width: 225px; max-width: 100%; letter-spacing: 0;" href="{{ block.settings.btn_link }}">{{ block.settings.btn_text | escape }}</a>
+        </div>
+      {% endif %}
+
+      {% if block.settings.link_text != blank and block.settings.link_url != blank %}
+        <a class="feature-split-card__link" href="{{ block.settings.link_url | append: block.settings.link_target_section_id }}">{{ block.settings.link_text | escape }}</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+
+  <style>
+    .feature-split-card-wrapper{
+      padding: 55px;
+      background: transparent;
+      gap: 55px;
+      display: flex;
+      flex-direction: column;
+    }
+    .feature-split-card.container{
+      width: min(1180px, 100%);
+      height: 380px;
+      margin-inline: auto;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 0 rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.06);
+      display: flex;
+      justify-content: space-between;
+      gap: 100px;
+      filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.11));
+    }
+
+    /* Mobile first: stack with image first */
+    .feature-split-card__media{ 
+        order: 1;
+        aspect-ratio: 1.1/1;
+    }
+    .feature-split-card__content{ 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 18px;
+        order: 1; 
+        padding: 24px; 
+        text-align: left; 
+        flex: 1;
+        padding: 50px 50px;
+    }
+
+    .feature-split-card__img{
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 1.1/1;
+      border-radius: 16px;
+    }
+    .feature-split-card__placeholder{ background:#f3f3f3; aspect-ratio: 1.1/1; }
+
+    .feature-split-card__title{
+      font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+    line-height: normal;
+      color: #4d4d4d;
+      font-family: "KG HAPPY Solid", sans serif;
+      margin: 0;
+      max-width: 420px;
+    }
+    .feature-split-card__body{
+      color: #4d4d4d;
+      font-size: 16px;
+      line-height: 34px;
+      font-style: normal;
+      font-weight: 350;
+    }
+    .feature-split-card__btn{
+      display:inline-block;
+      padding: 14px 22px;
+      border-radius: 12px;
+      background:#f25568;
+      color:#fff;
+      text-decoration:none;
+      font-weight:800;
+      font-size:16px;
+      box-shadow: 0 8px 18px rgba(242,85,104,.3);
+    }
+    .feature-split-card__btn:hover{ transform: translateY(-1px); }
+
+    .feature-split-card__link{
+      letter-spacing: 0;
+      display:inline-block;
+      text-decoration: underline;
+      color: #4D4D4D;
+      font-size: 16px;
+      font-weight: 350;
+      line-height: 34px;
+      text-decoration-style: solid;
+      text-decoration-skip-ink: none;
+      text-decoration-thickness: auto;
+      text-underline-offset: auto;
+    }
+
+    .feature-split-card__content-right {
+      {% comment %} align-items: flex-end; {% endcomment %}
+      {% comment %} text-align: right; {% endcomment %}
+    }
+
+    .feature-split-card__content-left {
+      order: 0;
+    }
+    
+    .feature-split-card__img-left {
+      gap: 0 !important;
+    }
+
+    /* Mobile width limit */
+    @media (max-width: 940px){
+      .feature-split-card-wrapper{
+        padding: 40px 50px;
+        background: transparent;
+        gap: 20px;
+      }
+      .feature-split-card__content{ 
+        padding: 20px 20px 25px; gap: 10px; 
+       }
+      .feature-split-card.container{
+        height: auto;
+        gap: 10px;
+        flex-direction: column;
+        border-radius: 8px;
+        filter: none;
+      }
+      .feature-split-card__title{
+        font-size: 18px;
+        }
+      .feature-split-card__body{
+        font-size: 14px;
+        line-height: 19px;
+      }
+      .feature-split-card__link{
+        font-size: 12px;
+        line-height: 20px;
+      }
+    .feature-split-card__img{ border-radius: 8px; }
+    .feature-split-card__media { order: unset; }
+    .feature-split-card__content-right {
+      align-items: flex-start;
+      text-align: left;
+    }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Feature Split Cards",
+  "class": "section-feature-split-card",
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_side",
+      "label": "Image position (desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Headline",
+      "default": "For the Aspiring Young Chef"
+    },
+    {
+      "type": "text",
+      "id": "body",
+      "label": "Description",
+      "default": "Fuel their passion for cooking with the original cooking club for kids."
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button text",
+      "default": "Explore Cooking"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Secondary link text",
+      "default": "Choose Plan"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Secondary link URL"
+    },
+    {
+      "type": "text",
+      "id": "link_target_section_id",
+      "label": "Link Target Section ID", 
+      "info": "Target id of the section to scroll on click. Example: \"#subscription-builder-widget\""
+    },
+  ],
+}],
+  "presets": [
+    { "name": "Feature Split Cards" }
+  ]
+}
+{% endschema %}

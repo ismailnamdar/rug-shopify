@@ -1,0 +1,40 @@
+{%- assign _section = section.settings -%}
+{%- assign section_title = _section.title | newline_to_br -%}
+{%- assign section_image = _section.image -%}
+
+{% if section_image != blank %}
+  <div {% include 'image', _image: section_image, size: '2048', sizes: '600,1024,2048', background: true, inline: true, classes: 'section-intro section-intro--join' %}>
+    <div class="section__inner">
+      <h1 class="section__title">
+        {{- section_title | default: page.title -}}
+      </h1><!-- /.section__title -->
+
+      {% if page.content != '' %}
+        <div class="section__entry">
+          {{- page.content -}}
+        </div><!-- /.section__entry -->
+      {% endif %}
+    </div><!-- /.section__inner -->
+  </div><!-- /.section-holiday-intro -->
+{% endif %}
+
+
+
+{% schema %}
+{
+  "name": "Join Intro",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title Override",
+      "info": "If empty the page title is used."
+    }
+  ]
+}
+{% endschema %}

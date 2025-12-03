@@ -1,0 +1,118 @@
+{%- assign _section  = section.settings -%}
+
+<section class="section-affiliate">
+  <header class="section__head" style="background-color: {{ _section.intro_bg }}">
+    <div class="page-width">
+      <h1>{{ _section.intro_title | escape | newline_to_br | default: page.title }}</h1>
+    </div><!-- /.page-width -->
+  </header><!-- /.section__head -->
+
+  <div class="section__body">
+    <div class="section__body-content">
+      {% if _section.content_1 != blank %}
+        {{ _section.content_1 }}
+      {% endif %}
+
+      <p>
+        {% include 'image', _image: _section.image, size: '768' %}
+      </p>
+
+      {% if _section.content_2 != blank %}
+        {{ _section.content_2 }}
+      {% endif %}
+
+      {% if _section.button_label != blank and _section.button_url != blank %}
+        <a href="{{ _section.button_url }}" class="btn">
+          {{ _section.button_label | escape }}
+        </a><!-- /.btn -->
+      {% endif %}
+    </div><!-- /.section__body-content -->
+
+    {% if _section.image != blank %}
+      <div class="section__body-image">
+        {% include 'image', _image: _section.image, size: '1200', sizes: '500,768' %}
+      </div><!-- /.section__body-image -->
+    {% endif %}
+  </div><!-- /.section__body -->
+
+  {% if _section.outro_content != blank and _section.outro_hide == false %}
+    <footer class="section__foot" style="background-color: {{ _section.outro_bg }}">
+      <div class="page-width">
+        {{ _section.outro_content }}
+      </div><!-- /.page-width -->
+    </footer><!-- /.section__foot -->
+  {% endif %}
+</section><!-- /.section-affiliate -->
+
+{% schema %}
+{
+  "name": "Affiliate",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intro"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_title",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "intro_bg",
+      "label": "Background Color",
+      "default": "#01bcbe"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "content_1",
+      "label": "Content paragraph 1"
+    },
+    {
+      "type": "richtext",
+      "id": "content_2",
+      "label": "Content paragraph 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Outro"
+    },
+    {
+      "type": "checkbox",
+      "id": "outro_hide",
+      "label": "Hide outro",
+      "default": false
+    },
+    {
+      "type": "richtext",
+      "id": "outro_content",
+      "label": "Content"
+    },
+    {
+      "type": "color",
+      "id": "outro_bg",
+      "label": "Background Color",
+      "default": "#f79f7e"
+    }
+  ]
+}
+{% endschema %}

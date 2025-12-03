@@ -1,0 +1,259 @@
+{% assign view = "" %}
+{% assign page_params = content_for_header| split:'"pageurl":"' | last | split:'"' | first | split: "?" | last | split: "\u0026" %}
+{% for param in page_params %}
+  {% assign parts = param | split: "=" %}
+  {% if parts[0] == "view" %} {% assign view = parts[1] %} {% endif %}
+{% endfor %}
+
+<style>
+  .acct-main-nav-right, .acct-main-nav-left {
+  	-ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    padding-left: 0;
+    text-align: right;
+  }
+  .acct-main-nav-left {
+  	text-align: left;
+  }
+  
+  .acct-main-nav-right .acct-main-nav-items a.nav-item-alt, .acct-main-nav-center {
+  	padding: 15px 0 15px 22px;
+    color: hsla(0,0%,100%,.6);
+  }
+  
+  .acct-main-nav-items a::after {
+  	display: none;
+  }
+  
+  .acct-main-nav-items {
+  	justify-content: flex-end;
+  }
+  
+  .acct-main-nav-left h4, .acct-main-nav-right .acct-main-nav-items a.nav-item-alt.active {
+  	color: white;
+  }
+  .acct-main-nav-left h4, .acct-main-nav-right .acct-main-nav-items a.nav-item-alt {
+    margin: 0;
+    font-weight: 100;
+    font-size: 14px;
+    border: none;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    font-family: "KG HAPPY Solid", sans-serif;
+  }
+  
+  .acct-main-nav {
+	  justify-content: space-between; 
+  }
+
+  .acct-main-nav-right .acct-main-nav-items a.nav-item-alt {
+    font-size: 13px;
+    font-weight: 100;
+  }
+@media (max-width: 875px){
+  .acct-main-nav-container {
+    display: none;
+  }
+}
+  .acct-main-nav-mobile-wrapper {
+    background: #01bcbe;
+    padding: 20px;
+    display: none;
+    right: 15px;
+    position: relative;
+    width: 100vw;
+    margin: 0;
+  }
+
+  .acct-main-nav-mobile {
+    margin: 0;
+  }
+
+  .acct-nav-mobile-label {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  .nice-select {
+    padding: 25px;
+  }
+
+  .nice-select .current { 
+
+    text-transform: capitalize;
+    padding: 5px 15px;
+  }
+
+  .styled-dropdown-container svg {
+    width: 22px;
+  }
+
+  .no-store-orders + .no-memberships {
+    display: none;
+  }
+
+</style>
+  <div class="hide name"><p>{{ customer.first_name }}</p><span>{{ customer.last_name }}</span></div>
+  <div class="hide email"><p>{{ customer.email }}</p><span>{{ customer.email }}</span></div>
+  <div class="acct-main-nav-container">
+  <div class="acct-main-nav">
+    <div class="acct-main-nav-left">
+      <h4>My Account</h4>
+    </div>
+    <div class="acct-main-nav-right">
+      <div class="acct-main-nav-items">
+        {% if customer.metafields.subscriptions.customer_string %}
+          <a data-recharge-token href="/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}/payment_sources"  name="billing" class="nav-item-alt"><span>Account</span></a>
+        {% else %}  
+          <a href="/account?view=details"  name="billing" class="nav-item-alt {% if request.path == "/account" and view == "details" %}active{% endif %}"><span>Account</span></a>
+        {% endif %}
+        {% if customer.metafields.subscriptions.customer_string %}
+          <a data-recharge-token href="/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}/subscriptions" name="orders" class="nav-item-alt {% if request.path contains "/subscriptions" %}active{% endif %}"><span>Memberships</span></a>
+        {% else %}
+          <a href="/account?view=memberships" name="orders" class="nav-item-alt {% if request.path == "/account" and view == "memberships" %}active{% endif %}"><span>Memberships</span></a>
+        {% endif %}
+        <a href="/account/orders" name="orders" class="nav-item-alt {% if request.path == "/account" or request.path contains "account/orders" %}{% if view == blank %}active{% endif %}{% endif %}"><span>Store Orders</span></a>
+        <a href="/account/logout" name="Logout" class="nav-item-alt"><span>Logout</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="acct-main-nav-mobile-wrapper">
+<div class="acct-main-nav-mobile">
+  <div class="acct-nav-mobile-label">
+    Jump to:
+  </div>
+  <div class="nice-select styled-dropdown">
+    <select class="acct-nav-mobile-dropdown styled-dropdown">
+      {% if customer.metafields.subscriptions.customer_string %}
+        <option value="/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}/payment_sources"  name="billing" class="nav-item-alt">Account</option>
+      {% else %}
+        <option value="/account?view=details"  name="billing" class="nav-item-alt {% if request.path == "/account" and view == "details" %}active{% endif %}">Account</option>
+      {% endif %}
+      {% if customer.metafields.subscriptions.customer_string %}
+        <option value="/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}/subscriptions" name="memberships" class="nav-item-alt {% if request.path contains "/subscriptions" %}active{% endif %}">Memberships</option>
+      {% else %}
+        <option value="/account?view=memberships" name="memberships" class="nav-item-alt {% if request.path == "/account" and view == "memberships" %}active{% endif %}">Memberships</option>
+      {% endif %}
+        <option value="/account/orders" name="orders" class="nav-item-alt {% if request.path == "/account" or request.path contains "account/orders" %}{% if view == blank %} active{% endif %}{% endif %}">Store Orders</option>
+        <option value="/account/logout" name="Logout" class="nav-item-alt">Logout</option>
+      {% comment %} <option data-display="billing" value="/account/addresses" label="addresses" {% if request.path contains '/account/addresses' %}selected{% endif %}>Addresses</option> {% endcomment %}
+    </select>
+    
+  </div>
+  {% include 'icon-dropdown-arrow' %}
+</div>
+</div>
+{% if request.path contains 'tools/recurring/portal'%}
+<div class="acct-orders acct-recent-orders" style="display: none; opacity: 0;">
+  {% if customer.orders.size != 0 %}
+	<div class="row recent-orders-success">
+    <div class = "customer-overview-titles">
+      <h2 class="h4-alt"><span>Recent</span> Orders</h2>
+      <a href="/account">View All Orders <img src="https://cdn.shopify.com/s/files/1/0300/1545/files/icon-arrow.svg?v=1597749906"/></a>
+    </div>
+    <div class="acct-order-container">
+      <div class="acct-headline acct-headline__bar">
+        <div class="acct-order-headline">
+          <div class="acct-order-date">
+            <div class="acct-order-title ">Order Date</div>
+          </div>
+          <div class="acct-order-number">
+            <div class="acct-order-title ">Order Number</div>
+          </div>
+        </div>
+        <div class="acct-order-status">
+          <div class="acct-order-title ">Status</div>
+        </div>
+        <div class="acct-item-headline">
+          <div class="acct-order-title ">Item</div>
+        </div>
+      </div>
+
+      {% for order in customer.orders limit: 5 %}
+      {% assign product_handle = '' %}
+
+      {% assign order_delivered = false %}
+      {% for tag in order.tags %}
+        {% if tag == 'order_delivered' %}
+          {% assign order_delivered = true %}
+        {% endif %}
+      {% endfor %}
+
+      <div class="acct-headline line-item-detail">
+
+          <div class="acct-order-title  date">
+            <p class="recent-order_date p-alt"><span>Order Date:</span> {{ order.created_at | date: "%b %d, %Y" }}</p>
+            </div>
+          <div class="acct-order-title  order-num">
+				<a href="{{ order.customer_url }}">
+          <p class="acct-order-number p-alt">{{ order.name }}</p>
+          {% comment %}
+          {% for item in order.line_items limit: 1 %}
+          {% assign product_handle = item.product.handle %}
+          <p class="acct-ticket">{{ item.product.title | truncatewords: 3 }}</p>
+          {% endfor %}
+          {% endcomment %}
+				</a>
+            </div>
+
+          <div class="acct-order-title status {% if order_delivered %}delivered{% endif %}">
+            <div class="acct-text-info p-alt">
+              {% if order_delivered %}
+                <span>Status: </span>
+                {%- comment -%}
+                {% include 'icon-check-green' %}
+                {%- endcomment -%}
+                Delivered
+              {% elsif order.line_items.first.fulfillment.tracking_number %}
+                <span>Status:</span>{{ order.financial_status | replace: 'paid', 'Shipped' | replace: 'refunded', 'Refunded' | replace: 'partially_refunded', 'Partially Refunded' }}
+              {% elsif order.cancelled %}
+                <span>Status:</span> Cancelled
+              {% else %}
+                <span>Status:</span> Processing
+              {% endif %}
+            </div>
+          </div>
+          <div class="acct-order-title tracking-num {% if order_delivered %} delivered {% elsif order.line_items.first.fulfillment.tracking_number %}status-colored{% endif %}">
+            {% if order.line_items.first.fulfillment.tracking_number %}
+              <p class="recent-order_total">
+                <span>Carrier {{order.line_items.first.fulfillment.tracking_company}}, Tracking #</span>
+                <a href="{{ order.line_items.first.fulfillment.tracking_url }}">{{ order.line_items.first.fulfillment.tracking_number }}</a></p>
+              {% else %}
+              <p class="no-tracking p-alt">Pending</p>
+            {% endif %}
+          </div>
+            {% assign order-items = order.line_items | size %}
+            <div class="image">
+              <img src="{{ order.line_items.first.image | img_url: '75x' }}">
+              {% if order-items > 1 %}
+              <span>+{{ order-items | minus: 1 }} more</span>
+              {% endif %}
+            </div>
+
+            {% for item in order.line_items %}
+            {% assign product_handle = item.product.handle %}
+            {% if all_products[product_handle].metafields['download-list']['shopping-list'] != blank %}
+            {% assign shopping_list = all_products[product_handle].metafields['download-list']['shopping-list'] %}
+            {% break %}
+            {% endif %}
+            {% endfor %}
+            <div class="download-list {% if shopping_list == blank %}shopping-list__empty{% endif %}">
+              <a target="_blank" href="{%- if shopping_list != blank -%} {{ shopping_list }} {%- else -%}javascript:void(0){%- endif -%}" download>{% include 'icon-download' %}Download Shopping List</a>
+            </div>
+
+            <div class="order-link">
+              <a href="{{ order.customer_url }}">View Details</a>
+            </div>
+      </div>
+		{% endfor %}
+    </div>
+  </div>
+	{% endif %}
+</div>
+</div>
+{% endif %}
+<script>
+  var customerID = {{ customer.id }};
+</script>
+

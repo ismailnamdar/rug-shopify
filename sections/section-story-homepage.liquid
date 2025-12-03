@@ -1,0 +1,232 @@
+{% assign _section = section.settings %}
+{% assign _blocks = section.blocks %}
+
+<section class="section-story section-story--homepage">
+  {% if _section.background_pattern != blank %}
+    <div class="section__background-image section__background-image--1 js-parallax">
+      <img src="{{ 'raddish-icon.svg' | asset_url }}">
+    </div><!-- /.section__background-image -->
+
+    <div class="section__background-image section__background-image--2 js-parallax">
+      <img src="{{ 'raddish-icon.svg' | asset_url }}">
+    </div><!-- /.section__background-image -->
+
+    <div class="section__background-image section__background-image--3 js-parallax">
+      <img src="{{ 'raddish-icon.svg' | asset_url }}">
+    </div><!-- /.section__background-image -->
+  {% endif %}
+
+  <div class="section__shell">
+    <div class="section__inner">
+      {% if _section.section_title != blank %}
+        <h2 class="section__title" style="color: {{section.settings.header_color}}" >{{ _section.section_title }}</h2><!-- /.section__title -->
+      {% endif %}
+      
+      {% if _section.subtitle != blank %}
+        <h3 class="section__subtitle" style="color: {{section.settings.header_color}}">{{ _section.subtitle | newline_to_br }}</h3><!-- /.section__subtitle -->
+      {% endif %}
+      {% assign image_blocks = section.blocks | where: "type", "color-image" %}
+      {% if _blocks != blank and image_blocks != empty %}
+        <div class="section__images">
+          <ul>
+            {% for block in _blocks %}
+              {% assign _block = block.settings %}
+
+              {% if _block.image != blank %}
+                <li>
+                  <div class="section__image">
+                    <span>
+                      <img src="{{ _block.image | img_url: '726x' }}">
+                    </span>
+
+                    <div class="section__image-shadow" style="background-color: {{ _block.color }}"></div><!-- /.section__image-shadow -->
+                  </div><!-- /.section__image -->
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div><!-- /.section__images -->
+      {% endif %}
+
+      <div class="section__stats">
+        {% if _section.stats_title != blank %}
+          <div class="section__stats-title">
+            <h3>{{ _section.stats_title | newline_to_br }}</h3><!-- /.stats__title -->
+          </div><!-- /.section__stats-title -->
+        {% endif %}
+
+        <div class="stats js-stats is-rotating" data-rotation="{{ _section.rotation_speed }}">
+          <div class="stats__core"></div><!-- /.stats__core -->
+          {% assign stat_blocks = section.blocks | where: "type", "stats" %}
+          <div class="stats-grid-container">
+            <span class="placeholder"></span>
+            {% for block in stat_blocks %}
+              
+              {% if block.settings.stat_image != blank and block.settings.stat_title != blank %}
+                <div class="stats__item" data-index="{{ forloop.index0 }}">
+                  <div class="stat {% if forloop.index == 5 %}is-active{% endif %}">
+                    <div class="stat__content">
+                      <div class="stat__content-inner">
+                        <h3 class="stat__title">{{ block.settings.stat_title }}</h3><!-- /.stat__title -->
+                        
+                        {% if block.settings.stat_entry %}
+                          <div class="stat__entry">
+                            <p>{{ block.settings.stat_entry | newline_to_br }}</p>
+                          </div><!-- /.stat__title -->
+                        {% endif %}
+                      </div><!-- /.stat__content-inner -->
+                    </div><!-- /.stat__content -->
+  
+                    <div class="stat__image">
+                      <img src="{{ block.settings.stat_image | img_url: 'x440' }}">
+                    </div><!-- /.stat__image -->
+                  </div><!-- /.stat -->
+                </div><!-- /.stats__item -->
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div><!-- /.stats -->
+      </div><!-- /.section__stats -->
+    </div><!-- /.section__inner -->
+  </div><!-- /.section__shell -->
+</section><!-- /.section-story -->
+
+<style>
+  .section-story.section-story--homepage .section__title {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  @media screen and (min-width: 1023px) {
+    .section-story.section-story--homepage .stat .stat__title {
+      margin-bottom: 10px;
+    }
+    .section-story.section-story--homepage .stats {
+      display: flex;
+      align-items: center;
+      padding: 30px 0;
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+    .stats .stats__item {
+      position: static;
+      transform: none !important;
+      left: 0 !important;
+      right: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+    }
+  
+    .stats-grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .section-story.section-story--homepage .section__title {
+      font-size: 32px;
+      line-height: 51px;
+    }
+    .stats-grid-container .placeholder {
+      display: none !important;
+    }
+    .section-story.section-story--homepage .stat .stat__image {
+      position: static;
+    }
+    .section-story.section-story--homepage .stat .stat__content {
+      left: 0;
+      top: 30px
+    }
+    .section-story--homepage .stats .stats__core {
+      margin-left: 0;
+      margin-right: auto;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name":"Section Story",
+  "settings":[
+  {
+    "type":"text",
+    "id":"section_title",
+    "label":"Title"
+  },
+  {
+    "type": "color",
+    "id": "header_color",
+    "label": "Header Color",
+    "default": "#01bcbe"
+  },
+  {
+    "type":"textarea",
+    "id":"subtitle",
+    "label":"Subtitle"
+  },
+  {
+    "type":"textarea",
+    "id":"stats_title",
+    "label":"Circle Title"
+  },
+  {
+    "type":"image_picker",
+    "id":"background_pattern",
+    "label":"Background Pattern"
+  },
+  {
+    "type": "range",
+    "id": "rotation_speed",
+    "min": 1,
+    "max": 10,
+    "step": 1,
+    "unit": "sec",
+    "label": "Animation Speed",
+    "default": 3
+  }
+ ],
+ "blocks":[
+  {
+    "type":"color-image",
+    "name":"Color Image",
+    "settings":[
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Image"
+      },
+      {
+        "type":"color",
+        "id":"color",
+        "label":"Underneath Color",
+        "default":"#f54242"
+      }
+    ]
+  },
+  {
+    "type":"stats",
+    "name":"Stats",
+    "settings":[
+      {
+        "type":"image_picker",
+        "id":"stat_image",
+        "label":"Image"
+      },
+      {
+        "type":"text",
+        "id":"stat_title",
+        "label":"Title"
+      },
+      {
+        "type":"textarea",
+        "id":"stat_entry",
+        "label":"Text"
+      }
+    ]
+  }
+  ],
+    "presets": [
+      {
+        "name": "RAD Facts",
+        "category": "Homepage"
+      }
+    ]
+}
+{% endschema %}

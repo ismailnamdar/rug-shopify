@@ -1,0 +1,133 @@
+{%- assign _section  = section.settings -%}
+
+{% if _section.pattern_image_mobile != blank %}
+  {% assign mobile_pattern = _section.pattern_image_mobile | img_url: '1024x' %}
+{% else %}
+  {% assign mobile_pattern = _section.pattern_image | img_url: '1024x' %}
+{% endif %}
+
+<section class="section-referrals-outro">
+  <div class="page-width">
+    <div class="section__inner" style="background-color: {{ _section.pattern_background }}">
+      <div class="section__body">
+        <div class="section__images section__images--left">
+          {% for i in (1..2) %}
+            {% assign image_handle = 'image_' | append: i %}
+
+            {% if _section[image_handle] != blank %}
+              <figure>
+                {% include 'image', _image: _section[image_handle], size: '300' %}
+              </figure>
+            {% endif %}
+          {% endfor %}
+        </div><!-- /.section__images section__images--left -->
+
+        {% if _section.quote_content != blank %}
+          <div class="section__content">
+            <blockquote>
+              {{ _section.quote_content | escape | newline_to_br }}
+            </blockquote>
+
+            {% if _section.quote_author != blank  %}
+              <span>{{ _section.quote_author | escape }}</span>
+            {% endif %}
+
+            {% if _section.button_label != blank and _section.button_link != blank %}
+              <a href="{{ _section.button_link }}" class="btn">
+                {{ _section.button_label | escape }}
+              </a><!-- /.btn -->
+            {% endif %}
+          </div><!-- /.section__content -->
+        {% endif %}
+
+        <div class="section__images section__images--right">
+          {% for i in (3..4) %}
+            {% assign image_handle = 'image_' | append: i %}
+
+            {% if _section[image_handle] != blank %}
+              <figure>
+                {% include 'image', _image: _section[image_handle], size: '300' %}
+              </figure>
+            {% endif %}
+          {% endfor %}
+        </div><!-- /.section__images section__images--right -->
+      </div><!-- /.section__body -->
+    </div><!-- /.section__inner -->
+  </div><!-- /.page-width -->
+</section><!-- /.section-referrals-outro -->
+
+<style>
+  .section-referrals-outro .section__inner {
+    background-image: url('{{ _section.pattern_image | img_url: '2048x' }}');
+  }
+
+  @media(max-width: 767px) {
+    .section-referrals-outro .section__inner {
+      background-image: url('{{ mobile_pattern }}');
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Outro",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "quote_content",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "quote_author",
+      "label": "Author"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "pattern_image",
+      "label": "Pattern Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "pattern_image_mobile",
+      "label": "Pattern Image - Mobile"
+    },
+    {
+      "type": "color",
+      "id": "pattern_background",
+      "label": "Pattern Background",
+      "default": "#01bcba"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    }
+  ]
+}
+{% endschema %}

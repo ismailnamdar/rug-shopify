@@ -1,0 +1,35 @@
+<div class="dropdown">
+  <form action="/search" method="get" role="search" class="flex space">
+    <input type="hidden" name="type" value="article">
+    <input type="search"
+           name="q"
+           id="Search"
+           value="{{ search.terms | escape }}"
+           placeholder="{{ 'general.search.placeholder' | t }}">
+    <button type="submit" class="btn">
+      {% include 'icon-search' %}
+      <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+    </button>
+  </form>
+</div><!-- /.dropdown -->
+
+{% schema %}
+  {
+    "name": "Blog: Search",
+    "class": "blog-sidebar-item search",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Heading",
+        "default": "Search"
+      },
+      {
+        "type": "text",
+        "id": "placeholder",
+        "label": "Placeholder",
+        "default": "Keyword"
+      }
+    ]
+  }
+{% endschema %}

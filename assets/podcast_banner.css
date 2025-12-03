@@ -1,0 +1,239 @@
+.lil_banner {
+  width: 100%;
+  height: 117px;
+  display: block;
+  margin: auto;
+  /* padding:.2% 1%; */
+  overflow: hidden;
+  position: relative;
+  font-family: sans;
+}
+
+.left {
+  float: left;
+  height: 117px;
+  background: #edfafc;
+  width: 48%;
+  z-index: 1;
+}
+
+.right {
+  /*float: right;*/
+  z-index: 9999;
+  position: absolute;
+  /*top: 0;*/
+  right: 260px;
+  display: grid;
+  align-content: center;
+  width: 35%;
+  height: 118px;
+}
+
+.mask:before {
+  position: absolute;
+  width: 56%;
+  height: 100%;
+  content: '';
+  background: #02bcbe;
+  top: 0;
+  right: -35px;
+  transform: skewX(-30deg);
+  z-index: 1;
+}
+
+.Welcome-Boden-Custom {
+  width: 592px;
+  height: 37px;
+  font-family: KGHAPPYSolid;
+  font-size: 23px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #02bcbe;
+  margin: 40px;
+  position: relative;
+  float: right;
+  right: 110px;
+  text-align: center;
+}
+
+.Exclusive-Offer-Sav {
+  height: auto;
+  font-family: 'Avenir', sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  /*margin: 30px;*/
+}
+
+.Exclusive-Offer-Sav .text-style-1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.Exclusive-Offer-Sav .text-style-2 {
+  font-weight: 600;
+  font-style: italic;
+}
+
+@media only screen and (max-width: 1500px) {
+  .right {
+    right: 175px;
+  }
+
+  .Welcome-Boden-Custom {
+    right: 0;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .right {
+    right: 165px;
+  }
+  .Welcome-Boden-Custom {
+    right: 0;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .lil_banner {
+    width: 100%;
+    height: 170px;
+    display: block;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mask:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: #02bcbe;
+    top: 76px;
+    right: 0;
+    transform: skewY(-183deg);
+    z-index: 1;
+  }
+
+  .left {
+    width: 100%;
+    background: #c7f0f2;
+    display: grid;
+    align-content: center;
+  }
+
+  .Welcome-Boden-Custom {
+    width: 100%;
+    height: auto;
+    font-family: KGHAPPYSolid;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #02bcbe;
+    /**margin: 18px auto;
+        position: relative;
+        text-align: center;**/
+    top: -18px;
+    margin: auto;
+  }
+  .right {
+    float: right;
+    z-index: 9999;
+    position: absolute;
+    top: 60px;
+    bottom: 18px;
+    width: 100%;
+    display: grid;
+    align-content: center;
+    right: auto;
+  }
+  .Exclusive-Offer-Sav {
+    height: 57px;
+    font-family: 'Avenir', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+  }
+
+  .Exclusive-Offer-Sav .text-style-1 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .right {
+    right: 60px;
+    top: -3px;
+  }
+  .left {
+    width: 55%;
+  }
+  .Welcome-Boden-Custom {
+    width: 354px;
+    right: 54px;
+    font-size: 14px;
+    float: none;
+  }
+  .Exclusive-Offer-Sav {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .right {
+    right: 55px;
+    top: -5px;
+    width: 41%;
+  }
+  .Welcome-Boden-Custom {
+    width: 354px;
+    right: 100px;
+    font-size: 17px;
+    top: auto;
+    float: right;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .Welcome-Boden-Custom {
+    width: 470px;
+    right: 100px;
+    font-size: 17px;
+    top: 5px;
+    float: right;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .Welcome-Boden-Custom {
+    right: 150px;
+  }
+  .right {
+    right: 95px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .Welcome-Boden-Custom {
+    right: 200px;
+  }
+}

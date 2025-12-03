@@ -1,0 +1,55 @@
+{% comment %}
+  When a comment is submitted, the browser is redirected to a page that includes
+  the new comment id in its URL.
+  #comments is a required ID and is used as an anchor link by Shopify.
+{% endcomment %}
+
+{%- assign number_of_comments = article.comments_count -%}
+
+{% comment %}
+  If a comment was just submitted but requires moderation, we have an extra comment to count.
+{% endcomment %}
+{% if comment and comment.status != 'published' %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+
+<section class="section-blog section-article">
+
+  <div class="page-width">
+    <div class="section__head">
+      {% section 'camp-home-url' %}
+
+      <!--
+      <a class="blog-title-link" href="{{% section 'camp-home-url' %}}"><h1 class="heading alt text-center">{{ blog.title }}</h1>{% if current_tags %}</a>{% endif %}
+     -->
+
+      {% if current_tags %}
+        <p class="text-center">Viewing {{ current_tags.first }}</p>
+      {% else %}
+        {% section 'camp-rad-blog-desc' %}
+      {% endif %}
+        <!--
+        <a class="blog-title-link" href="https://www.raddishkids.com/blogs/single-column/kitchen-kid-cooking-camp-is-now"><h1 class="heading alt text-center">{{ blog.title }}</h1>{% if current_tags %}</a>{% endif %}
+
+
+        {% if current_tags %}
+       <p class="text-center blog-desc">Viewing {{ current_tags.first }}</p>
+        {% else %}
+         {% section 'camp-rad-blog-desc' %}
+        {% endif %}
+
+      -->
+    </div><!-- /.section__head -->
+
+    <div class="section__body blog-page">
+      <div class="section__body-head">
+        {% include 'camp-rad-sidebar-snippet' %}
+      </div><!-- /.section__body-head -->
+
+      <div class="section__body-content">
+        {%- include 'article.entry' -%}
+      </div><!-- /.section__body-content -->
+    </div>
+  </div>
+</section><!-- /.section-blog section-article -->

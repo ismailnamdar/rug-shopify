@@ -1,0 +1,137 @@
+
+{% assign current_products = cart.items | map: "product" | map: "handle" %}
+{% assign current_collections = cart.items | map: "product" | map: "collections" | map: "handle" %}
+
+{% assign has_at_least_one = false %}
+{% capture slider_content %}
+<div class="slider upsell-products-container">
+  {% for upsellBlock in section.blocks %}
+
+    {% if upsellBlock.type == "if_a_then_b" %}
+      {% unless current_products contains upsellBlock.settings.required_product %}
+        {% continue %}
+      {% endunless %}
+    {% endif %}
+
+    {% if upsellBlock.type == "if_col_a_then_b" %}
+      {% unless current_collections contains upsellBlock.settings.required_collection %}
+        {% continue %}
+      {% endunless %}
+    {% endif %}
+
+    {% if current_products contains upsellBlock.settings.upsell_product%} {% continue %} {% endif %}
+    
+    {% assign upsell = all_products[upsellBlock.settings.upsell_product] %}
+    {% unless upsell %}
+      {% continue %}
+    {% endunless %}
+
+    {% assign has_at_least_one = true %}
+    <div>
+    <div class="upsell-product">
+      <div class="upsell-product--left">
+        <a href="/products/{{upsell.handle}}">
+          {% include 'image', _image: upsell.featured_image, size: '300' %}
+        </a>
+      </div>
+      <div class="upsell-product--right">
+        <div class="upsell-title-action">
+          <h3 class="upsell-product__title">{{upsell.title}}</h3>
+          <product-form class="product-form">
+            {% render "form-error" %}
+            <form action="/cart/add" data-productid="{{upsell.id}}" method="post" class="clearfix quick-add-form product_form" data-shop-currency="USD" id="product-form-{{upsell.id}}">
+              <input type="hidden" name="id" value="{{upsell.selected_or_first_available_variant.id}}">
+              <div class="product-form__buttons">
+                <button type="submit" name="add" class="upsell-product__add-to-cart">
+                  <span class="button-text">
+                    Add Now
+                    {% comment %}
+                    Add to cart - <span>{{upsell.price | money}}</span>
+                    {% endcomment %}
+                  </span>
+                  <div class="loading-overlay__spinner hidden">
+                    <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </product-form>
+        </div>
+        <div class="upsell-pricing">
+          {% if upsell.compare_at_price != blank %}
+            <span class="product__save">{{- upsell.compare_at_price | money }}</span>
+          {% endif %}
+            <span class="price__amount">
+              <strong class="money">
+                {{- upsell.price | money }}
+              </strong>
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endcapture %}
+<div class="cart-upsells" id="cart-upsells">{% if has_at_least_one %}<h3 class="h4 header" >{{section.settings.title}}</h3>{{slider_content}}{% endif %}</div>
+{% schema %}
+{
+  "name": "Cart Upsells",
+  "class": "cart-upsells",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Cart Upsells"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "We think you'd love it"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "if_a_then_b",
+      "name": "If A then B",
+      "settings": [
+        {
+          "type": "product",
+          "id": "required_product",
+          "label": "Required product"
+        },
+        {
+          "type": "product",
+          "id": "upsell_product",
+          "label": "Upsell product"
+        }
+      ]
+    },
+    {
+      "type": "if_col_a_then_b",
+      "name": "If collection A then B",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "required_collection",
+          "label": "Required collection"
+        },
+        {
+          "type": "product",
+          "id": "upsell_product",
+          "label": "Upsell product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{%- comment -%}
+<script src="{{ 'tinybind.js' | asset_url }}"></script>
+
+<script src="{{ 'cart-upsells.js' | asset_url }}"></script>
+
+{%- endcomment -%}

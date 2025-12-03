@@ -1,0 +1,81 @@
+{%- assign _section = section.settings -%}
+
+{%- if _section.collection_handle != blank -%}
+  {%- assign _collection = collections[_section.collection_handle] -%}
+
+  {%- if _collection.products.size > 0 -%}
+    <section class="section-new-releases">
+      <div class="page-width">
+        <header class="section__head">
+          <h2 class="section__title">
+            {%- if _section.title != blank -%}
+              {{ _section.title }}
+            {%- else -%}
+              {{ _collection.title }}
+            {%- endif -%}
+          </h2><!-- /.section__title -->
+
+          {% if _section.link_url != blank and _section.link_title != blank %}
+            <div class="section__cta">
+              <a href="{{ _section.link_url }}" class="section__link">
+                {{- _section.link_title -}}
+              </a><!-- /.section__link -->
+            </div><!-- /.section__cta -->
+          {% endif %}
+        </header><!-- /.section__head -->
+
+        <div class="section__body">
+          <div class="slider-alt slider-new-releases">
+            <div class="slider__clip">
+              <div class="slider__slides js-slider-new-releases">
+                {% for _product in _collection.products limit: 4 %}
+                  <div class="slider__slide">
+                    {% render 'product-item-alt', _product: _product %}
+                  </div><!-- /.slider__slide -->
+                {% endfor %}
+              </div><!-- /.slider__slides -->
+            </div><!-- /.slider__clip -->
+          </div><!-- /.slider -->
+        </div><!-- /.section__body -->
+      </div><!-- /.page-width -->
+    </section><!-- /.section-new-releases -->
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "New releases",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "text",
+      "id": "link_title",
+      "label": "Title"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "URL"
+    },
+    {
+      "type": "collection",
+      "id": "collection_handle",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New releases",
+      "category": "New releases"
+    }
+  ]
+}
+{% endschema %}

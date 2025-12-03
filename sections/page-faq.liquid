@@ -1,0 +1,66 @@
+<div class="page-width" data-section-id="{{ section.id }}" data-section-type="faqs">
+  {% for block in section.blocks %}
+  
+      <div class="q-a" {{ block.shopify_attributes }}>
+        
+      <div class="question flex space">
+        <!-- HC - Added the custom id control for FAQ accordions - 21 Feb '18 -->
+        <div id="{{ block.settings.custom_id }}">{{ block.settings.title }}</div>
+        <span{% if forloop.first %} class="open"{% endif %}></span>
+      </div>
+        
+      <div class="answer rte{% if forloop.first %} expanded{% endif %}"{% unless forloop.first %} style="display: none;"{% endunless %}>{{ block.settings.answer | replace: '[numlist]', '<ol><li>' | replace: '[/numlist]', '</li></ol>' | replace: '[list]', '<ul><li>' | replace: '[/list]', '</li></ul>' | replace: '*', '</li><li>' }}
+        <a onclick="topFunction()" class="totop">Back to Top</a>
+      </div>
+        
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "FAQ",
+    "class": "faq-page",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "To add a numbered list, start the numbered list with [numlist] and end with [/numlist]. Then, separate your list items with just an asterisk (*)."
+      },
+      {
+        "type": "paragraph",
+        "content": "For example: [numlist]Item 1*Item 2*Item 3*Item 4[/numlist]"
+      },
+      {
+        "type": "paragraph",
+        "content": "To add a bulleted list, start the bulleted list with [list] and end with [/list]. Then, separate your list items with just an asterisk (*)."
+      },
+      {
+        "type": "paragraph",
+        "content": "For example: [list]Item 1*Item 2*Item 3*Item 4[/list]"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Q/A",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_id",
+            "label": "Accordion ID"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Question"
+          },
+          {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

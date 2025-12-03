@@ -1,0 +1,404 @@
+
+<div class="join-club page-width" id="join-club-section">
+  <h1 class="h1">{{section.settings.title}}</h1>
+  <p class="subtitle">{{section.settings.subtitle}}</p>
+  <div class="join-club__clubs">
+    {% for block in section.blocks %}
+      <div class="join-club__club">
+        <div class="join-club__header raddish-card">
+          <div class="join-club__left" style="background-color: {{block.settings.color}}">
+            {% render 'image', _image: block.settings.icon, alt: block.settings.icon.alt %}
+            <h4>{{block.settings.title}}</h4>
+            <span class="plus"></span>
+          </div>
+          <div class="join-club__right">
+            <p>{{block.settings.short_description}}</p>
+            <span class="plus"></span>
+          </div>
+        </div>
+        <div class="join-club__content">
+          {% render 'image', _image: block.settings.image, alt: block.settings.image.alt %}
+          <div>
+            {{block.settings.description}}
+          </div>
+          <div class="bottom-buttons">
+            {% if block.settings.learn_more_button_link != blank %}
+            <a href="{{block.settings.learn_more_button_link}}" target="_blank" class="join-button btn btn--o">{{block.settings.learn_more_button_label}}</a>
+            {% endif %}
+            <a href="{{block.settings.button_link}}" target="_blank" class="join-button btn">{{block.settings.button_label}}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  // document.addEventListener("DOMContentLoaded", function() {
+  //   $(".join-club__content a").on("click", function() {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //     const hrefAttr = $(event.currentTarget).attr("href");
+  //     const club = hrefAttr.replace("/?club=", "").split("#")[0];
+  //     // console.log(club);
+  //     if(club && window.theme.SubscriptionBuilder) {
+  //       $('html, body').animate({
+  //         scrollTop: $("#subscription-builder").offset().top
+  //       }, 0);
+  //       window.theme.SubscriptionBuilder.setState({
+  //         subscription: {
+  //           club: club,
+  //           plan_length: '',
+  //         },
+  //         extraItems: {
+  //           'sibling_bundle': '0'
+  //         },
+  //         completedSteps: [1],
+  //         activeStep: 1
+  //       })
+  //     }
+  //   })
+  // })
+  
+</script>
+
+<style>
+  .join-club .bottom-buttons {
+    display: flex;
+    margin-top: auto;
+    gap: 16px;
+  }
+  .join-club .bottom-buttons a.btn--o:hover {
+      background: #f3576b;
+      color: white;
+  }
+  .join-club .bottom-buttons a {padding: 18px 0 !important;}
+
+  .join-club .bottom-buttons a.btn--o {
+      background: transparent;
+      border: 2px solid #f3576b;
+      color: #f3576b;
+  }
+  .join-club__content p {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      text-align: center;
+      font-size: 18px;
+      padding: 0 1px;
+  }
+
+  .join-club__content .join-button {
+      width: 100%;
+      margin-top: 8px;
+      max-height: 54px;
+      line-height: 18px;
+  }
+
+  .join-club__content a {
+      font-weight: bold;
+  }
+
+  .join-club__content {
+      font-size: 18px;
+      transition: max-height .3s ease;
+      margin: 16px;
+  }
+
+  .join-club__club {margin-bottom: 8px;}
+
+  .join-club__left {
+      transition: width .3s ease;
+  }
+
+  .join-club__club.open {
+      margin-bottom: 24px;
+  }
+
+  .join-club__right p {
+    margin: 0;
+  }
+
+  .join-club__right {
+      padding-left: 8px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex:1;
+      width: auto;
+  }
+
+  .join-club__right .plus {
+      margin-top: 0;
+      margin-right: 1.5rem;
+  }
+
+  .join-club__content {
+      max-height: 0;
+      overflow: hidden;
+  }
+
+  .join-club__club.open .join-club__content {
+      max-height: 500px;
+  }
+
+  .join-club__club.open {
+      border: 0.875px solid rgba(77, 77, 77, 0.19971);
+      box-shadow: 0px 2px 4px rgba(77, 77, 77, 0.201868);
+      border-radius: 8px;
+  }
+
+  .join-club__club.open .join-club__header  {
+      border: none;
+      box-shadow: none;
+      max-height: 50px;
+  }
+
+  .join-club__club.open .join-club__left {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      width: 100%;
+      padding: 0;
+      flex-direction: row;
+  }
+
+  .join-club__club.open .join-club__right {
+      width: 0;
+      padding: 0;
+      overflow: hidden;
+      flex-direction: row;
+  }
+
+  .join-club__club.open  .join-club__left h4 {
+      margin-left: 10px;
+  }
+
+  .open.join-club__club .plus {
+      background-image: url({{"blue-minus.png" | asset_url}});
+      display: block;
+  }
+
+  .join-club__club .plus {
+      margin-left: auto;
+      width: 12px;
+      flex: 0 0 15px;
+      height: 20px;
+      display: inline-block;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-image: url({{"blue-plus.png" | asset_url}});
+      margin-right: 10px;
+      margin-top: 5px;
+  }
+
+  .join-club__left .plus {
+      display: none;
+  }
+  .join-club__left .plus {
+      position: absolute;
+      right: 8px;
+  }
+
+  .join-club__left {
+      position: relative;
+  }
+  .join-club h1 {
+      font-size: 26px;
+      text-align: center;
+      line-height: 36px;
+      margin-bottom: 8px;
+  }
+
+  .join-club {
+      padding-top: 24px;
+      padding-bottom: 10px;
+  }
+
+  .join-club .subtitle {
+      font-family: 'KG HAPPY Solid';
+      font-size: 18px;
+      text-align: center;
+      margin-top: 0;
+  }
+
+  .join-club__header {
+      display: flex;
+      flex-direction: row;
+  }
+
+  .join-club__left {
+      min-width: 110px;
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+
+  }
+
+  .join-club__left h4 {
+      margin-top: 2px;
+      margin-bottom: 0;
+      font-family: 'KG HAPPY Solid';
+      font-size: 18px;
+  }
+
+  .join-club__left img {
+      max-width: 32px;
+  }
+  @media screen and (min-width: 750px) {
+    .join-club__club .join-club__content {
+        max-height: 500px;
+        height: calc(100% - 80px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .join-club__club {
+        border: 0.875px solid rgba(77, 77, 77, 0.19971);
+        box-shadow: 0px 2px 4px rgba(77, 77, 77, 0.201868);
+        border-radius: 8px;
+    }
+
+    .join-club__club .join-club__header  {
+        border: none;
+        box-shadow: none;
+        max-height: 50px;
+    }
+
+    .join-club__club .join-club__left {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        width: 100%;
+        padding: 0;
+        flex-direction: row;
+    }
+
+    .join-club__club .join-club__right {
+        width: 0;
+        padding: 0;
+        overflow: hidden;
+        flex-direction: row;
+    }
+
+    .join-club__club  .join-club__left h4 {
+        margin-left: 10px;
+    }
+
+    .join-club__club .plus {
+        background-image: url({{"blue-minus.png" | asset_url}});
+        display: none;
+    }
+    .join-club__clubs {
+        display: flex;
+        /* align-items: center; */
+        gap: 40px;
+        justify-content: center;
+        margin-top: 4rem;
+    }
+
+    .join-club__club {
+        flex: 1;
+    }
+
+    .join-club__content .join-button {
+      margin-top: auto;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    $("#shopify-section-{{section.id}} .join-club__club .join-club__header").on('click', function() {
+      $(event.currentTarget).closest(".join-club__club").toggleClass("open")
+    })
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Join Club",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Which Club is Right for You?"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "In the kitchen, I want to…"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "club",
+        "name": "Club",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Color"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "short_description",
+            "label": "Short Description"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          },
+          {
+            "type": "url",
+            "id": "learn_more_button_link",
+            "label": "Button Link"
+          },
+          {
+            "type": "text",
+            "id": "learn_more_button_label",
+            "label": "Button Label",
+            "default": "Learn More"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Join Club",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

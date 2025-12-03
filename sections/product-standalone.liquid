@@ -1,0 +1,421 @@
+<div class="product">
+  <div class="page-width">
+    {% render 'breadcrumbs', divider: '/' %}
+
+    <div class="flex space wrap product-page" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
+
+      <div class="product-images">
+        <div class="flex baseline wrap space">
+          <ul class="thumbnails" data-slick='{"responsive":[{"breakpoint": 1024,"settings": {"vertical": false,"verticalSwiping":false}}]}'>
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'slide' %}
+                    <li>
+                      <div class="thumbnails__image">
+                        <img src="{{ block.settings.image | img_url: '160x160' }}" alt="{{ block.settings.alt | escape }}">
+                      </div>
+                    </li>
+              {% endcase %}
+            {% endfor %}
+          </ul>
+          <div class="featured has-thumbnails">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'slide' %}
+                  <div>
+                    <a data-fancybox="gallery" href="{{ block.settings.image | img_url: 'master' }}">
+                      <img src="{{ block.settings.image | img_url: '550x' }}" alt="{{ block.settings.alt | escape }}" class="product-gallery">
+                    </a>
+                  </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="product-column">
+        {% assign yearly_product = all_products[section.settings.product_2] %}
+        <product-form>
+          {% render "form-error" %}
+          <form action="/cart/add" data-productid="{{ product.id }}" class="add-to-cart-form" method="post" enctype="multipart/form-data">
+          <h1 class="product-title heading">{{ section.settings.title }}</h1>
+          <input type="hidden" name="properties[_limit]" value="true" />
+          <input type="hidden" name="properties[_subscription_hash]" value="true" />
+          <input type="hidden" name="properties[_shipping_interval_frequency]" value="12" />
+          <input type="hidden" name="properties[_shipping_interval_unit_type]" value="month" />
+          <input type="hidden" name="properties[_charge_interval_frequency]" value="12" />
+          <input type="hidden" name="properties[_charge_interval_unit_type]" value="month" />
+          <input type="hidden" name="selling_plan" value="{{ yearly_product.selling_plan_groups[0].selling_plans[0].id }}" />
+            
+          <div data-price-wrapper="" class="product__price">
+            <span data-product-price="">
+              <span class="price__amount">
+			          <span class="money">{{section.settings.price}}</span><!-- /.money -->
+		          </span>
+            </span>
+          </div>
+
+          <div class="product-description rte hidden-mobile">
+            {% if section.settings.description contains "---" %}
+              {{ section.settings.description | split: "---" | first }}
+            {% else %}
+              {{ section.settings.description }}
+            {% endif %}
+          </div>
+
+          {% unless product.tags contains "OOS" %}
+          {% unless product.has_only_default_variant or product.variants.size == 1 %}
+            {% for option in product.options_with_values %}
+              <div class="selector-wrapper js">
+                <label for="SingleOptionSelector-{{ forloop.index0 }}">
+                  {{ option.name }}
+                </label>
+
+                <select
+                  id="SingleOptionSelector-{{ forloop.index0 }}"
+                  data-single-option-selector
+                  data-index="option{{ option.position }}">
+                  {% for value in option.values %}
+                    <option
+                      value="{{ value | escape }}"
+                      {% if option.selected_value == value %}selected="selected"{% endif %}>
+                        {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endfor %}
+          {% endunless %}
+
+          {%- assign product_tags = product.tags | join: '|' | prepend: '|' | append: '|' -%}
+        {% unless product.tags contains "hidden" or product.tags contains "Hidden" %}
+          <h5 class="h5"> Select terms: </h5>
+
+          <div class="widget-product-options">
+            <div class="widget-option">
+              {% assign monthly_product = all_products[section.settings.product_1] %}
+              <input type="radio" id="monthly_id" name="id" data-productid="{{ product.id }}" value="{{monthly_product.selected_or_first_available_variant.id}}">
+              <div class="widget-option__container">
+                <h5 class="h5">{{section.settings.product_1_title}}</h5>
+                <p>{{section.settings.product_1_price}}</p>
+                {% if section.settings.product_1_label != blank %}
+                  <p class="widget-label">{{section.settings.product_1_label}}</p>
+                  {% endif %}
+              </div>
+            </div>
+            <div class="widget-option">
+              <input type="radio" checked="checked" id="annual_id" name="id" data-productid="{{ product.id }}" value="{{yearly_product.selected_or_first_available_variant.id}}">
+              <div class="widget-option__container">
+                <h5 class="h5">{{section.settings.product_2_title}}</h5>
+                <p>{{section.settings.product_2_price}}</p>
+                {% if section.settings.product_2_label != blank %}
+                <p class="widget-label">{{section.settings.product_2_label}}</p>
+                {% endif %}
+              </div>
+            </div>
+            <div class="selection-marker" data-selected="true"> </div>
+          </div>
+
+          <p class="additional-text">{{section.settings.additional_text}}</p>
+          <div class="product-description rte hidden-desktop">
+            {% if section.settings.description contains "---" %}
+              {{ section.settings.description | split: "---" | first }}
+            {% else %}
+              {{ section.settings.description }}
+            {% endif %}
+          </div>
+
+          <div class="flex space add-to-cart">
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="properties[_membership_timestamp]" value="{{'now' | date: "%s" | times: 1000}}">
+            <input type="hidden" name="properties[_subscription_hash]" value="{{'now' | date: "%s"}}">
+
+            <button class="btn" type="submit" name="add"  data-add-to-cart>
+                <span data-add-to-cart-text>
+                  {{ 'products.product.add_to_cart' | t }}
+                </span>
+                <div class="loading-overlay__spinner hidden">
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+            </button>
+          </div>
+          <div class="additional-text-product"> 
+            {{section.settings.additional_text_product}}
+          </div>
+
+          {% endunless %}
+        {% else %}
+              {% render "klaviyo-bis", product: product %}
+        {% endunless %}
+        </form>
+      </product-form>
+      </div>
+      {% unless product == empty %}
+        <script type="application/json" data-product-json>
+          {{ product | json }}
+        </script>
+      {% endunless %}
+    </div>
+  </div>
+</div><!-- /.product -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    $('#annual_id').on('click', function() {
+      $('[name="properties[_shipping_interval_frequency]"]').val('12')
+      $('[name="properties[_charge_interval_frequency]"]').val('12')
+      $('[name="selling_plan"]').val('{{ yearly_product.selling_plan_groups[0].selling_plans[0].id }}')
+    })
+    $('#monthly_id').on('click', function() {
+      $('[name="properties[_shipping_interval_frequency]"]').val('1')
+      $('[name="properties[_charge_interval_frequency]"]').val('1')
+      $('[name="selling_plan"]').val('{{ monthly_product.selling_plan_groups[0].selling_plans[0].id }}')
+    })
+  })
+</script>
+
+<style>
+  .product-page .rc-container-wrapper {
+    display: none !important;
+  }
+  .widget-product-options {
+    border: 1px solid #4D4D4D33;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .widget-product-options .widget-option {
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+  .widget-product-options .widget-option .widget-option__container {
+    text-align: center;
+    padding: 19px 10px;
+  }
+  .product-description.rte {
+    font-size: 14px;
+  }
+  .product .page-width {
+    margin-top: 3rem;
+  }
+  .product-title.heading {
+    margin-top: 22px;
+    margin-bottom: 14px;
+  }
+  .additional-text {
+    text-align: center;
+  }
+  .flex.space.add-to-cart {
+    width: 100%;
+    max-width: 320px !important;
+    margin: 14px auto !important;
+  }
+  .add-to-cart-form h5 {
+    font-size: 14px;
+  }
+  .widget-product-options .widget-label {
+    position: absolute;
+    top: -20px;
+    padding: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #9FCC57;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 4px 6px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 10px;
+  }
+  .widget-option h5 {
+    text-align: center;
+  }
+  .widget-product-options .widget-option input:checked + .widget-option__container {
+    border-color: #F3576B !important;
+    border: 1px solid;
+    border-radius: 10px;
+    background: #E4F4F6;
+  }
+  .widget-product-options .widget-option p:not(.widget-label) {
+    margin: 0;
+  }
+  .additional-text {
+    color: #4D4D4D;
+    font-family: Avenir;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 20px;
+    font-style: italic;
+    text-align: left;
+  }
+  .additional-text-product {
+    color: #4D4D4D;
+    font-family: Avenir;
+    font-size: 12px;
+    font-style: normal;
+    /*! font-weight: 627; */
+    line-height: 20px;
+    text-align: left;
+    font-weight: 100;
+  }
+  .add-to-cart-form h5 {
+    text-align: left;
+    font-size: 15px;
+  }
+  .additional-text-product ul {
+    padding-left: 16px;
+  }
+  .additional-text-product b {
+    font-weight: 800;
+  }
+  .add-to-cart {
+    margin-bottom: 0 !important;
+    max-width: 170px !important;
+    margin-left: 0 !important;
+  }
+
+  .widget-option input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+  }
+  .widget-option input:focus {
+    border: none;
+  }
+  .widget-option__container h5 {
+    text-align: center;
+  }
+
+  .widget-product-options {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+  .widget-option__container {
+    padding: 10px 8px !important;
+  }
+  .widget-option__container h5 {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .widget-product-options .widget-option p:not(.widget-label) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 750px) {
+    .product .product-description {
+      font-size: 14px;
+    }
+    .additional-text-product {
+      font-size: 14px;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "product",
+        "id": "product_1",
+        "label": "Monthly subscription"
+      },
+      {
+        "type": "text",
+        "id": "product_1_title",
+        "label": "Monthly subscription title",
+        "default": "Monthly"
+      },
+      {
+        "type": "text",
+        "id": "product_1_price",
+        "label": "Monthly subscription price",
+        "default": "$10"
+      },
+      {
+        "type": "text",
+        "id": "product_1_label",
+        "label": "Monthly subscription label"
+      },
+      {
+        "type": "product",
+        "id": "product_2",
+        "label": "Annual subscription"
+      },
+      {
+        "type": "text",
+        "id": "product_2_title",
+        "label": "Annual subscription title",
+        "default": "Annual"
+      },
+      {
+        "type": "text",
+        "id": "product_2_price",
+        "label": "Annual subscription price",
+        "default": "$150"
+      },
+      {
+        "type": "text",
+        "id": "product_2_label",
+        "label": "Annual subscription label",
+        "default": "Save $30"
+      },
+      {
+        "type": "text",
+        "id": "additional_text",
+        "label": "Additional text",
+        "default": "*Membership auto-renews until cancelled"
+      },
+      {
+        "type": "html",
+        "id": "additional_text_product",
+        "label": "Additional product description"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Gallery Image",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "alt",
+            "label": "Alt"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

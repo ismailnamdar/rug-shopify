@@ -1,0 +1,56 @@
+<div class="page-width">
+  <h2 class="subheading text-center">{{ section.settings.heading }}</h2>
+  <div class="curricula flex wrap">
+    {% for block in section.blocks %}
+      <div>
+        {% assign product = all_products[block.settings.product] %}
+        {{ product.featured_image | img_url: '600x' | img_tag: product.title, 'product-image' }}
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.description }}</p>
+        <div class="cta"><a href="{{ product.url }}" class="btn">{{ section.settings.cta }}</a></div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Classrooms: Curriculum",
+    "class": "raddish-classrooms curriculum",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "Button Text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Product Title"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Short Description"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

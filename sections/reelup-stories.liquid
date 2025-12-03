@@ -1,0 +1,151 @@
+{% liquid
+  assign pageType = null
+  assign pageHandle = '/'
+  assign storySections = shop.metafields.reelUp.stories.value | sort: 'priority'
+  assign designData = shop.metafields.reelUp.design.value
+  if template.name == 'product'
+    assign pageType = 'product_page'
+    assign pageHandle = product.handle | prepend: '/products/'
+  elsif template.name == 'collection'
+    assign pageType = 'collection_page'
+    assign pageHandle = collection.handle | prepend: '/collections/'
+  elsif template.name == 'cart'
+    assign pageType = 'cart_page'
+    assign pageHandle = '/cart'
+  elsif template.name == 'index'
+    assign pageType = 'home_page'
+  elsif template.name == 'article'
+    assign pageType = 'blog_page'
+    assign pageHandle = article.handle
+  elsif template.name == 'blog'
+    assign pageType = 'blog_page'
+    assign pageHandle = blog.handle
+  elsif template.name == 'page'
+    assign pageHandle = page.handle | prepend: '/pages/'
+  endif
+  assign sectionFound = false
+%}
+{% assign staticId = section.settings.section_id %}
+{% if staticId != '' %}
+  {% assign staticId = section.settings.section_id | split: '_' | last | times: 1 %}
+
+  {% for section in storySections %}
+    {% if staticId != '' and section.id == staticId %}
+      {% assign sectionFound = section %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% for section in storySections %}
+    {% if sectionFound == false %}
+      {% if pageType == 'product_page' and section.visibility contains 'product_page' %}
+        {% assign collectionIds = product.collections | map: 'id' %}
+        {% assign inCollection = '' | split: ', ' %}
+        {% assign foundSpecificProduct = '' | split: ', ' %}
+        {% if section.target_products_type == 'specific_collections' %}
+          {% for collectionId in collectionIds %}
+            {% if inCollection.size == 0 %}
+              {% assign inCollection = section.selections | where: 'collection_id', collectionId %}
+            {% endif %}
+          {% endfor %}
+        {% elsif section.target_products_type == 'specific_products' %}
+          {% assign foundSpecificProduct = section.selections | where: 'product_id', product.id %}
+        {% endif %}
+        {% if section.target_products_type == 'all_products'
+          or inCollection.size != 0
+          or foundSpecificProduct.size != 0
+        %}
+          {% assign sectionFound = section %}
+        {% endif %}
+      {% elsif pageType == 'collection_page'
+        and section.visibility contains 'collection_page'
+        and collection.id != null
+      %}
+        {% if section.target_collection_pages == 'specific_collection_pages' %}
+          {% assign foundSpecificCollection = section.specific_collection_pages
+            | where: 'collection_id', collection.id
+          %}
+        {% endif %}
+        {% if section.target_collection_pages == 'all_collections' or foundSpecificCollection.size != 0 %}
+          {% assign sectionFound = section %}
+        {% endif %}
+      {% else %}
+        {% assign inSpecificPage = 'blank' %}
+        {% if section.visibility contains 'specific_page' %}
+          {% assign specificPages = section.specific_page_url | split: ',' %}
+          {% for specificPage in specificPages %}
+            {% assign trimmedSpecificPage = specificPage | strip %}
+            {% if trimmedSpecificPage == pageHandle %}
+              {% assign inSpecificPage = trimmedSpecificPage %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% if inSpecificPage != 'blank' or section.visibility contains pageType and pageType != 'collection_page' %}
+          {% assign sectionFound = section %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if sectionFound %}
+  <div
+    class="reelUp_stories_static reelUp_stories_loading reelUp_carousel"
+    id="reelUp_stories_wrapper_{{ sectionFound.id }}"
+    data-section-id="{{ sectionFound.id }}"
+    style="width: 100%"
+  >
+    <div class="reelUp_carousel_wrapper">
+      {% for story in sectionFound.stories %}
+        <div class="reelUp_slide" style="margin-right: {{ designData.story_card_gap }}px">
+          <div class="reelUp_story_card reelUp_story_card_skeleton">
+            <div class="reelUp_story_image_wrapper"></div>
+            <p class="reelUp_story_title"></p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    #reelUp_stories_wrapper_{{ sectionFound.id }}.reelUp_stories_loading .reelUp_story_image_wrapper {
+      width: {{ designData.story_card_width_desktop }}px!important;
+      height: {{ designData.story_card_width_desktop }}px!important;
+    }
+
+    @media only screen and (max-width: 767px) {
+      #reelUp_stories_wrapper_{{ sectionFound.id }}.reelUp_stories_loading .reelUp_story_image_wrapper {
+        width: {{ designData.story_card_width_mobile }}px!important;
+        height: {{ designData.story_card_width_mobile }}px!important;
+      }
+    }
+  </style>
+
+  <link href="{{ 'reels_stories.css' | asset_url }}" rel="preload stylesheet" as="style">
+  {% if section.settings.debugging_script != '' %}
+    <script src="{{ section.settings.debugging_script }}" defer></script>
+  {% else %}
+    <script src="{{ 'reels_stories.js' | asset_url }}" defer></script>
+  {% endif %}
+{% endif %}
+{% schema %}
+        {
+          "name": "ReelUp Stories",
+          "settings": [
+            {
+              "type": "text",
+              "id": "section_id",
+              "label": "Playlist Id: (optional)"
+            },
+            {
+              "type": "textarea",
+              "id": "debugging_script",
+              "label": "Debugging Script: (For Developers)"
+            }
+          ],
+          "presets": [
+              {
+                "name": "ReelUp Stories",
+                "category": "Video"
+              }
+            ]
+        }
+        {% endschema %}

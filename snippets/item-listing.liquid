@@ -1,0 +1,42 @@
+<div class="product">
+  {% if item.featured_image != blank %}
+    <a href="{{ item.url | within: collection }}">
+      {{ item.featured_image.src | img_url: '480x480' | img_tag: item.featured_image.alt }}
+    </a>
+  {% endif %}
+
+  <p class="product-info">
+    <a href="{{ item.url | within: collection }}">{{ item.title }}</a>
+    <span class="price">
+      {% if item.compare_at_price > item.price %}
+
+        {% if item.price_varies %}
+          {%- assign sale_price = item.price | money -%}
+          {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+        {% else %}
+          {{ 'products.product.on_sale' | t }}
+          {{ item.price | money }}
+        {% endif %}
+
+      {% else %}
+
+        {% if item.price_varies %}
+          {%- assign price = item.price | money -%}
+          {{ 'products.product.from_text_html' | t: price: price }}
+        {% else %}
+          {{ item.price | money }}
+        {% endif %}
+
+      {% endif %}
+
+      {% if item.compare_at_price > item.price %}
+        <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+        <s>{{ item.compare_at_price | money }}</s>
+      {% endif %}
+
+      {% unless item.available %}
+        {{ 'products.product.sold_out' | t }}
+      {% endunless %}
+    </span>
+  </p>
+</div>

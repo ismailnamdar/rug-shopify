@@ -1,0 +1,48 @@
+<div class="dropdown">
+  <div id="mc_embed_signup">
+    <form action="//raddishkids.us7.list-manage.com/subscribe/post?u=886ef8368e6ec2cdbcdeccbd4&amp;id={{ section.settings.mailchimp-list-id }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate subscribe-form" target="_blank" novalidate>
+      <div id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display:none"></div>
+        <div class="response" id="mce-success-response" style="display:none"></div>
+      </div>
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_886ef8368e6ec2cdbcdeccbd4_{{ section.settings.mailchimp-list-id }}" tabindex="-1" value=""></div>
+      <div class="flex space form">
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email address">
+        <input type="submit" value="{{ section.settings.newsletter-cta }}" name="subscribe" id="mc-embedded-subscribe" class="btn koriSendLeadConversion">
+      </div>
+    </form>
+  </div>
+</div><!-- /.dropdown -->
+
+{% schema %}
+  {
+    "name": "Camp Newsletter Signup",
+    "class": "blog-sidebar-item newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Heading",
+        "default": "Newsletter"
+      },
+      {
+        "type": "textarea",
+        "id": "paragraph",
+        "label": "Newsletter Description",
+        "default": "Get a free illustrated recipe guide"
+      },
+      {
+        "type": "text",
+        "id": "newsletter-cta",
+        "label": "Button Text",
+        "default": "Sign Up"
+      },
+      {
+        "type": "textarea",
+        "id": "mailchimp-list-id",
+        "label": "Mailchimp List ID",
+        "default": "Enter MailChimp List ID. Contact Mailchimp Admin for help."
+      }
+    ]
+  }
+{% endschema %}

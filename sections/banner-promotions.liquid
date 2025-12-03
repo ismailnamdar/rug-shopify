@@ -1,0 +1,136 @@
+{%- assign _section = section.settings -%}
+{%- assign _blocks = section.blocks -%}
+
+{%- if _blocks.size > 0 -%}
+  <div class="section-banner-promotions 2" style="margin-bottom: 3.5rem;">
+    <div class="section__shell">
+      <div class="section__inner">
+        <div class="features-simple">
+          <div class="features__items">
+            {%- for block in _blocks -%}
+              {%- assign _block = block.settings -%}
+
+              <div class="features__item {% if _block.has_separator %} has-separator {% endif %}">
+                <div class="feature-simple">
+                  {%- if _block.image != blank -%}
+                    <div class="feature__image">
+                      {% include 'image', _image: _block.image, size: '160', alt: "{{- _block.image.alt | escape -}}"  %}
+                    </div><!-- /.feature__image -->
+                  {%- endif -%}
+
+                  <div class="feature__content">
+                    {%- if _block.title != blank -%}
+                      <h6 class="feature__title">
+                        {{- _block.title -}}
+                      </h6><!-- /.feature__title -->
+                    {%- endif -%}
+                    
+                    {%- if _block.content != blank -%}
+                      <div class="feature__entry">
+                        {{- _block.content -}}
+                      </div><!-- /.feature__entry -->
+                    {%- endif -%}
+                  </div><!-- /.feature__content -->
+                </div><!-- /.feature-simple -->
+              </div><!-- /.features__item -->
+            {%- endfor -%}
+          </div><!-- /.features__items -->
+        </div><!-- /.features-simple -->
+      </div><!-- /.section__inner -->
+    </div><!-- /.section__shell -->
+  </div><!-- /.section-banner-promotions -->
+{%- endif -%}
+
+<style type="text/css" media="screen">
+  .section-banner-promotions {
+    background-color: {{ _section.background_color }};
+  }
+
+  .section-banner-promotions .feature-simple .feature__title {
+    color: {{ _section.title_color }};
+  }
+
+  .section-banner-promotions p {
+    color: {{ _section.content_color }};
+  }
+
+  .section-banner-promotions p a {
+    color: {{ _section.link_color }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Banner Promotions",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#01bcbe"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content color",
+      "default": "#4d4d4d"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#f55568"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "checkbox",
+          "id": "has_separator",
+          "label": "Separator Line",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Promotions",
+      "category": "Banners"
+    }
+  ]
+}
+{% endschema %}

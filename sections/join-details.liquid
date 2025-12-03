@@ -1,0 +1,92 @@
+{%- assign _section = section.settings -%}
+{%- assign section_background = _section.background -%}
+{%- assign section_title = _section.title -%}
+
+<div {% include 'image', _image: section_background, size: '2048', sizes: '600,1024,2048', background: true, inline: true, classes: 'section-how-it-works section-how-it-works--details' %}>
+  <div class="page-width">
+    <div class="section__inner">
+      {% if section_title != blank %}
+        <div class="section__head">
+          <h2 class="section__title">
+            {{- section_title -}}
+          </h2>
+        </div><!-- /.section__head -->
+      {% endif %}
+
+      <div class="section__body">
+
+        <ul class="list-steps list-steps--details">
+          {%- for block in section.blocks -%}
+            {%- assign _block = block.settings -%}
+            {%- assign block_image = _block.image -%}
+            {%- assign block_number = _block.number -%}
+            {%- assign block_title = _block.title -%}
+            {%- assign block_text = _block.text -%}
+    
+            <li>
+              {% if block_image != blank %}
+                <figure>
+                  {% include 'image', _image: block_image, size: '250', alt: block_image.alt %}
+                </figure>
+              {% endif %}
+    
+              {% if block_title != blank %}
+                <h3>
+                  {{- block_title -}}
+                </h3>
+              {% endif %}
+    
+              {% if block_text != blank %}
+                <div>
+                  {{- block_text -}}
+                </div>
+              {% endif %}
+            </li>
+          {%- endfor -%}
+        </ul><!-- /.list-steps -->
+      </div><!-- /.section__body -->
+    </div><!-- /.section__inner -->
+  </div><!-- /.page-width -->
+</div><!-- /.section-how-it-works -->
+
+{% schema %}
+{
+  "name": "Join Details",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

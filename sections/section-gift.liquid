@@ -1,0 +1,63 @@
+{%- assign _section = section.settings -%}
+
+<section class="section-gift">
+  <div class="section__shell">
+    <div class="section__inner">
+      {%- if _section.image != blank -%}
+        <div class="section__image">
+          <figure class="section__image-inner">
+            <img src="{{- _section.image | img_url: '750x' -}}" alt="{{- _section.image.alt | escape -}}">
+          </figure><!-- /.section__image-inner -->
+        </div><!-- /.section__image -->
+      {%- endif -%}
+
+      <div class="section__content">
+        {%- if _section.image_content != blank -%}
+          <figure class="section__content-image">
+            <img src="{{- _section.image_content | img_url: '616x' -}}" alt="{{- _section.image_content.alt | escape -}}">
+          </figure><!-- /.section__content-image -->
+        {%- endif -%}
+
+        {%- if _section.title != blank -%}
+          <h2 class="section__title">
+            {{- _section.title -}}
+          </h2><!-- /.section__title -->
+        {%- endif -%}
+        
+        {%- if _section.content != blank -%}
+          <div class="section__entry">
+            {{- _section.content -}}
+          </div><!-- /.section__entry -->
+        {%- endif -%}
+      </div><!-- /.section__content -->
+    </div><!-- /.section__inner -->
+  </div><!-- /.section__shell -->
+</section><!-- /.section-gift -->
+
+{% schema %}
+{
+  "name": "Section Gift",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_content",
+      "label": "Content Image"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    }
+  ]
+}
+{% endschema %}

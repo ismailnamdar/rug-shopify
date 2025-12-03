@@ -1,0 +1,484 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "165624294026e66c70": {
+      "type": "sticky-button",
+      "disabled": true,
+      "settings": {
+        "show_mobile": true,
+        "show_desktop": false,
+        "bottom_buttom_url": "https://www.raddishkids.com/pages/why-raddish-2#mini-builder",
+        "bottom_buttom_label": "Join Raddish"
+      }
+    },
+    "ec4515dd-2958-4a8c-a9e7-a9e80df1c51a": {
+      "type": "banner-3-columns",
+      "disabled": true,
+      "settings": {
+        "title": "Cooking Together is the Foundation for a Delicious Life.",
+        "description": "Making a meal together has huge benefits for children's mental and physical health. With Raddish you can make it happen!",
+        "background_color": "#e4f4f6",
+        "icons": "shopify://shop_images/3_club_icons_2.png",
+        "left_image": "shopify://shop_images/9D6FAB51-CA5C-432B-BCEE-55D95AB8626F.jpg",
+        "right_image": "shopify://shop_images/9B147ABD-0D6F-473B-B49B-93450BD82F37.jpg",
+        "text": "Pick a Club",
+        "url": "#join-club-section"
+      }
+    },
+    "ec4515dd-2958-4a8c-a9e7-a9e80df1c51b": {
+      "type": "banner-3-columns-alt",
+      "blocks": {
+        "15eac34b-248e-45c6-8a56-e15390e67983": {
+          "type": "icon",
+          "settings": {
+            "title": "Shopping<br>lists on<br>the go",
+            "icon": "shopify://shop_images/Icon_1_-_Raddish.png",
+            "icon_width": 100
+          }
+        },
+        "525fef07-3dbb-4cee-9414-2ff87b6077bb": {
+          "type": "icon",
+          "settings": {
+            "title": "Recipes<br>for any<br>occassion",
+            "icon": "shopify://shop_images/Icon_2_-_Easy_to_follow_44c71b39-b97d-4b75-b8dd-12a0807de7ba.png",
+            "icon_width": 100
+          }
+        },
+        "07af6cf9-36a6-4aff-a86b-abcd68216cb3": {
+          "type": "icon",
+          "settings": {
+            "title": "Trusted by<br>parents, loved<br>by kids",
+            "icon": "shopify://shop_images/Icon_3_-_Raddish_bc9fd02b-31c5-4d1e-a271-4c96f2e9f436.png",
+            "icon_width": 100
+          }
+        }
+      },
+      "block_order": [
+        "15eac34b-248e-45c6-8a56-e15390e67983",
+        "525fef07-3dbb-4cee-9414-2ff87b6077bb",
+        "07af6cf9-36a6-4aff-a86b-abcd68216cb3"
+      ],
+      "settings": {
+        "header_text": "<p>Join Raddish+ <a href=\"#mini-builder\" title=\"#mini-builder\">Today</a>!</p>",
+        "header_background": "#01bcbe",
+        "title": "An Online Cooking Club for",
+        "header_color": "#01bcbe",
+        "animated_text": "kids who love to bake! | easy-to-follow recipes. | kitchen exploration. | delicious fun! |",
+        "description": "Cook from your phone, tablet, or computer with our signature step-by-step recipes!",
+        "background_color": "#e4f4f6",
+        "left_image": "shopify://shop_images/about_rad_banner_image_2_DSC4110-2-2_2.jpg",
+        "right_image": "shopify://shop_images/about_rad_banner_image_1_DSC4029-2-2_2.jpg",
+        "text": "Join the Online Club",
+        "url": "#mini-builder"
+      }
+    },
+    "ea699d5a-0235-4f76-b804-e080c63b0a53": {
+      "type": "block-with-text",
+      "settings": {
+        "background_color": "#01bcbe",
+        "text_color": "#ffffff",
+        "body_text_color": "",
+        "title": "400+ Recipes From Cooking, Baking, & Global Clubs!",
+        "description": ""
+      }
+    },
+    "1a9df42d-8805-4904-bd6a-822be701fdc5": {
+      "type": "families-love-raddish",
+      "blocks": {
+        "cb3b2552-9019-4b4f-b08d-3dbe7bf6e071": {
+          "type": "review",
+          "settings": {
+            "text": "\"He loved being able to check off each ingredient as we prepped for cooking, and the interactive swiping made him feel more in control.\"",
+            "author": "Tina F.",
+            "background_color": "#e4f4f6"
+          }
+        },
+        "90c253cf-f770-46dd-a30a-c2da15a1b774": {
+          "type": "review",
+          "settings": {
+            "text": "\"We're thrilled to have Raddish Plus at our fingertips! So. Many. Recipes!! My daughter loves being able to enlarge steps, check off boxes, and see only one step per page.\"",
+            "author": "Melissa B.",
+            "background_color": "#e4f4f6"
+          }
+        },
+        "3c99306d-f40f-47ca-9695-e56ca9dc5be6": {
+          "type": "review",
+          "settings": {
+            "text": "“We used Raddish+ to make the Kung Pao Sliders! They were fantastic! We'll definitely be putting these into rotation.”",
+            "author": "Devon H.",
+            "background_color": "#e4f4f6"
+          }
+        }
+      },
+      "block_order": [
+        "cb3b2552-9019-4b4f-b08d-3dbe7bf6e071",
+        "90c253cf-f770-46dd-a30a-c2da15a1b774",
+        "3c99306d-f40f-47ca-9695-e56ca9dc5be6"
+      ],
+      "settings": {
+        "title": "Why Families Love Raddish+ Online Cooking Club",
+        "header_color": "#01bcbe"
+      }
+    },
+    "hero_marketing_QkUNDH": {
+      "type": "hero-marketing",
+      "settings": {
+        "image": "shopify://shop_images/Raddish_-Ipad-Illustration---scrolling2_c7c148c8-5afd-4431-88a9-8c00d54d082e.gif",
+        "image_mobile": "shopify://shop_images/Raddish-Plus-Phone-GIF.gif",
+        "small_title": "",
+        "logo": "shopify://shop_images/Raddish_Logo_Full_ae2ed759-4695-4606-9e0e-ff8508192274.png",
+        "description": "<p>Learn to cook anywhere, anytime, on any device for under $13/month!</p>",
+        "landing_page_button_label": "",
+        "landing_page_button_url": "",
+        "button_label": "Explore Raddish+ Online",
+        "button_url": "https://plus.raddishkids.com/"
+      }
+    },
+    "5c8202ca-c95a-486b-a23b-943bdbe9c2f2": {
+      "type": "subscription-builder--mini",
+      "blocks": {
+        "bf9088a7-7549-445c-bb83-d6682e70cc2c": {
+          "type": "step_product",
+          "disabled": true,
+          "settings": {
+            "product_title": "Monthly",
+            "product": "monthly-cooking-club-membership",
+            "product_with_sibling": "monthly-membership-1-sibling-bundle",
+            "product_with_sibling_2": "monthly-membership-2-sibling-bundle",
+            "product_price": "$27.95/mo",
+            "product_label": ""
+          }
+        },
+        "15515635-8054-4db6-953c-7763c04b9eb9": {
+          "type": "step_product",
+          "settings": {
+            "product_title": "Monthly",
+            "product": "monthly-raddish-digital-membership",
+            "product_with_sibling": "",
+            "product_with_sibling_2": "",
+            "product_price": "$15/month",
+            "product_label": ""
+          }
+        },
+        "5e1331a2-4cb0-4231-88de-c510ae9c09da": {
+          "type": "step_product",
+          "settings": {
+            "product_title": "Annual",
+            "product": "digital-access",
+            "product_with_sibling": "",
+            "product_with_sibling_2": "",
+            "product_price": "$150/year",
+            "product_label": "SAVE $30"
+          }
+        }
+      },
+      "block_order": [
+        "bf9088a7-7549-445c-bb83-d6682e70cc2c",
+        "15515635-8054-4db6-953c-7763c04b9eb9",
+        "5e1331a2-4cb0-4231-88de-c510ae9c09da"
+      ],
+      "settings": {
+        "background_desktop": "shopify://shop_images/Raddish_LP_-_Mini_Builder_Desktop_Image.png",
+        "background_mobile": "shopify://shop_images/Raddish_LP_-_Mini_Builder_Mobile_Image.png",
+        "title": "Join Raddish+ Online Cooking Club!",
+        "header_color": "",
+        "free_gift_copy": "",
+        "step_1_title": "Select Term",
+        "step_1_description": "Get immediate access to 400+ Raddish recipes from our Cooking, Baking, and Global clubs. Cook from your phone, tablet, or computer with our signature step-by-step illustrated recipes.",
+        "step_2_title": "",
+        "step_2_description": "",
+        "max_siblings": 0
+      }
+    },
+    "93fb02c6-ca30-42d6-b82a-d74f1c0a91c6": {
+      "type": "reasons-to-try",
+      "blocks": {
+        "7b016a1a-6f5c-487d-bfb3-56e7411895f2": {
+          "type": "reason",
+          "settings": {
+            "text": "Kids learn to cook on any device with our illustrated, step-by-step, and easy-to-follow recipes."
+          }
+        },
+        "b7466c1b-bd71-4bdd-83bf-ed143c425c71": {
+          "type": "reason",
+          "settings": {
+            "text": "Filter recipes by collection, season, holiday, and cuisine… from breakfast to dessert and everything in between."
+          }
+        },
+        "90251437-d634-4c7c-a71b-a98b52be75fe": {
+          "type": "reason",
+          "settings": {
+            "text": "Interactive platform allows kids to  check off ingredients and steps as they cook."
+          }
+        },
+        "55603910-b1c9-46c0-b15c-a64f52ba7be4": {
+          "type": "reason",
+          "settings": {
+            "text": "Learn essential culinary skills and try fun kitchen activities."
+          }
+        }
+      },
+      "block_order": [
+        "7b016a1a-6f5c-487d-bfb3-56e7411895f2",
+        "b7466c1b-bd71-4bdd-83bf-ed143c425c71",
+        "90251437-d634-4c7c-a71b-a98b52be75fe",
+        "55603910-b1c9-46c0-b15c-a64f52ba7be4"
+      ],
+      "custom_css": [],
+      "settings": {
+        "button_text": "",
+        "button_url": "#join-club-section",
+        "title": "4 Reasons to Try Our Online Club:",
+        "header_color": "#01bcbe",
+        "bottom_button_text": "",
+        "bottom_button_url": "https://www.raddishkids.com/pages/why-raddish-2#mini-builder"
+      }
+    },
+    "button_nJbbbE": {
+      "type": "button",
+      "settings": {
+        "title": "Join the Online Club",
+        "url": "#mini-builder"
+      }
+    },
+    "99e29370-6bde-4397-9609-87e813e19ba0": {
+      "type": "carousel-with-images",
+      "blocks": {
+        "a1e545d6-e9cd-4a65-ac73-fd3291f51e2d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC4017-2_72f8a3be-dfa5-48b4-a149-c81a95af5a19.jpg"
+          }
+        },
+        "f47b84dc-4286-4ef6-a014-056248a7987b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2-warm_33ad9357-266b-4a07-b5f8-e94fe0c4806d.png"
+          }
+        },
+        "d47a6f15-b62a-4603-b544-6c0f424c6f45": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/raddish_redvelvet-1005-copy_2efeb3ec-82f8-42a6-bf3e-93f18933ade9.jpg"
+          }
+        },
+        "395ef20a-a49d-42fb-9e61-ce02372dfbc2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC4063-2-2_4b13f5a7-bed5-4813-a1b3-6a28236636d3.jpg"
+          }
+        },
+        "e0c414e1-d8b5-4be5-8b51-d41512bfc08a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/raddish_redvelvet-1015-copy_0f8defcc-9fd3-4ca0-89ff-95691d70290c.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "a1e545d6-e9cd-4a65-ac73-fd3291f51e2d",
+        "f47b84dc-4286-4ef6-a014-056248a7987b",
+        "d47a6f15-b62a-4603-b544-6c0f424c6f45",
+        "395ef20a-a49d-42fb-9e61-ce02372dfbc2",
+        "e0c414e1-d8b5-4be5-8b51-d41512bfc08a"
+      ],
+      "settings": {
+        "title": "",
+        "rotation_speed": 1
+      }
+    },
+    "f504fa98-34ad-44e8-b1ec-f969a696aa34": {
+      "type": "button",
+      "disabled": true,
+      "settings": {
+        "title": "Join Raddish!",
+        "url": "https://www.raddishkids.com/pages/why-raddish#join-club-section"
+      }
+    },
+    "c0532bc1-8927-4d80-bba4-e85d36b1be5e": {
+      "type": "faq",
+      "blocks": {
+        "abeae6d6-668e-4bde-b5a6-af21c718aa22": {
+          "type": "block",
+          "settings": {
+            "title": "What is the difference between Raddish and Raddish Plus?",
+            "text": "<p>Raddish is the original cooking club for kids, and members receive monthly thematic cooking kits in the mail that include fully illustrated, step-by-step recipe guides, a collectable patch, quality cooking utensil, a shopping list, and activities. Raddish Plus is our digital recipe platform, where you can access the vault of Raddish recipes from your computer or other device. Raddish Plus also features our step-by-step, fully illustrated recipe guides, with the convenience of being able to access them at any time, from anywhere.</p>"
+          }
+        },
+        "81f76e75-6445-4df5-a6e1-a2520fa15ce4": {
+          "type": "block",
+          "settings": {
+            "title": "Are ingredients included?",
+            "text": "<p>Ingredients are not included, making mealtime simple to schedule without worrying about expiring ingredients, and also allowing for easy dietary modifications for each recipe (we provide suggestions for vegan, vegetarian, gluten free, and more!). Purchasing your own ingredients also allows you to remake each recipe time and time again. We include a shopping list within each kit, and the ingredients needed for each recipe are also listed within Raddish Plus.</p>"
+          }
+        },
+        "c3407bbf-467a-499c-a18d-93d1b7f25a93": {
+          "type": "block",
+          "settings": {
+            "title": "Can I purchase Raddish Plus without a Raddish membership?",
+            "text": "<p>Yes, you can purchase Raddish Plus digital access without having to receive a monthly kit in the mail. Sign up <a href=\"https://www.raddishkids.com/products/digital-access\" title=\"Digital Access\">here</a>.</p>"
+          }
+        },
+        "44edaccd-2a85-43a0-9d41-6e5f4e9f110b": {
+          "type": "block",
+          "settings": {
+            "title": "What is included in a Raddish membership?",
+            "text": "<p>The Cooking Club and Global Eats Club kits include 3 illustrated, step-by-step Recipe Guides and Skill Lessons, a quality kitchen tool, a creative kitchen project, an apron patch, and collectible Table Talk cards.</p><p>The Baking Club is for kids who love to bake, fostering creativity and baking skills with seasonal, global, and holiday themes. Each kit includes 2 illustrated, step-by-step Recipe Guides: a 12-step “Quick Bake” and 18-step “Star Bake”, “Star Bake” Decorations, a quality kitchen tool, Skill Lessons, Baker’s Bonus Recipe, an apron patch, and collectible Table Talk cards. </p><p>In addition, you’ll receive a grocery store shopping list inside your kit and via email. We also provide online “Bonus Bites” activities. All three of our clubs include access to Raddish Plus.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "abeae6d6-668e-4bde-b5a6-af21c718aa22",
+        "81f76e75-6445-4df5-a6e1-a2520fa15ce4",
+        "c3407bbf-467a-499c-a18d-93d1b7f25a93",
+        "44edaccd-2a85-43a0-9d41-6e5f4e9f110b"
+      ],
+      "settings": {
+        "title": "Raddish+ Online Club FAQs",
+        "header_color": "#01bcbe",
+        "text": "<p><a href=\"https://www.raddishkids.com/pages/faqs\" title=\"https://www.raddishkids.com/pages/faqs\">Read all FAQs</a></p>"
+      }
+    },
+    "16550498927e6e0efe": {
+      "type": "join-club",
+      "blocks": {
+        "1703e8a9-3724-4b0b-9a7c-9725f659a980": {
+          "type": "club",
+          "settings": {
+            "title": "Cooking",
+            "color": "#c6e8ec",
+            "icon": "shopify://shop_images/Cook_Club_Icon_-_chef_hat_4d4d4d_828e7f55-3761-4f4a-a660-109e47c812f9.png",
+            "image": "shopify://shop_images/20200502_164848.jpg",
+            "short_description": "Breakfast, dessert, and everything in between.",
+            "description": "<p>Breakfast, dessert, and everything in between! Cook up kitchen  confidence with kid-created family meals from our original cooking club. </p><p><a href=\"/pages/cooking-landing\" title=\"Cooking Landing\">Learn More</a></p>",
+            "learn_more_button_link": "",
+            "learn_more_button_label": "Learn More",
+            "button_link": "https://www.raddishkids.com/pages/subscription-builder?club=C",
+            "button_label": "Join the Cooking Club"
+          }
+        },
+        "fc7bf9bc-8e64-410a-bab1-de4e527efcf2": {
+          "type": "club",
+          "settings": {
+            "title": "Baking",
+            "color": "#f9bba4",
+            "icon": "shopify://shop_images/Bake_Club_Icon_4d4d4d.png",
+            "image": "shopify://shop_images/90A08E40-B15E-4BF7-B777-BEA6D7E22DA8.jpg",
+            "short_description": "Decadent treats to decorate, taste & share.",
+            "description": "<p>Decadent treats to decorate, taste and share! Bake up sweet success with  recipes that foster creativity and baking skills.</p><p><a href=\"/pages/baking-club\" title=\"Baking Landing\">Learn More</a></p>",
+            "learn_more_button_link": "",
+            "learn_more_button_label": "Learn More",
+            "button_link": "https://www.raddishkids.com/pages/subscription-builder?club=b",
+            "button_label": "Join the Baking Club"
+          }
+        },
+        "8ebc50ee-2285-4dee-9f0d-2fba1ba28e36": {
+          "type": "club",
+          "settings": {
+            "title": "Global",
+            "color": "#c2e790",
+            "icon": "shopify://shop_images/Global_Club_Icon_4d4d4d.png",
+            "image": "shopify://shop_images/BD718FA1-37FF-4CD0-8B7E-C4AA6CEF3FF6_368000f7-2ac6-4ba1-bc08-38af25ffee9c.jpg",
+            "short_description": "Global cuisine and diverse cultures.",
+            "description": "<p>Global cuisine and diverse cultures! Cook and bake international dishes while learning world geography and culinary skills.</p><p><a href=\"/pages/global-landing\" title=\"Global Landing\">Learn More</a></p>",
+            "learn_more_button_link": "",
+            "learn_more_button_label": "Learn More",
+            "button_link": "https://www.raddishkids.com/pages/subscription-builder?club=g",
+            "button_label": "Join the Global Eats Club"
+          }
+        }
+      },
+      "block_order": [
+        "1703e8a9-3724-4b0b-9a7c-9725f659a980",
+        "fc7bf9bc-8e64-410a-bab1-de4e527efcf2",
+        "8ebc50ee-2285-4dee-9f0d-2fba1ba28e36"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Which Club is Right for You?",
+        "subtitle": ""
+      }
+    },
+    "bd39eae8-145a-4516-80e3-db9def19788a": {
+      "type": "button",
+      "disabled": true,
+      "settings": {
+        "title": "Join Raddish!",
+        "url": "#"
+      }
+    },
+    "hero-marketing": {
+      "type": "hero-marketing",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Raddish_Ipad_Illustration_Rad_Favorites_49ca76a4-e587-4911-a955-c3b2b0002c73.png",
+        "image_mobile": "shopify://shop_images/Raddish_iPhone_Illustration_Rad_Favorites_Mobile.png",
+        "small_title": "Including",
+        "logo": "shopify://shop_images/Raddish_Plus_Logo_v2_bc1943a3-279b-4738-9541-bc7a4b11587c.png",
+        "description": "<p>A digital recipe </p><p>library, FREE with </p><p>your membership!</p>",
+        "landing_page_button_label": "Sign Up",
+        "landing_page_button_url": "#join-club-section",
+        "button_label": "Launch Raddish+",
+        "button_url": "#shopify-section-template--16068818927775__16550498927e6e0efe"
+      }
+    },
+    "section-images": {
+      "type": "section-images",
+      "disabled": true,
+      "settings": {}
+    },
+    "26f911b4-688d-4a7c-9e33-96c4e98efa0b": {
+      "type": "block-with-text",
+      "settings": {
+        "background_color": "",
+        "text_color": "",
+        "body_text_color": "",
+        "title": "",
+        "description": ""
+      }
+    },
+    "16787392734199b682": {
+      "type": "apps",
+      "blocks": {
+        "a3da256c-bf2a-45cd-8c62-ae6416d626ed": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "<div class=\"klaviyo-form-RUL8zx\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "a3da256c-bf2a-45cd-8c62-ae6416d626ed"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "165624294026e66c70",
+    "ec4515dd-2958-4a8c-a9e7-a9e80df1c51a",
+    "ec4515dd-2958-4a8c-a9e7-a9e80df1c51b",
+    "ea699d5a-0235-4f76-b804-e080c63b0a53",
+    "1a9df42d-8805-4904-bd6a-822be701fdc5",
+    "hero_marketing_QkUNDH",
+    "5c8202ca-c95a-486b-a23b-943bdbe9c2f2",
+    "93fb02c6-ca30-42d6-b82a-d74f1c0a91c6",
+    "button_nJbbbE",
+    "99e29370-6bde-4397-9609-87e813e19ba0",
+    "f504fa98-34ad-44e8-b1ec-f969a696aa34",
+    "c0532bc1-8927-4d80-bba4-e85d36b1be5e",
+    "16550498927e6e0efe",
+    "bd39eae8-145a-4516-80e3-db9def19788a",
+    "hero-marketing",
+    "section-images",
+    "26f911b4-688d-4a7c-9e33-96c4e98efa0b",
+    "16787392734199b682"
+  ]
+}

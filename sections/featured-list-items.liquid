@@ -1,0 +1,170 @@
+<section class="featured-list-items" style="
+  --bg: {{ section.settings.bg | default: '#eaf9f9' }};
+  --max: {{ section.settings.max_width | default: '1100' }}px;
+  --padY: {{ section.settings.padding_y | default: 55 }}px;
+">
+  <div class="featured-list-items-container">
+    {% if section.settings.title != blank %}
+      <h2 class="featured-list-items-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    <div class="featured-list-items-list-container">
+    {% if section.blocks.size > 0 %}
+      <ul class="featured-list-items-list" role="list">
+        {% for block in section.blocks %}
+          <li class="featured-list-items-item" {{ block.shopify_attributes }}>
+            <span class="featured-list-items-icon" aria-hidden="true">
+              <img src="{{ 'tick-image.png' | asset_url }}" alt="" class="featured-list-items-icon-img" loading="lazy" width="100%" height="100%">
+            </span>
+            <span class="featured-list-items-text">{{ block.settings.text }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    </div>
+
+    {% if section.settings.button_label != blank %}
+      <div class="featured-list-items-cta">
+        <a class="featured-list-items-button btn" href="{{ section.settings.button_link }}">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <style>
+  .featured-list-items {
+    background: var(--bg);
+    padding: var(--padY) 20px;
+  }
+  .featured-list-items-container {
+    max-width: var(--max);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .featured-list-items-title {
+    margin: 0 0 50px;
+    color: #01BCBE;
+    text-align: center;
+    font-family: "KG HAPPY Solid", sans serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px;
+  }
+  .featured-list-items-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .featured-list-items-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 50px;
+    padding: 0;
+    margin: 0 0 50px;
+    list-style: none;
+    text-align: left;
+  }
+  .featured-list-items-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #4D4D4D;
+    font-family: Avenir;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 350;
+    line-height: 31px;
+  }
+  .featured-list-items-icon {
+    display: inline-flex;
+    width: 42px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .featured-list-items-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .featured-list-items-cta {
+    display: flex;
+    justify-content: center;
+  }
+  .featured-list-items-button {
+    min-width: 301px;
+    letter-spacing: 0;
+  }
+
+  /* Mobile adjustments */
+  @media screen and (max-width: 768px) {
+    .reasons-to-gift {
+      padding: 30px 45px 38px 45px;
+    }
+    /* Make list 1 column */
+    .featured-list-items-list {
+      grid-template-columns: 1fr !important;
+      gap: 20px;
+      margin-bottom: 0;
+    }
+    /* Hide button */
+    .featured-list-items-cta {
+      display: none !important;
+    }
+    .featured-list-items-title {
+      font-size: 18px;
+      margin: 0 0 20px;
+    }
+    .featured-list-items-item {
+      font-size: 14px;
+      gap: 8px;
+      line-height: 18px;
+    }
+    .featured-list-items-icon {
+      width: 26px;
+      height: 20px;
+    }
+  }
+</style>
+
+
+</section>
+
+{% schema %}
+{
+  "name": "Featured List Items",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Reasons to Gift Raddish" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Gift Raddish" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "color", "id": "bg", "label": "Background color", "default": "#EAF9F9" },
+    { "type": "range", "id": "max_width", "label": "Max width (px)", "min": 800, "max": 1400, "step": 20, "default": 1080 },
+    { "type": "range", "id": "padding_y", "label": "Vertical padding (px)", "min": 25, "max": 120, "step": 5, "default": 55 }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Build skills with each recipe" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Featured List Items",
+      "blocks": [
+        { "type": "reason", "settings": { "text": "Build skills with each recipe" } },
+        { "type": "reason", "settings": { "text": "No stress meals, no planning needed" } },
+        { "type": "reason", "settings": { "text": "Create sweet family cooking memories" } },
+        { "type": "reason", "settings": { "text": "Help picky eaters try new foods" } },
+        { "type": "reason", "settings": { "text": "Teach independence & confidence" } },
+        { "type": "reason", "settings": { "text": "The gift that keeps on giving" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

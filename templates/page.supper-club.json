@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "165624294026e66c70": {
+      "type": "sticky-button",
+      "settings": {
+        "show_mobile": true,
+        "show_desktop": false,
+        "bottom_buttom_url": "https://www.raddishkids.com/pages/why-raddish-2#mini-builder",
+        "bottom_buttom_label": "Join Raddish"
+      }
+    },
+    "ea699d5a-0235-4f76-b804-e080c63b0a53": {
+      "type": "block-with-text",
+      "settings": {
+        "background_color": "#01bcbe",
+        "text_color": "#ffffff",
+        "body_text_color": "",
+        "title": "Introducing...",
+        "description": ""
+      }
+    },
+    "section-images": {
+      "type": "section-images",
+      "blocks": {
+        "dba049c6-f822-42e6-ad8e-1a589623a095": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/RSC_-_Horizontal_logo_for_site.png"
+          }
+        }
+      },
+      "block_order": [
+        "dba049c6-f822-42e6-ad8e-1a589623a095"
+      ],
+      "settings": {}
+    },
+    "245e70b1-080f-41b6-a3ec-7907626353a5": {
+      "type": "button",
+      "settings": {
+        "title": "Learn More",
+        "url": "https://raddishsupperclub.com/"
+      }
+    },
+    "db262f6e-6d37-4956-8569-3cb75017d971": {
+      "type": "block-with-text",
+      "disabled": true,
+      "settings": {
+        "background_color": "",
+        "text_color": "#01bcbe",
+        "body_text_color": "#4d4d4d",
+        "title": "We've got dinner covered...",
+        "description": "<p>you can thank us later.</p>"
+      }
+    },
+    "f36b3199-e97a-4a24-b525-10fc8f5052e9": {
+      "type": "block-with-text",
+      "settings": {
+        "background_color": "#ffffff",
+        "text_color": "",
+        "body_text_color": "#4d4d4d",
+        "title": "",
+        "description": "<p><em>Finally, a club for adults!</em></p><p>In our home, dinner is probably the most important part of the day, but I still need help to answer the prodding question, “<strong>What’s for dinner tonight?</strong>” In fact, I don’t even want to ask it! What I do want is someone to tell me: “make this for dinner” – and I’ll happily comply! </p><p>We know thousands of parents use and love Raddish recipes <em>without</em> their kids. (#Radmomscooktoo has been trending on our Facebook group for some time.) So Raddish Supper Club is for you: busy parents who want a win by making a no-fuss, delicious, and wholesome meal for - or with - their family. It’s for experienced cooks and people who don’t know the difference between a tablespoon and a teaspoon. It’s for anyone that’s ever asked, “what’s for dinner tonight?” </p><p><strong>Raddish Supper Club is different.</strong> We want to build a community that supports and celebrates a weekly win at the table and in the kitchen. You won’t find a Monday - Friday meal plan here, but you’ll get the <strong>tools you need to make one weekly dinner fit your family and your life</strong>. Each Sunday we’ll send a printable, easy-to-read Raddish recipe tailored to you — the adult. No signup or subscription required! We’ll have new Supper Smarts tips and tricks, and recipes still feature our easy-to-follow illustrated steps you know and love. Our editorial team will also share a Rad Roundup all the ‘things’ we loved, laughed at, or learned from this week. </p><p>I certainly don’t have all the answers to the struggles modern parents face: social media, mental health, overscheduling, invisible labor and the mental load, the commitment of youth sports, school safety, inflation… (heck, I can’t even figure out how to get my son to baseball practice and my daughter to theater at the same time on Tuesday nights!) But meals cooked at home have declined over the last decades – and dramatically since the pandemic – and I do think that sharing a meal with family (or friends who are family!) is fundamentally the antidote we need to many of life's pressures. <strong>Mealtime is the foundation for physical and emotional wellness, and we hope that Raddish Supper Club will support families in the kitchen and at the table. </strong>We know it’s well worth it. It’s the “win” families need.</p><p>We want to build this Supper Club community for you! Please hit reply or email me directly at <a href=\"mailto:supperclub@raddishkids.com\"><span style=\"text-decoration:underline\">supperclub@raddishkids.com</span></a> with anything you want to share.</p>"
+      }
+    },
+    "1691431200ab187226": {
+      "type": "apps",
+      "blocks": {
+        "7c63e1c7-e8e8-4b08-9d10-6ae3320160c4": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": "<div class=\"klaviyo-form-TdyRuj\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "7c63e1c7-e8e8-4b08-9d10-6ae3320160c4"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "f3e76b70-6f76-4512-968f-8f593adee076": {
+      "type": "download-pdf",
+      "disabled": true,
+      "settings": {
+        "title": "Get Your FREE E-Kit!",
+        "subtitle": "\"Made with Love\"",
+        "left_image": "shopify://shop_images/LP_V4_-_Bolognese_2.png",
+        "title_above_description": "What's Inside?",
+        "description": "Take a peek inside the Raddish experience and watch your kids cook with confidence!",
+        "benefits": "Interactive Game\nStovetop Safety\nShopping List\n“Plan a Family Date Night”\nOne Full Recipe\nTable Talk Cards\nHearty Bolognese\nEducational Activity",
+        "button_label": "Get Your FREE E-Kit!",
+        "button_link": "https://_klOnsite.openForm('U6PZjX')",
+        "button_form": "U6PZjX"
+      }
+    },
+    "1685488243721dfc54": {
+      "type": "apps",
+      "blocks": {
+        "5c95eca5-b4ed-4538-a04c-2adfa7b9aea9": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/form-embed-block/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {
+            "formId": ""
+          }
+        }
+      },
+      "block_order": [
+        "5c95eca5-b4ed-4538-a04c-2adfa7b9aea9"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "hero-marketing": {
+      "type": "hero-marketing",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Raddish_Ipad_Illustration_Rad_Favorites_49ca76a4-e587-4911-a955-c3b2b0002c73.png",
+        "image_mobile": "shopify://shop_images/Raddish_iPhone_Illustration_Rad_Favorites_Mobile.png",
+        "small_title": "Including",
+        "logo": "shopify://shop_images/Raddish_Plus_Logo_v2_bc1943a3-279b-4738-9541-bc7a4b11587c.png",
+        "description": "<p>A digital recipe </p><p>library, FREE with </p><p>your membership!</p>",
+        "landing_page_button_label": "Sign Up",
+        "landing_page_button_url": "#join-club-section",
+        "button_label": "Launch Raddish+",
+        "button_url": "#shopify-section-template--16068818927775__16550498927e6e0efe"
+      }
+    },
+    "386c9140-6f52-43b1-87ac-9ebaa9cb5ca4": {
+      "type": "button",
+      "settings": {
+        "title": "Learn More",
+        "url": "https://raddishsupperclub.com/"
+      }
+    }
+  },
+  "order": [
+    "165624294026e66c70",
+    "ea699d5a-0235-4f76-b804-e080c63b0a53",
+    "section-images",
+    "245e70b1-080f-41b6-a3ec-7907626353a5",
+    "db262f6e-6d37-4956-8569-3cb75017d971",
+    "f36b3199-e97a-4a24-b525-10fc8f5052e9",
+    "1691431200ab187226",
+    "f3e76b70-6f76-4512-968f-8f593adee076",
+    "1685488243721dfc54",
+    "hero-marketing",
+    "386c9140-6f52-43b1-87ac-9ebaa9cb5ca4"
+  ]
+}

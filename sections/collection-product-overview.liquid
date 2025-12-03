@@ -1,0 +1,183 @@
+{% assign _section = section.settings %}
+{% assign _blocks = section.blocks %}
+{%- assign _product = all_products[_section.product_handle] -%}
+
+{%- for block in _blocks -%}
+  {%- assign _block = block.settings -%}
+  {%- assign collection_handles = _block.collection_handles | replace: ' ', '' | split: ',' | join: '|' | append: '|' | prepend: '|'  -%}
+  {%- assign current_collection_handle = collection.handle | prepend: '|' | append: '|' -%}
+
+  {%- if _block.product_handle != blank -%}
+    {%- assign _product = all_products[_block.product_handle] -%}
+  {%- endif -%}
+
+  {%- if collection_handles contains current_collection_handle and _product != blank -%}
+    {%- assign product_tags = _product.tags | join: '||' | append: '||' -%}
+
+    {%- if product_tags contains '||value:' -%}
+      {%- assign product_value = product_tags | split: 'value:' | last | split: '||' | first -%}
+    {%- endif -%}
+
+    <section class="section-product-overview section-product-overview--collection">
+      <div class="page-width">
+        <div class="section__inner" style="background-color: {{ _block.border_color }}">
+          <div class="section__trigger">
+            {%- if _block.top_text != blank -%}
+              <span>{{ _block.top_text }}</span>
+            {%- elsif _block.title != blank -%}
+              <span>{{ _block.title }}</span>
+            {%- else -%}
+              <span>{{ _product.title }}</span>
+            {%- endif -%}
+
+            <a href="#" class="trigger js-product-overview-trigger">
+              {{ 'products.product_overview.details' | t }}
+
+              {% render 'icon-dropdown-arrow' %}
+            </a><!-- /.trigger js-trigger -->
+          </div><!-- /.section__trigger -->
+
+          <div class="section__content-wrapper">
+            <div class="section__content">
+              <div class="section__image">
+                {%- if _block.image != blank -%}
+                  {% include 'image', _image: _block.image, size: '1000', alt: _block.image.alt %}
+                {%- else -%}
+                  {% include 'image', _image: _product.featured_image, size: '1000', alt: _product.featured_image.alt %}
+                {%- endif -%}
+              </div><!-- /.section__image -->
+
+              <div class="section__aside">
+                <h2 class="section__title">
+                  {% if _block.title != blank %}
+                    {{- _block.title -}}
+                  {%- else -%}
+                    {{- _product.title -}}
+                  {%- endif -%}
+                </h2><!-- /.section__title -->
+
+                {%- if _block.content != blank -%}
+                  <div class="section__entry">
+                    {{- _block.content -}}
+                  </div><!-- /.section__entry -->
+                {% elsif _product.description != '' %}
+                  <div class="section__entry">
+                    {{- _product.description -}}
+                  </div><!-- /.section__entry -->
+                {%- endif -%}
+
+                <div class="section__price">
+                  {% render 'price' with _product as product %}
+                </div><!-- /.section__price -->
+
+                <div class="section__actions">
+                  <div class="section__add-to-cart">
+                    <form method="post" action="/cart/add" data-productid="{{ product.id }}" data-product-handle="{{_product.handle}}">
+                      <select name="id" data-productid="{{ product.id }}" class="hidden">
+                        <option value="{{- _product.variants.first.id -}}"></option>
+                      </select>
+
+                      <input type="hidden" name="quantity" value="1"/>
+                      <button type="submit" name="add" class="btn product__btn"
+                        {% unless _product.available %}
+                          disabled
+                        {% endunless %}
+                      >
+                        {%- unless _product.available -%}
+                          {{ 'products.product.sold_out' | t }}
+                        {%- else -%}
+                          {{ 'products.product.add_to_cart' | t }}
+                        {%- endunless -%}
+                      </button>
+                    </form>
+                  </div><!-- /.section__add-to-cart -->
+
+                  <div class="section__view-more">
+                    <a href="{{ _product.url | within: 'collection' }}">
+                      {{- 'products.product.view_more_details' | t -}}
+                    </a>
+                  </div><!-- /.section__view-more -->
+                </div><!-- /.section__actions -->
+
+                {% if _block.info != blank %}
+                  <div class="section__info">
+                    {{- _block.info -}}
+                  </div><!-- /.section__info -->
+                {% endif %}
+              </div><!-- /.section__aside -->
+            </div><!-- /.section__content -->
+          </div><!-- /.section__content-wrapper -->
+        </div><!-- /.section__shell -->
+      </div><!-- /.page-width -->
+    </section><!-- /.section-product-overview -->
+  {%- endif -%}
+{%- endfor -%}
+
+
+
+{% schema %}
+{
+  "name": "Product overview",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "collection-product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collection_handles",
+          "label": "Collection handles",
+          "info": "List of collection handles, separated by ',' where this block will be visible."
+        },
+        {
+          "type": "text",
+          "id": "top_text",
+          "label": "Top text"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border color",
+          "default": "#AEDFE5"
+        },
+        {
+          "type": "product",
+          "id": "product_handle",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Default: Product title"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#01BCBE"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Default: Product featured image"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "info": "Default: Product description"
+        },
+        {
+          "type": "text",
+          "id": "info",
+          "label": "Additional info"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

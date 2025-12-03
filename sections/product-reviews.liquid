@@ -1,0 +1,31 @@
+<section class="junip-reviews-section" id="section-{{ section.id }}">
+  {% render 'junip-product-review', product: section.settings.product %}
+</section>
+<style>
+  .junip-reviews-section {
+    min-height: 150px;
+  }
+  .junip-reviews-section .junip-product-review-bars-container {
+    flex: 1;
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Junip Product Reviews",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product to display"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Junip Product Reviews",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

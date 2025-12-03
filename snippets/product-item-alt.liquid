@@ -1,0 +1,83 @@
+{%- if _product != blank -%}
+  {%- assign product_tags = _product.tags | join: '||' | append: '||' | prepend: '||' -%}
+
+  {%- if product_tags contains '||value:' -%}
+    {%- assign product_value = product_tags | split: 'value:' | last | split: '||' | first -%}
+  {%- endif -%}
+
+  {%- if product_tags contains '||save:' -%}
+    {%- assign product_save = product_tags | split: 'save:' | last | split: '||' | first -%}
+  {%- endif -%}
+
+  <div class="product-item-alt 123 {{ class }}">
+    <div class="lazyload product__image" data-bgset="{% render 'responsive-bg-image', image: _product.featured_image %}">
+      <grid-badges 
+      data-compare-at-price="{{_product.compare_at_price}}" 
+      data-price="{{_product.price}}"
+      data-available="{{_product.available}}"
+      data-tags="{{_product.tags | join: ","}}"
+    /></grid-badges>
+      <a href="{{ _product.url | within: collection }}"></a>
+    </div>
+
+    <div class="product__content">
+      <grid-badges 
+        data-compare-at-price="{{_product.compare_at_price}}" 
+        data-price="{{_product.price}}"
+        data-available="{{_product.available}}"
+        data-tags="{{_product.tags | join: ","}}"
+      /></grid-badges>
+      <h5 class="product__title">
+        <a href="{{ _product.url | within: collection }}">
+          {{- _product.title -}}
+        </a>
+      </h5>
+
+      {% if info != blank %}
+        <div class="product__info">
+          {{- info -}}
+        </div>
+      {% endif %}
+
+      <div class="product__price 3" style="display:flex; flex-direction: row; gap: 12px; align-items: center; flex-wrap: wrap;">
+        {%- render 'price', product: _product -%}
+        <div class="product__review">
+          {% render 'junip-product-summary', product: _product %}
+        </div>
+      </div>
+      <product-form>
+        {% render "form-error" %}
+      <form data-productid="{{ product.id }}" method="post" action="/cart/add" data-productid="{{ product.id }}" data-product-handle="{{_product.handle}}">
+        <select name="id" data-productid="{{ product.id }}" class="hidden">
+          <option value="{{- _product.selected_or_first_available_variant.id -}}"></option>
+        </select>
+
+        <input type="hidden" name="quantity" value="1"/>
+        <button type="submit" name="add" class="btn product__btn"
+          {% unless _product.available %}
+            disabled
+          {% endunless %}
+        >
+        <div class="loading-overlay__spinner hidden">
+          <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+          </svg>
+        </div>
+        <span data-add-to-cart-text>
+          {%- unless _product.available -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- else -%}
+            {{ 'products.product.add_to_cart' | t }}
+          {%- endunless -%}
+        </span>
+        </button>
+      </form>
+      </product-form>
+      {%- if product_save != blank -%}
+        <footer class="product__foot">
+          {{- product_save | strip -}}
+        </footer>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

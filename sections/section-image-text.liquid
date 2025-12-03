@@ -1,0 +1,76 @@
+{%- assign _section = section.settings -%}
+
+{% if _section.image != blank %}
+  <section class="section-image-text">
+    <div class="shell section__shell">
+      <div class="section__inner">
+        {% if _section.image != blank %}
+          <div class="section__image">
+            <div
+            class="section__image-inner"
+            aria-label="{{- _section.image.alt | escape -}}"
+            role="img"
+            style="background-image: url({{- _section.image | img_url: '1680x' -}});"
+            >
+            </div><!-- /.section__image-inner -->
+          </div><!-- /.section__image -->
+        {% endif %}
+
+        <div class="section__content">
+          {% if _section.title != blank %}
+            <h2 class="section__title">
+              {{- _section.title -}}
+            </h2><!-- /.section__title -->
+          {% endif %}
+          
+          {% if _section.content != blank %}
+            <div class="section__entry">
+              {{- _section.content -}}
+            </div><!-- /.section__entry -->
+          {% endif %}
+
+          {% if _section.btn_text != blank and _section.btn_url != blank %}
+            <div class="section__actions">
+              <a href="{{- _section.btn_url -}}" class="btn btn--white section__btn">
+                {{- _section.btn_text -}}
+              </a>
+            </div><!-- /.section__actions -->
+          {% endif %}
+        </div><!-- /.section__content -->
+      </div><!-- /.section__inner -->
+    </div><!-- /.shell section__shell -->
+  </section><!-- /.section-image-text -->
+{% endif %}
+
+{% schema %}
+{
+  "name": "Section Image Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button Url"
+    }
+  ]
+}
+{% endschema %}

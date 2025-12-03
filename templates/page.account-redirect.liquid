@@ -1,0 +1,12 @@
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+{% if customer.metafields.subscriptions.customer_string %}
+  {% unless page.url contains "/tools/recurring/portal" %}
+    <script>
+      window.location.replace("/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}/subscriptions?token=" + window.customerToken);
+    </script>
+  {% endunless %}
+{% else %}
+  <script>
+    window.location.replace("/account");
+  </script>
+{% endif %}

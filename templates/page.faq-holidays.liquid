@@ -1,0 +1,33 @@
+{% section 'holiday-intro' %}
+
+<div class="section-holiday-faq">
+  <div class="page-width">
+    <div class="section__inner section-holiday-faq-inner">
+      {% section 'holiday-aside' %}
+      <div class="section-holiday-faq-section">
+        {% section 'holiday-faq' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .section-holiday-faq-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-flow: unset !important;
+  }
+  .section-holiday-faq-section {
+    width: 100%;
+  }
+  @media (max-width: 1023px){
+    .section-holiday-faq-inner {
+      display: flex !important;
+      flex-direction: column-reverse !important;
+    }
+
+    .section-holiday-faq-section {
+      padding: 12px 30px;
+    }
+  }
+</style>

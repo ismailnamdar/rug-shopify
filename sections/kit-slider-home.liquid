@@ -1,0 +1,291 @@
+{%- assign _section = section.settings -%}
+{%- assign section_bg_color = _section.bg_color -%}
+{%- assign section_button_text = _section.button_text -%}
+{%- assign section_button_link = _section.button_link -%}
+
+<div class="kit-box-wrapper js-test-section-b" style="background-color: {{section_bg_color}}">
+  <div class="kit-box">
+    <div class="flex raddish-card {% if _section.revert_image %} raddish-card--flip-image {% endif %}" style="background-color: {{_section.card_color}}">
+      <h2 class="h2">{{_section.title}}</h2>
+      <div class="kit__images">
+        {%- for block in section.blocks -%}
+          {%- assign _block = block.settings -%}
+          {%- assign block_image = _block.image -%}
+          <div class="image">
+            <div class="image__inner">
+              {% include 'image', _image: block_image, size: '800', alt: block_image.alt %}
+            </div><!-- /.image__inner -->
+          </div><!-- /.image -->
+        {%- endfor -%}
+      </div><!-- /.kit__images -->
+      <div class="kit__content">
+        <div class="thumbs">
+          {%- for block in section.blocks -%}
+            {%- assign _block = block.settings -%}
+            {%- assign block_image = _block.image -%}
+            <div class="image{% if forloop.first %} active{% endif %}">
+              {{ block_image | img_url: '140x' | img_tag: block_image.alt }}
+            </div><!-- /.image -->
+          {%- endfor -%}
+        </div><!-- /.thumbs -->
+        <h2 class="mobile">{{_section.title}}</h2>
+        <div class="kit__content-slider">
+          
+          {%- for block in section.blocks -%}
+            {%- assign _block = block.settings -%}
+            {%- assign block_small_title = _block.small_title -%}
+            {%- assign block_title = _block.title -%}
+            {%- assign block_content = _block.content -%}
+            <div class="kit__content-slide">
+              {%- if block_small_title != blank -%}
+                <h5>{{block_small_title}}</h5>
+              {%- endif -%}
+              {%- if block_title != blank -%}
+                <h2>{{block_title}}</h2>
+              {%- endif -%}
+              {{block_content}}
+            </div><!-- /.kit__content-slide -->
+          {%- endfor -%}
+        </div><!-- /.kit__content-slider -->
+        {%- if section_button_text != blank and section_button_link != blank -%}
+          <a href="{{section_button_link}}" class="button">{{section_button_text}}</a>
+        {%- endif -%}
+      </div><!-- /.kit__content -->
+    </div><!-- /.flex -->
+  </div><!-- /.kit-box -->
+</div><!-- /.kit-box-wrapper -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    $('#shopify-section-{{section.id}} .kit__images').on('afterChange', function(event, slick, currentSlide, nextSlide){
+      var $thumb = $('#shopify-section-{{section.id}} .thumbs .image[data-slick-index="' + currentSlide + '"]');
+      var $kitContent = $('#shopify-section-{{section.id}} .kit__content');
+      $thumb.addClass('active').siblings().removeClass('active');
+      if ($thumb.offset().left < $kitContent.offset().left || ($thumb.offset().left + $thumb.width()) > ($kitContent.offset().left + $kitContent.width())) {
+        $('#shopify-section-{{section.id}} .kit-box .thumbs').slick('slickGoTo', currentSlide)
+      }
+    });
+
+    $('#shopify-section-{{section.id}} .kit__images').slick({
+      arrows: true,
+      dots: false,
+      asNavFor: '#shopify-section-{{section.id}} .kit__content-slider'
+    })
+
+    $('#shopify-section-{{section.id}} .kit__content-slider').slick({
+      arrows: false,
+      dots: false,
+      fade: true,
+      swipe: false,
+      asNavFor: '#shopify-section-{{section.id}} .kit__images'
+    })
+
+    $('#shopify-section-{{section.id}} .kit-box .thumbs').slick({
+      arrows: false,
+      variableWidth: true,
+      dots: false,
+      infinite: false,
+      swipe: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToScroll: 3
+          }
+        },
+      ]
+    });
+
+    $('#shopify-section-{{section.id}} .thumbs .image').on('click', function(){
+      var $this = $(this);
+      var slideIndex = parseInt($this.data('slick-index'));
+      $('#shopify-section-{{section.id}} .kit__images').slick('slickGoTo', slideIndex);
+    });
+  });
+</script>
+
+<style>
+  .kit-box div.kit__content h2 {
+    color: #4D4D4D
+  }
+  .kit__content > h2 {
+    display: none;
+  }
+  .kit-box-wrapper {
+    padding: 16px 10px 24px;
+  }
+  .kit-box .kit__content .kit__content-slide  h2 {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #4D4D4D;
+    letter-spacing: 0;
+  }
+  .kit-box .flex.raddish-card {
+    background-color: white;
+    padding: 16px 10px 24px;
+  }
+  .kit-box .kit__content p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .kit-box .kit__content {
+    padding-bottom: 0;
+  }
+  .kit-box .kit__images {
+    padding: 16px 0 0;
+  }
+  .kit-box .kit__images .image .image__inner {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .kit-box .thumbs {
+    padding: 0 0 22px;
+  }
+  .kit-box .kit__images .image .image__inner {
+    padding: 0;
+  }  
+  .kit-box .raddish-card > h2 {
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 0;
+    color: #4D4D4D;
+  }
+  @media screen and (min-width: 1024px) {
+    .kit-box .raddish-card > h2 {
+      display: none;
+    }
+    .kit-box div.kit__images {
+      margin: -90px 0;
+    }
+    .raddish-card--flip-image .kit__images {
+        order: 2;
+    }
+    .kit-box div.kit__images {
+      flex: 0 1 430px
+    }
+    .kit__images .slick-slide {
+      /* max-width: 500px; */
+    }
+    .kit-box .kit__images {
+      flex: 0 1 500px;
+    }
+    .kit-box .kit__images .image .image__inner {
+      max-width: 430px;
+    }
+    .kit-box .kit__content {
+      padding: 18px 30px 10px 0;
+    }
+    .kit-box .slick-prev {
+      /* left: 90px; */
+    }
+    .kit__content > h2 {
+      display: block;
+    }
+    .kit__content > h2.mobile {
+      display: block;
+    }
+    .kit-box .flex {
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    .kit-box .kit__images img {
+      max-height: 500px;
+      width: 100%;
+      margin-left: auto;
+    }
+
+    .kit-box .thumbs {
+      padding: 23px 0 22px;
+    }
+    .kit-box .kit__content p {
+      font-size: 16px;
+      line-height: 18px;
+    }
+    .kit-box .raddish-card > h2 {
+      display: none;
+    }
+    .kit-box-wrapper {
+      padding: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Kit Slider",
+  "class": "kit-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default":"What's included"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#E4F4F6"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "revert_image",
+      "label": "Revert Image Position",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+      "type": "text",
+      "id": "small_title",
+      "label": "Small Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kit Slider",
+      "category": "Test sections"
+    }
+  ]  
+}
+{% endschema %}

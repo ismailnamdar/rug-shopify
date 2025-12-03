@@ -1,0 +1,63 @@
+<script>
+  if('{{ blog.handle }}' == "supper-club") {
+    window.location.href = "https://raddishsupperclub.com"
+  }
+</script>
+
+<section class="section-blog">
+  <div class="page-width">
+    <header class="section__head">
+      {% if current_tags %}<a class="blog-title-link" href="{{ blog.url }}">{% endif %}
+        <h1 class="section__title heading text-center">{{ blog.title }}</h1>
+      {% if current_tags %}</a>{% endif %}
+
+      {% if current_tags %}
+        <p class="text-center">Viewing {{ current_tags.first }}</p>
+      {% else %}
+        {% section 'blog' %}
+      {% endif %}
+    </header><!-- /.section__head -->
+
+    {% paginate blog.articles by 8 %}
+    <div class="section__body blog-page">
+      <div class="section__body-head">
+        {% include 'blog-sidebar' %}
+      </div><!-- /.section__body-head -->
+
+      <div class="section__body-content">
+        <div class="articles content-table flex wrap">
+          {% for article in blog.articles %}
+            <a href="{{ article.url }}" class="article single-article flex wrap">
+              <div>
+                {% if article.image %}
+                  {% include 'image', _image: article.image, size: '600', alt: article.title %}
+                {% endif %}
+                <h3>{{ article.title }}</h3>
+              </div>
+
+              <div class="rte">
+                {% if article.excerpt.size > 0 %}
+                  {{ article.excerpt }}
+                {% else %}
+                  <p>
+                    {{ article.content | strip_html | truncatewords: 30 }}
+                  </p>
+                {% endif %}
+              </div>
+            </a>
+          {% endfor %}
+
+          <p class="section__actions more text-center">
+            <a href="{{ paginate.next.url }}" class="btn alt">{{ 'blogs.articles.view_more' | t }}<span></span></a>
+          </p>
+        </div>
+
+        {% if paginate.next %}
+          <div id="blog-list-foot"></div>
+        {% endif %}
+      </div>
+    </div>
+    {% endpaginate %}
+  </div>
+</section><!-- /.section-blog -->
+

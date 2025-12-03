@@ -1,0 +1,87 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "shopping-list": {
+      "type": "shopping-lists",
+      "blocks": {
+        "club_ikXxkh": {
+          "type": "club",
+          "settings": {
+            "title": "Cooking Club",
+            "color": "#c6e8ec",
+            "icon": "shopify://shop_images/Artwork_207.png",
+            "mobile_desc": "Shopping Lists",
+            "this_month_desc": "<p>This Month's Shopping List:</p>",
+            "this_month_button_link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Shopping_List_HolidayKitchen.pdf?v=1763418210",
+            "this_month_button_label": "Holiday Kitchen",
+            "this_month_button_link_inst": "https://www.instacart.com/store/recipes/8931769?utm_campaign=instacart-idp&utm_medium=affiliate&utm_source=instacart_idp&utm_term=partnertype-mediapartner&utm_content=campaignid-20313_partnerid-6101006",
+            "this_month_button_label_inst": "Shop with Instacart",
+            "last_month_desc": "<p>Last Month's Shopping List:</p>",
+            "last_month_button_link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Shopping_List_ThanksgivingTable.pdf?v=1745609239",
+            "last_month_button_label": "Thanksgiving Table",
+            "last_month_button_link_inst": "https://www.instacart.com/store/recipes/4365939?utm_campaign=instacart-idp&utm_medium=affiliate&utm_source=instacart_idp&utm_term=partnertype-mediapartner&utm_content=campaignid-20313_partnerid-6101006",
+            "last_month_button_label_inst": "Shop with Instacart"
+          }
+        },
+        "club_rpTiR6": {
+          "type": "club",
+          "settings": {
+            "title": "Baking Club",
+            "color": "#f9bba4",
+            "icon": "shopify://shop_images/BC_Icon_9c9b3e0d-d077-4f7e-bd71-2e720ed86c4d.png",
+            "mobile_desc": "Shopping Lists",
+            "this_month_desc": "<p>This Month's Shopping List:</p>",
+            "this_month_button_link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Shopping_List_BC_Holiday_Classics_02_12.pdf?v=1745520170",
+            "this_month_button_label": "Holiday Classics",
+            "this_month_button_link_inst": "https://www.instacart.com/store/recipes/5063929?utm_campaign=instacart-idp&utm_medium=affiliate&utm_source=instacart_idp&utm_term=partnertype-mediapartner&utm_content=campaignid-20313_partnerid-6101006",
+            "this_month_button_label_inst": "Shop with Instacart",
+            "last_month_desc": "<p>Last Month's Shopping List:</p>",
+            "last_month_button_link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Shopping_List_BC_Thanksgiving_Bakes_02_11.pdf?v=1745520170",
+            "last_month_button_label": "Thanksgiving Bakes",
+            "last_month_button_link_inst": "https://www.instacart.com/store/recipes/5063942?utm_campaign=instacart-idp&utm_medium=affiliate&utm_source=instacart_idp&utm_term=partnertype-mediapartner&utm_content=campaignid-20313_partnerid-6101006",
+            "last_month_button_label_inst": "Shop with Instacart"
+          }
+        },
+        "club_UXrqNK": {
+          "type": "club",
+          "settings": {
+            "title": "Global Eats Club",
+            "color": "#c2e790",
+            "icon": "shopify://shop_images/Group_8.png",
+            "mobile_desc": "Shopping Lists",
+            "this_month_desc": "<p>This Month's Shopping List:</p>",
+            "this_month_button_link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Shopping_List_CC_Le_French_Cafe_02_03.pdf?v=1739897709",
+            "this_month_button_label": "Le French Café",
+            "this_month_button_link_inst": "https://www.instacart.com/store/recipes/4365263?utm_campaign=instacart-idp&utm_medium=affiliate&utm_source=instacart_idp&utm_term=partnertype-mediapartner&utm_content=campaignid-20313_partnerid-6101006",
+            "this_month_button_label_inst": "Shop with Instacart",
+            "last_month_desc": "<p>Last Month's Shopping List:</p>",
+            "last_month_button_link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Taste_of_Thailand_Shopping_List.pdf?v=1718752139",
+            "last_month_button_label": "Taste of Thailand",
+            "last_month_button_link_inst": "https://www.instacart.com/store/recipes/4365947?utm_campaign=instacart-idp&utm_medium=affiliate&utm_source=instacart_idp&utm_term=partnertype-mediapartner&utm_content=campaignid-20313_partnerid-6101006",
+            "last_month_button_label_inst": "Shop with Instacart"
+          }
+        }
+      },
+      "block_order": [
+        "club_ikXxkh",
+        "club_rpTiR6",
+        "club_UXrqNK"
+      ],
+      "settings": {
+        "title": "Shopping Lists",
+        "subtitle": ""
+      }
+    }
+  },
+  "order": [
+    "shopping-list"
+  ]
+}

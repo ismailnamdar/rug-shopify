@@ -1,0 +1,221 @@
+<div data-section-id="{{ section.id }}" data-section-type="gift-with-purchase" class="hidden">
+  {%- assign gift_with_purchase = all_products[free_gift_block.settings.gift_item] -%}
+  {% if gift_with_purchase != blank %}
+    <script type="application/json" data-free-gift-with-purchase data-available="{{gift_with_purchase.available}}">
+      {{gift_with_purchase.selected_or_first_available_variant.id}}
+    </script>
+    <script type="application/json" data-qualifying-products>
+    [
+    {% for block in qualifying_product_blocks %}
+      "{{block.settings.qualifying_product}}"
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    ]
+    </script>
+    <!-- Modal -->
+    <div class="modal fade" id="free-gift-modal" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered mx-auto" role="document">
+        <div class="modal-content mx-auto position-relative">
+          <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+          <div class="modal-body mx-auto p-0 text-center">
+            <div class="free-gift-modal__image-container">
+              {% if free_gift_block.settings.free_gift_image != blank %}
+                {% render 'image', _image: free_gift_block.settings.free_gift_image  %}
+              {% else %}
+                {% render 'image', _image: gift_with_purchase.featured_image  %}
+              {% endif %}
+            </div>
+            <div class="free-gift-modal__text-container">
+              <h3 class="mt-0">FREE Gingerbread Cookie Cook-Along Kit ($15 value)</h3>
+              <p>{{free_gift_block.settings.free_gift_description}}</p>
+            </div>
+          </div><!-- .modal-body -->
+        </div><!-- .modal-content -->
+      </div><!-- .modal-dialog -->
+    </div><!-- #LeadFormI -->
+  {% endif %}
+</div>
+
+<script>
+  window.updateGift = (event, cart) => {
+    // var qualifingItemsHandles = JSON.parse($("[data-qualifying-products]").html());
+    // var giftItemId = parseInt($("[data-free-gift-with-purchase]").html());
+    // var available = $("[data-free-gift-with-purchase]").attr("data-available");
+    // if(available == "false") return;
+    // var qualifingItemsIds = [];
+    // var hasQualifingItem = false;
+    // var hasGiftItem = false;
+    
+    // cart.items.forEach(item => {
+    //   if(qualifingItemsHandles.includes(item.handle)) {
+    //     hasQualifingItem = true;
+    //     qualifingItemsIds.push(item.product_id);
+    //   }
+      
+    //   if(giftItemId == item.variant_id) hasGiftItem = true;
+    // });
+    
+
+    // if(hasQualifingItem && !hasGiftItem) {
+    //   CartJS.addItem(giftItemId, 1, {
+    //       '_is_gift_with_purchase': true,
+    //       'gift_product': true,
+    //       '_required_products': qualifingItemsIds.join(",")
+    //     }, {
+    //       success: function(data, textStatus) {
+    //         console.log('added free gift item');
+    //       }
+    //   });
+    // }
+  }
+
+  function openFreeGiftModal(){
+    jquery2("#free-gift-modal").bsModal('show');
+  }
+
+
+  function closeFreeGiftModal(){
+    jquery2("#free-gift-modal").bsModal('hide');
+  }
+</script>
+
+
+<style>
+  #free-gift-modal .modal-body h3 {
+    font-family: 'KG HAPPY Solid',sans-serif;
+    font-size: 18px;
+    line-height: 1.333333;
+    color: #01bcbe;
+  }
+  .gwp__info-container {
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: -50px;
+  }
+
+  .gwp__info-container p {
+      font-size: 18px;
+      margin-top: 0;
+  }
+
+  h3 {}
+
+  .gwp__info-container h3 {
+      font-family: 'KG HAPPY Solid',sans-serif;
+      font-size: 20px;
+      line-height: 1.333333;
+      color: #01bcbe;
+      margin-top: 24px;
+      margin-bottom: 2px;
+  }
+
+  .gwp__info-container a {
+      text-decoration: underline;
+      font-weight: 600;
+  }
+
+  #free-gift-modal {
+    display: none;
+    position: fixed;
+    top: 25vh;
+    width: 100%;
+    background: white;
+    max-width: 900px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    border: 2px solid rgba(77,77,77,.2);
+  }
+
+  #free-gift-modal .modal-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+  #free-gift-modal button.close span {
+    width: 100%;
+    display: block;
+  }
+  #free-gift-modal button.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: white;
+    background: #f3576b;
+    bordeR: none;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:0;
+  }
+
+  #free-gift-modal .modal-body > div {
+    width: 50%;
+  }
+
+  .free-gift-modal__text-container {
+    padding-left: 2rem;
+  }
+
+  .free-gift-modal__image-container {
+    padding-right: 2rem;
+  }
+
+
+  .gwp__inner-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .gwp__inner-container > .gwp__icon-container {
+      margin-right: 16px;
+      display: flex;
+      align-items: center;
+      width: 230px;
+      justify-content: center;
+  }
+
+  @media(max-width: 767px) {
+    .gwp__info-container { margin-top: 0; }
+    .gwp__inner-container {
+      flex-direction: column;
+      text-align: center;
+      margin-top: 4px;
+    }
+    .gwp__inner-container > .gwp__icon-container {
+      width: 100%;
+      margin-right: 0;
+    }
+    #free-gift-modal {
+      top: 5rem;
+      max-height: 95vh;
+      max-width: 90vw;
+    }
+    #free-gift-modal .modal-body {
+      flex-direction: column;
+    }
+    #free-gift-modal .modal-body > div {
+      width: 100%;
+    }
+    .free-gift-modal__image-container {
+      padding-right: 0;
+    }
+
+    .free-gift-modal__text-container {
+      padding-left: 0;
+      margin-top: 2rem;
+    }
+  }
+</style>

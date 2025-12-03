@@ -1,0 +1,92 @@
+<div class="featured-in-block"> 
+    <h2> {{section.settings.title}} </h2>
+    <div class="featured-in-block__blocks"> 
+    {% for block in section.blocks %}
+        <div class="featured-in-block__block">
+            <img src="{{ block.settings.image | img_url: 'x330' }}" />
+        </div>
+    {% endfor%}
+    </div>
+</div>
+
+<style>
+    #shopify-section-{{section.id}} .button-block {
+        margin-top: {{section.settings.margin_top}}px;
+        margin-bottom: {{section.settings.margin_bottom}}px
+    }
+    .featured-in-block h2 {
+        font-size: 40px;
+        color: #4D4D4D;
+        line-height: 60px;
+        font-family: Avenir Heavy;
+    }
+    
+    .featured-in-block__blocks {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 50px;
+        margin: 4rem 0;
+    }
+    .featured-in-block__block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+    @media screen and (min-width: 1280px) {
+        .featured-in-block__block {
+            padding: 4rem;
+        }
+    }
+</style>
+{% schema %}
+  {
+    "name": "Featured In Block",
+    "class": "page-width",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Featured In"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin Top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      }
+    ],
+    "blocks": [
+        {
+          "type": "featured-in",
+          "name": "Logo",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            }
+          ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Featured In Block",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,49 @@
+
+{%- unless menu == blank -%}
+  <ul class="site-nav">
+    {% for link in linklists[menu].links %}
+      {%- assign child_list_handle = link.title | handleize -%}
+      {% if menus[child_list_handle].links != blank %}
+        <li class="{% if link.levels > 1 %}site-nav--has-megamenu {% endif %}site-nav--has-submenu{% if link.active %} site-nav--active{% endif %}">
+          <a href="{{ link.url }}" class="site-nav__link js-nav-expander flex flex-center site-nav__{{ link.title | handle }}">
+            {{ link.title }}
+
+            {% comment %}<img src="{{ 'chevron-down.png' | asset_url }}" alt="">{% endcomment %}
+
+            <svg class="ico-nav-angle" xmlns="http://www.w3.org/2000/svg" width="19.769" height="11.218" viewBox="0 0 19.769 11.218">
+              <path id="Path_2" data-name="Path 2" d="M0,0,8.533-8,16,0" transform="translate(1.885 9.333)" fill="none" stroke="#4D4D4D" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.667"/>
+            </svg>
+          </a>
+
+          {%- if link.levels > 1 -%}
+            {% render 'megamenu', child_list_handle: child_list_handle, _blocks: _blocks, menu: menu %}
+          {%- else -%}
+            <ul class="site-nav__submenu">
+              {% for childlink in menus[child_list_handle].links %}
+                <li {% if childlink.active %}class="site-nav--active"{% endif %}>
+                  <a href="{{ childlink.url }}" class="site-nav__link site-nav__{{ childlink.title | handle }}">{{ childlink.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {%- endif -%}
+        </li>
+      {% else %}
+        <li {% if link.active %}class="site-nav--active"{% endif %}>
+          <a href="{{ link.url }}" class="site-nav__link site-nav__{{ link.title | handle }}">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{%- endunless -%}
+
+<style>
+  {% for block in _blocks %}
+    {% if block.type == 'item_settings' %}
+      .site-nav__{{ block.settings.title | handle }} {
+        color: {{ block.settings.color }} !important;
+      }
+    {% endif %}
+  {% endfor %}
+</style>
+
+{% render 'nav-actions' %}

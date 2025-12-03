@@ -1,0 +1,67 @@
+{%- assign _section  = section.settings -%}
+{%- assign _blocks = section.blocks -%}
+
+{% if _blocks.size > 0 %}  
+  <section class="section-referrals-features">
+    <div class="page-width">
+      <div class="section__inner">
+        {% if _section.title != blank %}  
+          <header class="section__head">
+            <h2>
+              {{ _section.title | escape }}
+            </h2>
+          </header><!-- /.section__head -->
+        {% endif %}
+
+        <div class="section__content">
+          <ul class="list-features">
+            {%- for block in _blocks -%}
+              {%- assign _block = block.settings -%}
+            
+              {% if _block.image != blank and _block.content != blank %}
+                <li>
+                  {% include 'image', _image: _block.image, size: '160' %}
+
+                  <p>
+                    {{ _block.content | newline_to_br }}
+                  </p>
+                </li>
+              {% endif %}
+            {%- endfor -%}
+          </ul><!-- /.list-features -->
+        </div><!-- /.section__content -->
+      </div><!-- /.section__inner -->
+    </div><!-- /.page-width -->
+  </section><!-- /.section-referrals-features -->
+{% endif %}
+
+{% schema %}
+{
+  "name": "Features",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+{%- if _block != blank -%}
+  <div class="block-landing-hero">
+    {%- if _block.image != blank -%}
+      <div class="block__image" style="background-image: url({{ _block.image | img_url: '1200x' }})"></div><!-- /.block__image -->
+    {%- endif -%}
+
+    <div class="block__content-wrapper">
+      <div class="block__content">
+        {% if _block.title != blank %}
+          <h4 class="block__title">
+            {{- _block.title -}}
+          </h4><!-- /.block__title -->
+        {% endif %}
+
+        {%- if _block.content != blank -%}
+          <div class="block__entry">
+            {{- _block.content -}}
+          </div><!-- /.block__entry -->
+        {%- endif -%}
+
+        {% if _block.link_url != blank and _block.link_label != blank %}
+          <a href='{{ _block.link_url }}' class='block__link'>{{ _block.link_label }}</a><!-- /.block__link -->
+        {% endif %}
+      </div><!-- /.block__content -->
+    </div><!-- /.block__content-wrapper -->
+  </div><!-- /.block-landing-hero -->
+{%- endif -%}

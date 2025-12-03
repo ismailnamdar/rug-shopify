@@ -1,0 +1,60 @@
+
+<div class="subscription-step subscription-step--4" rv-class-needsreview="state.lastStepStateChanged">
+  <h2 class="h2"><span class="back-button" rv-on-click="methods.goBack" > < </span>{{steps.step_4_title}}</h2>
+  <div id="step-4-summary"></div>
+  <div class="gift-message-saved" rv-if="state.parent.email">
+    <p>
+      <span>
+        <span>{{steps.step_4_gifts_label}}</span>
+      </span> <span id="gift-message-edit" data-content-id="gift-options-modal" rv-on-click="methods.openModalOnLastStep">Edit</span> <span class="delete-button" rv-on-click="methods.updateParentProperty | args 'email' ''">Delete</span> </p>
+    <p rv-text="state.parent.email"></p>
+  </div>
+  <div class="gift-message-saved" rv-if="state.shareTracking">
+    <p>
+      <span>
+        <span>Tracking will be shared with</span>
+      </span> <span id="share-tracking-edit" data-content-id="gift-options-modal" rv-on-click="methods.openShareTrackingModalOnLastStep">Edit</span> <span class="delete-button" rv-on-click="methods.updateShareSharing | args ''">Delete</span> </p>
+    <p rv-text="state.shareTracking"></p>
+  </div>
+  {% comment %}
+  <div class="gift-message-saved" rv-if="state.buyNowShipLater">
+    <p>
+      <span>
+        <span>{{steps.step_4_buy_ship_later_label}}</span>
+      </span> <span id="gift-message-edit" data-content-id="gift-options-modal" rv-on-click="methods.openAdditionalContent">Edit</span> <span class="delete-button" rv-on-click="methods.updateBuyNowShipLater | args false">Delete</span> </p>
+    <p>{{steps.step_4_buy_ship_later_text}}</p>
+  </div>
+  {% endcomment %}
+  {% if steps.enable_bnsl_edit %}
+  <div class="gift-message-saved 3" rv-if="state.shipDecember | or state.shipJanuary | or state.shipNow">
+    <p>
+      <span>
+        <span>{{steps.step_4_buy_ship_later_label}}</span>
+      </span> <span id="gift-message-edit" data-content-id="gift-options-modal" rv-on-click="methods.openModalOnLastStep">Edit</span> <span class="delete-button hidden" rv-on-click="methods.updateBuyNowShipLater | args false">Delete</span> </p>
+      <p rv-if="state.shipDecember">{{steps.step_4_buy_ship_later_text_december}}</p>
+      <p rv-if="state.shipJanuary">{{steps.step_4_buy_ship_later_text_january}}</p>
+      <p rv-if="state.shipNow">{{steps.step_4_buy_ship_now_text}}</p>
+  </div>
+  {% endif %}
+  <div class="gift-message-saved gift-message-saved--sbo" rv-if="state.sbo">
+      <p rv-if="state.sbo">{{steps.step_4_sbo_text}}</p>
+  </div>
+  <div id="step-4-upsells"></div>
+  <div id="step-4-buttons"></div>
+  <div id="step-4-note" ></div>
+  <div id="step-4-share-tracking-note"></div>
+  <button
+    class="btn btn--add-to-cart button-checkout"
+    href="#"
+    rv-on-click="methods.addToCart">
+    <span class="checkout-loading"><img src="{{"loading-raddish.gif" | asset_img_url: "80x"}}" /></span>
+    <span>Checkout</span>
+  </button>
+  {%- comment -%}
+    <div class="bottom-content">
+      Clubs include digital access to all recipes from each club with <a href="#" 
+      rv-on-click="methods.openAdditionalContent" 
+      data-content-id="{{steps.step_1_bottom_description_modal_id}}">Raddish+</a>, our digital library.
+    </div>
+  {%- endcomment -%}
+</div>

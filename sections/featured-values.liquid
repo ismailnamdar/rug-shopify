@@ -1,0 +1,280 @@
+
+<section id="featured-values-{{ section.id }}" class="featured-values" role="region" aria-label="{{ section.settings.heading | escape }}">
+  <div class="rd-container">
+    {% if section.settings.heading != blank %}
+      <h2 class="rd-title">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="rd-slider-wrap">
+      <button class="rd-nav rd-nav--prev" type="button" aria-label="Previous">
+        <span class="rd-nav-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="20" viewBox="0 0 9 20" fill="none" style="transform: rotate(180deg);">
+            <path d="M1 18.467L8 9.32337L1 1.32267" stroke="#4D4D4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+
+      <ul class="rd-grid" role="list">
+        {% for block in section.blocks %}
+          {% assign icon = block.settings.icon %}
+          <li class="rd-item" {{ block.shopify_attributes }}>
+            {% if icon != blank %}
+              <div class="rd-icon">
+                {{ icon | image_url: width: 160 | image_tag:
+                  loading: 'lazy',
+                  widths: '80,120,160,240',
+                  alt: block.settings.title
+                }}
+              </div>
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+              <h3 class="rd-item-title">{{ block.settings.title }}</h3>
+            {% endif %}
+
+            {% if block.settings.text != blank %}
+              <div class="rd-item-text">{{ block.settings.text }}</div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+
+      <button class="rd-nav rd-nav--next" type="button" aria-label="Next">
+        <span class="rd-nav-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="20" viewBox="0 0 9 20" fill="none">
+              <path d="M1 18.467L8 9.32337L1 1.32267" stroke="#4D4D4D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+  <style>
+    .featured-values { padding: 20px 0; }
+    .featured-values .rd-container { max-width: 1228px; margin: 0 auto; padding: 30px 40px; }
+    .featured-values .rd-title {
+      text-align: center;
+      margin: 0 0 40px;
+      color: #4D4D4D;
+      font-family: "KG HAPPY Solid", sans serif;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 32px;
+      letter-spacing: 0px;
+    }
+
+    .featured-values .rd-grid {
+      --rd-gap: 40px;
+      display: grid; gap: var(--rd-gap);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      list-style: none; padding: 0; margin: 0;
+      scroll-behavior: smooth;
+    }
+    .featured-values .rd-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+    .featured-values .rd-icon img { height: 104px; width: auto; display: inline-block; }
+    .featured-values .rd-item-title { 
+      margin: 0;
+      color: #4D4D4D;
+      text-align: center;
+      font-family: "KG HAPPY Solid", sans serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 0px;
+    }
+    .featured-values .rd-item-text {
+      max-width: 320px;
+      margin: 0;
+      color: #4D4D4D;
+      text-align: center;
+      font-family: Avenir;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 350;
+      line-height: 28px;
+      letter-spacing: 0px;
+    }
+
+    .featured-values .rd-slider-wrap {
+    }
+    .featured-values .rd-nav { display: none; }
+
+    @media (max-width: 768px) {
+      .featured-values { padding: 20px 24px; }
+      .featured-values .rd-item-title {
+        font-size: 18px;
+        line-height: 24px;
+      }
+      .featured-values .rd-title { 
+        font-size: 24px;
+      }
+      .featured-values .rd-container {
+        padding: 0 0px;
+        position: relative;
+      }
+      
+        
+      .featured-values .rd-grid {
+        display: flex;
+        gap: 16px;
+        overflow: hidden;
+        scroll-snap-type: x mandatory;
+      }
+      .featured-values .rd-item {
+        min-width: 100%;
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+        background: transparent;
+        gap: 10px;
+      }
+
+      .featured-values .rd-item-text {
+        font-size: 14px;
+        line-height: 22px;
+        max-width: 220px;
+      }
+
+      .featured-values .rd-nav {
+        display: inline-flex;
+        align-items: center; justify-content: center;
+        position: absolute; top: 50%; transform: translateY(-50%);
+        width: 36px; height: 36px; border-radius: 999px;
+        background: transparent;
+        border-color: transparent;
+        transition: background .15s ease;
+      }
+      .featured-values .rd-nav:hover { background: rgba(0,0,0,0.12); }
+      .featured-values .rd-nav--prev { left: 5px; }
+      .featured-values .rd-nav--next { right: 5px; }
+
+      .featured-values .rd-nav:disabled {
+          display: none;
+      }
+
+      .rd-nav-icon {
+        display: flex;
+      }
+    }
+
+  </style>
+
+    <script>
+    (function() {
+      const root = document.getElementById('featured-values-{{ section.id }}');
+      if (!root) return;
+
+      const grid = root.querySelector('#featured-values-{{ section.id }} .rd-grid');
+      const prevBtn = root.querySelector('#featured-values-{{ section.id }} .rd-nav--prev');
+      const nextBtn = root.querySelector('#featured-values-{{ section.id }} .rd-nav--next');
+
+      // Only activate slider behavior on mobile width
+      const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+      let items, index = 0;
+
+      function refresh() {
+        items = Array.from(root.querySelectorAll('#featured-values-{{ section.id }} .rd-item'));
+        index = Math.max(0, Math.min(index, items.length - 1));
+        updateButtons();
+      }
+
+      function updateButtons() {
+        if (!isMobile()) {
+          // Desktop: no buttons active state needed
+          prevBtn.disabled = false;
+          nextBtn.disabled = false;
+          return;
+        }
+        prevBtn.disabled = index <= 0;
+        nextBtn.disabled = index >= items.length - 1;
+      }
+
+      function goTo(i) {
+        if (!isMobile()) return;         // avoid odd scrolls on desktop
+        index = Math.max(0, Math.min(i, items.length - 1));
+        const target = items[index];
+        if (!target) return;
+        const offset = target.offsetLeft - items[0].offsetLeft;
+        grid.scrollTo({ left: offset, behavior: 'smooth' });
+        updateButtons();
+      }
+
+      prevBtn.addEventListener('click', () => goTo(index - 1));
+      nextBtn.addEventListener('click', () => goTo(index + 1));
+
+      // Track scroll to keep index in sync when user swipes
+      grid.addEventListener('scroll', () => {
+        if (!isMobile()) return;
+        const left = grid.scrollLeft;
+        let nearest = 0;
+        let minDelta = Infinity;
+        items.forEach((el, i) => {
+          const delta = Math.abs(el.offsetLeft - items[0].offsetLeft - left);
+          if (delta < minDelta) { minDelta = delta; nearest = i; }
+        });
+        if (nearest !== index) {
+          index = nearest;
+          updateButtons();
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        // snap back to current item when switching breakpoints
+        refresh();
+        goTo(index);
+      });
+
+      // Init
+      document.addEventListener('DOMContentLoaded', () => {
+        refresh();
+        goTo(0);
+      });
+    })();
+  </script>
+
+{% schema %}
+{
+    "name": "Featured Values",
+    "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "The Raddish Kids Difference" }
+    ],
+    "blocks": [
+        {
+        "type": "feature",
+        "name": "Feature",
+        "settings": [
+            { "type": "image_picker", "id": "icon", "label": "Icon" },
+            { "type": "text", "id": "title", "label": "Title", "default": "Beloved Recipes" },
+            {
+            "type": "text",
+            "id": "text",
+            "label": "Description",
+            "default": "<p>Chef-crafted recipes with real flavor and simple, step-by-step instructions — no gimmicks, just good food.</p>"
+            }
+        ]
+        }
+    ],
+    "max_blocks": 10,
+    "presets": [
+        {
+        "name": "Featured Values",
+        "blocks": [
+            { "type": "feature", "settings": { "title": "Beloved Recipes" } },
+            { "type": "feature", "settings": { "title": "Superior Contents" } },
+            { "type": "feature", "settings": { "title": "Fun Themes" } }
+        ]
+        }
+    ]
+}
+{% endschema %}

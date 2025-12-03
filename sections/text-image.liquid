@@ -1,0 +1,105 @@
+{%- assign _section = section.settings -%}
+{%- assign section_background = _section.background -%}
+{%- assign section_color = _section.color -%}
+{%- assign section_image = _section.image -%}
+{%- assign section_title = _section.title -%}
+{%- assign section_text = _section.text | newline_to_br | split: '<br />' -%}
+{%- assign section_btn_text = _section.btn_text -%}
+{%- assign section_btn_url = _section.btn_url -%}
+{%- assign section_reverse = _section.reverse -%}
+
+<div class="section-inside js-test-section-a {% if section_reverse %}section-inside--reverse{% endif %}" {% if section_image != blank %}style="background-image: url({{- section_image | img_url: '1534x' -}})"{% endif %}>
+  <div class="section__inner" style="background-color: {{- section_background-}}; color: {{- section_color -}};">
+    {% if section_title != blank or section_text != blank or section_btn_text != blank %}
+      <div class="section__content">
+        {% if section_title != blank %}
+          <h2 class="section__title">
+            {{- section_title -}}
+          </h2><!-- /.section__title -->
+        {% endif %}
+
+        {% if _section.text != blank %}
+          <div class="section__entry">
+            <ul>
+              {% for i in section_text %}
+                <li>
+                  {{ i }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div><!-- /.section__entry -->
+        {% endif %}
+
+        {% if section_btn_text != blank and section_btn_url != blank %}
+          <a href="{{- section_btn_url -}}" class="btn homepage">
+            {{- section_btn_text -}}
+          </a>
+        {% endif %}
+      </div><!-- /.section__content -->
+    {% endif %}
+
+    {% if section_image != blank %}
+      <div class="section__image">
+        <img src="{{- section_image | img_url: '2048x' -}}" alt="{{- section_image.alt -}}">
+      </div><!-- /.section__image -->
+    {% endif %}
+  </div><!-- /.section__inner -->
+</div><!-- /.section-inside -->
+
+{% schema %}
+{
+  "name": "Text Image",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background Color",
+      "default": "#01BCBE"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "List items",
+      "info": "Each newline is a new bullet point"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button - Text"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button - URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "Reverse layout",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Image",
+      "category": "Home Sections"
+    }
+  ]
+}
+{% endschema %}

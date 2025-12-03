@@ -1,0 +1,92 @@
+<div class="text-with-icon {% unless section.settings.show_mobile %} hidden-xs {% endunless %}{% unless section.settings.show_desktop %}hidden-sm hidden-md hidden-lg{% endunless %}" style="background-color: {{section.settings.background_color}};">
+  <div class="text-with-icon__img">
+    {% render 'image', _image: section.settings.icon, alt: section.settings.icon.alt, classes: "aspect-ratio-box"  %}
+  </div>
+  <div class="text-with-icon__description">
+    {{section.settings.description}}
+  </div>
+</div>
+
+<style>
+  .raddish-plus-landing img {
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .text-with-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .text-with-icon__img {
+    width: 22.5%;
+    position: relative;
+    display: block;
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
+
+  .text-with-icon__img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.25);
+    width: 100%;
+  }
+
+  .text-with-icon__description {
+    fleX: 1;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .text-with-icon__description p {
+    margin: 8px 0;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 24px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Text with Icon - Mobile",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_mobile",
+      "label": "Show Mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desktop",
+      "label": "Show Desktop",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Text",
+      "default": "<p>Plans starting at $24 a month!</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with Icon",
+      "category": "Landing"
+    }
+  ]
+}
+{% endschema %}

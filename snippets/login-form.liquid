@@ -1,0 +1,22 @@
+<div class="login-options">
+  {% comment %}
+    <img src="https://cdn.shopify.com/s/files/1/0300/1545/files/Screen_Shot_2021-06-10_at_10.09.52_AM.png" alt="chef icon" class="chef-icon">
+  {% endcomment %}  
+  <div class="{% if is_full_width %}login-full-width{% else %}login-left{% endif %}" style="display: none;">
+    <p>We have updated our account portal! If the system does not recognize your email address, you may need to&nbsp;<a href="/account/register" target="_blank"><strong>create an account</strong></a>.</p>
+  </div>
+  <div class="{% if is_full_width %}login-full-width{% else %}login-right{% endif %}">
+    {{ section.settings.content_right }}
+  </div>
+</div>
+<div class="login-intro">
+    {% render "customer-login-form" %}
+</div>
+<div class="login-footer">
+    <p>Questions? We're here to help!</p>
+    {% if section.settings.customer_service_link == "opens" %}
+    <p>Contact <a href="javascript:void(0);" onclick="GorgiasChat.open();">Customer Service</a>.</p>
+    {% else %}
+    <p>Contact <a href="mailto:hello@raddishkids.com">Customer Service</a>.</p>
+    {% endif %}
+</div>

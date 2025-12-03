@@ -1,0 +1,13 @@
+<div class="section__feature">
+  {%- if _block.image != blank -%}
+    <div class="section__feature-image">
+      <img src="{{ _block.image | img_url: '150x' }}" alt="{{ _block.image.alt }}" />
+    </div><!-- /.section__feature-image -->
+
+    {%- if _block.content != blank -%}
+      <div class="section__feature-content">
+        {{- _block.content -}}
+      </div><!-- /.section__feature-content -->
+    {%- endif -%}
+  {%- endif -%}
+</div><!-- /.section__feature -->

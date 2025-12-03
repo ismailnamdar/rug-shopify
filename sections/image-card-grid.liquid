@@ -1,0 +1,298 @@
+<section id="image-card-grid-{{ section.id }}" class="image-card-grid">
+  <div class="image-card-grid__inner">
+    {% if section.settings.heading != blank %}
+      <h2 class="image-card-grid__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="image-card-grid__list">
+      {% for block in section.blocks %}
+        {% assign bg = block.settings.bg_color | default: '#EAF6FB' %}
+        <div class="image-card-grid-acc" style="--card-bg: {{ bg }};" {{ block.shopify_attributes }}>
+          <button
+            class="image-card-grid-acc__bar"
+            type="button"
+            aria-expanded="false"
+            aria-controls="panel-{{ block.id }}"
+          >
+            <span class="image-card-grid-acc__title">{{ block.settings.title }}</span>
+            <span class="image-card-grid-acc__pm" aria-hidden="true"></span>
+          </button>
+
+          <div class="image-card-grid-acc__panel" id="panel-{{ block.id }}">
+                <div class="image-card-grid-card__media">
+                {% if block.settings.card_image != blank %}
+                  {%- assign img = block.settings.card_image -%}
+                  {% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer">
+                      <img
+                        class="image-card-grid-card__img image-card-grid-card__img--fixed"
+                        src="{{ img | img_url: '234x' }}"
+                        alt="{{ block.settings.title | escape }}"
+                        width="234"
+                        height="167"
+                        loading="lazy"
+                      >
+                    </a>
+                  {% else %}
+                    <img
+                      class="image-card-grid-card__img image-card-grid-card__img--fixed"
+                      src="{{ img | img_url: '234x' }}"
+                      alt="{{ block.settings.title | escape }}"
+                      width="234"
+                      height="167"
+                      loading="lazy"
+                    >
+                  {% endif %}
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'image-card-grid-card__placeholder' }}
+                {% endif %}
+              </div>
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    .image-card-grid { padding: 20px 0 35px; }
+    .image-card-grid__inner { max-width: 1106px; margin: 0 auto; padding: 0 16px; }
+    .image-card-grid__heading {
+      font-family: "KG HAPPY Solid", sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 22px;
+      letter-spacing: 0px;
+      text-align: center;
+      margin: 0 0 55px;
+    }
+
+    /* Grid */
+    .image-card-grid__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 55px;
+    }
+
+    .image-card-grid-acc {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .image-card-grid-acc__bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card-bg, #EAF6FB);
+      border: 0; cursor: pointer;
+      border-radius: 20px;
+    }
+    .image-card-grid-acc__title {
+      flex: 1;
+      color: #4d4d4d;
+      font-family: "KG HAPPY Solid", sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 22px;
+      letter-spacing: 0px;
+      text-align: center;
+    }
+
+    .image-card-grid-acc__panel {
+      padding: 14px 18px 18px;
+      background: #fff;
+      height: 0;
+      max-height: 0;
+      overflow: hidden;
+      padding-top: 0;
+      transition: all 0.5s ease;
+    }
+    .image-card-grid-acc[data-open="true"] .image-card-grid-acc__panel { display: block; }
+
+    .image-card-grid-card__media {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .image-card-grid-card__img {
+        height: 130px;
+    }
+    .image-card-grid-card__img--fixed {
+      object-fit: contain;
+      display: block;
+    }
+    .image-card-grid-card__placeholder {
+      display: block;
+      background: #f3f3f3;
+      border-radius: 8px;
+    }
+
+    @media (min-width: 767px) {
+      .image-card-grid-card__img {
+        height: 167px;
+      }
+      .image-card-grid__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .image-card-grid-acc {
+        background: var(--card-bg, #EAF6FB);
+        border-radius: 12px;
+        padding: 28px 43px;
+        box-shadow: 3px 4px 4px 0 rgba(0, 0, 0, 0.11);
+      }
+      .image-card-grid-acc__bar {
+        background: transparent;
+        cursor: default;
+        justify-content: center;        
+      }
+      .image-card-grid-acc__title {
+        text-align: center;
+      }
+      .image-card-grid-acc__pm { display: none; }
+      .image-card-grid-acc__panel {
+        display: grid !important;
+        place-items: center;
+        background: transparent;
+        padding: 0;
+        height: auto;
+        max-height: unset;
+      }
+      .image-card-grid-card__media {
+        background: var(--card-bg, #EAF6FB); /* matches card */
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .image-card-grid__heading {
+        margin-bottom: 20px;
+        color: #4D4D4D;
+        line-height: 40px;
+      }
+      .image-card-grid__list {
+        gap: 10px;
+      }
+      .image-card-grid-acc {
+        gap: 0;
+        border-radius: 8px;
+        border: 1px solid #D8D8D8;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20);
+      }
+      .image-card-grid-acc__bar {
+        position: relative;
+        padding: 26px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        fill: var(--MIDDLE-BLUE, #CDE7EB);
+        border: 1px solid rgba(77, 77, 77, 0.20);
+        filter: drop-shadow(0 2px 4px rgba(77, 77, 77, 0.20));
+        box-shadow: none;
+      }
+      .image-card-grid-acc__pm {
+        position: absolute; right: 16px; margin-bottom: 8px; width: 18px; height: 18px; display: inline-block;
+      }
+      .image-card-grid-acc__pm::before,
+      .image-card-grid-acc__pm::after {
+        content: ""; position: absolute; inset: 0; margin: auto;
+        width: 12px; height: 2px; background: #01BCBE; border-radius: 1px;
+      }
+      .image-card-grid-acc__pm::after { transform: rotate(90deg); }
+      .image-card-grid-acc[data-open="true"] .image-card-grid-acc__pm::after { display: none; }
+      .image-card-grid-acc__panel {
+        padding: 0;
+      }
+      .image-card-grid-acc[data-open="true"] .image-card-grid-acc__panel {
+        padding: 22px 20px 22px 20px;
+        height: auto;
+        max-height: 800px !important;
+        overflow: visible;
+      }
+      .image-card-grid {
+        padding: 20px 0;
+      }
+    }
+  </style>
+
+ <script>
+(function() {
+  const root = document.getElementById('image-card-grid-{{ section.id }}');
+  if (!root) return;
+
+  const items = Array.from(root.querySelectorAll('.image-card-grid-acc'));
+  const bars  = Array.from(root.querySelectorAll('.image-card-grid-acc__bar'));
+  const mq = window.matchMedia('(max-width: 767px)');
+
+  function setMobileState(isMobile) {
+    items.forEach(item => {
+      if (isMobile) {
+        item.dataset.open = 'false';
+        item.querySelector('.image-card-grid-acc__bar')?.setAttribute('aria-expanded', 'false');
+      } else {
+        item.dataset.open = 'true';
+        item.querySelector('.image-card-grid-acc__bar')?.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+
+  function handleClick(e) {
+    if (!mq.matches) return; // accordion only on mobile
+    const btn = e.currentTarget;
+    const card = btn.closest('.image-card-grid-acc');
+    const isOpen = card.dataset.open === 'true';
+
+    // ✅ Toggle only the clicked one, don't close others
+    card.dataset.open = isOpen ? 'false' : 'true';
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  }
+
+  bars.forEach(b => b.addEventListener('click', handleClick));
+
+  // Initial state + on resize
+  setMobileState(mq.matches);
+  mq.addEventListener('change', (ev) => setMobileState(ev.matches));
+})();
+</script>
+
+</section>
+
+{% schema %}
+{
+  "name": "Image Card Grid",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Holiday Gift Notes" }
+  ],
+  "blocks": [
+  {
+    "type": "image_card",
+    "name": "Image card",
+    "settings": [
+      { "type": "text", "id": "title", "label": "Title" },
+      { "type": "image_picker", "id": "card_image", "label": "Image" },
+      { "type": "url", "id": "link", "label": "Link (optional)", "info": "Link to open when clicking the image" },
+      { "type": "color", "id": "bg_color", "label": "Card background color", "default": "#E4F4F6" }
+    ]
+  }
+]
+,
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Image Card Grid",
+      "category": "Custom",
+      "blocks": [
+        { "type": "image_card", "settings": { "title": "Cooking Club", "bg_color": "#E4F4F6" } },
+        { "type": "image_card", "settings": { "title": "Global Eats Club", "bg_color": "#E8F5DF" } },
+        { "type": "image_card", "settings": { "title": "Baking Club", "bg_color": "#FDECE5" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

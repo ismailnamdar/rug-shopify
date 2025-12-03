@@ -1,0 +1,20 @@
+{%- assign template_w = '{width}x' | escape -%}
+
+{
+  "available": {{ variant.available | json }},
+  "barcode": {{ variant.barcode | json }},
+  "compare_at_price": {{ variant.compare_at_price | json }},
+  "featured_media": {{ variant.featured_media | json }},
+  "id": {{ variant.id | json }},
+  "image":{{ variant.image | json }},
+  "inventory_management":{{ variant.inventory_management | json }},
+  "inventory_policy": {{ variant.inventory_policy | json }},
+  "inventory_quantity": {{ variant.inventory_quantity | json }},
+  "merged_options":{{ variant.merged_options | json }},
+  "option1": {{ variant.option1 | json }},
+  "option2": {{ variant.option2 | json }},
+  "options": {{ variant.options | json }},
+  "price": {{ variant.price | json }},
+  "sku": {{ variant.sku | json }},
+  "title": {{ variant.title | json }}
+}

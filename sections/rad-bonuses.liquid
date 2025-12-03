@@ -1,0 +1,200 @@
+<div class="rad-bonuses-landing {% unless section.settings.show_mobile %} hidden-xs {% endunless %}{% unless section.settings.show_desktop %}hidden-sm hidden-md hidden-lg{% endunless %}" style="background-color: {{section.settings.background_color}};">
+  <div class="rad-bonuses-icon">
+    {% render 'image': _image: section.settings.icon %}
+  </div>
+  <h2 class="h2">
+    {{section.settings.title}}
+  </h2>
+  <div class="list-bonuses">
+    {% for block in section.blocks %}
+    <a href="{{block.settings.url}}" class="bonus-container">
+      <div class="bonus-image">
+        {% render 'image': _image: block.settings.icon %}
+      </div>
+      <div class="bonus-description">
+        <h4 class="h4">{{block.settings.title}}</h4>
+        <div>{{block.settings.description}}</div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  {% if section.settings.icon != blank %}
+  .rad-bonuses-landing {
+    margin-top: 7rem;
+    padding-top: 7rem !important;
+  }
+  {% endif %}
+</style>
+
+<style>
+  .rad-bonuses-landing .bonus-container {
+    display: flex;
+  }
+
+  .bonus-container span {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+  }
+  
+  .rad-bonuses-landing {
+    padding: 24px 21px;
+  }
+  
+  .rad-bonuses-landing h2 {
+    margin-bottom: 1.4rem;
+    padding-right: 3rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;
+    text-align: center;
+    color: #4D4D4D;
+  }
+  
+  .bonus-description {
+      margin-left: 1.6rem;
+  }
+  
+  .rad-bonuses-landing .bonus-container:not(:last-child) {
+    margin-bottom: 1.6rem;
+  }
+  .bonus-description > div {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      color: rgb(88, 89, 91);
+  }
+
+  .rad-bonuses-icon img {
+    max-width: 65px;
+}
+
+.rad-bonuses-icon {
+    width: 95px;
+    height: 95px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.875px solid rgba(77, 77, 77, 0.19971);
+    box-shadow: 0px 2px 4px rgba(77, 77, 77, 0.201868);
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rad-bonuses-landing {
+    position: relative;
+}
+
+.rad-bonuses-landing .bonus-image {
+    background: white;
+    border: 0.875px solid rgba(77, 77, 77, 0.19971);
+    box-shadow: 0px 2px 4px rgba(77, 77, 77, 0.201868);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 125px;
+}
+
+.bonus-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.bonus-description h4 {
+    font-size: 14px;
+    margin-bottom: 0;
+    color: #F3576B;
+}
+
+.rad-bonuses-landing .bonus-image img {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    max-width: 100px;
+}
+</style>
+
+
+{% schema %}
+{
+  "name": "Rad Bonuses - Mobile",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_mobile",
+      "label": "Show Mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desktop",
+      "label": "Show Desktop",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Rad Bonuses"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#E4F4F6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rad Bonuses",
+      "category": "Landing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Bonus",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

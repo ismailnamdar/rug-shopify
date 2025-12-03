@@ -1,0 +1,55 @@
+<div class="page-width">
+    <h2 class="heading flex flex-center align-center">{{ section.settings.heading }}</h2>
+  <div class="images flex flex-start wrap">
+    {{ section.settings.image-1 | img_url: '600x600' | img_tag }}
+    {{ section.settings.image-2 | img_url: '600x600' | img_tag }}
+    {{ section.settings.image-3 | img_url: '600x600' | img_tag }}
+    {{ section.settings.image-4 | img_url: '600x600' | img_tag }}
+  </div>
+  <div class="testimonial">
+    <p>{{ section.settings.testimonial }}</p>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Happy Customers",
+    "class": "join-page happy-customers",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "image-1",
+        "label": "Image #1",
+        "info": "Recommended dimensions: 600x600px"
+      },
+      {
+        "type": "image_picker",
+        "id": "image-2",
+        "label": "Image #2",
+        "info": "Recommended dimensions: 600x600px"
+      },
+      {
+        "type": "image_picker",
+        "id": "image-3",
+        "label": "Image #3",
+        "info": "Recommended dimensions: 600x600px"
+      },
+      {
+        "type": "image_picker",
+        "id": "image-4",
+        "label": "Image #4",
+        "info": "Recommended dimensions: 600x600px"
+      },
+      {
+        "type": "textarea",
+        "id": "testimonial",
+        "label": "Testimonial"
+      }
+    ]
+  }
+{% endschema %}

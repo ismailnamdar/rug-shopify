@@ -1,0 +1,17 @@
+<p class="text-center">{{ section.settings.description }}</p>
+
+{% schema %}
+  {
+    "name": "Camp Rad Blog Desc",
+    "class": "blog-index",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Blog Description",
+        "default": "Discover recipes, tips and activities for your family kitchen!"
+
+      }
+    ]
+  }
+{% endschema %}

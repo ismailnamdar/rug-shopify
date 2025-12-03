@@ -1,0 +1,295 @@
+
+<div class="us-vs-them" style="background: {{section.settings.background_color}}">
+  <div class="title-row">
+    {% if section.settings.icon != blank %}
+      {% render 'image', _image: section.settings.icon, alt: section.settings.icon.alt %}
+    {% endif %}
+    <div class="title-row__titles hidden-mobile">
+      <h2 class="h2">{{section.settings.title}}</h2>
+      <p class=""> {{section.settings.subtitle}} </p>
+    </div>
+  </div>
+  <div class="blocks-container">
+  {% for block in section.blocks %}
+    <div class="usvsthem-block">
+      <div class="usvsthem-block__description" style="background: {{block.settings.background_color}}"> {{block.settings.text}}</div>
+      <div class="usvsthem-block__tick"> {% render "icon-tick-2" %} </div>
+      <div class="usvsthem-block__break"></div>
+      <div class="usvsthem-block__cross">X</div>
+
+    </div>
+  {% endfor %}
+  </div>
+  <p class="us-vs-them__bottom-subtitle hidden-desktop"> {{section.settings.subtitle}} </p>
+</div>
+
+<style>
+.us-vs-them {
+    background: #01BCBE;
+    color: white;
+    padding: 40px;
+}
+
+.us-vs-them h2 {
+    color: white;
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.us-vs-them .title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 17px;
+    padding-right: 145px;
+}
+.usvsthem-block__cross {
+  color: rgba(255, 255, 255, 0.6);
+}
+.us-vs-them .title-row .title-row__titles p,
+.us-vs-them__bottom-subtitle {
+  margin: 0;
+  font-size: 14px;
+  /* font-weight: bold; */
+  font-family: 'KG HAPPY Solid';
+  text-align: center;
+}
+
+.us-vs-them__bottom-subtitle  {
+  margin-top: 2rem;
+}
+
+.us-vs-them .title-row__titles {
+    text-align: center;
+}
+
+.us-vs-them .title-row img {
+    margin-right: 16px;
+    max-width: 90px;
+}
+
+.usvsthem-block {
+  display: flex;
+  flex-direction: row;
+}
+
+.usvsthem-block__tick, .usvsthem-block__cross {
+  width: 95px;
+  background: #F3576B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'KG HAPPY Solid';
+  padding: 25px 0;
+  border-bottom: 1px solid #FFB2B3;
+}
+
+.usvsthem-block__tick svg {
+  width: 22px;
+}
+
+.us-vs-them .blocks-container {
+  max-width: 720px;
+  margin: 0 auto;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.usvsthem-block__description {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  text-align: center;
+  justify-content: center;
+  border-bottom: 1px solid #FFB2B3;
+  background: #4dd0d2;
+  font-size: 18px;
+  /* border-top-left-radius: 8px; */
+  /* border-bottom-left-radius: 8px; */
+}
+
+.usvsthem-block__description:last-child {
+  border-bottom: none;
+}
+.usvsthem-block:first-child .usvsthem-block__description {
+  border-top-left-radius: 8px;
+}
+
+.usvsthem-block:last-child .usvsthem-block__description {
+  border-bottom-left-radius: 8px;
+  border-bottom: none;
+}
+
+.usvsthem-block:last-child .usvsthem-block__tick, 
+.usvsthem-block:last-child .usvsthem-block__cross, 
+.usvsthem-block:last-child .usvsthem-block__tick {
+  border-bottom: none;
+}
+
+.usvsthem-block:last-child .usvsthem-block__tick,
+.usvsthem-block:last-child .usvsthem-block__cross {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.usvsthem-block:first-child .usvsthem-block__tick,
+.usvsthem-block:first-child .usvsthem-block__cross {
+  position: relative;
+  border-top: 1px solid #FFB2B3;
+}
+
+.usvsthem-block:first-child .usvsthem-block__tick:before,
+.usvsthem-block:first-child .usvsthem-block__cross:before {
+  content:"";
+  position: absolute;
+  top: 0;
+  transform: translateY(calc(-100% + -1px));
+  background: inherit;
+  width:100%;
+  text-align: center;
+  font-size: 18px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-family: 'Avenir';
+  font-weight: 500;
+}
+.usvsthem-block:first-child .usvsthem-block__tick:before {
+  content: "Raddish";
+}
+.usvsthem-block:first-child .usvsthem-block__cross:before {
+  content: "Others";
+}
+.usvsthem-block__break {
+  width: 8px;
+  border-bottom: 1px solid #FFB2B3;
+}
+
+.usvsthem-block:last-child .usvsthem-block__break {
+  border-bottom: none;
+}
+
+.usvsthem-block:first-child .usvsthem-block__break {
+  border-top: 1px solid #FFB2B3;
+}
+@media screen and (max-width: 749px) {
+  .us-vs-them .title-row img {
+      position: absolute;
+      top: 0;
+      max-width: 56px;
+      transform: translateY(-50%);
+  }
+
+  .us-vs-them {
+      position: relative;
+      margin-top: 5rem;
+      padding: 75px 33px 24px;
+  }
+  .usvsthem-block__tick, .usvsthem-block__cross {
+    width: 70px;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .usvsthem-block__tick svg, .usvsthem-block__cross svg {
+    width: 16px;
+  }
+
+  .usvsthem-block__description {
+    font-size: 16px;
+    text-align: right;
+    padding-left: 0px;
+    padding-right: 16px;
+    background: transparent;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 18px;
+  }
+
+  .usvsthem-block:first-child .usvsthem-block__description {
+    border-top: 1px solid #FFB2B3;
+  }
+
+  .usvsthem-block:first-child .usvsthem-block__tick:before, .usvsthem-block:first-child .usvsthem-block__cross:before {
+    font-size: 11px;
+  }
+  .usvsthem-block:first-child .usvsthem-block__description {
+    border-top-left-radius: 0;
+    position: relative;
+  }
+  .usvsthem-block:first-child .usvsthem-block__description:before {
+    content: "{{section.settings.title}}";
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    font-family: 'KG HAPPY Solid';
+    font-size: 17px;
+    line-height: 40px;
+  }
+  .us-vs-them .title-row {
+    padding-right: 225px;
+  }
+  .usvsthem-block:first-child .usvsthem-block__tick:before, .usvsthem-block:first-child .usvsthem-block__cross:before {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Us vs Them",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color", 
+        "default": "#01BCBE"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color",
+            "default": "#4dd0d2"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Us vs Them",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

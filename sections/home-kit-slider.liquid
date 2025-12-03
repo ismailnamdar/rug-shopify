@@ -1,0 +1,112 @@
+{%- assign _section = section.settings -%}
+{%- assign section_bg_color = _section.bg_color -%}
+{%- assign section_button_text = _section.button_text -%}
+{%- assign section_button_link = _section.button_link -%}
+
+<div class="kit-box-wrapper" style="background-color: {{section_bg_color}}">
+  <div class="kit-box">
+    <div class="flex">
+      <div class="kit__images">
+        {%- for block in section.blocks -%}
+          {%- assign _block = block.settings -%}
+          {%- assign block_image = _block.image -%}
+          <div class="image">
+            <div class="image__inner">
+              {% include 'image', _image: block_image, size: '800', alt: block_image.alt %}
+            </div><!-- /.image__inner -->
+          </div><!-- /.image -->
+        {%- endfor -%}
+      </div><!-- /.kit__images -->
+      <div class="kit__content">
+        <div class="kit__content-slider">
+          {%- for block in section.blocks -%}
+            {%- assign _block = block.settings -%}
+            {%- assign block_small_title = _block.small_title -%}
+            {%- assign block_title = _block.title -%}
+            {%- assign block_content = _block.content -%}
+            <div class="kit__content-slide">
+              {%- if block_small_title != blank -%}
+                <h5>{{block_small_title}}</h5>
+              {%- endif -%}
+              {%- if block_title != blank -%}
+                <h2>{{block_title}}</h2>
+              {%- endif -%}
+              {{block_content}}
+            </div><!-- /.kit__content-slide -->
+          {%- endfor -%}
+        </div><!-- /.kit__content-slider -->
+        <div class="thumbs">
+          {%- for block in section.blocks -%}
+            {%- assign _block = block.settings -%}
+            {%- assign block_image = _block.image -%}
+            <div class="image{% if forloop.first %} active{% endif %}">
+              {{ block_image | img_url: '140x' | img_tag: block_image.alt }}
+            </div><!-- /.image -->
+          {%- endfor -%}
+        </div><!-- /.thumbs -->
+        {%- if section_button_text != blank and section_button_link != blank -%}
+          <a href="{{section_button_link}}" class="button">{{section_button_text}}</a>
+        {%- endif -%}
+      </div><!-- /.kit__content -->
+    </div><!-- /.flex -->
+  </div><!-- /.kit-box -->
+</div><!-- /.kit-box-wrapper -->
+
+{% schema %}
+{
+  "name": "Kit Slider",
+  "class": "kit-wrapper",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#E4F4F6"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+      "type": "text",
+      "id": "small_title",
+      "label": "Small Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kit Slider",
+      "category": "Home Sections"
+    }
+  ]  
+}
+{% endschema %}

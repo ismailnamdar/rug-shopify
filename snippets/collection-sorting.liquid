@@ -1,0 +1,30 @@
+<div class="collection__sort sort js-collection-sort-wrapper">
+	{% assign current_sort = collection.sort_by | default: collection.default_sort_by %}
+	<label class="sort__label" for="sortBy" data-title="{{ 'collections.sorting.title' | t }}">
+		{{ 'collections.sorting.title' | t }}
+	</label>
+
+	{%- capture sort_options -%}
+		manual|{{ 'collections.sorting.manual' | t }}\
+		title-ascending|{{ 'collections.sorting.title_ascending' | t }}\
+		title-descending|{{ 'collections.sorting.title_descending' | t }}\
+		price-ascending|{{ 'collections.sorting.price_ascending' | t }}\
+		price-descending|{{ 'collections.sorting.price_descending' | t }}
+	{%- endcapture -%}
+	{%- assign sort_options = sort_options | strip_newlines | split: '\' -%}
+
+	<div class="select sort__select">
+		<select name="sortBy" class="js-collection-sort-by">
+			{%- for sortOption in sort_options -%}
+				{%- assign sort_option_array = sortOption | strip | split: '|' -%}
+
+				<option
+					value="{{ sort_option_array.first }}"
+					{% if current_sort == sort_option_array.first %}selected{% endif %}
+				>
+					{{ sort_option_array.last }}
+				</option>
+			{%- endfor -%}
+		</select>
+	</div><!-- /.select sort__select -->
+</div><!-- /.collection__sort -->

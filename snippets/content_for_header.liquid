@@ -1,0 +1,149 @@
+<script>
+  // requestIdleCallback shim https://gist.github.com/paullewis/55efe5d6f05434a96c36
+  window.requestIdleCallback=window.requestIdleCallback||function(e){return setTimeout(function(){var n=Date.now();e({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-n))}})},1)},window.cancelIdleCallback=window.cancelIdleCallback||function(e){clearTimeout(e)};
+</script>
+
+{%- assign remove_sitewide = "" -%}
+{%- assign remove_article = "" -%}
+{%- assign remove_blog = "" -%}
+{%- assign remove_cart = "" -%}
+{%- assign remove_collection = "" -%}
+{%- assign remove_index = "" -%}
+{%- assign remove_product = "" -%}
+{%- assign remove_search = "" -%}
+{%- assign remove_customers = "" -%}
+
+{%- assign delay_sitewide = "" -%}
+{%- assign delay_index = "" -%}
+{%- assign delay_article = "" -%}
+{%- assign delay_blog = "" -%}
+{%- assign delay_cart = "" -%}
+{%- assign delay_collection = "" -%}
+{%- assign delay_product = "" -%}
+{%- assign delay_search = "" -%}
+{%- assign delay_customers = "" -%}
+
+{% assign content_for_header_split = content_for_header |  split: "var urls = [" %}
+
+{% assign content_for_header_first = content_for_header_split | first | append: 'var urls = [' %}
+{%- assign urls = content_for_header_split | last | split: "];" | first -%}
+{% assign content_for_header_last = content_for_header_split | last | split: urls | last %}
+{%- assign urls = urls | split: "," -%}
+
+{%- assign delayed_urls = '' -%}
+
+{%- if urls.size > 0 -%}
+  {%- case template -%}
+    {%- when 'article' -%}
+      {%- assign urls_to_remove = remove_article -%}
+      {%- assign urls_to_delay = delay_article -%}
+    {%- when 'blog' -%}
+      {%- assign urls_to_remove = remove_blog -%}
+      {%- assign urls_to_delay = delay_blog -%}
+    {%- when 'cart' -%}
+      {%- assign urls_to_remove = remove_cart -%}
+      {%- assign urls_to_delay = delay_cart -%}
+    {%- when 'collection' -%}
+      {%- assign urls_to_remove = remove_collection -%}
+      {%- assign urls_to_delay = delay_collection -%}
+    {%- when 'index' -%}
+      {%- assign urls_to_remove = remove_index -%}
+      {%- assign urls_to_delay = delay_index -%}
+    {%- when 'product' -%}
+      {%- assign urls_to_remove = remove_product -%}
+      {%- assign urls_to_delay = delay_product -%}
+    {%- when 'search' -%}
+      {%- assign urls_to_remove = remove_search -%}
+      {%- assign urls_to_delay = delay_search -%}
+    {%- else -%}
+      {%- if template contains 'customers' -%}
+        {%- assign urls_to_remove = remove_customers -%}
+        {%- assign urls_to_delay = delay_customers -%}
+      {%- endif -%}
+  {%- endcase -%}
+
+  {%- assign remove_sitewide = remove_sitewide | split: "," -%}
+  {%- assign urls_to_remove = urls_to_remove | split: "," -%}
+  {%- assign urls_to_remove = remove_sitewide | concat: urls_to_remove -%}
+
+  {%- assign delay_sitewide = delay_sitewide | split: "," -%}
+  {%- assign urls_to_delay = urls_to_delay | split: "," -%}
+  {%- assign urls_to_delay = delay_sitewide | concat: urls_to_delay -%}
+  {% assign urls_to_preload = '' %}
+
+  {% assign urls_without_removed = '' %}
+
+  {%- for url in urls -%}
+
+    {% assign should_remove = false %}
+
+    {%- for to_remove in urls_to_remove -%}
+      {%- if url contains to_remove -%}
+        {% assign should_remove = true %}
+        {% continue %}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- for to_delay in urls_to_delay -%}
+      {%- if url contains to_delay -%}
+        {%- assign delayed_urls = delayed_urls | append: ',' | append: url -%}
+        {%- assign urls_to_preload = urls_to_preload | append: ',' | append: url -%}
+        {% assign should_remove = true %}
+        {% continue %}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {% unless should_remove %}
+      {%- assign urls_to_preload = urls_to_preload | append: ',' | append: url -%}
+      {%- assign urls_without_removed = urls_without_removed | append: ',' | append: url -%}
+    {% endunless %}
+
+  {%- endfor -%}
+  {% assign urls_without_removed = urls_without_removed | remove_first: ',' %}
+
+  {% assign urls_to_preload = urls_to_preload | remove_first: ',' %}
+
+  <script type="text/javascript" data-delayed-urls>
+    (function () {
+      var urlsToPreload = [{{ urls_to_preload }}];
+      var x = document.getElementsByTagName('script')[0];
+
+      for (var i = 0; i < urlsToPreload.length; i++) {
+        var url = urlsToPreload[i];
+        if (!url) { continue; }
+        var link = document.createElement('link');
+        link.rel = "preload";
+        link.as = "script";
+        link.href = url;
+        x.parentNode.insertBefore(link, x);
+      }
+
+      function loadDelayedUrls() {
+        setTimeout(function () {
+          window.requestIdleCallback(function () {
+            var urlsToDelay = [{{ delayed_urls | remove_first: ',' }}];
+            for (var j = 0; j < urlsToDelay.length; j++) {
+              var url = urlsToDelay[j];
+              if (!url) { continue; }
+              var s = document.createElement('script');
+              s.type = 'text/javascript';
+              s.async = true;
+              s.defer = true;
+              s.src = url;
+              if(x.parentNode) {
+                x.parentNode.insertBefore(s, x);
+              }
+            }
+          })
+        }, 4000)
+      }
+
+      document.addEventListener("DOMContentLoaded", loadDelayedUrls);
+    })()
+  </script>
+
+{%- endif -%}
+
+<!-- CONTENT FOR HEADER -->
+{{ content_for_header_first }}{{ urls_without_removed }}{{ content_for_header_last }}
+<!-- END CONTENT FOR HEADER -->

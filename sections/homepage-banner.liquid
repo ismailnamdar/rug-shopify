@@ -1,0 +1,258 @@
+
+
+<div class="homepage-banner__slider-container">
+  {% for block in section.blocks %}
+    {% assign _settings = block.settings %}
+    <div class="homepage-banner {% unless section.settings.show_mobile %} hidden-xs {% endunless %}{% unless section.settings.show_desktop %} hidden-sm hidden-md hidden-lg{% endunless %}"
+    {% comment %}
+    style="background-image: linear-gradient(to right bottom, #eeeeee, #f2f2f2, #f6f6f6, #fbfbfb, #ffffff);"
+    {% endcomment %}
+    >
+      {% if _settings.text == blank and _settings.url != blank %}
+        <a href="{{_settings.url}}">
+      {% endif %}
+      <div class="image--desktop" >
+        {% render 'image', _image: _settings.image, alt: _settings.image.alt %}
+      </div>
+      <div class="image--mobile">
+        {% render 'image', _image: _settings.image_mobile, alt: _settings.image_mobile.alt %}
+      </div>
+      <div class="hompage-banner__cta-container">
+        <div class="hompage-banner__cta">
+
+          {% if _settings.image_above_content != blank %}
+            <div class="banner-img-conteiner" style="max-width: {{_settings.image_max_width}}px; margin: 0 auto;">
+            {% render 'image', _image: _settings.image_above_content, alt: _settings.image_above_content.alt %}
+            </div>
+          {% endif %}
+          {{_settings.content}}
+          {% if _settings.url != blank and _settings.text != blank %}
+          <a href="{{_settings.url}}" class="join-button btn">{{_settings.text}}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% comment %}
+      <div class="homepage-banner__overlay" style="background-image: linear-gradient(157deg, #EEEEEE 12%, rgba(216, 216, 216, 0.0001) 50%)"></div>
+      {% endcomment %}
+      {% if _settings.text == blank and _settings.url != blank %}
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+</div>
+
+<script>
+  var totalSlides = {{section.blocks.size | json }};
+  document.addEventListener("DOMContentLoaded", function() {
+    $(".homepage-banner__slider-container").slick({
+      slidesToShow: 1,
+      infinite: true,
+      dots: totalSlides > 1 ? true : false,
+      autoplay: true,
+      autoplaySpeed: 3000
+    })
+  })
+</script>
+
+<style>
+  .homepage-banner__slider-container .slick-arrow {
+      background-size: 18px 35px;
+  }
+
+  .homepage-banner__slider-container .slick-dots li {
+      display: flex;
+      flex-direction: row;
+  }
+
+  li {}
+
+  .homepage-banner__slider-container .slick-dots {
+      display: flex !important;
+      flex-direction: row;
+      width: auto;
+      background: white;
+      padding: 6px;
+      border-radius: 15px;
+  }
+
+  .homepage-banner__slider-container .slick-dots li button {
+      width: 10px;
+      height: 10px;
+  }
+
+  .homepage-banner__slider-container .slick-dots li:not(.slick-active) button {
+      background: white;
+      border: 2px solid #f0556a;
+  }
+  .homepage-banner__slider-container .slick-arrow {
+    background-size: 18px 35px;
+  }
+  .image--desktop {
+    display: none;
+  }
+  .image--desktop img {
+    width: 100%;
+  }
+  .image--mobile {
+    display: block;
+  }
+  .hompage-banner__cta {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    text-align: center;
+    text-transform: none;
+    padding: 2.2rem 0.6rem;
+    width: 100%;
+  }
+  .homepage-banner__overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    display: none;
+  }
+  .homepage-banner {
+    position: relative;
+  }
+
+  .homepage-banner img {
+    display: block;
+    /* height: 100%; */
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .hompage-banner__cta h1 {
+    text-transform: none;
+    line-height: 52px;
+  }
+
+  .hompage-banner__cta p {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: 0;
+  }
+
+  .hompage-banner__cta-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    position: absolute;
+    top:0;
+    left:50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+  .hompage-banner__cta .btn {
+    text-transform: none;
+    height: 54px;
+    line-height: 16px;
+    font-size: 16px;
+    padding-left: 27px;
+    padding-right: 27px;
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    .hompage-banner__cta {
+      max-width: 500px;
+    }
+    .hompage-banner__cta .btn{
+      display: inline-block;
+    }
+    .homepage-banner__overlay {
+      display: block;
+    }
+    .image--mobile {
+      display: none;
+    }
+    .image--desktop {
+      display: block;
+    }
+
+    .hompage-banner__cta {
+      top: 40%;
+      transform: translateY(-50%);
+      margin: 0 auto;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Homepage Banner",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_mobile",
+        "label": "Show Mobile",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_desktop",
+        "label": "Show Desktop",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Hero Image",
+            "info": "Recommended dimensions min: 1920x850px"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile",
+            "info": "Recommended dimensions min: 750x1125px"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_above_content",
+            "label": "Image above content"
+          },
+          {
+            "type": "text",
+            "id": "image_max_width",
+            "label": "Image max width",
+            "info": "In pixels",
+            "default": "100"
+          },
+          {
+            "type": "html",
+            "id": "content",
+            "label": "Content"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Button Text",
+            "default": "Join the Club"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Banner",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

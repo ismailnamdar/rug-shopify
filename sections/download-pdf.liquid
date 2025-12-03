@@ -1,0 +1,244 @@
+<div class="download-pdf" id="klaviyo-embedded-form">
+  <div class="download-pdf__column download-pdf__column--left">
+    <h2 class="h2">{{section.settings.title}}</h2>
+    <p class="download-pdf__subtitle">{{section.settings.subtitle}}</p>
+    <p class="download-pdf__description hidden-desktop">{{section.settings.description}}</p>
+    {% render 'image', _image: section.settings.left_image, alt: section.settings.left_image.alt %}
+  </div>
+  <div class="download-pdf__column download-pdf__column--right">
+    <p class="download-pdf__subtitle">{{section.settings.title_above_description}}</p>
+    <p class="download-pdf__description hidden-mobile">{{section.settings.description}}</p>
+    <div class="download-pdf__benefits"> 
+    {% assign benefits = section.settings.benefits | newline_to_br | split: '<br />' %}
+    {% for b in benefits %}
+      <p class="download-pdf__benefit"> <span>{% render "icon-tick-2" %}</span> <span> {{b}} </span></p>
+    {% endfor %}
+    </div>
+    {% if section.settings.button_label != blank %}
+      <a class="btn" href="javascript:_klOnsite.openForm('{{ section.settings.button_form }}')">{{section.settings.button_label}}</a>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    $(".download-pdf .btn").on("click", function(){
+      const interval = setInterval(function() {
+          const phoneNumberInput = $('.klaviyo-form [placeholder="Phone Number"]');
+          if(phoneNumberInput.length) {
+            clearInterval(interval);
+            $('.klaviyo-form [type="button"]:not([role="combobox"])').on("click", function() {
+              fbq('trackCustom', 'LeadEmail', {
+                content_name: 'popup'
+              });
+            })
+          }
+      }, 1000)
+    })
+  })
+</script>
+
+
+<style>
+.download-pdf svg path {
+  fill: #F3576B
+}
+.download-pdf svg {
+  width: 22px;
+  margin-right: 5px;
+}
+.download-pdf .h2 .bg {
+  background-color: #01BCBE;
+  color: white;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-transform: uppercase;
+}
+.download-pdf__benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 500px;
+  margin: 22px auto;
+}
+p.download-pdf__benefit {
+  display: flex;
+  margin: 4px 0;
+  font-size: 18px;
+}
+.download-pdf {
+    max-width: 1100px;
+    margin: 50px auto;
+    display: flex;
+    border: 0.875px solid rgba(77, 77, 77, 0.19971);
+    border-radius: 8px;
+}
+
+.download-pdf__column.download-pdf__column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #E4F4F6;
+    padding: 31px 10px;
+}
+.download-pdf__description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 31px;
+  text-align: center;
+  max-width: 350px;
+  margin: 0 auto;
+}
+.download-pdf__subtitle {
+  font-family: 'KG HAPPY Solid';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 43px;
+  color: #4D4D4D;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.download-pdf__column--right .btn {
+  width: 100%;
+  max-width: 350px;
+  font-weight: 500;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-pdf__column h2 {
+  margin-bottom: 0;
+  text-align: center;
+}
+.download-pdf__column picture {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+@media only screen and (max-width: 749px) {
+  .download-pdf {
+    flex-direction: column;
+  }
+  .download-pdf__column.download-pdf__column { 
+    width: 100%;
+  }
+
+  .download-pdf__column h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 43px;
+    text-align: center;
+    color: #4D4D4D;
+  }
+
+  .download-pdf .h2 .bg {
+    background-color: transparent;
+    color: #4D4D4D;
+    padding: 0;
+    text-transform: none;
+  }
+
+  .download-pdf__column--left .download-pdf__subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+    color: #01BCBE;
+    margin-bottom: 1rem;
+  }
+  .download-pdf__column.download-pdf__column {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  .download-pdf__column.download-pdf__column--left {
+    padding-bottom: 10px; 
+  }
+  .download-pdf__column.download-pdf__column--right {
+    padding-top: 10px; 
+  }
+  p.download-pdf__benefit {
+    font-size: 16px;
+  }
+  .download-pdf__description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+  }
+  .download-pdf-section {
+    padding: 0 8px;
+  }
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Download PDF",
+    "class": "download-pdf-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Get Your Free E-Kit!"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Made with Love"
+      },
+      {
+        "type": "image_picker",
+        "id": "left_image",
+        "label": "Left Image"
+      },
+      {
+        "type": "text",
+        "id": "title_above_description",
+        "label": "Title above description",
+        "default": "What's Indside?"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "Take a peek inside the Raddish experience and watch your kids cook with confidence!"
+      },
+      {
+        "type": "textarea",
+        "id": "benefits",
+        "label": "Benefits"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label",
+        "default": "Download Your FREE E-Kit!"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button URL"
+      },
+      {
+        "type": "text",
+        "id": "button_form",
+        "label": "Button Form"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Download PDF",
+        "category": "Page"
+      }
+    ]
+  }
+{% endschema %}

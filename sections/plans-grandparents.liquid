@@ -1,0 +1,252 @@
+{%- assign _section = section.settings -%}
+{%- assign section_title = _section.title -%}
+{%- assign section_text = _section.text -%}
+{%- assign section_active_tab = _section.active_tab | handle -%}
+
+{%- capture _standard_plans -%}
+  {%- for block in section.blocks -%}
+    {%- assign _block = block.settings -%}
+    {%- assign block_title = _block.title -%}
+    {%- assign block_price = _block.price -%}
+    {%- assign block_period = _block.period -%}
+    {%- assign block_text = _block.text -%}
+    {%- assign block_btn_text = _block.btn_text -%}
+    {%- assign block_btn_url = _block.btn_url -%}
+
+    <div class="plan">
+      <div class="plan__inner">
+        {% if block_title != blank %}
+          <h3 class="plan__title">
+            {{- block_title -}}
+          </h3><!-- /.plan__title -->
+        {% endif %}
+
+        {% if block_price != blank %}
+          <div class="plan__price">
+            <sup>$</sup>{{- block_price -}} <span>/ {{ block_period }}</span>
+          </div><!-- /.plan__price -->
+        {% endif %}
+
+        {% if block_text != blank %}
+          <div class="plan__entry">
+            {{- block_text -}}
+          </div><!-- /.plan__entry -->
+        {% endif %}
+
+        {% if block_btn_text != blank and block_btn_url != blank %}
+          <a href="{{- block_btn_url -}}" class="btn plan__btn">
+            {{- block_btn_text -}}
+          </a>
+        {% endif %}
+      </div><!-- /.plan__inner -->
+    </div><!-- /.plan -->
+
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- for block in section.blocks -%}
+  {%- assign _block = block.settings -%}
+  {%- assign block_title = _block.title -%}
+  {%- assign block_title_mobile = _block.title_mobile -%}
+  {%- assign block_price = _block.price -%}
+  {%- assign block_period = _block.period -%}
+  {%- assign block_text = _block.text -%}
+  {%- assign block_btn_text = _block.btn_text -%}
+  {%- assign block_btn_url = _block.btn_url -%}
+  {%- assign title_handle = block_title | handle -%}
+
+  {% capture _nav %}
+    {{ _nav }}
+
+    <li class="js-tab-link {% if title_handle == section_active_tab %}is-active{% endif %}">
+      <a href="#js-tab-{{- block.id -}}">
+        {{ block_title_mobile }}
+      </a>
+    </li>
+  {% endcapture %}
+
+  {% capture _blocks %}
+    {{ _blocks }}
+
+    <div id="js-tab-{{- block.id -}}" class="plan js-tab {% if title_handle == section_active_tab %}is-active{% endif %}">
+      <div class="plan__inner">
+        {% if block_title != blank %}
+          <h3 class="plan__title">
+            {{- block_title -}}
+          </h3><!-- /.plan__title -->
+        {% endif %}
+
+        {% if block_price != blank %}
+          <div class="plan__price">
+            <sup>$</sup>{{- block_price -}} <span>/ {{ block_period }}</span>
+          </div><!-- /.plan__price -->
+        {% endif %}
+
+        {% if block_text != blank %}
+          <div class="plan__entry">
+            {{- block_text -}}
+          </div><!-- /.plan__entry -->
+        {% endif %}
+
+        {% if block_btn_text != blank and block_btn_url != blank %}
+          <a href="{{- block_btn_url -}}" class="btn plan__btn">
+            {{- block_btn_text -}}
+          </a>
+        {% endif %}
+      </div><!-- /.plan__inner -->
+    </div><!-- /.plan -->
+  {% endcapture %}
+{%- endfor -%}
+
+{%- capture _plan_tabs -%}
+  <div class="tabs-nav">
+    <ul>
+      {{ _nav }}
+    </ul>
+  </div><!-- /.tabs-nav -->
+
+  <div class="plans">
+    {{ _blocks }}
+  </div><!-- /.plans -->
+{%- endcapture -%}
+
+<div class="section-plans section-plans--tabs section-plans--join section-plans--grandparents">
+  <div class="page-width">
+    {% if section_title != blank or section_text != blank %}
+      <div class="section__head">
+        {% if section_title != blank %}
+          <h2 class="section__title">
+            {{- section_title -}}
+          </h2><!-- /.section__title -->
+        {% endif %}
+
+        {% if section_text != blank %}
+          <div class="section__description">
+            {{- section_text -}}
+          </div><!-- /.section__description -->
+        {% endif %}
+      </div><!-- /.section__head -->
+    {% endif %}
+
+    <div class="section__body">
+      {{ _plan_tabs }}
+    </div><!-- /.section__body --> 
+
+    <div class="section__features">
+      <div class="section__features-inner">
+        {% if _section.feature_image_one != blank and _section.feature_content_one != blank %}
+          <div class="section__feature">
+            <div class="section__feature-image">
+              <img src="{{- _section.feature_image_one | img_url: '150x' -}}" alt="{{- _section.feature_image_one.alt -}}">
+            </div><!-- /.section__feature-image -->
+
+            <section class="section__feature-entry">
+              {{- _section.feature_content_one -}}
+            </section><!-- /.section__feature-entry -->
+          </div><!-- /.section__feature -->
+        {% endif %}
+
+        {% if _section.feature_image_two != blank and _section.feature_content_two != blank %}
+          <div class="section__feature">
+            <div class="section__feature-image">
+              <img src="{{- _section.feature_image_two | img_url: '150x' -}}" alt="{{- _section.feature_image_two.alt -}}">
+            </div><!-- /.section__feature-image -->
+
+            <section class="section__feature-entry">
+              {{- _section.feature_content_two -}}
+            </section><!-- /.section__feature-entry -->
+          </div><!-- /.section__feature -->
+        {% endif %}
+      </div><!-- /.section__features-inner -->
+    </div><!-- /.section__features -->
+  </div><!-- /.page-width -->
+</div><!-- /.section-plans -->
+
+{% schema %}
+{
+  "name": "List Plans",
+  "class": "shopify-section-plans",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "active_tab",
+      "label": "Enter title of active tab on mobile",
+      "default": "6 month"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image_one",
+      "label": "Feature One - Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "feature_content_one",
+      "label": "Feature One - Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image_two",
+      "label": "Feature Two - Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "feature_content_two",
+      "label": "Feature Two - Content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "title_mobile",
+          "label": "Title Mobile"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price"
+        },
+        {
+          "type": "text",
+          "id": "period",
+          "label": "Period",
+          "info": "Example: 'per month'"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button - Text"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button - URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

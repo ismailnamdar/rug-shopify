@@ -1,0 +1,130 @@
+{% assign _section = section.settings %}
+{% assign _blocks = section.blocks %}
+
+<div class="section__inner">
+  <div class="section__content">
+    <header class="section__head">
+      {% if _section.intro != blank %}
+        <h6>{{ _section.intro }}</h6>
+      {% endif %}
+
+      {% if _section.image != blank %}
+        <div class="section__image section__image--mobile">
+          <img src="{{ _section.image | img_url: '1232x'}}" alt="{{ _section.image.alt}}">
+        </div><!-- /.section__image -->
+      {% endif %}
+
+      {% if _section.title != blank %}
+        <h2 class="section__title">{{ _section.title }}</h2><!-- /.section__title -->
+      {% endif %}
+
+      {% if _section.description != blank %}
+        <div class="section__entry">
+          {{ _section.description }}
+        </div><!-- /.section__entry -->
+      {% endif %}
+    </header><!-- /.section__head -->
+
+    <div class="section__body">
+      {% if _section.list_title != blank %}
+        <h5>{{ _section.list_title }}</h5>
+      {% endif %}
+
+      {% if _blocks != blank %}
+        <ul>
+          {% for block in _blocks %}
+            {% assign _block = block.settings %}
+
+            {% if _block.title != blank %}
+              <li>
+                <div class="list-item">
+                  <span>{{ forloop.index }}</span>
+
+                  <div class="list-content">
+                    <h3>{{ _block.title }}</h3>
+
+                    {{ _block.description }}
+                  </div><!-- /.list-content -->
+                </div><!-- /.list-item -->
+              </li>
+            {% endif %}
+
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+    </div><!-- /.section__body -->
+
+    {% if _section.button_label != blank and  _section.button_url != blank %}
+      <footer class="section__foot">
+        <a href="{{ _section.button_url }}" class="btn section__button">{{ _section.button_label }}</a>
+      </footer><!-- /.section__foot -->
+    {% endif %}
+  </div><!-- /.section__content -->
+
+  {% if _section.image != blank %}
+    <div class="section__image">
+      <img src="{{ _section.image | img_url: '616x'}}" alt="">
+    </div><!-- /.section__image -->
+  {% endif %}
+</div><!-- /.section__inner -->
+
+{% schema %}
+{
+  "name": "List",
+  "tag": "section",
+  "class": "section-list",
+  "settings": [
+  {
+    "type": "text",
+    "id": "intro",
+    "label": "Intro"
+  },
+  {
+   "type": "text",
+   "id": "title",
+   "label": "Title"
+  },
+  {
+   "type": "richtext",
+   "id": "description",
+   "label": "Description"
+  },
+  {
+   "type": "text",
+   "id": "list_title",
+   "label": "List Title"
+  },
+  {
+   "type": "text",
+   "id": "button_label",
+   "label": "Button label"
+  },
+  {
+   "type": "url",
+   "id": "button_url",
+   "label": "Button url"
+  },
+  {
+   "type": "image_picker",
+   "id": "image",
+   "label": "Image"
+  }],
+  "blocks": [
+  {
+    "type": "text",
+    "name": "list",
+    "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+     "type": "richtext",
+     "id": "description",
+     "label": "Description"
+    }]
+  }]
+}
+{% endschema %}

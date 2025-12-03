@@ -1,0 +1,154 @@
+{%- assign _section = section.settings -%}
+{%- assign section_background = _section.background -%}
+{%- assign section_title = _section.title -%}
+{%- assign section_text = _section.text -%}
+{%- assign section_note = _section.note -%}
+
+<div {% include 'image', _image: section_background, size: '2048', sizes: '600,1024,2048', background: true, inline: true, classes: 'section-how-it-works section-how-it-works--plans' %}>
+  <div class="page-width">
+    <div class="section__inner">
+      {% if section_title != blank or section_text != blank %}
+        <div class="section__head">
+          {% if section_title != blank %}
+            <h2 class="section__title">
+              {{- section_title -}}
+            </h2>
+          {% endif %}
+
+          {% if _section.text != blank %}
+            <div class="section__description">
+              {{- section_text -}}
+            </div><!-- /.section__description -->
+          {% endif %}
+        </div><!-- /.section__head -->
+      {% endif %}
+
+      <div class="section__body">
+        <div class="plans">
+          {%- for block in section.blocks -%}
+            {%- assign _block = block.settings -%}
+            {%- assign block_title = _block.title -%}
+            {%- assign block_price = _block.price -%}
+            {%- assign block_period = _block.period -%}
+            {%- assign block_text = _block.text -%}
+            {%- assign block_btn_text = _block.btn_text -%}
+            {%- assign block_btn_url = _block.btn_url -%}
+
+            <div class="plan">
+              <div class="plan__inner">
+                {% if block_title != blank %}
+                  <h3 class="plan__title">
+                    {{- block_title -}}
+                  </h3><!-- /.plan__title -->
+                {% endif %}
+
+                {% if block_price != blank %}
+                  <div class="plan__price">
+                    <sup>$</sup>{{- block_price -}} <span>/ {{ block_period }}</span>
+                  </div><!-- /.plan__price -->
+                {% endif %}
+
+                {% if block_text != blank %}
+                  <div class="plan__entry">
+                    {{- block_text -}}
+                  </div><!-- /.plan__entry -->
+                {% endif %}
+
+                {% if block_btn_text != blank and block_btn_url != blank %}
+                  <a href="{{- block_btn_url -}}" class="btn plan__btn">
+                    {{- block_btn_text -}}
+                  </a>
+                {% endif %}
+              </div><!-- /.plan__inner -->
+            </div><!-- /.plan -->
+
+          {%- endfor -%}
+        </div><!-- /.plans -->
+      </div><!-- /.section__body -->
+
+      {% if section_note != blank %}
+        <div class="section__foot">
+          <p>
+            {{- section_note -}}
+          </p>
+        </div><!-- /.section__foot -->
+      {% endif %}
+    </div><!-- /.section__inner -->
+  </div><!-- /.page-width -->
+</div><!-- /.section-how-it-works -->
+
+
+
+
+{% schema %}
+{
+  "name": "Plans v2",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price"
+        },
+        {
+          "type": "text",
+          "id": "period",
+          "label": "Period",
+          "info": "Example: 'per month'"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button - Text"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button - URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Plans v2",
+      "category": "Home Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,47 @@
+{%- assign activeLink = false -%}
+{%- assign activeLinkTitle = section.settings.title -%}
+
+{% for link in linklists[section.settings.menu].links %}
+  {% if link.current %}
+    {%- assign activeLink = true -%}
+    {%- assign activeLinkTitle = link.title -%}
+  {% endif %}
+{% endfor %}
+
+{% assign blog_suffix = blog.template_suffix %}
+{% assign blog_url = blog.url | append: "/tagged/" %}
+{% if blog_suffix == 'single-custom' %}
+  {% assign blog_url = blog.url | append: '/' %}
+{% endif %}
+
+<div class="dropdown{% if blog_suffix == 'single-custom' %} dropdown-single-custom{% endif %}">
+
+  <div class="dropdown__trigger">
+    <span>{{ activeLinkTitle }}</span>
+    {% if blog_suffix != 'single-custom' %}
+      <img src="{{ 'close-gray.svg' | asset_url }}" class="clear" data-blog-url="{{blog_url}}">
+    {% endif %}
+    <img src="{{ 'ico-arrow.svg' | asset_url }}" class="ico-arrow">
+  </div><!-- /.dropdown__trigger -->
+
+  <div class="dropdown__inner">
+    <div class="rte">
+      <ul class="sidebar-menu">
+        {% if blog_suffix != 'single-custom' %}
+          <li class="view-all">
+            <a href="{{blog.url}}" data-blog-url="{{blog_url}}">View all</a>
+          </li>
+        {% endif %}
+
+        {% for link in linklists[section.settings.menu].links %}
+          {%- assign _tag = link.url | split: '/' | last -%}
+          {%- assign url = blog_url | append: _tag -%}
+
+          <li{% if link.current %} class="current"{% endif %}>
+            <a href="{{url}}" {% if blog_suffix != 'single-custom' %}class="js-tag-trigger"{% endif %} data-blog-url="{{blog_url}}" data-tag="{{_tag}}">{{link.title}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div><!-- /.dropdown__inner -->
+</div><!-- /.dropdown -->

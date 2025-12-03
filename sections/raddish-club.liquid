@@ -1,0 +1,93 @@
+{% assign club_product = all_products[section.settings.product] %}
+{% assign club_identifier = club_product.selected_or_first_available_variant.sku | slice: -2, 1  %}
+
+<div id="{{section.settings.club_id}}">
+  <div class="modal-header" style="background-color: {{section.settings.color}};">
+    <h4 id="modal-header-title">{{section.settings.title}}</h4>
+  </div>
+  <div class="club-content">
+    <div class="club-main-images">
+      {% for block in section.blocks %}
+        <div class="image">
+          <div class="image__inner">
+            {% include 'image', _image: block.settings.image, size: '800', alt: block.settings.image.alt %}
+          </div><!-- /.image__inner -->
+        </div><!-- /.image -->
+      {% endfor %}
+    </div>
+    <div class="club-thumbnails">
+      {% for block in section.blocks %}
+        <div class="image">
+          <div class="image__inner">
+            {% include 'image', _image: block.settings.image, size: '80', alt: block.settings.image.alt %}
+          </div><!-- /.image__inner -->
+        </div><!-- /.image -->
+      {% endfor %}
+    </div>
+    <div class="club-description">{{section.settings.description}}</div>
+  </div>
+</div>
+
+<script>
+
+</script>
+
+{% schema %}
+{
+  "name": "Raddish Club",
+  "class": "hidden",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This section will not be displayed on homepage. However is required for subscription builder."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "club_id",
+      "label": "Club ID",
+      "info": "Used to connect to modal"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Subscription Product",
+      "info": "No sibling bundles, 1 month subscription"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color"
+    },
+    {
+      "type": "html",
+      "id": "description",
+      "label": "Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Raddish Club",
+      "category": "Subscription"
+    }
+  ],  
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

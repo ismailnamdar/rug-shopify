@@ -1,3 +1,111 @@
-{% section 'registration-form' %}
+<div class="account-content-container">
+<div class="content-box form-elements-alt">
 
-{% section 'newsletter' %}
+  {% form 'create_customer' %}
+
+    <div class="h1">{{ 'customer.register.title' | t }}</div>
+    <div class="acct-login-create">
+      Already activated your account portal? <a href="/account/login">Sign in now.</a>
+    </div>
+
+    <div class="acct-login-notification">
+      {{ form.errors | default_errors }}
+    </div>
+
+    <div class="acct-field-row">
+    <input type="text"
+      name="customer[first_name]"
+      id="FirstName"
+      placeholder="{{ 'customer.register.first_name' | t }}"
+      required
+      onfocus="this.classList.add('touched');"
+      {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+      <span class="required-label">Required</span>
+    </div>
+
+    <div class="acct-field-row">
+    <input type="text"
+      name="customer[last_name]"
+      id="LastName"
+      required
+      onfocus="this.classList.add('touched');"
+      placeholder="{{ 'customer.register.last_name' | t }}"
+      {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+      <span class="required-label">Required</span>
+    </div>
+
+    <div class="acct-field-row">
+    <input type="email"
+      name="customer[email]"
+      id="Email"
+      class="{% if form.errors contains 'email' %}input-error{% endif %}"
+      placeholder="{{ 'customer.register.email' | t }}"
+      value="{% if form.email %}{{ form.email }}{% endif %}"
+      spellcheck="false"
+      autocomplete="off"
+      required
+      onfocus="this.classList.add('touched');"
+      autocapitalize="off">
+      <span class="required-label">Required</span>
+    </div>
+
+    <div class="acct-field-row">
+    <input type="password"
+      name="customer[password]"
+      id="CreatePassword"
+      required
+      onfocus="this.classList.add('touched');"
+      class="{% if form.errors contains 'password' %}input-error{% endif %}"
+      placeholder="{{ 'customer.register.password' | t }}">
+      <span class="required-label">Required</span>
+    </div>
+    <div class="acct-option-row">
+      <input type="submit" value="{{ 'customer.register.submit' | t }}" class="button-primary">
+    </div>
+    <div class="acct-option-row">
+      <a href="{{ shop.url }}" class="button-text">{{ 'customer.register.cancel' | t }}</a>
+    </div>
+  {% endform %}
+</div>
+</div>
+
+<style>
+    .acct-option-row [type="submit"] {
+        width: 400px;
+        max-width: none;
+    }
+    .acct-field-row {
+        position: relative;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .form-elements-alt input:not([type=submit]) {
+        height: 56px;
+        position: relative;
+    }    
+    .form-elements-alt input:not([type=submit]):focus {
+        border: 1px solid #a9dd61;
+    }
+    .form-elements-alt input:not([type=submit]):focus:invalid,
+    .form-elements-alt input:not([type=submit]).touched:invalid {
+        border: 1px solid #f3576b;
+    }
+    .form-elements-alt input:not([type=submit]):focus:invalid + .required-label,
+    .form-elements-alt input:not([type=submit]).touched:invalid + .required-label {
+        display: block;
+    }
+    .required-label {
+        position: absolute;
+        color: #f3576b;
+        font-size: 12px;
+        left: 15px;
+        top: -7px;
+        background: white;
+        padding: 0 6px;
+        display: none;
+    }
+</style>
+
+<script>
+</script>

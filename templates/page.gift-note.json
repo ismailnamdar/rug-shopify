@@ -1,0 +1,293 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "block_with_text_rttgw8": {
+      "type": "block-with-text",
+      "name": "Block with Text",
+      "settings": {
+        "background_color": "",
+        "text_color": "#4d4d4d",
+        "body_text_color": "",
+        "title": "Print a Gift Note",
+        "description": "",
+        "element_id": ""
+      }
+    },
+    "block_with_text_aXRwGa": {
+      "type": "block-with-text",
+      "name": "Block with Text",
+      "settings": {
+        "background_color": "",
+        "text_color": "",
+        "body_text_color": "#4d4d4d",
+        "title": "",
+        "description": "<p>The next best thing to a Raddish kit is finding out that there is one on the way! <br/><br/>Download and print the gift note of your choosing for the Rad kid in your life.</p>",
+        "element_id": ""
+      }
+    },
+    "image_card_grid_FX6cBV": {
+      "type": "image-card-grid",
+      "blocks": {
+        "image_card_DyWxay": {
+          "type": "image_card",
+          "settings": {
+            "title": "Cooking Club",
+            "card_image": "shopify://shop_images/Holiday_CC_c9e5f772-3aad-4dc9-8ba5-e06b3eca0415.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Holiday_-_CC.pdf?v=1758229343",
+            "bg_color": "#e5f4fa"
+          }
+        },
+        "image_card_RE9nQE": {
+          "type": "image_card",
+          "settings": {
+            "title": "Global Eats Club",
+            "card_image": "shopify://shop_images/Holiday_GEC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Holiday_-_GEC.pdf?v=1758229343",
+            "bg_color": "#e8f5df"
+          }
+        },
+        "image_card_8Rwdgd": {
+          "type": "image_card",
+          "settings": {
+            "title": "Baking Club",
+            "card_image": "shopify://shop_images/Holiday_BC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Holiday_-_BC.pdf?v=1758229342",
+            "bg_color": "#fdece5"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_DyWxay",
+        "image_card_RE9nQE",
+        "image_card_8Rwdgd"
+      ],
+      "name": "Image Card Grid",
+      "settings": {
+        "heading": "Holiday Gift Notes"
+      }
+    },
+    "image_card_grid_XapLrk": {
+      "type": "image-card-grid",
+      "blocks": {
+        "image_card_hwJaJD": {
+          "type": "image_card",
+          "settings": {
+            "title": "Cooking Club",
+            "card_image": "shopify://shop_images/Christmas_CC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Christmas_-_CC.pdf?v=1758229343",
+            "bg_color": "#e5f4fa"
+          }
+        },
+        "image_card_xhAe4F": {
+          "type": "image_card",
+          "settings": {
+            "title": "Global Eats Club",
+            "card_image": "shopify://shop_images/Christmas_GEC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Christmas_-_GEC.pdf?v=1758229343",
+            "bg_color": "#e8f5df"
+          }
+        },
+        "image_card_4bH3wq": {
+          "type": "image_card",
+          "settings": {
+            "title": "Baking Club",
+            "card_image": "shopify://shop_images/Christmas_BC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Christmas_-_BC.pdf?v=1758229342",
+            "bg_color": "#fdece5"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_hwJaJD",
+        "image_card_xhAe4F",
+        "image_card_4bH3wq"
+      ],
+      "name": "Image Card Grid",
+      "settings": {
+        "heading": "Christmas Gift Notes"
+      }
+    },
+    "image_card_grid_idJr9L": {
+      "type": "image-card-grid",
+      "blocks": {
+        "image_card_xEfTMz": {
+          "type": "image_card",
+          "settings": {
+            "title": "Cooking Club",
+            "card_image": "shopify://shop_images/Hanukkah_CC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Hanukkah_-_CC.pdf?v=1758229342",
+            "bg_color": "#e5f4fa"
+          }
+        },
+        "image_card_ajzUpW": {
+          "type": "image_card",
+          "settings": {
+            "title": "Global Eats Club",
+            "card_image": "shopify://shop_images/Hanukkah_GEC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Hanukkah_-_GEC.pdf?v=1758229343",
+            "bg_color": "#e8f5df"
+          }
+        },
+        "image_card_fYhibq": {
+          "type": "image_card",
+          "settings": {
+            "title": "Baking Club",
+            "card_image": "shopify://shop_images/Hanukkah_BC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Hanukkah_-_BC.pdf?v=1758229342",
+            "bg_color": "#fdece5"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_xEfTMz",
+        "image_card_ajzUpW",
+        "image_card_fYhibq"
+      ],
+      "name": "Image Card Grid",
+      "settings": {
+        "heading": "Hanukkah Gift Notes"
+      }
+    },
+    "image_card_grid_TeXRMi": {
+      "type": "image-card-grid",
+      "blocks": {
+        "image_card_cpmczh": {
+          "type": "image_card",
+          "settings": {
+            "title": "Cooking Club",
+            "card_image": "shopify://shop_images/Birthday_CC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Birthday_-_CC.pdf?v=1758229343",
+            "bg_color": "#e5f4fa"
+          }
+        },
+        "image_card_z7pDh4": {
+          "type": "image_card",
+          "settings": {
+            "title": "Global Eats Club",
+            "card_image": "shopify://shop_images/Birthday_GEC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Birthday_-_GEC.pdf?v=1758229343",
+            "bg_color": "#e8f5df"
+          }
+        },
+        "image_card_bJyPfL": {
+          "type": "image_card",
+          "settings": {
+            "title": "Baking Club",
+            "card_image": "shopify://shop_images/Birthday_BC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Birthday_-_BC.pdf?v=1758229343",
+            "bg_color": "#fdece5"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_cpmczh",
+        "image_card_z7pDh4",
+        "image_card_bJyPfL"
+      ],
+      "name": "Image Card Grid",
+      "settings": {
+        "heading": "Birthday Gift Notes"
+      }
+    },
+    "image_card_grid_ahBGx6": {
+      "type": "image-card-grid",
+      "blocks": {
+        "image_card_YpQGUP": {
+          "type": "image_card",
+          "settings": {
+            "title": "Cooking Club",
+            "card_image": "shopify://shop_images/General_CC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_General_-_CC.pdf?v=1758229342",
+            "bg_color": "#e5f4fa"
+          }
+        },
+        "image_card_iYFTa7": {
+          "type": "image_card",
+          "settings": {
+            "title": "Global Eats Club",
+            "card_image": "shopify://shop_images/General_GEC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_General_-_GEC.pdf?v=1758229342",
+            "bg_color": "#e8f5df"
+          }
+        },
+        "image_card_H7nTRa": {
+          "type": "image_card",
+          "settings": {
+            "title": "Baking Club",
+            "card_image": "shopify://shop_images/General_BC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_General_-_BC.pdf?v=1758229342",
+            "bg_color": "#fdece5"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_YpQGUP",
+        "image_card_iYFTa7",
+        "image_card_H7nTRa"
+      ],
+      "name": "Image Card Grid",
+      "settings": {
+        "heading": "General Gift Notes"
+      }
+    },
+    "image_card_grid_CcEK3w": {
+      "type": "image-card-grid",
+      "blocks": {
+        "image_card_yUnKpn": {
+          "type": "image_card",
+          "settings": {
+            "title": "Cooking Club",
+            "card_image": "shopify://shop_images/Renewal_CC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Renewal_-_CC.pdf?v=1758229342",
+            "bg_color": "#e5f4fa"
+          }
+        },
+        "image_card_xaLbeq": {
+          "type": "image_card",
+          "settings": {
+            "title": "Global Eats Club",
+            "card_image": "shopify://shop_images/Renewal_GEC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Renewal_-_GEC.pdf?v=1758229343",
+            "bg_color": "#e8f5df"
+          }
+        },
+        "image_card_hVTxrC": {
+          "type": "image_card",
+          "settings": {
+            "title": "Baking Club",
+            "card_image": "shopify://shop_images/Renewal_BC.png",
+            "link": "https://cdn.shopify.com/s/files/1/0300/1545/files/Gift_Note_-_Renewal_-_BC.pdf?v=1758229342",
+            "bg_color": "#fdece5"
+          }
+        }
+      },
+      "block_order": [
+        "image_card_yUnKpn",
+        "image_card_xaLbeq",
+        "image_card_hVTxrC"
+      ],
+      "name": "Image Card Grid",
+      "settings": {
+        "heading": "Renewal Gift Notes"
+      }
+    }
+  },
+  "order": [
+    "block_with_text_rttgw8",
+    "block_with_text_aXRwGa",
+    "image_card_grid_FX6cBV",
+    "image_card_grid_XapLrk",
+    "image_card_grid_idJr9L",
+    "image_card_grid_TeXRMi",
+    "image_card_grid_ahBGx6",
+    "image_card_grid_CcEK3w"
+  ]
+}

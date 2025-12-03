@@ -1,0 +1,31 @@
+<section class="section-content">
+  <div class="page-width page-width--larger">
+    <div class="section__inner">
+      {% if _block.image != blank %}
+        <div class="section__image">
+          {% include 'image', _image: _block.image, size: '600' %}
+        </div><!-- /.section__image -->
+      {% endif %}
+
+      <div class="section__content">
+        {% if _block.title != blank %}
+          <h2>{{ _block.title | escape | newline_to_br }}</h2>
+        {% endif %}
+
+        {% if _block.description != blank %}
+          {{ _block.description }}
+        {% endif %}
+
+        {% if _block.button_label != blank and _block.button_link != blank %}
+          <a href="{{ _block.button_link | url_escape }}" class="btn {% if _block.button_type == 'secondary' %}btn--alt{% endif %}">
+            {{ _block.button_label | escape }}
+          </a><!-- /.btn btn--alt -->
+        {% endif %}
+
+        {% if _block.outro != blank %}
+          {{ _block.outro }}
+        {% endif %}
+      </div><!-- /.section__content -->
+    </div><!-- /.section__inner -->
+  </div><!-- /.page-width page-width--larger -->
+</section><!-- /.section-content -->

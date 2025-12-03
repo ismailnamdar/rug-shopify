@@ -1,0 +1,231 @@
+<div class="subscription-step subscription-step-v2--2">
+  {% assign plans = section.blocks | where: "type", "plan" | map: "settings" %}
+
+  <div class="subscription__clubs-container" style="display: none;">
+      <h2 class="{{ title_class }}"><span role="button" aria-label="go back" style="padding-right: 4px; cursor: pointer;" rv-on-click="methods.goBack" > < </span> {{steps.step_2_title}}</h2>
+      <div class="subscription-step-v2--2__description">
+        All plans include <a href="#" 
+        rv-on-click="methods.openAdditionalContent" 
+        data-content-id="{{steps.step_1_bottom_description_modal_id}}">FREE</a><br class="subscription-step-v2--2__description-br" /> Raddish Plus digital access.
+      </div>
+
+      <div class="sub-v2-step--2__grid" role="list">
+         {% for plan in plans %}
+          {% assign plan_length = plan.length | json %}
+          <div class="subscription-step-v2--2__card {{ card_class }} select-card select-card--plan">
+            {% if plan.savings != blank %}
+              <p class="subscription-step-v2--2__savings">{{plan.savings}}</p>
+            {% endif %}
+            <div class="subscription-step-v2--2__card-title">
+              {{plan.title}}
+            </div>
+            <div class="subscription-step-v2--2__desc">
+                <div class="select-card__description">
+                <p class="subscription-step-v2--2__price">
+                  {{plan.price}}
+                </p>
+              </div>
+            </div>
+            <div style="width: 100%;" rv-on-click="methods.updateSubscriptionProperty | args 'plan_length' '{{plan_length}}'">
+              <button class="btn btn-card" rv-on-click="methods.updateSubscription" data-name="plan_length" id="plan-{{plan_length}}" data-value="{{plan_length}}" >{{ plan.button_label }}</button>
+            </div>
+            <div class="subscription-step-v2--2__bottom">
+              {{ plan.description }}
+              <span>
+                {% if plan.free_item_title != blank %}{{plan.free_item_title}}{% endif %}
+                {% if plan.free_item_2_title != blank %}{{plan.free_item_2_title}}{% endif %}
+                {% if plan.free_item_3_title != blank %}{{plan.free_item_3_title}}{% endif %}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  .subscription-step {
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    margin-top: 30px;
+  }
+
+  .subscription-step-v2--2 {
+    margin-bottom: 25px;
+  }
+
+  .subscription-step-v2--2 .subscription__clubs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 5px;
+  }
+
+  .subscription-step-v2--2__card {
+    background:var(--card-bg);
+    border: 1px solid var(--card-border);
+    position: relative;
+    margin-top: 16px;
+    justify-content: flex-start !important;
+  }
+
+  .subscription-step-v2--2__card-title {
+    font-family: KG HAPPY Solid, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .sub-v2-step--2__grid {
+    justify-content: center;
+    max-width: none;
+    display: grid;
+    grid-template-columns:repeat({{ plans.size }},minmax(0,1fr));
+    gap: {% if plans.size > 3 %}20px{% else %}46px{% endif %};
+    align-items:stretch;
+  }
+
+  .subscription-step-v2--2__price { 
+    font-family: Avenir, sans-serif;
+    font-weight: 350;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    display: block;
+    margin: 0;
+  }
+  .subscription-step-v2--2__desc {
+    font-family: Avenir, sans-serif;
+    font-size:16px;
+    line-height:22px;
+    max-width:36ch;
+    width: 100%;
+    font-weight: 350;
+    text-align:center;
+    color:#4d4d4d;
+  }
+
+  .subscription-step-v2--2__card .btn-card { 
+    max-width: 234px;
+    width: 100%;
+    letter-spacing: 0px;
+    font-weight: 500;
+    padding: 20px 20px 16px !important;
+  }
+
+  .subscription-step-v2--2__description {
+    color: #4D4D4D;
+    text-align: center;
+    font-family: Avenir, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11.216px;
+  }
+
+  .subscription-step-v2--2__description-br {
+    display: none;
+  }
+
+  .subscription-step-v2--2__savings {
+    position: absolute;
+    top: -17px;
+    color: #4D4D4D;
+    text-align: center;
+    font-family: Avenir, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 21px;
+    background-color: #A9DD61;
+    border-radius: 5px;
+    padding: 8px 12px 4px;
+    border: 1px solid #4d4d4d;
+    margin: 0;
+  }
+
+  .subscription-step-v2--2__bottom p {
+    color: #4D4D4D;
+    font-family: Avenir, sans-serif;
+    font-size: 16px;
+    font-style: oblique;
+    font-weight: 350;
+    line-height: 16px;
+    margin: 0;
+  }
+  .subscription-step-v2--2__bottom span {
+    color: #F3576B;
+    font-family: Avenir, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 20px;
+    margin-top: 8px;
+    display: block;
+  }
+
+  @media screen and (min-width: 768px) {
+    .subscription-step > .btn {
+      max-width: 350px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      display: block;
+    }
+  }
+
+  {% if plans.size > 3 %}
+  @media screen and (max-width: 1000px) {
+    .sub-v2-step--2__grid {
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap: 30px;
+      width: 100%;
+      padding: 0 5px;
+    }
+  }
+  {% endif %}
+
+  @media screen and (max-width: 768px) {
+    .subscription-step-v2--2 {
+      margin-bottom: 26px; 
+    }
+
+    .subscription-step {
+      margin-top: 26px;
+    }
+    .subscription-step-v2--2 .subscription__clubs-container {
+      gap: 26px;
+    }
+    .sub-v2-step--2__grid {
+      grid-template-columns:repeat(1,minmax(0,1fr));
+      gap: 30px;
+      width: 100%;
+      padding: 0 5px;
+    }
+    .subscription-step-v2--2__description {
+      font-size: 16px;
+      line-height: 23px;
+    }
+    .subscription-step-v2--2__card .btn-card { 
+      max-width: 100%;
+      margin-top: 8px;
+    }
+    .subscription-step-v2--2__card {
+      background: var(--club-mobile-bg);
+    }
+    .subscription-step-v2--2__description-br {
+      display: block;
+    }
+    .subscription-step-v2--2__card-title {
+      font-size: 18px;
+      line-height: 18px;
+    }
+    .subscription-step-v2--2__desc { 
+      line-height: 24px;
+    }
+  }
+</style>

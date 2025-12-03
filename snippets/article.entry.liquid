@@ -1,0 +1,124 @@
+<article class="blog-content" role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="banner">
+    <h1 class="subheading article-title">{{ article.title }}</h1>
+  </header>
+  {% comment %}
+  {% if article.image %}
+    {{ article | img_url: '1024x1024' | img_tag: article.title }}
+  {% endif %}
+  {% endcomment %}
+
+  <div class="rte" itemprop="articleBody">
+    {{ article.content }}
+  </div>
+
+  <hr>
+
+  <div class="article-footer">
+    <p class="tags"><span>Posted In:</span>{% for tag in article.tags %}<a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+    {% if settings.social_sharing_blog %}
+      {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+    {% endif %}
+  </div>
+
+  <hr>
+
+  {% if blog.comments_enabled? %}
+  {% paginate article.comments by 5 %}
+
+  <div id="comments">
+    <h3>Comments</h3>
+
+    {% if comment and comment.status and paginate.current_page == 1 %}
+      <p class="form-success">
+        {% if blog.moderated? and comment.status != 'published' %}
+          <span>{{ 'blogs.comments.success_moderated' | t }}</span>
+        {% else %}
+          <span>{{ 'blogs.comments.success' | t }}</span>
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {% if number_of_comments > 0 %}
+      <ul>
+        {% comment %}
+          Display comment from URL parameters if it is waiting moderation
+        {% endcomment %}
+        {% if comment and comment.status != 'published' %}
+          <li id="{{ comment.id }}">
+            <div class="rte">
+              {{ comment.content }}
+            </div>
+            {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+            <p><b>{{ comment.author }}</b> on {{ date }}</p>
+          </li>
+        {% endif %}
+
+        {% for comment in article.comments %}
+          <li id="{{ comment.id }}">
+            {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+            <p><b>{{ comment.author }}</b> on {{ date }}</p>
+            <div class="rte">
+              {{ comment.content }}
+            </div>
+          </li>
+
+        {% endfor %}
+      </ul>
+
+      {% if paginate.pages > 1 %}
+        {% include 'pagination' %}
+      {% endif %}
+    {% endif %}
+  </div>
+
+  {% endpaginate %}
+  {% endif %}
+
+
+  {% if blog.comments_enabled? %}
+    {% form 'new_comment', article %}
+      <h3>{{ 'blogs.comments.title' | t }}</h3>
+
+      {{ form.errors | default_errors }}
+
+      <label for="CommentAuthor" class="label-hidden">
+        {{ 'blogs.comments.name' | t }}
+      </label>
+      <input type="text"
+             name="comment[author]"
+             id="CommentAuthor"
+             class="{% if form.errors contains 'author' %}input-error{% endif %}"
+             placeholder="{{ 'blogs.comments.name' | t }}"
+             value="{{ form.author }}"
+             autocapitalize="words">
+
+      <label for="CommentEmail" class="label-hidden">
+        {{ 'blogs.comments.email' | t }}
+      </label>
+      <input type="email"
+             name="comment[email]"
+             id="CommentEmail"
+             class="{% if form.errors contains 'email' %}input-error{% endif %}"
+             placeholder="{{ 'blogs.comments.email' | t }}"
+             value="{{ form.email }}"
+             spellcheck="false"
+             autocomplete="off"
+             autocapitalize="off">
+
+      <label for="CommentBody" class="label-hidden">
+        {{ 'blogs.comments.message' | t }}
+      </label>
+      <textarea
+        name="comment[body]"
+        id="CommentBody"
+        class="{% if form.errors contains 'body' %}input-error{% endif %}"
+        placeholder="Your Comment">{{ form.body }}</textarea>
+
+      <div class="text-right">
+        <input type="submit" class="btn" value="{{ 'blogs.comments.post' | t }}">
+      </div>
+
+    {% endform %}
+  {% endif %}
+</article>

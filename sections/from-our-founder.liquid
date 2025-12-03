@@ -1,0 +1,131 @@
+
+<div class="from-our-founder">
+  <h2 class="h2" style="color: {{section.settings.header_color}}">{{section.settings.title}}</h2>
+  <div class="from-our-founder__details">
+    <div>
+      <img src="{{section.settings.image | img_url: '1024x'}}" alt="{{section.settings.image.alt}}"/>
+    </div>
+    <p> 
+      {{section.settings.text}} 
+    </p>
+  </div>
+  {% if section.settings.button_text != blank %}
+    <a class="btn" href="{{section.settings.url}}">{{section.settings.button_text}}</a>
+  {% endif %}
+</div>
+
+
+<style>
+  .from-our-founder__details {
+    display: inline-block;
+}
+
+.from-our-founder__details img {
+    float: right;
+    width: 100%;
+    margin-left: 20px;
+    max-width: 768px;
+}
+
+.from-our-founder__details p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.from-our-founder h2 {
+    margin-bottom: 0;
+}
+
+.from-our-founder {
+    padding: 50px 40px;
+    max-width: 1380px;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+.from-our-founder .btn {
+  width: 100%;
+  max-width: 310px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 1rem;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 749px) {
+  .from-our-founder h2 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .from-our-founder__details p {
+      font-family: 'Avenir';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      margin-top: 1rem;
+  }
+
+  .from-our-founder__details img {
+      float: none;
+      margin-left: 0;
+  }
+
+  .from-our-founder {
+      padding: 30px 30px;
+  }
+}
+</style>
+
+{% schema %}
+  {
+    "name": "From Our Founder",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "From Our Founder"
+      },
+      {
+        "type": "color",
+        "id": "header_color",
+        "label": "Header Color",
+        "default": "#01bcbe"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Excerpt"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Read more"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Button URL"
+      }
+    ],
+    "presets": [
+      {
+        "name": "From Our Founder",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

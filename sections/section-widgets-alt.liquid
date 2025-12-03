@@ -1,0 +1,149 @@
+{%- assign _section = section.settings -%}
+{%- assign _blocks = section.blocks -%}
+
+{%- if _blocks.size > 0 -%}
+  <section class="section-widgets-alt">
+    <div class="page-width">
+      {% if _section.title != blank %}
+        <header class="section__head">
+          <div class="section__head-main">
+            <h2 class="section__title">
+              {{- _section.title -}}
+            </h2><!-- /.section__title -->
+
+            {% if _section.link_label != blank and _section.link_url != blank %}
+              <div class="section__cta">
+                <a href="{{ collection.url }}" class="section__link">
+                  {{- _section.link_label -}}
+                </a><!-- /.section__link -->
+              </div><!-- /.section__cta -->
+            {% endif %}
+          </div><!-- /.section__head-main -->
+
+          {% if _section.subtitle != blank %}
+            <div class="section__subtitle">
+              {{- _section.subtitle -}}
+            </div><!-- /.section__subtitle -->
+          {% endif %}
+        </header><!-- /.section__head -->
+      {% endif %}
+
+      <div class="section__body">
+        {% render 'widgets' with blocks: _blocks %}
+      </div><!-- /.section__body -->
+
+      {% if _section.footer_title != blank or _section.footer_btn_label != blank or _section.footer_btn_link != blank %}
+        <footer class="section__foot">
+          {% if _section.footer_title != blank %}
+            <h2 class="section__title">
+              {{- _section.footer_title -}}
+            </h2><!-- /.section__title -->
+          {% endif %}
+
+          {% if _section.footer_btn_link != blank and _section.footer_btn_label != blank %}
+            <div class="section__actions">
+              <a href='{{ _section.footer_btn_link }}' class='btn'>{{ _section.footer_btn_label }}</a><!-- /.btn -->
+            </div><!-- /.section__actions -->
+          {% endif %}
+        </footer><!-- /.section__foot -->
+      {% endif %}
+    </div><!-- /.page-width -->
+  </section><!-- /.section-widgets-alt -->
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Widgets alt",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Section Footer"
+    },
+    {
+      "type": "text",
+      "id": "footer_title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "footer_btn_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "footer_btn_link",
+      "label": "Button link"
+    }
+  ],
+  "max_blocks": 9999,
+  "blocks": [
+    {
+      "type": "widget",
+      "name": "Widget",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "price",
+          "label": "Price"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "textarea",
+          "id": "bottom_text",
+          "label": "Bottom text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Widgets alt",
+      "category": "Landing page"
+    }
+  ]
+}
+{% endschema %}

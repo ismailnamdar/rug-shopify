@@ -1,0 +1,253 @@
+{% assign sale_dummy_tag = "now" | date: "%s" | append: "-default-sale-badge" %}
+{% assign sold_out_dummy_tag = "now" | date: "%s" | append: "-default-sold-out-badge" %}
+
+<script>
+  window.badges = {
+    config: {
+      saleDummyTag: {{sale_dummy_tag | json }},
+      soldOutDummyTag: {{sold_out_dummy_tag | json }}
+    }, 
+    list: [
+    {% if section.settings.sale_badge_text != blank %}
+      {
+        "tag": {{sale_dummy_tag | json }},
+        "text": {{section.settings.sale_badge_text | json }},
+        "position": {{section.settings.sale_badge_position | json }},
+        "backgroundColor": {{section.settings.sale_badge_backgound_color | json }},
+        "textColor": {{section.settings.sale_badge_text_color | json }},
+        "showPdp": {{section.settings.sale_show_pdp | json }},
+        "showMiniCart": {{section.settings.sale_show_mini_cart | json }}
+      },
+      {% endif %}
+      {% if section.settings.sold_out_badge_text != blank %}
+      {
+        "tag": {{sold_out_dummy_tag | json }},
+        "text": {{section.settings.sold_out_badge_text | json }},
+        "position": {{section.settings.sold_out_badge_position | json }},
+        "backgroundColor": {{section.settings.sold_out_badge_backgound_color | json }},
+        "textColor": {{section.settings.sold_out_badge_text_color | json }},
+        "showPdp": {{section.settings.sold_out_show_pdp | json }},
+        "showMiniCart": {{section.settings.sold_out_show_mini_cart | json }}
+      },
+      {% endif %}
+      {%- for block in section.blocks -%}
+      {
+        "tag": {{block.settings.badge_tag | json }},
+        "text": {{block.settings.badge_text | json }},
+        "position": {{block.settings.badge_position | json }},
+        "backgroundColor": {{block.settings.badge_backgound_color | json }},
+        "textColor": {{block.settings.badge_text_color | json }},
+        "showPdp": {{block.settings.show_pdp | json }},
+        "showMiniCart": {{block.settings.show_mini_cart | json }}
+      },
+      {%- endfor -%}
+      
+    ]
+  }
+</script>
+{%- style -%}
+  {{ section.settings.custom_styles }}
+{%- endstyle -%}
+
+
+<script src="{{ 'badges.js' | asset_url }}"></script>
+{{ 'component-badges.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Badges",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Sale badge",
+      "info": "Shows for produts with compare at price"
+    },
+    {
+      "type": "text",
+      "id": "sale_badge_text",
+      "label": "Text",
+      "default": "Sale",
+      "info": "Leave blank to disable sale badge"
+    },
+    {
+      "type": "select",
+      "id": "sale_badge_position",
+      "label": "Position",
+      "default": "top-left",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_backgound_color",
+      "label": "Badge background color"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_text_color",
+      "label": "Badge text color"
+    },
+    {
+      "type": "checkbox",
+      "id": "sale_show_pdp",
+      "label": "PDP",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sale_show_mini_cart",
+      "label": "Mini Cart",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Sold Out badge",
+      "info": "Shows for all unavailable products"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_badge_text",
+      "label": "Text",
+      "default": "Sold Out",
+      "info": "Leave blank to disable sold out badge"
+    },
+    {
+      "type": "select",
+      "id": "sold_out_badge_position",
+      "label": "Position",
+      "default": "top-left",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "sold_out_badge_backgound_color",
+      "label": "Badge background color"
+    },
+    {
+      "type": "color",
+      "id": "sold_out_badge_text_color",
+      "label": "Badge text color"
+    },
+    {
+      "type": "header",
+      "content": "Global settings"
+    },
+    {
+      "type": "liquid",
+      "id": "custom_styles",
+      "label": "Custom styles for badges",
+      "info": "Should only be edited by developer or a person who knows liquid"
+    },
+    {
+      "type": "checkbox",
+      "id": "sold_out_show_pdp",
+      "label": "PDP",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sold_out_show_mini_cart",
+      "label": "Mini Cart",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Badge",
+      "limit": 8,
+      "settings": [
+        {
+            "type": "text",
+            "id": "badge_text",
+            "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "badge_tag",
+          "label": "Tag required"
+        },
+        {
+          "type": "select",
+          "id": "badge_position",
+          "label": "Position",
+          "default": "top-left",
+          "options": [
+            {
+              "value": "top-left",
+              "label": "Top Left"
+            },
+            {
+              "value": "bottom-left",
+              "label": "Bottom Left"
+            },
+            {
+              "value": "top-right",
+              "label": "Top Right"
+            },
+            {
+              "value": "bottom-right",
+              "label": "Bottom Right"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "badge_backgound_color",
+          "label": "Badge background color"
+        },
+        {
+          "type": "color",
+          "id": "badge_text_color",
+          "label": "Badge text color"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_pdp",
+          "label": "PDP",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_mini_cart",
+          "label": "Mini Cart",
+          "default": true
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

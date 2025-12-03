@@ -1,0 +1,20 @@
+{%- assign excerpt = article.excerpt | strip_html -%}
+
+<div class="flex">
+  <div class="article__image">
+    <a href="{{excerpt | default: article.url}}" target="_blank">
+      <span {% include 'image', _image: article.image, background: true, size: '600', classes: 'image', inline: true %}></span>
+    </a>
+  </div><!-- /.article__image -->
+  <div class="article__content">
+    <h4>
+      <a href="{{excerpt | default: article.url}}" target="_blank">
+        {{article.title}}
+      </a>
+    </h4>
+    {%- if article.metafields['article']['date'] -%}
+      <h6>{{ article.metafields['article']['date'] }}</h6>
+    {%- endif -%}
+    <p>{{ article.content | strip_html | truncatewords: 100, '...' }}</p>
+  </div><!-- /.article__content -->
+</div><!-- /.flex -->

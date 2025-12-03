@@ -1,0 +1,86 @@
+{%- if blocks != blank -%}
+  <ul class="list-widgets">
+    {%- for block in blocks -%}
+      {%- assign _block = block.settings -%}
+      {%- assign block_image = _block.image -%}
+      {%- assign block_title = _block.title -%}
+      {%- assign block_text = _block.text -%}
+      {%- assign block_url = _block.url -%}
+      {%- assign block_product = all_products[_block.product] -%}
+      {%- assign product_tags = block_product.tags | join: '||' | append: '||' | prepend: '||' -%}
+
+      {%- if product_tags contains '||save:' -%}
+        {%- assign product_save = product_tags | split: 'save:' | last | split: '||' | first -%}
+      {%- endif -%}
+
+      <li>
+        <div>
+          {% if block_image != blank %}
+            <figure>
+              {% render 'image', _image: block_image, size: '686', alt: block_image.alt %}
+            </figure>
+          {% endif %}
+
+          {% if block_title != blank %}
+            <h3>
+              {% if block_url != blank %}
+                <a href="{{- block_url -}}">
+              {% endif %}
+              {{- block_title -}}
+              {% if block_url != blank %}
+                </a>
+              {% endif %}
+            </h3>
+          {% endif %}
+
+          {% if block_text != blank %}
+            <p>
+              {{- block_text | newline_to_br -}}
+            </p>
+          {% endif %}
+
+          {% if block_product != blank %}
+            <span class="widget__price">
+              {% if _block.price != blank %}
+                {{ _block.price | remove: '<p>' | remove: '</p>' }}
+              {% else %}
+                {% render 'price' with block_product as product %}
+              {% endif %}
+            </span><!-- /.widget__price -->
+
+            <form method="post" action="/cart/add">
+              <select name="id" class="hidden">
+                <option value="{{- block_product.variants.first.id -}}"></option>
+              </select>
+
+              <input type="hidden" name="quantity" value="1"/>
+              <button type="submit" name="add" class="btn product__btn"
+                {% unless block_product.available %}
+                  disabled
+                {% endunless %}
+              >
+                {%- unless block_product.available -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- else -%}
+                  {{ 'products.product.add_to_cart' | t }}
+                {%- endunless -%}
+              </button>
+            </form>
+
+            {%- if product_save != blank -%}
+              <footer class="widget__foot">
+                {{- product_save | strip -}}
+              </footer><!-- /.widget__foot -->
+            {%- endif -%}
+          {% endif %}
+
+          {% if _block.bottom_text != blank %}
+            <span class="widget__callout">
+              {{ _block.bottom_text | escape }}
+            </span><!-- /.widget__callout -->
+          {% endif %}
+        </div>
+      </li>
+    {%- endfor -%}
+  </ul><!-- /.list-widgets -->
+{%- endif -%}

@@ -1,0 +1,416 @@
+<div class="past-kits-desktop-landing {% unless section.settings.show_mobile %} hidden-xs {% endunless %}{% unless section.settings.show_desktop %}hidden-sm hidden-md hidden-lg{% endunless %}">
+  <div {% render 'image', _image: section.settings.background, size: '2048', background: true, inline: true %}>
+    <div class="raddish-card">
+      <h2 class="h2">{{section.settings.title}}</h2>
+      {% assign kits = section.blocks | map: "settings" | map: "kit_name" | uniq | compact %}
+      {% assign kits_blocks = section.blocks | map: "settings"  %}
+
+      <div class="past-kits-desktop__selector">
+        {% for kit in kits %}
+          <div class="past-kit__selector {% if forloop.first %} selected {% endif %}" data-past-kit="{{kit | handle}}" >{{kit}}</div>
+        {% endfor %}
+      </div>
+      {% for kit in kits %}
+        <div class="past-kit__description {% if forloop.first %} selected {% endif %}" data-past-kit="{{kit | handle}}" >
+          <h3>{{kit}}</h3>
+          {% for block in section.blocks %}
+            {% unless block.type == "kit_description" %}
+              {% continue %}
+            {% endunless %}
+            {% if block.settings.title == kit %}
+              <p>{{block.settings.kit_description}}</p>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+      {% for kit in kits %}
+        <div class="past-kits-desktop__slider {% if forloop.first %} selected {% endif %}" data-past-kit="{{kit | handle}}"  style="background-color: transparent; background-image: linear-gradient(180deg, transparent 0%, transparent 30%, {{section.settings.background_color}} 30%, {{section.settings.background_color}} 100%);">
+          {% for block in section.blocks %}
+            {% if block.settings.kit_name != kit %}  {% continue %}  {% endif %}
+            <div class="slider__element">
+              {%- comment -%}
+              <div class="past-kits-desktop__label">{{kit}}</div>
+              {%- endcomment -%}
+              {% render 'image', _image: block.settings.brand_image, alt: block.settings.brand_image.alt, classes: "aspect-ratio-box" %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    $("#shopify-section-{{section.id}} .past-kits-desktop__slider").slick({
+      slidesToShow: 3,
+      autoplay: true,
+      centerMode: true,
+      centerPadding: '0',
+      dots: true
+    })
+
+    $("#shopify-section-{{section.id}} .past-kit__selector").on('click', function(event) {
+      $("#shopify-section-{{section.id}} .past-kit__selector").removeClass("selected");
+      $("#shopify-section-{{section.id}} .past-kits-desktop__slider").removeClass("selected");
+      $("#shopify-section-{{section.id}} .past-kit__description").removeClass("selected");
+      $(event.currentTarget).addClass("selected")
+      const selectedKit = $(event.currentTarget).attr("data-past-kit");
+      $(`#shopify-section-{{section.id}} .past-kits-desktop__slider[data-past-kit="${selectedKit}"]`).addClass("selected")
+      $(`#shopify-section-{{section.id}} .past-kit__description[data-past-kit="${selectedKit}"]`).addClass("selected")
+    })
+  })
+</script>
+<style>
+  .past-kits-desktop-landing .past-kits-desktop__slider .slick-arrow {
+    padding: 30px;
+    transform: scale(0.75) translateY(-50%);
+  }
+  .past-kits-desktop-landing .past-kits-desktop__slider .slick-prev {
+    left: 0;
+  }
+  .past-kits-desktop-landing .past-kits-desktop__slider .slick-next {
+    right: 0;
+  }
+  .past-kit__description:not(.selected) {
+    display: none;
+  }
+  .past-kit__description {
+      max-width: 750px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 20px;
+  }
+
+  .past-kit__description p {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 32px;
+      text-align: center;
+      color: #4D4D4D;
+      margin-top: 8px;
+  }
+
+  .past-kit__description h3 {
+      font-family: 'KG HAPPY Solid';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 26px;
+  /* identical to box height, or 118% */
+      text-align: center;
+      color: #4D4D4D;
+  }
+  .past-kits-desktop-landing h2 {
+    margin-top: 24px;
+    margin-bottom: 24px !important;
+    font-size: 32px !important;
+  }
+  .past-kits-desktop-landing  .past-kits-desktop__selector {
+    max-width: 530px;
+    margin: 0 auto 24px auto;
+  }
+  .past-kits-desktop-landing .raddish-card {
+    overflow: hidden;
+    padding-bottom: 7rem;
+  }
+  .past-kits-desktop-landing .responsive-background-image {
+    padding: 36px 40px;
+  }
+  .past-kits-desktop__slider:not(.selected) {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+  }
+  .past-kits-desktop__slider:not(.selected) * {
+    padding: 0;
+    height: 0;
+  }
+  .past-kits-desktop__label {
+    background: #01BCBE;
+    border-radius: 13.5px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    padding: 5px 44px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+  }
+
+  .past-kits-desktop__slider .slider__element {
+      position: relative;
+  }
+
+  .past-kits-desktop-landing .slick-list {
+      overflow: visible;
+  }
+  .past-kits-desktop__selector {
+    margin: 30px 24px 24px;
+    display: flex;
+    height: 54px;
+    background: rgba(243, 87, 107, 0.15);
+    border-radius: 8px;
+    align-items: center;
+  }
+  .past-kits-desktop__kit-description-text {
+      font-weight: 300;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 14px;
+      color: #4D4D4D;
+      text-align: center;
+      margin-bottom: 1.6rem;
+      margin-top: 6rem;
+  }
+  .past-kit__selector {
+    color: #F3576B;
+    font-size: 14px;
+    font-family: KG HAPPY Solid,sans-serif;
+    flex: 1;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .past-kit__selector.selected {
+    border: 3px solid #F3576B;
+    background: white;
+    border-radius: 8px;
+  }
+
+  .past-kits-desktop-landing {
+    padding: 16px 0;
+    overflow: hidden;
+  }
+  .past-kits-desktop__kit-description a {
+    width: 100%;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 14px 20px !important;
+  }
+
+  .past-kits-desktop__kit-description a.btn--transparent {
+    background: white;
+    color: #F3576B;
+    border: 2px solid #F3576B;
+  }
+
+  .past-kits-desktop__slider ul.slick-dots {
+    bottom: -3.5rem;
+    display: flex;
+  }
+
+  .past-kits-desktop__slider ul.slick-dots li button {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .past-kits-desktop__slider ul.slick-dots li button {
+    margin: 0 8px;
+    background: rgba(255, 255, 255, 0.4);;
+    border: 2px solid #F3576B;;
+  }
+
+  .past-kits-desktop__slider ul.slick-dots li.slick-active button {
+    background-color: #F3576B;;
+  }
+
+  .past-kits-desktop__kit-description {
+    padding: 0 35px;
+    font-weight: 900;
+    padding-bottom: 2rem;
+    font-size: 18px;
+    padding-top: 5.5rem;
+  }
+
+  .past-kits-desktop__kit-description ul {
+    padding-left: 1.5rem;
+    margin-top: 0;
+  }
+
+  .past-kits-desktop__kit-description li {
+    margin-top: 8px;
+  }
+
+  .past-kits-desktop-landing .slider__element {
+    padding: 0 2.5rem
+  }
+
+  .past-kits-desktop-landing .slider__element img {
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(77, 77, 77, 0.201868);
+  }
+
+  .past-kits-desktop__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .past-kits-desktop__header h4 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: center;
+    margin-bottom: 0;
+    color: #4D4D4D;
+  }
+
+  .past-kits-desktop__header picture {
+    max-width: 75px;
+    max-height: 75px;
+    margin-right: 0;
+    position: absolute;
+    left: 0;
+    transform: translateX(-50%);
+  }
+
+  .past-kits-desktop__header {
+    padding: 8px;
+  }
+
+  .past-kits-desktop__description {
+    font-size: 24px;
+    font-family: 'Avenir';
+    text-align: center;
+    margin: 24px 40px;
+    font-weight: 400;
+  }
+
+  .past-kits-desktop__description span {
+    font-family: 'KG HAPPY Solid';
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .past-kits-desktop-landing h2 {
+    padding: 0 1.6rem;
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 1.6rem;
+  }
+
+  .past-kits-desktop-landing hr {
+    border: none !important;
+    border-top: 6px dashed #A9DD61 !important;
+    border-top-width: 5px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    margin-top: 2.5rem;
+    width: 80%;
+    margin-bottom: 3rem;
+  }
+  .past-kits-desktop__slider .slick-arrow {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(255 255 255 / 80%);
+  }
+
+  .past-kits-desktop__slider .slick-prev {
+    left: 1.3rem;
+  }
+
+  .past-kits-desktop__slider .slick-next {
+    right: 1.3rem;
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Past Kits - Desktop",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_mobile",
+      "label": "Show Mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desktop",
+      "label": "Show Desktop",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Past Kits"
+    },
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "range",
+      "id": "rotation_speed",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "sec",
+      "label": "Animation Speed",
+      "default": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Past Kits Desktop",
+      "category": "Landing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Slider Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "kit_name",
+          "label": "Kit"
+        },
+        {
+          "type": "text",
+          "id": "kit_description",
+          "label": "Kit Description"
+        }
+      ]
+    },
+    {
+      "type": "kit_description",
+      "name": "Kit Description",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Kit"
+        },
+        {
+          "type": "textarea",
+          "id": "kit_description",
+          "label": "Kit Description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

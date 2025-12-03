@@ -1,0 +1,70 @@
+{% assign hide_shipping = false %}
+{% assign has_digital_access = false %}
+{% for item in cart.items %}
+  {% if item.variant.product.vendor contains "Digital Club" %}
+    {% assign has_digital_access = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% if cart.items.size == 1 and has_digital_access %}
+  {% assign hide_shipping = true %}
+{% endif %}
+{% unless hide_shipping %}
+<div id="cart-threshold-goal" class="cart__threshold-goal animate {% if fixed %}fixed{% endif %}" {{ block.shopify_attributes }}>
+  {% if fixed %}
+    <h4 class="title h4">{{ 'sections.cart.title' | t }}</h4>
+    {% assign current_progress = block.settings.goal_threshold | times: 100 %}
+  {% else %}
+    {% assign current_progress = block.settings.goal_threshold | times: 100 | minus: cart.total_price %}
+  {% endif %}
+  {% assign progress =  cart.total_price | divided_by: block.settings.goal_threshold | round: 2 %}
+  {% if progress > 100 %}
+    {% assign progress = 100 %}
+  {% endif %}
+  {% if current_progress > 0 %}
+    {% assign remaining = current_progress | money | prepend:"<b>" | append: "</b>" %}
+    {{block.settings.copy | replace: "$amount", remaining}}
+  {% else %}
+   {{block.settings.success_copy }}
+  {% endif %}
+  
+  <div class="cart__progress-bar">
+  </div>
+  <img style="left: {{ progress }}%;" src="{{'mail_truck.png' | asset_url }}" alt="">
+  <div class="img-container">
+    <div class="img-inner"> 
+      
+    </div>
+  </div>
+
+  <style>
+    .is-empty div#cart-threshold-goal img {
+      left: 0 !important;
+    }
+    
+    .is-empty .cart__progress-bar::after {
+      transform: translateX(-100%);
+    }
+    .cart__progress-bar::after {
+      content: "";
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      transform: translateX({{ progress | minus: 100 }}%);
+      background: #a9dd61;
+      transition: all .3s;
+    }
+    .cart__threshold-goal.fixed img {
+      transform: translate(-20%, 31%);
+    }
+    .cart__threshold-goal img {
+      width: 50px;
+      transform: translate(-65%, 31%);
+      background: white;
+    }
+  </style>
+</div>
+
+{% endunless %}

@@ -1,0 +1,174 @@
+<div class="subscription-step subscription-step-v2--1">
+  {% assign clubs = section.blocks | where: "type", "club" | map: "settings" %}
+
+  <div class="subscription__clubs-container">
+      <h2 class="{{ title_class }}">{{steps.step_1_title}}</h2>
+      <div class="subscription-step-v2--1__description">
+        All plans include <a href="#" 
+        rv-on-click="methods.openAdditionalContent" 
+        data-content-id="{{steps.step_1_bottom_description_modal_id}}">FREE</a><br class="subscription-step-v2--1__description-br" /> Raddish Plus digital access.
+      </div>
+
+      <div class="subscription-step-v2--1__grid" role="list">
+         {% for club in clubs %}
+          {% assign club_product = all_products[club.product] %}
+          {% assign club_identifier = club_product.metafields.subscription.type  %}
+          <div class="subscription-step-v2--1__card {{ card_class }}" data-subscription="{{club_identifier}} - {{club_product.selected_or_first_available_variant.sku}}" style="{% if club.mobile_bg %}--club-mobile-bg: {{ club.mobile_bg }};{% endif %}">
+            <div class="subscription-step-v2--1__card-title">
+              <label for="club-{{club_identifier}}">{{club.title}}</label>
+            </div>
+            {% if club.age != blank %}<div class="subscription-step-v2--1__age">{{ club.age }}</div>{% endif %}
+            <div class="subscription-step-v2--1__desc">
+              <p>
+              {{club.description}}
+              </p>
+            </div>
+            <button class="btn btn-card" rv-on-click="methods.updateSubscription" data-sbo-enabled="{{ club.sbo_enabled }}" data-name="club" id="club-{{club_identifier}}" data-value="{{club_identifier}}" rv-checked="state.subscription.club | eq '{{club_identifier}}'">{{ club.button_label }}</button>
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  .subscription-step {
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+    margin-top: 30px;
+  }
+
+  .subscription-step-v2--1 .subscription__clubs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 45px;
+  }
+
+  .subscription-step-v2--1__card {
+    background:var(--card-bg);
+    border: 1px solid var(--card-border);
+  }
+
+  .subscription-step-v2--1__card-title {
+    font-family: KG HAPPY Solid, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .subscription-step-v2--1__card p{
+    margin: 0;
+    font-family: Avenir, sans-serif;
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 22.43px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+
+  .subscription-step-v2--1__grid {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    display:grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap:46px;
+    align-items:stretch;
+  }
+
+  .subscription-step-v2--1__age { 
+    font-family: Avenir, sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 16.02px;
+    letter-spacing: 0px;
+  }
+  .subscription-step-v2--1__desc {
+    font-family: Avenir, sans-serif;
+    font-size:16px;
+    line-height:22px;
+    max-width:36ch;
+    width: 200px;
+    font-weight: 350;
+    text-align:center;
+    color:#4d4d4d;
+  }
+
+  .subscription-step-v2--1__card .btn-card { 
+    max-width: 234px;
+    width: 100%;
+    letter-spacing: 0px;
+    font-weight: 500;
+    padding: 20px 20px 16px !important;
+  }
+
+  .subscription-step-v2--1__description {
+    color: #4D4D4D;
+    text-align: center;
+    font-family: Avenir, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11.216px;
+  }
+
+  .subscription-step-v2--1__description-br {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .subscription-step > .btn {
+      max-width: 350px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .subscription-step {
+      margin-top: 26px;
+    }
+    .subscription-step-v2--1 .subscription__clubs-container {
+      gap: 26px;
+      padding-bottom: 26px;
+    }
+    .subscription-step-v2--1__grid{
+      grid-template-columns:repeat(1,minmax(0,1fr));
+      gap: 30px;
+      width: 100%;
+      padding: 0 5px;
+    }
+    .subscription-step-v2--1__description {
+      font-size: 16px;
+      line-height: 23px;
+    }
+    .subscription-step-v2--1__card .btn-card { 
+      max-width: 100%;
+      margin-top: 8px;
+    }
+    .subscription-step-v2--1__card {
+      background: var(--club-mobile-bg);
+    }
+    .subscription-step-v2--1__description-br {
+      display: block;
+    }
+    .subscription-step-v2--1__card-title {
+      font-size: 18px;
+      line-height: 18px;
+    }
+    .subscription-step-v2--1 .age { 
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .subscription-step-v2--1__desc { 
+      line-height: 24px;
+    }
+  }
+</style>

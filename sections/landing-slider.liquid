@@ -1,0 +1,91 @@
+{%- assign _blocks = section.blocks -%}
+
+{%- unless _blocks.size == 0 -%}
+  <section class="section-landing-hero">
+    <div class="slider-alt slider-landing">
+      <div class="slider__clip">
+        <div class="slider__slides js-slider-landing">
+          {%- for block in _blocks -%}
+            {%- assign _block = block.settings -%}
+
+            {%- if _block.image != blank -%}
+              <div class="slider__slide">
+                {% render 'block-landing-hero', _block: _block %}
+              </div><!-- /.slider__slide -->
+            {%- endif -%}
+          {%- endfor -%}
+        </div><!-- /.slider__slides -->
+      </div><!-- /.slider__clip -->
+    </div><!-- /.slider -->
+  </section><!-- /.section-landing-slider -->
+{%- endunless -%}
+
+<style>
+  .section-landing-hero .slick-arrow {
+    display: none !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var heights = $(".block__content").map(function ()
+    {
+        return $(this).outerHeight();
+    }).get();
+
+    maxHeight = Math.max.apply(null, heights);
+    $(".block__content").css("min-height", maxHeight);
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Landing hero slider",
+  "settings": [],
+  "max_blocks": 9999,
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "header",
+          "content": "Call to action"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing hero slider",
+      "category": "Landing"
+    }
+  ]
+}
+{% endschema %}

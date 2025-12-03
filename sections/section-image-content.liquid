@@ -1,0 +1,57 @@
+{% assign _section = section.settings %}
+
+<div class="section-image-content">
+  <div class="section__background" role="img" aria-label="{{_section.background.alt}}" style="background-image: url({{ _section.background | img_url: '1440x'}})"></div><!-- /.section__background -->
+
+  <div class="section__inner">
+    {% if _section.image != blank %}
+      <div class="section__image">
+        <img src="{{ _section.image | img_url: '1018x'}}" alt="{{ _section.image.alt }}">
+      </div><!-- /.section__image -->
+    {% endif %}
+
+    {% if _section.author != blank %}
+      <div class="section__content">
+        <blockquote>
+          <h3 style="font-size: {{section.settings.font_size}}">{{ _section.author }}</h3>
+          {{ _section.quote }}
+        </blockquote>
+      </div><!-- /.section__content -->
+    {% endif %}
+
+  </div><!-- /.section__inner -->
+</div><!-- /.section-image-content -->
+
+{% schema %}
+{
+  "name": "Image content",
+  "settings": [
+  {
+    "type": "image_picker",
+    "id": "background",
+    "label": "Background"
+  },
+  {
+    "type": "image_picker",
+    "id": "image",
+    "label": "Image"
+  },
+  {
+    "type": "text",
+    "id": "author",
+    "label": "Author"
+  },
+  {
+    "type": "richtext",
+    "id": "quote",
+    "label": "Quote"
+  },
+  {
+    "type": "text",
+    "id": "font_size",
+    "label": "Font size", 
+    "default": "16px"
+  }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,284 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "48698849-e3fc-48f6-a569-fb8844957e11": {
+      "type": "top-sticky-bar",
+      "disabled": true,
+      "settings": {
+        "title": "<center>Black Friday Starts Now!  Up to 2 months FREE with code BESTDEAL</center>",
+        "background": "#f3576b"
+      }
+    },
+    "779f6374-5b64-4ed1-ad42-105dc701d200": {
+      "type": "page-header",
+      "settings": {
+        "page_title": "Why Kids and Families Love The Raddish+ Online Cooking Club"
+      }
+    },
+    "79251a0d-0112-42f0-9469-027037ce4575": {
+      "type": "text-block",
+      "settings": {
+        "content": "<p>By <strong>Samantha B.</strong> | April 18, 2024</p>",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "b2cfd245-b7b5-49de-8201-eb84b6c9e36b": {
+      "type": "image-block",
+      "settings": {
+        "image": "shopify://shop_images/DSC4110-2-2_2.jpg",
+        "margin_top": 20,
+        "margin_bottom": 20
+      }
+    },
+    "5d9854d5-fa18-453e-97dd-45204966656d": {
+      "type": "text-block",
+      "settings": {
+        "content": "<p>Raddish is the leading provider of culinary education with over 10 years of experience teaching cooking to kids and families through innovative in-home cooking and baking kits. <strong>The Online Cooking club</strong> now brings these recipes to your computer, phone, or tablet to make Raddish the foundation for a delicious life! With over 400 tested and beloved recipes, it’s easy to search the database and find inspiration for dinner, a perfect dessert for a bake sale, or even just an afterschool snack, all with clear steps that lead to success in the kitchen. </p><p>Recipes are also sorted into collections appropriate for holidays and seasons, so it’s easy to browse and meal plan. If you’re looking for an easy way to get your kids in the kitchen -  <strong>Join the Raddish+ Online Cooking Club</strong> and learn to cook anytime, anywhere, on any device for under $13/month! </p>",
+        "margin_top": 16,
+        "margin_bottom": 40
+      }
+    },
+    "88124681-ede1-4120-b1a1-d17871cbd519": {
+      "type": "section-header",
+      "settings": {
+        "section_title": "Featured In",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "0d47359d-f6d5-434e-85ed-8e364355f2e2": {
+      "type": "image-block",
+      "settings": {
+        "image": "shopify://shop_images/Featured_In_Logos_a7069b48-f1c9-4db6-a723-7bb03539bcba.png",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "73fcdbab-34ce-4daf-b429-d8a65df7e7e5": {
+      "type": "featured-in-block",
+      "blocks": {
+        "4d2a8212-71b7-487e-921e-4c64987e17e5": {
+          "type": "featured-in",
+          "settings": {
+            "image": "shopify://shop_images/today-show-logo-8756248560-seeklogo.png"
+          }
+        },
+        "8cfbefdf-a2ba-4b42-8657-ae56aef15123": {
+          "type": "featured-in",
+          "settings": {
+            "image": "shopify://shop_images/HGTV_2010_8cf7c7d8-a997-4545-90e1-acb7f3337a38.png"
+          }
+        },
+        "7b19e3bb-b483-4261-b810-6d0d20599197": {
+          "type": "featured-in",
+          "settings": {
+            "image": "shopify://shop_images/town-and-country-magazine-logo-vector_0edb30c1-de01-4ae0-922a-0f76b2bea4a1.png"
+          }
+        },
+        "2427e539-af6e-4491-91f7-9b2d7c13d49f": {
+          "type": "featured-in",
+          "settings": {
+            "image": "shopify://shop_images/parents_c2a32708-980a-4c96-8c13-fa76923206cf.png"
+          }
+        },
+        "b95bdb94-4afe-4d5d-9013-e0df68ebc5d3": {
+          "type": "featured-in",
+          "settings": {
+            "image": "shopify://shop_images/Taste_of_Home_Logo.jpg"
+          }
+        },
+        "2700b818-3ee3-46a4-a8bb-e45fde35dbfc": {
+          "type": "featured-in",
+          "settings": {
+            "image": "shopify://shop_images/the-new-york-times-logo.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "4d2a8212-71b7-487e-921e-4c64987e17e5",
+        "8cfbefdf-a2ba-4b42-8657-ae56aef15123",
+        "7b19e3bb-b483-4261-b810-6d0d20599197",
+        "2427e539-af6e-4491-91f7-9b2d7c13d49f",
+        "b95bdb94-4afe-4d5d-9013-e0df68ebc5d3",
+        "2700b818-3ee3-46a4-a8bb-e45fde35dbfc"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Featured In",
+        "margin_top": 39,
+        "margin_bottom": 39
+      }
+    },
+    "851ecff9-81ca-40f3-a89a-aea694d5ebaa": {
+      "type": "image-block",
+      "settings": {
+        "image": "shopify://shop_images/twentynine.northwest_lifestyle-5935_rt.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "06953fd2-5e5f-4be0-be74-facba19a2ae7": {
+      "type": "section-header",
+      "settings": {
+        "section_title": "How to Make Raddish+ Work for You and Your Family",
+        "margin_top": 25,
+        "margin_bottom": 0
+      }
+    },
+    "c1c81536-58f7-401b-8035-9a29c691143c": {
+      "type": "text-block",
+      "settings": {
+        "content": "<p>Whatever your family structure and available time, Raddish+ Online Cooking Club can inspire your kids to become proficient in the kitchen and transform your mealtimes. Kids can work independently using the fully-illustrated recipe steps, or families can use the time to work together in the kitchen. There’s no right or wrong way to approach using Raddish+ Online Cooking Club, just the way that works best for your family! You can “favorite” your family’s go-to recipes and come back to them anytime, anywhere.</p><p>Even kids who are self-described “picky eaters” find joy in Raddish+ Online Cooking Club — founder Samantha Barnes knows that “kids who cook, eat!”, and created Raddish because she wanted every child to have the chance to discover new flavors and foods through the wonder of cooking. Science shows that it can take 15 different exposures to a food before a child will try it, and Raddish helps along the way as kids get excited when they’re part of making ingredients transform into completed dishes. </p>",
+        "margin_top": 30,
+        "margin_bottom": 40
+      }
+    },
+    "5602c51f-1f12-4079-82b5-150f35f7019b": {
+      "type": "text-block",
+      "disabled": true,
+      "settings": {
+        "content": "<p>Cookie marshmallow powder ice cream shortbread dessert cheesecake cake jelly-o. Cake powder gummies dessert chocolate cake dragée topping jujubes. Oat cake jelly-o tart chocolate tart dragée dragée. Chocolate bar candy canes tart chocolate bar shortbread pudding sugar plum. <br/><br/>Dessert topping candy canes topping sesame snaps pie tiramisu wafer. Chocolate bar chocolate bar sweet croissant chupa chups tiramisu pastry croissant carrot cake. </p>",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "93a1b947-0f31-4099-9ac4-481848f9e405": {
+      "type": "image-block",
+      "settings": {
+        "image": "shopify://shop_images/raddish_redvelvet-1005-copy2_b6fb9c28-67f4-423f-be18-d6b2fcb71350.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "136b1517-de4c-44d2-bc1d-a265b4454a7f": {
+      "type": "section-header",
+      "settings": {
+        "section_title": "5 Reasons why Raddish+ Online Cooking Club is Perfect for You and Your Family",
+        "margin_top": 25,
+        "margin_bottom": 0
+      }
+    },
+    "3ef6b608-5164-402d-9cc6-1e44b501e117": {
+      "type": "text-block",
+      "settings": {
+        "content": "<p>✅ <strong>Interactive Platform</strong> - Kids learn to cook on any device with our illustrated, step-by-step, and easy-to-follow recipes. Check off ingredients, tools, and steps as you cook.<br/><br/>✅ <strong>Never-Ending Library</strong> - Filter recipes by collection, season, holiday, and cuisine… from breakfast to dessert and everything in between.<br/><br/>✅ <strong>Tasty Creations</strong> - Each recipe has been tested multiple times to ensure success and all foods are kid-approved — kids also are more likely to try and like a new food when they have had a hand in making it!<br/><br/>✅ <strong>Culinary Skills</strong> - Kids learn cooking and baking techniques, from mincing to kneading. Confidence and pride in the kitchen translates to confidence in life.<br/><br/>✅ <strong>Benefits the Whole Family</strong> - Raddish+ provides an experience that goes beyond the kitchen. Families gather together to eat and enjoy.</p>",
+        "margin_top": 24,
+        "margin_bottom": 40
+      }
+    },
+    "b47b84c5-833e-4571-ac67-28e8f8e27082": {
+      "type": "image-block",
+      "settings": {
+        "image": "shopify://shop_images/Photo_Nov_24_1_32_09_PM_cropped.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "fe892cb5-350c-4240-a63f-aab85e17a0ba": {
+      "type": "section-header",
+      "settings": {
+        "section_title": "What Raddish+ Families Are Saying:",
+        "margin_top": 38,
+        "margin_bottom": 24
+      }
+    },
+    "f9451630-a55c-4146-b162-8d9235ed8872": {
+      "type": "text-block",
+      "disabled": true,
+      "settings": {
+        "content": "<p>Cookie marshmallow powder ice cream shortbread dessert cheesecake cake jelly-o. Cake powder gummies dessert chocolate cake dragée topping jujubes. Oat cake jelly-o tart chocolate tart dragée dragée. Chocolate bar candy canes tart chocolate bar shortbread pudding sugar plum. <br/><br/>Dessert topping candy canes topping sesame snaps pie tiramisu wafer. Chocolate bar chocolate bar sweet croissant chupa chups tiramisu pastry croissant carrot cake. Danish cookie liquorice oat cake powder powder tootsie roll jujubes.</p>",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "304b0332-4ed0-4762-9183-8d7c582748a2": {
+      "type": "text-block-with-background",
+      "settings": {
+        "content": "<p><em>\"He loved being able to check off each ingredient as we prepped for cooking, and the interactive swiping made him feel more in control.\"</em> - <strong>Tina F.</strong></p>",
+        "background": "#eeeeee",
+        "margin_top": 20,
+        "margin_bottom": 20
+      }
+    },
+    "f2b80b93-8119-409d-b778-00a98e9ceaf0": {
+      "type": "text-block-with-background",
+      "settings": {
+        "content": "<p><em>\"We're thrilled to have Raddish Plus at our fingertips! So. Many. Recipes!! My daughter loves being able to enlarge steps, check off boxes, and see only one step per page.\"</em> - <strong>Melissa B.</strong></p>",
+        "background": "#eeeeee",
+        "margin_top": 20,
+        "margin_bottom": 20
+      }
+    },
+    "08358f8d-e2b7-4fcb-a50d-e7db835355c0": {
+      "type": "text-block-with-background",
+      "settings": {
+        "content": "<p><em>“We used Raddish+ to make the Kung Pao Sliders! They were fantastic! We'll definitely be putting these into rotation.” </em>- <strong>Devon H.</strong></p>",
+        "background": "#eeeeee",
+        "margin_top": 20,
+        "margin_bottom": 30
+      }
+    },
+    "image_block_xAktiW": {
+      "type": "image-block",
+      "settings": {
+        "image": "shopify://shop_images/Raddish_Plus_Side_by_Side.png",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "af242107-98a4-4c9d-8381-5ec511215d34": {
+      "type": "button-block",
+      "settings": {
+        "button_label": "Join the Raddish Plus Online Cooking Club",
+        "url": "https://www.raddishkids.com/pages/digital-access",
+        "margin_top": 24,
+        "margin_bottom": 0
+      }
+    },
+    "0504bedd-4285-4c07-8cdf-3679c39828f5": {
+      "type": "featured-fixed-block",
+      "settings": {
+        "title": "Featured",
+        "image": "shopify://shop_images/Middle-East-Feast---View-details-1_166a6ad7-f422-4992-a521-9eff35054ddb.jpg",
+        "description": "Delicious adventures and kitchen confidence, right from your device!",
+        "button_label": "Join the Online Club",
+        "button_url": "https://www.raddishkids.com/pages/digital-access"
+      }
+    }
+  },
+  "order": [
+    "48698849-e3fc-48f6-a569-fb8844957e11",
+    "779f6374-5b64-4ed1-ad42-105dc701d200",
+    "79251a0d-0112-42f0-9469-027037ce4575",
+    "b2cfd245-b7b5-49de-8201-eb84b6c9e36b",
+    "5d9854d5-fa18-453e-97dd-45204966656d",
+    "88124681-ede1-4120-b1a1-d17871cbd519",
+    "0d47359d-f6d5-434e-85ed-8e364355f2e2",
+    "73fcdbab-34ce-4daf-b429-d8a65df7e7e5",
+    "851ecff9-81ca-40f3-a89a-aea694d5ebaa",
+    "06953fd2-5e5f-4be0-be74-facba19a2ae7",
+    "c1c81536-58f7-401b-8035-9a29c691143c",
+    "5602c51f-1f12-4079-82b5-150f35f7019b",
+    "93a1b947-0f31-4099-9ac4-481848f9e405",
+    "136b1517-de4c-44d2-bc1d-a265b4454a7f",
+    "3ef6b608-5164-402d-9cc6-1e44b501e117",
+    "b47b84c5-833e-4571-ac67-28e8f8e27082",
+    "fe892cb5-350c-4240-a63f-aab85e17a0ba",
+    "f9451630-a55c-4146-b162-8d9235ed8872",
+    "304b0332-4ed0-4762-9183-8d7c582748a2",
+    "f2b80b93-8119-409d-b778-00a98e9ceaf0",
+    "08358f8d-e2b7-4fcb-a50d-e7db835355c0",
+    "image_block_xAktiW",
+    "af242107-98a4-4c9d-8381-5ec511215d34",
+    "0504bedd-4285-4c07-8cdf-3679c39828f5"
+  ]
+}

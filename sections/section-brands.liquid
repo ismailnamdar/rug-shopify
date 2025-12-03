@@ -1,0 +1,98 @@
+{% assign _section = section.settings %}
+{% assign _blocks = section.blocks %}
+
+<section class="section-brands" {% if _section.background_color != blank %} style="background-color: {{_section.background_color}}" {% endif %} {% if _section.background_pattern != blank %}style="background-image: url({{ _section.background_pattern | img_url: 'x476' }})"{% endif %}>
+  <div class="section__inner">
+    {% if _section.section_title != blank %}
+      <h2 class="section__title">{{ _section.section_title }}</h2><!-- /.section__title -->
+    {% endif %}
+
+    <div class="section__content js-brands-animation">
+      {% if _blocks != blank %}
+        <div class="brands" data-animation={{ _section.animation_speed }}>
+          {% for block in _blocks %}
+            {% assign _block = block.settings %}
+
+            {% if _block.brand_image != blank  %}
+              <div class="brands__item">
+                <div class="brand">
+                  {% if _block.brand_url != blank %}
+                    <a href="{{ _block.brand_url }}">
+                      <img src="{{ _block.brand_image | img_url: 'x330' }}" loading="lazy">
+                    </a>
+                  {% else %}    
+                    <img src="{{ _block.brand_image | img_url: 'x330' }}" loading="lazy">
+                  {% endif %}
+                </div><!-- /.brand -->
+              </div><!-- /.brands__item -->
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div><!-- /.section__content -->
+  </div><!-- /.section__inner -->
+</section><!-- /.section-brands -->  
+
+<style>
+  .template-index .brands__item .brand img {
+    padding: 16px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Section Brands",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Title",
+      "default": "Featured In"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "unit": "sec",
+      "label": "Animation Speed",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_pattern",
+      "label": "Background Pattern"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured In",
+      "category": "Homepage"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand-image",
+      "name": "Brands",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_image",
+          "label": "Image"
+        },
+        {
+          "id": "brand_url",
+          "type": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

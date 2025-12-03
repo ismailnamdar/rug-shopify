@@ -1,378 +1,975 @@
 <!doctype html>
-<html class="no-js no-touch" lang="{{ request.locale.iso_code }}">
-  <head>
+<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<head>
 <!-- Start of Shoplift scripts -->
 {% render 'shoplift' %}
 <!-- End of Shoplift scripts -->
 
-    <script>
-      window.Store = window.Store || {};
-      window.Store.id = {{ shop.id }};
-    </script>
-    <meta charset="utf-8">
-    <meta http-equiv="cleartype" content="on">
-    <meta name="robots" content="index,follow">
+<style>
+@font-face {
+  font-family: "Avenir";
+  src: url({{-"Avenir-Medium.woff2"|asset_url-}}) format("woff2"),
+    url({{-"Avenir-Medium.woff"|asset_url-}}) format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
 
-    <!-- Mobile Specific Metas -->
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="theme-color" content="{{ settings.shop_bg_color }}">
+@font-face {
+  font-family: "Avenir";
+  src: url({{-"Avenir-Roman.woff2"|asset_url-}}) format("woff2"),
+    url({{-"Avenir-Roman.woff"|asset_url-}}) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
-    {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %}{% endif %}
-    <title>
-      {% if template contains 'index' -%}
-        {{- page_title -}}
-      {%- else -%}
-        {{- page_title -}}
-        {%- if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{% endif -%}
-        {%- if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif -%}
-        {%- unless page_title contains shop.name %} - {{ shop.name }}{% endunless -%}
-      {%- endif %}
-    </title>
+@font-face {
+  font-family: "Avenir";
+  src: url({{-"Avenir-Heavy.woff2"|asset_url-}}) format("woff2"),
+    url({{-"Avenir-Heavy.woff"|asset_url-}}) format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
 
-    {% if page_description %}
-      <meta
-        name="description"
-        content="{% if template contains 'search' %} {{ page_title }} - {{ shop.name }} {% else %}{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}{% endif %}"
-      >
-    {% endif %}
+@font-face {
+  font-family: "Avenir Book";
+  src: url({{-"Avenir-Book.woff2"|asset_url-}}) format("woff2"),
+    url({{-"Avenir-Book.woff"|asset_url-}}) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
-    <link rel="preconnect" href="https://fonts.shopifycdn.com">
-    <link rel="preconnect" href="https://cdn.shopify.com">
-    <link rel="preconnect" href="https://cdn.shopifycloud.com">
+@font-face {
+  font-family: 'KG HAPPY Solid';
+  src: url({{-"KGHAPPYSolid.woff2"|asset_url-}}) format('woff2'),
+    url({{-"KGHAPPYSolid.woff"|asset_url-}}) format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
-    <link rel="dns-prefetch" href="https://v.shopify.com">
-    <link rel="dns-prefetch" href="https://www.youtube.com">
-    <link rel="dns-prefetch" href="https://vimeo.com">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+{% comment %} Junip Review Carousel Disable Click of Product Title {% endcomment %}
+.junip-review-product a {
+  pointer-events: none;
+}
+.junip-modal-review-content {
+  min-height: unset;
+}
+  </style>
 
-    {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
+<!-- LiveConnectTag for advertisers -->
+  <script type="text/javascript" src="//b-code.liadm.com/a-093o.min.js" async="true" charset="utf-8"></script>
+<!-- LiveConnectTag for advertisers -->
 
-    <!-- Stylesheet for Fancybox library -->
-    <link rel="stylesheet" href="{{ 'fancybox.css' | asset_url }}" type="text/css" media="all" defer>
 
-    <!-- Stylesheets for Turbo -->
-    {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {%- comment -%}
+  {%- endcomment -%}
 
-    <!-- Icons -->
-    {% if settings.favicon != null %}
-      <link rel="shortcut icon" type="image/x-icon" href="{{ settings.favicon | img_url: '180x180' }}">
-      <link rel="apple-touch-icon" href="{{ settings.favicon | img_url: '180x180' }}">
-      <link rel="apple-touch-icon" sizes="57x57" href="{{ settings.favicon | img_url: '57x57' }}">
-      <link rel="apple-touch-icon" sizes="60x60" href="{{ settings.favicon | img_url: '60x60' }}">
-      <link rel="apple-touch-icon" sizes="72x72" href="{{ settings.favicon | img_url: '72x72' }}">
-      <link rel="apple-touch-icon" sizes="76x76" href="{{ settings.favicon | img_url: '76x76' }}">
-      <link rel="apple-touch-icon" sizes="114x114" href="{{ settings.favicon | img_url: '114x114' }}">
-      <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | img_url: '180x180' }}">
-      <link rel="apple-touch-icon" sizes="228x228" href="{{ settings.favicon | img_url: '228x228' }}">
-    {% else %}
-      <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
-    {% endif %}
-    <link rel="canonical" href="{{ canonical_url }}">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
 
-    {% if template contains 'customer' %}
-      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer></script>
-      <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer></script>
-    {% endif %}
+  {{ 'bootstrap-module.css' | asset_url | stylesheet_tag }}
+  {{ 'magnific-popup.css' | asset_url | stylesheet_tag }}
 
-    {% if settings.show_multiple_currencies or settings.show_shipping_calculator %}
-      <script type="text/javascript" src="/services/javascripts/currencies.js" data-no-instant defer></script>
-    {% endif %}
+  <script>
+    var acctPageName;
+  </script>
 
-    {% if settings.show_multiple_currencies or shop.enabled_currencies.size > 1 %}
-      <script src="{{ 'currencies.js' | asset_url }}" defer></script>
-    {% endif %}
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
 
-    {% comment %}Inject theme-object begin{% endcomment %}
-    <script>
-      window.PXUTheme = window.PXUTheme || {};
-      window.PXUTheme.version = '9.4.0';
-      window.PXUTheme.name = 'Turbo';
-    </script>
-    {% comment %}Inject theme-object end{% endcomment %}
+  {%- capture seo_title -%}
+    {{ page_title }}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
 
-    {% comment %}Inject @pixelunion/shopify-price-ui/price-ui-globals begin{% endcomment %}
-    {%- capture price -%}{%- render 'price-ui-templates', template: 'price' -%}{%- endcapture -%}
-    {%- capture price_percent -%}{%- render 'price-ui-templates', template: 'price-percent' -%}{%- endcapture -%}
-    {%- capture price_min -%}{%- render 'price-ui-templates', template: 'price-min' -%}{%- endcapture -%}
-    {%- capture price_max -%}{%- render 'price-ui-templates', template: 'price-max' -%}{%- endcapture -%}
-    {%- capture unit_quantity -%}{%- render 'price-ui-templates', template: 'unit-quantity' -%}{%- endcapture -%}
-    {%- capture unit_price -%}{%- render 'price-ui-templates', template: 'unit-price' -%}{%- endcapture -%}
-    {%- capture unit_measurement -%}{%- render 'price-ui-templates', template: 'unit-measurement' -%}{%- endcapture -%}
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
 
-    <template id="price-ui">{%- render 'price-ui-templates', template: 'price-ui' -%}</template>
-    <template id="price-ui-badge">{%- render 'price-ui-templates', template: 'price-ui-badge' -%}</template>
+  {{ 'https://use.fontawesome.com/b0682129a2.js' | script_tag }}
+  {% include 'social-meta-tags' %}
+  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'podcast_banner.css' | asset_url | stylesheet_tag }}
+  {{ 'style_lead_forms.css' | asset_url | stylesheet_tag }}
+  {{ 'badge.css' | asset_url | stylesheet_tag }}
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+  {{ 'page-marketing.css' | asset_url | stylesheet_tag }}
+  {{ 'disney-raya-updates.css' | asset_url | stylesheet_tag }}
+  {% include 'style-tags', layout: 'theme' %}
+  {% include 'css-variables' %}
+  {{ 'custom_bundle.css' | asset_url | stylesheet_tag }}
+  {{ 'additional.css' | asset_url | stylesheet_tag }}
 
-    <template id="price-ui__price">{{ price }}</template>
-    <template id="price-ui__price-range">
-      {{- 'product.price.range_html' | t: price_min: price_min, price_max: price_max -}}
-    </template>
-    <template id="price-ui__unit-pricing">
-      {{-
-        'product.price.unit_pricing_html'
-        | t: unit_quantity: unit_quantity, unit_price: unit_price, unit_measurement: unit_measurement
-      -}}
-    </template>
-    <template id="price-ui-badge__percent-savings-range">
-      {{- 'product.badge.sale_percentage_range_html' | t: price_percent: price_percent -}}
-    </template>
-    <template id="price-ui-badge__percent-savings">
-      {{- 'product.badge.sale_percentage_single_html' | t: price_percent: price_percent -}}
-    </template>
-    <template id="price-ui-badge__price-savings-range">
-      {{- 'product.badge.sale_money_range_html' | t: price: price -}}
-    </template>
-    <template id="price-ui-badge__price-savings">
-      {{- 'product.badge.sale_money_single_html' | t: price: price -}}
-    </template>
-    <template id="price-ui-badge__on-sale">{{- 'product.badge.sale' | t -}}</template>
-    <template id="price-ui-badge__sold-out">{{- 'product.badge.sold_out' | t -}}</template>
-    <template id="price-ui-badge__in-stock">{{- 'product.badge.in_stock' | t -}}</template>
-    {% comment %}Inject @pixelunion/shopify-price-ui/price-ui-globals end{% endcomment %}
+  {%- if template contains 'blog' or template contains 'article' -%}
+    {{ 'blog.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
 
-    <script>
-      {% render 'js-variables' %}
-    </script>
+  {% assign subscription_money_format = "${{ amount_no_decimals }}" %}
+  {%- comment -%}
+  GOOGLE OPTIMZE - UNOMMENT FOR RUNNING TEST
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-N65MSJX"></script>
+  {%- endcomment -%}
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    window.newsletterListID = '{{ settings.newsletter_list_id }}';
 
-    {% if settings.disqus_enabled %}
-      {% if template contains 'blog' or template contains 'article' or template contains 'index' %}
-        <script id="dsq-count-scr" src="//{{ settings.disqus_shortname }}.disqus.com/count.js" async></script>
-      {% endif %}
-    {% endif %}
-
-    {% unless settings.performance == 'sport' or template contains 'customer' %}
-      <script src="{{ 'instantclick.min.js' | asset_url }}" data-no-instant defer></script>
-
-      <script data-no-instant>
-        window.addEventListener('DOMContentLoaded', function () {
-          function inIframe() {
-            try {
-              return window.self !== window.top;
-            } catch (e) {
-              return true;
-            }
-          }
-
-          if (!inIframe()) {
-            InstantClick.on('change', function () {
-              $('head script[src*="shopify"]').each(function () {
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = $(this).attr('src');
-
-                $('body').append(script);
-              });
-
-              $('body').removeClass('fancybox-active');
-              $.fancybox.destroy();
-
-              InstantClick.init();
-            });
-          }
-        });
-      </script>
-    {% endunless %}
-
-    <script>{{ settings.custom_scripts }}</script>
-
-    {{ content_for_header }}
-    
-
-  {% comment %} Google Tag Manager {% endcomment %}
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K8BPN4M');</script>
-<script>
-(function() {
-  const cookie = "my_unique_user_cookie";
-  const exists = document.cookie.includes(cookie + "=");
-  const type = exists ? "returningUser" : "newUser";
-
-  if (!exists) {
-    const d = new Date();
-    d.setTime(d.getTime() + (360*24*60*60*1000));
-    document.cookie = cookie + "=true; expires=" + d.toUTCString() + "; path=/";
-  }
-
-  setTimeout(() => {
-    gtag('event', type, {
-      send_to: ['G-YZDNF9QY1T']
-    });
-  }, 500);
-})();
-</script>
-  
-
-    {% render 'social-meta-info' %}
-
-    {% if collection.previous_product %}<link rel="prev" href="{{ collection.previous_product }}">{% endif %}
-    {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %}
-
-    {% comment %}Font aweome icons cdn{% endcomment %}
-    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
-    {% comment %} custom mw style file link {% endcomment %}
-    {{ 'custom-mw.css' | asset_url | stylesheet_tag }}
-    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
-    {% comment %} Chatra {% endcomment %}
-    <script>
-      (function(d, w, c) {
-          w.ChatraID = 'GwLxrkRjsy83yf4uQ';
-          var s = d.createElement('script');
-          w[c] = w[c] || function() {
-              (w[c].q = w[c].q || []).push(arguments);
-          };
-          s.async = true;
-          s.src = 'https://call.chatra.io/chatra.js';
-          if (d.head) d.head.appendChild(s);
-      })(document, window, 'Chatra');
-    </script>
-
-    {% comment %} Chatra {% endcomment %}
-  </head>
-
-  {% if template contains 'index' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'collection' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'blog' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'article' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'contact' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'product' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'gallery' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'banner' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'faq' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'search' %}
-    {% assign feature_image = true %}
-  {% elsif template contains 'cart' %}
-    {% assign feature_image = true %}
-  {% else %}
-    {% assign feature_image = false %}
+    window.theme = {
+      ...window.theme,
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }},
+      moneyFormatWithoutTrainingZeros: {{ subscription_money_format | json }}
+    };
+  </script>
+  {% if template.directory == 'customers' %}
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
   {% endif %}
 
-  <noscript>
-    <style>
-      .product_section .product_form,
-      .product_gallery {
-        opacity: 1;
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lt IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lt IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+  {%- comment -%}
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'podcast_param.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lt IE 9]><script src="{{ 'podcast_param.js' | asset_url }}"></script><![endif]-->
+  {%- endcomment -%}
+
+  <script src="{{ 'template.login.js' | asset_url }}" defer="defer"></script>
+
+  <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+  {% include 'script-tags', layout: 'theme' %}
+  {%- capture content_for_header_output %}{{ content_for_header }}{% endcapture -%}
+  {% render "content_for_header", content_for_header: content_for_header_output %}
+
+
+
+
+
+<meta name="p:domain_verify" content="fc206b1b75ba30d61b63b590d88fd2a0"/>
+<meta name="google-site-verification" content="bKGKtD-jZOSBInnUD-gE-x8D2l_3v8-HAplNU4SA0UE" />
+
+<script>
+  var customerEmail;
+</script>
+
+{% if request.path contains 'tools/recurring/portal' or request.path contains '/account' %}
+{% unless request.path contains '/account/login' %}
+{% assign acct_management = true %}
+<script>
+  customerEmail = "{{ customer.email }}";
+</script>
+{% endunless %}
+{% endif %}
+
+<script>
+  {% if customer.tags contains "Charter" %}
+    window.charterCustomer = true;
+  {% endif %}
+</script>
+
+{{- 'temp.scss.css' | asset_url | stylesheet_tag -}}
+  <meta name="google-site-verification" content="iZxdwqO-FxoVZWWktGPT25ENqZiTt7OvGfCWtlZol-c" />
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      $(".hero-callout__body").clone().insertAfter(".hero-callout__images--mobile div:nth-child(2)")
+    })
+  </script>
+  <style>
+    .hero-callout__images--mobile .hero-callout__body {
+      display: none;
+    }
+
+    @media(max-width: 768px) {
+      [data-join-now-above-fold] .hero-callout__images--mobile .hero-callout__body {
+        display: block;
       }
 
-      .multi_select,
-      form .select {
-        display: block !important;
-      }
-
-      .image-element__wrap {
+      [data-join-now-above-fold] .hero-callout > .hero-callout__body {
         display: none;
       }
-    </style>
-  </noscript>
-
-  <body
-    class="ImageAdded {% if template == '404' %}error-404{% else %}{{ template | replace: '.', '-' | handle }}{% endif %}"
-    data-money-format="
-      {%- if settings.currency_format == 'money_with_currency_format' -%}
-        {{- shop.money_with_currency_format | strip_html -}}
-      {%- else -%}
-        {{- shop.money_format | strip_html -}}
-      {%- endif -%}
-    "
-    data-shop-currency="{{ shop.currency }}"
-    data-shop-url="{{ shop.url }}"
-  >
-    
-
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7MNG6DK"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-    <script>
-      document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, 'js');
-      if (window.Shopify && window.Shopify.designMode) document.documentElement.className += ' in-theme-editor';
-      if ('ontouchstart' in window || (window.DocumentTouch && document instanceof DocumentTouch))
-        document.documentElement.className = document.documentElement.className.replace(/\bno-touch\b/, 'has-touch');
-    </script>
-
-    {% comment %}Inject icon-star-symbol begin{% endcomment %}
-    <svg
-      class="icon-star-reference"
-      aria-hidden="true"
-      focusable="false"
-      role="presentation"
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="3 3 17 17"
-      fill="none"
-    >
-      <symbol id="icon-star">
-        <rect class="icon-star-background" width="20" height="20" fill="currentColor"/>
-        <path d="M10 3L12.163 7.60778L17 8.35121L13.5 11.9359L14.326 17L10 14.6078L5.674 17L6.5 11.9359L3 8.35121L7.837 7.60778L10 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </symbol>
-      <clipPath id="icon-star-clip">
-        <path d="M10 3L12.163 7.60778L17 8.35121L13.5 11.9359L14.326 17L10 14.6078L5.674 17L6.5 11.9359L3 8.35121L7.837 7.60778L10 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </clipPath>
-    </svg>
-    {% comment %}Inject icon-star-symbol end{% endcomment %}
-    {% sections 'header-group' %}
-
-    <div style="--background-color: {{ settings.shop_bg_color }}">
-      {% render 'age-gate', id: 'page', sections: content_for_layout %}
-    </div>
-
-    <div class="section-wrapper">
-      {{ content_for_layout }}
-    </div>
-
-    <div class="site-overlay" data-site-overlay></div>
-
-    {% sections 'footer-group' %}
-
-    {% if settings.quick_shop_enabled %}
-      {% render 'quick-shop' %}
-    {% endif %}
-
-    {% if settings.newsletter_popup %}
-      {% render 'popup-newsletter' %}
-    {% endif %}
-
-    {% render 'mobile-search' %}
-
-    {% if settings.show_shipping_calculator and template contains 'cart' %}
-      {% render 'cart-shipping-scripts' %}
-    {% endif %}
-
-    <script src="{{ 'jquery.min.js' | asset_url }}" defer></script>
-    <script src="{{ 'vendors.js' | asset_url }}" defer></script>
-    <script src="{{ 'utilities.js' | asset_url }}" defer></script>
-    {%- if settings.minify -%}
-      <script src="{{ 'sections.min.js' | asset_url }}" defer></script>
-      <script src="{{ 'app.min.js' | asset_url }}" defer></script>
-    {%- else -%}
-      <script src="{{ 'sections.js' | asset_url }}" defer></script>
-      <script src="{{ 'app.js' | asset_url }}" defer></script>
-    {%- endif -%}
-    <script src="{{ 'option_selection.js' | shopify_asset_url }}" defer></script>
-    {%- if request.design_mode -%}
-      <script src="{{ 'themeEditorSections.js' | asset_url }}" defer></script>
-    {%- endif -%}
-
-    <script src="{{ 'interactable.js' | asset_url }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-
-    <script src="{{ 'custom-mw.js' | asset_url }}" defer></script>
-    <style>
-      .pplr_loader{
-        display: none !important;
+      [data-join-now-above-fold] .hero-callout__images--mobile .hero-callout__head {
+        margin-bottom: 20px;
       }
-    </style>
-  </body>
+
+      [data-join-now-above-fold] .hero-callout__images--mobile .hero-callout__subtitle {
+        margin-top: 0;
+      }
+
+      [data-join-now-above-fold] .section-banner-promotions {
+        margin-top: 25px;
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "g4ld07ht55");
+  </script>
+  {% assign is_dev = false %}
+  
+  {% if shop.permanent_domain == "raddish-kids-test.myshopify.com" %}
+    {% assign is_dev = true %}
+  {% endif %}
+
+  <script>
+    window.dev = {{is_dev | json }}
+  </script>
+  <script>console.log('test here')</script>
+</head>
+ 
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} template--{{ template | handle }} template-directory--{{ template.directory }} template--{{ template | handle }} {% if acct_template %} layout-alt{% endif %} {% if acct_template == 'acct_management' %} layout-account-subnav{% endif %} {% if template contains "dtc" %} dtc-landing-2 {% endif %} {% if page.metafields.custom.hide_top_navigation %} header-hidden {% endif %}">
+
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  {% section 'header' %}
+
+  <div id="podcast"></div>
+
+
+
+
+  {% if request.path contains "tools/recurring/portal" %}
+    {% if customer %}
+      {% assign extra_class = "subscription-loader" %}
+      {% assign loadingText = "Success! Loading Account" %}
+    {% else %}
+      {% comment %}    
+      <script>
+        window.location.replace( 'https://{{ shop.domain }}/account/login' );
+      </script>
+      {% endcomment %}
+    {% endif %}
+  {% else if request.path contains "tools/recurring/login" %}
+    {% unless request.path contains "tools/recurring/login/customer" %}
+      {% assign loadingText = "Verifying Account..." %}
+  	{% else %}
+  		{% assign loadingText = "Generating Secure Token..." %}
+   	{% endunless %}
+
+  {% endif %}
+
+
+  {% assign loggedInSub = "tools/recurring/portal/" | append: customer.metafields.subscriptions.customer_string | append: "/subscriptions" %}
+
+  {% if request.path contains "tools/recurring/login" or request.path contains loggedInSub %}
+
+
+  		<style>
+          #MainContent,
+          #MainContent .acc-page__width,
+          #ReCharge,
+          #shopify-section-pre-footer,
+          #shopify-section-footer,
+          .acct-cta-notification,
+          .lds-roller.subscription-loader
+          {
+              display: none;
+          }
+        </style>
+
+
+  {% endif %}
+
+  {% if request.path == "/tools/recurring/login" and false %}
+    <style>#ReCharge, #MainContent {display: block !important;} .lds-roller  {display: none !important;}</style>
+  {% endif %}
+
+  {% if request.path contains "tools/recurring/login" %}
+  	{% include 'loading-roller', loading_text: loadingText %}
+      <script>
+        localStorage.setItem("new_login", true);
+      </script>
+  {% endif %}
+
+  {% if request.path contains loggedInSub %}
+  	{% include 'loading-roller', loading_text: loadingText, extraClass: extra_class %}
+  {% endif %}
+
+
+
+
+
+
+  <main role="main" id="MainContent" {% if request.path contains "/account" or acct_management == true %}class="main-content__account"{% endif %}>
+    {%- comment -%}
+    {% if template.name contains "collection" %}
+    {% section 'mobile-slider-menu' %}
+    {% endif %}
+    {%- endcomment -%}
+
+    {% if acct_management == true and customer %}
+      <div class="acc-page__width">
+        <div class="page-width">
+          {% include 'customer-portal' %}
+        </div>
+      </div>
+
+      {% if request.path contains "/subscriptions" %}
+        {% include "customer-portal-memberships" %}
+      {% endif %}
+
+
+    {% endif %}
+
+    {{ content_for_layout }}
+
+
+  </main>
+
+  {% if acct_management == true and customer %}
+    {% include 'customer-portal-footer' %}
+  {% endif %}
+  {% section 'pre-footer' %}
+
+  
+  {% section 'footer' %}
+
+  <a data-fancybox class="open-popup" style="display: none" data-src="#popup" href="javascript:;"></a>
+  <a data-fancybox class="confirmation-popup" style="display: none" data-src="#confirmation-popup" href="javascript:;" data-options='{"touch" : false}'></a>
+  <div style="display: none;" id="popup">
+  {% section 'popup' %}
+  </div>
+
+  <div style="display: none;" id="confirmation-popup">
+  {% section 'confirmation-popup' %}
+  </div>
+
+  <div style="display: none;" id="mobile-popup">
+    {% section 'mobile-popup' %}
+  </div>
+
+  <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+  {%- comment -%}
+  <!--Start Pick a Day Script-->
+  <script>
+    
+  </script>
+  <!--End Pick a Day Script-->
+  {%- endcomment -%}
+  <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+
+  <script>
+       var jquery2 = jQuery.noConflict();
+       var $ = jQuery.noConflict();
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+       jquery2.fn.bsModal = jquery2.fn.modal.noConflict();
+    </script>
+    {%- comment -%}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    {%- endcomment -%}
+
+  <div class="bootstrap-module" >
+  <div id="LeadFormsDemo" style="-webkit-font-smoothing: auto !important;">
+    <!-- Lead Form A -->
+	<div class="modal fade" id="LeadFormA" role="dialog" aria-labelledby="exampleModalCenterTitle" >
+	  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	    <div class="modal-content">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+		<div class="modal-body mx-auto">
+			<div class="col-sm-10 mx-auto">
+				<div class="title m-3">
+					<h1>TAKE $20 OFF AND GET OUR FREE E-KIT</h1>
+				</div>
+				<div class="description mx-auto d-block">
+			        Try a Raddish kit for FREE! Be the first to hear about kids cooking tips and special offers.
+			    </div>
+			</div>
+
+              <!-- Begin Mailchimp Signup Form -->
+                <div id="mc_embed_signup">
+                  <form action="#" data-formcode="A" data-ismobile ="F" method="POST" id="modalFormA" name="lfA" class="subscribe-form-lead col-sm-10 mx-auto needs-validation my-3" novalidate>
+					<!-- Desktop -->
+                    <div class="form-group mx-auto d-none d-sm-block text-center">
+                        <input type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL" aria-describedby="emailHelp" placeholder="Enter Email Address"  required>
+                      <div class="invalid-feedback p-2">Please enter a valid email address.</div>
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                          <input type="text" name="b_886ef8368e6ec2cdbcdeccbd4_525cd3d2b1" tabindex="-1" value=""></div>
+                        <div class="clear">
+                          <input type="submit" value="EMAIL ME THIS OFFER" name="subscribe" id="mc-embedded-subscribe" class="btn koriSendLeadConversion btn-primary mt-3 px-4"></div>
+                    </div>
+                  </form>
+
+                    <!-- Mobile -->
+                  <form action="#" data-formcode="A" data-ismobile ="T" method="POST" id="modalFormA2" name="lfA2" class="subscribe-form-lead col-sm-10 mx-auto needs-validation my-3" novalidate>
+                    <div class="form-group my-4 mx-auto d-block d-sm-none text-center">
+                      <div class="input-group mx-auto">
+                        <input type="email" name="EMAIL" class="form-control" id="validationCustomUsername" aria-describedby="emailHelp" placeholder="Enter Email Address" required>
+                        <div class="input-group-append">
+                          <input type="submit" class="btn koriSendLeadConversion btn-secondary rounded-right h-100 p-3" value="Save">
+                        </div>
+                      </div><!-- .input-group -->
+                      <div class="invalid-feedback p-2">Please enter a valid email address.</div>
+                    </div><!-- .form-group -->
+                  </form>
+                </div>
+
+			<small>*$20 off coupon valid on 12-month memberships only.</small>
+			<div class="modal-footer m-0">
+				<a href="#" onclick="closeLeadForm('#LeadFormA')">No thanks, I’ll pass on this deal</a>
+			</div><!-- .modal-footer -->
+	      </div><!-- .modal-body -->
+	    </div><!-- .modal-content -->
+	  </div><!-- .modal-dialog -->
+	</div><!-- #LeadFormA -->
+
+    <!-- Lead Form E -->
+	<div class="modal fade" id="LeadFormE" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered mx-auto" role="document">
+
+			<!-- Desktop -->
+			<div
+				class="d-none d-sm-block modal-content position-relative overflow-hidden rounded-0 green-border-top mx-auto">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+				<div class="modal-body mx-auto h-100">
+					<div class="container-fluid">
+						<div class="row no-gutters p-3">
+							<div class="col-5">
+                {% include 'image', _image: 'RAD-002_img_v_full.png', asset: true, size: '350', classes: 'img-fluid raddish-box' %}
+							</div>
+							<div class="col-7">
+								<div class="title">
+									<h1 class="mb-1" style="font-size:auto">TAKE $20 OFF AND GET OUR FREE E-KIT</h1>
+								</div>
+								<div class="description" style="font-size:auto">Try a Raddish kit for free!</div>
+							</div>
+						</div>
+					</div>
+					<form action="#" data-formcode="E" data-ismobile ="F" method="POST" name="lfE" class="subscribe-form needs-validation position-absolute w-100" style="left:0;bottom:0" novalidate>
+						<div class="form-group col-8 mx-auto mb-0 text-center">
+							<input type="email" name="EMAIL" class="form-control my-3" id="InputLeadFormE"
+								aria-describedby="emailHelp" placeholder="Enter Email Address" autofocus required>
+							<div class="invalid-feedback mb-3">Please enter a valid email address.</div>
+							<input type="submit" class="btn koriSendLeadConversion btn-primary px-4" value="Email me this offer"/>
+						</div>
+						<div class="modal-footer p-0 mb-3">
+							<small style="font-size:14px">*$20 off coupon valid on 12-month memberships only.</small>
+						</div>
+					</form>
+				</div><!-- .modal-body -->
+			</div><!-- .modal-content -->
+
+			<!-- Mobile -->
+				<div class="d-block d-sm-none modal-content rounded-0 green-border-top" style="position:fixed;bottom:0">				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+				<div class="modal-body mx-auto">
+					<div class="container-fluid px-1">
+						<div class="row no-gutters pt-2">
+							<div class="col-5">
+                  {% include 'image', _image: 'RAD-002_img_v_mobile.png', asset: true, size: '258', classes: 'img-fluid raddish-box position-absolute', attrs: 'style="bottom: 0"' %}
+							</div>
+							<div class="col-7 mb-3">
+								<div class="title">
+									<h1>TAKE $20 OFF AND GET OUR FREE E-KIT</h1>
+								</div>
+								<div class="description">Try a Raddish kit for free!</div>
+							</div>
+						</div>
+					</div>
+					<form action="#" data-formcode="E" data-ismobile ="T" method="POST" name="lfE2" class="subscribe-form needs-validation text-center" novalidate style="position: relative;">
+						<div class="form-group my-0 mx-auto text-center">
+							<div class="input-group mx-auto">
+								<input type="email" name="EMAIL" class="form-control" id="validationCustomUsername"
+									aria-describedby="emailHelp" placeholder="Enter Email Address" required>
+								<div class="input-group-append">
+									<input type="submit" class="btn koriSendLeadConversion btn-secondary rounded-right h-100 p-3" value="Save"/>
+								</div>
+							</div><!-- .input-group -->
+                          <div class="invalid-feedback p-2">Please enter a valid email address.</div>
+						</div><!-- .form-group -->
+					</form>
+					<div class="modal-footer p-0">
+						<small>*$20 off coupon valid on 12-month memberships only.</small>
+					</div>
+				</div><!-- .modal-body -->
+			</div><!-- .modal-content -->
+
+		</div><!-- .modal-dialog -->
+	</div><!-- #LeadFormE -->
+
+    <!-- Lead Form I -->
+	<div class="modal fade" id="LeadFormI" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered mx-auto" role="document">
+			<div class="modal-content mx-auto position-relative">
+				<button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+				<div class="modal-body mx-auto p-0 text-center">
+          {% include 'image', _image: 'RAD-002_img_h.png', asset: true, size: '532', classes: 'img-fluid p-2', attrs: 'id="LeadFormIimg"' %}
+					<div class="title mx-3">
+						<h1 class="mt-0">TAKE $20 OFF AND GET OUR FREE E-KIT</h1>
+					</div>
+					<div class="description mx-3">
+						Try a Raddish kit for free! Be the first to hear about kids cooking tips and special offers!
+					</div>
+					<form action="#" data-formcode="I" data-ismobile ="F" method="GET" name="lfI" class="subscribe-form needs-validation mx-3" novalidate>
+
+						<!-- Desktop -->
+						<div class="form-group d-none d-sm-block mx-auto mt-4 mb-3">
+							<input type="email" name="EMAIL" class="form-control" id="InputLeadFormI" aria-describedby="emailHelp"
+								placeholder="Enter Email Address" style="height:65px" autofocus required>
+							<div class="invalid-feedback">Please enter a valid email address.</div>
+							<input type="submit" class="btn koriSendLeadConversion btn-primary d-block mx-auto px-4 mt-3" value="Email Me This Offer">
+						</div>
+                	  </form>
+
+						<!-- Mobile -->
+                	  <form action="#" data-formcode="I" data-ismobile ="T" method="GET" name="lfI" class="subscribe-form needs-validation mx-3" novalidate>
+
+						<div class="form-group my-4 mx-auto d-block d-sm-none text-center">
+							<div class="input-group mx-auto">
+								<input type="email" name="EMAIL" class="form-control" id="validationCustomUsername"
+									aria-describedby="emailHelp" placeholder="Enter Email Address" style="height:70px"
+									required>
+								<div class="input-group-append">
+									<input type="submit" class="btn koriSendLeadConversion btn-secondary rounded-right h-100 p-3" value="Save" />
+								</div>
+							</div><!-- .input-group -->
+                          <div class="invalid-feedback p-2">Please enter a valid email address.</div>
+						</div><!-- .form-group -->
+
+					</form>
+					<small class="d-block text-center mb-0">*$20 off coupon valid on 12-month memberships only.</small>
+					<div class="modal-footer">
+						<a href="#" onclick="closeLeadForm('#LeadFormI')">No thanks, I’ll pass on this deal</a>
+					</div><!-- .modal-footer -->
+				</div><!-- .modal-body -->
+			</div><!-- .modal-content -->
+		</div><!-- .modal-dialog -->
+	</div><!-- #LeadFormI -->
+
+    <!-- Lead Form H -->
+	<div class="modal fade" id="LeadFormH" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered mx-auto" role="document">
+			<div class="modal-content rounded-0 mx-auto">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">x</span>
+				</button>
+				<div class="modal-body m-0 p-0">
+					<div class="container-fluid p-0">
+						<div class="row no-gutters">
+							<div class="col-md-6">
+								<span class="d-block h-100 text-center">
+                  {% include 'image', _image: 'RAD-002_H_img1.png', asset: true, size: '350', classes: 'img-fluid h-100 main-img' %}
+								</span>
+							</div>
+
+							<!-- Desktop -->
+							<div class="col-md-6 py-3 px-4 d-none d-md-block">
+								<div class="title mt-2">
+									<h1>TAKE $20 OFF AND GET OUR FREE E-KIT</h1>
+								</div>
+								<div class="row mx-3 position-relative no-gutters">
+									<div class="col-5">
+                      {% include 'image', _image: 'RAD-002_img_v_mobile.png', asset: true, size: '258', classes: 'img-fluid', attrs: 'style="height:100px;"' %}
+									</div>
+									<div class="col-7 my-auto px-1">
+										<span class="description">Try a Raddish kit for <strong>FREE!</strong></span>
+									</div>
+								</div><!-- .row -->
+								<form action="#" data-formcode="H" data-ismobile ="F" method="GET" name="lfH" class="subscribe-form needs-validation w-100 d-none d-sm-block px-2" novalidate>
+									<div class="form-group">
+										<input type="email" name="EMAIL" class="form-control" id="InputLeadFormH"
+											aria-describedby="emailHelp" placeholder="Enter Email Address"
+											style="height:50px;" autofocus required>
+										<div class="invalid-feedback">Please enter a valid email address.</div>
+										<input type="submit" class="btn koriSendLeadConversion btn-primary w-100 mt-2" style="line-height: 1.5px !important;height:50px;" value="Email Me This Offer">
+									</div>
+									<small id="emailHelp" class="form-text text-muted mb-0">
+										*$20 off coupon valid on 12-month memberships only.
+									</small>
+								</form>
+							</div>
+
+							<!-- Mobile -->
+							<div class="col-md-6 py-3 px-4 green-border-top bg-white d-block d-md-none mobile-form">
+								<div class="row mx-1 no-gutters">
+									<div class="col-4 position-relative">
+                    {% include 'image', _image: 'RAD-002_img_v_mobile.png', asset: true, size: '258', classes: 'img-fluid position-absolute', attrs: 'style="bottom:0;"' %}
+									</div>
+									<div class="col-8">
+										<div class="title">
+											<h1>TAKE $20 OFF AND GET OUR FREE E-KIT</h1>
+										</div>
+										<div class="description mb-3">
+											Try a Raddish kit for <strong>FREE!</strong>
+										</div>
+									</div>
+								</div><!-- .row -->
+								<form action="#" data-formcode="H" data-ismobile ="T" method="GET" name="lfh2" class="subscribe-form needs-validation w-100" novalidate>
+									<div class="form-group mx-auto">
+										<div class="input-group mx-auto">
+											<input name="EMAIL" type="email" class="form-control" id="validationCustomUsername"
+												aria-describedby="emailHelp" placeholder="Enter Email Address" required>
+											<div class="input-group-append">
+												<input type="submit" class="btn koriSendLeadConversion btn-secondary rounded-right h-100 p-3" value="Save"/>
+											</div>
+										</div><!-- .input-group -->
+                                      <div class="invalid-feedback p-2">Please enter a valid email address.</div>
+									</div><!-- .form-group -->
+									<small id="emailHelp" class="form-text text-muted mb-0">
+										*$20 off coupon valid on 12-month memberships only.
+									</small>
+								</form>
+							</div>
+
+						</div><!-- .row -->
+					</div><!-- .container-fluid -->
+				</div><!-- .modal-body -->
+			</div><!-- .modal-content-->
+		</div><!-- .modal-dialog -->
+	</div><!-- #LeadFormH -->
+
+    <!-- Thank You -->
+	<div class="modal fade" id="LeadFormTY" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modal-body mx-auto py-4">
+					<div class="row">
+						<div class="col-12 col-sm-8 col-md-9 mx-auto text-center">
+							<img src="{{ 'Raddish_logo2x.png' | asset_url }}" style="height:50px;">
+							<div class="title m-3">
+								<h1>Happy Cooking!</h1>
+							</div>
+							<div class="description mx-auto d-block">
+								Check your email for your FREE Raddish E-Kit. Enjoy $20 off your 12 month membership
+								with code:
+							</div>
+							<div class="coupon rounded d-block py-4 my-4">WELCOME</div>
+							<button class="btn btn-primary px-5" data-dismiss="modal" onClick="activatePromoCode()" aria-label="Close">Apply Coupon</button>
+						</div>
+					</div>
+
+				</div><!-- .modal-body -->
+			</div><!-- .modal-content -->
+		</div><!-- .modal-dialog -->
+	</div><!-- #Thank You -->
+  </div>
+  </div>
+
+
+  <div id="leadform-container" class="bootstrap-module"></div>
+
+  <!-- Persistent Badge -->
+
+
+  <script>
+
+    $(document).ready( function () {
+      jquery2("#LeadFormTY").on("hidden.bs.modal", function () {
+     	 activatePromoCode();
+		});
+
+      $("#LeadFormsDemo input").focus(function(){
+        $("#LeadFormsDemo .invalid-feedback").hide(300);
+      });
+
+      $('.subscribe-form-lead').submit( function (e) {
+        e.preventDefault();
+
+        enrollNewUser($(this));
+      });
+
+    });
+
+    function activatePromoCode(){
+      var url = new URL(window.location.href);
+      var query_string = url.search;
+      var search_params = new URLSearchParams(query_string);
+      search_params.append('cc', 'welcome');
+      search_params.append('f', '8');
+      url.search = search_params.toString();
+      window.location.href = url.toString();
+    }
+
+    function enrollNewUser(form){
+      $.ajax({
+        type: form.attr('method'),
+        url:  'https://a.klaviyo.com/ajax/subscriptions/subscribe',
+        data: 'g=' + window.newsletterListID + '&email=' + form.find('[name="EMAIL"]').val(),
+        error       : function(err) { alert('We ran into an error while trying to add you to our newsletter. Please try again later.'); },
+        success     : function(res) {
+          var closestModal = $(form).closest('.modal.fade');
+          jquery2(closestModal).bsModal("hide");
+          Cookies.set('alreadyEnrolled', "true");
+          ga('send', 'event', 'LeadForm', 'SubmitLeadForm'); // Send this action back to GA and GO.
+					{% if document.getElementById('persistent-badge') %}
+          	document.getElementById('persistent-badge').style.visibility = 'hidden';
+					{% endif %}
+          reportLeadConversion();
+         	jquery2("#LeadFormTY").bsModal("show");
+        }
+      });
+    }
+
+    function reportLeadConversion(){
+      fbq('track', 'Lead', {
+      content_name: 'popup',
+  	  });	//Track the conversion back to Facebook pixel.
+    }
+
+    function openLeadForm(leadFormId){
+      ga('send', 'event', 'LeadForm', 'openedFromBadge', leadFormId);
+      jquery2(leadFormId).bsModal('show');
+    }
+
+
+    function closeLeadForm(leadFormId){
+      jquery2(leadFormId).bsModal('hide');
+    }
+
+    function openOFormFromSaveToday(){
+      ga('send', 'event', 'LeadForm', 'openedFromBadge', '#LeadFormO');
+      openOriginalLeadForm();
+	}
+
+  </script>
+  <script src="{{ 'lazysizes.min.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'jquery.magnific-popup.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'jquery.magnific-popup.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'newsletter.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'custom_bundle.js' | asset_url }}" defer="defer"></script>
+
+
+{% include 'subscribe-it-helper' %}
+{% include 'subscription-theme-footer' %}
+
+<!-- Load and Init Cart.js -->
+<script type="text/javascript" src="{{ 'cart-js.js' | asset_url }}"></script>
+<script type="text/javascript">
+  // Initialise Cart.js once the page has loaded
+  $(function() {
+    const res = CartJS.init({{ cart | json }}, {
+      requestBodyClass: 'updating-cart'
+    })
+  });
+
+  $(document).ready(function(){
+    $(document).on('cart.requestComplete', function(event, cart) {
+      if("updateGift" in window) window.updateGift(event, cart);
+      // $('.cart-count').html(cart.item_count);
+      if(cart.item_count == 0 && cart.note != '') {
+        CartJS.setNote("")
+      }
+    });
+    if('CartJS' in window) {
+      if(CartJS.cart.items.length == 0 && CartJS.cart.note != '') {
+        console.log('setting note')
+        CartJS.setNote("")
+      }
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const rechargeState = urlParams.get('recharge_checkout');
+      if(rechargeState && rechargeState == 'completed') {
+        CartJS.clear({
+          "success": function(data, textStatus, jqXHR) {
+            urlParams.delete('recharge_checkout');
+              window.location.search = urlParams;
+          }
+        });
+        // urlParams.delete('recharge_checkout');
+        // window.location.search = urlParams;
+        // console.log(urlParams);
+        // // window.location.href();
+      }
+    }
+  });
+</script>
+{% include 'cart-js' %}
+{% render "limited-product" %}
+<script>
+  window.shopUrl = '{{ shop.url }}';
+  window.shopMyshopifyDomain = '{{ shop.permanent_domain }}';
+  window.routes = {
+    cart_add_url: '{{ routes.cart_add_url }}',
+    cart_url: '{{ routes.cart_url }}',
+    cart_change_url: '{{ routes.cart_change_url }}',
+    cart_update_url: '{{ routes.cart_update_url }}',
+    predictive_search_url: '{{ routes.predictive_search_url }}'
+  };
+
+  window.cartStrings = {
+    error: ``,
+    // error: `{{ 'sections.cart.cart_error' | t }}`,
+    quantityError: ``
+  }
+
+  window.variantStrings = {
+    addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+    soldOut: `{{ 'products.product.sold_out' | t }}`,
+    unavailable: `{{ 'products.product.unavailable' | t }}`,
+  }
+
+  window.accessibilityStrings = {
+    imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+    shareSuccess: `{{ 'general.share.success_message' | t }}`,
+    pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+    playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+  }
+</script>
+
+{% unless template.name == "cart" %}
+  {% section 'ajax-cart' %}
+  {% section 'cart-upsells' %}
+{% endunless %}
+{% if request.path contains loggedInSub %}
+  <script>
+
+      var interval1;
+      var interval2;
+    	var interval3;
+
+        function check() {
+          if ( $("#MainContent") ) {
+
+			$("#MainContent,#MainContent .acc-page__width, #ReCharge,#shopify-section-pre-footer,#shopify-section-footer,.acct-cta-notification").css("display", "block");
+            clearInterval( interval1 ); // stop the timer
+          }
+        }
+
+      function checkRoller() {
+          if ( $(".lds-roller.subscription-loader") ) {
+			$(".lds-roller.subscription-loader").css("display", "block");
+            clearInterval( interval2 ); // stop the timer
+          }
+        }
+
+    function checkForToken(){
+    	if ( localStorage.getItem("customerToken") != "" && localStorage.getItem("customerToken") != "false") {
+          window.location.href = "/tools/recurring/portal/{{customer.metafields.subscriptions.customer_string}}/subscriptions?token="+localStorage.customerToken;
+          clearInterval( interval3 );
+        }
+    }
+
+
+      if(localStorage.new_login == "true" && document.referrer.includes("login")){
+          $(".lds-roller.subscription-loader").css("display", "block");
+          localStorage.setItem("new_login", false);
+          interval3 = setInterval( checkForToken, 500 );
+              	interval2 = setInterval( checkRoller, 250 );
+      } else {
+
+                interval1 = setInterval( check, 500 );
+      }
+
+
+
+
+      </script>
+  {% endif %}
+  <!-- Start of raddishkids Zendesk Widget script -->
+  {%- comment -%}
+  {%- endcomment -%}
+ <!-- <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=151bd6aa-1d7d-4dcb-b9e9-b67b67cca8c5"> </script>
+  <!-- End of raddishkids Zendesk Widget script -->
+  <style>
+    #launcher {
+        visibility: visible !important;
+        right: 0 !important;
+        opacity: 1 !important;
+        top: auto !important;
+    }
+    @media (max-width: 767px) {
+      #launcher {
+        bottom: 50px !important;
+        right: -12px !important;
+      }
+    }
+  </style>
+  {%- comment -%}
+  {%- endcomment -%}
+  {% section "badges" %}
+  {% if product %}
+<script>
+window.addEventListener('load', function() {
+var _learnq = window._learnq || [];
+function addedToCart() {
+  fetch(`${window.location.origin}/cart.js`)
+  .then(res => res.clone().json().then(data => {
+    var cart = {
+      total_price: data.total_price/100,
+      $value: data.total_price/100,
+      total_discount: data.total_discount,
+      original_total_price: data.original_total_price/100,
+      items: data.items
+    }
+    if (item !== 'undefined') {
+      cart = Object.assign(cart, item)
+    }
+    if (klAjax) {
+        _learnq.push(['track', 'Added to Cart', cart]);
+        klAjax = false;
+      }
+  }))
+};
+(function (ns, fetch) {
+  ns.fetch = function() {
+    const response = fetch.apply(this, arguments);
+    response.then(res => {
+      if (`${window.location.origin}/cart/add.js`
+      	.includes(res.url)) {
+        	addedToCart()
+      }
+    });
+    return response
+  }
+}(window, window.fetch));
+var klAjax = true;
+var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
+for (var i = 0; i < atcButtons.length; i++) {
+    atcButtons[i].addEventListener("click", function() {
+      if (klAjax) {
+        _learnq.push(['track', 'Added to Cart', item]);
+        klAjax = false;
+      }
+    })
+}
+});
+</script>
+  {% endif %}
+  {% render 'junip-store-key' %}
+</body>
 </html>

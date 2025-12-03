@@ -1,0 +1,144 @@
+<div class="featured-fixed-block"> 
+  {% comment %}
+    <p>{{section.settings.above_title}}</p>
+  {% endcomment %}
+    <h3 class="h3"> {{section.settings.title}} </h3>
+    <div class="image-desc"> 
+      {% render 'image', _image: section.settings.image, alt: section.settings.image.alt %}
+      <p class="featured-fixed-block__desc"> 
+        {{section.settings.description}}
+        {% if section.settings.button_url != blank %}
+        <a href="{{section.settings.button_url}}" class="btn"> {{section.settings.button_label}} </a>
+        {% endif %}
+      </p>
+    </div>
+</div>
+
+<style>
+  h3.h3 {}
+
+  .featured-fixed-block .h3 {
+      /* font-family: avenir; */
+      font-size: 30px;
+      color: #4D4D4D;
+      font-weight: 500;
+      font-family: Avenir Heavy;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #4D4D4D;
+      margin-bottom: 37px;
+  }
+  
+  .fixed-right {
+    width: 320px;
+    height: 100%;
+    right: 0;
+    position: absolute;
+    top: 20px;
+  }
+
+  .fixed-right .featured-fixed-block {
+    position: sticky;
+    top: 80px;
+  }
+  
+  .featured-fixed-block .image-desc {
+      padding: 0 1rem;
+  }
+  
+  p.featured-fixed-block__desc {
+      margin-top: 0;
+      background: #EEEEEE;
+      text-align: center;
+      padding: 22px 25px;
+      font-weight: 600;
+      margin-top: -8px;
+  }
+  
+  p.featured-fixed-block__desc a {
+      margin-top: 14px;
+      padding: 16px 10px !important;
+      width: 100%;
+  }
+
+  @media screen and (max-width: 875px) {
+    .featured-fixed-block h3 {
+        display: none;
+    }
+    
+    .featured-fixed-block h3 picture {
+        display: none;
+    }
+    
+    .featured-fixed-block picture {
+        display: none;
+        padding: 0;
+    }
+  
+    p.featured-fixed-block__desc {
+        font-size: 0;
+        background: transparent;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .fixed-right {
+        bottom: -20px;
+        position: fixed;
+        top: unset;
+        height: 90px;
+        z-index: 200000000000;
+        width: 100%;
+        padding: 0 !important;
+        background: transparent;
+    }
+    
+    .fixed-right .featured-fixed-block {
+        background: transparent;
+    }
+    
+    .featured-fixed-block .image-desc {
+        padding: 0;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Featured Fixed Block",
+    "class": "fixed-right sticky",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Featured"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },     
+       {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button url"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Fixed Block",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

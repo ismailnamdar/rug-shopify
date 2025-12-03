@@ -1,0 +1,470 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_with_buttons_wHDbwk": {
+      "type": "hero-with-buttons",
+      "name": "Gift Guide",
+      "settings": {
+        "background_image": "shopify://shop_images/Holiday-Gift-Guide-Hero-2025-DESKTOP-V5.jpg",
+        "mobile_image": "shopify://shop_images/Holiday-Gift-Guide-Hero-MOBILE-2025-V2c.jpg",
+        "title": "Holiday Gift Guide",
+        "button1_text": "Gift a Subscription",
+        "button1_link": "shopify://pages/cooking-kits",
+        "button2_text": "Gift an Individual Kit",
+        "button2_link": "#gift-individual-kit",
+        "hide_overlay": true
+      }
+    },
+    "three_cards_pwJJUA": {
+      "type": "three-cards",
+      "blocks": {
+        "card_GJD4ae": {
+          "type": "card",
+          "settings": {
+            "product": "monthly-cooking-club-membership",
+            "custom_title": "Cooking Club",
+            "ages": "Ages 4-14+",
+            "image": "shopify://shop_images/image_4.png",
+            "card_color": "#01bcbe",
+            "cart_link": "shopify://products/monthly-cooking-club-membership",
+            "cart_link_section_id": "?club=C#join-the-cooking-club",
+            "card_link": "shopify://products/monthly-cooking-club-membership",
+            "learn_label": "Learn More"
+          }
+        },
+        "card_xBnVRm": {
+          "type": "card",
+          "settings": {
+            "product": "monthly-global-club-membership",
+            "custom_title": "Global Eats Club",
+            "ages": "Ages 6-14+",
+            "image": "shopify://shop_images/image_5.png",
+            "card_color": "#9fcc57",
+            "cart_link": "shopify://products/monthly-global-club-membership",
+            "cart_link_section_id": "?club=G#join-the-cooking-club",
+            "card_link": "shopify://products/monthly-global-club-membership",
+            "learn_label": "Learn More"
+          }
+        },
+        "card_zwcBrL": {
+          "type": "card",
+          "settings": {
+            "product": "monthly-baking-club-membership",
+            "custom_title": "Baking Club",
+            "ages": "Ages 8-14+",
+            "image": "shopify://shop_images/image_6.png",
+            "card_color": "#f59d7e",
+            "cart_link": "shopify://products/monthly-baking-club-membership",
+            "cart_link_section_id": "?club=B#join-the-cooking-club",
+            "card_link": "shopify://products/monthly-baking-club-membership",
+            "learn_label": "Learn More"
+          }
+        }
+      },
+      "block_order": [
+        "card_GJD4ae",
+        "card_xBnVRm",
+        "card_zwcBrL"
+      ],
+      "name": "Three Cards",
+      "settings": {
+        "title": "Monthly Culinary Adventures That Inspire & Engage",
+        "subtitle": "Give the Gift of Raddish",
+        "btn_text": "Gift Raddish",
+        "btn_link": "shopify://pages/cooking-kits"
+      }
+    },
+    "1755199057b461dbfb": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "carousel_with_images_CLPWyi": {
+      "type": "carousel-with-images",
+      "blocks": {
+        "image_RnMqPb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/29NWS-9058_1_2.jpg"
+          }
+        },
+        "image_8qt8Q8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Raddish-Korean-Kitchen_BiBimBap_GIF.gif"
+          }
+        },
+        "image_JKGjgg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hi_res-4a-Raddish_Kids_r1_04Q_0878_-_compressed_baad91e4-f50b-4f21-90a7-b9f864671f1a.jpg"
+          }
+        },
+        "image_UDbjQU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Raddish-Korean-Kitchen_BiBimBap_GIF_5.png"
+          }
+        },
+        "image_i3mAWm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/43BB5AD0-1F93-4D29-91B7-6A745CB65F57_1.gif"
+          }
+        },
+        "image_VBpx98": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/hi_res-58-Raddish-Kids_r1_04Q_0835-EXPANDED.jpg"
+          }
+        },
+        "image_BQ9ftr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/29NWS-7612_2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_RnMqPb",
+        "image_8qt8Q8",
+        "image_JKGjgg",
+        "image_UDbjQU",
+        "image_i3mAWm",
+        "image_VBpx98",
+        "image_BQ9ftr"
+      ],
+      "name": "Carousel with images",
+      "settings": {
+        "title": "",
+        "rotation_speed": 2
+      }
+    },
+    "image_acqW7G": {
+      "type": "image",
+      "name": "Image (Desktop/Mobile)",
+      "settings": {
+        "desktop_image": "shopify://shop_images/What_s_Inside_-_Resized_ae8a51b9-1af9-4d02-ad31-3acc35ae30ef.png",
+        "mobile_image": "shopify://shop_images/What_s_Inside_-_Mobile_Resized_29926ed1-b346-422a-a2be-1472c70b44bc.png",
+        "alt_text": "What's Inside a Raddish Kit? Illustrated Recipe Guides, Table Talk Cards, Game, Shopping List, Activity, Kitchen Tool, Folder, Patch",
+        "max_width": 1200,
+        "full_width": true,
+        "margin_y": 30
+      }
+    },
+    "featured_list_items_jkLYmC": {
+      "type": "featured-list-items",
+      "blocks": {
+        "reason_DWbYGQ": {
+          "type": "reason",
+          "settings": {
+            "text": "Build skills with each recipe"
+          }
+        },
+        "reason_XYHaQQ": {
+          "type": "reason",
+          "settings": {
+            "text": "No stress meals, no planning needed"
+          }
+        },
+        "reason_4iVpDw": {
+          "type": "reason",
+          "settings": {
+            "text": "Create sweet family cooking memories"
+          }
+        },
+        "reason_cnk8Fr": {
+          "type": "reason",
+          "settings": {
+            "text": "Help picky eaters try new foods"
+          }
+        },
+        "reason_mHaMyb": {
+          "type": "reason",
+          "settings": {
+            "text": "Teach independence & confidence"
+          }
+        },
+        "reason_j6n7x3": {
+          "type": "reason",
+          "settings": {
+            "text": "The gift that keeps on giving"
+          }
+        }
+      },
+      "block_order": [
+        "reason_DWbYGQ",
+        "reason_XYHaQQ",
+        "reason_4iVpDw",
+        "reason_cnk8Fr",
+        "reason_mHaMyb",
+        "reason_j6n7x3"
+      ],
+      "name": "Featured List Items",
+      "settings": {
+        "title": "Reasons to Gift Raddish",
+        "button_label": "Gift Raddish",
+        "button_link": "shopify://pages/cooking-kits",
+        "bg": "#e4f4f6",
+        "max_width": 1020,
+        "padding_y": 55
+      }
+    },
+    "feature_split_cards_qf49CU": {
+      "type": "feature-split-cards",
+      "blocks": {
+        "card_qeynWD": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Swedish-Eats---Kit3SM_1.png",
+            "image_side": "right",
+            "title": "For the Aspiring Young Chef",
+            "body": "Fuel their passion for cooking with the original cooking club for kids.",
+            "btn_text": "Explore Cooking",
+            "btn_link": "shopify://products/monthly-cooking-club-membership",
+            "link_text": "Choose Plan",
+            "link_url": "shopify://products/monthly-cooking-club-membership",
+            "link_target_section_id": "?club=C#join-the-cooking-club"
+          }
+        },
+        "card_CdWwpU": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Swedish-Eats---Kit3SM_2.png",
+            "image_side": "left",
+            "title": "For the Baker Leveling Up",
+            "body": "From piping eclairs to creating layered pastries, these recipes are a playful way to explore new baking skills.",
+            "btn_text": "Explore Baking",
+            "btn_link": "shopify://products/monthly-baking-club-membership",
+            "link_text": "Choose Plan",
+            "link_url": "shopify://products/monthly-baking-club-membership",
+            "link_target_section_id": "?club=B#join-the-cooking-club"
+          }
+        },
+        "card_ihfnNR": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Swedish-Eats---Kit3SM_3.png",
+            "image_side": "right",
+            "title": "For the Curious Adventurer",
+            "body": "Cooking around the world through countries and cultures.",
+            "btn_text": "Explore Global Eats",
+            "btn_link": "shopify://products/monthly-global-club-membership",
+            "link_text": "Choose Plan",
+            "link_url": "shopify://products/monthly-global-club-membership",
+            "link_target_section_id": "?club=G#join-the-cooking-club"
+          }
+        }
+      },
+      "block_order": [
+        "card_qeynWD",
+        "card_CdWwpU",
+        "card_ihfnNR"
+      ],
+      "name": "Feature Split Cards",
+      "settings": {}
+    },
+    "featured_product_grid_C64Hcp": {
+      "type": "featured-product-grid",
+      "name": "Featured Product Grid",
+      "settings": {
+        "title": "Gift an Individual Kit They’ll Love",
+        "subtitle": "No Subscription Required",
+        "collection": "gift-guide",
+        "limit": 4,
+        "show_price": true,
+        "quick_add": true,
+        "full_bleed": true,
+        "color_scheme": "background-2",
+        "btn_label": "Shop All",
+        "btn_link": "shopify://collections/single-kits",
+        "section_id": "gift-individual-kit"
+      }
+    },
+    "1761150121c59a2f00": {
+      "type": "apps",
+      "blocks": {
+        "junip_junip_review_carousel_RH69Gr": {
+          "type": "shopify://apps/junip/blocks/junip-review-carousel/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "reviewsType": "product_reviews",
+            "sortOrder": "mostHelpful",
+            "product": "",
+            "reviewTag": "gift",
+            "showSummary": true,
+            "title": "Customer Reviews",
+            "paddingTop": 48,
+            "paddingBottom": 48,
+            "containerClass": ""
+          }
+        }
+      },
+      "block_order": [
+        "junip_junip_review_carousel_RH69Gr"
+      ],
+      "settings": {}
+    },
+    "1573565595488": {
+      "type": "faq",
+      "blocks": {
+        "block_AeQiFj": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "Can I buy now and delay a membership to start in December or January?",
+            "text": "<p>Yes! This feature is available starting October 30th under shipping options. Generally, orders are processed the next business day, however, if you select \"Holiday Hold\" at checkout, you can purchase your membership now and delay your first shipment. Select \"Holiday Hold: Christmas/Hannukah to have your first kit ship on [DATE] or \"Holiday Hold: New Year\" to have your kit ship on 1/20/2026.</p>"
+          }
+        },
+        "block_Hm8EKB": {
+          "type": "block",
+          "settings": {
+            "title": "What will kids learn from a Raddish membership?",
+            "text": "<p>Raddish turns mealtime into learning time with hands-on cooking kits that teach real-world skills through math, science, history, culture and more - perfect for kids ages 4-14+. <br/>Club benefits: designed by educators, builds STEM, literacy & math skills, durable, colorful curriculum-aligned materials, easy screen free learning, and encourages confidence & creativity . Your kids will turn into chefs in no time!</p>"
+          }
+        },
+        "f508c799-a83a-43bc-b29a-f6ceb6a0b481": {
+          "type": "block",
+          "settings": {
+            "title": "How do I send the first kit to a different address?",
+            "text": "<p>Simply purchase the membership and supply the shipping address for where you intend the first kit to ship to. Then, once the first kit has shipped out (you will receive a shipping confirmation), log in to your account. You can then click on \"Edit\" next to your membership, and there you can update the address for subsequent kits. Addresses will just need to be updated by the 23rd of the month prior, to make sure the next month's kit is routed to the correct address.</p><p>If you have already placed your order and want to make adjustments to the shipping address of your first kit, please reach out to us at hello@raddishkids.com or 310-450-3462. Kits shipping immediately may not be able to update their address once the order has been placed- reach out right away so we can do our best to help.</p>"
+          }
+        },
+        "1573565615355": {
+          "type": "block",
+          "settings": {
+            "title": "How can I gift Raddish?",
+            "text": "<p>Simply enter the gift recipient's shipping information and your personalized gift note at checkout. Upon purchase, you will receive a confirmation email and link to manage your account. You can also download and print a <a href=\"https://www.raddishkids.com/blogs/bonus-bites/gift-note?_pos=1&_sid=1655de20a&_ss=r\" target=\"_blank\" title=\"https://www.raddishkids.com/blogs/bonus-bites/gift-note?_pos=1&_sid=1655de20a&_ss=r\">gift note</a> to let your recipient know their first kit is on the way. Thanks for gifting Raddish!</p>"
+          }
+        },
+        "1573565659998": {
+          "type": "block",
+          "settings": {
+            "title": "What age is Raddish for?",
+            "text": "<p>Raddish Clubs are designed for kids ages 4-14+. Younger kids will enjoy cooking alongside an adult, while older kids can work more independently.</p><p><strong>Cooking Club (4-14+)</strong>: the most accessible membership for preschool and early elementary ages, offering a balance of familiar recipes and new flavors.</p><p><strong>Global Eats Club (6-14+)</strong>: introduces new flavors and educational activities that appeal to elementary ages and older kids.</p><p><strong>Baking Club (8-14+)</strong>: features a Quick Bake and Star Bake recipe. The quick bake can be accessible for younger children, while the Star Bake involves more steps and advanced skills, which may require more adult support for younger children and novice bakers.</p>"
+          }
+        },
+        "1ed298db-bbcb-4514-aba8-f1cfb081b8af": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "What is Raddish+?",
+            "text": "<p><a href=\"https://raddishplus.com\" target=\"_blank\" title=\"https://raddishplus.com\">Raddish+ </a>is a digital collection of the entire library of Raddish recipes and skills. It is included free for anyone who is an active member of the Cooking, Baking, or Global Eats Clubs. Simply log in to your account from any device to browse hundreds of popular Raddish recipes. Each month’s recipes from the Cooking, Baking, and Global Eats Clubs are posted around the 19th of each month. </p>"
+          }
+        },
+        "1573565683854": {
+          "type": "block",
+          "settings": {
+            "title": "Is food included?",
+            "text": "<p>Ingredients are not included in Raddish kits. As opposed to a meal delivery service, Raddish is an expertly curated cooking curriculum that enables children to learn more about the food they eat, gain the skills to prepare unfamiliar dishes, and enjoy a complete kitchen experience with their family.</p><p>By excluding ingredients, families can customize recipes with items they prefer, involve kids in grocery shopping, and cook anytime with fresh ingredients on hand.</p><p>Each month, we email you a shopping list for the upcoming recipes before your kit ships (<a href=\"https://cdn.shopify.com/s/files/1/0300/1545/files/EdibleElements_Shopping_List.pdf?v=1679586403\" title=\"https://cdn.shopify.com/s/files/1/0300/1545/files/EdibleElements_Shopping_List.pdf?v=1679586403\">see a sample</a>). Ingredient lists are available at anytime in your Raddish+ account on any mobile device. Our ingredients are typically easy to find in a local grocery store. </p>"
+          }
+        },
+        "1573565641708": {
+          "type": "block",
+          "settings": {
+            "title": "Do you accommodate for dietary restrictions?",
+            "text": "<p>Because our kits don’t include ingredients, families can easily substitute or use what works best for their dietary needs or allergies.</p><p><strong>Cooking Club & Global Eats Club: </strong>we provide dietary modifications for gluten-free, vegan, vegetarian, dairy-free, and egg-free diets. We rarely use nuts and if we do, they are always optional. These can be found on our website under the \"<a href=\"https://www.raddishkids.com/blogs/bonus-bites/tagged/dietary-substitutions\" title=\"https://www.raddishkids.com/blogs/bonus-bites/tagged/dietary-substitutions\">Bonus Bites</a>\" section.</p><p><strong>Baking Club: </strong>dietary modifications are not currently provided. Please note that some recipes may include nuts.</p>"
+          }
+        },
+        "block_wQHrVc": {
+          "type": "block",
+          "settings": {
+            "title": "Can I choose the start date of my membership?",
+            "text": "<p>Yes! This feature is available starting October 20th under shipping options in checkout. Generally, orders are processed the next business day; however, if you select \"Holiday Hold\" at checkout, you can purchase your membership now and delay your first shipment. Select \"Holiday Hold: Christmas/Hannukah to have your first kit ship by 12/5/2025 or \"Holiday Hold: New Year\" to have your kit ship by 1/6/2026.</p>"
+          }
+        },
+        "block_KhKfi7": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "When should I place my order to ensure delivery by Christmas?",
+            "text": "<p>Shop early! Purchase now and select December delivery at checkout.</p><p></p><p>Orders placed by 12/15 with free domestic shipping are estimated to arrive by 12/25. Expedited shipping upgrades are available through 12/22. For <em>APO/FPO, order by 12/1, and for International addresses, order by 12/8, for holiday delivery.</em></p><p></p><p>Delays in transit can be caused by external factors, and we cannot guarantee delivery by a specific date. If you placed your order after the holiday shipping deadline, or your kit has experienced unexpected delays, you can <a href=\"https://www.raddishkids.com/giftnote\" target=\"_blank\">print a gift note </a>to let the recipient know that Raddish is on the way!</p>"
+          }
+        },
+        "1573565652997": {
+          "type": "block",
+          "settings": {
+            "title": "When will my first kit ship?",
+            "text": "<p>Your first kit will ship out on the next business day, unless you select to delay your first shipment until 12/5 or 1/6/26 during checkout (under shipping options). If you selected delayed shipping, expect a tracking email within 72 hours of your selected shipping date.</p><p>After the first kit ships, subsequent kits will ship out with an expected delivery date between the 5th and the 10th of each following month. We try our best to have all of our members receive their kits around the same time, so that our community can share the same experiences at the same time! While delays can of course occur during transit, we do our best to ensure that our monthly delivery dates are as close to this window as possible.</p>"
+          }
+        },
+        "block_DcdDmP": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "Where can I download a printable gift note?",
+            "text": "<p>At checkout, you can add a personalized gift message and choose to share order tracking details directly with the recipient. You can also download a printable gift note here to slip into an envelope or wrap with the gift under the tree.</p>"
+          }
+        },
+        "1573565694670": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "Will kits ever repeat?",
+            "text": "<p>Within each Club, kits do not repeat. Global Eats and Baking Club recipes may have been previously featured in the Cooking Club. </p>"
+          }
+        },
+        "block_KP7kP6": {
+          "type": "block",
+          "settings": {
+            "title": "What is the deadline to place my order to ensure delivery by Christmas?",
+            "text": "<p>Shop early! Purchase now and select Holiday Hold: Christmas/Hanukkah delivery at checkout. See our <a href=\"https://www.raddishkids.com/pages/holiday-faq#calendar-title\" title=\"https://www.raddishkids.com/pages/holiday-faq#calendar-title\">Holiday Shipping Calendar</a> for more details.</p><p>Orders placed by 12/15 with free domestic shipping are estimated to arrive by 12/24. Expedited shipping upgrades are available through 12/22. For APO/FPO, order by 11/30, and for International addresses, order by 12/3, for holiday delivery. </p><p>Delays in transit can be caused by external factors, and we cannot guarantee delivery by a specific date. If you placed your order after the holiday shipping deadline, or your kit has experienced unexpected delays, you can print a gift note to let the recipient know that Raddish is on the way!</p>"
+          }
+        },
+        "block_AGBFKh": {
+          "type": "block",
+          "settings": {
+            "title": "What is your cancelation policy?",
+            "text": "<p>Raddish members are billed following the end of their subscription term, between the 26th and the 28th of the month; your renewal date is listed in your account portal. You may \"turn off\" your next renewal at any time! Here's how:<br/><br/>1.) Log in to your account. <br/><br/>2.) Navigate to \"Memberships\",  click \"Edit\" on the right side. <br/><br/>3.) Click \"Cancel My Renewal\", then \"Continue\" and finally \"Confirm my Cancellation\". <br/><br/>If your renewal has already been canceled, this option will no longer appear. <br/><br/>Please note, members on a 6 or 12 month plan will continue to receive kits until the end of their current prepaid billing period. Refunds are not issued mid-term.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "block_AeQiFj",
+        "block_Hm8EKB",
+        "f508c799-a83a-43bc-b29a-f6ceb6a0b481",
+        "1573565615355",
+        "1573565659998",
+        "1ed298db-bbcb-4514-aba8-f1cfb081b8af",
+        "1573565683854",
+        "1573565641708",
+        "block_wQHrVc",
+        "block_KhKfi7",
+        "1573565652997",
+        "block_DcdDmP",
+        "1573565694670",
+        "block_KP7kP6",
+        "block_AGBFKh"
+      ],
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "header_color": "",
+        "text": "<p>Have more questions? Need help with your account?<br/>Visit our <a href=\"https://raddishkids.zendesk.com/hc/en-us\" title=\"https://raddishkids.zendesk.com/hc/en-us\"><strong>Help Center</strong></a></p>"
+      }
+    },
+    "section-images": {
+      "type": "section-images",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero_with_buttons_wHDbwk",
+    "three_cards_pwJJUA",
+    "1755199057b461dbfb",
+    "carousel_with_images_CLPWyi",
+    "image_acqW7G",
+    "featured_list_items_jkLYmC",
+    "feature_split_cards_qf49CU",
+    "featured_product_grid_C64Hcp",
+    "1761150121c59a2f00",
+    "1573565595488",
+    "section-images"
+  ]
+}

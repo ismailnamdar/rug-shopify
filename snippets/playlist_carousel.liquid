@@ -1,0 +1,75 @@
+{%- assign designData = shop.metafields.reelUp.playlist_widget_design.value -%}
+{%- assign reelUpVideos = shop.metafields.reelUp.reels.value -%}
+{%- assign reelUpSettings = shop.metafields.reelUp.settings.value -%}
+{%- assign isAnyProductTagged = false -%}
+
+{%- comment %} Use sorted reels if available, otherwise use original playlist reels {% endcomment -%}
+{%- if sortedReels and sortedReels.size > 0 -%}
+  {%- assign reelsToUse = sortedReels -%}
+{%- else -%}
+  {%- assign reelsToUse = playlistData.reels -%}
+{%- endif -%}
+
+<div class="reelUp_playlist_slider_static reelUp_playlist_loading reelUp_carousel reelUp_cards_carousel" id="reelUp_playlist_{{ playlistData.id }}" data-playlist-id="{{ playlistData.id }}" style="height: auto; max-width: {% if designData.wrapper_width == "full_width" %} 100% {% else %}{{ designData.playlist_wrapper_width | append: "px" }}{% endif %}">
+  {%- assign showHeading = true -%}
+  {%- if designData.show_playlist_heading -%}
+    {%- assign showHeading = designData.show_playlist_heading -%}
+  {%- endif -%}
+  {%- if showHeading == true or showHeading == 1 -%}
+    <div class="reelUp_slider_heading" style="color: {{ designData.playlist_heading_color }}; font-size: {{ designData.playlist_heading_font_size }}px; font-weight: {{ designData.playlist_heading_font_weight }}; text-align:{{ designData.playlist_heading_alignment }}; line-height:1.4">{{ playlistData.title }}</div>
+  {%- endif -%}
+  <div style="height: auto;" class="reelUp_carousel_wrapper reelUp_{{ playlistData.widget_template }}_template {% if designData.playlist_button == 1 %} reelup_atc_fixed {% endif %}">
+    {%- for reel in reelsToUse -%}
+    {% assign reel_number = reel | times: 1 %}
+      {%- for reelData in reelUpVideos -%}
+        {%- if reelData.id == reel_number -%}
+          {%- if reelData.products.size != 0 and reelData.cta == "tagged_products" -%}
+            {%- assign isAnyProductTagged = true -%}
+          {%- endif -%}
+          <div class="reelUp_slide" data-reel-id="{{ reelData.id }}" data-product-id="{% if reelData.products.size > 0 %}{{ reelData.products[0].id }}{% else %}null{% endif %}" data-product-handle="{% if reelData.products.size > 0 %}{{ reelData.products[0].handle }}{% else %}null{% endif %}" style="margin-right: {{ designData.playlist_reels_gap }}px">
+            <div class="reelUp_card_skeleton reelUp_card reelUp_card_playlist_reels {% if reelData.products.size == 0 %} reelUp_card_video_only_video {% endif %}">
+              <div class="reelUp_card_video_wrapper" style="height: 100%"></div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+{%- assign cardHeightDesktop = designData.playlist_card_width_desktop | times: 1.775 -%}
+{%- assign cardHeightMobile = designData.playlist_card_width_mobile | times: 1.775 -%}
+{%- assign calculatedHeight = 0 -%}
+{%- if playlistData.widget_template == 'only_title' -%}
+  {%- assign calculatedHeight = 0 -%}
+{%- else -%}
+  {%- if isAnyProductTagged and playlistData.widget_template == 'classic' or playlistData.widget_template == 'vibrant' or playlistData.widget_template == 'modern' -%}
+    {%- assign calculatedHeight = calculatedHeight | plus: 90 -%}
+  {%- endif -%}
+  {%- if reelUpSettings.integrations.reviews.reviews_provider != null and playlistData.widget_template == 'classic' or playlistData.widget_template == 'vibrant' or playlistData.widget_template == 'modern' -%}
+    {%- assign calculatedHeight = calculatedHeight | plus: 20 -%}
+  {%- endif -%}
+  {%- if designData.playlist_button == 1 -%}
+    {%- assign calculatedHeight = calculatedHeight | plus: 45 -%}
+  {%- endif -%}
+{%- endif -%}
+<style>
+  #reelUp_playlist_{{ playlistData.id }} .reelUp_slide { width: {{ designData.playlist_card_width_desktop }}px !important; height: {{ cardHeightDesktop | plus: calculatedHeight }}px; }  
+  @media only screen and (max-width: 767px) { #reelUp_playlist_{{ playlistData.id }} .reelUp_slide { width: {{ designData.playlist_card_width_mobile }}px !important; height: {{ cardHeightMobile | plus: calculatedHeight }}px; }
+  }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if(!window.REELUP){
+  const __wrappers = document.querySelectorAll(".reelUp_playlist_slider_static.reelUp_carousel");
+      if (__wrappers.length != 0) {
+          __wrappers.forEach(sel => {
+              sel.remove();
+              console.log("REELUP WRAPPER IS REMOVED");
+          })
+      }
+  }
+});
+</script>
+
+<link href="{{ 'reels_carousel.css' | asset_url }}" rel="preload stylesheet" as="style">

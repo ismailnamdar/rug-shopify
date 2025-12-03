@@ -1,0 +1,9 @@
+<div class="pagination" data-target-container="{{ target_container }}" data-offset="{{ offset }}">
+  {%- capture pagination_output %}{{ paginate | default_pagination }}{% endcapture -%}
+  {{ pagination_output | remove: '&view=ajax' | remove: '&amp;view=ajax' }}
+  {%- if collection != blank -%}
+    <a href="{{ collection.url }}{% if current_tags %}/{{ current_tags }}{% endif %}?view=all" class="pagination__view-all">View All</a>
+  {%- elsif search.results != blank -%}
+    <a href="{{ canonical_url | append: '&view=all' }}" class="pagination__view-all">View All</a>
+  {%- endif -%}
+</div>

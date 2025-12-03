@@ -1,0 +1,41 @@
+<div class="logo">{{ 'logo.svg' | asset_url | img_tag }}</div>
+<h2>{{ section.settings.title }}</h2>
+<div class="illustration">{{ section.settings.illustration | img_url: 'master' | img_tag }}</div>
+<div class="content">{{ section.settings.content }}</div>
+<div class="discount">{{ section.settings.discount }}</div>
+<a class="btn">{{ section.settings.close-cta }}</a>
+
+{% schema %}
+  {
+    "name": "Confirmation Popup",
+    "class": "confirmation-popup",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "illustration",
+        "label": "Illustration"
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Confirmation Message"
+      },
+      {
+        "type": "text",
+        "id": "discount",
+        "label": "Discount Code"
+      },
+      {
+        "type": "text",
+        "id": "close-cta",
+        "label": "Close Button Text"
+      }
+    ]
+  }
+
+{% endschema %}

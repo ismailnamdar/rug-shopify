@@ -1,0 +1,21 @@
+{%- include 'dropdown' -%}
+
+{% schema %}
+  {
+    "name": "Blog: Category1",
+    "class": "blog-sidebar-item monthly-kits",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Heading",
+        "default": "Monthly Kits"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Monthly Kits Menu"
+      }
+    ]
+  }
+{% endschema %}

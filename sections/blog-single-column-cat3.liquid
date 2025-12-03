@@ -1,0 +1,30 @@
+<h2>{{ section.settings.title }}</h2>
+
+<div class="rte">
+<ul class="sidebar-menu">
+  {% for link in linklists[section.settings.menu].links %}
+    <li>{{ link.title | link_to: link.url }}</li>
+  {% endfor %}
+</ul>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Blog: Single Column Cat3",
+    "class": "blog-sidebar-item monthly-kits",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Heading",
+        "default": "Monthly Kits"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Monthly Kits Menu"
+      }
+    ]
+  }
+{% endschema %}

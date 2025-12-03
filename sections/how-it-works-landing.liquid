@@ -1,0 +1,132 @@
+<div class="how-it-works-landing {% unless section.settings.show_mobile %} hidden-xs {% endunless %}{% unless section.settings.show_desktop %}hidden-sm hidden-md hidden-lg{% endunless %}">
+  <h2 class="h2">
+    {{section.settings.title}}
+  </h2>
+  <div class="list-steps">
+    {% for block in section.blocks %}
+    <div class="step-container">
+      <span>
+        {{forloop.index}}
+      </span>
+      <div class="step-description">
+        <h4 class="h4">{{block.settings.title}}</h4>
+        <div>{{block.settings.description}}</div>
+      </div>
+    </div>
+    {% endfor %}
+    <hr>
+  </div>
+</div>
+
+<style>
+.how-it-works-landing .step-container {
+  display: flex;
+}
+hr {
+    width: 60%;
+    border-top: 2px solid #A9DD61;
+    border-bottom: 2px solid #A9DD61;
+    border-radius: 50px;
+}
+.step-container span {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+.how-it-works-landing {
+  padding: 24px 21px 46px;
+}
+
+.how-it-works-landing .list-steps {
+  display: flex;
+  align-items: flex-start;
+}
+
+.how-it-works-landing h2 {
+  font-size: 26px;
+  line-height: 36px;
+  text-align: center;
+  margin-bottom: 2.4rem;
+  padding-right: 3rem;
+}
+
+.step-description {
+    margin-left: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.step-description h4 {
+    margin-bottom: .4rem;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+/* identical to box height, or 100% */
+    text-align: left;
+    color: #4D4D4D;
+}
+
+.step-description > div {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "How It Works - Mobile",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_mobile",
+      "label": "Show Mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desktop",
+      "label": "Show Desktop",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "How It Works"
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "category": "Landing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Step Icon",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

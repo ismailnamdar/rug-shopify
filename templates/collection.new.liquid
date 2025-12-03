@@ -1,0 +1,92 @@
+{% section 'collection-hero' %}
+
+{% assign is_row_layout = collection.metafields.custom.row_layout.value %}
+  {% comment %} {% include 'browse-by-category' %} {% endcomment %}
+  {% comment %}
+  Removing featured categories.
+  -------
+  {% if collection.handle contains 'shop' %}
+  {% section 'featured-categories' %}
+  {% endif %}
+  {% endcomment %}
+
+<div class="page-collection">
+  {% section 'mobile-slider-menu' %}
+  <div class="page-width">
+    {% render 'breadcrumbs' %}
+
+    <div class="page__inner">
+      <div class="collection__aside">
+        {% section 'collection-navigation' %}
+      </div><!-- /.collection__aside -->
+      
+      {% paginate collection.products by 48 %}
+        <div class="collection__main ">
+          {% if collection.metafields.custom.additional_description.value != blank %}
+            <div class="collection-addtional-description">
+              {{collection.metafields.custom.additional_description | metafield_tag}}
+            </div>
+          {% endif %}
+          <div class="collection__main-inner">
+            {% unless is_row_layout %}
+            <div class="collection__sorting">
+              <div class="collection__results js-collection-results" data-label="{{ 'collections.sorting.result' | t }}||{{ 'collections.sorting.results' | t }}"></div><!-- /.collection__results -->
+              {% render 'collection-sorting' with collection as collection %}
+            </div><!-- /.collection__sorting -->
+            {% endunless %}
+            {% section 'collection-product-overview' %}
+
+            <div class="collection-section">
+              <div class="collection__listing product-listing flex wrap">
+                {% if is_row_layout %}
+                  <div class="collection__item js-collection-item  collection__item--row collection__item--header"> 
+                    <div class="product-item-alt product-item-row">
+                      <div class="product__content"> 
+                        <div class="product__title"> <p class="h5">Recipe </p> </div>
+                        <div class="product-form">  </div>
+                        <div class="product__kit"> <p class="h5">Kit </p> </div>
+                        <div class="product__date"> <p class="h5">date </p> </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+                {%- for product in collection.products -%}
+                  {%- unless product.tags contains 'hidden' or item.tags contains 'hide' or product.tags contains 'Hidden' or item.tags contains 'Hide' or product.tags contains "OOS" -%}
+
+                    <div class="collection__item js-collection-item {% if is_row_layout %} collection__item--row{% endif %}">
+                      {% if is_row_layout %}
+                        {%- render 'product-item-row', _product: product, class:'product-item-alt--collection' -%}
+                      {% else %}
+                        {%- render 'product-item-alt', _product: product, class:'product-item-alt--collection' -%}
+                      {% endif %}
+                    </div><!-- /.collection__item -->
+                  {%- endunless -%}
+
+                  {%- else -%}
+                    {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+                      {% for i in (1..8) %}
+                        <a href="#">
+                          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                          {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                        </a>
+
+                        <p>
+                          <a href="#">{{ 'homepage.on boarding.product_title' | t }}</a>
+                        </p>
+
+                        <p>
+                          {{ 1999 | money }}
+                        </p>
+                      {% endfor %}
+                    {% else %}
+                      <p>{{ 'collections.general.no_matches' | t }}</p>
+                    {% endif %}
+                {%- endfor -%}
+              </div>
+            </div><!-- /.collection-section -->
+          </div><!-- /.collection__main-inner -->
+        </div>
+      {%- endpaginate -%}
+    </div><!-- /.page__inner -->
+  </div>
+</div><!-- /.page-collection -->

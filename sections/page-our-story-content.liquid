@@ -1,0 +1,24 @@
+<div class="first-image">{{ section.settings.image-1 | img_url: '600x' | img_tag }}</div>
+<div class="page-width narrow">
+  {{ page.content }}
+</div>
+<div class="second-image">{{ section.settings.image-2 | img_url: '600x' | img_tag }}</div>
+
+{% schema %}
+  {
+    "name": "Our Story: Content",
+    "class": "our-story-page our-story-content alternate",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image-1",
+        "label": "Image #1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image-2",
+        "label": "Image #2"
+      }
+    ]
+  }
+{% endschema %}

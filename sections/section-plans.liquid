@@ -1,0 +1,194 @@
+{% assign _section = section.settings %}
+{% assign _blocks = section.blocks %}
+
+<script type="text/javascript" src="{{ 'custom-api-services.js' | asset_url }}"></script>
+<script>
+  async function onClickUpgradeRadPlus(buttonId, customerEmail, productTitle) {
+    try {
+      var buttonEl = document.querySelector('[data-id=' + buttonId +']');
+      var prevText = buttonEl.innerText;
+      buttonEl.disabled = true;
+      buttonEl.innerText = 'Redirecting...';
+
+      await apiServices.goToCheckout(customerEmail);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      buttonEl.disabled = false;
+      buttonEl.innerText = prevText;
+    }  
+  }
+  
+  function goToLink(href) {
+    window.location.href = href;
+  }
+</script>
+
+<div class="section-plans-secondary" style="background-color: {{ _section.background_color }}">
+  <div class="section__head">
+    {% if _section.title != blank %}
+      <h2 class="section__title" style="color: {{ _section.title_color }}">{{ _section.title }}</h2><!-- /.section__title -->
+    {% endif %}
+
+    {% if _section.description != blank %}
+      <div class="section__entry" style="color: {{ _section.content_color }}">
+        {{ _section.description }}
+      </div><!-- /.section__entry -->
+    {% endif %}
+  </div><!-- /.section__head -->
+
+  {% if _blocks != blank %}
+    <ul>
+      {% for block in _blocks %}
+        {% assign _block = block.settings %}
+
+        {% if _block.title != blank %}
+          <li>
+            <div class="membership bw-plan bw-plan-1 container-box {% if _block.plan_solid %}
+              membership--solid
+            {% endif %}" >
+              <label>{{ _block.title }}</label>
+
+              <div class="bw-plan-price membership__price">
+                {% if _block.plan_cost > 0 %}
+                  <span><small>$</small>{{ _block.plan_cost }}</span> / {{ 'plan.mo' | t }}
+                {% else %}
+                  <span>{{ 'plan.free' | t }}</span>
+                {% endif %}
+              </div>
+
+              {% if _block.membership != blank %}
+                <p class="membership__small-text">{{ _block.membership }}</p><!-- /.plan__small-text -->
+              {% endif %}
+
+              {% if _block.content != blank %}
+                <div class="membership__description bw-plan-description">
+                  {% assign content =  _block.content | split: '<br/>' %}
+
+                  {% if content.size > 1 %}
+                    <ul>
+                      {% for element in content %}
+                        <li>{{ element }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    {{ content }}
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              {% if _block.button_label != blank or _block.product_title %}
+                <button data-id="{{_block.button_id}}" 
+                        class="membership__button button-primary bw-plan-atc" 
+                        {% if _block.button_url != nil %}
+                        onclick="goToLink('{{_block.button_url}}')"
+                        {% else %}
+                        onclick="onClickUpgradeRadPlus('{{_block.button_id}}','{{customer.email}}', '{{_block.product_title}}')"
+                        {% endif %}
+                        >
+                  {{ _block.button_label }}
+              </button>
+              {% endif %}
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% render 'started' content: _section.started_content, url: _section.started_url, modifier: 'started--block', background: _section.background_color, color: _section.content_color %}
+</div>
+
+{% schema %}
+{
+  "name": "Plans",
+  "settings": [
+  {
+    "type": "color",
+    "id": "background_color",
+    "label": "Background color"
+  },
+  {
+    "type": "color",
+    "id": "content_color",
+    "label": "Content color"
+  },
+  {
+    "type": "text",
+    "id": "title",
+    "label": "Title"
+  },
+  {
+    "type": "color",
+    "id": "title_color",
+    "label": "Title color"
+  },
+  {
+    "type": "richtext",
+    "id": "description",
+    "label": "Description"
+  },
+  {
+    "type": "text",
+    "id": "started_content",
+    "label": "Outro content"
+  },
+  {
+    "type": "url",
+    "id": "started_url",
+    "label": "Outro link"
+  }],
+  "max_blocks": 4,
+  "blocks": [
+  {
+    "type": "text",
+    "name": "Plan",
+    "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Plan type"
+    },
+    {
+      "type": "number",
+      "id": "plan_cost",
+      "label": "Plan Cost"
+    },
+    {
+     "type": "text",
+     "id": "membership",
+     "label": "Membership"
+    },
+    {
+     "type": "richtext",
+     "id": "content",
+     "label": "Content"
+    },
+    {
+     "type": "text",
+     "id": "button_label",
+     "label": "Button label"
+    },
+    {
+     "type": "url",
+     "id": "button_url",
+     "label": "Button url"
+    },
+    {
+     "type": "checkbox",
+     "id": "plan_solid",
+     "label": "Plan style solid"
+    },
+	{
+     "type": "text",
+     "id": "product_tite",
+     "label": "Product title"
+    },
+	{
+     "type": "text",
+     "id": "button_id",
+     "label": "Button id"
+    }]
+  }]
+}
+{% endschema %}

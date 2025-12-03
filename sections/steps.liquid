@@ -1,0 +1,78 @@
+{%- assign _section = section.settings -%}
+{%- assign section_button_text = _section.button_text -%}
+{%- assign section_button_link = _section.button_link -%}
+
+<div class="step-rows">
+  {%- for block in section.blocks -%}
+    {%- assign _block = block.settings -%}
+    {%- assign block_image = _block.image -%}
+    {%- assign block_title = _block.title -%}
+    {%- assign block_content = _block.content -%}
+    <div class="step-row">
+      <div class="flex">
+        <div class="step__image">
+          <div class="image">
+            {% include 'image', _image: block_image, size: '600', alt: block_image.alt %}
+          </div><!-- /.image -->
+        </div><!-- /.step__image -->
+        <div class="step__num">
+          <span>{{forloop.index}}</span>
+        </div><!-- /.step__num -->
+        <div class="step__content">
+          {%- if block_title != blank -%}
+            <h3>{{block_title}}</h3>
+          {%- endif -%}
+          {{ block_content }}
+        </div><!-- /.step__content -->
+      </div><!-- /.flex -->
+    </div><!-- /.step-row -->
+  {%- endfor -%}
+</div><!-- /.step-rows -->
+
+<div class="step-btn">
+  {%- if section_button_text != blank and section_button_link != blank -%}
+    <a href="{{section_button_link}}" class="btn">{{section_button_text}}</a>
+  {%- endif -%}
+</div><!-- /.step-btn -->
+
+{% schema %}
+{
+  "name": "Steps",
+  "class": "step-wrapper page-width",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

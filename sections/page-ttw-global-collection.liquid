@@ -1,0 +1,67 @@
+{% assign _section = section.settings %}
+
+{%- if _section.collection_handle != blank -%}
+  {%- assign _collection = collections[_section.collection_handle] -%}
+
+  <section class="section-collection-global">
+    <div class="section__shell">
+      {%- if _section.title != blank -%}
+        <h2 class="section__title">{{ _section.title }}</h2><!-- /.section__title -->
+      {%- endif -%}
+
+      <div class="section__body">
+        <div class="slider-alt slider-collection-global">
+          <div class="slider__clip">
+            <div class="slider__slides js-slider-collection-global">
+              {% for _product in _collection.products %}
+                <div class="slider__slide">
+                  {% render 'product-item-alt' with _product as _product %}
+                </div><!-- /.slider__slide -->
+              {% endfor %}
+            </div><!-- /.slider__slides -->
+          </div><!-- /.slider__clip -->
+        </div><!-- /.slider -->
+      </div><!-- /.section__body -->
+
+      {% if _section.button_link != blank and _section.button_label != blank %}
+        <div class="section__actions">
+          <a href='{{ _section.button_link }}' class='btn section__btn'>{{ _section.button_label }}</a><!-- /.btn -->
+        </div><!-- /.section__actions -->
+      {% endif %}
+    </div><!-- /.section__shell -->
+  </section><!-- /.section-collection-global -->
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Global collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "collection",
+      "id": "collection_handle",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Global collection",
+      "category": "Taste the World"
+    }
+  ]
+}
+{% endschema %}

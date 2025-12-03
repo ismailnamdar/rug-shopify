@@ -1,0 +1,28 @@
+<div {% include 'image', _image: section.settings.image, size: '2048', background: true, inline: true, classes: 'page hero', sizes: '600,1024,2048' %}>
+  {% include 'image', _image: section.settings.image, size: '2048', sizes: '600,1024,2048', alt: page.title %}
+</div>
+<div class="page-width">
+  <h1 class="heading alt text-center">{{ page.title }}</h1>
+  <div class="introduction">
+    {{ section.settings.intro }}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Our Story: Intro",
+    "class": "our-story-page intro",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Hero Image"
+      },
+      {
+        "type": "richtext",
+        "id": "intro",
+        "label": "Introductory Paragraph"
+      }
+    ]
+  }
+{% endschema %}

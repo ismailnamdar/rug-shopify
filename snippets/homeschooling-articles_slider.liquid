@@ -1,0 +1,46 @@
+<section class="section-homeschooling-slider">
+  <div class="page-width page-width--larger">
+    {% if _block.title != blank %}
+      <header class="section__head">
+        <h2>{{ _block.title | escape }}</h2>
+      </header><!-- /.section__head -->
+    {% endif %}
+
+    <div class="section__content">
+      <div class="ico-arrow ico-arrow-prev">
+        {% render 'icon-slider-arrow' %}
+      </div><!-- /.ico-arrow ico-arrow-prev -->
+
+      <ul class="list-recipes">
+        {% for i in (1..8) %}
+          {% assign recipe_handle = 'article_' | append: i %}
+          {% assign recipe_title = recipe_handle | append: '_title' %}
+          {% assign recipe_image = recipe_handle | append: '_image' %}
+          {% assign recipe_link = recipe_handle | append: '_link' %}
+          <li data-link="{{_block[recipe_link]}}">
+            {%- comment -%}
+            {%- endcomment -%}
+            {% if _block[recipe_link] != blank and _block[recipe_link] != "#" %}
+              <a href="{{_block[recipe_link]}}">
+            {% endif %}
+            <figure>
+              {% include 'image', _image: _block[recipe_image], size: '480' %}
+            </figure>
+            {%- comment -%}
+            {%- endcomment -%}
+            {% if _block[recipe_link] != blank and _block[recipe_link] != "#"  %}
+              </a>
+            {% endif %}
+            <h3>
+              {{_block[recipe_title] }}
+            </h3>
+          </li>
+        {% endfor %}
+      </ul><!-- /.list-recipes -->
+
+      <div class="ico-arrow ico-arrow-next">
+        {% render 'icon-slider-arrow' %}
+      </div><!-- /.ico-arrow ico-arrow-next -->
+    </div><!-- /.section__content -->
+  </div><!-- /.page-width page-width--larger -->
+</section><!-- /.section-homeschooling-slider -->

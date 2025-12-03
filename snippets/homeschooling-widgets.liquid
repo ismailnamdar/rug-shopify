@@ -1,0 +1,45 @@
+<section class="section-homeschooling-widgets">
+  <div class="page-width page-width--larger">
+    {% if _block.title != blank %}
+      <header class="section__head">
+        <h2>{{ _block.title | escape }}</h2>
+      </header><!-- /.section__head -->
+    {% endif %}
+
+    <div class="section__content">
+      <ul class="list-widgets list-widgets--alt">
+        {% for i in (1..4) %}
+          {% assign widget_handle = 'widget_' | append: i %}
+          {% assign widget_title = widget_handle | append: '_title' %}
+          {% assign widget_image = widget_handle | append: '_image' %}
+          {% assign widget_text = widget_handle | append: '_text' %}
+          {% assign widget_url = widget_handle | append: '_url' %}
+
+          <li>
+            <div>
+              {% if _block[widget_image] != blank %}
+                <figure>
+                  {% include 'image', _image: _block[widget_image], size: '600', alt: _block[widget_image].alt %}
+                </figure>
+              {% endif %}
+
+              {% if _block[widget_title] != blank %}
+                {% if _block[widget_url] != blank %}
+                  <h3>{{ _block[widget_title] | escape | link_to: _block[widget_url] }}</h3>
+                {% else %}
+                  <h3>{{ _block[widget_title] | escape }}</h3>
+                {% endif %}
+              {% endif %}
+
+              {% if _block[widget_text] != blank %}
+                <p>
+                  {{ _block[widget_text] | newline_to_br }}
+                </p>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul><!-- /.list-widgets -->
+    </div><!-- /.section__content -->
+  </div><!-- /.page-width page-width--larger -->
+</section><!-- /.section-homeschooling-widgets -->

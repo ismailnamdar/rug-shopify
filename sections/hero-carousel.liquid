@@ -1,0 +1,253 @@
+<section id="hero-{{ section.id }}" class="hero hero-{{ section.id }}">
+  <style>
+    .hero-swiper-{{ section.id }} .swiper-wrapper { display: block; }  
+    .hero-{{ section.id }} { position: relative; }
+
+    /* Swiper: width only; height comes from active slide (autoHeight) */
+    .hero-{{ section.id }} .swiper { width: 100%; }
+
+    /* Each slide's height is defined by the image itself */
+    .hero-{{ section.id }} .swiper-slide {
+      position: relative;
+      overflow: visible;
+      background: transparent;
+    }
+
+    /* Media sits in normal flow so it defines slide height */
+    .hero-{{ section.id }} .slide-media { position: relative; display: block; }
+    .hero-{{ section.id }} .slide-media picture,
+    .hero-{{ section.id }} .slide-media img { display: block; width: 100%; }
+    .hero-{{ section.id }} .slide-media img {
+      height: 363px;
+      object-fit: cover;
+      object-position: center;
+      background: #000;
+    }
+    .hero-{{ section.id }} .image-others {
+      display: none;
+    }
+
+    /* Gradient limited to the left 66% of the slide area */
+    .hero-{{ section.id }} .slide-gradient::after{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      height:100%;
+      width:66.6667%;
+      background: linear-gradient(90deg, rgba(77, 77, 77, 0.40) 55.37%, rgba(179, 179, 179, 0.00) 100%);
+      pointer-events:none;
+    }
+    .hero-{{ section.id }} .no-gradient::after{ display:none; }
+
+    /* Fixed overlay content (doesn't swipe) */
+    .hero-{{ section.id }} .hero__content{
+      position:absolute;
+      display: flex;
+      inset:0;
+      align-content:center;
+      padding: 64px 97px 20px 97px;
+      z-index:3;
+      pointer-events:none; /* allow swipe gestures to pass through */
+    }
+    .hero-{{ section.id }} .hero__safe{ width:100%;  margin:0 auto; }
+    .hero-{{ section.id }} .hero__inner{
+      width: 490px;
+      color:#fff;
+      pointer-events:auto;
+    }
+    .hero-{{ section.id }} .hero__title {
+      margin:0 0 20px;
+      font-family: "KG HAPPY Solid", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0;
+      font-size: 32px;
+      line-height: normal;
+    }
+    .hero-{{ section.id }} .hero__sub {
+      margin:0 0 20px; font-size: clamp(16px, 2.2vw, 20px); opacity:.95;
+    }
+    .hero-{{ section.id }} .hero__cta{
+      min-width: 167px;
+      letter-spacing: 0px;
+    }
+
+    .hero-{{ section.id }} .swiper-pagination{
+      position:absolute;
+      bottom:18px !important;
+      left:50%;
+      transform:translateX(-50%);
+      height: 20px;
+      width:64px !important;      
+      padding:4px;
+      border-radius:9999px;
+      background:#ffffff; 
+      box-shadow:0 2px 8px rgba(0,0,0,.18);
+      z-index:4;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-{{ section.id }} .swiper-pagination .slick-dots {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      display: flex;
+      bottom: 0 !important;
+      transform: unset !important;
+      position: initial;
+      left: unset;
+    }
+
+    .hero-{{ section.id }} .swiper-pagination .slick-dots li {
+      display: flex;
+    }
+
+    .hero-{{ section.id }} .swiper-pagination .slick-dots button {
+      height: 12px !important;
+      width: 12px !important;
+      background-color: white;
+      border: 3px solid #F3576B;
+      box-sizing: border-box;
+    }
+
+    .hero-{{ section.id }} .swiper-pagination .slick-dots .slick-active button {
+      background-color: #F3576B;
+    }
+
+    @media (max-width: 768px){
+      .hero-{{ section.id }} .hero__content{
+        padding: 24px;
+        place-items: center;
+      }
+      .hero-{{ section.id }} .hero__inner{
+        width: 100%;
+        text-align: center;
+        place-items: center;
+        pointer-events: none;
+      }
+      .hero-{{ section.id }} .hero__title {
+        margin: 0 auto;
+        font-size: 20px;
+        width: 250px;
+      }
+      .hero-{{ section.id }} .hero__sub,
+      .hero-{{ section.id }} .hero__cta{
+        display: none !important;
+      }
+      .hero-{{ section.id }} .slide-gradient::after{
+        width: 100%;
+        background: rgba(77, 77, 77, 0.24);
+    }
+}
+  </style>
+
+  <div class="swiper hero-swiper-{{ section.id }}">
+    <div class="swiper-wrapper">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% assign d_img = block.settings.image %}
+          {% assign m_img = block.settings.image_mobile | default: block.settings.image %}
+          <div class="swiper-slide {% if forloop.index == 1 %}image-first{% else %}image-others{% endif %}" {{ block.shopify_attributes }}>
+            <div class="slide-media {% if block.settings.show_gradient %}slide-gradient{% else %}no-gradient{% endif %}">
+              <picture>
+                {% if m_img != blank %}<source media="(max-width: 768px)" srcset="{{ m_img | image_url: width: 800 }}">{% endif %}
+                <source media="(max-width: 1000px)" srcset="{{ d_img | image_url: width: 1400 }}">
+                <source media="(max-width: 1440px)" srcset="{{ d_img | image_url: width: 1800 }}">
+                {% if d_img != blank %}
+                  <img src="{{ d_img | image_url: width: 2400 }}" width="100%" height="363" loading="{% if forloop.index == 1 %}eager{% else %}lazy{% endif %}" alt="{{ block.settings.alt | escape }}">
+                {% else %}
+                  <img src="https://cdn.shopify.com/s/files/1/0000/0001/files/placeholder.svg?v=1" width="" height="" alt="Slide image placeholder">
+                {% endif %}
+              </picture>
+            </div>
+            <!-- Fixed overlay (one input for all slides) -->
+            <div class="hero__content">
+              <div class="hero__safe">
+                <div class="hero__inner">
+                  {% if block.settings.heading != blank %}<h1 class="hero__title">{{ block.settings.heading }}</h1>{% endif %}
+                  {% if block.settings.subheading != blank %}<p class="hero__sub">{{ block.settings.subheading }}</p>{% endif %}
+                  {% if block.settings.btn_label != blank %}<a class="btn hero__cta" href="{{ block.settings.btn_link | default: '#' }}">{{ block.settings.btn_label }}</a>{% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="swiper-slide">
+          <div class="slide-media slide-gradient">
+            <img src="https://cdn.shopify.com/s/files/1/0000/0001/files/placeholder.svg?v=1" width="" height="" alt="">
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="swiper-pagination"></div>
+    
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var $track = $(".hero-swiper-{{ section.id }} .swiper-wrapper");
+      var $dotsTarget = $(".hero-swiper-{{ section.id }} .swiper-pagination");
+      const $otherImages = $(".hero-swiper-{{ section.id }} .image-others");
+      $otherImages.css({
+        "display": "initial",
+      });
+      
+      $track.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: false,
+        dots: true,
+        appendDots: $dotsTarget, // reuse your existing pagination container
+        autoplay: {{ section.settings.autoplay }},
+        autoplaySpeed: {{ section.settings.delay2 | default: 4000 }},
+        pauseOnHover: false,
+        pauseOnDotsHover: true,
+        swipe: true,
+        adaptiveHeight: false,
+        // Optional: smooth cross-fade hero
+        fade: false,
+        cssEase: 'linear'
+        });
+      });
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Carousel",
+  "tag": "section",
+  "class": "section-hero-swiper",
+  "settings": [
+    { "type": "checkbox", "id": "loop", "label": "Loop slides", "default": true },
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": true },
+    { "type": "range", "id": "delay2", "label": "Autoplay delay (ms)", "min": 1000, "max": 9000, "step": 1000, "default": 1000 },
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Desktop image" },
+        { "type": "image_picker", "id": "image_mobile", "label": "Mobile image (optional)" },
+        { "type": "text", "id": "alt", "label": "Image alt text", "default": "Hero image" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Delicious Learning, Delivered Monthly" },
+        { "type": "text", "id": "subheading", "label": "Subheading", "default": "The Original Cooking Club for Kids" },
+        { "type": "text", "id": "btn_label", "label": "Button label", "default": "Join A Club" },
+        { "type": "url",  "id": "btn_link",  "label": "Button link" },
+        { "type": "checkbox", "id": "show_gradient", "label": "Enable left gradient overlay", "default": true }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    { "name": "Hero Carousel", "blocks": [ { "type": "slide" }, { "type": "slide" }, { "type": "slide" } ] }
+  ]
+}
+{% endschema %}

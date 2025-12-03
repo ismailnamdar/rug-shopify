@@ -1,0 +1,76 @@
+<div class="cookie" style="display: none;">{{ section.settings.cookie }}</div>
+<h2>{{ section.settings.title }}</h2>
+<div class="content">{{ section.settings.content }}</div>
+<!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup">
+  <form method="post" id="popupForm" name="mc-embedded-subscribe-form" class="validate mcForm subscribe-form-lead" target="_blank" novalidate>
+    <div id="mce-responses" class="clear success-message">
+      <div class="response" id="mce-popup-error-response" style="display: none;"></div>
+    </div>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_5e82c510b3bed646057235346_0fd431310d" tabindex="-1" value=""></div>
+    <input type="email" value="" name="EMAIL" class="required email desktopEmail" id="mce-EMAIL" placeholder="{{ section.settings.placeholder }}">
+    <input type="submit" value="{{ section.settings.cta }}" name="subscribe" id="mc-embedded-subscribe" class="btn koriSendLeadConversion">
+  </form>
+  <p class="small-print">{{ section.settings.small-print }}</p>
+  <p class="no-thanks">{{ section.settings.no-thanks }}</p>
+</div>
+<!--End mc_embed_signup-->
+
+<style>
+#popup {
+  background-image: url('{{ section.settings.background-image | img_url: 'master' }}');
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Popup",
+    "class": "popup",
+    "settings": [
+      {
+        "type": "text",
+        "id": "cookie",
+        "label": "Cookie Expiration Time (Days)",
+        "info": "Enter \"1\" for the popup to appear every 1 day, \"7\" for every 7 days, etc.",
+        "default": "7"
+      },
+      {
+        "type": "image_picker",
+        "id": "background-image",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Newsletter Description"
+      },
+      {
+        "type": "text",
+        "id": "placeholder",
+        "label": "Email Placeholder"
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "Submit Button Text"
+      },
+      {
+        "type": "text",
+        "id": "small-print",
+        "label": "Small Print"
+      },
+      {
+        "type": "text",
+        "id": "no-thanks",
+        "label": "\"No Thanks\" Text"
+      }
+    ]
+  }
+
+{% endschema %}

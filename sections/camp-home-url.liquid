@@ -1,0 +1,18 @@
+<a class="blog-title-link" href="{{ section.settings.description }}">
+  <h1 class="section__title heading text-center">{{ blog.title }}</h1>
+</a>
+
+{% schema %}
+  {
+    "name": "Camp Home URL",
+    "class": "blog-index",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Copy and past url for homepage of blog",
+        "default": "Copy and paste full address here"
+      }
+    ]
+  }
+{% endschema %}

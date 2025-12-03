@@ -1,0 +1,32 @@
+<!-- /snippets/social-sharing.liquid -->
+<div class="social-sharing flex flex-center{% unless template contains 'article' %} align-center{% endunless %}">
+  <span>Share This</span>
+
+  {% if settings.share_facebook %}
+    <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
+      <i class="fa fa-facebook"></i>
+    </a>
+  {% endif %}
+
+  {% if settings.share_twitter %}
+    <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}">
+      <i class="fa fa-twitter"></i>
+    </a>
+  {% endif %}
+
+  {% if settings.share_pinterest %}
+    <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | img_url: '1024x1024' }}&amp;description={{ share_title | url_param_escape }}">
+      <i class="fa fa-pinterest-p"></i>
+    </a>
+  {% endif %}
+
+  <a href="#" class="link-copy">
+    {{ 'share.svg' | asset_url | img_tag }}
+
+    <span class="tooltip">{{ 'blogs.article.copy' | t }}</span>
+  </a>
+
+  <a href="#" class="link-print" onclick="javascript:window.print()">
+    {{ 'print.svg' | asset_url | img_tag }}
+  </a>
+</div>

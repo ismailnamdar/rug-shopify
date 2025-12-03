@@ -1,0 +1,72 @@
+{% assign _section = section.settings %}
+
+<div class="hero-taste-the-world" style=" {% if _section.background_image != blank %}background-image: url({{ _section.background_image | img_url: 'master' }});{% endif %}background-color:{{ _section.background_color }}">
+  <div class="hero__content-wrapper">
+    <div class="hero__content">
+      {% if _section.strapline != blank %}
+        <div class="hero__strapline">
+          {{- _section.strapline -}}
+        </div><!-- /.section__strapline -->
+      {% endif %}
+
+      {%- if _section.title != blank -%}
+        <h2 class="hero__title">
+          {{- _section.title -}}
+        </h2><!-- /.hero__title -->
+      {%- endif -%}
+
+      {%- if _section.content != blank -%}
+        <div class="hero__description">
+          {{- _section.content -}}
+        </div><!-- /.hero__description -->
+      {%- endif -%}
+    </div><!-- /.hero__content -->
+  </div><!-- /.hero__content-wrapper -->
+
+  <div class="hero__image" style="{% if _section.main_image != blank %}background-image: url({{ _section.main_image | img_url: 'master' }});{% endif %}"></div><!-- /.collection__image -->
+</div><!-- /.collection-hero -->
+
+{% schema %}
+{
+  "name": "Taste the world hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "strapline",
+      "label": "Text above title"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#DAF7FA"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Taste the world hero",
+      "category": "Taste the World"
+    }
+  ]
+}
+{% endschema %}

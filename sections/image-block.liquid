@@ -1,0 +1,54 @@
+<div class="image-block">
+  {% render 'image', _image: section.settings.image, alt: section.settings.image.alt %}
+</div>
+
+<style>
+  #shopify-section-{{section.id}} .image-block {
+    margin-top: {{section.settings.margin_top}}px;
+    margin-bottom: {{section.settings.margin_bottom}}px
+  }
+
+  @media screen and (max-width: 875px) {
+    #shopify-section-{{section.id}} .image-block {
+        margin-top: {{section.settings.margin_top | times: 0.75}}px;
+        margin-bottom: {{section.settings.margin_bottom | times: 0.75}}px
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "Image Block",
+    "class": "page-width",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin Top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin Bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Block",
+        "category": "Image Block"
+      }
+    ]
+  }
+{% endschema %}

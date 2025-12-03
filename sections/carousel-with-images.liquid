@@ -1,0 +1,128 @@
+
+<div class="gallery">
+  {% if section.settings.title != blank %}
+    <h2 class="h2">{{section.settings.title}}</h2>
+  {% endif %}
+  <div class="gallery__container">
+    {% for block in section.blocks %}
+      <div class="gallery__element">
+        {% render 'image', _image: block.settings.image, alt: block.settings.image.alt, classes: "aspect-ratio-box" %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .gallery {
+    padding: 16px 0;
+  }
+  .gallery h2.h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;
+    padding: 0 40px;
+    text-align: center;
+    margin-bottom: 2.4rem;
+  }
+  .gallery__element { 
+    margin: 0 8px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .gallery__element img {
+    /* border: 1px solid rgba(77, 77, 77, 0.19971); */
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .template-page .gallery {
+      margin-top: 35px;
+    }
+
+    .template-page.template--page-dtc-landing .gallery {
+      margin-top: 0;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    $("#shopify-section-{{section.id}} .gallery__container").slick({
+      slidesToShow: 4,
+      // slidesToScroll: 1,
+      autoplay: true,
+      infinite: true,
+      centerMode: true,
+      autoplaySpeed: {{section.settings.rotation_speed | times: 1000 | json }},
+      infinite: true,
+      arrows: false,
+      centerMode: true,
+      centerPadding: '120px',
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    })
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Carousel with images",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "rotation_speed",
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "unit": "sec",
+        "label": "Animation Speed",
+        "default": 1
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Carousel with images",
+        "category": "Homepage"
+      }
+    ]
+  }
+{% endschema %}

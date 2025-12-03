@@ -1,0 +1,281 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "417965fe-49c9-4985-abe9-bf27380dc2ba": {
+      "type": "homepage-banner",
+      "blocks": {
+        "2ec98f83-002b-49fc-9ad6-472e5eef7077": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/This_Month_s_Kits_Desktop_Header_-_sm.png",
+            "image_mobile": "shopify://shop_images/This_Month_s_Kits_Mobile_Header_-sm.png",
+            "image_max_width": "100",
+            "content": "",
+            "text": "Join the Club",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "2ec98f83-002b-49fc-9ad6-472e5eef7077"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_mobile": true,
+        "show_desktop": true
+      }
+    },
+    "058acb29-b0ad-4d0b-87c8-855920c713ba": {
+      "type": "this-months-kit",
+      "blocks": {
+        "276c38e0-010d-4ee1-ae57-ad1a01425f6e": {
+          "type": "top_row",
+          "settings": {
+            "title": "Gingerbread Muffins",
+            "image": "shopify://shop_images/Recipe-1-CC-Holiday-Kitchen-0_12.png",
+            "block_width": 185
+          }
+        },
+        "6303add0-4a1d-4168-a095-b99b635ab790": {
+          "type": "top_row",
+          "settings": {
+            "title": "Festive Pizza Wreath",
+            "image": "shopify://shop_images/Recipe-2-CC-Holiday-Kitchen-0_12.png",
+            "block_width": 200
+          }
+        },
+        "801d7dea-7aa8-43b7-ba5e-800b0f976afe": {
+          "type": "top_row",
+          "settings": {
+            "title": "Chocolate Peppermint Crunch Cookies",
+            "image": "shopify://shop_images/Recipe-3-CC-Holiday-Kitchen-0_12.png",
+            "block_width": 185
+          }
+        },
+        "746985eb-1923-4f34-96be-f5f30b377c8f": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Prep Bowls",
+            "image": "shopify://shop_images/Tool-CC-Holiday-Kitchen-0_12.png",
+            "block_width": 155
+          }
+        },
+        "4a3d14d6-460d-4007-b0c8-3df63728a80f": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Apron Patch",
+            "image": "shopify://shop_images/Patch_CC-Holiday-Kitchen-0_12.png",
+            "block_width": 155
+          }
+        },
+        "b99345dd-b8bf-4314-be5a-5ec79c192b8c": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Table Talk Cards",
+            "image": "shopify://shop_images/Table-Talk-CC-Holiday-Kitchen-0_12.png",
+            "block_width": 155
+          }
+        }
+      },
+      "block_order": [
+        "276c38e0-010d-4ee1-ae57-ad1a01425f6e",
+        "6303add0-4a1d-4168-a095-b99b635ab790",
+        "801d7dea-7aa8-43b7-ba5e-800b0f976afe",
+        "746985eb-1923-4f34-96be-f5f30b377c8f",
+        "4a3d14d6-460d-4007-b0c8-3df63728a80f",
+        "b99345dd-b8bf-4314-be5a-5ec79c192b8c"
+      ],
+      "custom_css": [],
+      "settings": {
+        "top_title": "This Month's Kits:",
+        "top_description": "",
+        "title_color": "",
+        "color": "#c6e8ec",
+        "icon": "shopify://shop_images/Cook_Club_Icon_-_chef_hat_4d4d4d_d83dfdb7-3fb3-4000-b20b-0550a2b160a4.png",
+        "icon_subtitle": "Cooking Club",
+        "title": "Holiday Kitchen",
+        "description": "<p>Celebrate the season! Pop gingerbread muffins in the oven. Shape an edible wreath full of pizza flavor. Bake chewy chocolate cookies with candy cane crunch and assemble edible gifts for family and friends! Sign up by 12/18 to receive this kit.</p>",
+        "button_label": "Join the Cooking Club",
+        "button_url": "https://www.raddishkids.com/pages/cooking-kits?subscription",
+        "title_top_row": "Cook",
+        "title_bottom_row": "Collect",
+        "element_id": ""
+      }
+    },
+    "22a99ef1-de2f-4640-a92e-f631f12a972f": {
+      "type": "this-months-kit",
+      "blocks": {
+        "27f16d44-0c0c-4554-8b49-5299a610e68c": {
+          "type": "top_row",
+          "settings": {
+            "title": "<b>Quick Bake: </b><br>Holiday Shortbread Cookies",
+            "image": "shopify://shop_images/Quick_Bake_BC_Holiday_Classics_02_12.png",
+            "block_width": 200
+          }
+        },
+        "26d81ad5-95e5-4ced-883a-c0c9a618e789": {
+          "type": "top_row",
+          "settings": {
+            "title": "<b>Star Bake: </b><br>Chocolate Yule Log",
+            "image": "shopify://shop_images/StarBake-_BC_Holiday_Classics_02_12.png",
+            "block_width": 200
+          }
+        },
+        "ba5a8328-64c4-4281-80bd-b9834ca7e127": {
+          "type": "top_row",
+          "settings": {
+            "title": "<b>Baker’s Bonus:</b><br>Holiday Trifle",
+            "image": "shopify://shop_images/Baker_s-Bonus-Cake-Creations-_BC-Holiday_Classics_02_12.png",
+            "block_width": 200
+          }
+        },
+        "c76d01b4-f50c-468d-bb8f-6b238fe8d4e5": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Offset Spatula",
+            "image": "shopify://shop_images/Tool_BC_Holiday_Classics_02_12.png",
+            "block_width": 110
+          }
+        },
+        "4f48e823-e07b-4738-8d6a-aadac71a42d9": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Apron Patch",
+            "image": "shopify://shop_images/Patch_BC_Holiday_Classics_02_12.png",
+            "block_width": 110
+          }
+        },
+        "d70428b7-e7ba-4743-ab4b-f7eab63895fc": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Table Talk Cards",
+            "image": "shopify://shop_images/Table-Talk-BC-Holiday-Classics-0_12.png",
+            "block_width": 110
+          }
+        },
+        "abe3dec1-9dfc-4271-9fe7-9655ed9422b2": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Holly Sprinkles",
+            "image": "shopify://shop_images/Decoration_BC-Holiday_Classics_02_12.png",
+            "block_width": 110
+          }
+        }
+      },
+      "block_order": [
+        "27f16d44-0c0c-4554-8b49-5299a610e68c",
+        "26d81ad5-95e5-4ced-883a-c0c9a618e789",
+        "ba5a8328-64c4-4281-80bd-b9834ca7e127",
+        "c76d01b4-f50c-468d-bb8f-6b238fe8d4e5",
+        "4f48e823-e07b-4738-8d6a-aadac71a42d9",
+        "d70428b7-e7ba-4743-ab4b-f7eab63895fc",
+        "abe3dec1-9dfc-4271-9fe7-9655ed9422b2"
+      ],
+      "settings": {
+        "top_title": "",
+        "top_description": "",
+        "title_color": "",
+        "color": "#f9bba4",
+        "icon": "shopify://shop_images/Bake_Club_Icon_4d4d4d_24f9c3c9-c22d-4601-9073-bb7ffef3c023.png",
+        "icon_subtitle": "Baking Club",
+        "title": "Holiday Classics",
+        "description": "<p>Celebrate with delicious seasonal desserts! In the Quick Bake, cut and frost shortbread to look like tiny trees. Roll and decorate a spectacular Yule log cake in the Star Bake, decked with holly sprinkles. Sign up by 12/18 to receive this kit.</p>",
+        "button_label": "Join the Baking Club",
+        "button_url": "https://www.raddishkids.com/pages/cooking-kits?club=B",
+        "title_top_row": "Bake",
+        "title_bottom_row": "Collect & Decorate",
+        "element_id": ""
+      }
+    },
+    "9cb4f8f5-f572-4a72-bb2d-277d3e29c976": {
+      "type": "this-months-kit",
+      "blocks": {
+        "276c38e0-010d-4ee1-ae57-ad1a01425f6e": {
+          "type": "top_row",
+          "settings": {
+            "title": "Build-Your-Own Niçoise Salad",
+            "image": "shopify://shop_images/Recipe_1_GEC_Le_French_Cafe_02_12.png",
+            "block_width": 185
+          }
+        },
+        "6303add0-4a1d-4168-a095-b99b635ab790": {
+          "type": "top_row",
+          "settings": {
+            "title": "Croque Monsieur Sandwich",
+            "image": "shopify://shop_images/Recipe_2_GEC_Le_French_Cafe_02_12.png",
+            "block_width": 200
+          }
+        },
+        "801d7dea-7aa8-43b7-ba5e-800b0f976afe": {
+          "type": "top_row",
+          "settings": {
+            "title": "Chocolate-Dipped Cream Puffs",
+            "image": "shopify://shop_images/Recipe_3_GEC_Le_French_Cafe_02_12.png",
+            "block_width": 185
+          }
+        },
+        "746985eb-1923-4f34-96be-f5f30b377c8f": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Ice Cream Scoop",
+            "image": "shopify://shop_images/Tool_GEC_Le_French_Cafe_02_12.png",
+            "block_width": 155
+          }
+        },
+        "4a3d14d6-460d-4007-b0c8-3df63728a80f": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Apron Patch",
+            "image": "shopify://shop_images/Patch_GEC_Le_French_Cafe_02_12.png",
+            "block_width": 155
+          }
+        },
+        "b99345dd-b8bf-4314-be5a-5ec79c192b8c": {
+          "type": "bottom_row",
+          "settings": {
+            "title": "Table Talk Cards",
+            "image": "shopify://shop_images/Table_Talk_GEC_Le_French_Cafe_02_12.png",
+            "block_width": 155
+          }
+        }
+      },
+      "block_order": [
+        "276c38e0-010d-4ee1-ae57-ad1a01425f6e",
+        "6303add0-4a1d-4168-a095-b99b635ab790",
+        "801d7dea-7aa8-43b7-ba5e-800b0f976afe",
+        "746985eb-1923-4f34-96be-f5f30b377c8f",
+        "4a3d14d6-460d-4007-b0c8-3df63728a80f",
+        "b99345dd-b8bf-4314-be5a-5ec79c192b8c"
+      ],
+      "settings": {
+        "top_title": "",
+        "top_description": "",
+        "title_color": "",
+        "color": "#c2e790",
+        "icon": "shopify://shop_images/Global_Club_Icon_4d4d4d_85e8be2b-dabf-4cb3-bfdc-af4d47be0973.png",
+        "icon_subtitle": "Global Eats Club",
+        "title": "Le French Café",
+        "description": "<p>Celebrate the culture and cuisine of France. Make a gourmet grilled cheese, build a DIY French salad, and prepare French pastry dough filled with ice cream. Learn French words to use as you cook. Sign up by 12/18 to receive this kit.</p>",
+        "button_label": "Join the Global Eats Club",
+        "button_url": "https://www.raddishkids.com/pages/cooking-kits?club=G",
+        "title_top_row": "Cook",
+        "title_bottom_row": "Collect",
+        "element_id": ""
+      }
+    }
+  },
+  "order": [
+    "417965fe-49c9-4985-abe9-bf27380dc2ba",
+    "058acb29-b0ad-4d0b-87c8-855920c713ba",
+    "22a99ef1-de2f-4640-a92e-f631f12a972f",
+    "9cb4f8f5-f572-4a72-bb2d-277d3e29c976"
+  ]
+}

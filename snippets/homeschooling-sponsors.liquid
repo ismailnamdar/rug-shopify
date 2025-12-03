@@ -1,0 +1,75 @@
+<section class="section-homeschooling-sponsors section-homeschooling-slider" style="background: #E4F4F6;">
+  <div class="page-width page-width--larger">
+    {% if _block.title != blank %}
+      <header class="section__head">
+        <h2>{{ _block.title | escape }}</h2>
+      </header><!-- /.section__head -->
+    {% endif %}
+    {% if _block.description != blank %}
+      <div class="section__description">
+        {{ _block.description }}
+      </div><!-- /.section__head -->
+    {% endif %}
+    <div class="sponsor-images-container">
+      {% for i in (1..6) %}
+        {% assign sponsor_handle = 'sponsor_' | append: i %}
+        {% assign sponsor_image = sponsor_handle | append: '_image' %}
+        {% assign sponsor_link = sponsor_handle | append: '_link' %}
+
+
+        {% if _block[sponsor_link] != blank and _block[sponsor_link] != "#" %}
+          <a href="{{_block[sponsor_link]}}">
+        {% endif %}
+
+        <figure data-link="{{sponsor_link}}">
+          {% include 'image', _image: _block[sponsor_image], size: '480' %}
+        </figure>
+
+        {% if _block[sponsor_link] != blank and _block[sponsor_link] != "#" %}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section><!-- /.section-homeschooling-slider -->
+
+<style>
+  .section__description {
+    font-size: 18px;
+    text-align: center;
+    max-width: 570px;
+    margin: 0 auto;
+    font-weight: 300;
+    color: #4D4D4D;
+}
+
+.sponsor-images-container {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* max-width: 350px; */
+}
+
+.sponsor-images-container figure {
+    max-width: 350px;
+}
+
+section.section-homeschooling-sponsors {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.section-homeschooling-slider .section__head {
+  padding-top: 24px;
+  margin-bottom: 8px;
+}
+
+.section-homeschooling-slider .section__head h2 {
+    font-size: 24px;
+}
+
+section.section-homeschooling-sponsors.section-homeschooling-slider {
+    padding: 0 10px;
+}
+</style>

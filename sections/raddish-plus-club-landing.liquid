@@ -1,0 +1,74 @@
+<div class="raddish-plus-landing {% unless section.settings.show_mobile %} hidden-xs {% endunless %}{% unless section.settings.show_desktop %}hidden-sm hidden-md hidden-lg{% endunless %}">
+  <h2 class="h2">{{section.settings.title}}</h2>
+  <div class="inside-the-kit-landing__description">{{section.settings.description}}</div>
+  {% render 'image', _image: section.settings.raddish_plus_image, alt: section.settings.raddish_plus_image.alt, classes: "" %}
+</div>
+
+<style>
+  .raddish-plus-landing {
+    padding: 25px 0 0;
+  }
+  .raddish-plus-landing h2,
+  .inside-the-kit-landing__description {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .inside-the-kit-landing__description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    padding: 0 30px;
+  }
+
+  .raddish-plus-landing h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 36px;
+    text-align: center;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Raddish Plus - Mobile",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_mobile",
+      "label": "Show Mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desktop",
+      "label": "Show Desktop",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Raddish+ digital library included!"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "raddish_plus_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Raddish+",
+      "category": "Landing"
+    }
+  ]
+}
+{% endschema %}

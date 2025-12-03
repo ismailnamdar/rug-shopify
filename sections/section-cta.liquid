@@ -1,0 +1,110 @@
+{%- assign _section = section.settings -%}
+
+{%- if _section.content != blank -%}
+  <section class="section-cta">
+    <div class="page-width">
+      <div class="section__inner" style="background-color: {{ _section.border_color }}">
+        <div class="section__content">
+          {%- if _section.main_image != blank -%}
+            <div class="section__image" style="max-width: {{ _section.main_image_width }}px">
+              {% include 'image', _image: _section.main_image, size: '600', alt: _section.main_image.alt %}
+            </div><!-- /.section__image -->
+          {%- endif -%}
+
+          <div class="section__aside">
+            {%- if _section.image_title != blank -%}
+              <div class="section__image-title" style="max-width: {{ _section.title_image_width }}px">
+                {% include 'image', _image: _section.image_title, size: '600', alt: _section.image_title.alt %}
+              </div><!-- /.section__image-title -->
+
+            {% elsif _section.title != blank %}
+              <h2 class="section__title">
+                {{- _section.title -}}
+              </h2><!-- /.section__title -->
+            {%- endif -%}
+
+            {%- if _section.content != blank -%}
+              <div class="section__entry">
+                {{- _section.content -}}
+              </div><!-- /.section__entry -->
+            {%- endif -%}
+
+            {%- if _section.link_url != blank and _section.link_label != blank -%}
+              <a href='{{ _section.link_url }}' class='section__link'>{{ _section.link_label }}</a>
+            {%- endif -%}
+          </div><!-- /.section__aside -->
+        </div><!-- /.section__content -->
+      </div><!-- /.section__shell -->
+    </div><!-- /.page-width -->
+  </section><!-- /.section-cta -->
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Section Call To Action",
+  "settings": [
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#F79F7E"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main image"
+    },
+    {
+      "type": "range",
+      "id": "main_image_width",
+      "min": 250,
+      "max": 350,
+      "step": 5,
+      "unit": "px",
+      "label": "Main image width",
+      "default": 300
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_title",
+      "label": "Title image"
+    },
+    {
+      "type": "range",
+      "id": "title_image_width",
+      "min": 250,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Title image width",
+      "default": 270
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Call To Action",
+      "category": "Section CTA"
+    }
+  ]
+}
+{% endschema %}

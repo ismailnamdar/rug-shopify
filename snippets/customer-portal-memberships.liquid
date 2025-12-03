@@ -1,0 +1,37 @@
+{% if customer.orders.size != 0 %}
+    {% paginate customer.orders by 250 %}
+        <div class="hide">
+            {% for order in customer.orders %}
+                {% assign order_delivered = false %}
+                {% for tag in order.tags %}
+                    {% if tag == 'order_delivered' %}
+                        {% assign order_delivered = true %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if order_delivered %}
+                    {% assign status = "Delivered" %}
+                {% elsif order.line_items.first.fulfillment.tracking_number %}
+                    {% assign status = order.financial_status | replace: 'paid', 'Shipped' | replace: 'refunded', 'Refunded' | replace: 'partially_refunded', 'Partially Refunded' | replace: 'partially_Refunded', 'Partially Refunded' %}
+                {% elsif order.cancelled %}
+                    {% assign status = "Cancelled" %}
+                {% else %}
+                    {% assign status = "Processing" %}
+                {% endif %}
+                
+                <div class="shipments-table" order-number="{{- order.order_number -}}">
+                    <span data-column="date">{{ order.created_at | date: "%B %d, %Y" }}</span>
+                    <span class="date-abbr" data-column="date">{{ order.created_at | date: "%b %d, %Y" }}</span>
+                    <span data-column="status">{{ status }}</span>
+                    <span data-column="details"><a href="{{ order.customer_url }}">View Details</a></span>
+                </div>
+        
+        {% endfor %} {% comment %} order in customer.orders {% endcomment %}
+        </div>
+    {% endpaginate %}
+{% endif %} {% comment %} customer.orders.size != 0 {% endcomment %}
+
+
+  <script>
+    var customerID = {{ customer.id }};
+  </script>

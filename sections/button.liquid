@@ -1,0 +1,35 @@
+
+<div class="button-section section__inner">
+  <a class="btn" style="padding: 16px 20px" href="{{section.settings.url}}">{{section.settings.title}}</a>
+</div>
+
+<style>
+.button-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Button",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Label"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Url"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Button"
+      }
+    ]
+  }
+{% endschema %}
