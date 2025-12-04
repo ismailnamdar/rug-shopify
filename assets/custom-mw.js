@@ -1,4 +1,14 @@
-const swachesSizeHandler = (cusClass, value) => {
+const swachesSizeHandler = (swatchType, cusClass, value) => {
+	console.log({swatchType, cusClass, value});
+	// Adjust custom rug
+	try {
+		if (CanvasRugEditor && swatchType.toLowerCase() === 'shape') {
+			CanvasRugEditor.setShape(value.toLowerCase())
+		}
+	} catch (error) {
+		console.error(error);
+	}
+
 	const swatchElements = document.getElementsByClassName('all-sizes-cls');
 	swatchElements.forEach(element => {
 		element.classList.remove('soldout')
@@ -26,6 +36,12 @@ const swachesSizeHandler = (cusClass, value) => {
 	}
 }
 
+function swatchShapeHandler (swatchType, value) {
+	if (swatchType.toLowerCase() === 'size' && CanvasRugEditor != null) {
+		CanvasRugEditor.setSize(value.toUpperCase());
+	}
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
 	function isMobile() { return window.innerWidth <= 768 }
@@ -47,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		elem.addEventListener("change", function () {
 			setTimeout(() => {
 				copyElementsOnMobile();
-				document.querySelector(".ctm_prd_price_mobile").innerHTML = document.querySelector("[data-price-ui]").innerHTML;
+				$(".ctm_prd_price_mobile").html(document.querySelector("[data-price-ui]").innerHTML);
 			}, 100);
 		})
 	})
@@ -173,7 +189,7 @@ if (document.body.classList.contains("product")) {
 		const ATC_button = document.querySelector('.product-block--form');
 		if (ATC_button) stickyAtcBtn(ATC_button);
 
-		document.querySelector(".ctm_prd_price_mobile").innerHTML = document.querySelector("[data-price-ui]").innerHTML;
+		$(".ctm_prd_price_mobile").html(document.querySelector("[data-price-ui]").innerHTML);
 		classAddToComment();
 		document.querySelector(".collapsible-tab__heading")?.click();
 

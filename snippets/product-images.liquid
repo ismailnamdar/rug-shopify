@@ -136,7 +136,8 @@
                       data-image-id="{{ product.media[forloop.index0].id }}"
                       data-index="{{ forloop.index0 }}"
                       data-sizes="{% if gallery_click_to_zoom %}100vw{% else %}auto{% endif %}"
-                      data-aspectratio="{{ media.width }}/{{ media.height }}"
+                      data-aspectratio="1/1"
+                      {% comment %}data-aspectratio="{{ media.width }}/{{ media.height }}"{% endcomment %}
                       data-src="{{ media | img_url: '1200x' }}"
                       data-srcset="{{ srcset }}"
                       height="{{ media.height }}"
@@ -155,6 +156,7 @@
                         height: media.height,
                         srcset: srcset,
                         data-image-id: product.media[forloop.index0].id,
+                        data-aspectratio: '1/1',
                         data-index: forloop.index0,
                         data-zoom-src: image_5000x
                     }}
@@ -245,6 +247,9 @@
 </div>
 
 <style>
+  .product-gallery__image {
+    aspect-ratio: 1/1;
+  }
   .aded_head,
   .aded_head_mobile {
     text-align: center;

@@ -276,7 +276,7 @@ button#zakeke-product-button {
 }
 
 .product-main .swatch label {
-  padding: 8px 16px;
+  padding: 8px 10px;
   font-size: 14px;
   font-weight: 600;
   text-transform: unset;
@@ -702,7 +702,7 @@ div.cart_content form{ margin: 10px 0 0;}
   }
 
   .shopify-section.shopify-section--product-template.content .product-main .gallery-wrap.gallery-thumbnails--bottom .product_gallery.flickity-enabled {
-    margin: 0 -10px 25px -10px;
+    margin: 0 -10px 4px -10px;
   }
 
   .product-main .two-fifths.product__details--product-page div.product-block.product-block--price .modal_price {
@@ -712,7 +712,7 @@ div.cart_content form{ margin: 10px 0 0;}
 
 
   .product-main .swatch_options {
-    padding: 0 0 20px;
+    padding: 0 0 10px;
     margin-left: -10px;
     margin-right: -10px;
     margin-bottom: 0;
@@ -729,7 +729,7 @@ div.cart_content form{ margin: 10px 0 0;}
 
   .product-main .swatch_options .swatch[data-option-index="1"] {
     width: calc(100% - 26px);
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     column-gap: unset;
   }

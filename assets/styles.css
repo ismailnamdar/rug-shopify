@@ -631,6 +631,10 @@ Description: Shopify Theme (https://www.shopify.com/&ref=out-of-the-sandbox)
   flex-direction: column-reverse;
 }
 
+.is-inline-block {
+  display: inline-block;
+}
+
 /* Flex position order */
 .is-order-aligned-left {
   order: -1;
@@ -10513,7 +10517,7 @@ div#disqus_thread li {
   column-gap: 13px;
 }
 .swatch.is-flex.is-flex-wrap:first-of-type {
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: unset;
 }
 

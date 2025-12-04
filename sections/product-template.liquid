@@ -11,7 +11,6 @@
           {% if collection.previous_product or collection.next_product %}
             <div class="nav_arrows breadcrumb_text">
               {% if collection.previous_product %}
-                {% comment %} {{ 'products.general.previous_product_html' | t }} {% endcomment %}
                 <a
                   href="{{ collection.previous_product }}"
                   title="{{ 'products.general.previous_product_html' | t }}"
@@ -19,10 +18,8 @@
                   ><span class="icon-left-arrow"> </span
                 ></a>
               {% endif %}
-              {% comment %} {% if collection.previous_product and collection.next_product %}<span class="breadcrumb-divider"> | </span>{% endif %} {% endcomment %}
               <a href="{{ routes.all_products_collection_url }}" class="bred_ctm_grid">{% render 'grid-icon' %}</a>
               {% if collection.next_product %}
-                {% comment %} {{ 'products.general.next_product_html' | t }} {% endcomment %}
                 <a
                   href="{{collection.next_product}}"
                   title="{{ 'products.general.next_product_html' | t }}"
@@ -48,7 +45,7 @@
         is-flex-wrap
       "
     >
-      {% render 'product',
+      {% render 'product-main',
         context: 'product',
         product: product,
         variant: product.selected_or_first_available_variant,
