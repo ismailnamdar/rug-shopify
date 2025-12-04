@@ -10518,7 +10518,6 @@ div#disqus_thread li {
 }
 .swatch.is-flex.is-flex-wrap:first-of-type {
   justify-content: flex-start;
-  gap: unset;
 }
 
 .swatch .swatch-element .crossed-out {

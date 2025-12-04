@@ -1,4 +1,8 @@
 <style>
+  .product-main-canvas-container {
+    width: calc(60% - 30px);
+    margin-right: 30px;
+  }
   .mobile_header_prd {
     display: none;
   }
@@ -61,6 +65,10 @@
     }
 
   @media screen and (max-width: 769px) {
+    .product-main-canvas-container {
+      width: 100%;
+      margin-right: 0;
+    }
     .product-main .product-block--price,
     .product__details .product-block--price {
       display: none;
@@ -335,7 +343,9 @@
     {% assign current_variant = product.selected_or_first_available_variant %}
     {% assign shape = current_variant.option1 | downcase  %}
     {% assign size = current_variant.option2 | upcase %}
+    <div class="product-main-canvas-container">
     {% render "custom-rug-canvas", shape: shape, size: size %}
+    </div>
     <div
         id="main-gallery"
       class="product__images
@@ -378,9 +388,9 @@
         {% endcomment %}
     </div>
 
-    {% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/gif,image/tiff,image/HEIC,image/bmp,image/avif,.ico' %}
+    {% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/tiff,image/HEIC,image/bmp,image/avif,.ico' %}
     <input id="custom-rug-image" type="file" style="display: none;" accept="{{SUPPORTED_FILE_TYPES}}" />
-    {% render 'upload-photo-button' %}
+    {% render 'upload-photo-button', mobile: true %}
     <div
       class="
         {% if context == 'quickshop' %}

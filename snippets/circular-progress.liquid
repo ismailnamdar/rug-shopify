@@ -1,0 +1,93 @@
+<div class="circular-progress-wrapper" data-progress="0" data-mode="progress" style="display: none;">
+  <svg width="120" height="120">
+    <!-- Background circle -->
+    <circle
+      class="circular-bg"
+      r="45"
+      cx="60"
+      cy="60"
+    ></circle>
+
+    <!-- Progress circle -->
+    <circle
+      class="circular-progress"
+      r="45"
+      cx="60"
+      cy="60"
+    ></circle>
+  </svg>
+
+  <span class="value">0%</span>
+</div>
+
+<style>
+  .circular-progress-wrapper {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 50;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  .circular-progress-wrapper svg {
+    transform: rotate(-90deg);
+  }
+
+  .circular-progress-wrapper circle {
+    stroke-width: 10;
+    fill: transparent;
+  }
+
+  .circular-progress-wrapper .circular-bg {
+    stroke: #e5e7eb;
+  }
+
+  .circular-progress-wrapper .circular-progress {
+    stroke: #000;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.3s ease;
+  }
+
+  .circular-progress-wrapper .value {
+    position: absolute;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: black;
+  }
+
+  .circular-progress-wrapper.infinite .circular-progress {
+    animation: spin-dash 1.4s ease-in-out infinite;
+    stroke-dasharray: 90;
+    stroke-dashoffset: 0;
+  }
+
+  .circular-progress-wrapper.infinite .circular-progress {
+    animation: circular-rotate 0.7s linear infinite;
+    stroke-dashoffset: 0 !important;
+    stroke-dasharray: 140 !important;
+    transform-origin: center !important;
+  }
+
+  .circular-progress-wrapper.infinite .value {
+    display: none;
+  }
+
+  /* Rotation animation */
+  @keyframes circular-rotate {
+    0% {
+      transform: rotate(-90deg) rotate(0deg);
+    }
+    100% {
+      transform: rotate(-90deg) rotate(360deg);
+    }
+  }
+
+</style>

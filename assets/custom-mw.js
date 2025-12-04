@@ -127,7 +127,7 @@ if (document.body.classList.contains("product")) {
 	const el = document.querySelector('[data-option-size-title]');
 	if (!el) return;
 	const desired = `<div class="option_title opt_title_size">Select size:</div>  
-		 <button class="open-size-guide-btn">Size Guide</button>`;
+		 <button type="button" class="open-size-guide-btn">Size Guide</button>`;
 	// only update if content changed to avoid continuous reflows
 	if (el.innerHTML.trim() !== desired.trim()) {
 		el.innerHTML = desired;

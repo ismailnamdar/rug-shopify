@@ -516,6 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
+  
   function refreshCart(cart, cusCount = 0) {
 
     console.log('cart refresh fucntion called ');
@@ -560,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let prd_preview_img = null;
         let item_imageUrl = null;
 
-        if (item.properties) { $.each(item.properties, (title, value) => { if (value && value !== "on") {if (title === "DOWNLOAD PROOF") { prd_preview_img = value }}}) }
+        if (item.properties) { $.each(item.properties, (title, value) => { if (value && value !== "on") {if (title === "DOWNLOAD PROOF" || title === "Product preview image") { prd_preview_img = value }}}) }
 
         if (item.image) {
             // cartItemsHTML += `${'<div class="cart_image">' + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />` + '</div></a>';
@@ -765,6 +766,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // }
 
   }
+  // Make this function global to be called in other places to update the cart
+  window.refreshCart = refreshCart;
 
   // Copies the first found .money.a_pplr_item_line_price content into the checkout button span
   function mirrorPplrPriceToButton() {
@@ -1139,7 +1142,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   window.productPage.productSwatches();
 });
-
 /*= ===========================================================================
   Swatch options - second and third swatch 'sold-out' will update based on availability of previous options selected
 ============================================================================== */

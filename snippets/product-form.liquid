@@ -46,7 +46,9 @@
   data-product-id="{{ product.id }}"
 >
   <div id="main-price" class="ctm_prd_price_mobile">$149</div>
-  {% form 'product', product %}
+  {% assign form_id_prefix = "product-form-section-" %}
+  {% assign form_id = form_id_prefix | append: product.id %}
+  {% form 'product', product, id: form_id %}
 
   <div
     class="
@@ -86,6 +88,7 @@
 
     {% comment %}ONLY RENDER ONCE THERE IS AN IMAGE AND IF THE PRODUCT IS CUSTOM RUG{% endcomment %}
     <div id="custom-rug-properties-section" style="display: block;">
+      <input name="properties[__sendProof]" type="text" hidden style="display: none;" />
       <input name="properties[__bgColor]" type="text" hidden style="display: none;" />
       <input name="properties[__removeBg]" type="text" hidden style="display: none;" />
       <input name="properties[__scale]" type="text" hidden style="display: none;" />
@@ -111,24 +114,24 @@
       </div>
     </div>
 
-    <div id="custom-rug-remove-background-section" style="display: none;">
+    <div id="custom-rug-proof-section" style="display: none;">
       <div class="is-inline-block">
         <label>
-          <input id="custom-rug-remove-bg" type="checkbox" style="margin-right: 4px;" /> 
-          <span style="bottom: 2px; position:relative; font-weight:400;">Send proof for approval before production.</span>
+          <input id="custom-rug-send-proof" type="checkbox" checked="true" style="margin-right: 4px;" /> 
+          <span style="bottom: 2px; position:relative; font-size: 14px; font-weight:400;">Send proof for approval before production.</span>
         </label>
       </div>
     </div>
 
+    {% render 'upload-photo-button' %}
     <div id="custom-rug-add-to-cart" class="custom-rug-sticky-add-to-cart-container" style="display: none;">
       {% render 'quantity-input', id: "custom-rug-quantity" %}
       <button type="button" class="custom-rug-sticky-add-to-cart-button">
-        Add to cart
-        <div class="ctm_prd_price_mobile">$149</div>
+        <span class="custom-rug-sticky-add-to-cart-button-text">Add to cart</span>
+        <div class="ctm_prd_price_mobile" style="display: block;">$149</div>
       </button>
       <button id="custom-rug-submit-button" type="submit" style="display: none;"></button>
     </div>
-    
 
   {% if product.available %}
     {% if settings.display_inventory_left %}
@@ -162,6 +165,11 @@
     padding: 12px;
     border-top: 1px solid #e3e3e3;
   }
+
+  .custom-rug-upload-image-container[data-mobile] {
+    display: none;
+  }
+
   .custom-rug-upload-image {
     background-color: rgb(255, 192, 54);
     text-align: center;
@@ -170,6 +178,7 @@
     font-weight: 900;
     gap: 12px;
     border-radius: 37px;
+    justify-content: center;
   }
   .custom-rug-upload-image__text {
     font-size: 16px;
@@ -190,14 +199,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: static;
     padding: 12px;
     border-top: 1px solid #e3e3e3;
     background-color: white;
-    z-index: 10;
   }
 
   .custom-rug-quantity-input {
@@ -243,11 +248,28 @@
     margin-top: 0;
     font-weight: 600;
   }
+
+  @media screen and (max-width: 768px) {
+    .custom-rug-upload-image-container[data-desktop] {
+      display: none;
+    }
+    .custom-rug-upload-image-container[data-mobile] {
+      display: block;
+    }
+
+    .custom-rug-sticky-add-to-cart-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+  }
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const ids = {
-      uploadButton: '#custom-rug-upload-image-button',
+      uploadButton: '.custom-rug-upload-image',
       imageInput: '#custom-rug-image',
       bgColorInput: '#custom-rug-bg-color',
       removeBgInput: '#custom-rug-remove-bg',
@@ -261,7 +283,7 @@
       'image/webp',
       'image/png',
       'image/svg+xml',
-      'image/gif',
+      // 'image/gif',
     ]
     const SUPABASE_URL = "https://fezniiknsjfdseplablo.supabase.co";
     const API_BASE_URL = "https://rug-staging.vercel.app"
@@ -302,6 +324,7 @@
 
         if (file.size > CANVAS_SUPPORTED_FILE_SIZE || !isSupportedType) {
           CanvasRugEditor.reset();
+          CanvasRugEditor.showCanvas();
           uploadInBackground(file, { useUploadedFile: true });
           return;
         }
@@ -332,12 +355,14 @@
 
     function setUploading(isUploading) {
       // e.g. toggle a loading spinner
+      CanvasRugEditor.loading(isUploading);
       console.log("Uploading:", isUploading);
     }
 
     function setUploadProgress(pct) {
       // e.g. update a progress bar
       console.log("Upload progress:", pct + "%");
+      CanvasRugEditor.setCircularProgressStatic(pct);
     }
 
     function setFgUrl(url) {
@@ -362,7 +387,10 @@
 
       try {
         setUseUploadedFile(useUploadedFile);
-        setUploading(true);
+        if (useUploadedFile) {
+          setUploading(true);
+        }
+        setUploadProgress(0);
 
         // 1. Get the Signed Upload URL
         var res = await fetch(`${API_BASE_URL}/api/media/upload-url`, {
@@ -458,7 +486,6 @@
       } catch (error) {
         console.error(error);
         // TODO: log error to your backend, etc.
-      } finally {
         setUploading(false);
       }
     }
@@ -473,11 +500,60 @@
     imageInput.change(handleFile);
     bgColorInput.on("input", handleColorChange)
     removeBgInput.on("input", handleRemoveBG);
-    uploadButton.on('click', () => {
-      imageInput.click()
+    uploadButton.on('click', function () {
+      imageInput.click();
     });
-    addToCartButton.on('click', () => {
-      CanvasRugEditor.handleClickAddToCart()
-    })
+    addToCartButton.on('click', async () => {
+      // Loading - change button style
+      const addToCartButton = $(".custom-rug-sticky-add-to-cart-button")
+      const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
+      addToCartButton.prop('disabled', true);
+      addToCartButtonText.text('Adding to cart');
+
+      await CanvasRugEditor.handleClickAddToCart()
+      $('#custom-rug-submit-button').click();
+    });
+
+    const $form = $('#product-form-section-{{ product.id }}');
+    $form.on("submit", function (e) {
+      // Stop normal redirect
+      e.preventDefault();
+
+      // Loading - change button style
+      const addToCartButton = $(".custom-rug-sticky-add-to-cart-button")
+      const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
+      addToCartButton.prop('disabled', true);
+      addToCartButtonText.text('Adding to cart...');
+
+      // Build form data
+      const formData = new FormData($form[0]);
+
+      fetch("/cart/add.js", {
+        method: "POST",
+        body: formData,
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log("Added to cart:", data);
+        // fetch updated cart
+        $.ajax({
+          url: '/cart.js',
+          dataType: 'json',
+          cache: false,
+          success(cart) {
+              refreshCart(cart);
+              $('.cart-container').click()
+              addToCartButton.prop('disabled', false);
+              addToCartButtonText.text('Add to cart');
+          },
+          error() {
+            // silent
+            addToCartButton.prop('disabled', false);
+            addToCartButtonText.text('Add to cart');
+          }
+        });
+      })
+      .catch(console.error);
+    });
   })
 </script>
