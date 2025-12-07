@@ -247,10 +247,24 @@
   justify-content: center;
 }
 
+.product-block--title .product_name {
+  color: #000;
+  font-weight: 900;
+  line-height: normal;
+  margin: unset;
+  padding: unset;
+  text-transform: none;
+  margin: 8px 0;
+  font-size: 24px;
+  text-align: left;
+  letter-spacing: 0;
+}
+
 {% comment %} RUG02 START {% endcomment %}
 .product__details .product-block--title .product_name {
   color: #000;
   font-weight: 700;
+  font-size: 26px;
   line-height: normal;
   margin: unset;
   padding: unset;
@@ -263,8 +277,26 @@
 .shopify-product-form .swatch_options .option_title,
 .shopify-product-form .swatch_options .option_title * {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: normal;
+}
+
+.option_title-main {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px !important;
+  margin-top: 0 !important;
+  font-weight: 400 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .option_title-main {
+    display: none;
+  }
+
+  .product-block--title .product_name {
+    text-align: center;
+  }
 }
 {% comment %} RUG02 END {% endcomment %}
 
@@ -280,48 +312,6 @@
 {% if product != blank and context == 'product' %}
   {% render 'product__structured-data', product: product %}
 {% endif %}
-
-<div class="mobile_header_prd">
-  {% for block in section.blocks %}
-    {% if block.type == 'title' or block.type == 'price' or block.type == '@app' %}
-      <div
-        class="product-block product-block--{{ block.type }} {% if forloop.first %}product-block--first{% endif %}"
-        {{ block.shopify_attributes }}
-      >
-        {% case block.type %}
-          {% when 'title' %}
-            {% if context == 'product' %}
-              <h1 class="product_name">{{ product.title | escape }}</h1>
-            {% else %}
-              <h2 class="product_name">
-                <a href="{{ product.url }}">
-                  {{ onboarding
-                    | default: product.title | escape
-                    | t: 'homepage.onboarding.product_title' }}
-                </a>
-              </h2>
-            {% endif %}
-            <div class="feature-divider"></div>
-
-          {% when 'price' %}
-            {% if onboarding %}
-              <p class="modal_price"><span class="current_price"><span class="money">$49.00</span></span></p>
-            {% elsif collection_handles contains 'coming-soon' %}
-              <p class="modal_price">{{ 'collections.general.coming_soon' | t }}</p>
-            {% else %}
-              <div class="modal_price" data-display-savings="{{ block.settings.display_savings }}"></div>
-            {% endif %}
-            {% if section.settings.show_free_shipping %}
-              <div class="freeShipping"><span>FREE SHIPPING</span></div>
-            {% endif %}
-
-          {% when '@app' %}
-            {% render block %}
-        {% endcase %}
-      </div>
-    {% endif %}
-  {% endfor %}
-</div>
 
 <div class="product-main product-{{ product.id }} size-guide-{{ product.title | handleize }}">
   <div
@@ -390,6 +380,48 @@
 
     {% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/tiff,image/HEIC,image/bmp,image/avif,.ico' %}
     <input id="custom-rug-image" type="file" style="display: none;" accept="{{SUPPORTED_FILE_TYPES}}" />
+
+    <div class="mobile_header_prd">
+  {% for block in section.blocks %}
+    {% if block.type == 'title' or block.type == 'price' or block.type == '@app' %}
+      <div
+        class="product-block product-block--{{ block.type }} {% if forloop.first %}product-block--first{% endif %}"
+        {{ block.shopify_attributes }}
+      >
+        {% case block.type %}
+          {% when 'title' %}
+            {% if context == 'product' %}
+              <h1 class="product_name">{{ product.title | escape }}</h1>
+            {% else %}
+              <h2 class="product_name">
+                <a href="{{ product.url }}">
+                  {{ onboarding
+                    | default: product.title | escape
+                    | t: 'homepage.onboarding.product_title' }}
+                </a>
+              </h2>
+            {% endif %}
+            <div class="feature-divider"></div>
+
+          {% when 'price' %}
+            {% if onboarding %}
+              <p class="modal_price"><span class="current_price"><span class="money">$49.00</span></span></p>
+            {% elsif collection_handles contains 'coming-soon' %}
+              <p class="modal_price">{{ 'collections.general.coming_soon' | t }}</p>
+            {% else %}
+              <div class="modal_price" data-display-savings="{{ block.settings.display_savings }}"></div>
+            {% endif %}
+            {% if section.settings.show_free_shipping %}
+              <div class="freeShipping"><span>FREE SHIPPING</span></div>
+            {% endif %}
+
+          {% when '@app' %}
+            {% render block %}
+        {% endcase %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
     {% render 'upload-photo-button', mobile: true %}
     <div
       class="
@@ -457,8 +489,8 @@
             {% when 'Four_images_with_text' %}
             <style>
               .icon_with_text_wrapper {
-                display: flex;
-                flex-wrap: wrap;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
                 gap: 16px;
                 padding: 16px 0;
                 margin-top: 24px;
@@ -468,7 +500,7 @@
                 display: flex;
                 align-items: center;
                 gap: 16px;
-                width: 48%;
+                width: 100%;
               }
             
               .icon_blk_text p {
@@ -840,7 +872,7 @@
                 </form>
               {% else %}
                 {% unless collection_handles contains 'coming-soon' %}
-                  {% render 'product-form',
+                  {% render 'product-form-main',
                     product: product,
                     show_recipient_form: block.settings.show_gift_card_recipient_form,
                     show_payment_button: show_dynamic_checkout_button,

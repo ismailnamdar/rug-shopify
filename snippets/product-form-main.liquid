@@ -74,10 +74,10 @@
   </div>
 
   {% if settings.product_form_style == "radio" and product.variants.size > 1 or settings.product_form_style == "radio" and product.options[0] != "Title" %}
-    <div class="swatch_options">
+    <div class="swatch_options" style="padding-bottom: 0; padding-top: 24px;">
       {% for option in product.options %}
         {%
-          render 'product-swatch',
+          render 'product-swatch-main',
           option: option,
           product: product
         %}
@@ -97,23 +97,30 @@
       <input name="properties[Original image]" type="text" hidden style="display: none;" />
       <input name="properties[Product preview image]" type="text" hidden style="display: none;" />
     </div>
-    <div id="custom-rug-background-section" class="custom-rug-background-section" style="display: none;">
-        <button id="custom-rug-remove-bg" class="custom-rug-remove-bg-button">Remove Photo Background</button>
-        <input id="custom-rug-bg-color" type="color" />
-        <button class="custom-rug-bg-color-button">Select Rug Color</button>
+    <div id="custom-rug-background-section" style="display: none;">
+      <div class="custom-rug-background-section">
+        <button id="custom-rug-remove-bg" type="button" class="custom-rug-remove-bg-button">Remove Photo Background</button>
+        <button class="custom-rug-bg-color-button" type="button">
+          Select Rug Color
+        </button>
+      </div>
+      {% render 'divider' %}
+    </div>
+
+    <div id="custom-rug-comments-section" style="display: none; width: 100%;">
+      <div style="display: flex; width: 100%; flex-direction: row; justify-content: space-between;">
+        <div style="font-weight: 900; margin-bottom: 8px;">Add Notes:</div>
+        <div>
+          <button class="custom-rug-edit-notes">Edit Notes</button>
+    {% comment %}<textarea name="properties[Comments]" type="text" rows="3" style="font-size: 14px; min-height: 80px;" placeholder="Adjustments Requests: Design requests: Edit logos, text, background color, or layout. Tell us your vision — we’ll make it happen and send a proof before production."></textarea>{% endcomment %}
+        </div>
+      </div>
+      {% render 'divider' %}
     </div>
 
     <div id="custom-rug-proof-section" style="display: none;">
       <div class="is-inline-block">
-        {% render 'switch', id: "custom-rug-send-proof", label: "Send proof for approval before production."  %}
-      </div>
-    </div>
-
-    <div id="custom-rug-comments-section" style="display: none; width: 100%;">
-      <div style="font-weight: 900; margin-bottom: 8px;">Add Notes:</div>
-      <div>
-        <button type="button">Edit Notes</button>
-  {% comment %}<textarea name="properties[Comments]" type="text" rows="3" style="font-size: 14px; min-height: 80px;" placeholder="Adjustments Requests: Design requests: Edit logos, text, background color, or layout. Tell us your vision — we’ll make it happen and send a proof before production."></textarea>{% endcomment %}
+        {% render 'switch', id: "custom-rug-send-proof", label: "Send proof for approval before production.", name: "__sendProof"  %}
       </div>
     </div>
 
@@ -157,7 +164,6 @@
   .custom-rug-upload-image-container {
     background-color: white;
     padding: 12px;
-    border-top: 1px solid #e3e3e3;
   }
 
   .custom-rug-upload-image-container[data-mobile] {
@@ -196,7 +202,6 @@
     align-items: center;
     position: static;
     padding: 12px 0;
-    border-top: 1px solid #e3e3e3;
     background-color: white;
   }
 
@@ -254,19 +259,28 @@
     background-color: white;
     border: 1px solid #e2e2e2;
     border-radius: 7px;
-    margin: 6px 0;
     padding: 10px 12px;
     cursor: pointer;
     box-shadow: 0 1px 1px #23232347;
   }
-  #custom-rug-bg-color {
-    display: none;
-  }
   .custom-rug-bg-color-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: black;
     background-color: white;
     border: 1px solid #e2e2e2;
     border-radius: 7px;
-    margin: 6px 0;
+    padding: 10px 16px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
+  }
+
+  .custom-rug-edit-notes {
+    color: black;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
     padding: 10px 16px;
     cursor: pointer;
     box-shadow: 0 1px 1px #23232347;
@@ -287,6 +301,7 @@
       left: 0;
       right: 0;
       z-index: 10;
+      border-top: 1px solid #e3e3e3;
     }
   }
 </style>
@@ -296,6 +311,7 @@
       uploadButton: '.custom-rug-upload-image',
       imageInput: '#custom-rug-image',
       bgColorInput: '#custom-rug-bg-color',
+      bgColorInputButton: '.custom-rug-bg-color-button',
       removeBgInput: '#custom-rug-remove-bg',
       addToCartButton: '#custom-rug-add-to-cart .custom-rug-sticky-add-to-cart-button'
     };
@@ -364,10 +380,20 @@
     }
 
     function handleRemoveBG() {
-      CanvasRugEditor.startRemoveBg()
+      const shownImage = CanvasRugEditor.startRemoveBg()
+      
+      if (shownImage === 'main') {
+        this.style.backgroundColor = "white";
+        this.style.color = "black";
+      } else {
+        this.style.backgroundColor = "#272726";
+        this.style.color = "white";
+      }
     }
     
     function handleColorChange(event) {
+      event.stopPropagation();
+      event.preventDefault();
       const newColor = event.target.value;
       CanvasRugEditor.setBgColor(newColor);
     }
@@ -519,11 +545,11 @@
     const bgColorInput = $(ids.bgColorInput);
     const removeBgInput = $(ids.removeBgInput);
     const addToCartButton = $(ids.addToCartButton);
-    
-    console.log({ uploadButton });
+    const bgColorInputButton = $(ids.bgColorInputButton);
+
     imageInput.change(handleFile);
     bgColorInput.on("input", handleColorChange)
-    removeBgInput.on("input", handleRemoveBG);
+    removeBgInput.on("click", handleRemoveBG);
     uploadButton.on('click', function () {
       imageInput.click();
     });
@@ -537,6 +563,11 @@
       await CanvasRugEditor.handleClickAddToCart()
       $('#custom-rug-submit-button').click();
     });
+    bgColorInputButton.on("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      bgColorInput.click();
+    })
 
     const $form = $('#product-form-section-{{ product.id }}');
     $form.on("submit", function (e) {

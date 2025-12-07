@@ -1,27 +1,51 @@
-<div id="rug-canvas-container" style="position: relative; width: 100%;display:none;">
-  <canvas id="rug-canvas" class="rug-canvas"></canvas>
+<div id="rug-canvas-container" style="width: 100%;display:none;">
+  <div style="position: relative; width: 100%;">
+    <canvas id="rug-canvas" class="rug-canvas"></canvas>
+    {% render 'circular-progress' %}
 
-  {% render 'circular-progress' %}
+    <div class="custom-rug-top-toolbar">
+      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center; color: black;">
+        Change Photo
+        <button id="rug-canvas-change-photo" class="custom-rug-action-button" style="margin-top: 6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-upload" aria-hidden="true"><path d="M12 13v8"></path><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="m8 17 4-4 4 4"></path></svg>
+        </button>
+      </div>
+    </div>
 
-  <div class="custom-rug-top-toolbar">
-    <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center; color: white">
-      Change Photo
-      <button id="rug-canvas-change-photo" class="custom-rug-action-button" style="margin-top: 6px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-upload" aria-hidden="true"><path d="M12 13v8"></path><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="m8 17 4-4 4 4"></path></svg>
+    {% comment %}
+    <div class="custom-rug-bottom-left-toolbar">
+      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center; color: black; margin-bottom: 4px;">
+        Rug Color
+        <input id="custom-rug-bg-color" class="custom-rug-bg-color" type="color" />
+      </div>
+    </div>
+    {% endcomment %}
+
+    <div class="custom-rug-bottom-toolbar">
+      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center; color: black; margin-bottom: 12px;">
+        Rug Color
+        <input id="custom-rug-bg-color" class="custom-rug-bg-color" type="color" />
+      </div>
+      <button id="rug-canvas-rotate" class="custom-rug-action-button" style="margin-bottom: 10px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+      </button>
+      <button id="rug-canvas-scale-up" class="custom-rug-action-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+      </button>
+      <button id="rug-canvas-scale-down" class="custom-rug-action-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus" aria-hidden="true"><path d="M5 12h14"></path></svg>
       </button>
     </div>
   </div>
 
-  <div class="custom-rug-bottom-toolbar">
-    <button id="rug-canvas-rotate" class="custom-rug-action-button" style="margin-bottom: 10px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
-    </button>
-    <button id="rug-canvas-scale-up" class="custom-rug-action-button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
-    </button>
-    <button id="rug-canvas-scale-down" class="custom-rug-action-button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus" aria-hidden="true"><path d="M5 12h14"></path></svg>
-    </button>
+
+  {% assign asset_images = "circle-example-1.webp,circle-example-2.webp,circle-example-3.webp,circle-example-4.webp" | split: "," %}
+  <div class="image-grid">
+    {% for img in asset_images %}
+      <div class="grid-item">
+        <img src="{{ img | asset_url }}" alt="Preview Image" loading="lazy">
+      </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -32,16 +56,25 @@
     touch-action:none;
   }
   .custom-rug-action-button {
-    height: 36px;
-    width: 36px;
+    height: 40px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    margin: 6px 0;
+    padding: 7px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
   }
   .custom-rug-top-toolbar {
     position: absolute;
     right: 10px;
     top: 12px;
+    color: black !important;
   }
   .custom-rug-bottom-toolbar {
     position: absolute;
@@ -49,10 +82,53 @@
     bottom: 12px;
   }
 
+  .custom-rug-bottom-left-toolbar {
+    position: absolute;
+    left: 10px;
+    bottom: 12px;
+  }
+
+  #chatra {
+    bottom: 85px !important;
+  }
+
+  .custom-rug-bg-color {
+    border-radius: 7px;
+    padding: 2px !important;
+    margin-bottom: 0 !important;
+    margin-top: 4px !important;
+    box-shadow: 0 1px 1px #23232347;
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .image-grid .grid-item img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: block;
+    object-fit: cover;
+  }
+
   @media screen and (max-width: 768px) {
     .rug-canvas {
-      width: 100%;
-      height: 360px;
+      width: 100vw;
+      margin-left: -10px;
+      height: 380px;
+    }
+
+    .custom-rug-top-toolbar {
+      right: 0;
+    }
+    .custom-rug-bottom-toolbar {
+      right: 0;
+    }
+
+    .custom-rug-bottom-left-toolbar {
+      left: 0;
     }
   }
 </style>
@@ -81,96 +157,96 @@ const sizes = {
             name: "3'X3'",
             wFeet: 3,
             hFeet: 3,
-            w: 10,
-            h: 10,
+            w: 8,
+            h: 8,
         },
         "4'X4'": {
             name: "4'X4'",
             wFeet: 4,
             hFeet: 4,
-            w: 10,
-            h: 10,
+            w: 8,
+            h: 8,
         },
         "5'X5'": {
             name: "5'X5'",
             wFeet: 5,
             hFeet: 5,
-            w: 10,
-            h: 10,
+            w: 8,
+            h: 8,
         },
         "6'X6'": {
             name: "6'X6'",
             wFeet: 6,
             hFeet: 6,
-            w: 10,
-            h: 10,
+            w: 8,
+            h: 8,
         },
         "8'X8'": {
             name: "8'X8'",
             wFeet: 8,
             hFeet: 8,
-            w: 10,
-            h: 10,
+            w: 8,
+            h: 8,
         }
     },
     'rectangle': {
         "2'X3'": {
             name: "2'X3'",
-            wFeet: 3,
-            hFeet: 2,
-            w: 10,
-            h: 2 * 10 / 3,
+            wFeet: 2,
+            hFeet: 3,
+            w: 2 * 10 / 3,
+            h: 10,
         },
         "3'X5'": {
             name: "3'X5'",
-            wFeet: 5,
-            hFeet: 3,
-            w: 10,
-            h: 6,
+            wFeet: 3,
+            hFeet: 5,
+            w: 6,
+            h: 10,
         },
         "5'X7'": {
             name: "5'X7'",
-            wFeet: 7,
-            hFeet: 5,
-            w: 10,
-            h: 5 * 10 / 7,
+            wFeet: 5,
+            hFeet: 7,
+            w: 5 * 10 / 7,
+            h: 10,
         },
         "8'X10'": {
             name: "8'X10'",
-            wFeet: 10,
-            hFeet: 8,
-            w: 10,
-            h: 8,
+            wFeet: 8,
+            hFeet: 10,
+            w: 8,
+            h: 10,
         },
         "8'X12'": {
             name: "8'X12'",
-            wFeet: 12,
-            hFeet: 8,
-            w: 10,
-            h: 8,
+            wFeet: 8,
+            hFeet: 12,
+            w: 8,
+            h: 10,
         }
     },
     'runner': {
         "2.5'X7'": {
             name: "2.5'X7'",
-            wFeet: 7,
-            hFeet: 2.5,
-            w: 10,
-            h: 5,
+            wFeet: 2.5,
+            hFeet: 7,
+            w: 5,
+            h: 10,
         },
         "2.5'X10'": {
             name: "2.5'X10'",
-            wFeet: 10,
-            hFeet: 2.5,
-            w: 10,
-            h: 5,
+            wFeet: 2.5,
+            hFeet: 10,
+            w: 5,
+            h: 10,
         },
         "5'X10'": {
             name: "5'X10'",
-            wFeet: 10,
-            hFeet: 5,
-            w: 10,
-            h: 5,
+            wFeet: 5,
+            hFeet: 10,
+            w: 5,
+            h: 10,
         },
     }
 }
@@ -605,7 +681,8 @@ window.CanvasRugEditor = {
     shownImage = 'main';
     removedBackground = false;
     uploadedImage = {};
-    $('#custom-rug-remove-bg').prop('checked', false);
+    $('#custom-rug-remove-bg').css('background-color', 'white');
+    $('#custom-rug-remove-bg').css('color', 'black');
     // setCheckoutObject(undefined);
     // setNeedFixingOpen(false);
     // setFixingNote(false);
@@ -654,11 +731,11 @@ window.CanvasRugEditor = {
 
     // SHOW
     $(`#rug-canvas-container`).css('display', 'block');
-    $('#custom-rug-remove-background-section').css('display', 'block');
-    $('#custom-rug-background-color-section').css('display', 'block');
+    $('#custom-rug-background-section').css('display', 'block');
     $('#custom-rug-add-to-cart').css('display', 'flex');
     $('#custom-rug-properties-section').css('display', 'block');
     $('#custom-rug-proof-section').css('display', 'block');
+    $('#custom-rug-comments-section').css('display', 'block');
     draw();
   },
   loadForeground(src) {
@@ -718,10 +795,12 @@ window.CanvasRugEditor = {
             draw();
         };
         img.src = shownImage === 'main' ? fgUrlRemoved : fgUrl;
-        shownImage = shownImage === 'main' ? 'background-removed' : 'main';
     } else {
         this.removeBackground()
     }
+
+    shownImage = shownImage === 'main' ? 'background-removed' : 'main';
+    return shownImage;
   },
   async exportPNG() {
     draw({ hideBorder: true });
@@ -781,6 +860,7 @@ window.CanvasRugEditor = {
 
     const sendProof = $('#custom-rug-proof-section #custom-rug-send-proof').is(':checked');
     $('#custom-rug-properties-section input[name=\"properties[__sendProof]\"]').val(sendProof ? "true" : "false");
+    $('#custom-rug-properties-section input[name=\"properties[__mediaId]\"]').val(data.id);
     $('#custom-rug-properties-section input[name=\"properties[__bgColor]\"]').val(bgColor);
     $('#custom-rug-properties-section input[name=\"properties[__removeBg]\"]').val(removedBackground ? "true" : "false");
     $('#custom-rug-properties-section input[name=\"properties[__scale]\"]').val(scalePct);
@@ -868,5 +948,5 @@ changePhotoButton.addEventListener("click", () => {
   $('#custom-rug-image').click();
 });
 
-CanvasRugEditor.loadBackground("{{ 'canvas-background.jpg' | asset_url }}");
+CanvasRugEditor.loadBackground("{{ 'background-example-2.png' | asset_url }}");
 </script>
