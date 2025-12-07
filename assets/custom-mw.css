@@ -436,6 +436,7 @@ button.open-size-guide-btn {
 }
 
 .ctm_prd_price_mobile {
+  margin: 0 !important;
   font-size: 28px;
   font-weight: 600;
   line-height: 18px;
@@ -631,6 +632,7 @@ div.cart_content form{ margin: 10px 0 0;}
 
   .ctm_prd_price_mobile {
     display: block;
+    margin: 0;
   }
 
   .order-info-box p {
@@ -733,6 +735,7 @@ div.cart_content form{ margin: 10px 0 0;}
     margin-left: -10px;
     margin-right: -10px;
     margin-bottom: 0;
+    padding-top: 24px;
   }
 
   .product-main .swatch_options.multiOptions .swatch[data-option-index="0"] {
@@ -884,6 +887,10 @@ div.cart_content form{ margin: 10px 0 0;}
 
   .ATC_btn_fix .pplrfileuploadcover {
     background-position: unset !important;
+  }
+
+  .product-main .swatch_options {
+    padding-top: 0;
   }
 }
 

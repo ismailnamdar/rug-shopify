@@ -1,0 +1,51 @@
+<div class="edit-notes-section-container">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+    <button type="button" data-value="keep-mockup" data-active="true" class="edit-notes-header-button">Keep Mock Up</button>
+    <button type="button" data-value="needs-fixing" class="edit-notes-header-button">Needs Fixing</button>
+  </div>
+  <div>
+    <textarea class="edit-notes-textarea" name="properties[Comments]" type="text" rows="3" style="font-size: 14px; min-height: 80px; display: none;" placeholder="Adjustments Requests: Design requests: Edit logos, text, background color, or layout. Tell us your vision — we’ll make it happen and send a proof before production."></textarea>
+  </div>
+  <button type="button" class="edit-note-save-button">Save Notes</button>
+</div>
+{% style %}
+  .edit-notes-section-container {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 0;
+    position: relative;
+    display: none;
+  }
+
+  .edit-notes-header-button {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #262627;
+    color: black;
+    border-radius: 8px;
+    background-color: transparent;
+  }
+
+  .edit-notes-header-button[data-active="true"] {
+    background-color: #262627;
+    color: white;
+  }
+
+  .edit-note-save-button {
+    height: 50px;
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #262627;
+    color: white;
+    border-radius: 8px;
+    margin: 0 24px;
+  }
+{% endstyle %}

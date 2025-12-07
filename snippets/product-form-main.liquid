@@ -74,7 +74,7 @@
   </div>
 
   {% if settings.product_form_style == "radio" and product.variants.size > 1 or settings.product_form_style == "radio" and product.options[0] != "Title" %}
-    <div class="swatch_options" style="padding-bottom: 0; padding-top: 24px;">
+    <div class="swatch_options" style="padding-bottom: 0;">
       {% for option in product.options %}
         {%
           render 'product-swatch-main',
@@ -99,7 +99,7 @@
     </div>
     <div id="custom-rug-background-section" style="display: none;">
       <div class="custom-rug-background-section">
-        <button id="custom-rug-remove-bg" type="button" class="custom-rug-remove-bg-button">Remove Photo Background</button>
+        <button id="custom-rug-remove-bg" type="button" class="custom-rug-remove-bg-button">Remove Background</button>
         <button class="custom-rug-bg-color-button" type="button">
           Select Rug Color
         </button>
@@ -111,8 +111,7 @@
       <div style="display: flex; width: 100%; flex-direction: row; justify-content: space-between;">
         <div style="font-weight: 900; margin-bottom: 8px;">Add Notes:</div>
         <div>
-          <button class="custom-rug-edit-notes">Edit Notes</button>
-    {% comment %}<textarea name="properties[Comments]" type="text" rows="3" style="font-size: 14px; min-height: 80px;" placeholder="Adjustments Requests: Design requests: Edit logos, text, background color, or layout. Tell us your vision — we’ll make it happen and send a proof before production."></textarea>{% endcomment %}
+          <button type="button" class="custom-rug-edit-notes">Edit Notes</button>
         </div>
       </div>
       {% render 'divider' %}
@@ -313,7 +312,9 @@
       bgColorInput: '#custom-rug-bg-color',
       bgColorInputButton: '.custom-rug-bg-color-button',
       removeBgInput: '#custom-rug-remove-bg',
-      addToCartButton: '#custom-rug-add-to-cart .custom-rug-sticky-add-to-cart-button'
+      addToCartButton: '#custom-rug-add-to-cart .custom-rug-sticky-add-to-cart-button',
+      editNotesButton: '.custom-rug-edit-notes',
+      saveNotesButton: '.edit-note-save-button',
     };
     const CANVAS_SUPPORTED_FILE_SIZE = 10 * 1024 * 1024 // 50MB
     const MAX_SUPPORTED_FILE_SIZE = 200 * 1024 * 1024 // 200MB
@@ -546,6 +547,9 @@
     const removeBgInput = $(ids.removeBgInput);
     const addToCartButton = $(ids.addToCartButton);
     const bgColorInputButton = $(ids.bgColorInputButton);
+    const editNotesButton = $(ids.editNotesButton);
+    const saveNotesButton = $(ids.saveNotesButton);
+    const editNoteHeaderButton = $('.edit-notes-header-button');
 
     imageInput.change(handleFile);
     bgColorInput.on("input", handleColorChange)
@@ -568,6 +572,28 @@
       event.stopPropagation();
       bgColorInput.click();
     })
+    editNotesButton.on("click", function() {
+      $("#product-main-form-container").css('transform', 'translateX(calc(-100% - 10px))');
+      $(".edit-notes-section-container").css('display', 'block');
+    })
+    saveNotesButton.on("click", function() {
+      $("#product-main-form-container").css('transform', 'unset');
+      $(".edit-notes-section-container").css('display', 'none');
+    })
+    editNoteHeaderButton.on("click", function() {
+      const value = $(this).data('value');
+      if (value === 'needs-fixing') {
+        // Set the current tab style
+        $(this).attr('data-active', 'true');
+        $('.edit-notes-header-button[data-value="keep-mockup"]').removeAttr('data-active')
+        $('.edit-notes-textarea').css('display', 'block');
+        // Clear the 
+      } else if (value === 'keep-mockup') {
+        $(this).attr('data-active', 'true');
+        $('.edit-notes-header-button[data-value="needs-fixing"]').removeAttr('data-active')
+        $('.edit-notes-textarea').css('display', 'none');
+      }
+    });
 
     const $form = $('#product-form-section-{{ product.id }}');
     $form.on("submit", function (e) {

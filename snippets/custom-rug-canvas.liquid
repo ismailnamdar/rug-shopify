@@ -29,16 +29,18 @@
       <button id="rug-canvas-rotate" class="custom-rug-action-button" style="margin-bottom: 10px;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
       </button>
-      <button id="rug-canvas-scale-up" class="custom-rug-action-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
-      </button>
-      <button id="rug-canvas-scale-down" class="custom-rug-action-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus" aria-hidden="true"><path d="M5 12h14"></path></svg>
-      </button>
+      <div style="display: flex; flex-direction: column; border-radius: 8px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 1px #23232347; background-color: white;border: 1px solid #e2e2e2;">
+        <button id="rug-canvas-scale-up" class="custom-rug-action-button-zoom">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+        </button>
+        <button id="rug-canvas-scale-down" class="custom-rug-action-button-zoom">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus" aria-hidden="true"><path d="M5 12h14"></path></svg>
+        </button>
+      </div>
     </div>
   </div>
 
-
+  {% comment Phase 2. Preview images %}
   {% assign asset_images = "circle-example-1.webp,circle-example-2.webp,circle-example-3.webp,circle-example-4.webp" | split: "," %}
   <div class="image-grid">
     {% for img in asset_images %}
@@ -47,6 +49,7 @@
       </div>
     {% endfor %}
   </div>
+  {% endcomment %}
 </div>
 
 <style>
@@ -61,7 +64,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
     background-color: white;
     border: 1px solid #e2e2e2;
     border-radius: 7px;
@@ -70,6 +72,16 @@
     cursor: pointer;
     box-shadow: 0 1px 1px #23232347;
   }
+
+  .custom-rug-action-button-zoom {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+  }
+
   .custom-rug-top-toolbar {
     position: absolute;
     right: 10px;
@@ -148,7 +160,7 @@ const ctx = canvas.getContext("2d");
 const handlePositions = {};
 const center = { x: 0, y: 0 };
 const canvasScale = {
-    w: 14,
+    w: 14 * 1.2,
     h: 14,
 }
 const sizes = {
@@ -736,6 +748,7 @@ window.CanvasRugEditor = {
     $('#custom-rug-properties-section').css('display', 'block');
     $('#custom-rug-proof-section').css('display', 'block');
     $('#custom-rug-comments-section').css('display', 'block');
+    $('.option_title-main').css('display', 'none');
     draw();
   },
   loadForeground(src) {
@@ -778,6 +791,7 @@ window.CanvasRugEditor = {
   },
   setBgColor(v) {
     bgColor = v;
+    $(".custom-rug-bg-color-button").css("background", `linear-gradient(to right, ${v} 0%, ${v} 10%, rgba(255, 0, 0, 0) 10%, rgba(255, 0, 0, 0) 100%`);
     draw();
   },
   setUploadedImage(v) {
