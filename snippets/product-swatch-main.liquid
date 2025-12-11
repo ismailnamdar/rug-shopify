@@ -20,7 +20,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
   {% endif %}
 {% endfor %}
 <div class="swatch is-flex is-flex-wrap" data-option-index="{{ option_index }}">
-  <div class="option_title option_title-main" {% if swatch contains 'Size' %}data-option-size-title{% endif %} data-option-title="{{ swatch }}">Select {{ swatch }}:</div>
+  <div class="option_title option_title_size option_title-main" {% if swatch contains 'Size' %}data-option-size-title{% endif %} data-option-title="{{ swatch }}">Select {{ swatch }}:</div>
   <div style="display: grid; width: 100%; grid-template-columns: repeat(auto-fit, minmax(30px, 1fr)); gap: 8px;">
   {%- assign values = '' -%}
   {% for variant in product.variants %}

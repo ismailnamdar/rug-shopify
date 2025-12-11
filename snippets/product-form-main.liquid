@@ -458,17 +458,19 @@
         setUploadProgress(0);
 
         // 1. Get the Signed Upload URL
-        var res = await $.ajax({
-          url: `${API_BASE_URL}/api/media/upload-url`,
+        var res = await fetch(`${API_BASE_URL}/api/media/upload-url`, {
           method: "POST",
-          contentType: "application/json",
-          dataType: "json",    
-          data: JSON.stringify({
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
             fileName: file.name,
             fileSize: file.size,
             contentType: file.type
           })
         });
+
+        if (!res.ok) {
+          throw new Error("Failed to get upload URL: " + res.status);
+        }
 
         var json = await res.json();
         var bucket = json.bucket;
@@ -547,7 +549,7 @@
         });
 
       } catch (error) {
-        console.error(error.status);
+        console.error(error);
         if (error.status === 429) {
           alert('Please try again in a couple of minutes.');
         }

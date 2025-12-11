@@ -282,11 +282,13 @@ if (document.body.classList.contains("product")) {
 		const shapeImagesContainers = Array.from(document.querySelectorAll('.ctm_shapeImages > div'));
 		const ImgShapes = document.querySelectorAll(`.shapeImg[data-size]`)
 
-		if (event.target.closest('.open-size-guide-btn') && !document.querySelector('[data-label="Add to Cart"]').contains(event.target)) {
+		if (event.target.closest('.open-size-guide-btn') && (document.querySelector('[data-label="Add to Cart"]') == null || !document.querySelector('[data-label="Add to Cart"]').contains(event.target))) {
+			console.log('Start!');
 			event.stopPropagation();
 			event.preventDefault();
 			document.body.classList.add("size_guide_model_open");
 			sizeGuideModal.style.display = 'block';
+			console.log('Added!');
 		}
 
 		if ((event.target === sizeGuideModal && !modalContent.contains(event.target)) || event.target.closest('#closeModal')) {
