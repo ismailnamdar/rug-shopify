@@ -420,7 +420,7 @@
   {% endfor %}
 </div>   
 <div class="product-main-form-wrapper two-fifths">
-    <div id="product-main-form-container" style="display: flex; flex-direction: row; justify-content: flex-start; transition: transform .3s; width: calc(100% - 10px);">
+    <div id="product-main-form-container" style="display: flex; flex-direction: row; justify-content: flex-start; transition: transform .3s; width: calc(100%);">
       <div
         class="
           {% if context == 'quickshop' %}
@@ -1182,71 +1182,8 @@
             {% endcase %}
           </div>
         {% endfor %}
-
-
-        {% comment %} Trusted By Section {% endcomment %}
-        <div class="aded_head_mobile">Trusted by 10,000+ Businesses and Fans</div>
-          <div class="manyImg_wrapper_mobile">
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-wb.png?v=1762508456" alt="WB" width="72px"
-                  height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-lego.png?v=1762508456" alt="Lego" width="72px"
-                  height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-disney.png?v=1762508456" alt="Disney"
-                  width="72px" height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-netflix.png?v=1762508456" alt="Netflix"
-                  width="72px" height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-spotify.png?v=1762508456" alt="Spotify"
-                  width="72px" height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-nbc.png?v=1762508456" alt="NBC" width="72px"
-                  height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-ford.png?v=1762508456" alt="Ford" width="72px"
-                  height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-cadillac.png?v=1762508456" alt="Cadillac"
-                  width="72px" height="72px" />
-              </div>
-              <div class="manyImg_item">
-                  <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/MD.png?v=1762952775" alt="McDonald"
-                  width="72px" height="72px" />
-              </div>
-              <div class="manyImg_item">
-                  <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Lakers.png?v=1762790976" alt="Lakers" width="72px"
-                  height="72px" />
-              </div>
-              <div class="manyImg_item">
-                  <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Hard_Rock.png?v=1762952775" alt="HR_Cafe"
-                  width="72px" height="72px" />
-              </div>
-              <div class="manyImg_item">
-                  <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Fox.png?v=1762952775" alt="FSports"
-                  width="72px" height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Dove.png?v=1762790976" alt="Dove" width="72px"
-                  height="72px" />
-              </div>
-              <div class="manyImg_item">
-              <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/DHL.png?v=1762790977" alt="DHL" width="72px"
-                  height="72px" />
-              </div>
-          </div>
-        </div>
-        {% render 'edit-notes-section' %}
-    </div> 
+      </div> 
+      {% render 'edit-notes-section' %}
     </div>
     {% comment %} TODO: IS THIS NEEDED? {% endcomment %}
     {% if product.description != blank and product.description contains '<!-- split -->' %}
@@ -1266,24 +1203,31 @@
 {% style %}
   .product__details--product-page {
     width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 20px;
   }
 
   .product-main-form-wrapper {
     overflow: hidden;
+    border: 1px solid #262627;
+    border-radius: 8px;
   }
 
   @media screen and (max-width: 768px) {
     .product-main-form-wrapper {
       width: 100vw;
       overflow:hidden;
-      margin-left: -10px;
+      padding: 0;
+      border: none;
+      border-radius: 0;
     }
 
     .product__details--product-page {
       height: 100%;
       margin-bottom: 0;
-      max-width: 100%;
-      min-width: 100%;
       padding: 0;
       position: relative;
     }

@@ -44,6 +44,7 @@
     data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
   {% endif %}
   data-product-id="{{ product.id }}"
+  style="max-width: 100%;"
 >
   <div id="main-price" class="ctm_prd_price_mobile">$149</div>
   {% assign form_id_prefix = "product-form-section-" %}
@@ -89,11 +90,11 @@
     {% comment %}ONLY RENDER ONCE THERE IS AN IMAGE AND IF THE PRODUCT IS CUSTOM RUG{% endcomment %}
     <div id="custom-rug-properties-section" style="display: block;">
       <input name="properties[__mediaId]" type="text" hidden style="display: none;" />
-      <input name="properties[__sendProof]" type="text" hidden style="display: none;" />
-      <input name="properties[__bgColor]" type="text" hidden style="display: none;" />
-      <input name="properties[__removeBg]" type="text" hidden style="display: none;" />
-      <input name="properties[__scale]" type="text" hidden style="display: none;" />
-      <input name="properties[__rotation]" type="text" hidden style="display: none;" />
+      <input name="properties[__Send Proof]" type="text" hidden style="display: none;" />
+      <input name="properties[__Background Color]" type="text" hidden style="display: none;" />
+      <input name="properties[__Remove Background]" type="text" hidden style="display: none;" />
+      <input name="properties[__Scale]" type="text" hidden style="display: none;" />
+      <input name="properties[__Rotation]" type="text" hidden style="display: none;" />
       <input name="properties[Original image]" type="text" hidden style="display: none;" />
       <input name="properties[Product preview image]" type="text" hidden style="display: none;" />
     </div>
@@ -102,6 +103,7 @@
         <button id="custom-rug-remove-bg" type="button" class="custom-rug-remove-bg-button">Remove Background</button>
         <button class="custom-rug-bg-color-button" type="button">
           Select Rug Color
+          <input id="custom-rug-bg-color" data-bg-color="color" type="color" style="opacity: 0; position: absolute; left: 0; right: 0; bottom: 0; top: 0;" />
         </button>
       </div>
       {% render 'divider' %}
@@ -119,7 +121,7 @@
 
     <div id="custom-rug-proof-section" style="display: none;">
       <div class="is-inline-block">
-        {% render 'switch', id: "custom-rug-send-proof", label: "Send proof for approval before production.", name: "__sendProof"  %}
+        {% render 'switch', id: "custom-rug-send-proof", label: "Send proof for approval before production.", name: "__Send Proof"  %}
       </div>
     </div>
 
@@ -127,8 +129,8 @@
     <div id="custom-rug-add-to-cart" class="custom-rug-sticky-add-to-cart-container" style="display: none;">
       {% render 'quantity-input', id: "custom-rug-quantity" %}
       <button type="button" class="custom-rug-sticky-add-to-cart-button">
-        <span class="custom-rug-sticky-add-to-cart-button-text">Add to cart</span>
-        <div class="ctm_prd_price_mobile" style="display: block;">$149</div>
+        <div class="custom-rug-sticky-add-to-cart-button-text" style="position: relative; bottom: 2px;">Add to cart</div>
+        <div class="ctm_prd_price_mobile" style="display: block; margin: 0;">$149</div>
       </button>
       <button id="custom-rug-submit-button" type="submit" style="display: none;"></button>
     </div>
@@ -293,6 +295,15 @@
       display: block;
     }
 
+    .custom-rug-upload-image-container[data-mobile-fixed] {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 1px solid #262627;
+      z-index: 50;
+    }
+
     .custom-rug-sticky-add-to-cart-container {
       padding: 12px;
       position: fixed;
@@ -309,7 +320,7 @@
     const ids = {
       uploadButton: '.custom-rug-upload-image',
       imageInput: '#custom-rug-image',
-      bgColorInput: '#custom-rug-bg-color',
+      bgColorInput: '[data-bg-color="color"]',
       bgColorInputButton: '.custom-rug-bg-color-button',
       removeBgInput: '#custom-rug-remove-bg',
       addToCartButton: '#custom-rug-add-to-cart .custom-rug-sticky-add-to-cart-button',
@@ -374,6 +385,9 @@
         CanvasRugEditor.reset();
         setFgUrl(dataUrl);
         uploadInBackground(file);
+        $('html, body').animate({
+          scrollTop: $('#rug-canvas-container').offset().top - 70
+        }, 600);
       } finally {
         // Reset input so selecting the same file again will still trigger change
         input.value = "";
@@ -444,19 +458,17 @@
         setUploadProgress(0);
 
         // 1. Get the Signed Upload URL
-        var res = await fetch(`${API_BASE_URL}/api/media/upload-url`, {
+        var res = await $.ajax({
+          url: `${API_BASE_URL}/api/media/upload-url`,
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
+          contentType: "application/json",
+          dataType: "json",    
+          data: JSON.stringify({
             fileName: file.name,
             fileSize: file.size,
             contentType: file.type
           })
         });
-
-        if (!res.ok) {
-          throw new Error("Failed to get upload URL: " + res.status);
-        }
 
         var json = await res.json();
         var bucket = json.bucket;
@@ -535,7 +547,10 @@
         });
 
       } catch (error) {
-        console.error(error);
+        console.error(error.status);
+        if (error.status === 429) {
+          alert('Please try again in a couple of minutes.');
+        }
         // TODO: log error to your backend, etc.
         setUploading(false);
       }
@@ -567,13 +582,9 @@
       await CanvasRugEditor.handleClickAddToCart()
       $('#custom-rug-submit-button').click();
     });
-    bgColorInputButton.on("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      bgColorInput.click();
-    })
+    
     editNotesButton.on("click", function() {
-      $("#product-main-form-container").css('transform', 'translateX(calc(-100% - 10px))');
+      $("#product-main-form-container").css('transform', 'translateX(calc(-100%))');
       $(".edit-notes-section-container").css('display', 'block');
     })
     saveNotesButton.on("click", function() {
