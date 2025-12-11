@@ -159,7 +159,7 @@ const scaleDownButton = document.getElementById("rug-canvas-scale-down");
 const ctx = canvas.getContext("2d");
 const handlePositions = {};
 const center = { x: 0, y: 0 };
-const canvasScale = {
+let canvasScale = {
     w: 14 * 1.2,
     h: 14,
 }
@@ -277,8 +277,7 @@ let removedBackground = false
 
 let shape = {{ shape | default: "rectangle" | json}}; // circle | rectangle | runner
 let shapeSize = {{ size | default: "2'X3'" | json }};
-console.log(shape, shapeSize, "{{shape}}", "{{size}}");
-let dimension = { wFeet: 5, hFeet: 3, w: 10, h: 6 }; // You can customize
+let dimension = { wFeet: 5, hFeet: 3, w: 10, h: 6 };
 let scalePct = 100;
 let rotationDeg = 0;
 let selected = true;
@@ -642,6 +641,42 @@ canvas.addEventListener("pointermove", e => {
 canvas.addEventListener("pointerup", () => {
   interaction = null;
 });
+
+// Your draw() function — must exist globally
+function redrawCanvas() {
+  if (typeof window.draw === 'function') {
+    window.draw();
+  }
+}
+
+// Create ResizeObserver
+const ro = new ResizeObserver(function(){
+  var rect = canvas.getBoundingClientRect();
+  var width  = Math.round(rect.width);
+  var height = Math.round(rect.height);
+  const ratio = width / height;
+
+  var dpr = window.devicePixelRatio || 1;
+
+  canvasScale = {
+    h: 14,
+    w: 14 * ratio
+  }
+  // Set pixel buffer size
+  canvas.width  = width * dpr;
+  canvas.height = height * dpr;
+
+  var ctx = canvas.getContext("2d");
+  if (ctx) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  // redraw using existing state
+  draw();
+});
+
+// Start watching
+ro.observe(canvas);
 
 async function uploadPreview(blob) {
     // STEP 1 → Get signed upload URL from your backend
