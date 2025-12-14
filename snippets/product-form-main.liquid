@@ -198,6 +198,8 @@
 
   .custom-rug-sticky-add-to-cart-container {
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -327,7 +329,7 @@
       editNotesButton: '.custom-rug-edit-notes',
       saveNotesButton: '.edit-note-save-button',
     };
-    const CANVAS_SUPPORTED_FILE_SIZE = 10 * 1024 * 1024 // 50MB
+    const CANVAS_SUPPORTED_FILE_SIZE = 10 * 1024 * 1024 // 10MB
     const MAX_SUPPORTED_FILE_SIZE = 200 * 1024 * 1024 // 200MB
     const CANVAS_SUPPORTED_FILE_TYPES = [
       'image/jpg',
@@ -335,10 +337,9 @@
       'image/webp',
       'image/png',
       'image/svg+xml',
-      // 'image/gif',
     ]
-    const SUPABASE_URL = "https://fezniiknsjfdseplablo.supabase.co";
-    const API_BASE_URL = "https://rug-staging.vercel.app"
+    const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
+    const API_BASE_URL = "https://rug-production.vercel.app"
 
     // Helper function for file
     function readFileAsDataURL(file) {
@@ -386,7 +387,7 @@
         setFgUrl(dataUrl);
         uploadInBackground(file);
         $('html, body').animate({
-          scrollTop: $('#rug-canvas-container').offset().top - 70
+          scrollTop: $('#rug-canvas-container').offset().top - 10
         }, 600);
       } finally {
         // Reset input so selecting the same file again will still trigger change
@@ -610,6 +611,7 @@
 
     const $form = $('#product-form-section-{{ product.id }}');
     $form.on("submit", function (e) {
+      const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
       // Stop normal redirect
       e.preventDefault();
 
@@ -630,7 +632,8 @@
           cache: false,
           success(cart) {
               refreshCart(cart);
-              $('.cart-container').click()
+              // TODO: fix there is a double click here.
+              $('.top-bar .cart-container').click()
               addToCartButton.prop('disabled', false);
               addToCartButtonText.text('Add to cart');
           },

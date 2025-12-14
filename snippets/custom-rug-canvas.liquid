@@ -55,7 +55,7 @@
 <style>
   .rug-canvas {
     width: 100%;
-    height: 500px;
+    height: 800px;
     touch-action:none;
   }
   .custom-rug-action-button {
@@ -149,8 +149,8 @@
 /* -------------------------------------------------------------
    CONSTANTS
 ------------------------------------------------------------- */
-const API_BASE_URL = "https://rug-staging.vercel.app"
-const SUPABASE_URL = "https://fezniiknsjfdseplablo.supabase.co";
+const API_BASE_URL = "https://rug-production.vercel.app"
+const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
 const canvas = document.getElementById("rug-canvas");
 const changePhotoButton = document.getElementById("rug-canvas-change-photo");
 const rotateButton = document.getElementById("rug-canvas-rotate");
@@ -160,7 +160,7 @@ const ctx = canvas.getContext("2d");
 const handlePositions = {};
 const center = { x: 0, y: 0 };
 let canvasScale = {
-    w: 14 * 1.2,
+    w: 14,
     h: 14,
 }
 const sizes = {
@@ -169,96 +169,96 @@ const sizes = {
             name: "3'X3'",
             wFeet: 3,
             hFeet: 3,
-            w: 8,
-            h: 8,
+            w: 10,
+            h: 10,
         },
         "4'X4'": {
             name: "4'X4'",
             wFeet: 4,
             hFeet: 4,
-            w: 8,
-            h: 8,
+            w: 10,
+            h: 10,
         },
         "5'X5'": {
             name: "5'X5'",
             wFeet: 5,
             hFeet: 5,
-            w: 8,
-            h: 8,
+            w: 10,
+            h: 10,
         },
         "6'X6'": {
             name: "6'X6'",
             wFeet: 6,
             hFeet: 6,
-            w: 8,
-            h: 8,
+            w: 10,
+            h: 10,
         },
         "8'X8'": {
             name: "8'X8'",
             wFeet: 8,
             hFeet: 8,
-            w: 8,
-            h: 8,
+            w: 10,
+            h: 10,
         }
     },
     'rectangle': {
         "2'X3'": {
             name: "2'X3'",
-            wFeet: 2,
-            hFeet: 3,
-            w: 2 * 10 / 3,
-            h: 10,
+            wFeet: 3,
+            hFeet: 2,
+            w: 10,
+            h: 2 * 10 / 3,
         },
         "3'X5'": {
             name: "3'X5'",
-            wFeet: 3,
-            hFeet: 5,
-            w: 6,
-            h: 10,
+            wFeet: 5,
+            hFeet: 3,
+            w: 10,
+            h: 6,
         },
         "5'X7'": {
             name: "5'X7'",
-            wFeet: 5,
-            hFeet: 7,
-            w: 5 * 10 / 7,
-            h: 10,
+            wFeet: 7,
+            hFeet: 5,
+            w: 10,
+            h: 5 * 10 / 7,
         },
         "8'X10'": {
             name: "8'X10'",
-            wFeet: 8,
-            hFeet: 10,
-            w: 8,
-            h: 10,
+            wFeet: 10,
+            hFeet: 8,
+            w: 10,
+            h: 8,
         },
         "8'X12'": {
             name: "8'X12'",
-            wFeet: 8,
-            hFeet: 12,
-            w: 8,
-            h: 10,
+            wFeet: 12,
+            hFeet: 8,
+            w: 10,
+            h: 8,
         }
     },
     'runner': {
         "2.5'X7'": {
             name: "2.5'X7'",
-            wFeet: 2.5,
-            hFeet: 7,
-            w: 5,
-            h: 10,
+            wFeet: 7,
+            hFeet: 2.5,
+            w: 10,
+            h: 5,
         },
         "2.5'X10'": {
             name: "2.5'X10'",
-            wFeet: 2.5,
-            hFeet: 10,
-            w: 5,
-            h: 10,
+            wFeet: 10,
+            hFeet: 2.5,
+            w: 10,
+            h: 5,
         },
         "5'X10'": {
             name: "5'X10'",
-            wFeet: 5,
-            hFeet: 10,
-            w: 5,
-            h: 10,
+            wFeet: 10,
+            hFeet: 5,
+            w: 10,
+            h: 5,
         },
     }
 }
@@ -280,6 +280,7 @@ let shapeSize = {{ size | default: "2'X3'" | json }};
 let dimension = { wFeet: 5, hFeet: 3, w: 10, h: 6 };
 let scalePct = 100;
 let rotationDeg = 0;
+let offset = { x: 0, y: 0 };
 let selected = true;
 let bgColor = "#000000"
 let interaction = null;
@@ -287,6 +288,12 @@ let interaction = null;
 /* -------------------------------------------------------------
    HELPER FUNCTIONS
 ------------------------------------------------------------- */
+// ADD
+const rotateIconImg = new Image();
+rotateIconImg.src = "data:image/svg+xml;utf8,{{ '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\"/><path d=\"M3 3v5h5\"/></svg>' | url_encode }}";
+
+const scaleIconImg = new Image();
+scaleIconImg.src = "data:image/svg+xml;utf8,{{ '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 13v6h-6\"/><path d=\"M5 11V5h6\"/><path d=\"m5 5 14 14\"/></svg>' | url_encode }}";
 
 // Compute rug mask dimensions
 function maskDims(width, height) {
@@ -360,6 +367,62 @@ function drawImageCover(ctx, img, x, y, w, h, scale, rotation, cover) {
   ctx.restore();
 }
 
+function drawRotateIcon(ctx, x, y) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 2;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+
+  // Arc (counter-clockwise, starting from bottom)
+  ctx.beginPath();
+  ctx.arc(0, 0, 7, Math.PI * 0.5, Math.PI * 0.95, true);
+  ctx.stroke();
+  
+  ctx.save();
+
+  // move to arrow pivot point
+  ctx.translate(-6, -6);
+  // rotate arrow head
+  ctx.rotate(-120 * Math.PI / 180); // 🔁 rotate here
+
+  // Arrow head (top-left direction, CCW)
+  ctx.beginPath();
+  ctx.moveTo(-4, -6);
+  ctx.lineTo(-8, -6);
+  ctx.lineTo(-6, -2);
+  ctx.stroke();
+
+  ctx.restore();
+  ctx.restore();
+}
+
+function drawScaleIcon(ctx, x, y) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.beginPath();
+  ctx.moveTo(-6, -6);
+  ctx.lineTo(6, 6);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(2, 6);
+  ctx.lineTo(6, 6);
+  ctx.lineTo(6, 2);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(-2, -6);
+  ctx.lineTo(-6, -6);
+  ctx.lineTo(-6, -2);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
 /* -------------------------------------------------------------
    MAIN DRAW FUNCTION
 ------------------------------------------------------------- */
@@ -396,7 +459,18 @@ function draw({ measurement = true, hideBorder = false } = {}) {
   ctx.fillStyle = bgColor || "#000000";
   ctx.fillRect(x, y, w, h);
 
-  if (fgImg) drawImageCover(ctx, fgImg, x, y, w, h, scalePct, rotationDeg);
+  if (fgImg) {
+    drawImageCover(
+      ctx,
+      fgImg,
+      x + offset.x,
+      y + offset.y,
+      w,
+      h,
+      scalePct,
+      rotationDeg
+    );
+  }
 
   ctx.restore();
 
@@ -407,14 +481,87 @@ function draw({ measurement = true, hideBorder = false } = {}) {
   ctx.stroke();
   ctx.restore();
 
+  if (measurement !== false) {
+    const selectedDimension = sizes[shape][shapeSize]
+    // --- Measurement arrows ---
+    ctx.save();
+    ctx.strokeStyle = "#000000"; // neutral-400
+    ctx.fillStyle = "#000000"; // neutral-600
+    ctx.lineWidth = 2;
+    ctx.font = "bold 18px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+  
+    // Horizontal arrow (width)
+    const hLineY = y + h + 18
+    const hx1 = x;
+    const hx2 = x + w;
+  
+    // main line
+    ctx.beginPath();
+    ctx.moveTo(hx1, hLineY);
+    ctx.lineTo(hx2, hLineY);
+    ctx.stroke();
+  
+    const arrowSize = 6;
+    // left flat cap
+    ctx.beginPath();
+    ctx.moveTo(hx1, hLineY - arrowSize);
+    ctx.lineTo(hx1, hLineY + arrowSize);
+    ctx.stroke();
+  
+    // right flat cap
+    ctx.beginPath();
+    ctx.moveTo(hx2, hLineY - arrowSize);
+    ctx.lineTo(hx2, hLineY + arrowSize);
+    ctx.stroke();
+  
+    const hTextY = hLineY + 16;
+    ctx.textAlign = "center";
+    ctx.fillText(`${selectedDimension.wFeet}'`, x + w / 2, hTextY);
+  
+    // Vertical arrow (height)
+    const vLineX = x - 20;
+    const vy1 = y;
+    const vy2 = y + h;
+  
+    ctx.beginPath();
+    ctx.moveTo(vLineX, vy1);
+    ctx.lineTo(vLineX, vy2);
+    ctx.stroke();
+  
+    // top flat cap
+    ctx.beginPath();
+    ctx.moveTo(vLineX - arrowSize, vy1);
+    ctx.lineTo(vLineX + arrowSize, vy1);
+    ctx.stroke();
+  
+    // bottom flat cap
+    ctx.beginPath();
+    ctx.moveTo(vLineX - arrowSize, vy2);
+    ctx.lineTo(vLineX + arrowSize, vy2);
+    ctx.stroke();
+  
+    ctx.textAlign = "left";
+    const vTextX = vLineX - 20;
+    ctx.fillText(`${selectedDimension.hFeet}'`, vTextX, y + h / 2 + 4);
+  
+    ctx.restore();
+  }
+
   /* ---- HANDLE BORDER + HANDLES ---- */
   if (fgImg && selected && !hideBorder) {
     const iw = fgImg.naturalWidth;
     const ih = fgImg.naturalHeight;
     const { dw, dh } = computeDrawDims(w, h, iw, ih, scalePct);
 
+    /*
     const cx = x + w / 2;
     const cy = y + h / 2;
+    center.x = cx;
+    center.y = cy;
+    */
+
+    const cx = x + w / 2 + offset.x;
+    const cy = y + h / 2 + offset.y;
     center.x = cx;
     center.y = cy;
 
@@ -466,6 +613,45 @@ function draw({ measurement = true, hideBorder = false } = {}) {
     ctx.fillStyle = "#2563eb";
     const s = 10;
 
+    // SCALE ICON (bottom-right)
+    const scalePos = {
+      x: corners.se.x + dirX / len * 16,
+      y: corners.se.y - dirY / len * 16
+    }
+    handlePositions.scale = scalePos;
+
+    // ROTATE ICON (top-right)
+    handlePositions.rotate = rotatePos;
+
+    const iconRadius = 16;
+
+    // ---- SCALE ICON (bottom-right) ----
+    ctx.beginPath();
+    ctx.arc(scalePos.x, scalePos.y, iconRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 2;
+    drawScaleIcon(ctx, scalePos.x, scalePos.y);
+
+    // ---- ROTATE ICON (top-right) ----
+    ctx.beginPath();
+    ctx.arc(rotatePos.x, rotatePos.y, iconRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 2;
+    drawRotateIcon(ctx, rotatePos.x, rotatePos.y);
+
+    /*
     Object.values(corners).forEach(pt => {
       ctx.fillRect(pt.x - s / 2, pt.y - s / 2, s, s);
     });
@@ -473,72 +659,8 @@ function draw({ measurement = true, hideBorder = false } = {}) {
     ctx.beginPath();
     ctx.arc(rotatePos.x, rotatePos.y, 8, 0, Math.PI * 2);
     ctx.fill();
+    */
   }
-
-  if (measurement === false) return;
-  const selectedDimension = sizes[shape][shapeSize]
-  // --- Measurement arrows ---
-  ctx.save();
-  ctx.strokeStyle = "#000000"; // neutral-400
-  ctx.fillStyle = "#000000"; // neutral-600
-  ctx.lineWidth = 2;
-  ctx.font = "bold 18px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-
-  // Horizontal arrow (width)
-  const hLineY = y + h + 18
-  const hx1 = x;
-  const hx2 = x + w;
-
-  // main line
-  ctx.beginPath();
-  ctx.moveTo(hx1, hLineY);
-  ctx.lineTo(hx2, hLineY);
-  ctx.stroke();
-
-  const arrowSize = 6;
-  // left flat cap
-  ctx.beginPath();
-  ctx.moveTo(hx1, hLineY - arrowSize);
-  ctx.lineTo(hx1, hLineY + arrowSize);
-  ctx.stroke();
-
-  // right flat cap
-  ctx.beginPath();
-  ctx.moveTo(hx2, hLineY - arrowSize);
-  ctx.lineTo(hx2, hLineY + arrowSize);
-  ctx.stroke();
-
-  const hTextY = hLineY + 16;
-  ctx.textAlign = "center";
-  ctx.fillText(`${selectedDimension.wFeet}'`, x + w / 2, hTextY);
-
-  // Vertical arrow (height)
-  const vLineX = x - 20;
-  const vy1 = y;
-  const vy2 = y + h;
-
-  ctx.beginPath();
-  ctx.moveTo(vLineX, vy1);
-  ctx.lineTo(vLineX, vy2);
-  ctx.stroke();
-
-  // top flat cap
-  ctx.beginPath();
-  ctx.moveTo(vLineX - arrowSize, vy1);
-  ctx.lineTo(vLineX + arrowSize, vy1);
-  ctx.stroke();
-
-  // bottom flat cap
-  ctx.beginPath();
-  ctx.moveTo(vLineX - arrowSize, vy2);
-  ctx.lineTo(vLineX + arrowSize, vy2);
-  ctx.stroke();
-
-  ctx.textAlign = "left";
-  const vTextX = vLineX - 20;
-  ctx.fillText(`${selectedDimension.hFeet}'`, vTextX, y + h / 2 + 4);
-
-  ctx.restore();
 }
 
 /* -------------------------------------------------------------
@@ -552,66 +674,75 @@ function localPointer(e) {
 canvas.addEventListener("pointerdown", e => {
   const p = localPointer(e);
   let hit = null;
-  const threshold = 12;
+  const threshold = 16;
 
+  // ---- HANDLE HIT TEST ----
   for (const [name, pt] of Object.entries(handlePositions)) {
-    if (Math.hypot(p.x - pt.x, p.y - pt.y) <= threshold) hit = name;
+    if (Math.hypot(p.x - pt.x, p.y - pt.y) <= threshold) {
+      hit = name;
+      break;
+    }
   }
 
+  // ---- HANDLE INTERACTIONS ----
   if (hit) {
     selected = true;
+
     if (hit === "rotate") {
       interaction = {
         mode: "rotate",
         startAngle: Math.atan2(p.y - center.y, p.x - center.x),
         startRotation: rotationDeg
       };
-    } else {
+    } else if (hit === "scale") {
       interaction = {
         mode: "scale",
         startDist: Math.hypot(p.x - center.x, p.y - center.y),
         startScale: scalePct
       };
     }
+
     return;
   }
 
-  // Non-handle click selects/deselects
-  // No handle hit → check if click is inside the image bounds
-  const fg = fgImg;
-  if (fg && canvas) {
+  // ---- IMAGE BODY HIT TEST (MOVE) ----
+  if (fgImg) {
     const width = Math.round(canvas.clientWidth);
     const height = Math.round(canvas.clientHeight);
     const { w, h } = maskDims(width, height);
-    const x = Math.floor((width - w) / 2);
-    const y = Math.floor((height - h) / 2);
 
-    const iw = fg.naturalWidth;
-    const ih = fg.naturalHeight;
+    const iw = fgImg.naturalWidth;
+    const ih = fgImg.naturalHeight;
     const { dw, dh } = computeDrawDims(w, h, iw, ih, scalePct);
 
-    const cx = x + w / 2;
-    const cy = y + h / 2;
-    const rad = (rotationDeg * Math.PI) / 180;
+    // use MOVED center
+    const cx = center.x;
+    const cy = center.y;
+
+    const rad = rotationDeg * Math.PI / 180;
     const cos = Math.cos(rad);
     const sin = Math.sin(rad);
 
     const dx = p.x - cx;
     const dy = p.y - cy;
 
-    // Transform point into image-local space (unrotate)
+    // unrotate pointer
     const localX = dx * cos + dy * sin;
     const localY = -dx * sin + dy * cos;
 
     if (Math.abs(localX) <= dw / 2 && Math.abs(localY) <= dh / 2) {
-      // Clicked on the image → select it
       selected = true;
+      interaction = {
+        mode: "move",
+        startX: p.x,
+        startY: p.y,
+        startOffsetX: offset.x,
+        startOffsetY: offset.y
+      };
     } else {
-      // Clicked outside → deselect
       selected = false;
     }
   } else {
-    // No image loaded → always deselect
     selected = false;
   }
 
@@ -627,6 +758,11 @@ canvas.addEventListener("pointermove", e => {
     const d = Math.hypot(p.x - center.x, p.y - center.y);
     const next = interaction.startScale * (d / interaction.startDist);
     scalePct = Math.max(10, Math.min(400, next));
+  }
+
+  if (interaction.mode === "move") {
+    offset.x = interaction.startOffsetX + (p.x - interaction.startX);
+    offset.y = interaction.startOffsetY + (p.y - interaction.startY);
   }
 
   if (interaction.mode === "rotate") {
@@ -650,17 +786,18 @@ function redrawCanvas() {
 }
 
 // Create ResizeObserver
-const ro = new ResizeObserver(function(){
+const ro = new ResizeObserver(function() {
   var rect = canvas.getBoundingClientRect();
-  var width  = Math.round(rect.width);
+  var width = Math.round(rect.width);
   var height = Math.round(rect.height);
-  const ratio = width / height;
+  const isMobile = height < 400;
+  const ratio = isMobile ? width / height : height / width;
 
   var dpr = window.devicePixelRatio || 1;
 
   canvasScale = {
-    h: 14,
-    w: 14 * ratio
+    h: isMobile ? 14 : 14 * ratio,
+    w: isMobile ? 14 * ratio : 14
   }
   // Set pixel buffer size
   canvas.width  = width * dpr;
@@ -827,6 +964,7 @@ window.CanvasRugEditor = {
   setBgColor(v) {
     bgColor = v;
     $(".custom-rug-bg-color-button").css("background", `linear-gradient(to right, ${v} 0%, ${v} 10%, rgba(255, 0, 0, 0) 10%, rgba(255, 0, 0, 0) 100%`);
+    $('#custom-rug-bg-color').val(bgColor);
     draw();
   },
   setUploadedImage(v) {

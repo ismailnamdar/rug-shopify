@@ -207,7 +207,7 @@
             product_gallery_nav--{{ thumbnail_position }}
             product-{{ product.id }}-gallery-nav
           "
-        >
+        style="margin-top: 12px;">
       {% if product.media.size > 1 %}
         {% for media in product.media %}
           {% if media.media_type contains 'video' %}
@@ -250,7 +250,7 @@
 
 <style>
   .product-gallery__image {
-    aspect-ratio: 1.2/1;
+    max-height: 600px;
   }
   .aded_head,
   .aded_head_mobile {
