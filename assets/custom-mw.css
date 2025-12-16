@@ -310,15 +310,14 @@ button#zakeke-product-button {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  border-radius: 4px;
+  background: #F1F1F1;
   width: 100%;
   padding: 8px 12px;
 }
 
 .order-info-box {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  border: 1px solid #262627;
-  border-radius: 4px;
+  margin-block: 1.5rem;
 }
 
 .order-info-box h2 {
