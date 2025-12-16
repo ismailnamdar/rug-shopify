@@ -1,7 +1,9 @@
 <style>
+  .product-main-first-column {
+
+  }
   .product-main-canvas-container {
-    width: calc(60% - 30px);
-    margin-right: 30px;
+    width: 100%
   }
   .mobile_header_prd {
     display: none;
@@ -331,49 +333,87 @@
     {% assign current_variant = product.selected_or_first_available_variant %}
     {% assign shape = current_variant.option1 | downcase  %}
     {% assign size = current_variant.option2 | upcase %}
-    <div class="product-main-canvas-container">
-    {% render "custom-rug-canvas", shape: shape, size: size %}
-    </div>
-    <div
-        id="main-gallery"
-      class="product__images
-        {% if context == 'quickshop' %}
-          one-half
-          column
-          js-gallery-modal
-        {% elsif context == 'featured-product' %}
-          one-half
-          column
+    <div class="three-fifths columns product-main-first-column">
+      <div class="product-main-canvas-container">
+      {% render "custom-rug-canvas", shape: shape, size: size %}
+      </div>
+      <div
+          id="main-gallery"
+        class="product__images
+          {% if context == 'quickshop' %}
+            one-half
+            column
+            js-gallery-modal
+          {% elsif context == 'featured-product' %}
+            one-half
+            column
+          {% else %}
+          {% endif %}
+          medium-down--one-whole
+        "
+        style="position:relative;"
+      >
+        {% if onboarding and context == 'featured-product' %}
+          {% capture i %}{% cycle "1", "2" %}{% endcapture %}
+          {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
         {% else %}
-          three-fifths
-          columns
+          {% render 'product-images-main',
+            product: product,
+            gallery_thumbnails: gallery_thumbnails,
+            gallery_thumbnail_slider: gallery_thumbnail_slider,
+            gallery_click_to_zoom: gallery_click_to_zoom,
+            gallery_hover_zoom: gallery_hover_zoom,
+            gallery_arrows: gallery_arrows,
+            set_product_height: set_product_height,
+            gallery_slideshow_transition: gallery_slideshow_transition,
+            gallery_slideshow_speed: gallery_slideshow_speed,
+            gallery_thumbnail_position: gallery_thumbnail_position,
+            video_looping: video_looping
+          %}
         {% endif %}
-        medium-down--one-whole
-      "
-      style="position:relative;"
-    >
-      {% if onboarding and context == 'featured-product' %}
-        {% capture i %}{% cycle "1", "2" %}{% endcapture %}
-        {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
-      {% else %}
-        {% render 'product-images-main',
-          product: product,
-          gallery_thumbnails: gallery_thumbnails,
-          gallery_thumbnail_slider: gallery_thumbnail_slider,
-          gallery_click_to_zoom: gallery_click_to_zoom,
-          gallery_hover_zoom: gallery_hover_zoom,
-          gallery_arrows: gallery_arrows,
-          set_product_height: set_product_height,
-          gallery_slideshow_transition: gallery_slideshow_transition,
-          gallery_slideshow_speed: gallery_slideshow_speed,
-          gallery_thumbnail_position: gallery_thumbnail_position,
-          video_looping: video_looping
-        %}
-      {% endif %}
+        <button class="custom-rug-upload-image" style="opacity: 0; height: 300px; width: 300px; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 50;" ></button>
+      </div>
+      <div class="product-main-gallery-bottom">
+      {% for block in section.blocks %}
+        <div
+          class="
+            product-block
+            product-block--{{ block.type }}
+            {% if forloop.first == true %}
+              product-block--first
+            {% endif %}
+          "
+          {{ block.shopify_attributes }}
+        >
+          {% case block.type %}
+            {% when 'collapsible-tab' %}
+              {% if block.settings.collapsible_tab_heading != blank %}
+                <details class="collapsible-tab">
+                  <summary class="collapsible-tab__heading">
+                    <span>{{ block.settings.collapsible_tab_heading | escape }}</span>
+                  </summary>
 
-      {% comment %} Invisible button to start the user journey 
-    <button id="custom-rug-upload-image-button" style="visibility: hidden; height: 150px; width: 140px; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); z-index: 50;" ></button>
-        {% endcomment %}
+                  {% if block.settings.collapsible_tab_text != blank %}
+                    <div class="collapsible-tab__text">
+                      {{ block.settings.collapsible_tab_text }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.collapsible_tab_image != blank %}
+                    <div class="collapsible-tab__image">
+                      {{ block.settings.collapsible_tab_image | image_url: width: 255 | image_tag: class: 'collapsible-tab__image_tag' }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.collapsible_tab_text_two != blank %}
+                    <div class="collapsible-tab__text_two">
+                      {{ block.settings.collapsible_tab_text_two }}
+                    </div>
+                  {% endif %}
+                </details>
+              {% endif %}
+          {% endcase %}
+        </div>
+      {% endfor %}
+      </div>
     </div>
 
     {% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/tiff,image/HEIC,image/bmp,image/avif,.ico' %}
@@ -420,7 +460,7 @@
     {% endif %}
   {% endfor %}
 </div>   
-<div class="product-main-form-wrapper two-fifths">
+<div class="product-main-form-wrapper two-fifths columns">
     <div id="product-main-form-container" style="display: flex; flex-direction: row; justify-content: flex-start; transition: transform .3s; width: calc(100%);">
       <div
         class="
@@ -431,7 +471,6 @@
             one-half
             column
           {% else %}
-            columns
           {% endif %}
           medium-down--one-whole
           product__details
@@ -934,6 +973,30 @@
                 <div class="meta">
                   {% render 'social-buttons', context: 'product' %}
                 </div>
+              {% when 'collapsible-tab' %}
+                {% if block.settings.collapsible_tab_heading != blank %}
+                  <details class="collapsible-tab product-main-gallery-bottom-mobile">
+                    <summary class="collapsible-tab__heading">
+                      <span>{{ block.settings.collapsible_tab_heading | escape }}</span>
+                    </summary>
+    
+                    {% if block.settings.collapsible_tab_text != blank %}
+                      <div class="collapsible-tab__text">
+                        {{ block.settings.collapsible_tab_text }}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.collapsible_tab_image != blank %}
+                      <div class="collapsible-tab__image">
+                        {{ block.settings.collapsible_tab_image | image_url: width: 255 | image_tag: class: 'collapsible-tab__image_tag' }}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.collapsible_tab_text_two != blank %}
+                      <div class="collapsible-tab__text_two">
+                        {{ block.settings.collapsible_tab_text_two }}
+                      </div>
+                    {% endif %}
+                  </details>
+                {% endif %}
                 {% when 'feature-icons' %}
                   <style>
                     .features-grid {
@@ -1018,30 +1081,6 @@
                     </div>
                   </div>
                 </div>
-              {% when 'collapsible-tab' %}
-                {% if block.settings.collapsible_tab_heading != blank %}
-                  <details class="collapsible-tab">
-                    <summary class="collapsible-tab__heading">
-                      <span>{{ block.settings.collapsible_tab_heading | escape }}</span>
-                    </summary>
-
-                    {% if block.settings.collapsible_tab_text != blank %}
-                      <div class="collapsible-tab__text">
-                        {{ block.settings.collapsible_tab_text }}
-                      </div>
-                    {% endif %}
-                    {% if block.settings.collapsible_tab_image != blank %}
-                      <div class="collapsible-tab__image">
-                        {{ block.settings.collapsible_tab_image | image_url: width: 255 | image_tag: class: 'collapsible-tab__image_tag' }}
-                      </div>
-                    {% endif %}
-                    {% if block.settings.collapsible_tab_text_two != blank %}
-                      <div class="collapsible-tab__text_two">
-                        {{ block.settings.collapsible_tab_text_two }}
-                      </div>
-                    {% endif %}
-                  </details>
-                {% endif %}
               {% when 'tabs' %}
                 {% assign tabs_below_product_gallery = false %}
 
@@ -1213,17 +1252,50 @@
 
   .product-main-form-wrapper {
     overflow: hidden;
+  }
+
+  .product-main-gallery-bottom {
+    display: block;
+  }
+
+  .product-main-gallery-bottom-mobile {
+      display: none;
+    }
+
+  #product-main-form-container {
     border: 1px solid #262627;
     border-radius: 8px;
   }
 
   @media screen and (max-width: 768px) {
+    #product-main-form-container {
+      border: none;
+      border-radius: 0;
+    }
+
+    .product-main-gallery-bottom {
+      display: none;
+    }
+
+    .product-main-gallery-bottom-mobile {
+      display: block;
+    }
+
+    .product-main-first-column {
+      width: 100% !important;
+      margin: 0 !important;
+    }
+    .product-main-first-column #main-gallery {
+      width: 100% !important;
+    }
+
     .product-main-form-wrapper {
       width: 100vw;
       overflow:hidden;
       padding: 0;
       border: none;
       border-radius: 0;
+      margin: 0 !important;
     }
 
     .product__details--product-page {

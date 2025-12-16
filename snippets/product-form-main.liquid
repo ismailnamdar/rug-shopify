@@ -96,7 +96,7 @@
       <input name="properties[__Scale]" type="text" hidden style="display: none;" />
       <input name="properties[__Rotation]" type="text" hidden style="display: none;" />
       <input name="properties[__Original image]" type="text" hidden style="display: none;" />
-      <input name="properties[__Product preview image]" type="text" hidden style="display: none;" />
+      <input name="properties[Product preview image]" type="text" hidden style="display: none;" />
     </div>
     <div id="custom-rug-background-section" style="display: none;">
       <div class="custom-rug-background-section">
@@ -331,7 +331,7 @@
       saveNotesButton: '.edit-note-save-button',
     };
     const CANVAS_SUPPORTED_FILE_SIZE = 10 * 1024 * 1024 // 10MB
-    const MAX_SUPPORTED_FILE_SIZE = 200 * 1024 * 1024 // 200MB
+    const MAX_SUPPORTED_FILE_SIZE = 250 * 1024 * 1024 // 250MB
     const CANVAS_SUPPORTED_FILE_TYPES = [
       'image/jpg',
       'image/jpeg',
@@ -367,7 +367,7 @@
         var dataUrl = await readFileAsDataURL(file);
 
         if (file.size > MAX_SUPPORTED_FILE_SIZE) {
-          alert('Maximum supported file size is 200MB.');
+          alert('Maximum supported file size is 250MB.');
           return;
         }
 
@@ -422,7 +422,7 @@
 
     function setUploading(isUploading) {
       // e.g. toggle a loading spinner
-      CanvasRugEditor.loading(isUploading);
+      CanvasRugEditor.loading(isUploading, false, "Uploading your design...");
       console.log("Uploading:", isUploading);
     }
 
@@ -444,6 +444,88 @@
       CanvasRugEditor.setUploadedImage(data);
     }
 
+    function svgFileToPngBlob(file, options = {}) {
+      const {
+        width = 400,
+        height = 400,
+        background = null, // set to "#fff" if you want white bg
+        scale = 1, // use 2 for retina
+      } = options;
+    
+      return new Promise(async (resolve, reject) => {
+        try {
+          if (!file || file.type !== "image/svg+xml") {
+            return reject(new Error("Input must be an SVG file"));
+          }
+    
+          const svgText = await file.text();
+    
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(svgText, "image/svg+xml");
+          const svg = doc.documentElement;
+    
+          const svgWidth =
+            svg.getAttribute("width") ||
+            svg.viewBox?.baseVal?.width ||
+            width;
+    
+          const svgHeight =
+            svg.getAttribute("height") ||
+            svg.viewBox?.baseVal?.height ||
+            height;
+    
+          svg.setAttribute("width", svgWidth);
+          svg.setAttribute("height", svgHeight);
+    
+          const serializedSvg = new XMLSerializer().serializeToString(svg);
+    
+          const svgBlob = new Blob([serializedSvg], {
+            type: "image/svg+xml;charset=utf-8",
+          });
+    
+          const url = URL.createObjectURL(svgBlob);
+          const img = new Image();
+    
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = svgWidth * scale;
+            canvas.height = svgHeight * scale;
+    
+            const ctx = canvas.getContext("2d");
+            ctx.scale(scale, scale);
+    
+            if (background) {
+              ctx.fillStyle = background;
+              ctx.fillRect(0, 0, svgWidth, svgHeight);
+            }
+    
+            ctx.drawImage(img, 0, 0, svgWidth, svgHeight);
+            URL.revokeObjectURL(url);
+    
+            canvas.toBlob(
+              (pngBlob) => {
+                if (!pngBlob) {
+                  reject(new Error("PNG conversion failed"));
+                } else {
+                  resolve(pngBlob);
+                }
+              },
+              "image/png"
+            );
+          };
+    
+          img.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("Failed to load SVG into image"));
+          };
+    
+          img.src = url;
+        } catch (err) {
+          reject(err);
+        }
+      });
+    }    
+
     async function uploadInBackground(file, options) {
       options = options || {};
       const useUploadedFile = !!options.useUploadedFile;
@@ -452,6 +534,7 @@
       const formData = new FormData();
       formData.append("file", file);
 
+      let res;
       try {
         setUseUploadedFile(useUploadedFile);
         if (useUploadedFile) {
@@ -460,7 +543,7 @@
         setUploadProgress(0);
 
         // 1. Get the Signed Upload URL
-        var res = await fetch(`${API_BASE_URL}/api/media/upload-url`, {
+        res = await fetch(`${API_BASE_URL}/api/media/upload-url`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -469,7 +552,7 @@
             contentType: file.type
           })
         });
-
+        
         if (!res.ok) {
           throw new Error("Failed to get upload URL: " + res.status);
         }
@@ -514,26 +597,38 @@
           xhr.send(file);
         });
 
-        // 4. Get a signed preview URL from your backend
-        var signedUrlResponse = await fetch(`${API_BASE_URL}/api/media/preview`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ path: path })
-        });
-
-        if (!signedUrlResponse.ok) {
-          throw new Error("Failed to get preview URL");
+        if (useUploadedFile) {
+          CanvasRugEditor.loading(true, false, "Creating your rug...");
         }
 
-        var signedUrlData = await signedUrlResponse.json();
-        var url = signedUrlData.url;
+        let blobP;
+        // If SVG is uploaded, we will conver it to PNG to create the preview 
+        // to be sent to remove background service.
+        if (file.type.toLowerCase().includes('svg')) {
+          blobP = await svgFileToPngBlob(file);
+        } else {
+          // 4. Get a signed preview URL from your backend
+          var signedUrlResponse = await fetch(`${API_BASE_URL}/api/media/preview`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path: path })
+          });
 
-        // 5. Download the image blob from that URL
-        var imageRes = await fetch(url);
-        if (!imageRes.ok) {
-          throw new Error("Failed to download image from URL");
+          if (!signedUrlResponse.ok) {
+            throw new Error("Failed to get preview URL");
+          }
+
+          var signedUrlData = await signedUrlResponse.json();
+          var url = signedUrlData.url;
+
+          // 5. Download the image blob from that URL
+          var imageRes = await fetch(url);
+          if (!imageRes.ok) {
+            throw new Error("Failed to download image from URL");
+          }
+          
+          blobP = await imageRes.blob();
         }
-        var blobP = await imageRes.blob();
 
         // 6. Use uploaded file as FG if requested
         if (useUploadedFile) {
@@ -552,9 +647,10 @@
 
       } catch (error) {
         console.error(error);
-        if (error.status === 429) {
-          alert('Please try again in a couple of minutes.');
+        if (res.status === 429) {
+          alert('Maximum upload limit reached. Please contact support.');
         }
+          
         // TODO: log error to your backend, etc.
         setUploading(false);
       }
@@ -577,14 +673,19 @@
       imageInput.click();
     });
     addToCartButton.on('click', async () => {
-      // Loading - change button style
-      const addToCartButton = $(".custom-rug-sticky-add-to-cart-button")
-      const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
-      addToCartButton.prop('disabled', true);
-      addToCartButtonText.text('Adding to cart');
-
-      await CanvasRugEditor.handleClickAddToCart()
-      $('#custom-rug-submit-button').click();
+      try {
+        // Loading - change button style
+        const addToCartButton = $(".custom-rug-sticky-add-to-cart-button")
+        const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
+        addToCartButton.prop('disabled', true);
+        addToCartButtonText.text('Adding to cart');
+        CanvasRugEditor.loading(true, true, 'Preparing your rug...');
+        await CanvasRugEditor.handleClickAddToCart()
+        $('#custom-rug-submit-button').click();
+      } catch(error) {
+        console.error(error);
+        CanvasRugEditor.loading(false, true);
+      }
     });
     
     editNotesButton.on("click", function() {
@@ -619,6 +720,7 @@
       // Build form data
       const formData = new FormData($form[0]);
 
+      CanvasRugEditor.loading(true, true, 'Adding to cart...');
       fetch("/cart/add.js", {
         method: "POST",
         body: formData,
@@ -637,15 +739,22 @@
               $('.top-bar .cart-container').click()
               addToCartButton.prop('disabled', false);
               addToCartButtonText.text('Add to cart');
+              CanvasRugEditor.loading(false, true);
           },
           error() {
             // silent
             addToCartButton.prop('disabled', false);
             addToCartButtonText.text('Add to cart');
+            CanvasRugEditor.loading(false, true);
           }
         });
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error(error);
+        addToCartButton.prop('disabled', false);
+        addToCartButtonText.text('Add to cart');
+        CanvasRugEditor.loading(false, true);
+      });
     });
   })
 </script>

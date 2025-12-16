@@ -519,7 +519,7 @@ function draw({ measurement = true, hideBorder = false } = {}) {
     ctx.fillText(`${selectedDimension.wFeet}'`, x + w / 2, hTextY);
   
     // Vertical arrow (height)
-    const vLineX = x - 20;
+    const vLineX = x - 40;
     const vy1 = y;
     const vy2 = y + h;
   
@@ -541,7 +541,7 @@ function draw({ measurement = true, hideBorder = false } = {}) {
     ctx.stroke();
   
     ctx.textAlign = "left";
-    const vTextX = vLineX - 20;
+    const vTextX = vLineX - 40;
     ctx.fillText(`${selectedDimension.hFeet}'`, vTextX, y + h / 2 + 4);
   
     ctx.restore();
@@ -604,10 +604,6 @@ function draw({ measurement = true, hideBorder = false } = {}) {
       y: corners.ne.y + dirY / len * 16
     };
 
-    handlePositions.nw = corners.nw;
-    handlePositions.ne = corners.ne;
-    handlePositions.se = corners.se;
-    handlePositions.sw = corners.sw;
     handlePositions.rotate = rotatePos;
 
     ctx.fillStyle = "#2563eb";
@@ -873,12 +869,14 @@ window.CanvasRugEditor = {
     // setUploadProgress(0);
     // setUseUploadedFile(false);
   },
-  loading(isLoading, infinite = false) {
+  loading(isLoading, infinite = false, textRaw = '') {
+    const text = isLoading ? textRaw : '';
     const $loadingCircle = $(".circular-progress-wrapper");
     if (infinite) {
       $loadingCircle.addClass("infinite");
       $loadingCircle.attr("data-mode", "infinite");
       isLoading ? $loadingCircle.show() : $loadingCircle.hide();
+      $loadingCircle.find('.circular-progress-text').text(text);
     } else {
       $loadingCircle.removeClass("infinite");
       $loadingCircle.attr("data-mode", "progress");
@@ -889,6 +887,7 @@ window.CanvasRugEditor = {
       });
       $loadingCircle.css('display', isLoading ? "flex" : 'none');
       $loadingCircle.find(".value").text(0 + "%");
+      $loadingCircle.find('.circular-progress-text').text(text);
     }
   },
   setCircularProgressStatic(progress) {
@@ -1053,7 +1052,7 @@ window.CanvasRugEditor = {
     $('#custom-rug-properties-section input[name=\"properties[__Scale]\"]').val(scalePct);
     $('#custom-rug-properties-section input[name=\"properties[__Rotation]\"]').val(rotationDeg);
     $('#custom-rug-properties-section input[name=\"properties[__Original image]\"]').val(originalFileUrl);
-    $('#custom-rug-properties-section input[name=\"properties[__Product preview image]\"]').val(previewFileUrl);
+    $('#custom-rug-properties-section input[name=\"properties[Product preview image]\"]').val(previewFileUrl);
 
     // 3. Store checkout object globally so Shopify cart can use it
     // Adjust properties of the item
@@ -1074,7 +1073,7 @@ window.CanvasRugEditor = {
   async removeBackground() {
     try {
         backgroundRemoving = true;
-        this.loading(true, true);
+        this.loading(true, true, "Removing background...");
 
         console.log('Removing background');
         // Wait for uploaded image preview url for better performance on remove bg.

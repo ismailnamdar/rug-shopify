@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let prd_preview_img = null;
         let item_imageUrl = null;
 
-        if (item.properties) { $.each(item.properties, (title, value) => { if (value && value !== "on") {if (title === "DOWNLOAD PROOF" || title === "__Product preview image") { prd_preview_img = value }}}) }
+        if (item.properties) { $.each(item.properties, (title, value) => { if (value && value !== "on") {if (title === "DOWNLOAD PROOF" || title === "Product preview image") { prd_preview_img = value }}}) }
 
         if (item.image) {
             // cartItemsHTML += `${'<div class="cart_image">' + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />` + '</div></a>';
