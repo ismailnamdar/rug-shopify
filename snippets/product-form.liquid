@@ -45,10 +45,8 @@
   {% endif %}
   data-product-id="{{ product.id }}"
 >
-  <div id="main-price" class="ctm_prd_price_mobile">$149</div>
-  {% assign form_id_prefix = "product-form-section-" %}
-  {% assign form_id = form_id_prefix | append: product.id %}
-  {% form 'product', product, id: form_id %}
+  <div class="ctm_prd_price_mobile">$149</div>
+  {% form 'product', product %}
 
   <div
     class="

@@ -1,5 +1,4 @@
 const swachesSizeHandler = (swatchType, cusClass, value) => {
-	console.log({swatchType, cusClass, value});
 	// Adjust custom rug
 	try {
 		if (CanvasRugEditor && swatchType.toLowerCase() === 'shape') {
@@ -283,12 +282,10 @@ if (document.body.classList.contains("product")) {
 		const ImgShapes = document.querySelectorAll(`.shapeImg[data-size]`)
 
 		if (event.target.closest('.open-size-guide-btn') && (document.querySelector('[data-label="Add to Cart"]') == null || !document.querySelector('[data-label="Add to Cart"]').contains(event.target))) {
-			console.log('Start!');
 			event.stopPropagation();
 			event.preventDefault();
 			document.body.classList.add("size_guide_model_open");
 			sizeGuideModal.style.display = 'block';
-			console.log('Added!');
 		}
 
 		if ((event.target === sizeGuideModal && !modalContent.contains(event.target)) || event.target.closest('#closeModal')) {
