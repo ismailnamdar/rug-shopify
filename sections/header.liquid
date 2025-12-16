@@ -120,6 +120,12 @@
             </li>
           {% endif %}
 
+          {% if shop.email != blank %}
+            <li id="email">
+              <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+            </li>
+          {% endif %}
+
           {% comment %} Hid from the users {% endcomment %}
           {% comment %} {% if shop.customer_accounts_enabled %}
             {% if customer %}
@@ -269,6 +275,12 @@
         {% if section.settings.phone_number != blank %}
           <li>
             <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
+          </li>
+        {% endif %}
+
+        {% if shop.email != blank %}
+          <li id="email">
+            <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
           </li>
         {% endif %}
 
@@ -610,7 +622,7 @@
                         </ul>
                     </li>
                     <li class="cart-additional-logos">
-                      <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Cart_Logos.png?v=1760615007" width="100%" height="auto" alt="logos">
+                      <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Frame_36.png?v=1765790327" width="100%" height="auto" alt="logos">
                     </li>
 
                     {% comment %} <li class="cart_discounts js-cart_discounts sale">
@@ -1306,6 +1318,19 @@ input.quantity {
 .cart_image a img {
   border-radius: 8px;
 }
+
+.top-bar__menu.menu {
+  flex-direction: column;
+  align-items: start;
+}
+#email {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+#email a {
+  padding: unset;
+}
 </style>
 
 {% schema %}
@@ -1338,6 +1363,12 @@ input.quantity {
       "id": "phone_number",
       "label": "Phone number",
       "info": "1-800-555-5555"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email Address",
+      "info": "info@email.com"
     },
     {
       "type": "link_list",

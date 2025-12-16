@@ -76,6 +76,14 @@
             "show_gift_card_recipient_form": false
           }
         },
+        "icon_text_86eAfn": {
+          "type": "Icon_text",
+          "settings": {
+            "icon_text_image": "shopify://shop_images/Paint_Brush_-_The_Noun_Project.svg",
+            "icon_text_text": "<p>Design proof sent before making your rug, 100% refund if you don't like it.</p>",
+            "background_color": "#f1f1f1"
+          }
+        },
         "custom_image_znAtUH": {
           "type": "Custom_image",
           "disabled": true,
@@ -95,7 +103,8 @@
           "type": "Icon_text",
           "settings": {
             "icon_text_image": "shopify://shop_images/Headset_mic.png",
-            "icon_text_text": "<p>Questions or special requests? Our California concierge team is ready to help: <strong>(949) 478-4886.</strong></p>"
+            "icon_text_text": "<p>Questions or special requests? Our California concierge team is ready to help: <strong>(949) 478-4886.</strong></p>",
+            "background_color": "#FFFBF0"
           }
         },
         "collapsible_tab_qNTFGV": {
@@ -191,6 +200,7 @@
         "okendo_star_rating_ydA4LC",
         "afterpay_on_site_messaging_payments_messaging_VExiYb",
         "form",
+        "icon_text_86eAfn",
         "custom_image_znAtUH",
         "description",
         "blinking_icon_text_zKgJqG",

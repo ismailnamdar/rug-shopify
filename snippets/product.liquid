@@ -659,6 +659,7 @@
                   padding: 12px 8px;
                   gap: 10px;
                   background: #FFFBF0;
+                  width: 100%;
                 }
               
                 .icon-text-image .icon_img {
@@ -674,7 +675,7 @@
                 }
               </style>
               <div class="icon-text-block">
-                <div class="icon-text-inner">
+                <div class="icon-text-inner" style="background: {{  block.settings.background_color }};">
                   <div class="icon-text-image">
                     {% if block.settings.icon_text_image != blank %}
                       {{ block.settings.icon_text_image | image_url: width: 24 | image_tag: class: 'icon_img' }}
