@@ -356,7 +356,7 @@
         {% capture i %}{% cycle "1", "2" %}{% endcapture %}
         {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
       {% else %}
-        {% render 'product-images',
+        {% render 'product-images-main',
           product: product,
           gallery_thumbnails: gallery_thumbnails,
           gallery_thumbnail_slider: gallery_thumbnail_slider,
