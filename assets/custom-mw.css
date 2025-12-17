@@ -162,20 +162,19 @@ span.loox-rating-label::after {
 .swatch_options input:checked+.swatch-element {
   border-color: #000;
   box-shadow: 0 0 0 2px #fff;
-  background-color: #272726;
-  color: white;
+  background-color: #ffc036;
+  color: #000000;
 }
 
 .swatch_options .swatch:first-of-type input:checked+.swatch-element {
   background-color: unset;
-  color: black;
 }
 
 .swatch_options .swatch:first-of-type label {
   min-width: 120px;
 }
 .swatch_options .swatch:first-of-type input:checked+.swatch-element svg {
-  fill: #272726;
+  fill: #ffc036;
 }
 
 @media screen and (max-width: 768px) {

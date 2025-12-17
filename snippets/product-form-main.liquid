@@ -417,31 +417,22 @@
     }
     // These should be implemented elsewhere in your theme code:
     function setUseUploadedFile(useUploadedFile) {
-      // e.g. update some global flag or UI
       window.useUploadedFileFlag = !!useUploadedFile;
     }
 
     function setUploading(isUploading) {
-      // e.g. toggle a loading spinner
       CanvasRugEditor.loading(isUploading, false, "Uploading your design...");
-      console.log("Uploading:", isUploading);
     }
 
     function setUploadProgress(pct) {
-      // e.g. update a progress bar
-      console.log("Upload progress:", pct + "%");
       CanvasRugEditor.setCircularProgressStatic(pct);
     }
 
     function setFgUrl(url) {
-      // e.g. show preview image
-      console.log("FG URL:", url);
       CanvasRugEditor.loadForeground(url);
     }
 
     function setUploadedImage(data) {
-      // store metadata somewhere global / in DOM
-      console.log("Uploaded image meta:", data);
       CanvasRugEditor.setUploadedImage(data);
     }
 
@@ -739,7 +730,6 @@
       })
       .then(res => res.json())
       .then(data => {
-        console.log("Added to cart:", data);
         // fetch updated cart
         $.ajax({
           url: '/cart.js',

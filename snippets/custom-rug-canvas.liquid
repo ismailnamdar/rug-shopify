@@ -939,7 +939,6 @@ window.CanvasRugEditor = {
     bgImg.src = src;
   },
   setShape(s) {
-    console.log({ selectedShape: s });
     shape = s;
     shapeSize = Object.keys(sizes[shape])[0];
     draw();
@@ -996,7 +995,6 @@ window.CanvasRugEditor = {
         if (!blob) return reject("Error");
 
         const path = await uploadPreview(blob);
-        console.log("Preview stored at:", path);
 
         // Update global reference
         uploadedImage.previewPath = path;
@@ -1029,8 +1027,6 @@ window.CanvasRugEditor = {
       mimeType,
     } = uploadedImage;
 
-    console.log({ previewPath });
-
     // 2. Tell your backend to create entry
     const {
       data,
@@ -1053,33 +1049,15 @@ window.CanvasRugEditor = {
     $('#custom-rug-properties-section input[name=\"properties[__Rotation]\"]').val(rotationDeg);
     $('#custom-rug-properties-section input[name=\"properties[__Original image]\"]').val(originalFileUrl);
     $('#custom-rug-properties-section input[name=\"properties[Product preview image]\"]').val(previewFileUrl);
-
-    // 3. Store checkout object globally so Shopify cart can use it
-    // Adjust properties of the item
-    window.checkoutObject = {
-      id: data.id,
-      originalFileUrl,
-      previewFileUrl,
-      shape,
-      dimension,
-      bgColor,
-      removedBackground,
-      sendProof,
-      ...data
-    };
-
-    console.log("Checkout Object", window.checkoutObject);
   },
   async removeBackground() {
     try {
         backgroundRemoving = true;
         this.loading(true, true, "Removing background...");
 
-        console.log('Removing background');
         // Wait for uploaded image preview url for better performance on remove bg.
         if (uploadedImage.previewDataUrl == null) return;
 
-        console.log(`Removing background started for ${uploadedImage.previewDataUrl}`);
         const fd = new FormData();
         fd.append("image_file", uploadedImage.previewDataUrl);
 
