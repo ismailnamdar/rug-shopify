@@ -416,7 +416,7 @@
       </div>
     </div>
 
-    {% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/tiff,image/HEIC,image/bmp,image/avif,.ico,application/pdf' %}
+    {% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/tiff,image/HEIC,image/bmp,image/avif,.ico' %}
     <input id="custom-rug-image" type="file" style="display: none;" accept="{{SUPPORTED_FILE_TYPES}}" />
     {% render 'upload-photo-button', mobile: true %}
     <div class="mobile_header_prd">

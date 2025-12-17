@@ -599,7 +599,7 @@
         // to be sent to remove background service.
         if (file.type.toLowerCase().includes('svg')) {
           blobP = await svgFileToPngBlob(file);
-        } else if (true || file.size > MAX_SUPPORTED_TRANSFORM_FILE_SIZE) {
+        } else if (file.size > MAX_SUPPORTED_TRANSFORM_FILE_SIZE) {
           // 4. Get a signed preview URL from your backend
           let resResize = await fetch(`${API_BASE_URL}/api/media/resize`, {
             method: "POST",
