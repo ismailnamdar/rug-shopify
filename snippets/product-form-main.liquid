@@ -331,6 +331,7 @@
       saveNotesButton: '.edit-note-save-button',
     };
     const CANVAS_SUPPORTED_FILE_SIZE = 10 * 1024 * 1024 // 10MB
+    const MAX_SUPPORTED_TRANSFORM_FILE_SIZE = 50 * 1024 * 1024 // 50MB
     const MAX_SUPPORTED_FILE_SIZE = 250 * 1024 * 1024 // 250MB
     const CANVAS_SUPPORTED_FILE_TYPES = [
       'image/jpg',
@@ -602,13 +603,24 @@
         }
 
         let blobP;
+
         // If SVG is uploaded, we will conver it to PNG to create the preview 
         // to be sent to remove background service.
         if (file.type.toLowerCase().includes('svg')) {
           blobP = await svgFileToPngBlob(file);
+        } else if (true || file.size > MAX_SUPPORTED_TRANSFORM_FILE_SIZE) {
+          // 4. Get a signed preview URL from your backend
+          let resResize = await fetch(`${API_BASE_URL}/api/media/resize`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path: path })
+          });
+          if (!resResize.ok) throw new Error("Resize failed");
+
+          blobP = await resResize.blob();
         } else {
           // 4. Get a signed preview URL from your backend
-          var signedUrlResponse = await fetch(`${API_BASE_URL}/api/media/preview`, {
+          let signedUrlResponse = await fetch(`${API_BASE_URL}/api/media/preview`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ path: path })

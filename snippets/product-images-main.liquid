@@ -195,7 +195,15 @@
       </div>
     {% endfor %}
   </div>
-
+  <div id="main_thumb_message">
+    <div class="ctm_prd_main_thum">
+      <div class="main_thum_item_1">4K IMAGE QUALITY</div>
+      <div class="main_thum_item_2">
+        <img src="{{ 'pr_main_thumb.png' |  asset_url }}" class="prd_main_stain" alt="STAIN RESISTANT"  width="20px" height="20px"/> 
+        <span>STAIN RESISTANT</span>
+      </div>
+    </div>
+  </div>
   {% if gallery_thumbnails == true %}
     {% if image_width != 'full' %}
       <div class="
@@ -235,17 +243,6 @@
       </div>
     {% endif %}
   {% endif %}
-  {% comment %}
-  <div id="main_thumb_message" style="display: none;">
-    <div class="ctm_prd_main_thum">
-      <div class="main_thum_item_1">4K IMAGE QUALITY</div>
-      <div class="main_thum_item_2">
-        <img src="{{ 'pr_main_thumb.png' |  asset_url }}" class="prd_main_stain" alt="STAIN RESISTANT"  width="20px" height="20px"/> 
-        <span>STAIN RESISTANT</span>
-      </div>
-    </div>
-  </div>
-  {% endcomment %}
 </div>
 
 <style>
