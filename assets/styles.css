@@ -4125,6 +4125,7 @@ p.cart-message a {
 }
 
 .nav--combined {
+  width: 100%;
   display: flex;
 }
 .nav--combined.center {
@@ -4229,6 +4230,7 @@ p.cart-message a {
 
 .main-nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
@@ -4259,6 +4261,7 @@ p.cart-message a {
   padding-left: 200px;
 }
 .menu-position--block .header__logo {
+  width: 100%;
   max-width: none; /* Undo max-width so menu appears below logo */
 }
 
