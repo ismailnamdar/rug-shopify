@@ -1040,15 +1040,23 @@ window.CanvasRugEditor = {
       shownImage === "background-removed"
     );
 
+    const comments = $('.edit-notes-textarea').val();
+    const addComment = $('.edit-notes-header-button[data-value="needs-fixing"]').attr('data-active') === 'true';
+
     const sendProof = $('#custom-rug-proof-section #custom-rug-send-proof').is(':checked');
     $('#custom-rug-properties-section input[name=\"properties[__Send Proof]\"]').val(sendProof ? "true" : "false");
     $('#custom-rug-properties-section input[name=\"properties[__mediaId]\"]').val(data.id);
     $('#custom-rug-properties-section input[name=\"properties[__Background Color]\"]').val(bgColor);
-    $('#custom-rug-properties-section input[name=\"properties[__Remove Background]\"]').val(removedBackground ? "true" : "false");
+    $('#custom-rug-properties-section input[name=\"properties[__Remove Background]\"]').val(removedBackground ? "yes" : "no");
     $('#custom-rug-properties-section input[name=\"properties[__Scale]\"]').val(scalePct);
     $('#custom-rug-properties-section input[name=\"properties[__Rotation]\"]').val(rotationDeg);
     $('#custom-rug-properties-section input[name=\"properties[__Original image]\"]').val(originalFileUrl);
     $('#custom-rug-properties-section input[name=\"properties[Product preview image]\"]').val(previewFileUrl);
+    if (addComment) {
+      $('#custom-rug-properties-section input[name=\"properties[Comments]\"]').val(comments);
+    } else {
+      $('#custom-rug-properties-section input[name=\"properties[Comments]\"]').val('');
+    }
   },
   async removeBackground() {
     try {
