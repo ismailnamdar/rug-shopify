@@ -2222,7 +2222,6 @@ window.header = {
       window.mobileMenuDrawer.close();
       $('.dropdown_link').removeClass('active_link');
       $cart_container.addClass('active_link');
-      console.log("cutmsjkfjf");
       
     };
     if ($('.promo-banner').length) {
