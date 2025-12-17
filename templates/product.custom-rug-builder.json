@@ -7,454 +7,457 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
-    "wrapper": "div.shopify-section-wrapper.section",
-    "sections": {
-      "sidebar": {
-        "type": "product-sidebar",
-        "disabled": true,
-        "settings": {
-          "toggle": false
-        }
-      },
-      "main": {
-        "type": "product-template-main",
-        "blocks": {
-          "title": {
-            "type": "title",
-            "settings": {}
-          },
-          "zepto_product_personalizer_product_personalizer_page_dQJwma": {
-            "type": "shopify://apps/zepto-product-personalizer/blocks/product_personalizer_page/7411210d-7b32-4c09-9455-e129e3be4729",
-            "disabled": true,
-            "settings": {
-              "product": "custom-rug-carpet"
-            }
-          },
-          "price": {
-            "type": "price",
-            "settings": {
-              "display_savings": true
-            }
-          },
-          "okendo_star_rating_ydA4LC": {
-            "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-            "settings": {
-              "product": "{{product}}"
-            }
-          },
-          "afterpay_on_site_messaging_payments_messaging_VExiYb": {
-            "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
-            "disabled": true,
-            "settings": {
-              "text_align": "inherit",
-              "margin_top": 16,
-              "margin_bottom": 16,
-              "color": "",
-              "size": "md",
-              "intro_text": "or",
-              "show_interest_free": true,
-              "payment_amount_is_bold": true,
-              "show_with": true,
-              "logo_type": "badge",
-              "logo_theme": "black-on-mint",
-              "modal_link_style": "circled-info-icon",
-              "modal_theme": "mint",
-              "breakpoint": 749,
-              "text_align_mobile": "inherit",
-              "margin_top_mobile": 16,
-              "margin_bottom_mobile": 16,
-              "show_lower_limit": true,
-              "show_upper_limit": true,
-              "show_if_outside_limits": true,
-              "product": "{{product}}"
-            }
-          },
-          "form": {
-            "type": "form",
-            "settings": {
-              "show_gift_card_recipient_form": false
-            }
-          },
-          "icon_text_86eAfn": {
-            "type": "Icon_text",
-            "settings": {
-              "icon_text_image": "shopify://shop_images/Paint_Brush_-_The_Noun_Project.svg",
-              "icon_text_text": "<p>Design proof sent before making your rug, 100% refund if you don't like it.</p>",
-              "background_color": "#f1f1f1"
-            }
-          },
-          "custom_image_znAtUH": {
-            "type": "Custom_image",
-            "disabled": true,
-            "settings": {
-              "image_item": "shopify://shop_images/TrustedBy_5bd3770b-703e-4fd5-827c-f9eab969756a.png"
-            }
-          },
-          "description": {
-            "type": "description",
-            "settings": {}
-          },
-          "blinking_icon_text_zKgJqG": {
-            "type": "blinking_icon_text",
-            "settings": {}
-          },
-          "icon_text_rzFNXm": {
-            "type": "Icon_text",
-            "settings": {
-              "icon_text_image": "shopify://shop_images/Headset_mic.png",
-              "icon_text_text": "<p>Questions or special requests? Our California concierge team is ready to help: <strong>(949) 478-4886.</strong></p>",
-              "background_color": "#FFFBF0"
-            }
-          },
-          "collapsible_tab_qNTFGV": {
-            "type": "collapsible-tab",
-            "name": "Trusted Quality",
-            "settings": {
-              "collapsible_tab_heading": "Trusted Quality & Craftsmanship",
-              "collapsible_tab_text": "<p>Every rug is hand-tailored in California using commercial-grade materials built to last. Trusted by Fortune 500 brands and thousands of creators, Rugtomize rugs stay vibrant and durable for years of foot traffic and admiration.</p>",
-              "collapsible_tab_text_two": ""
-            }
-          },
-          "collapsible_tab_JztnGb": {
-            "type": "collapsible-tab",
-            "name": "How It Works",
-            "settings": {
-              "collapsible_tab_heading": "How It Works",
-              "collapsible_tab_text": "<p>Your art, our craftsmanship—three easy steps:  <br/>1. <strong>Choose Your Shape:</strong> classic rectangle, bold circle, or a custom cut.  <br/>2. <strong>Select Your Size:</strong> from small statement pieces to full-room centerpieces.</p>",
-              "collapsible_tab_image": "shopify://shop_images/2nd_version_Main.jpg",
-              "collapsible_tab_text_two": "<p>3. <strong>Upload Your Design:</strong> we’ll create a proof so you see exactly how it will look before production.</p>"
-            }
-          },
-          "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c": {
-            "type": "collapsible-tab",
-            "name": "Material & Build",
-            "settings": {
-              "collapsible_tab_heading": "Material & Build",
-              "collapsible_tab_text": "<p>Our premium custom rug is built with the most advanced textile technology available today - combining durability, comfort, and easy maintenance in one sleek solution.<br/>                                                                    <br/><strong>Triple-Layer Construction:      </strong>                           <br/>• Top Layer: High-grade polyester engineered for rich, lasting color.                                                                        <br/>• Core: Cushioned non-woven padding for comfort and resilience.                                                                        <br/>• Base: Non-slip, anti-skid backing that stays firmly in place.                                                                        <br/><br/><strong>Made to Last:</strong><br/>Stain-resistant, fade-proof, and wear-tested for high-traffic commercial use.                                                                        <br/><br/><strong>Effortless Care:</strong><br/>Easy to clean, vacuum-friendly, and machine washable (select sizes).<br/>                                                       <br/><strong>Designed for Impact:</strong><br/>Ultra-vivid prints that elevate any business environment - from offices to retail floors.<br/><br/>This is not just a rug. It’s a precision-engineered foundation for your space - delivering comfort and confidence, backed by the latest in textile innovation.  </p>",
-              "collapsible_tab_text_two": ""
-            }
-          },
-          "collapsible_tab_UF4WJG": {
-            "type": "collapsible-tab",
-            "name": "Image & Resolution",
-            "settings": {
-              "collapsible_tab_heading": "Image & Resolution",
-              "collapsible_tab_text": "<p>High-resolution files mean sharper details. Upload JPG, PNG, WebP, or SVG—if you have another format, just email it after checkout.</p>",
-              "collapsible_tab_text_two": ""
-            }
-          },
-          "collapsible_tab_ijFrJi": {
-            "type": "collapsible-tab",
-            "name": "Design Tweaks",
-            "settings": {
-              "collapsible_tab_heading": "Design Tweaks",
-              "collapsible_tab_text": "<p>Need a background color change or small adjustment? Reply to your order email and our design team will refine it before production—no extra forms or fees.</p>",
-              "collapsible_tab_text_two": ""
-            }
-          },
-          "collapsible_tab_kE8Q4j": {
-            "type": "collapsible-tab",
-            "settings": {
-              "collapsible_tab_heading": "Production & Shipping",
-              "collapsible_tab_text": "<p>We craft and ship within 3–5 business days, then deliver straight to your door. You’ll receive updates at every step so there are no surprises.</p>",
-              "collapsible_tab_text_two": ""
-            }
-          },
-          "order_LYi88b": {
-            "type": "order",
-            "disabled": true,
-            "settings": {
-              "icon": "2",
-              "icon_name": "truck",
-              "fade": true,
-              "txt": "Order in the next 30 min to get it between  [date_start] and [date_end]",
-              "ds": 10,
-              "de": 15,
-              "cut": "SAT,SUN",
-              "frm": "1",
-              "timezone": false,
-              "time": "16:00:00",
-              "hr": "hours",
-              "min": "minutes"
-            }
-          },
-          "four_images_with_text_GVJwGC": {
-            "type": "Four_images_with_text",
-            "settings": {
-              "Four_images_with_text_img_one": "shopify://shop_images/Truck.jpg",
-              "Four_images_with_text_text_one": "<p>Fast and Free Delivery</p>",
-              "Four_images_with_text_img_two": "shopify://shop_images/Brush.jpg",
-              "Four_images_with_text_text_two": "<p>Durable & Easy-Clean</p>",
-              "Four_images_with_text_img_three": "shopify://shop_images/Star.jpg",
-              "Four_images_with_text_text_three": "<p>4.55★ User Satisfaction</p>",
-              "Four_images_with_text_img_four": "shopify://shop_images/Bucket.jpg",
-              "Four_images_with_text_text_four": "<p>Concierge Team</p>"
-            }
-          }
-        },
-        "block_order": [
-          "title",
-          "zepto_product_personalizer_product_personalizer_page_dQJwma",
-          "price",
-          "okendo_star_rating_ydA4LC",
-          "afterpay_on_site_messaging_payments_messaging_VExiYb",
-          "form",
-          "icon_text_86eAfn",
-          "custom_image_znAtUH",
-          "description",
-          "blinking_icon_text_zKgJqG",
-          "icon_text_rzFNXm",
-          "collapsible_tab_qNTFGV",
-          "collapsible_tab_JztnGb",
-          "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c",
-          "collapsible_tab_UF4WJG",
-          "collapsible_tab_ijFrJi",
-          "collapsible_tab_kE8Q4j",
-          "order_LYi88b",
-          "four_images_with_text_GVJwGC"
-        ],
-        "custom_css": [
-          ".feature-divider {display: none !important;}",
-          ".loox-rating .loox-rating-content {gap: 6px; margin-bottom: 12px;}",
-          "#shopify-block-AU3JNTkNuSHdrdmRpR__okendo_star_rating_ydA4LC-1 {display: none;}"
-        ],
-        "settings": {
-          "product_breadcrumb": false,
-          "media_position": "is-flex-row",
-          "show_free_shipping": true,
-          "set_product_height": false,
-          "product_height": 390,
-          "video_looping": false,
-          "product_thumbs": true,
-          "gallery_arrows": false,
-          "enable_product_lightbox": false,
-          "activate_zoom": false,
-          "slideshow_speed": 0,
-          "slideshow_animation": "slide",
-          "thumbnail_position": "bottom",
-          "enable_thumbnail_slider": true
-        }
-      },
-      "custom_liquid_JEpPmQ": {
-        "type": "custom-liquid",
-        "name": "Custom liquid",
-        "settings": {
-          "custom_liquid": "<style>\n  .faq-section {\n    padding: 40px 0px;\n    max-width: 900px;\n    margin: auto;\n  }\n  .faq-title {\n    font-size: 28px;\n    margin-bottom: 20px;\n    text-align: center;\n  }\n  .faq-item {\n    border-top: 1px solid #000;\n  }\n  .faq-question,\n  .nested-question {\n    display: flex;\n    justify-content: space-between;\n    cursor: pointer;\n  }\n  .faq-question {\n    padding: 16px 0;\n    font-size: 16px;\n    font-weight: bold;\n  }\n  .nested-question {\n    padding: 12px 0;\n    font-size: 15px;\n    font-weight: bold;\n  }\n  .faq-icon {\n    display: inline-block;\n    transition: transform 0.3s ease;\n    transform-origin: center center;\n  }\n  .faq-answer,\n  .nested-answer {\n    display: none;\n    line-height: 1.5;\n  }\n  .faq-answer {\n    font-size: 15px;\n    padding-bottom: 16px;\n  }\n  .nested-answer {\n    font-size: 14px;\n    padding-bottom: 12px;\n  }\n  .nested-group {\n    padding-left: 15px;\n    border-left: 2px solid #ccc;\n    margin-top: 10px;\n  }\n\n  /* only rotate the clicked question’s icon */\n  .faq-item.open  > .faq-question  .faq-icon,\n  .nested-item.open > .nested-question .faq-icon {\n    transform: rotate(45deg);\n  }\n\n  /* show the opened answers */\n  .faq-item.open  .faq-answer,\n  .nested-item.open .nested-answer {\n    display: block;\n  }\n</style>\n\n<div class=\"faq-section\">\n  <h2 class=\"faq-title\">FAQs</h2>\n\n  <!-- SECTION 1 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>1. Trust & Satisfaction (Proofs, Guarantees, Design Assurance)</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I see a free proof or mockup before production?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Request a free digital proof by adding a note at checkout or replying to your confirmation email within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I request a refund if I don’t like the proof?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—reply within 24 hours and we’ll issue a full refund before production.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How long do I have to request design or color changes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            You have 24 hours after ordering to submit any change requests.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What happens if I don't submit design instructions?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We’ll proceed with your uploaded artwork and our design standards.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How many design variations can I request?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Up to four variations per rug to ensure your vision.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 2 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>2. Customization & Design Options</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer design assistance?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—free logo cleanup, layout help, color guidance, and concept creation.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will my design be centered and sized correctly?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—every design is manually adjusted for balance.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I add text, images, or multiple logos?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Sure—upload everything at checkout or email us within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can you rotate my design?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—just specify your rotation preference.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 3 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>3. Backgrounds, Color, & Logo Styling</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How do I choose or change the background color?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Include your hex code or reference in checkout notes or email us.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I change the background color after ordering?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—within 24 hours of purchase.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I request a black/grey background with a white logo?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—specify it in your notes.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can you invert my logo?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Of course—let us know light-to-dark or vice versa.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will the colors match the final product?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We aim for 95–100% accuracy; slight variation may occur.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 4 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>4. Shapes & Sizes</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer custom shapes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—describe your shape in checkout notes or email us.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer custom sizes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Pick the closest size and give exact dimensions; we’ll invoice any upcharge.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 5 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>5. Product Details & Quality</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What are your rugs made of?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Commercial-grade polyester with non-slip rubber or vinyl backing.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will rugs stay flat in high-traffic areas?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—weight-balanced and reinforced.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Are they durable enough for daily use?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—built to last under heavy traffic.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Are they easy to clean?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Vacuum regularly or hose down with mild soap.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can they be used outdoors?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—fade and moisture resistant.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do they have non-slip backing?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Every rug ships with an anti-slip base.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How thick are the rugs?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            About 0.4″ (10 mm)—ADA-compliant.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 6 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>6. Ordering & File Upload Help</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What file types do you accept?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            PNG, JPEG, SVG, PDF, WebP (200 KB–20 MB; 2 MB+ preferred).\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I check out without uploading my design?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—complete checkout, then email us your file within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>I’m having trouble uploading—what should I do?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Finish checkout and send the file later; we’ll confirm receipt.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>I can’t complete checkout—what now?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Refresh, try another browser, or contact us to place it manually.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I cancel or modify my order?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—within 24 hours and before production starts.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 7 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>7. Discounts & Bulk Orders</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>My discount code isn’t working—what do I do?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Place your order, mention the code, and we’ll refund the difference.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer bulk pricing?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—for 10, 50, 100, 200+ units. Contact us for a quote.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 8 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>8. Production, Shipping & Delivery</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What is the production & shipping turnaround?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Production: 3–5 business days. Then ships via express ground.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Where do you ship from?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Orange County, California.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How do I track my order?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We’ll email tracking on ship. If not received, reply to your order confirmation.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<script>\n  // toggle top-level sections\n  document.querySelectorAll('.faq-question').forEach(q => {\n    q.addEventListener('click', () => {\n      q.closest('.faq-item').classList.toggle('open');\n    });\n  });\n  // toggle nested questions\n  document.querySelectorAll('.nested-question').forEach(q => {\n    q.addEventListener('click', () => {\n      q.closest('.nested-item').classList.toggle('open');\n    });\n  });\n</script>",
-          "css_class": "",
-          "custom_css": ""
-        }
-      },
-      "comparison_chart_j4iAJX": {
-        "type": "comparison-chart",
-        "name": "Comparison Chart",
-        "settings": {}
-      },
-      "three_image_showcase_q4KkXm": {
-        "type": "three-image-showcase",
-        "name": "Three Image Showcase",
-        "settings": {
-          "title": "Design. Approve. Impress.",
-          "subtitle": "",
-          "image_1": "shopify://shop_images/UPLOAD.png",
-          "alt_1": "",
-          "image_2": "shopify://shop_images/ReDESIGN.png",
-          "alt_2": "",
-          "image_3": "shopify://shop_images/FINAL.png",
-          "alt_3": ""
-        }
-      },
-      "testimonial_section_aCmWcJ": {
-        "type": "testimonial-section",
-        "blocks": {
-          "testimonial_block_36YwVG": {
-            "type": "testimonial-block",
-            "settings": {
-              "stars_count": 5,
-              "stars_color": "#1e1e1e",
-              "testimonial_image": "shopify://shop_images/Improvedversion.png",
-              "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
-              "subtitle_author": "Antonio R."
-            }
-          },
-          "testimonial_block_rRrAU4": {
-            "type": "testimonial-block",
-            "settings": {
-              "stars_count": 4.5,
-              "stars_color": "#1e1e1e",
-              "testimonial_image": "shopify://shop_images/image6.jpg",
-              "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
-              "subtitle_author": "Lineo Y."
-            }
-          },
-          "testimonial_block_9WFjUY": {
-            "type": "testimonial-block",
-            "settings": {
-              "stars_count": 4,
-              "stars_color": "#1e1e1e",
-              "testimonial_image": "shopify://shop_images/image4.jpg",
-              "feature_text": "<p>Plush and handsome, right from the photo we supplied!! Very happy with the product and thank you!!</p>",
-              "subtitle_author": "Jessica C."
-            }
-          },
-          "testimonial_block_p63U33": {
-            "type": "testimonial-block",
-            "settings": {
-              "stars_count": 4,
-              "stars_color": "#1e1e1e",
-              "testimonial_image": "shopify://shop_images/image3.png",
-              "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
-              "subtitle_author": "Tony F."
-            }
-          },
-          "testimonial_block_NC6bV9": {
-            "type": "testimonial-block",
-            "settings": {
-              "stars_count": 5,
-              "stars_color": "#1e1e1e",
-              "testimonial_image": "shopify://shop_images/gempages_547641604358276043-47570370-fc3f-4f0f-bd37-bfd048c0f836.jpg",
-              "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
-              "subtitle_author": "Lineo Y."
-            }
-          },
-          "testimonial_block_xY3PRH": {
-            "type": "testimonial-block",
-            "settings": {
-              "stars_count": 5,
-              "stars_color": "#1e1e1e",
-              "testimonial_image": "shopify://shop_images/PDP.8.jpg",
-              "feature_text": "<p>Easy to upload graphic… high quality item shipped fast!  Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
-              "subtitle_author": "Daniel W"
-            }
-          }
-        },
-        "block_order": [
-          "testimonial_block_36YwVG",
-          "testimonial_block_rRrAU4",
-          "testimonial_block_9WFjUY",
-          "testimonial_block_p63U33",
-          "testimonial_block_NC6bV9",
-          "testimonial_block_xY3PRH"
-        ],
-        "settings": {
-          "title": "<h2>Trusted by many rug Lovers!</h2>",
-          "subtitle": "",
-          "padding_top": 10,
-          "padding_bottom": 30
-        }
-      },
-      "image_with_text_overlay_EtXBR6": {
-        "type": "image-with-text-overlay",
-        "disabled": true,
-        "name": "Image with text overlay",
-        "settings": {
-          "wide_display": true,
-          "image": "shopify://shop_images/top5_benefits.png",
-          "pretext": "",
-          "title": "",
-          "show_stars": true,
-          "show_review_text": true,
-          "review_count_text": "",
-          "subtitle": "",
-          "button1": "",
-          "button1_link": "",
-          "button1_style": "global-button--banner",
-          "button2": "",
-          "button2_link": "",
-          "button2_style": "global-button--banner",
-          "text_position": "center",
-          "text_align": "center",
-          "caption_content_background": "original",
-          "mobile_image_crop": false,
-          "mobile_text_below_image": true,
-          "show_extra_icons": true,
-          "mobile_text_color": "",
-          "css_class": "",
-          "custom_css": ""
-        }
-      },
-      "17496056993e01ea80": {
-        "type": "apps",
-        "blocks": {
-          "okendo_reviews_widget_mzKjK9": {
-            "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-            "settings": {
-              "product": "custom-area-rugs",
-              "widget_type": "reviews_widget"
-            }
-          }
-        },
-        "block_order": [
-          "okendo_reviews_widget_mzKjK9"
-        ],
-        "settings": {}
-      },
-      "product_list_custom_jpr7da": {
-        "type": "product-list-custom",
-        "blocks": {
-          "product_BDrjQL": {
-            "type": "product",
-            "settings": {
-              "product": "custom-square-rug"
-            }
-          },
-          "product_gk9QJA": {
-            "type": "product",
-            "settings": {
-              "product": "custom-area-rugs"
-            }
-          },
-          "product_wqCxV4": {
-            "type": "product",
-            "settings": {
-              "product": "custom-runners"
-            }
-          },
-          "product_RMb7P7": {
-            "type": "product",
-            "settings": {
-              "product": "custom-circle-rug-1"
-            }
-          }
-        },
-        "block_order": [
-          "product_BDrjQL",
-          "product_gk9QJA",
-          "product_wqCxV4",
-          "product_RMb7P7"
-        ],
-        "name": "Product List",
-        "settings": {
-          "title": "Featured Products"
-        }
-      },
-      "recommendations": {
-        "type": "product-recommendations",
-        "disabled": true,
-        "custom_css": [
-          ".current_price {display: flex; justify-content: center; gap: 1rem;}"
-        ],
-        "settings": {
-          "show_product_recommendations": true,
-          "wide_display": false,
-          "product_recommendations_style": "grid",
-          "product_recommendations_heading": "You may also like",
-          "products_per_row": 4,
-          "recommended_products_limit": 4
-        }
+{
+  "wrapper": "div.shopify-section-wrapper.section",
+  "sections": {
+    "sidebar": {
+      "type": "product-sidebar",
+      "disabled": true,
+      "settings": {
+        "toggle": false
       }
     },
-    "order": [
-      "sidebar",
-      "main",
-      "custom_liquid_JEpPmQ",
-      "comparison_chart_j4iAJX",
-      "three_image_showcase_q4KkXm",
-      "testimonial_section_aCmWcJ",
-      "image_with_text_overlay_EtXBR6",
-      "17496056993e01ea80",
-      "product_list_custom_jpr7da",
-      "recommendations"
-    ]
-  }
-  
+    "main": {
+      "type": "product-template-main",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "zepto_product_personalizer_product_personalizer_page_dQJwma": {
+          "type": "shopify://apps/zepto-product-personalizer/blocks/product_personalizer_page/7411210d-7b32-4c09-9455-e129e3be4729",
+          "disabled": true,
+          "settings": {
+            "product": "custom-rug-carpet"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "display_savings": true
+          }
+        },
+        "okendo_star_rating_ydA4LC": {
+          "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "afterpay_on_site_messaging_payments_messaging_VExiYb": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "disabled": true,
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "show_gift_card_recipient_form": false
+          }
+        },
+        "icon_text_86eAfn": {
+          "type": "Icon_text",
+          "settings": {
+            "icon_text_image": "shopify://shop_images/Paint_Brush_-_The_Noun_Project.svg",
+            "icon_text_text": "<p>Design proof sent before making your rug, 100% refund if you don't like it.</p>"
+          }
+        },
+        "custom_image_znAtUH": {
+          "type": "Custom_image",
+          "disabled": true,
+          "settings": {
+            "image_item": "shopify://shop_images/TrustedBy_5bd3770b-703e-4fd5-827c-f9eab969756a.png"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "blinking_icon_text_zKgJqG": {
+          "type": "blinking_icon_text",
+          "settings": {}
+        },
+        "icon_text_rzFNXm": {
+          "type": "Icon_text",
+          "settings": {
+            "icon_text_image": "shopify://shop_images/Headset_mic.png",
+            "icon_text_text": "<p>Questions or special requests? Our California concierge team is ready to help: <strong>(949) 478-4886.</strong></p>"
+          }
+        },
+        "collapsible_tab_qNTFGV": {
+          "type": "collapsible-tab",
+          "name": "Trusted Quality",
+          "settings": {
+            "collapsible_tab_heading": "Trusted Quality & Craftsmanship",
+            "collapsible_tab_text": "<p>Every rug is hand-tailored in California using commercial-grade materials built to last. Trusted by Fortune 500 brands and thousands of creators, Rugtomize rugs stay vibrant and durable for years of foot traffic and admiration.</p>",
+            "collapsible_tab_text_two": ""
+          }
+        },
+        "collapsible_tab_JztnGb": {
+          "type": "collapsible-tab",
+          "name": "How It Works",
+          "settings": {
+            "collapsible_tab_heading": "How It Works",
+            "collapsible_tab_text": "<p>Your art, our craftsmanship—three easy steps:  <br/>1. <strong>Choose Your Shape:</strong> classic rectangle, bold circle, or a custom cut.  <br/>2. <strong>Select Your Size:</strong> from small statement pieces to full-room centerpieces.</p>",
+            "collapsible_tab_image": "shopify://shop_images/2nd_version_Main.jpg",
+            "collapsible_tab_text_two": "<p>3. <strong>Upload Your Design:</strong> we’ll create a proof so you see exactly how it will look before production.</p>"
+          }
+        },
+        "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c": {
+          "type": "collapsible-tab",
+          "name": "Material & Build",
+          "settings": {
+            "collapsible_tab_heading": "Material & Build",
+            "collapsible_tab_text": "<p>Our premium custom rug is built with the most advanced textile technology available today - combining durability, comfort, and easy maintenance in one sleek solution.<br/>                                                                    <br/><strong>Triple-Layer Construction:      </strong>                           <br/>• Top Layer: High-grade polyester engineered for rich, lasting color.                                                                        <br/>• Core: Cushioned non-woven padding for comfort and resilience.                                                                        <br/>• Base: Non-slip, anti-skid backing that stays firmly in place.                                                                        <br/><br/><strong>Made to Last:</strong><br/>Stain-resistant, fade-proof, and wear-tested for high-traffic commercial use.                                                                        <br/><br/><strong>Effortless Care:</strong><br/>Easy to clean, vacuum-friendly, and machine washable (select sizes).<br/>                                                       <br/><strong>Designed for Impact:</strong><br/>Ultra-vivid prints that elevate any business environment - from offices to retail floors.<br/><br/>This is not just a rug. It’s a precision-engineered foundation for your space - delivering comfort and confidence, backed by the latest in textile innovation.  </p>",
+            "collapsible_tab_text_two": ""
+          }
+        },
+        "collapsible_tab_UF4WJG": {
+          "type": "collapsible-tab",
+          "name": "Image & Resolution",
+          "settings": {
+            "collapsible_tab_heading": "Image & Resolution",
+            "collapsible_tab_text": "<p>High-resolution files mean sharper details. Upload JPG, PNG, WebP, or SVG—if you have another format, just email it after checkout.</p>",
+            "collapsible_tab_text_two": ""
+          }
+        },
+        "collapsible_tab_ijFrJi": {
+          "type": "collapsible-tab",
+          "name": "Design Tweaks",
+          "settings": {
+            "collapsible_tab_heading": "Design Tweaks",
+            "collapsible_tab_text": "<p>Need a background color change or small adjustment? Reply to your order email and our design team will refine it before production—no extra forms or fees.</p>",
+            "collapsible_tab_text_two": ""
+          }
+        },
+        "collapsible_tab_kE8Q4j": {
+          "type": "collapsible-tab",
+          "settings": {
+            "collapsible_tab_heading": "Production & Shipping",
+            "collapsible_tab_text": "<p>We craft and ship within 3–5 business days, then deliver straight to your door. You’ll receive updates at every step so there are no surprises.</p>",
+            "collapsible_tab_text_two": ""
+          }
+        },
+        "order_LYi88b": {
+          "type": "order",
+          "disabled": true,
+          "settings": {
+            "icon": "2",
+            "icon_name": "truck",
+            "fade": true,
+            "txt": "Order in the next 30 min to get it between  [date_start] and [date_end]",
+            "ds": 10,
+            "de": 15,
+            "cut": "SAT,SUN",
+            "frm": "1",
+            "timezone": false,
+            "time": "16:00:00",
+            "hr": "hours",
+            "min": "minutes"
+          }
+        },
+        "four_images_with_text_GVJwGC": {
+          "type": "Four_images_with_text",
+          "settings": {
+            "Four_images_with_text_img_one": "shopify://shop_images/Truck.jpg",
+            "Four_images_with_text_text_one": "<p>Fast and Free Delivery</p>",
+            "Four_images_with_text_img_two": "shopify://shop_images/Brush.jpg",
+            "Four_images_with_text_text_two": "<p>Durable & Easy-Clean</p>",
+            "Four_images_with_text_img_three": "shopify://shop_images/Star.jpg",
+            "Four_images_with_text_text_three": "<p>4.55★ User Satisfaction</p>",
+            "Four_images_with_text_img_four": "shopify://shop_images/Bucket.jpg",
+            "Four_images_with_text_text_four": "<p>Concierge Team</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "zepto_product_personalizer_product_personalizer_page_dQJwma",
+        "price",
+        "okendo_star_rating_ydA4LC",
+        "afterpay_on_site_messaging_payments_messaging_VExiYb",
+        "form",
+        "icon_text_86eAfn",
+        "custom_image_znAtUH",
+        "description",
+        "blinking_icon_text_zKgJqG",
+        "icon_text_rzFNXm",
+        "collapsible_tab_qNTFGV",
+        "collapsible_tab_JztnGb",
+        "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c",
+        "collapsible_tab_UF4WJG",
+        "collapsible_tab_ijFrJi",
+        "collapsible_tab_kE8Q4j",
+        "order_LYi88b",
+        "four_images_with_text_GVJwGC"
+      ],
+      "custom_css": [
+        ".feature-divider {display: none !important;}",
+        ".loox-rating .loox-rating-content {gap: 6px; margin-bottom: 12px;}",
+        "#shopify-block-AU3JNTkNuSHdrdmRpR__okendo_star_rating_ydA4LC-1 {display: none;}"
+      ],
+      "settings": {
+        "product_breadcrumb": false,
+        "media_position": "is-flex-row",
+        "show_free_shipping": true,
+        "set_product_height": false,
+        "product_height": 390,
+        "video_looping": false,
+        "product_thumbs": true,
+        "gallery_arrows": false,
+        "enable_product_lightbox": false,
+        "activate_zoom": false,
+        "slideshow_speed": 0,
+        "slideshow_animation": "slide",
+        "thumbnail_position": "bottom",
+        "enable_thumbnail_slider": true
+      }
+    },
+    "trusted_by_section_pyhzjL": {
+      "type": "trusted-by-section",
+      "name": "Trusted By Section",
+      "settings": {}
+    },
+    "custom_liquid_JEpPmQ": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<style>\n  .faq-section {\n    padding: 40px 0px;\n    max-width: 900px;\n    margin: auto;\n  }\n  .faq-title {\n    font-size: 28px;\n    margin-bottom: 20px;\n    text-align: center;\n  }\n  .faq-item {\n    border-top: 1px solid #000;\n  }\n  .faq-question,\n  .nested-question {\n    display: flex;\n    justify-content: space-between;\n    cursor: pointer;\n  }\n  .faq-question {\n    padding: 16px 0;\n    font-size: 16px;\n    font-weight: bold;\n  }\n  .nested-question {\n    padding: 12px 0;\n    font-size: 15px;\n    font-weight: bold;\n  }\n  .faq-icon {\n    display: inline-block;\n    transition: transform 0.3s ease;\n    transform-origin: center center;\n  }\n  .faq-answer,\n  .nested-answer {\n    display: none;\n    line-height: 1.5;\n  }\n  .faq-answer {\n    font-size: 15px;\n    padding-bottom: 16px;\n  }\n  .nested-answer {\n    font-size: 14px;\n    padding-bottom: 12px;\n  }\n  .nested-group {\n    padding-left: 15px;\n    border-left: 2px solid #ccc;\n    margin-top: 10px;\n  }\n\n  /* only rotate the clicked question’s icon */\n  .faq-item.open  > .faq-question  .faq-icon,\n  .nested-item.open > .nested-question .faq-icon {\n    transform: rotate(45deg);\n  }\n\n  /* show the opened answers */\n  .faq-item.open  .faq-answer,\n  .nested-item.open .nested-answer {\n    display: block;\n  }\n</style>\n\n<div class=\"faq-section\">\n  <h2 class=\"faq-title\">FAQs</h2>\n\n  <!-- SECTION 1 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>1. Trust & Satisfaction (Proofs, Guarantees, Design Assurance)</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I see a free proof or mockup before production?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Request a free digital proof by adding a note at checkout or replying to your confirmation email within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I request a refund if I don’t like the proof?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—reply within 24 hours and we’ll issue a full refund before production.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How long do I have to request design or color changes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            You have 24 hours after ordering to submit any change requests.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What happens if I don't submit design instructions?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We’ll proceed with your uploaded artwork and our design standards.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How many design variations can I request?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Up to four variations per rug to ensure your vision.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 2 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>2. Customization & Design Options</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer design assistance?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—free logo cleanup, layout help, color guidance, and concept creation.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will my design be centered and sized correctly?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—every design is manually adjusted for balance.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I add text, images, or multiple logos?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Sure—upload everything at checkout or email us within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can you rotate my design?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—just specify your rotation preference.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 3 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>3. Backgrounds, Color, & Logo Styling</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How do I choose or change the background color?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Include your hex code or reference in checkout notes or email us.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I change the background color after ordering?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—within 24 hours of purchase.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I request a black/grey background with a white logo?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—specify it in your notes.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can you invert my logo?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Of course—let us know light-to-dark or vice versa.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will the colors match the final product?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We aim for 95–100% accuracy; slight variation may occur.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 4 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>4. Shapes & Sizes</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer custom shapes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—describe your shape in checkout notes or email us.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer custom sizes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Pick the closest size and give exact dimensions; we’ll invoice any upcharge.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 5 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>5. Product Details & Quality</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What are your rugs made of?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Commercial-grade polyester with non-slip rubber or vinyl backing.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will rugs stay flat in high-traffic areas?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—weight-balanced and reinforced.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Are they durable enough for daily use?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—built to last under heavy traffic.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Are they easy to clean?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Vacuum regularly or hose down with mild soap.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can they be used outdoors?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—fade and moisture resistant.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do they have non-slip backing?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Every rug ships with an anti-slip base.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How thick are the rugs?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            About 0.4″ (10 mm)—ADA-compliant.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 6 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>6. Ordering & File Upload Help</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What file types do you accept?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            PNG, JPEG, SVG, PDF, WebP (200 KB–20 MB; 2 MB+ preferred).\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I check out without uploading my design?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—complete checkout, then email us your file within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>I’m having trouble uploading—what should I do?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Finish checkout and send the file later; we’ll confirm receipt.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>I can’t complete checkout—what now?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Refresh, try another browser, or contact us to place it manually.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I cancel or modify my order?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—within 24 hours and before production starts.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 7 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>7. Discounts & Bulk Orders</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>My discount code isn’t working—what do I do?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Place your order, mention the code, and we’ll refund the difference.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer bulk pricing?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—for 10, 50, 100, 200+ units. Contact us for a quote.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 8 -->\n  <div class=\"faq-item\">\n    <div class=\"faq-question\">\n      <span>8. Production, Shipping & Delivery</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What is the production & shipping turnaround?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Production: 3–5 business days. Then ships via express ground.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Where do you ship from?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Orange County, California.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How do I track my order?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We’ll email tracking on ship. If not received, reply to your order confirmation.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<script>\n  // toggle top-level sections\n  document.querySelectorAll('.faq-question').forEach(q => {\n    q.addEventListener('click', () => {\n      q.closest('.faq-item').classList.toggle('open');\n    });\n  });\n  // toggle nested questions\n  document.querySelectorAll('.nested-question').forEach(q => {\n    q.addEventListener('click', () => {\n      q.closest('.nested-item').classList.toggle('open');\n    });\n  });\n</script>",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "comparison_chart_j4iAJX": {
+      "type": "comparison-chart",
+      "name": "Comparison Chart",
+      "settings": {}
+    },
+    "three_image_showcase_q4KkXm": {
+      "type": "three-image-showcase",
+      "name": "Three Image Showcase",
+      "settings": {
+        "title": "Design. Approve. Impress.",
+        "subtitle": "",
+        "image_1": "shopify://shop_images/UPLOAD.png",
+        "alt_1": "",
+        "image_2": "shopify://shop_images/ReDESIGN.png",
+        "alt_2": "",
+        "image_3": "shopify://shop_images/FINAL.png",
+        "alt_3": ""
+      }
+    },
+    "testimonial_section_aCmWcJ": {
+      "type": "testimonial-section",
+      "blocks": {
+        "testimonial_block_36YwVG": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/Improvedversion.png",
+            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
+            "subtitle_author": "Antonio R."
+          }
+        },
+        "testimonial_block_rRrAU4": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 4.5,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/image6.jpg",
+            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
+            "subtitle_author": "Lineo Y."
+          }
+        },
+        "testimonial_block_9WFjUY": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 4,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/image4.jpg",
+            "feature_text": "<p>Plush and handsome, right from the photo we supplied!! Very happy with the product and thank you!!</p>",
+            "subtitle_author": "Jessica C."
+          }
+        },
+        "testimonial_block_p63U33": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 4,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/image3.png",
+            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
+            "subtitle_author": "Tony F."
+          }
+        },
+        "testimonial_block_NC6bV9": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/gempages_547641604358276043-47570370-fc3f-4f0f-bd37-bfd048c0f836.jpg",
+            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
+            "subtitle_author": "Lineo Y."
+          }
+        },
+        "testimonial_block_xY3PRH": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#1e1e1e",
+            "testimonial_image": "shopify://shop_images/PDP.8.jpg",
+            "feature_text": "<p>Easy to upload graphic… high quality item shipped fast!  Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
+            "subtitle_author": "Daniel W"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_block_36YwVG",
+        "testimonial_block_rRrAU4",
+        "testimonial_block_9WFjUY",
+        "testimonial_block_p63U33",
+        "testimonial_block_NC6bV9",
+        "testimonial_block_xY3PRH"
+      ],
+      "settings": {
+        "title": "<h2>Trusted by many rug Lovers!</h2>",
+        "subtitle": "",
+        "padding_top": 10,
+        "padding_bottom": 30
+      }
+    },
+    "image_with_text_overlay_EtXBR6": {
+      "type": "image-with-text-overlay",
+      "disabled": true,
+      "name": "Image with text overlay",
+      "settings": {
+        "wide_display": true,
+        "image": "shopify://shop_images/top5_benefits.png",
+        "pretext": "",
+        "title": "",
+        "show_stars": true,
+        "show_review_text": true,
+        "review_count_text": "",
+        "subtitle": "",
+        "button1": "",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": false,
+        "mobile_text_below_image": true,
+        "show_extra_icons": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "17496056993e01ea80": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_mzKjK9": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "custom-area-rugs",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_mzKjK9"
+      ],
+      "settings": {}
+    },
+    "product_list_custom_jpr7da": {
+      "type": "product-list-custom",
+      "blocks": {
+        "product_BDrjQL": {
+          "type": "product",
+          "settings": {
+            "product": "custom-square-rug"
+          }
+        },
+        "product_gk9QJA": {
+          "type": "product",
+          "settings": {
+            "product": "custom-area-rugs"
+          }
+        },
+        "product_wqCxV4": {
+          "type": "product",
+          "settings": {
+            "product": "custom-runners"
+          }
+        },
+        "product_RMb7P7": {
+          "type": "product",
+          "settings": {
+            "product": "custom-circle-rug-1"
+          }
+        }
+      },
+      "block_order": [
+        "product_BDrjQL",
+        "product_gk9QJA",
+        "product_wqCxV4",
+        "product_RMb7P7"
+      ],
+      "name": "Product List",
+      "settings": {
+        "title": "Featured Products"
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "custom_css": [
+        ".current_price {display: flex; justify-content: center; gap: 1rem;}"
+      ],
+      "settings": {
+        "show_product_recommendations": true,
+        "wide_display": false,
+        "product_recommendations_style": "grid",
+        "product_recommendations_heading": "You may also like",
+        "products_per_row": 4,
+        "recommended_products_limit": 4
+      }
+    }
+  },
+  "order": [
+    "sidebar",
+    "main",
+    "trusted_by_section_pyhzjL",
+    "three_image_showcase_q4KkXm",
+    "custom_liquid_JEpPmQ",
+    "comparison_chart_j4iAJX",
+    "testimonial_section_aCmWcJ",
+    "image_with_text_overlay_EtXBR6",
+    "17496056993e01ea80",
+    "product_list_custom_jpr7da",
+    "recommendations"
+  ]
+}
