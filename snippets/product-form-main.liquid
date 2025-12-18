@@ -737,12 +737,14 @@
           dataType: 'json',
           cache: false,
           success(cart) {
+            setTimeout(() => {
               refreshCart(cart);
               // TODO: fix there is a double click here.
               $('.top-bar .cart-container:visible').click()
               addToCartButton.prop('disabled', false);
               addToCartButtonText.text('Add to cart');
               CanvasRugEditor.loading(false, true);
+            }, 500);
           },
           error() {
             // silent

@@ -1,0 +1,1381 @@
+{% liquid
+  if show_payment_button == false or product.selling_plan_groups.size > 0
+    assign show_payment_button = false
+  else
+    assign show_payment_button = true
+  endif
+
+  assign variant = product.selected_or_first_available_variant
+
+  assign checkout_url = '/checkout'
+
+  for locale in shop.enabled_locales
+    if locale.primary == true
+      assign defaultLocale = locale.iso_code
+      if defaultLocale != request.locale.iso_code
+        assign checkout_url = request.locale.iso_code | append: '/checkout'
+      endif
+    endif
+  endfor
+
+  assign show_recipient_form_placeholders = true
+  assign recipient_form_textarea_rows = 5
+%}
+
+<div
+  class="
+    product_form
+    init
+    smart-payment-button--{{ show_payment_button }}
+    recipient-form-{{ show_recipient_form }}
+    quantity-box-{{ settings.display_product_quantity }}
+    {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}
+  "
+  id="product-form-{{ product.id }}"
+  data-product-form
+  data-money-format="{{ shop.money_format | strip_html }}"
+  data-shop-currency="{{ shop.currency }}"
+  data-options-size="{{ product.options.size }}"
+  data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+  data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+  data-product="{{ product | json | escape }}"
+  data-product-title="{{ product.title | escape }}"
+  {% if settings.limit_quantity or settings.display_inventory_left %}
+    data-variant-inventory='[{%- for v in product.variants -%}{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
+  {% endif %}
+  data-product-id="{{ product.id }}"
+>
+  <div class="ctm_prd_price_mobile">$149</div>
+  {% form 'product', product %}
+
+  <div
+    class="
+      select
+      {% if product.has_only_default_variant %}default_select{% endif %}
+    "
+  >
+
+    {% if product.options.size == 1 and settings.product_form_style == 'select' %}
+      <label>{{ product.options[0] }}</label>
+    {% endif %}
+
+    <select
+      id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+      name="id"
+      class="{% if product.options.size > 1 %}multi_select{% endif %}"
+      data-variants
+    >
+      {% for v in product.variants %}
+        <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-featured-image="{{ v.featured_media }}" data-image="{{ v.featured_media | product_img_url: '600x' }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  {% if settings.product_form_style == "radio" and product.variants.size > 1 or settings.product_form_style == "radio" and product.options[0] != "Title" %}
+    <div class="swatch_options">
+      {% for option in product.options %}
+        {%
+          render 'product-swatch',
+          option: option,
+          product: product
+        %}
+      {% endfor %}
+      {% render "size-guide" product: product, option: option %}
+      </div>
+    {% endif %}
+
+  {% render 'upload-photo-button' %}
+  <div id="custom-rug-add-to-cart" class="custom-rug-sticky-add-to-cart-container" style="display: none;">
+    <button type="button" class="custom-rug-sticky-add-to-cart-button">
+    <div class="custom-rug-sticky-add-to-cart-button-text" style="position: relative; bottom: 2px;">Add to cart</div>
+    <div class="ctm_prd_price_mobile" style="display: block; margin: 0;">$149</div>
+    </button>
+    <button id="custom-rug-submit-button" type="submit" style="display: none;"></button>
+  </div>
+  {% if product.available %}
+    {% if settings.display_inventory_left %}
+      <div class="items_left">
+        {% if variant.inventory_management != blank and variant.inventory_quantity > 0 %}
+          {% capture items_left_text %}
+            {% if variant.inventory_quantity == 1 %}
+              {{ 'products.product.items_left_count.one' | t }}
+            {% else %}
+              {{ 'products.product.items_left_count.other' | t }}
+            {% endif %}
+          {% endcapture %}
+          {% if variant.inventory_quantity <= settings.inventory_threshold %}
+            {{ variant.inventory_quantity }} {{ items_left_text }}
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  <div class="purchase-details">
+    {% unless show_payment_button %}
+      {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form begin{% endcomment %}
+      {% comment %}
+        @param form {Object}
+          The form object
+      
+        @param section {Object}
+          The section object
+      
+        @param show_recipient_form {Boolean}
+          If true, show the gift card recipient form
+      
+        @param show_recipient_form_placeholders {Boolean}
+          If true, show recipient form placeholder attributes
+      
+        @param show_recipient_form_labels {Boolean}
+          If true, show recipient form input labels
+      
+        @param show_recipient_form_max_characters_message {Boolean}
+          If true, show the recipient form max characters message
+      
+        @param recipient_form_textarea_rows {Number}
+          A numerical value to specify the number of textarea rows
+      
+        @param recipient_form_textarea_classes {String}
+          A space separated list of class names added to recipient form textarea
+      
+        @param recipient_form_input_classes {String}
+          A space separated list of class names added to recipient form inputs
+      
+        @param recipient_form_label_classes {String}
+          A space separated list of class names added to recipient form labels
+      
+        @param recipient_form_label_position {String}
+          The recipient form input label position, either 'top', or 'bottom'
+      {% endcomment %}
+
+      {% liquid
+        assign show_recipient_form_placeholders = show_recipient_form_placeholders | default: false
+        assign show_recipient_form_labels = show_recipient_form_labels | default: true, allow_false: true
+        assign show_recipient_form_max_characters_message = show_recipient_form_max_characters_message | default: true, allow_false: true
+        assign recipient_form_textarea_rows = recipient_form_textarea_rows | default: 5
+        assign recipient_form_label_position = recipient_form_label_position | default: 'top'
+      %}
+
+      {%- if show_recipient_form and product.gift_card? -%}
+        <details class="recipient-disclosure" data-recipient-disclosure>
+          <summary class="recipient-disclosure__summary">
+            <label
+              class="recipient-disclosure__checkbox-label"
+              for="recipient-disclosure__checkbox-{{ section.id }}"
+            >
+              <input
+                class="recipient-disclosure__checkbox"
+                id="recipient-disclosure__checkbox-{{ section.id }}"
+                type="checkbox"
+                name="properties[__shopify_send_gift_card_to_recipient]"
+                tabindex="-1"
+                data-recipient-disclosure-checkbox
+              >
+
+              {%- render 'recipient-form-disclosure-icon' -%}
+
+              <span class="recipient-disclosure__checkbox-label-text">
+                {{- 'recipient.form.checkbox_label' | t -}}
+              </span>
+            </label>
+          </summary>
+
+          {% comment %} Recipient email {% endcomment %}
+          <div class="recipient-form" data-recipient-form>
+            <div class="recipient-form__field">
+              {%- if show_recipient_form_labels -%}
+                {%- capture recipient_email_label -%}
+                  <label
+                    class="
+                      recipient-form__label
+                      {{ recipient_form_label_classes }}
+                    "
+                    for="recipient-email-{{ section.id }}"
+                  >
+                    {{- 'recipient.form.email_label' | t -}}
+                    <span class="recipient-form__required"> *</span>
+                  </label>
+                {%- endcapture -%}
+              {%- endif -%}
+
+              {%- capture recipient_email -%}
+                <input
+                  class="
+                    recipient-form__input
+                    recipient-form__input--email
+                    {{ recipient_form_input_classes }}
+                  "
+                  id="recipient-email-{{ section.id }}"
+                  type="email"
+                  {%- if show_recipient_form_placeholders -%}
+                    placeholder="{{- 'recipient.form.email_placeholder' | t -}}"
+                  {%- endif -%}
+                  {%- unless show_recipient_form_labels -%}
+                    aria-label="{{- 'recipient.form.email_placeholder' | t -}}"
+                  {%- endunless -%}
+                  name="properties[Recipient email]"
+                  value="{{ form.email }}"
+                  data-recipient-form-input
+                  data-recipient-form-email-input
+                >
+              {%- endcapture -%}
+
+              {%- capture recipient_error_message -%}
+                <span class="recipient-form__error-message" data-recipient-form-error-message>
+                  {{- 'recipient.form.error_message' | t -}}
+                </span>
+              {%- endcapture -%}
+
+              {%- if recipient_form_label_position == 'top' -%}
+                <div class="recipient-form__input-wrapper">
+                  {{- recipient_email_label -}}
+                  {{- recipient_email -}}
+                </div>
+                {{- recipient_error_message -}}
+              {%- else -%}
+                <div class="recipient-form__input-wrapper">
+                  {{- recipient_email -}}
+                  {{- recipient_email_label -}}
+                </div>
+                {{- recipient_error_message -}}
+              {%- endif -%}
+            </div>
+
+            {% comment %} Recipient name {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_name_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-name-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.name_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+
+                {%- capture recipient_name -%}
+                  <input
+                    class="
+                      recipient-form__input
+                      recipient-form__input--name
+                      {{ recipient_form_input_classes }}
+                    "
+                    id="recipient-name-{{ section.id }}"
+                    type="text"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.name_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.name_placeholder' | t -}}"
+                    {%- endunless -%}
+                    name="properties[Recipient name]"
+                    value="{{ form.name }}"
+                    data-recipient-form-input
+                  >
+                {%- endcapture -%}
+
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_name_label }}
+                  {{ recipient_name }}
+                {%- else -%}
+                  {{ recipient_name }}
+                  {{ recipient_name_label }}
+                {%- endif -%}
+              </div>
+            </div>
+
+            {% comment %} Recipient message {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- liquid
+                  assign max_characters_length = 200
+
+                  if show_recipient_form_max_characters_message
+                    assign max_characters_message = 'recipient.form.max_characters' | t: max_characters: max_characters_length
+                  endif
+                -%}
+
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_message_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-message-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.message_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+
+                {%- capture recipient_message -%}
+                  <textarea
+                    class="
+                      recipient-form__input
+                      recipient-form__input--message
+                      {{ recipient_form_input_classes }}
+                      {{ recipient_form_textarea_classes }}
+                    "
+                    id="recipient-message-{{ section.id }}"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.message_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.message_placeholder' | t -}}"
+                    {%- endunless -%}
+                    name="properties[Message]"
+                    {%- if recipient_form_textarea_rows != 0 -%}
+                      rows="{{ recipient_form_textarea_rows }}"
+                    {%- endif -%}
+                    maxlength="{{ max_characters_length }}"
+                    data-recipient-form-input
+                  >
+                    {{- form.message -}}
+                  </textarea>
+                {%- endcapture -%}
+
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_message_label }}
+                  {{ recipient_message }}
+                {%- else -%}
+                  {{ recipient_message }}
+                  {{ recipient_message_label }}
+                {%- endif -%}
+              </div>
+
+              {%- if show_recipient_form_max_characters_message -%}
+                <span class="recipient-form__max-characters-message">
+                  <small>
+                    {{- max_characters_message -}}
+                  </small>
+                </span>
+              {%- endif -%}
+            </div>
+
+            {% comment %} Recipient send on date {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_date_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-date-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.send_on_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+
+                {%- capture recipient_date -%}
+                  <input
+                    class="
+                      recipient-form__input
+                      recipient-form__input--date
+                      {{ recipient_form_input_classes }}
+                    "
+                    id="recipient-date-{{ section.id }}"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.send_on_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.send_on_placeholder' | t -}}"
+                    {%- endunless -%}
+                    type="date"
+                    name="properties[Send on]"
+                    autocomplete="send_on"
+                    pattern="\d{4}-\d{2}-\d{2}"
+                    value="{{ form.send_on }}"
+                    data-recipient-form-input
+                  >
+                {%- endcapture -%}
+
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_date_label }}
+                  {{ recipient_date }}
+                {%- else -%}
+                  {{ recipient_date }}
+                  {{ recipient_date_label }}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </details>
+      {%- endif -%}
+      {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form end{% endcomment %}
+
+    {% endunless %}
+
+    {% if settings.display_product_quantity %}
+      <div class="purchase-details__quantity product-quantity-box">
+        <label for="quantity">{{ 'products.product.quantity' | t }}</label>
+        <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+        <input type="number" min="1" size="2" class="quantity" name="quantity" id="quantity" value="1" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
+        <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+      </div>
+    {% endif %}
+
+    {% if show_payment_button %}
+      {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form begin{% endcomment %}
+      {% comment %}
+        @param form {Object}
+          The form object
+      
+        @param section {Object}
+          The section object
+      
+        @param show_recipient_form {Boolean}
+          If true, show the gift card recipient form
+      
+        @param show_recipient_form_placeholders {Boolean}
+          If true, show recipient form placeholder attributes
+      
+        @param show_recipient_form_labels {Boolean}
+          If true, show recipient form input labels
+      
+        @param show_recipient_form_max_characters_message {Boolean}
+          If true, show the recipient form max characters message
+      
+        @param recipient_form_textarea_rows {Number}
+          A numerical value to specify the number of textarea rows
+      
+        @param recipient_form_textarea_classes {String}
+          A space separated list of class names added to recipient form textarea
+      
+        @param recipient_form_input_classes {String}
+          A space separated list of class names added to recipient form inputs
+      
+        @param recipient_form_label_classes {String}
+          A space separated list of class names added to recipient form labels
+      
+        @param recipient_form_label_position {String}
+          The recipient form input label position, either 'top', or 'bottom'
+      {% endcomment %}
+
+      {% liquid
+        assign show_recipient_form_placeholders = show_recipient_form_placeholders | default: false
+        assign show_recipient_form_labels = show_recipient_form_labels | default: true, allow_false: true
+        assign show_recipient_form_max_characters_message = show_recipient_form_max_characters_message | default: true, allow_false: true
+        assign recipient_form_textarea_rows = recipient_form_textarea_rows | default: 5
+        assign recipient_form_label_position = recipient_form_label_position | default: 'top'
+      %}
+
+      {%- if show_recipient_form and product.gift_card? -%}
+        <details class="recipient-disclosure" data-recipient-disclosure>
+          <summary class="recipient-disclosure__summary">
+            <label
+              class="recipient-disclosure__checkbox-label"
+              for="recipient-disclosure__checkbox-{{ section.id }}"
+            >
+              <input
+                class="recipient-disclosure__checkbox"
+                id="recipient-disclosure__checkbox-{{ section.id }}"
+                type="checkbox"
+                name="properties[__shopify_send_gift_card_to_recipient]"
+                tabindex="-1"
+                data-recipient-disclosure-checkbox
+              >
+
+              {%- render 'recipient-form-disclosure-icon' -%}
+
+              <span class="recipient-disclosure__checkbox-label-text">
+                {{- 'recipient.form.checkbox_label' | t -}}
+              </span>
+            </label>
+          </summary>
+
+          {% comment %} Recipient email {% endcomment %}
+          <div class="recipient-form" data-recipient-form>
+            <div class="recipient-form__field">
+              {%- if show_recipient_form_labels -%}
+                {%- capture recipient_email_label -%}
+                  <label
+                    class="
+                      recipient-form__label
+                      {{ recipient_form_label_classes }}
+                    "
+                    for="recipient-email-{{ section.id }}"
+                  >
+                    {{- 'recipient.form.email_label' | t -}}
+                    <span class="recipient-form__required"> *</span>
+                  </label>
+                {%- endcapture -%}
+              {%- endif -%}
+
+              {%- capture recipient_email -%}
+                <input
+                  class="
+                    recipient-form__input
+                    recipient-form__input--email
+                    {{ recipient_form_input_classes }}
+                  "
+                  id="recipient-email-{{ section.id }}"
+                  type="email"
+                  {%- if show_recipient_form_placeholders -%}
+                    placeholder="{{- 'recipient.form.email_placeholder' | t -}}"
+                  {%- endif -%}
+                  {%- unless show_recipient_form_labels -%}
+                    aria-label="{{- 'recipient.form.email_placeholder' | t -}}"
+                  {%- endunless -%}
+                  name="properties[Recipient email]"
+                  value="{{ form.email }}"
+                  data-recipient-form-input
+                  data-recipient-form-email-input
+                >
+              {%- endcapture -%}
+
+              {%- capture recipient_error_message -%}
+                <span class="recipient-form__error-message" data-recipient-form-error-message>
+                  {{- 'recipient.form.error_message' | t -}}
+                </span>
+              {%- endcapture -%}
+
+              {%- if recipient_form_label_position == 'top' -%}
+                <div class="recipient-form__input-wrapper">
+                  {{- recipient_email_label -}}
+                  {{- recipient_email -}}
+                </div>
+                {{- recipient_error_message -}}
+              {%- else -%}
+                <div class="recipient-form__input-wrapper">
+                  {{- recipient_email -}}
+                  {{- recipient_email_label -}}
+                </div>
+                {{- recipient_error_message -}}
+              {%- endif -%}
+            </div>
+
+            {% comment %} Recipient name {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_name_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-name-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.name_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+
+                {%- capture recipient_name -%}
+                  <input
+                    class="
+                      recipient-form__input
+                      recipient-form__input--name
+                      {{ recipient_form_input_classes }}
+                    "
+                    id="recipient-name-{{ section.id }}"
+                    type="text"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.name_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.name_placeholder' | t -}}"
+                    {%- endunless -%}
+                    name="properties[Recipient name]"
+                    value="{{ form.name }}"
+                    data-recipient-form-input
+                  >
+                {%- endcapture -%}
+
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_name_label }}
+                  {{ recipient_name }}
+                {%- else -%}
+                  {{ recipient_name }}
+                  {{ recipient_name_label }}
+                {%- endif -%}
+              </div>
+            </div>
+
+            {% comment %} Recipient message {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- liquid
+                  assign max_characters_length = 200
+
+                  if show_recipient_form_max_characters_message
+                    assign max_characters_message = 'recipient.form.max_characters' | t: max_characters: max_characters_length
+                  endif
+                -%}
+
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_message_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-message-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.message_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+
+                {%- capture recipient_message -%}
+                  <textarea
+                    class="
+                      recipient-form__input
+                      recipient-form__input--message
+                      {{ recipient_form_input_classes }}
+                      {{ recipient_form_textarea_classes }}
+                    "
+                    id="recipient-message-{{ section.id }}"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.message_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.message_placeholder' | t -}}"
+                    {%- endunless -%}
+                    name="properties[Message]"
+                    {%- if recipient_form_textarea_rows != 0 -%}
+                      rows="{{ recipient_form_textarea_rows }}"
+                    {%- endif -%}
+                    maxlength="{{ max_characters_length }}"
+                    data-recipient-form-input
+                  >
+                    {{- form.message -}}
+                  </textarea>
+                {%- endcapture -%}
+
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_message_label }}
+                  {{ recipient_message }}
+                {%- else -%}
+                  {{ recipient_message }}
+                  {{ recipient_message_label }}
+                {%- endif -%}
+              </div>
+
+              {%- if show_recipient_form_max_characters_message -%}
+                <span class="recipient-form__max-characters-message">
+                  <small>
+                    {{- max_characters_message -}}
+                  </small>
+                </span>
+              {%- endif -%}
+            </div>
+
+            {% comment %} Recipient send on date {% endcomment %}
+            <div class="recipient-form__field">
+              <div class="recipient-form__input-wrapper">
+                {%- if show_recipient_form_labels -%}
+                  {%- capture recipient_date_label -%}
+                    <label
+                      class="
+                        recipient-form__label
+                        {{ recipient_form_label_classes }}
+                      "
+                      for="recipient-date-{{ section.id }}"
+                    >
+                      {{- 'recipient.form.send_on_label' | t -}}
+                    </label>
+                  {%- endcapture -%}
+                {%- endif -%}
+
+                {%- capture recipient_date -%}
+                  <input
+                    class="
+                      recipient-form__input
+                      recipient-form__input--date
+                      {{ recipient_form_input_classes }}
+                    "
+                    id="recipient-date-{{ section.id }}"
+                    {%- if show_recipient_form_placeholders -%}
+                      placeholder="{{- 'recipient.form.send_on_placeholder' | t -}}"
+                    {%- endif -%}
+                    {%- unless show_recipient_form_labels -%}
+                      aria-label="{{- 'recipient.form.send_on_placeholder' | t -}}"
+                    {%- endunless -%}
+                    type="date"
+                    name="properties[Send on]"
+                    autocomplete="send_on"
+                    pattern="\d{4}-\d{2}-\d{2}"
+                    value="{{ form.send_on }}"
+                    data-recipient-form-input
+                  >
+                {%- endcapture -%}
+
+                {%- if recipient_form_label_position == 'top' -%}
+                  {{ recipient_date_label }}
+                  {{ recipient_date }}
+                {%- else -%}
+                  {{ recipient_date }}
+                  {{ recipient_date_label }}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </details>
+      {%- endif -%}
+      {% comment %}Inject @pixelunion/pxs-gift-card-recipient-form/recipient-form end{% endcomment %}
+
+    {% endif %}
+
+    <div class="purchase-details__buttons purchase-details__spb--{{ show_payment_button }} {% if product.available == false %}product-is-unavailable{% endif %}">
+      {% if settings.cart_action == 'reload_page' %}
+        <input type="hidden" name="return_to" value="back" />
+      {% elsif settings.cart_action == 'redirect_checkout' %}
+        <input type="hidden" name="return_to" value="{{ checkout_url }}" />
+      {% endif %}
+
+      {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+      <button
+        type="{% if settings.cart_action == 'ajax' %}button{% else %}submit{% endif %}"
+        name="add"
+        class="
+          add_to_cart
+          global-button
+          {% if show_payment_button %}
+            global-button--secondary
+          {% else %}
+            global-button--primary
+          {% endif %}
+          {% if settings.cart_action == 'ajax' %}
+            ajax-submit
+          {% endif %}
+          {% if product.available == false %}
+            disabled
+          {% endif %}
+        "
+        data-label={{ add_to_cart_label | json }}
+      >
+        <span class="text">
+          {% if product.available %}{{ add_to_cart_label }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}
+        </span>
+        <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
+          <path fill="none" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+        </svg>
+      </button>
+      {% if show_payment_button %}
+        {{ form | payment_button }}
+      {% endif %}
+
+      <div data-payment-terms-reference style="display: none;">
+        {{ form | payment_terms }}
+      </div>
+    </div>
+  </div>
+
+ 
+{% endform %}
+
+  <div class="surface-pick-up surface-pick-up--loading" data-surface-pick-up></div>
+  <div class="surface-pick-up__modal" data-surface-pick-up-modal></div>
+</div>
+<style>
+  .custom-rug-upload-image-container {
+    background-color: white;
+    padding: 12px;
+  }
+
+  .custom-rug-upload-image-container[data-mobile] {
+    display: none;
+  }
+
+  .custom-rug-upload-image {
+    background-color: rgb(255, 192, 54);
+    text-align: center;
+    width: 100%;
+    padding: 16px 24px;
+    font-weight: 900;
+    gap: 12px;
+    border-radius: 37px;
+    justify-content: center;
+  }
+  .custom-rug-upload-image__text {
+    font-size: 16px;
+    color: black;
+  }
+  .custom-rug-upload-image__subtext {
+    font-weight: 400;
+    color: #5e6470;
+    margin-top: 4px;
+  }
+  .custom-rug-upload-image__supported-files {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .custom-rug-sticky-add-to-cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: static;
+    padding: 12px 0;
+    background-color: white;
+  }
+
+  .custom-rug-quantity-input {
+    border: 1px solid black;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .custom-rug-quantity-input input {
+    width: 30px;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+  }
+
+  .custom-rug-quantity-input button {
+    padding: 10px 10px 10px 14px;
+    height: 100%;
+    border: none;
+    color: black;
+    background-color: transparent;
+  }
+
+  .custom-rug-sticky-add-to-cart-button {
+    border-radius: 30px;
+    color: black !important;
+    background-color: rgb(255, 192, 54);
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .custom-rug-sticky-add-to-cart-button div {
+    font-size: 18px;
+    margin-top: 0;
+    font-weight: 600;
+  }
+
+  .custom-rug-background-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .custom-rug-remove-bg-button {
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    padding: 10px 12px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
+  }
+  .custom-rug-bg-color-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    padding: 10px 16px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
+  }
+
+  .custom-rug-edit-notes {
+    color: black;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    padding: 10px 16px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-rug-upload-image-container[data-desktop] {
+      display: none;
+    }
+    .custom-rug-upload-image-container[data-mobile] {
+      display: block;
+    }
+
+    .custom-rug-upload-image-container[data-mobile-fixed] {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 1px solid #262627;
+      z-index: 50;
+    }
+
+    .custom-rug-sticky-add-to-cart-container {
+      padding: 12px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      border-top: 1px solid #e3e3e3;
+    }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const ids = {
+      uploadButton: '.custom-rug-upload-image',
+      imageInput: '#custom-rug-image',
+      bgColorInput: '[data-bg-color="color"]',
+      bgColorInputButton: '.custom-rug-bg-color-button',
+      removeBgInput: '#custom-rug-remove-bg',
+      addToCartButton: '#custom-rug-add-to-cart .custom-rug-sticky-add-to-cart-button',
+      editNotesButton: '.custom-rug-edit-notes',
+      saveNotesButton: '.edit-note-save-button',
+    };
+    const CANVAS_SUPPORTED_FILE_SIZE = 10 * 1024 * 1024 // 10MB
+    const MAX_SUPPORTED_TRANSFORM_FILE_SIZE = 50 * 1024 * 1024 // 50MB
+    const MAX_SUPPORTED_FILE_SIZE = 250 * 1024 * 1024 // 250MB
+    const CANVAS_SUPPORTED_FILE_TYPES = [
+      'image/jpg',
+      'image/jpeg',
+      'image/webp',
+      'image/png',
+      'image/svg+xml',
+    ]
+    const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
+    const API_BASE_URL = "https://rug-production.vercel.app"
+
+    // Helper function for file
+    function readFileAsDataURL(file) {
+      return new Promise(function (resolve, reject) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          resolve(e.target.result);
+        };
+        reader.onerror = function (err) {
+          reject(err);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handleFile(event) {
+      var input = event.target;
+      var file = input.files && input.files[0];
+      selectedFile = file;
+
+      if (!file) return;
+
+      try {
+        var dataUrl = await readFileAsDataURL(file);
+
+        if (file.size > MAX_SUPPORTED_FILE_SIZE) {
+          alert('Maximum supported file size is 250MB.');
+          return;
+        }
+
+        // 1. If image is not supported, start "Upload flow"
+        var isSupportedType = Array.isArray(CANVAS_SUPPORTED_FILE_TYPES)
+          ? CANVAS_SUPPORTED_FILE_TYPES.indexOf(file.type) !== -1
+          : false;
+
+        if (file.size > CANVAS_SUPPORTED_FILE_SIZE || !isSupportedType) {
+          CanvasRugEditor.reset();
+          CanvasRugEditor.showCanvas();
+          uploadInBackground(file, { useUploadedFile: true });
+          return;
+        }
+
+        // 2. If image is supported, start "Default flow"
+        CanvasRugEditor.reset();
+        setFgUrl(dataUrl);
+        uploadInBackground(file);
+        $('html, body').animate({
+          scrollTop: $('#rug-canvas-container').offset().top - 10
+        }, 600);
+      } finally {
+        // Reset input so selecting the same file again will still trigger change
+        input.value = "";
+      }
+    }
+
+    function handleRemoveBG() {
+      const shownImage = CanvasRugEditor.startRemoveBg()
+      
+      if (shownImage === 'main') {
+        this.style.backgroundColor = "white";
+        this.style.color = "black";
+      } else {
+        this.style.backgroundColor = "#272726";
+        this.style.color = "white";
+      }
+    }
+    
+    function handleColorChange(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      const newColor = event.target.value;
+      CanvasRugEditor.setBgColor(newColor);
+    }
+    // These should be implemented elsewhere in your theme code:
+    function setUseUploadedFile(useUploadedFile) {
+      window.useUploadedFileFlag = !!useUploadedFile;
+    }
+
+    function setUploading(isUploading) {
+      CanvasRugEditor.loading(isUploading, false, "Uploading your design...");
+    }
+
+    function setUploadProgress(pct) {
+      CanvasRugEditor.setCircularProgressStatic(pct);
+    }
+
+    function setFgUrl(url) {
+      CanvasRugEditor.loadForeground(url);
+    }
+
+    function setUploadedImage(data) {
+      CanvasRugEditor.setUploadedImage(data);
+    }
+
+    function svgFileToPngBlob(file, options = {}) {
+      const {
+        width = 400,
+        height = 400,
+        background = null, // set to "#fff" if you want white bg
+        scale = 1, // use 2 for retina
+      } = options;
+    
+      return new Promise(async (resolve, reject) => {
+        try {
+          if (!file || file.type !== "image/svg+xml") {
+            return reject(new Error("Input must be an SVG file"));
+          }
+    
+          const svgText = await file.text();
+    
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(svgText, "image/svg+xml");
+          const svg = doc.documentElement;
+    
+          const svgWidth =
+            svg.getAttribute("width") ||
+            svg.viewBox?.baseVal?.width ||
+            width;
+    
+          const svgHeight =
+            svg.getAttribute("height") ||
+            svg.viewBox?.baseVal?.height ||
+            height;
+    
+          svg.setAttribute("width", svgWidth);
+          svg.setAttribute("height", svgHeight);
+    
+          const serializedSvg = new XMLSerializer().serializeToString(svg);
+    
+          const svgBlob = new Blob([serializedSvg], {
+            type: "image/svg+xml;charset=utf-8",
+          });
+    
+          const url = URL.createObjectURL(svgBlob);
+          const img = new Image();
+    
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = svgWidth * scale;
+            canvas.height = svgHeight * scale;
+    
+            const ctx = canvas.getContext("2d");
+            ctx.scale(scale, scale);
+    
+            if (background) {
+              ctx.fillStyle = background;
+              ctx.fillRect(0, 0, svgWidth, svgHeight);
+            }
+    
+            ctx.drawImage(img, 0, 0, svgWidth, svgHeight);
+            URL.revokeObjectURL(url);
+    
+            canvas.toBlob(
+              (pngBlob) => {
+                if (!pngBlob) {
+                  reject(new Error("PNG conversion failed"));
+                } else {
+                  resolve(pngBlob);
+                }
+              },
+              "image/png"
+            );
+          };
+    
+          img.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("Failed to load SVG into image"));
+          };
+    
+          img.src = url;
+        } catch (err) {
+          reject(err);
+        }
+      });
+    }    
+
+    async function uploadInBackground(file, options) {
+      options = options || {};
+      const useUploadedFile = !!options.useUploadedFile;
+
+      // You created formData in the original but never used it – safe to keep/remove.
+      const formData = new FormData();
+      formData.append("file", file);
+
+      let res;
+      try {
+        setUseUploadedFile(useUploadedFile);
+        if (useUploadedFile) {
+          setUploading(true);
+        }
+        setUploadProgress(0);
+
+        // 1. Get the Signed Upload URL
+        res = await fetch(`${API_BASE_URL}/api/media/upload-url`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fileName: file.name,
+            fileSize: file.size,
+            contentType: file.type
+          })
+        });
+        
+        if (!res.ok) {
+          throw new Error("Failed to get upload URL: " + res.status);
+        }
+
+        var json = await res.json();
+        var bucket = json.bucket;
+        var path   = json.path;
+        var token  = json.token;
+
+        // 2. Build upload endpoint (Supabase URL exposed via Liquid/global var)
+        var uploadUrl = SUPABASE_URL +
+          "/storage/v1/object/upload/sign/" +
+          encodeURIComponent(bucket) + "/" +
+          encodeURIComponent(path) +
+          "?token=" + encodeURIComponent(token);
+
+        // 3. Upload via XHR to get progress
+        await new Promise(function (resolve, reject) {
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", uploadUrl);
+          xhr.setRequestHeader("Content-Type", file.type);
+
+          xhr.upload.onprogress = function (evt) {
+            if (evt.lengthComputable) {
+              var pct = Math.round((evt.loaded / evt.total) * 100);
+              setUploadProgress(pct);
+            }
+          };
+
+          xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve(xhr.response);
+            } else {
+              reject("Upload failed with status " + xhr.status);
+            }
+          };
+
+          xhr.onerror = function () {
+            reject("XHR Error");
+          };
+
+          xhr.send(file);
+        });
+
+        if (useUploadedFile) {
+          CanvasRugEditor.loading(true, false, "Creating your rug...");
+        }
+
+        let blobP;
+
+        // If SVG is uploaded, we will conver it to PNG to create the preview 
+        // to be sent to remove background service.
+        if (file.type.toLowerCase().includes('svg')) {
+          blobP = await svgFileToPngBlob(file);
+        } else if (file.size > MAX_SUPPORTED_TRANSFORM_FILE_SIZE) {
+          // 4. Get a signed preview URL from your backend
+          let resResize = await fetch(`${API_BASE_URL}/api/media/resize`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path: path })
+          });
+          if (!resResize.ok) throw new Error("Resize failed");
+
+          blobP = await resResize.blob();
+        } else {
+          // 4. Get a signed preview URL from your backend
+          let signedUrlResponse = await fetch(`${API_BASE_URL}/api/media/preview`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path: path })
+          });
+
+          if (!signedUrlResponse.ok) {
+            throw new Error("Failed to get preview URL");
+          }
+
+          var signedUrlData = await signedUrlResponse.json();
+          var url = signedUrlData.url;
+
+          // 5. Download the image blob from that URL
+          var imageRes = await fetch(url);
+          if (!imageRes.ok) {
+            throw new Error("Failed to download image from URL");
+          }
+          
+          blobP = await imageRes.blob();
+        }
+
+        // 6. Use uploaded file as FG if requested
+        if (useUploadedFile) {
+          var objectUrl = URL.createObjectURL(blobP);
+          setFgUrl(objectUrl);
+        }
+
+        // 7. Store metadata
+        setUploadedImage({
+          path: path,
+          token: token,
+          bucket: bucket,
+          mimeType: file.type,
+          previewDataUrl: blobP // note: this is a Blob, not a dataURL
+        });
+
+      } catch (error) {
+        console.error(error);
+        if (res.status === 429) {
+          alert('Maximum upload limit reached. Please contact support.');
+        }
+          
+        // TODO: log error to your backend, etc.
+        setUploading(false);
+      }
+    }
+
+    const uploadButton = $(ids.uploadButton);
+    const imageInput = $(ids.imageInput);
+    const bgColorInput = $(ids.bgColorInput);
+    const removeBgInput = $(ids.removeBgInput);
+    const addToCartButton = $(ids.addToCartButton);
+    const bgColorInputButton = $(ids.bgColorInputButton);
+    const editNotesButton = $(ids.editNotesButton);
+    const saveNotesButton = $(ids.saveNotesButton);
+    const editNoteHeaderButton = $('.edit-notes-header-button');
+
+    imageInput.change(handleFile);
+    bgColorInput.on("input", handleColorChange)
+    removeBgInput.on("click", handleRemoveBG);
+    uploadButton.on('click', function () {
+      imageInput.click();
+    });
+    addToCartButton.on('click', async () => {
+      try {
+        // Loading - change button style
+        const addToCartButton = $(".custom-rug-sticky-add-to-cart-button")
+        const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
+        addToCartButton.prop('disabled', true);
+        addToCartButtonText.text('Adding to cart');
+        CanvasRugEditor.loading(true, true, 'Preparing your rug...');
+        await CanvasRugEditor.handleClickAddToCart()
+        $('#custom-rug-submit-button').click();
+      } catch(error) {
+        console.error(error);
+        CanvasRugEditor.loading(false, true);
+      }
+    });
+    
+    editNotesButton.on("click", function() {
+      $("#product-main-form-container").css('transform', 'translateX(calc(-100%))');
+      $(".edit-notes-section-container").css('display', 'block');
+    })
+    saveNotesButton.on("click", function() {
+      $("#product-main-form-container").css('transform', 'unset');
+      $(".edit-notes-section-container").css('display', 'none');
+    })
+    editNoteHeaderButton.on("click", function() {
+      const value = $(this).data('value');
+      if (value === 'needs-fixing') {
+        // Set the current tab style
+        $(this).attr('data-active', 'true');
+        $('.edit-notes-header-button[data-value="keep-mockup"]').removeAttr('data-active')
+        $('.edit-notes-textarea').css('display', 'block');
+        // Clear the 
+      } else if (value === 'keep-mockup') {
+        $(this).attr('data-active', 'true');
+        $('.edit-notes-header-button[data-value="needs-fixing"]').removeAttr('data-active')
+        $('.edit-notes-textarea').css('display', 'none');
+      }
+    });
+
+    const $form = $('#product-form-section-{{ product.id }}');
+    $form.on("submit", function (e) {
+      const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
+      // Stop normal redirect
+      e.preventDefault();
+
+      // Build form data
+      const formData = new FormData($form[0]);
+
+      CanvasRugEditor.loading(true, true, 'Adding to cart...');
+      fetch("/cart/add.js", {
+        method: "POST",
+        body: formData,
+      })
+      .then(res => res.json())
+      .then(data => {
+        // fetch updated cart
+        $.ajax({
+          url: '/cart.js',
+          dataType: 'json',
+          cache: false,
+          success(cart) {
+            setTimeout(() => {
+              refreshCart(cart);
+              // TODO: fix there is a double click here.
+              $('.top-bar .cart-container:visible').click()
+              addToCartButton.prop('disabled', false);
+              addToCartButtonText.text('Add to cart');
+              CanvasRugEditor.loading(false, true);
+            }, 500);
+          },
+          error() {
+            // silent
+            addToCartButton.prop('disabled', false);
+            addToCartButtonText.text('Add to cart');
+            CanvasRugEditor.loading(false, true);
+          }
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        addToCartButton.prop('disabled', false);
+        addToCartButtonText.text('Add to cart');
+        CanvasRugEditor.loading(false, true);
+      });
+    });
+  })
+</script>

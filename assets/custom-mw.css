@@ -582,7 +582,7 @@ div.cart_content form{ margin: 10px 0 0;}
   padding: 10px;
 }
 
-.shopify-section.shopify-section--product-template.content .product-main .two-fifths.product__details--product-page {
+.shopify-section.shopify-section--product-template.content .product-main-custom .two-fifths.product__details--product-page {
   border-radius: 8px;
   border: 1px solid #262627;
   padding: 20px;

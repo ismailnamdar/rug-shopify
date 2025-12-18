@@ -728,6 +728,8 @@ canvas.addEventListener("pointerdown", e => {
 
     if (Math.abs(localX) <= dw / 2 && Math.abs(localY) <= dh / 2) {
       selected = true;
+      // Disable moving for now. We will add back later.
+      /*
       interaction = {
         mode: "move",
         startX: p.x,
@@ -735,6 +737,7 @@ canvas.addEventListener("pointerdown", e => {
         startOffsetX: offset.x,
         startOffsetY: offset.y
       };
+      */
     } else {
       selected = false;
     }
@@ -812,6 +815,22 @@ const ro = new ResizeObserver(function() {
 ro.observe(canvas);
 
 async function uploadPreview(blob) {
+    // Convert Blob → File
+    const file = new File([blob], "preview-image.png", {
+      type: "image/png",
+    });
+    const form = new FormData();
+    form.append("file", file);
+
+    const response = await fetch(`${API_BASE_URL}/api/media/upload-shopify`, {
+      method: "POST",
+      body: form,
+    });
+
+    const data = await response.json();
+    console.log(data.url);
+    return data.url;
+
     // STEP 1 → Get signed upload URL from your backend
     const res = await fetch(`${API_BASE_URL}/api/media/upload-preview`, {
       method: "POST",
@@ -906,7 +925,8 @@ window.CanvasRugEditor = {
   showCanvas() {
     // HIDE
     // Hide main gallery
-    $(`#main-gallery`).css('display', 'none');
+    // $(`#main-gallery`).css('display', 'none');
+    $('.gallery-wrap').css('display', 'none');
     // Hide main upload image button
     $('.custom-rug-upload-image-container').css('display', 'none');
     // Hide main price
