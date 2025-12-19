@@ -393,7 +393,10 @@
   >
   <div class="three-fifths columns product-main-first-column">
     <div class="product-main-canvas-container">
-      {% render "custom-rug-canvas", shape: shape, size: size %}
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% assign shape = current_variant.option1 | downcase  %}
+      {% assign size = current_variant.option2 | upcase %}
+      {% render "custom-rug-canvas", shape: shape, size: size, bg_url: 'background-example-1.jpg' %}
     </div>
     <div
       id="main-gallery"
@@ -455,9 +458,6 @@
       {% assign collection_handles = product.collections | map: 'handle' %}
 
       {% render 'price-ui-badges', product: product, collection_handles: collection_handles %}
-      {% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/tiff,image/HEIC,image/bmp,image/avif,.ico' %}
-      <input id="custom-rug-image" type="file" style="display: none;" accept="{{SUPPORTED_FILE_TYPES}}" />
-      {% render 'upload-photo-button', mobile: true %}
       {% for block in section.blocks %}
         <div
           class="

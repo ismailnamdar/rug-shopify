@@ -623,7 +623,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   cartItemsHTML += `<div class="mini-cart__item-property"><a class="pplr_slide" href="${value}">${(imgUrlExist < 1 || isOriginalImage) ? 'Original image' : 'Preview image'}</a></div>`;
                   imgUrlExist++;
                 }
-                else if (imgUrlExist <= 1){
+                else if (imgUrlExist <= 2){
                   cartItemsHTML += `<div class="mini-cart__item-property">${title}: ${value}</div>`;
                 } 
               }

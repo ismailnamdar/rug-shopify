@@ -46,7 +46,9 @@
   data-product-id="{{ product.id }}"
 >
   <div class="ctm_prd_price_mobile">$149</div>
-  {% form 'product', product %}
+  {% assign form_id_prefix = "product-form-section-" %}
+  {% assign form_id = form_id_prefix | append: product.id %}
+  {% form 'product', product, id: form_id %}
 
   <div
     class="
@@ -75,7 +77,7 @@
     <div class="swatch_options">
       {% for option in product.options %}
         {%
-          render 'product-swatch',
+          render 'product-swatch-main',
           option: option,
           product: product
         %}
@@ -84,13 +86,24 @@
       </div>
     {% endif %}
 
-  {% render 'upload-photo-button' %}
+  {% render 'upload-photo-button-secondary' %}
   <div id="custom-rug-add-to-cart" class="custom-rug-sticky-add-to-cart-container" style="display: none;">
     <button type="button" class="custom-rug-sticky-add-to-cart-button">
-    <div class="custom-rug-sticky-add-to-cart-button-text" style="position: relative; bottom: 2px;">Add to cart</div>
-    <div class="ctm_prd_price_mobile" style="display: block; margin: 0;">$149</div>
+      <div class="custom-rug-sticky-add-to-cart-button-text" style="position: relative; bottom: 2px;">Add to cart</div>
     </button>
-    <button id="custom-rug-submit-button" type="submit" style="display: none;"></button>
+  </div>
+  <button id="custom-rug-submit-button" type="submit" style="display: none;"></button>
+
+  <div id="custom-rug-properties-section" style="display: block;">
+    <input name="properties[__mediaId]" type="text" hidden style="display: none;" />
+    <input name="properties[__Send Proof]" type="text" hidden style="display: none;" />
+    <input name="properties[__Background Color]" type="text" hidden style="display: none;" />
+    <input name="properties[__Remove Background]" type="text" hidden style="display: none;" />
+    <input name="properties[__Scale]" type="text" hidden style="display: none;" />
+    <input name="properties[__Rotation]" type="text" hidden style="display: none;" />
+    <input name="properties[__Original image]" type="text" hidden style="display: none;" />
+    <input name="properties[Product preview image]" type="text" hidden style="display: none;" />
+    <input name="properties[Comments]" type="text" hidden style="display: none;" />
   </div>
   {% if product.available %}
     {% if settings.display_inventory_left %}
@@ -850,18 +863,18 @@
   }
 
   .custom-rug-sticky-add-to-cart-button {
-    border-radius: 30px;
     color: black !important;
     background-color: rgb(255, 192, 54);
     text-align: center;
     font-weight: 600;
     font-size: 18px;
-    padding: 18px 20px;
+    padding: 14px 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    width: 100%;
   }
 
   .custom-rug-sticky-add-to-cart-button div {
@@ -969,7 +982,7 @@
       'image/svg+xml',
     ]
     const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
-    const API_BASE_URL = "https://rt-production.vercel.app"
+    const API_BASE_URL = "https://rt-next-omega.vercel.app"
 
     // Helper function for file
     function readFileAsDataURL(file) {

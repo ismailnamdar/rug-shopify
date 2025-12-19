@@ -4,7 +4,7 @@
     {% render 'circular-progress' %}
 
     <div class="custom-rug-top-toolbar">
-      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center; color: black;">
+      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center;">
         Change Photo
         <button id="rug-canvas-change-photo" class="custom-rug-action-button" style="margin-top: 6px;">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-upload" aria-hidden="true"><path d="M12 13v8"></path><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="m8 17 4-4 4 4"></path></svg>
@@ -86,7 +86,7 @@
     position: absolute;
     right: 10px;
     top: 12px;
-    color: black !important;
+    color: white !important;
   }
   .custom-rug-bottom-toolbar {
     position: absolute;
@@ -129,7 +129,7 @@
     .rug-canvas {
       width: 100vw;
       margin-left: -10px;
-      height: 380px;
+      height: 450px;
     }
 
     .custom-rug-top-toolbar {
@@ -149,7 +149,7 @@
 /* -------------------------------------------------------------
    CONSTANTS
 ------------------------------------------------------------- */
-const API_BASE_URL = "https://rt-production.vercel.app"
+const API_BASE_URL = "https://rt-next-omega.vercel.app"
 const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
 const canvas = document.getElementById("rug-canvas");
 const changePhotoButton = document.getElementById("rug-canvas-change-photo");
@@ -367,6 +367,92 @@ function drawImageCover(ctx, img, x, y, w, h, scale, rotation, cover) {
   ctx.restore();
 }
 
+function drawGreenCheck(ctx, x, y, r = 9) {
+  ctx.save();
+
+  // Green circle
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fillStyle = "#4CAF50"; // close to your image green
+  ctx.fill();
+
+  // White checkmark
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+
+  ctx.beginPath();
+  ctx.moveTo(x - r * 0.45, y);
+  ctx.lineTo(x - r * 0.1, y + r * 0.4);
+  ctx.lineTo(x + r * 0.55, y - r * 0.45);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+function drawCenteredBanner(ctx, canvasWidth, canvasHeight, position, config, isMobile) {
+  const {
+    title,
+    lines,
+    titleFont,
+    lineFont
+  } = config;
+
+  const paddingY = isMobile ? 16 : 18;
+  const lineGap = isMobile ? 20 : 28;
+  const iconR = isMobile ? 6 : 10;
+  const iconGap = isMobile ? 8 : 12;
+
+  ctx.save();
+
+  // --- Measure widths ---
+  ctx.font = titleFont;
+  const titleW = ctx.measureText(title).width;
+
+  ctx.font = lineFont;
+  const linesW = Math.max(
+    ...lines.map(l => ctx.measureText(l).width)
+  ) + iconR * 2 + iconGap;
+
+  const blockW = Math.max(titleW, linesW);
+  const startX = (canvasWidth - blockW) / 2;
+
+  const bannerHeight = paddingY * 2 + lineGap * lines.length;
+
+  const startY =
+    position === "top"
+      ? 0
+      : canvasHeight - bannerHeight;
+
+  const titleY = startY + paddingY + 8;
+
+  /* ---------- BACKGROUND ---------- */
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0, startY, canvasWidth, bannerHeight);
+
+  /* ---------- TEXT ---------- */
+  ctx.fillStyle = "#ffffff";
+  ctx.textAlign = "left";
+
+  // Title
+  ctx.font = titleFont;
+  ctx.fillText(title, startX, titleY);
+
+  // Lines
+  ctx.font = lineFont;
+  lines.forEach((text, i) => {
+    const y = titleY + lineGap * (i + 1);
+    const iconCx = startX + iconR;
+    drawGreenCheck(ctx, iconCx, y - 6, iconR);
+    ctx.fillText(text, startX + iconR * 2 + iconGap, y);
+  });
+
+  ctx.restore();
+
+  return bannerHeight;
+}
+
 function drawRotateIcon(ctx, x, y) {
   ctx.save();
   ctx.translate(x, y);
@@ -427,6 +513,7 @@ function drawScaleIcon(ctx, x, y) {
    MAIN DRAW FUNCTION
 ------------------------------------------------------------- */
 function draw({ measurement = true, hideBorder = false } = {}) {
+  const isMobile = window.innerWidth < 768;
   const width = canvas.clientWidth;
   const height = canvas.clientHeight;
 
@@ -437,6 +524,44 @@ function draw({ measurement = true, hideBorder = false } = {}) {
   ctx.clearRect(0, 0, width, height);
 
   if (bgImg) drawImageCover(ctx, bgImg, 0, 0, width, height, 100, 0, true);
+
+  const titleFontSize = isMobile ? 14 : 22;
+  const lineFontSize = isMobile ? 12 : 14;
+  // ---------- TOP BANNER ----------
+const topBannerHeight = drawCenteredBanner(
+  ctx,
+  width,
+  height,
+  "top",
+  {
+    title: "Our Design Team Will",
+    lines: [
+      "Center Image Appropriately",
+      "Enhance Image Quality"
+    ],
+    titleFont: `bold ${titleFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`,
+    lineFont: `${lineFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
+  },
+  isMobile
+);
+
+// ---------- BOTTOM BANNER ----------
+const bottomBannerHeight = drawCenteredBanner(
+  ctx,
+  width,
+  height,
+  "bottom",
+  {
+    title: "Post Purchase We Can",
+    lines: [
+      "Modify Background Color",
+      "Provide Proof Before Production"
+    ],
+    titleFont: `bold ${titleFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`,
+    lineFont: `${lineFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
+  },
+  isMobile
+);
 
   let { w, h } = maskDims(width, height);
 
@@ -519,7 +644,7 @@ function draw({ measurement = true, hideBorder = false } = {}) {
     ctx.fillText(`${selectedDimension.wFeet}'`, x + w / 2, hTextY);
   
     // Vertical arrow (height)
-    const vLineX = x - 40;
+    const vLineX = x - 20;
     const vy1 = y;
     const vy2 = y + h;
   
@@ -541,7 +666,7 @@ function draw({ measurement = true, hideBorder = false } = {}) {
     ctx.stroke();
   
     ctx.textAlign = "left";
-    const vTextX = vLineX - 40;
+    const vTextX = vLineX - 20;
     ctx.fillText(`${selectedDimension.hFeet}'`, vTextX, y + h / 2 + 4);
   
     ctx.restore();
@@ -789,7 +914,7 @@ const ro = new ResizeObserver(function() {
   var rect = canvas.getBoundingClientRect();
   var width = Math.round(rect.width);
   var height = Math.round(rect.height);
-  const isMobile = height < 400;
+  const isMobile = height <= 768;
   const ratio = isMobile ? width / height : height / width;
 
   var dpr = window.devicePixelRatio || 1;
@@ -929,10 +1054,13 @@ window.CanvasRugEditor = {
     $('.gallery-wrap').css('display', 'none');
     // Hide main upload image button
     $('.custom-rug-upload-image-container').css('display', 'none');
+    // Hide secondary main upload image button
+    $('.secondary-upload-button').css('display', 'none');
     // Hide main price
     $('#main-price').css('display', 'none');
 
     // SHOW
+    // Secondary add to cart button
     $(`#rug-canvas-container`).css('display', 'block');
     $('#custom-rug-background-section').css('display', 'block');
     $('#custom-rug-add-to-cart').css('display', 'flex');
@@ -1142,5 +1270,5 @@ changePhotoButton.addEventListener("click", () => {
   $('#custom-rug-image').click();
 });
 
-CanvasRugEditor.loadBackground("{{ 'background-example-2.png' | asset_url }}");
+CanvasRugEditor.loadBackground("{{ bg_url | default: 'background-example-2.png' | asset_url }}");
 </script>
