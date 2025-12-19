@@ -617,10 +617,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (value && value !== 'on') {
 
               const isHiddenProperty = title.substring(0, 2) === "__";
-
-              if (!isHiddenProperty) {
+              const isOriginalImage = title.includes('Original image');
+              if (!isHiddenProperty || isOriginalImage) {
                 if (value.includes('https') && imgUrlExist <= 1) {
-                  cartItemsHTML += `<div class="mini-cart__item-property"><a class="pplr_slide" href="${value}">${imgUrlExist < 1 ? 'Orignal image' : 'Preview image'}</a></div>`;
+                  cartItemsHTML += `<div class="mini-cart__item-property"><a class="pplr_slide" href="${value}">${(imgUrlExist < 1 || isOriginalImage) ? 'Original image' : 'Preview image'}</a></div>`;
                   imgUrlExist++;
                 }
                 else if (imgUrlExist <= 1){
@@ -822,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const anchors = document.querySelectorAll('.cart_content .mini-cart__item-properties .pplr_slide');
       anchors.forEach((anchor, index) => {
         // label first anchor 'Original image', subsequent anchors 'Preview image'
-        anchor.textContent = index === 0 ? 'Orignal image' : (anchor.textContent.trim() || 'Preview image');
+        anchor.textContent = index === 0 ? 'Original image' : (anchor.textContent.trim() || 'Preview image');
         // ensure links open in a new tab if they are external images
         if (anchor.getAttribute('href') && anchor.getAttribute('href').startsWith('http')) {
           anchor.setAttribute('target', '_blank');
@@ -1140,6 +1140,8 @@ document.addEventListener('DOMContentLoaded', function () {
       return false;
     });
   }
+
+  
   window.productPage.productSwatches();
 });
 /*= ===========================================================================
@@ -1235,7 +1237,7 @@ document.addEventListener("readystatechange", function() {
     document.querySelectorAll('.cart_content .mini-cart__item-properties')?.forEach(item => {
       item.querySelectorAll('.pplr_slide')?.forEach((anchor, index) => {
         if (index === 0) {
-          anchor.innerText = 'Orignal image';
+          anchor.innerText = 'Original image';
         }
       });
     });

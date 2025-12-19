@@ -101,7 +101,7 @@ $('body').on('click', '.pplr_monogram.fileupload', function () {
 });
 
 /////////////////////////////// PRODUCT PAGE ///////////////////////////////
-if (document.body.classList.contains("product")) {
+if (document.body.classList.contains("product") || document.body.classList.contains("product-custom-rug-builder") || document.body.classList.contains("product-custom-rug-builder-2")) {
 
 	// const hIdeComment = () => {
 	// 	const CommentElem = document.querySelectorAll(".pplr-comments--requests");

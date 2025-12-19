@@ -187,7 +187,7 @@
 
     {% assign prd_handle = product.handle %}
 
-    <div class="ctm_sizeGuide_body" {% if prd_handle == 'custom-rug-carpet' %}data-custom-rug-carpet data-active{% endif %}>
+    <div class="ctm_sizeGuide_body" {% if prd_handle == 'custom-rug-carpet' or prd_handle == 'custom-rug-carpetz' or prd_handle == 'custom-rug-carpetzz' %}data-custom-rug-carpet data-active{% endif %}>
       <div class="ctm_shapeOptions">
         <span class="shapeOption active" data-shape="Rectangle">RECTANGLE</span>
         <span class="shapeOption" data-shape="Circle">CIRCLE</span>

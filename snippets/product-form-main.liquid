@@ -332,8 +332,19 @@
       saveNotesButton: '.edit-note-save-button',
     };
     const CANVAS_SUPPORTED_FILE_SIZE = 10 * 1024 * 1024 // 10MB
-    const MAX_SUPPORTED_TRANSFORM_FILE_SIZE = 50 * 1024 * 1024 // 50MB
+    const MAX_SUPPORTED_TRANSFORM_FILE_SIZE = 40 * 1024 * 1024 // 50MB
     const MAX_SUPPORTED_FILE_SIZE = 250 * 1024 * 1024 // 250MB
+    const ONLY_RESIZE_SUPPORTED_FORMATS = [
+      'application/pdf'
+    ];
+    const RESIZE_SUPPORTED_FILE_TYPES = [
+      'image/jpg',
+      'image/jpeg',
+      'image/webp',
+      'image/png',
+      '.ico',
+      'image/HEIC'
+    ];
     const CANVAS_SUPPORTED_FILE_TYPES = [
       'image/jpg',
       'image/jpeg',
@@ -342,7 +353,7 @@
       'image/svg+xml',
     ]
     const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
-    const API_BASE_URL = "https://rug-production.vercel.app"
+    const API_BASE_URL = "https://rt-production.vercel.app"
 
     // Helper function for file
     function readFileAsDataURL(file) {
@@ -595,12 +606,13 @@
         }
 
         let blobP;
+        let originalUrl;
 
         // If SVG is uploaded, we will conver it to PNG to create the preview 
         // to be sent to remove background service.
         if (file.type.toLowerCase().includes('svg')) {
           blobP = await svgFileToPngBlob(file);
-        } else if (file.size > MAX_SUPPORTED_TRANSFORM_FILE_SIZE) {
+        } else if (ONLY_RESIZE_SUPPORTED_FORMATS.includes(file.type) || (file.size > MAX_SUPPORTED_TRANSFORM_FILE_SIZE && RESIZE_SUPPORTED_FILE_TYPES.includes(file.type))) {
           // 4. Get a signed preview URL from your backend
           let resResize = await fetch(`${API_BASE_URL}/api/media/resize`, {
             method: "POST",
@@ -623,11 +635,12 @@
           }
 
           var signedUrlData = await signedUrlResponse.json();
-          var url = signedUrlData.url;
+          originalUrl = signedUrlData.url;
 
           // 5. Download the image blob from that URL
-          var imageRes = await fetch(url);
+          var imageRes = await fetch(originalUrl);
           if (!imageRes.ok) {
+            alert('Uploaded file size is too big. Please try to upload a smaller size for better performance or contact support at (949) 478-4886.');
             throw new Error("Failed to download image from URL");
           }
           
@@ -646,6 +659,7 @@
           token: token,
           bucket: bucket,
           mimeType: file.type,
+          originalPreviewFileUrl: originalUrl,
           previewDataUrl: blobP // note: this is a Blob, not a dataURL
         });
 
@@ -678,6 +692,9 @@
     });
     addToCartButton.on('click', async () => {
       try {
+        $('html, body').animate({
+          scrollTop: $('#rug-canvas-container').offset().top - 10
+        }, 600);
         // Loading - change button style
         const addToCartButton = $(".custom-rug-sticky-add-to-cart-button")
         const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
@@ -722,43 +739,45 @@
       e.preventDefault();
 
       // Build form data
-      const formData = new FormData($form[0]);
+      //const formData = new FormData($form[0]);
 
       CanvasRugEditor.loading(true, true, 'Adding to cart...');
-      fetch("/cart/add.js", {
-        method: "POST",
-        body: formData,
-      })
-      .then(res => res.json())
-      .then(data => {
-        // fetch updated cart
-        $.ajax({
-          url: '/cart.js',
-          dataType: 'json',
-          cache: false,
-          success(cart) {
-            setTimeout(() => {
-              refreshCart(cart);
-              // TODO: fix there is a double click here.
-              $('.top-bar .cart-container:visible').click()
+      $.ajax({
+        url: '/cart/add.js',
+        dataType: 'json',
+        cache: false,
+        type: 'post',
+        data: $form.first().serialize(),
+        success(data) {
+          // fetch updated cart
+          $.ajax({
+            url: '/cart.js',
+            dataType: 'json',
+            cache: false,
+            success(cart) {
+              setTimeout(() => {
+                window.refreshCart(cart);
+                setTimeout(() => {
+                  $('.top-bar .cart-container:visible').click()
+                  addToCartButton.prop('disabled', false);
+                  addToCartButtonText.text('Add to cart');
+                  CanvasRugEditor.loading(false, true);
+                }, 500);
+              }, 500);
+            },
+            error() {
               addToCartButton.prop('disabled', false);
               addToCartButtonText.text('Add to cart');
               CanvasRugEditor.loading(false, true);
-            }, 500);
-          },
-          error() {
-            // silent
-            addToCartButton.prop('disabled', false);
-            addToCartButtonText.text('Add to cart');
-            CanvasRugEditor.loading(false, true);
-          }
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-        addToCartButton.prop('disabled', false);
-        addToCartButtonText.text('Add to cart');
-        CanvasRugEditor.loading(false, true);
+            }
+          });
+        },
+        error (err) {
+          console.error(err);
+          addToCartButton.prop('disabled', false);
+          addToCartButtonText.text('Add to cart');
+          CanvasRugEditor.loading(false, true);
+        }
       });
     });
   })

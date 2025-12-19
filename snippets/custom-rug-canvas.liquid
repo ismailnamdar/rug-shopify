@@ -149,7 +149,7 @@
 /* -------------------------------------------------------------
    CONSTANTS
 ------------------------------------------------------------- */
-const API_BASE_URL = "https://rug-production.vercel.app"
+const API_BASE_URL = "https://rt-production.vercel.app"
 const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
 const canvas = document.getElementById("rug-canvas");
 const changePhotoButton = document.getElementById("rug-canvas-change-photo");
@@ -1020,7 +1020,7 @@ window.CanvasRugEditor = {
         uploadedImage.previewPath = path;
 
         resolve(path);
-      }, "image/png");
+      }, "image/webp", 0.8);
     });
   },
   async createMedia(originalPath, previewPath, mimeType, backgroundColor, removeBg) {
@@ -1045,6 +1045,7 @@ window.CanvasRugEditor = {
     const {
       path: originalPath,
       mimeType,
+      originalPreviewFileUrl,
     } = uploadedImage;
 
     // 2. Tell your backend to create entry
@@ -1060,6 +1061,7 @@ window.CanvasRugEditor = {
       shownImage === "background-removed"
     );
 
+    const originalUrl = originalPreviewFileUrl || originalFileUrl
     const comments = $('.edit-notes-textarea').val();
     const addComment = $('.edit-notes-header-button[data-value="needs-fixing"]').attr('data-active') === 'true';
 
@@ -1070,7 +1072,7 @@ window.CanvasRugEditor = {
     $('#custom-rug-properties-section input[name=\"properties[__Remove Background]\"]').val(removedBackground ? "yes" : "no");
     $('#custom-rug-properties-section input[name=\"properties[__Scale]\"]').val(scalePct);
     $('#custom-rug-properties-section input[name=\"properties[__Rotation]\"]').val(rotationDeg);
-    $('#custom-rug-properties-section input[name=\"properties[__Original image]\"]').val(originalFileUrl);
+    $('#custom-rug-properties-section input[name=\"properties[__Original image]\"]').val(originalUrl);
     $('#custom-rug-properties-section input[name=\"properties[Product preview image]\"]').val(previewFileUrl);
     if (addComment) {
       $('#custom-rug-properties-section input[name=\"properties[Comments]\"]').val(comments);
