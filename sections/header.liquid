@@ -116,7 +116,7 @@
 
           {% if section.settings.phone_number != blank %}
             <li>
-              <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
+              <a href="tel:+1{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">Concierge team: {{ section.settings.phone_number }}</a>
             </li>
           {% endif %}
 
@@ -274,7 +274,7 @@
       <ul class="top-bar__menu menu">
         {% if section.settings.phone_number != blank %}
           <li>
-            <a href="tel:{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ section.settings.phone_number }}</a>
+            <a href="tel:+1{{ section.settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">Concierge team: {{ section.settings.phone_number }}</a>
           </li>
         {% endif %}
 
@@ -1362,7 +1362,7 @@ input.quantity {
       "type": "text",
       "id": "phone_number",
       "label": "Phone number",
-      "info": "1-800-555-5555"
+      "info": "800-555-5555"
     },
     {
       "type": "text",

@@ -1,4 +1,5 @@
 <style>
+  /* Original Centered Modal Styles */
   @media(max-width: 768px){
     .shapeImg img {
    /* aspect-ratio: 0 !important;
@@ -30,6 +31,46 @@
     border-radius: 8px;
   }
 
+  /* New Side Drawer Modal Styles */
+  .newSizeModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .newSizeModal.active {
+    opacity: 1;
+  }
+
+  .newSizeDrawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 600px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .newSizeModal.active .newSizeDrawer {
+    transform: translateX(0);
+  }
+
+  /* Original Modal Header */
   .ctm_sizeGuide_header {
     display: flex;
     justify-content: space-between;
@@ -44,11 +85,54 @@
     letter-spacing: 3px;
   }
 
+  /* New Modal Header */
+  .newSizeDrawer_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .newSizeDrawer_header h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .ctm_cross {
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .newSizeDrawer .ctm_cross {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    transition: opacity 0.2s;
+  }
+
+  .newSizeDrawer .ctm_cross:hover {
+    opacity: 0.7;
+  }
+
+  /* Original Modal Shape Options */
   .ctm_shapeOptions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 14px;
+    padding: 0 20px;
   }
 
   .shapeOption {
@@ -61,6 +145,31 @@
     background-color: transparent !important;
   }
 
+  .newSizeDrawer .shapeOption {
+    flex: 1;
+    text-align: center;
+    padding: 16px 12px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    background: #fff;
+  }
+
+  .newSizeDrawer .shapeOption:hover {
+    background-color: #f9f9f9;
+  }
+
+  .newSizeDrawer .shapeOption.active {
+    color: #000;
+    border-bottom-color: #000;
+    background-color: #fff;
+  }
+
+  /* Original Modal Size Grid */
   .ctm_shapeImages{
     min-height: 350px;
   }
@@ -76,6 +185,26 @@
     gap: 15px;
   }
 
+  /* New Modal Size Grid */
+  .newSizeDrawer .ctm_shapeImages {
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .newSizeDrawer .ctm_shapeImages > div[shape-active='true'] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Desktop: 3 columns */
+  @media (min-width: 769px) {
+    .newSizeDrawer .ctm_shapeImages > div[shape-active='true'] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Original Modal Size Images */
   .shapeImg {
     cursor: pointer;
     display: grid;
@@ -102,21 +231,28 @@
     background-color: transparent !important;
   }
 
-  .ctm_selectSize {
-    text-align: center;
+  /* New Modal Size Images */
+  .newSizeDrawer .shapeImg {
+    padding: 0;
+    border: 1px solid black;
   }
 
-  .ctm_selectSize div {
-    background-color: #313131;
-    color: white;
-    border: none;
-    letter-spacing: 3px;
+  .newSizeDrawer .shapeImg:hover:not(.active) {
+    border-color: #999;
+    background-color: #F7F5E5;
+  }
+
+  .newSizeDrawer .shapeImg.active {
+    background-color: #F7F5E5!important;
+  }
+
+  .newSizeDrawer .shapeImg img {
     width: 100%;
-    padding: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    height: auto;
+    object-fit: contain;
   }
 
+  /* Original Modal Body */
   .ctm_sizeGuide_body {
     padding: 30px 20px;
     padding-bottom:10px !important;
@@ -152,6 +288,21 @@
     display: grid;
   }
 
+  /* New Modal Body */
+  .newSizeDrawer .ctm_sizeGuide_body {
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .newSizeModal [data-custom-rug-carpet],
+  .newSizeModal [data-custom-circle],
+  .newSizeModal [data-custom-runners],
+  .newSizeModal [data-custom-area-rugs] {
+    display: flex;
+  }
+
   .size_guide_model_open #chatra__iframe-wrapper {
     display: none !important;
   }
@@ -170,6 +321,30 @@
       justify-content: space-between;
       align-items: center;
       gap: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .newSizeDrawer {
+      max-width: 100%;
+    }
+
+    .newSizeDrawer .ctm_shapeImages {
+      padding: 16px;
+    }
+
+    .newSizeDrawer .ctm_shapeImages > div[shape-active='true'] {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    {% comment %} .newSizeDrawer .shapeImg {
+      padding: 12px;
+    } {% endcomment %}
+
+    .newSizeDrawer .shapeOption {
+      font-size: 14px;
+      {% comment %} padding: 14px 8px; {% endcomment %}
     }
   }
 </style>
@@ -196,45 +371,20 @@
       <div class="ctm_shapeImages">
         <div class="rectangle" data-image-shape="Rectangle" shape-active="true">
           <div class="shapeImg" data-size="2'x3'">
-            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Rectangle_Size_Guide.png?v=1762436544" alt="Rectangle img" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Rectangle_Size_Guide.png?v=1762436544" alt="Rectangle img" width="400" height="400" loading="lazy">
           </div>
-      {% comment %}    <div class="shapeImg" data-size="3'x5'">
-            <img src="{{ 'rectangle-new.png' |  asset_url }}" width="100%" height="100%">
-          </div>
-          <div class="shapeImg" data-size="5'x7'">
-            <img src="{{ 'rectangleImg 5x7.jpg' |  asset_url }}" width="100%" height="100%">
-          </div>
-          <div class="shapeImg" data-size="8'x10'">
-            <img src="{{ 'rectangleImg 8x10.png' |  asset_url }}" width="100%" height="100%">
-          </div>{% endcomment %}
         </div>
         <div class="circle" data-image-shape="Circle">
           <div class="shapeImg" data-size="3'x3'">
-            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Circle_Sg.png?v=1762436544" alt="Circle img" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Circle_Sg.png?v=1762436544" alt="Circle img" width="400" height="400" loading="lazy">
           </div>
-     {% comment %}     <div class="shapeImg" data-size="4'x4'">
-            <img src="{{ 'circleImg 4x4.png' |  asset_url }}" width="100%" height="100%">
-          </div>
-          <div class="shapeImg" data-size="6'x6'">
-            <img src="{{ 'circleImg 6x6.png' |  asset_url }}" width="100%" height="100%">
-          </div>
-          <div class="shapeImg" data-size="8'x8'">
-            <img src="{{ 'circleImg 8x8.png' |  asset_url }}" width="100%" height="100%">
-          </div>{% endcomment %}
-          
         </div>
         <div class="runner" data-image-shape="Runner">
           <div class="shapeImg" data-size="3'x3'">
-            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Runner_Sg.png?v=1762436544" alt="Runner img" loading="lazy">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Runner_Sg.png?v=1762436544" alt="Runner img" width="400" height="400" loading="lazy">
           </div>
-      {% comment %}    <div class="shapeImg" data-size="2.5'x10'">
-            <img src="{{ 'runnerImg 2.5x10.png' |  asset_url }}" width="100%" height="100%">
-          </div>{% endcomment %}
         </div>
       </div>
-{% comment %}      <div class="ctm_selectSize">
-        <div>SELECT SIZE</div>
-      </div>{% endcomment %}
     </div>
     {% comment %} /////////////////// CUSTOM RUG CARPET //////////////////// {% endcomment %}
 
@@ -244,8 +394,8 @@
       </div>
       <div class="ctm_shapeImages">
         <div class="rectangle" data-image-shape="Rectangle" shape-active="true">
-          <div class="shapeImg active" data-size="2’x3’">
-            <img src="{{ 'Square.png' |  asset_url }}">
+          <div class="shapeImg active" data-size="2'x3'">
+            <img src="{{ 'Square.png' |  asset_url }}" width="350" height="350" alt="Square">
           </div>
   {% comment %}        <div class="shapeImg" data-size="3’x5’">
             <img src="{{ 'rectangleImg 3x5.png' |  asset_url }}" width="100%" height="100%">
@@ -271,8 +421,8 @@
       </div>
       <div class="ctm_shapeImages">
         <div class="runner" data-image-shape="Runner" shape-active="true">
-          <div class="shapeImg active" data-size="2.5’x7’">
-            <img src="{{ 'Runner.png' |  asset_url }}">
+          <div class="shapeImg active" data-size="2.5'x7'">
+            <img src="{{ 'Runner.png' |  asset_url }}" width="350" height="350" alt="Runner">
           </div>
     {% comment %}      <div class="shapeImg" data-size="2.5’x10’">
             <img src="{{ 'runnerImg 2.5x10.png' |  asset_url }}" width="100%" height="100%">
@@ -292,8 +442,8 @@
       </div>
       <div class="ctm_shapeImages">
         <div class="circle" data-image-shape="Circle" shape-active="true">
-          <div class="shapeImg active" data-size="3’">
-            <img src="{{ 'Circle-combine.png' |  asset_url }}">
+          <div class="shapeImg active" data-size="3'">
+            <img src="{{ 'Circle-combine.png' |  asset_url }}" width="350" height="350" alt="Circle">
           </div>
   {% comment %}        <div class="shapeImg" data-size="4’">
             <img src="{{ 'circleImg 4x4.png' |  asset_url }}" width="100%" height="100%">
@@ -313,4 +463,73 @@
     </div>
     {% comment %} ////////////////// CUSTOM CIRCLE RUGS //////////////////// {% endcomment %}
   </div>
-</div>  
+</div>
+
+{%- comment -%} NEW SIDE DRAWER MODAL FOR SIZE SELECTION {%- endcomment -%}
+<div class="newSizeModal" id="newSizeModal">
+  <div class="newSizeDrawer">
+    <div class="newSizeDrawer_header">
+      <h4>SELECT SIZE</h4>
+      <span class="ctm_cross" id="closeNewModal">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.46411 8.53509L8.53611 1.46509M1.46411 1.46509L8.53611 8.53509" stroke="black" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </span>
+    </div>
+
+    <div class="ctm_sizeGuide_body" data-custom-rug-carpet data-active>
+      <div class="ctm_shapeOptions">
+        <span class="shapeOption active" data-shape="Rectangle">RECTANGLE</span>
+        <span class="shapeOption" data-shape="Circle">CIRCLE</span>
+        <span class="shapeOption" data-shape="Runner">RUNNER</span>
+      </div>
+      <div class="ctm_shapeImages">
+        <div class="rectangle" data-image-shape="Rectangle" shape-active="true">
+          <div class="shapeImg" data-size="2'x3'" data-shape-value="Rectangle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_2x3_4eb980be-76eb-4ad0-a289-5df6676c3cd2.png?v=1766408383" alt="2'x3' Rectangle" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="3'x5'" data-shape-value="Rectangle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_3x5_1413c0a6-1e00-405d-9eb8-71bcbc09c4d1.png?v=1766408384" alt="3'x5' Rectangle" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="5'x7'" data-shape-value="Rectangle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_5x7_8444796a-727e-4475-8c82-765a99b1d660.png?v=1766408384" alt="5'x7' Rectangle" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="8'x10'" data-shape-value="Rectangle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_8x10_1acdb0d2-1509-4180-b4fa-493117837c89.png?v=1766408383" alt="8'x10' Rectangle" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="8'x12'" data-shape-value="Rectangle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_8x12_a6f3fcdc-060e-4d10-a140-91e5b49bfcec.png?v=1766408383" alt="8'x12' Rectangle" width="350" height="350" loading="lazy">
+          </div>
+        </div>
+        <div class="circle" data-image-shape="Circle">
+          <div class="shapeImg" data-size="3'x3'" data-shape-value="Circle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_3x3_c88ef318-c045-4cdf-85b2-ffa927f5e282.png?v=1766408384" alt="3'x3' Circle" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="4'x4'" data-shape-value="Circle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_4x4_23abefb8-9fac-4866-88a6-7e1173ba3f0e.png?v=1766408384" alt="4'x4' Circle" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="5'x5'" data-shape-value="Circle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_5x5_398bdbb3-d904-4f33-9410-9ee9e4375f9e.png?v=1766408384" alt="5'x5' Circle" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="6'x6'" data-shape-value="Circle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_6x6_83b9034f-7fd7-4c9a-b0ee-8e2b988fd84d.png?v=1766408384" alt="6'x6' Circle" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="8'x8'" data-shape-value="Circle">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_8x8_7220ef8b-74cd-428c-b31d-ae5eee3a2bf7.png?v=1766408383" alt="8'x8' Circle" width="350" height="350" loading="lazy">
+          </div>
+        </div>
+        <div class="runner" data-image-shape="Runner">
+          <div class="shapeImg" data-size="2.5'x7'" data-shape-value="Runner">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_2.5x7.png?v=1766408383" alt="2.5'x7' Runner" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="2.5'x10'" data-shape-value="Runner">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_2.5x10.png?v=1766408384" alt="2.5'x10' Runner" width="350" height="350" loading="lazy">
+          </div>
+          <div class="shapeImg" data-size="5'x10'" data-shape-value="Runner">
+            <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/RUG05_5x10_0ae27685-76f3-47bd-8a8d-be7013de60b0.png?v=1766408383" alt="5'x10' Runner" width="350" height="350" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -80,6 +80,25 @@
           product: product
         %}
       {% endfor %}
+      
+      {% if product.handle == 'custom-rug-carpet' %}
+        {%- comment -%} Original Size Title with Size Guide Button {%- endcomment -%}
+        <div class="option_title" data-option-size-title="" data-option-title="Size ">
+          <div class="option_title opt_title_size">Select size:</div>  
+          <button class="open-size-guide-btn" style="display: none;">Size Guide</button>
+        </div>
+        
+        {%- comment -%} New Size Selector Dropdown Button {%- endcomment -%}
+        <div class="size-selector-dropdown-wrapper">
+          <button type="button" class="size-selector-dropdown-btn" id="openSizeModal">
+            <span class="size-selector-value" id="selectedSizeDisplay">2'x3'</span>
+            <svg class="size-selector-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1.5L6 6.5L11 1.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      {% endif %}
+      
       {% render "size-guide" product: product, option: option %}
       </div>
     {% endif %}
