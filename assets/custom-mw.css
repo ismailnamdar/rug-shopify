@@ -165,9 +165,11 @@ span.loox-rating-label::after {
   background-color: #ffc036;
   color: #000000;
 }
+
 .swatch_options .swatch:first-of-type input:checked+.swatch-element {
   background-color: unset;
 }
+
 .swatch_options .swatch:first-of-type label {
   min-width: 120px;
 }
@@ -265,7 +267,7 @@ button#zakeke-product-button {
 
 .product-main .product-block--price .price .money {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .product-main .swatch_options .option_title {
@@ -276,7 +278,7 @@ button#zakeke-product-button {
 }
 
 .product-main .swatch label {
-  padding: 8px 16px;
+  padding: 8px 10px;
   font-size: 14px;
   font-weight: 600;
   text-transform: unset;
@@ -305,11 +307,11 @@ button#zakeke-product-button {
 
 .prd_order_del_box {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
+  align-items: flex-start;
+  gap: 12px;
   border-radius: 4px;
   background: #F1F1F1;
+  width: 100%;
   padding: 8px 12px;
 }
 
@@ -488,9 +490,10 @@ button.open-size-guide-btn {
 }
 
 .ctm_prd_price_mobile {
+  margin: 0;
   font-size: 28px;
-  font-weight: 600;
-  line-height: 18px;
+  font-weight: 400;
+  line-height: 24px;
   letter-spacing: 0.04em;
   text-align: center;
   color: #000000;
@@ -635,6 +638,13 @@ div.cart_content form{ margin: 10px 0 0;}
   padding: 10px;
 }
 
+.shopify-section.shopify-section--product-template.content .product-main-custom .two-fifths.product__details--product-page {
+  border-radius: 8px;
+  border: 1px solid #262627;
+  padding: 20px;
+  margin-left: 0 !important;
+}
+
 @keyframes icon_blink {
   from {
     opacity: 0.2;
@@ -682,6 +692,10 @@ div.cart_content form{ margin: 10px 0 0;}
     display: block;
   }
 
+  .custom-rug-sticky-add-to-cart-button .ctm_prd_price_mobile {
+    display: block;
+    margin: 0 0 20px 0;
+  }
   /* Size selector dropdown mobile styles */
   .size-selector-dropdown-wrapper {
     margin: 0 10px 0 13px;
@@ -771,6 +785,12 @@ div.cart_content form{ margin: 10px 0 0;}
     width: 100%;
   }
 
+  .shopify-section.shopify-section--product-template.content .product-main .two-fifths.product__details--product-page {
+    border: none;
+    border: none;
+    padding: 0;
+  }
+
   .shopify-section.shopify-section--product-template.content .product-main .two-fifths.product__details--product-page,
   .shopify-section.shopify-section--product-template.content .product-main .product__images.three-fifths {
     width: 100%;
@@ -792,10 +812,11 @@ div.cart_content form{ margin: 10px 0 0;}
 
 
   .product-main .swatch_options {
-    padding: 0 0 20px;
+    padding: 0 0 10px;
     margin-left: -10px;
     margin-right: -10px;
     margin-bottom: 0;
+    padding-top: 24px;
   }
 
   .product-main .swatch_options.multiOptions .swatch[data-option-index="0"] {
@@ -948,6 +969,10 @@ div.cart_content form{ margin: 10px 0 0;}
   .ATC_btn_fix .pplrfileuploadcover {
     background-position: unset !important;
   }
+
+  .product-main .swatch_options {
+    padding-top: 0;
+  }
 }
 
 @media screen and (max-width: 375px){ .mini-cart__item-properties .mini-cart__item-property{ white-space: wrap; } }
@@ -957,6 +982,10 @@ div.cart_content form{ margin: 10px 0 0;}
   body.ATC_btn_fix .purchase-details .purchase-details__buttons {
     position: unset !important;
   }
+}
+
+.promo-banner__close {
+  display: none !important;
 }
 
 /* RUG05 - Hide duplicate Okendo rating blocks */

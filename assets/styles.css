@@ -631,6 +631,10 @@ Description: Shopify Theme (https://www.shopify.com/&ref=out-of-the-sandbox)
   flex-direction: column-reverse;
 }
 
+.is-inline-block {
+  display: inline-block;
+}
+
 /* Flex position order */
 .is-order-aligned-left {
   order: -1;
@@ -10426,6 +10430,10 @@ div#disqus_thread li {
     margin-bottom: 1rem;
   }
 
+.swatch {
+  gap: 6px !important;  
+}
+
 .swatch .option_title {
   margin: 24px 0 8px;
 }
@@ -10504,7 +10512,7 @@ div#disqus_thread li {
 
 @media screen and (max-width: 768px) {
   .swatch .swatch-element {
-    margin: 0px 8px 8px 0;
+    margin: 0px;
   }
 }
 
@@ -13321,7 +13329,6 @@ img[data-flickity-lazyload] {
 }
 
 .product_gallery {
-  margin-bottom: 30px;
   position: relative;
   opacity: 0;
   transition: opacity 0.2s;
@@ -13347,6 +13354,7 @@ img[data-flickity-lazyload] {
 }
 .product_gallery img {
   background-color: #ffffff;
+  object-fit: cover;
 }
 .product_gallery.show-gallery-arrows--false .flickity-prev-next-button {
   display: none;

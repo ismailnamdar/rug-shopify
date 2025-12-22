@@ -26,8 +26,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #babbbf;
+    background-color: white;
     letter-spacing: 3px;
+    border-radius: 8px;
   }
 
   /* New Side Drawer Modal Styles */
@@ -259,6 +260,23 @@
     gap: 1rem;
   }
 
+  .open-size-guide-btn {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .ctm_cross {
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 24px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #262627;
+  }
+
   .ctm_sizeGuide_body {
     display: none ;
   }
@@ -344,7 +362,7 @@
 
     {% assign prd_handle = product.handle %}
 
-    <div class="ctm_sizeGuide_body" {% if prd_handle == 'custom-rug-carpet' %}data-custom-rug-carpet data-active{% endif %}>
+    <div class="ctm_sizeGuide_body" {% if prd_handle == 'custom-rug-carpet' or prd_handle == 'custom-rug-carpetz' or prd_handle == 'custom-rug-carpetzz' %}data-custom-rug-carpet data-active{% endif %}>
       <div class="ctm_shapeOptions">
         <span class="shapeOption active" data-shape="Rectangle">RECTANGLE</span>
         <span class="shapeOption" data-shape="Circle">CIRCLE</span>

@@ -1,0 +1,54 @@
+<div id="{{id}}" class="custom-quantity-input">
+  <button type="button" class="custom-quantity-input-minus">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus" aria-hidden="true"><path d="M5 12h14"></path></svg>
+  </button>
+  <input value="1" type="number" name="quantity" min="1" max="20" style="color: black;" />
+  <button type="button" class="custom-quantity-input-plus">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+  </button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const input = $(`#{{id}} input`);
+    const MAX_VALUE = 20;
+    $(`#{{id}} .custom-quantity-input-minus`).click(() => {
+      const value = Number(input.val());
+      input.val(Math.max(1, value - 1))
+    });
+    $(`#{{id}} .custom-quantity-input-plus`).click(() => {
+      const value = Number(input.val());
+      input.val(Math.min(MAX_VALUE, value + 1))
+    })
+  })
+</script>
+
+<style>
+  .custom-quantity-input {
+    border: 1px solid black;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .custom-quantity-input input {
+    width: 20px;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 2px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .custom-quantity-input button {
+    padding: 4px 8px;
+    height: 100%;
+    border: none;
+    color: black;
+    background-color: transparent;
+  }
+</style>

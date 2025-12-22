@@ -1,0 +1,68 @@
+<label class="custom-switch">
+  <input type="checkbox" id="{{id}}" name="{{name}}" checked>
+  <span class="custom-slider custom-switch-round"></span>
+  <span>{{label}}</span>
+</label>
+
+<style>
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  height: 24px;
+  padding-left: 54px;;
+}
+
+.custom-switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.custom-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .custom-slider {
+  background-color: #2196F3;
+}
+
+input:focus + .custom-slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .custom-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* custom-switch-rounded custom-sliders */
+.custom-slider.custom-switch-round {
+  border-radius: 34px;
+}
+
+.custom-slider.custom-switch-round:before {
+  border-radius: 50%;
+}
+</style>

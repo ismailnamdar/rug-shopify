@@ -24,17 +24,8 @@
           "type": "title",
           "settings": {}
         },
-        "stamped_reviews_star_rating_badge_DKXLxB": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/star-rating-badge\/a103faaf-2125-4b0e-89fa-de5149736723",
-          "settings": {
-            "use_metafields": false,
-            "sku_tagtype": "sku",
-            "is_featured_product": false,
-            "featured_product_handle": ""
-          }
-        },
         "zepto_product_personalizer_product_personalizer_page_dQJwma": {
-          "type": "shopify:\/\/apps\/zepto-product-personalizer\/blocks\/product_personalizer_page\/7411210d-7b32-4c09-9455-e129e3be4729",
+          "type": "shopify://apps/zepto-product-personalizer/blocks/product_personalizer_page/7411210d-7b32-4c09-9455-e129e3be4729",
           "disabled": true,
           "settings": {
             "product": "custom-rug-carpet"
@@ -47,7 +38,7 @@
           }
         },
         "afterpay_on_site_messaging_payments_messaging_VExiYb": {
-          "type": "shopify:\/\/apps\/afterpay-on-site-messaging\/blocks\/payments-messaging\/f45a5524-d177-4475-bf59-281efd2215a8",
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
           "settings": {
             "text_align": "inherit",
             "margin_top": 16,
@@ -86,7 +77,7 @@
         "custom_image_qBF7Kb": {
           "type": "Custom_image",
           "settings": {
-            "image_item": "shopify:\/\/shop_images\/Trusted_by.webp"
+            "image_item": "shopify://shop_images/Trusted_by.webp"
           }
         },
         "blinking_icon_text_zKgJqG": {
@@ -114,47 +105,47 @@
         "ctm_icon_with_text_VDDAnc": {
           "type": "ctm_icon_with_text",
           "settings": {
-            "icon_text_img_1": "shopify:\/\/shop_images\/image_6.png",
-            "icon_text_text_1": "<p>Hand Tailored in USA<\/p>",
-            "icon_text_img_2": "shopify:\/\/shop_images\/image_11.png",
-            "icon_text_text_2": "<p>Free Shipping<\/p>",
-            "icon_text_img_3": "shopify:\/\/shop_images\/image_22_1.png",
-            "icon_text_text_3": "<p>Sustainable product<\/p>"
+            "icon_text_img_1": "shopify://shop_images/image_6.png",
+            "icon_text_text_1": "<p>Hand Tailored in USA</p>",
+            "icon_text_img_2": "shopify://shop_images/image_11.png",
+            "icon_text_text_2": "<p>Free Shipping</p>",
+            "icon_text_img_3": "shopify://shop_images/image_22_1.png",
+            "icon_text_text_3": "<p>Sustainable product</p>"
           }
         },
         "collapsible_tab_qNTFGV": {
           "type": "collapsible-tab",
           "settings": {
             "collapsible_tab_heading": "Material Details",
-            "collapsible_tab_text": "<p>Our signature Canvas rug comes with a beautiful Moroccan style woven material and a soft cotton backing to give it a plush underfoot feel.<\/p>"
+            "collapsible_tab_text": "<p>Our signature Canvas rug comes with a beautiful Moroccan style woven material and a soft cotton backing to give it a plush underfoot feel.</p>"
           }
         },
         "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c": {
           "type": "collapsible-tab",
           "settings": {
             "collapsible_tab_heading": "How It Works",
-            "collapsible_tab_text": "<p>Customize your dream rug in 3 easy steps.<br\/>1.  Choose Your Shape<br\/>2. Select Your Size <br\/>3. Upload Your Image<\/p>"
+            "collapsible_tab_text": "<p>Customize your dream rug in 3 easy steps.<br/>1.  Choose Your Shape<br/>2. Select Your Size <br/>3. Upload Your Image</p>"
           }
         },
         "collapsible_tab_UF4WJG": {
           "type": "collapsible-tab",
           "settings": {
             "collapsible_tab_heading": "Production Timeline",
-            "collapsible_tab_text": "<p>Each rug takes 3~5 business days to manufacture, they are meticulously hand tailored in California.<\/p>"
+            "collapsible_tab_text": "<p>Each rug takes 3~5 business days to manufacture, they are meticulously hand tailored in California.</p>"
           }
         },
         "collapsible_tab_ijFrJi": {
           "type": "collapsible-tab",
           "settings": {
             "collapsible_tab_heading": "Design Requests?",
-            "collapsible_tab_text": "<p>Once your order is placed, reply to your confirmation email right away with any changes you want made on your custom rug. (i.e. Black Background)<\/p>"
+            "collapsible_tab_text": "<p>Once your order is placed, reply to your confirmation email right away with any changes you want made on your custom rug. (i.e. Black Background)</p>"
           }
         },
         "collapsible_tab_kE8Q4j": {
           "type": "collapsible-tab",
           "settings": {
             "collapsible_tab_heading": "Talk to a Rug Expert Now",
-            "collapsible_tab_text": "<p>We are here to answer any questions you may have <a href=\"tel:9494784886\">(949) 478-4886<\/a>.<\/p>"
+            "collapsible_tab_text": "<p>We are here to answer any questions you may have <a href=\"tel:9494784886\">(949) 478-4886</a>.</p>"
           }
         },
         "collapsible_tab_JztnGb": {
@@ -162,7 +153,7 @@
           "disabled": true,
           "settings": {
             "collapsible_tab_heading": "What Type of Image and Resolution is Needed?",
-            "collapsible_tab_text": "<p>You can use JPG\/JPEG,PNG, Webp, SVG images. Any other format can be emailed to us post purchase.<br\/><br\/>Higher resolution = Better quality rug.<br\/><br\/><a href=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0766\/1840\/0065\/files\/SizingGuide.Port.png?v=1703708096\"><strong>Click For Size Guide<\/strong><\/a><\/p>"
+            "collapsible_tab_text": "<p>You can use JPG/JPEG,PNG, Webp, SVG images. Any other format can be emailed to us post purchase.<br/><br/>Higher resolution = Better quality rug.<br/><br/><a href=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/SizingGuide.Port.png?v=1703708096\"><strong>Click For Size Guide</strong></a></p>"
           }
         },
         "collapsible_tab_pgfAaK": {
@@ -170,13 +161,12 @@
           "disabled": true,
           "settings": {
             "collapsible_tab_heading": "Our Rugs",
-            "collapsible_tab_text": "<p>Our signature Canvas rug comes with a beautiful Moroccan style woven material and a soft cotton backing to give it a plush underfoot feel.<\/p>"
+            "collapsible_tab_text": "<p>Our signature Canvas rug comes with a beautiful Moroccan style woven material and a soft cotton backing to give it a plush underfoot feel.</p>"
           }
         }
       },
       "block_order": [
         "title",
-        "stamped_reviews_star_rating_badge_DKXLxB",
         "zepto_product_personalizer_product_personalizer_page_dQJwma",
         "price",
         "afterpay_on_site_messaging_payments_messaging_VExiYb",
@@ -220,22 +210,22 @@
         "image_6yUrqQ": {
           "type": "image",
           "settings": {
-            "feature_text": "<p>CHOOSE SHAPE & SIZE<\/p>",
-            "feature_image": "shopify:\/\/shop_images\/choose_shape.svg"
+            "feature_text": "<p>CHOOSE SHAPE & SIZE</p>",
+            "feature_image": "shopify://shop_images/choose_shape.svg"
           }
         },
         "image_AVRgmn": {
           "type": "image",
           "settings": {
-            "feature_text": "<p>UPLOAD A IMAGE  [refer size guide]<\/p>",
-            "feature_image": "shopify:\/\/shop_images\/ic_round-upload.svg"
+            "feature_text": "<p>UPLOAD A IMAGE  [refer size guide]</p>",
+            "feature_image": "shopify://shop_images/ic_round-upload.svg"
           }
         },
         "image_iTi6RM": {
           "type": "image",
           "settings": {
-            "feature_text": "<p>COMPLETE YOUR PURCHASE [we will send an email for final design confirmation]<\/p>",
-            "feature_image": "shopify:\/\/shop_images\/mdi_design.svg"
+            "feature_text": "<p>COMPLETE YOUR PURCHASE [we will send an email for final design confirmation]</p>",
+            "feature_image": "shopify://shop_images/mdi_design.svg"
           }
         }
       },
@@ -245,7 +235,7 @@
         "image_iTi6RM"
       ],
       "settings": {
-        "title": "<h2>How it works<\/h2>",
+        "title": "<h2>How it works</h2>",
         "subtitle": "Customise your dream rug in 3 easy steps"
       }
     },
@@ -257,8 +247,8 @@
           "settings": {
             "stars_count": 5,
             "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify:\/\/shop_images\/testimonial-1.jpg",
-            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.<\/p>",
+            "testimonial_image": "shopify://shop_images/testimonial-1.jpg",
+            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
             "subtitle_author": "Antonio R."
           }
         },
@@ -267,8 +257,8 @@
           "settings": {
             "stars_count": 4.5,
             "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify:\/\/shop_images\/image6.jpg",
-            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.<\/p>",
+            "testimonial_image": "shopify://shop_images/image6.jpg",
+            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
             "subtitle_author": "Lineo Y."
           }
         },
@@ -277,8 +267,8 @@
           "settings": {
             "stars_count": 4,
             "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify:\/\/shop_images\/image4.jpg",
-            "feature_text": "<p>Plush and handsome, right from the photo we supplied!! Very happy with the product and thank you!!<\/p>",
+            "testimonial_image": "shopify://shop_images/image4.jpg",
+            "feature_text": "<p>Plush and handsome, right from the photo we supplied!! Very happy with the product and thank you!!</p>",
             "subtitle_author": "Jessica C."
           }
         },
@@ -287,8 +277,8 @@
           "settings": {
             "stars_count": 4,
             "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify:\/\/shop_images\/image3.png",
-            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!<\/p>",
+            "testimonial_image": "shopify://shop_images/image3.png",
+            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
             "subtitle_author": "Tony F."
           }
         },
@@ -297,8 +287,8 @@
           "settings": {
             "stars_count": 5,
             "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify:\/\/shop_images\/gempages_547641604358276043-47570370-fc3f-4f0f-bd37-bfd048c0f836.jpg",
-            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.<\/p>",
+            "testimonial_image": "shopify://shop_images/gempages_547641604358276043-47570370-fc3f-4f0f-bd37-bfd048c0f836.jpg",
+            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
             "subtitle_author": "Lineo Y."
           }
         },
@@ -307,8 +297,8 @@
           "settings": {
             "stars_count": 5,
             "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify:\/\/shop_images\/PDP.8.jpg",
-            "feature_text": "<p>Easy to upload graphic… high quality item shipped fast!  Not only was the rug BEAUTIFUL but the customer service was top notch.<\/p>",
+            "testimonial_image": "shopify://shop_images/PDP.8.jpg",
+            "feature_text": "<p>Easy to upload graphic… high quality item shipped fast!  Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
             "subtitle_author": "Daniel W"
           }
         }
@@ -322,7 +312,7 @@
         "testimonial_block_xY3PRH"
       ],
       "settings": {
-        "title": "<h2>Trusted by many rug Lovers!<\/h2>",
+        "title": "<h2>Trusted by many rug Lovers!</h2>",
         "subtitle": "",
         "padding_top": 10,
         "padding_bottom": 30
@@ -342,23 +332,6 @@
     },
     "1729510127bbe0d550": {
       "type": "apps",
-      "blocks": {
-        "stamped_reviews_main_widget_7R8Jrw": {
-          "type": "shopify:\/\/apps\/stamped-reviews\/blocks\/main-widget\/a103faaf-2125-4b0e-89fa-de5149736723",
-          "settings": {
-            "animation": true,
-            "tags_exclude": "",
-            "tags_include": "",
-            "search": "",
-            "linkify": true,
-            "use_metafields": false,
-            "sku_tagtype": "sku"
-          }
-        }
-      },
-      "block_order": [
-        "stamped_reviews_main_widget_7R8Jrw"
-      ],
       "settings": {}
     }
   },

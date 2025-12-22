@@ -516,6 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   }
+  
   function refreshCart(cart, cusCount = 0) {
 
     console.log('cart refresh fucntion called ');
@@ -560,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let prd_preview_img = null;
         let item_imageUrl = null;
 
-        if (item.properties) { $.each(item.properties, (title, value) => { if (value && value !== "on") {if (title === "DOWNLOAD PROOF") { prd_preview_img = value }}}) }
+        if (item.properties) { $.each(item.properties, (title, value) => { if (value && value !== "on") {if (title === "DOWNLOAD PROOF" || title === "Product preview image") { prd_preview_img = value }}}) }
 
         if (item.image) {
             // cartItemsHTML += `${'<div class="cart_image">' + '<img src="'}${item.image.replace(/(\.[^.]*)$/, '_compact$1').replace('http:', '')}" alt="${htmlEncode(item.title)}" />` + '</div></a>';
@@ -616,13 +617,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (value && value !== 'on') {
 
               const isHiddenProperty = title.substring(0, 2) === "__";
-
-              if (!isHiddenProperty) {
+              const isOriginalImage = title.includes('Original image');
+              if (!isHiddenProperty || isOriginalImage) {
                 if (value.includes('https') && imgUrlExist <= 1) {
-                  cartItemsHTML += `<div class="mini-cart__item-property"><a class="pplr_slide" href="${value}">${imgUrlExist < 1 ? 'Orignal image' : 'Preview image'}</a></div>`;
+                  cartItemsHTML += `<div class="mini-cart__item-property"><a class="pplr_slide" href="${value}">${(imgUrlExist < 1 || isOriginalImage) ? 'Original image' : 'Preview image'}</a></div>`;
                   imgUrlExist++;
                 }
-                else if (imgUrlExist <= 1){
+                else if (imgUrlExist <= 2){
                   cartItemsHTML += `<div class="mini-cart__item-property">${title}: ${value}</div>`;
                 } 
               }
@@ -765,6 +766,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // }
 
   }
+  // Make this function global to be called in other places to update the cart
+  window.refreshCart = refreshCart;
 
   // Copies the first found .money.a_pplr_item_line_price content into the checkout button span
   function mirrorPplrPriceToButton() {
@@ -819,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const anchors = document.querySelectorAll('.cart_content .mini-cart__item-properties .pplr_slide');
       anchors.forEach((anchor, index) => {
         // label first anchor 'Original image', subsequent anchors 'Preview image'
-        anchor.textContent = index === 0 ? 'Orignal image' : (anchor.textContent.trim() || 'Preview image');
+        anchor.textContent = index === 0 ? 'Original image' : (anchor.textContent.trim() || 'Preview image');
         // ensure links open in a new tab if they are external images
         if (anchor.getAttribute('href') && anchor.getAttribute('href').startsWith('http')) {
           anchor.setAttribute('target', '_blank');
@@ -1137,9 +1140,10 @@ document.addEventListener('DOMContentLoaded', function () {
       return false;
     });
   }
+
+  
   window.productPage.productSwatches();
 });
-
 /*= ===========================================================================
   Swatch options - second and third swatch 'sold-out' will update based on availability of previous options selected
 ============================================================================== */
@@ -1233,7 +1237,7 @@ document.addEventListener("readystatechange", function() {
     document.querySelectorAll('.cart_content .mini-cart__item-properties')?.forEach(item => {
       item.querySelectorAll('.pplr_slide')?.forEach((anchor, index) => {
         if (index === 0) {
-          anchor.innerText = 'Orignal image';
+          anchor.innerText = 'Original image';
         }
       });
     });

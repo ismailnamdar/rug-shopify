@@ -217,7 +217,7 @@
       "custom_css": [
         ".feature-divider {display: none !important;}",
         ".loox-rating .loox-rating-content {gap: 6px; margin-bottom: 12px;}",
-        "#shopify-block-AU3JNTkNuSHdrdmRpR__okendo_star_rating_ydA4LC-1 {display: none;}"
+        "#shopify-block-AMGh2VGxoU1E4TC9lY__okendo_star_rating_ydA4LC-1 {display: none;}"
       ],
       "settings": {
         "product_breadcrumb": false,

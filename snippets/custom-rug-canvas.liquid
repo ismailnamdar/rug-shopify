@@ -1,0 +1,1355 @@
+<div id="rug-canvas-container" style="width: 100%;display:none;">
+  <div style="position: relative; width: 100%;">
+    <canvas id="rug-canvas" class="rug-canvas"></canvas>
+    {% render 'circular-progress' %}
+
+    <div class="custom-rug-top-toolbar">
+      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center;">
+        Change Photo
+        <button id="rug-canvas-change-photo" class="custom-rug-action-button" style="margin-top: 6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-upload" aria-hidden="true"><path d="M12 13v8"></path><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="m8 17 4-4 4 4"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    {% comment %}
+    <div class="custom-rug-bottom-left-toolbar">
+      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center; color: black; margin-bottom: 4px;">
+        Rug Color
+        <input id="custom-rug-bg-color" class="custom-rug-bg-color" type="color" />
+      </div>
+    </div>
+    {% endcomment %}
+
+    <div class="custom-rug-bottom-toolbar">
+      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center; color: black; margin-bottom: 12px;">
+        Rug Color
+        <input id="custom-rug-bg-color" data-bg-color="color" class="custom-rug-bg-color" type="color" />
+      </div>
+      <button id="rug-canvas-rotate" class="custom-rug-action-button" style="margin-bottom: 10px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+      </button>
+      <div style="display: flex; flex-direction: column; border-radius: 8px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 1px #23232347; background-color: white;border: 1px solid #e2e2e2;">
+        <button id="rug-canvas-scale-up" class="custom-rug-action-button-zoom">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+        </button>
+        <button id="rug-canvas-scale-down" class="custom-rug-action-button-zoom">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus" aria-hidden="true"><path d="M5 12h14"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {% comment Phase 2. Preview images %}
+  {% assign asset_images = "circle-example-1.webp,circle-example-2.webp,circle-example-3.webp,circle-example-4.webp" | split: "," %}
+  <div class="image-grid">
+    {% for img in asset_images %}
+      <div class="grid-item">
+        <img src="{{ img | asset_url }}" alt="Preview Image" loading="lazy">
+      </div>
+    {% endfor %}
+  </div>
+  {% endcomment %}
+</div>
+
+<style>
+  .rug-canvas {
+    width: 100%;
+    height: 800px;
+    touch-action:none;
+  }
+  .custom-rug-action-button {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    margin: 6px 0;
+    padding: 7px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
+  }
+
+  .custom-rug-action-button-zoom {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+  }
+
+  .custom-rug-top-toolbar {
+    position: absolute;
+    right: 10px;
+    top: 100px;
+    color: black !important;
+  }
+  .custom-rug-bottom-toolbar {
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
+  }
+
+  .custom-rug-bottom-left-toolbar {
+    position: absolute;
+    left: 10px;
+    bottom: 12px;
+  }
+
+  #chatra {
+    bottom: 85px !important;
+  }
+
+  .custom-rug-bg-color {
+    border-radius: 7px;
+    padding: 2px !important;
+    margin-bottom: 0 !important;
+    margin-top: 4px !important;
+    box-shadow: 0 1px 1px #23232347;
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .image-grid .grid-item img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: block;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: 768px) {
+    .rug-canvas {
+      width: 100vw;
+      margin-left: -10px;
+      height: 450px;
+    }
+
+    .custom-rug-top-toolbar {
+      right: 0;
+      top: 80px;
+    }
+    .custom-rug-bottom-toolbar {
+      right: 0;
+    }
+
+    .custom-rug-bottom-left-toolbar {
+      left: 0;
+    }
+  }
+</style>
+
+<script>
+/* -------------------------------------------------------------
+   CONSTANTS
+------------------------------------------------------------- */
+let FIRST_TIME_USING = true;
+const API_BASE_URL = "https://api.rugtomize.co"
+const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
+const canvas = document.getElementById("rug-canvas");
+const changePhotoButton = document.getElementById("rug-canvas-change-photo");
+const rotateButton = document.getElementById("rug-canvas-rotate");
+const scaleUpButton = document.getElementById("rug-canvas-scale-up");
+const scaleDownButton = document.getElementById("rug-canvas-scale-down");
+const ctx = canvas.getContext("2d");
+const handlePositions = {};
+const center = { x: 0, y: 0 };
+let canvasScale = {
+    w: 14,
+    h: 14,
+}
+
+const rectangleDefaultDimensions = {
+  "2'X3'": {
+      name: "2'X3'",
+      wFeet: 3,
+      hFeet: 2,
+      w: 8,
+      h: 2 * 8 / 3,
+  },
+  "3'X5'": {
+      name: "3'X5'",
+      wFeet: 5,
+      hFeet: 3,
+      w: 10 * 0.8,
+      h: 6 * 0.8,
+  },
+  "5'X7'": {
+      name: "5'X7'",
+      wFeet: 7,
+      hFeet: 5,
+      w: 10 * 0.8,
+      h: 5 * 10 / 7 * 0.8,
+  },
+  "8'X10'": {
+      name: "8'X10'",
+      wFeet: 10,
+      hFeet: 8,
+      w: 10 * 0.8,
+      h: 8 * 0.8,
+  },
+  "8'X12'": {
+      name: "8'X12'",
+      wFeet: 12,
+      hFeet: 8,
+      w: 10 * 0.8,
+      h: 8 * 0.8,
+  }
+}
+const circleR = 6;
+let sizes = {
+    'circle': {
+        "3'X3'": {
+            name: "3'X3'",
+            wFeet: 3,
+            hFeet: 3,
+            w: circleR,
+            h: circleR,
+        },
+        "4'X4'": {
+            name: "4'X4'",
+            wFeet: 4,
+            hFeet: 4,
+            w: circleR,
+            h: circleR,
+        },
+        "5'X5'": {
+            name: "5'X5'",
+            wFeet: 5,
+            hFeet: 5,
+            w: circleR,
+            h: circleR,
+        },
+        "6'X6'": {
+            name: "6'X6'",
+            wFeet: 6,
+            hFeet: 6,
+            w: circleR,
+            h: circleR,
+        },
+        "8'X8'": {
+            name: "8'X8'",
+            wFeet: 8,
+            hFeet: 8,
+            w: circleR,
+            h: circleR,
+        }
+    },
+    'rectangle': {
+        "2'X3'": {
+            name: "2'X3'",
+            wFeet: 3,
+            hFeet: 2,
+            w: 8,
+            h: 2 * 8 / 3,
+        },
+        "3'X5'": {
+            name: "3'X5'",
+            wFeet: 5,
+            hFeet: 3,
+            w: 10 * 0.8,
+            h: 6 * 0.8,
+        },
+        "5'X7'": {
+            name: "5'X7'",
+            wFeet: 7,
+            hFeet: 5,
+            w: 10 * 0.8,
+            h: 5 * 10 / 7 * 0.8,
+        },
+        "8'X10'": {
+            name: "8'X10'",
+            wFeet: 10,
+            hFeet: 8,
+            w: 10 * 0.8,
+            h: 8 * 0.8,
+        },
+        "8'X12'": {
+            name: "8'X12'",
+            wFeet: 12,
+            hFeet: 8,
+            w: 10 * 0.8,
+            h: 8 * 0.8,
+        }
+    },
+    'runner': {
+        "2.5'X7'": {
+            name: "2.5'X7'",
+            wFeet: 7,
+            hFeet: 2.5,
+            w: 10,
+            h: 5,
+        },
+        "2.5'X10'": {
+            name: "2.5'X10'",
+            wFeet: 10,
+            hFeet: 2.5,
+            w: 10,
+            h: 5,
+        },
+        "5'X10'": {
+            name: "5'X10'",
+            wFeet: 10,
+            hFeet: 5,
+            w: 10,
+            h: 5,
+        },
+    }
+}
+
+/* -------------------------------------------------------------
+   INTERNAL STATE
+------------------------------------------------------------- */
+let fgImg = null;
+let bgImg = null;
+let backgroundRemoving = false;
+let shownImage = 'main'; // 'main' | 'background-removed'
+let fgUrl = null;
+let fgUrlRemoved = null;
+let uploadedImage = {}; // previewDataUrl
+let removedBackground = false
+
+let shape = {{ shape | default: "rectangle" | json}}; // circle | rectangle | runner
+let shapeSize = {{ size | default: "2'X3'" | json }};
+let dimension = { wFeet: 5, hFeet: 3, w: 10, h: 6 };
+let scalePct = 100;
+let rotationDeg = 0;
+let offset = { x: 0, y: 0 };
+let selected = true;
+let bgColor = "#000000"
+let interaction = null;
+
+/* -------------------------------------------------------------
+   HELPER FUNCTIONS
+------------------------------------------------------------- */
+
+
+function updateCircleDimensions(isMobile) {
+  let radius = isMobile ? 6 : 10;
+  sizes.circle = Object.fromEntries(Object.entries(sizes.circle).map((prop) => {
+    const key = prop[0];
+    const value = prop[1];
+    value.w = radius;
+    value.h = radius;
+
+    return [key, value];
+  }));
+}
+
+function updateRectangleDimensions(isMobile) {
+  if (isMobile) {
+    sizes.rectangle = rectangleDefaultDimensions;
+    return;
+  }
+  sizes.rectangle = Object.fromEntries(Object.entries(rectangleDefaultDimensions).map((prop) => {
+    const key = prop[0];
+    const value = prop[1];
+
+    return [key, {
+      ...value,
+      w: value.w * 1.2,
+      h: value.h * 1.2,
+    }];
+  }));
+}
+
+// Compute rug mask dimensions
+function maskDims(width, height) {
+    const min = Math.min(width, height);
+    const minIsWidth = min === width;
+    const minIsHeight = min === height;
+    const selectedDimension = sizes[shape][shapeSize]
+    const ratio = selectedDimension.h / selectedDimension.w;
+
+    if (shape === "runner") {
+      // const w = Math.min(Math.floor(min * 0.75), Math.floor(width * 0.8));
+      const w= Math.floor(width / canvasScale.w * selectedDimension.w)
+      const h = Math.floor(w * ratio);
+      return { w, h };
+    }
+    if (shape === "rectangle") {
+      const w = Math.floor(width / canvasScale.w * selectedDimension.w);
+      const h = Math.floor(w * ratio);
+      return { w: w, h: h };
+    }
+    const size = minIsWidth ? Math.floor(width / canvasScale.w * selectedDimension.w) : Math.floor(height / canvasScale.h * selectedDimension.h);
+    // const size = Math.floor(min * 0.8);
+    return { w: size, h: size };
+  }
+
+// Compute cover drawing size
+function computeDrawDims(w, h, iw, ih, scalePct) {
+  const rectRatio = w / h;
+  const imgRatio = iw / ih;
+  let dw, dh;
+
+  if (imgRatio < rectRatio) {
+    dh = h;
+    dw = h * imgRatio;
+  } else {
+    dw = w;
+    dh = w / imgRatio;
+  }
+
+  return { dw: dw * (scalePct / 100), dh: dh * (scalePct / 100) };
+}
+
+// Draw image cover into mask
+function drawImageCover(ctx, img, x, y, w, h, scale, rotation, cover) {
+  const iw = img.naturalWidth;
+  const ih = img.naturalHeight;
+
+  const rectRatio = w / h; // 100 / 50
+  const imgRatio = iw / ih; // 50 / 100
+  let dw, dh;
+
+  // Bg image is cover and user loaded image is contain.
+  if (cover ? imgRatio > rectRatio : imgRatio < rectRatio) {
+    dh = h;
+    dw = h * imgRatio;
+  } else {
+    dw = w;
+    dh = w / imgRatio;
+  }
+
+  dw *= scale / 100;
+  dh *= scale / 100;
+
+  const cx = x + w / 2;
+  const cy = y + h / 2;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(rotation * Math.PI / 180);
+  ctx.drawImage(img, -dw / 2, -dh / 2, dw, dh);
+  ctx.restore();
+}
+
+function drawGreenCheck(ctx, x, y, r = 9) {
+  ctx.save();
+
+  // Green circle
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fillStyle = "#4CAF50"; // close to your image green
+  ctx.fill();
+
+  // White checkmark
+  ctx.strokeStyle = "#ffffff";
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+
+  ctx.beginPath();
+  ctx.moveTo(x - r * 0.45, y);
+  ctx.lineTo(x - r * 0.1, y + r * 0.4);
+  ctx.lineTo(x + r * 0.55, y - r * 0.45);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+function drawCenteredBanner(ctx, canvasWidth, canvasHeight, position, config, isMobile) {
+  const {
+    title,
+    lines,
+    titleFont,
+    lineFont
+  } = config;
+
+  const paddingY = isMobile ? 16 : 18;
+  const lineGap = isMobile ? 20 : 28;
+  const iconR = isMobile ? 6 : 10;
+  const iconGap = isMobile ? 8 : 12;
+
+  ctx.save();
+
+  // --- Measure widths ---
+  ctx.font = titleFont;
+  const titleW = ctx.measureText(title).width;
+
+  ctx.font = lineFont;
+  const linesW = Math.max(
+    ...lines.map(l => ctx.measureText(l).width)
+  ) + iconR * 2 + iconGap;
+
+  const blockW = Math.max(titleW, linesW);
+  const startX = (canvasWidth - blockW) / 2;
+
+  const bannerHeight = paddingY * 2 + lineGap * lines.length;
+
+  const startY =
+    position === "top"
+      ? 0
+      : canvasHeight - bannerHeight;
+
+  const titleY = startY + paddingY + 8;
+
+  /* ---------- BACKGROUND ---------- */
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0, startY, canvasWidth, bannerHeight);
+
+  /* ---------- TEXT ---------- */
+  ctx.fillStyle = "#ffffff";
+  ctx.textAlign = "left";
+
+  // Title
+  ctx.font = titleFont;
+  ctx.fillText(title, startX, titleY);
+
+  // Lines
+  ctx.font = lineFont;
+  lines.forEach((text, i) => {
+    const y = titleY + lineGap * (i + 1);
+    const iconCx = startX + iconR;
+    drawGreenCheck(ctx, iconCx, y - 6, iconR);
+    ctx.fillText(text, startX + iconR * 2 + iconGap, y);
+  });
+
+  ctx.restore();
+
+  return bannerHeight;
+}
+
+function drawRotateIcon(ctx, x, y) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.strokeStyle = "#000";
+  ctx.lineWidth = 2;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+
+  // Arc (counter-clockwise, starting from bottom)
+  ctx.beginPath();
+  ctx.arc(0, 0, 7, Math.PI * 0.5, Math.PI * 0.95, true);
+  ctx.stroke();
+  
+  ctx.save();
+
+  // move to arrow pivot point
+  ctx.translate(-6, -6);
+  // rotate arrow head
+  ctx.rotate(-120 * Math.PI / 180); // 🔁 rotate here
+
+  // Arrow head (top-left direction, CCW)
+  ctx.beginPath();
+  ctx.moveTo(-4, -6);
+  ctx.lineTo(-8, -6);
+  ctx.lineTo(-6, -2);
+  ctx.stroke();
+
+  ctx.restore();
+  ctx.restore();
+}
+
+function drawScaleIcon(ctx, x, y) {
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.beginPath();
+  ctx.moveTo(-6, -6);
+  ctx.lineTo(6, 6);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(2, 6);
+  ctx.lineTo(6, 6);
+  ctx.lineTo(6, 2);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(-2, -6);
+  ctx.lineTo(-6, -6);
+  ctx.lineTo(-6, -2);
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+/* -------------------------------------------------------------
+   MAIN DRAW FUNCTION
+------------------------------------------------------------- */
+function draw({ measurement = true, hideBorder = false } = {}) {
+  const isMobile = window.innerWidth < 768;
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+
+  canvas.width = width * window.devicePixelRatio;
+  canvas.height = height * window.devicePixelRatio;
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+  ctx.clearRect(0, 0, width, height);
+
+  if (bgImg) drawImageCover(ctx, bgImg, 0, 0, width, height, 100, 0, true);
+
+  const titleFontSize = isMobile ? 14 : 22;
+  const lineFontSize = isMobile ? 12 : 14;
+  // ---------- TOP BANNER ----------
+const topBannerHeight = drawCenteredBanner(
+  ctx,
+  width,
+  height,
+  "top",
+  {
+    title: "Our Design Team Will",
+    lines: [
+      "Center Image Appropriately",
+      "Enhance Image Quality"
+    ],
+    titleFont: `bold ${titleFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`,
+    lineFont: `${lineFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
+  },
+  isMobile
+);
+
+  if ("{{ bottom_banner }}" === "true") {
+    // ---------- BOTTOM BANNER ----------
+    const bottomBannerHeight = drawCenteredBanner(
+      ctx,
+      width,
+      height,
+      "bottom",
+      {
+        title: "Post Purchase We Can",
+        lines: [
+          "Modify Background Color",
+          "Provide Proof Before Production"
+        ],
+        titleFont: `bold ${titleFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`,
+        lineFont: `${lineFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
+      },
+      isMobile
+    );
+  }
+
+  let { w, h } = maskDims(width, height);
+
+  const x = (width - w) / 2;
+  const y = (height - h) / 2;
+
+  function makeMaskPath() {
+    ctx.beginPath();
+    if (shape === "circle") {
+      ctx.arc(x + w / 2, y + h / 2, Math.min(w, h) / 2, 0, Math.PI * 2);
+    } else {
+      ctx.rect(x, y, w, h);
+    }
+  }
+
+  ctx.save();
+  makeMaskPath();
+  ctx.clip();
+
+  ctx.fillStyle = bgColor || "#000000";
+  ctx.fillRect(x, y, w, h);
+
+  if (fgImg) {
+    drawImageCover(
+      ctx,
+      fgImg,
+      x + offset.x,
+      y + offset.y,
+      w,
+      h,
+      scalePct,
+      rotationDeg
+    );
+  }
+
+  ctx.restore();
+
+  ctx.save();
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = "black";
+  makeMaskPath();
+  ctx.stroke();
+  ctx.restore();
+
+  if (measurement !== false) {
+    const selectedDimension = sizes[shape][shapeSize]
+    // --- Measurement arrows ---
+    ctx.save();
+    ctx.strokeStyle = "#000000"; // neutral-400
+    ctx.fillStyle = "#000000"; // neutral-600
+    ctx.lineWidth = 2;
+    ctx.font = "bold 18px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+  
+    // Horizontal arrow (width)
+    const hLineY = y + h + 18
+    const hx1 = x;
+    const hx2 = x + w;
+  
+    // main line
+    ctx.beginPath();
+    ctx.moveTo(hx1, hLineY);
+    ctx.lineTo(hx2, hLineY);
+    ctx.stroke();
+  
+    const arrowSize = 6;
+    // left flat cap
+    ctx.beginPath();
+    ctx.moveTo(hx1, hLineY - arrowSize);
+    ctx.lineTo(hx1, hLineY + arrowSize);
+    ctx.stroke();
+  
+    // right flat cap
+    ctx.beginPath();
+    ctx.moveTo(hx2, hLineY - arrowSize);
+    ctx.lineTo(hx2, hLineY + arrowSize);
+    ctx.stroke();
+  
+    const hTextY = hLineY + 16;
+    ctx.textAlign = "center";
+    ctx.fillText(`${selectedDimension.wFeet}'`, x + w / 2, hTextY);
+  
+    // Vertical arrow (height)
+    const vLineX = x - 20;
+    const vy1 = y;
+    const vy2 = y + h;
+  
+    ctx.beginPath();
+    ctx.moveTo(vLineX, vy1);
+    ctx.lineTo(vLineX, vy2);
+    ctx.stroke();
+  
+    // top flat cap
+    ctx.beginPath();
+    ctx.moveTo(vLineX - arrowSize, vy1);
+    ctx.lineTo(vLineX + arrowSize, vy1);
+    ctx.stroke();
+  
+    // bottom flat cap
+    ctx.beginPath();
+    ctx.moveTo(vLineX - arrowSize, vy2);
+    ctx.lineTo(vLineX + arrowSize, vy2);
+    ctx.stroke();
+  
+    ctx.textAlign = "left";
+    const vTextX = vLineX - 20;
+    ctx.fillText(`${selectedDimension.hFeet}'`, vTextX, y + h / 2 + 4);
+  
+    ctx.restore();
+  }
+
+  /* ---- HANDLE BORDER + HANDLES ---- */
+  if (fgImg && selected && !hideBorder) {
+    const iw = fgImg.naturalWidth;
+    const ih = fgImg.naturalHeight;
+    const { dw, dh } = computeDrawDims(w, h, iw, ih, scalePct);
+
+    /*
+    const cx = x + w / 2;
+    const cy = y + h / 2;
+    center.x = cx;
+    center.y = cy;
+    */
+
+    const cx = x + w / 2 + offset.x;
+    const cy = y + h / 2 + offset.y;
+    center.x = cx;
+    center.y = cy;
+
+    const rad = rotationDeg * Math.PI / 180;
+    const cos = Math.cos(rad);
+    const sin = Math.sin(rad);
+
+    const hw = dw / 2, hh = dh / 2;
+
+    function rot(px, py) {
+      return {
+        x: cx + px * cos - py * sin,
+        y: cy + px * sin + py * cos,
+      };
+    }
+
+    const corners = {
+      nw: rot(-hw, -hh),
+      ne: rot(hw, -hh),
+      se: rot(hw, hh),
+      sw: rot(-hw, hh),
+    };
+
+    ctx.strokeStyle = "#2563eb";
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.moveTo(corners.nw.x, corners.nw.y);
+    ctx.lineTo(corners.ne.x, corners.ne.y);
+    ctx.lineTo(corners.se.x, corners.se.y);
+    ctx.lineTo(corners.sw.x, corners.sw.y);
+    ctx.closePath();
+    ctx.stroke();
+
+    const dirX = corners.ne.x - cx;
+    const dirY = corners.ne.y - cy;
+    const len = Math.hypot(dirX, dirY);
+    const rotatePos = {
+      x: corners.ne.x + dirX / len * 16,
+      y: corners.ne.y + dirY / len * 16
+    };
+
+    handlePositions.rotate = rotatePos;
+
+    ctx.fillStyle = "#2563eb";
+    const s = 10;
+
+    // SCALE ICON (bottom-right)
+    const scalePos = {
+      x: corners.se.x + dirX / len * 16,
+      y: corners.se.y - dirY / len * 16
+    }
+    handlePositions.scale = scalePos;
+
+    // ROTATE ICON (top-right)
+    handlePositions.rotate = rotatePos;
+
+    const iconRadius = 16;
+
+    // ---- SCALE ICON (bottom-right) ----
+    ctx.beginPath();
+    ctx.arc(scalePos.x, scalePos.y, iconRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 2;
+    drawScaleIcon(ctx, scalePos.x, scalePos.y);
+
+    // ---- ROTATE ICON (top-right) ----
+    ctx.beginPath();
+    ctx.arc(rotatePos.x, rotatePos.y, iconRadius, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 2;
+    drawRotateIcon(ctx, rotatePos.x, rotatePos.y);
+
+    /*
+    Object.values(corners).forEach(pt => {
+      ctx.fillRect(pt.x - s / 2, pt.y - s / 2, s, s);
+    });
+
+    ctx.beginPath();
+    ctx.arc(rotatePos.x, rotatePos.y, 8, 0, Math.PI * 2);
+    ctx.fill();
+    */
+  }
+}
+
+/* -------------------------------------------------------------
+   POINTER EVENTS
+------------------------------------------------------------- */
+function localPointer(e) {
+  const rect = canvas.getBoundingClientRect();
+  return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+}
+
+canvas.addEventListener("pointerdown", e => {
+  const p = localPointer(e);
+  let hit = null;
+  const threshold = 16;
+
+  // ---- HANDLE HIT TEST ----
+  for (const [name, pt] of Object.entries(handlePositions)) {
+    if (Math.hypot(p.x - pt.x, p.y - pt.y) <= threshold) {
+      hit = name;
+      break;
+    }
+  }
+
+  // ---- HANDLE INTERACTIONS ----
+  if (hit) {
+    selected = true;
+
+    if (hit === "rotate") {
+      interaction = {
+        mode: "rotate",
+        startAngle: Math.atan2(p.y - center.y, p.x - center.x),
+        startRotation: rotationDeg
+      };
+    } else if (hit === "scale") {
+      interaction = {
+        mode: "scale",
+        startDist: Math.hypot(p.x - center.x, p.y - center.y),
+        startScale: scalePct
+      };
+    }
+
+    return;
+  }
+
+  // ---- IMAGE BODY HIT TEST (MOVE) ----
+  if (fgImg) {
+    const width = Math.round(canvas.clientWidth);
+    const height = Math.round(canvas.clientHeight);
+    const { w, h } = maskDims(width, height);
+
+    const iw = fgImg.naturalWidth;
+    const ih = fgImg.naturalHeight;
+    const { dw, dh } = computeDrawDims(w, h, iw, ih, scalePct);
+
+    // use MOVED center
+    const cx = center.x;
+    const cy = center.y;
+
+    const rad = rotationDeg * Math.PI / 180;
+    const cos = Math.cos(rad);
+    const sin = Math.sin(rad);
+
+    const dx = p.x - cx;
+    const dy = p.y - cy;
+
+    // unrotate pointer
+    const localX = dx * cos + dy * sin;
+    const localY = -dx * sin + dy * cos;
+
+    if (Math.abs(localX) <= dw / 2 && Math.abs(localY) <= dh / 2) {
+      selected = true;
+      // Disable moving for now. We will add back later.
+      /*
+      interaction = {
+        mode: "move",
+        startX: p.x,
+        startY: p.y,
+        startOffsetX: offset.x,
+        startOffsetY: offset.y
+      };
+      */
+    } else {
+      selected = false;
+    }
+  } else {
+    selected = false;
+  }
+
+  draw();
+});
+
+canvas.addEventListener("pointermove", e => {
+  if (!interaction) return;
+
+  const p = localPointer(e);
+
+  if (interaction.mode === "scale") {
+    const d = Math.hypot(p.x - center.x, p.y - center.y);
+    const next = interaction.startScale * (d / interaction.startDist);
+    scalePct = Math.max(10, Math.min(400, next));
+  }
+
+  if (interaction.mode === "move") {
+    offset.x = interaction.startOffsetX + (p.x - interaction.startX);
+    offset.y = interaction.startOffsetY + (p.y - interaction.startY);
+  }
+
+  if (interaction.mode === "rotate") {
+    const a = Math.atan2(p.y - center.y, p.x - center.x);
+    rotationDeg = (interaction.startRotation + (a - interaction.startAngle) * 180 / Math.PI) % 360;
+    if (rotationDeg < 0) rotationDeg += 360;
+  }
+
+  draw();
+});
+
+canvas.addEventListener("pointerup", () => {
+  interaction = null;
+});
+
+// Your draw() function — must exist globally
+function redrawCanvas() {
+  if (typeof window.draw === 'function') {
+    window.draw();
+  }
+}
+
+// Create ResizeObserver
+const ro = new ResizeObserver(function() {
+  var rect = canvas.getBoundingClientRect();
+  var width = Math.round(rect.width);
+  var height = Math.round(rect.height);
+  const isMobile = height <= 768;
+  const ratio = isMobile ? width / height : height / width;
+
+  var dpr = window.devicePixelRatio || 1;
+
+  updateCircleDimensions(isMobile);
+  updateRectangleDimensions(isMobile);
+
+  canvasScale = {
+    h: isMobile ? 14 : 14 * ratio,
+    w: isMobile ? 14 * ratio : 14
+  }
+  // Set pixel buffer size
+  canvas.width  = width * dpr;
+  canvas.height = height * dpr;
+
+  var ctx = canvas.getContext("2d");
+  if (ctx) {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  // redraw using existing state
+  draw();
+});
+
+// Start watching
+ro.observe(canvas);
+
+async function uploadPreview(blob) {
+    // Convert Blob → File
+    const file = new File([blob], "preview-image.png", {
+      type: "image/png",
+    });
+    const form = new FormData();
+    form.append("file", file);
+
+    const response = await fetch(`${API_BASE_URL}/api/media/upload-shopify`, {
+      method: "POST",
+      body: form,
+    });
+
+    const data = await response.json();
+    console.log(data.url);
+    return data.url;
+
+    // STEP 1 → Get signed upload URL from your backend
+    const res = await fetch(`${API_BASE_URL}/api/media/upload-preview`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fileName: "preview.png",
+      })
+    });
+
+    if (!res.ok) {
+      console.error("Failed to request upload preview URL");
+      return null;
+    }
+
+    const { bucket, path, token, supabaseUrl } = await res.json();
+
+    // STEP 2 → Construct upload URL
+    const uploadUrl = `${SUPABASE_URL}/storage/v1/object/upload/sign/${bucket}/${path}?token=${token}`;
+
+    // STEP 3 → Upload the blob directly (NO FORM DATA — raw body only)
+    const uploadRes = await fetch(uploadUrl, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "image/png"
+      },
+      body: blob
+    });
+
+    if (!uploadRes.ok) {
+      throw new Error("Failed to upload preview to Supabase");
+    }
+
+    return path; // returned stored file path
+  }
+/* -------------------------------------------------------------
+   IMAGE LOADING API
+------------------------------------------------------------- */
+
+window.CanvasRugEditor = {
+  reset() {
+    // Clear previous urls. Ideally store thse in a variable to return back to in the future.
+    fgUrl = null;
+    fgUrlRemoved = null;
+    fgImg = null;
+
+    backgroundRemoving = false;
+    shownImage = 'main';
+    removedBackground = false;
+    uploadedImage = {};
+    $('#custom-rug-remove-bg').css('background-color', 'white');
+    $('#custom-rug-remove-bg').css('color', 'black');
+    // setCheckoutObject(undefined);
+    // setNeedFixingOpen(false);
+    // setFixingNote(false);
+    // setUploadProgress(0);
+    // setUseUploadedFile(false);
+  },
+  afterAddToCart() {
+    $('.edit-notes-header-button[data-value="keep-mockup"]').click();
+  },
+  loading(isLoading, infinite = false, textRaw = '') {
+    const text = isLoading ? textRaw : '';
+    const $loadingCircle = $(".circular-progress-wrapper");
+    if (infinite) {
+      $loadingCircle.addClass("infinite");
+      $loadingCircle.attr("data-mode", "infinite");
+      isLoading ? $loadingCircle.show() : $loadingCircle.hide();
+      $loadingCircle.find('.circular-progress-text').text(text);
+    } else {
+      $loadingCircle.removeClass("infinite");
+      $loadingCircle.attr("data-mode", "progress");
+      const $circle = $(".circular-progress-wrapper .circular-progress");
+      $circle.css({
+        strokeDasharray: 0,
+        strokeDashoffset: 0
+      });
+      $loadingCircle.css('display', isLoading ? "flex" : 'none');
+      $loadingCircle.find(".value").text(0 + "%");
+      $loadingCircle.find('.circular-progress-text').text(text);
+    }
+  },
+  setCircularProgressStatic(progress) {
+    const $loadingCircle = $(".circular-progress-wrapper");
+    const $circle = $(".circular-progress-wrapper .circular-progress");
+    const circumference = 2 * Math.PI * 45;
+    const offset = circumference - (progress / 100) * circumference;
+
+    $circle.css({
+      strokeDasharray: circumference,
+      strokeDashoffset: offset
+    });
+
+    $loadingCircle.find(".value").text(progress + "%");
+  },
+  showCanvas() {
+    // HIDE
+    // Hide main gallery
+    // $(`#main-gallery`).css('display', 'none');
+    $('.gallery-wrap').css('display', 'none');
+    // Hide main upload image button
+    $('.custom-rug-upload-image-container').css('display', 'none');
+    // Hide secondary main upload image button
+    $('.secondary-upload-button').css('display', 'none');
+    // Hide main price
+    $('#main-price').css('display', 'none');
+
+    // SHOW
+    // Secondary add to cart button
+    $(`#rug-canvas-container`).css('display', 'block');
+    $('#custom-rug-background-section').css('display', 'block');
+    $('#custom-rug-add-to-cart').css('display', 'flex');
+    $('#custom-rug-properties-section').css('display', 'block');
+    $('#custom-rug-proof-section').css('display', 'block');
+    $('#custom-rug-comments-section').css('display', 'block');
+    //$('.product-main-custom .option_title-main').css('display', 'none');
+    draw();
+  },
+  loadForeground(src) {
+    this.showCanvas();
+    
+    fgUrl = src;
+    fgImg = new Image();
+    fgImg.onload = () => {
+      draw();
+      this.loading(false);
+      
+      if (FIRST_TIME_USING) {
+        $('.custom-rug-bg-color-button #custom-rug-bg-color').click();
+        FIRST_TIME_USING = false;
+      }
+    };
+    fgImg.src = src;
+  },
+  loadBackground(src) {
+    bgImg = new Image();
+    bgImg.onload = draw;
+    bgImg.src = src;
+  },
+  setShape(s) {
+    shape = s;
+    shapeSize = Object.keys(sizes[shape])[0];
+    draw();
+  },
+  setSize(s) {
+    shapeSize = s
+    draw();
+  },
+  setDimension(obj) {
+    dimension = obj; // { wFeet, hFeet, w, h }
+    draw();
+  },
+  setScale(v) {
+    scalePct = v;
+    draw();
+  },
+  setRotation(v) {
+    rotationDeg = v;
+    draw();
+  },
+  setBgColor(v) {
+    bgColor = v;
+    $(".custom-rug-bg-color-button").css("background", `linear-gradient(to right, ${v} 0%, ${v} 10%, rgba(255, 0, 0, 0) 10%, rgba(255, 0, 0, 0) 100%`);
+    $('#custom-rug-bg-color').val(bgColor);
+    draw();
+  },
+  setUploadedImage(v) {
+    uploadedImage = v;
+    // If backgroundRemoving already true, that means user is already trying to remove the background
+    if (backgroundRemoving) {
+        this.removeBackground();
+    }
+  },
+  startRemoveBg() {
+    if (removedBackground) {
+        const img = new Image();
+        img.onload = () => {
+            fgImg = img;
+            draw();
+        };
+        img.src = shownImage === 'main' ? fgUrlRemoved : fgUrl;
+    } else {
+        this.removeBackground()
+    }
+
+    shownImage = shownImage === 'main' ? 'background-removed' : 'main';
+    return shownImage;
+  },
+  async exportPNG() {
+    draw({ hideBorder: true });
+
+    return await new Promise((resolve, reject) => {
+      canvas.toBlob(async function(blob) {
+        if (!blob) return reject("Error");
+
+        const path = await uploadPreview(blob);
+
+        // Update global reference
+        uploadedImage.previewPath = path;
+
+        resolve(path);
+      }, "image/webp", 0.8);
+    });
+  },
+  async createMedia(originalPath, previewPath, mimeType, backgroundColor, removeBg) {
+    const response = await fetch(`${API_BASE_URL}/api/media`, {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        original_path: originalPath,
+        preview_path: previewPath,
+        mime_type: mimeType,
+        background_color: backgroundColor || null,
+        remove_bg: removeBg || false,
+      })
+    });
+
+    return await response.json();
+  },
+  async handleClickAddToCart() {
+    // 1. Export PNG preview
+    const previewPath = await this.exportPNG();
+
+    const {
+      path: originalPath,
+      mimeType,
+      originalPreviewFileUrl,
+    } = uploadedImage;
+
+    // 2. Tell your backend to create entry
+    const {
+      data,
+      original_file_url: originalFileUrl,
+      preview_file_url: previewFileUrl
+    } = await this.createMedia(
+      originalPath,
+      previewPath,
+      mimeType,
+      bgColor,
+      shownImage === "background-removed"
+    );
+
+    const originalUrl = originalPreviewFileUrl || originalFileUrl
+    const comments = $('.edit-notes-textarea').val();
+    const addComment = $('.edit-notes-header-button[data-value="needs-fixing"]').attr('data-active') === 'true';
+
+    const sendProof = $('#custom-rug-proof-section #custom-rug-send-proof').is(':checked');
+    $('#custom-rug-properties-section input[name=\"properties[__Send Proof]\"]').val(sendProof ? "true" : "false");
+    $('#custom-rug-properties-section input[name=\"properties[__mediaId]\"]').val(data.id);
+    $('#custom-rug-properties-section input[name=\"properties[__Background Color]\"]').val(bgColor);
+    $('#custom-rug-properties-section input[name=\"properties[__Remove Background]\"]').val(removedBackground ? "yes" : "no");
+    $('#custom-rug-properties-section input[name=\"properties[__Scale]\"]').val(scalePct);
+    $('#custom-rug-properties-section input[name=\"properties[__Rotation]\"]').val(rotationDeg);
+    $('#custom-rug-properties-section input[name=\"properties[__Original image]\"]').val(originalUrl);
+    $('#custom-rug-properties-section input[name=\"properties[Product preview image]\"]').val(previewFileUrl);
+    if (addComment) {
+      $('#custom-rug-properties-section input[name=\"properties[Comments]\"]').val(comments);
+    } else {
+      $('#custom-rug-properties-section input[name=\"properties[Comments]\"]').val('');
+    }
+  },
+  async removeBackground() {
+    try {
+        $('html, body').animate({
+          scrollTop: $('#rug-canvas-container').offset().top - 80
+        }, 600);
+        backgroundRemoving = true;
+        this.loading(true, true, "Removing background...");
+
+        // Wait for uploaded image preview url for better performance on remove bg.
+        if (uploadedImage.previewDataUrl == null) return;
+
+        const fd = new FormData();
+        fd.append("image_file", uploadedImage.previewDataUrl);
+
+        const res = await fetch(`${API_BASE_URL}/api/media/remove-bg`, {
+            method: "POST",
+            body: fd
+        });
+
+        if (!res.ok) {
+            throw new Error("Background removal failed");
+        }
+
+        const blob = await res.blob();
+        const previewUrl = URL.createObjectURL(blob);
+
+        const img = new Image();
+        img.onload = () => {
+            fgImg = img;
+            draw();
+            backgroundRemoving = false;
+            this.loading(false, true);
+            shownImage = "background-removed";
+            fgUrlRemoved = previewUrl;
+            removedBackground = true;
+        };
+
+        img.src = previewUrl;
+
+    } catch (err) {
+        console.error("Remove BG Error:", err);
+        backgroundRemoving = false;
+        shownImage = "main";
+        this.loading(false, true);
+    }
+  }
+};
+
+
+scaleUpButton.addEventListener("click", () => {
+  CanvasRugEditor.setScale(scalePct + 10);
+});
+
+scaleDownButton.addEventListener("click", () => {
+  CanvasRugEditor.setScale(Math.max(10, scalePct - 10));
+});
+
+rotateButton.addEventListener("click", () => {
+  CanvasRugEditor.setRotation((rotationDeg - 45) % 360);
+});
+
+changePhotoButton.addEventListener("click", () => {
+  $('#custom-rug-image').click();
+});
+
+CanvasRugEditor.loadBackground("{{ bg_url | default: 'background-example-2.png' | asset_url }}");
+</script>

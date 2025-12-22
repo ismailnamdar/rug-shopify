@@ -45,7 +45,7 @@
         is-flex-wrap
       "
     >
-      {% render 'product',
+      {% render 'product-main',
         context: 'product',
         product: product,
         variant: product.selected_or_first_available_variant,
@@ -520,12 +520,6 @@
           "id": "icon_text_text",
           "label": "Text",
           "default": "<p>Custom icon with text block</p>"
-        },
-        {
-          "type": "color_background",
-          "id": "background_color",
-          "label": "Background color",
-          "default": "#FFFBF0"
         }
       ]
     },
