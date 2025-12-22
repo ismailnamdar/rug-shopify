@@ -85,8 +85,8 @@
   .custom-rug-top-toolbar {
     position: absolute;
     right: 10px;
-    top: 12px;
-    color: white !important;
+    top: 100px;
+    color: black !important;
   }
   .custom-rug-bottom-toolbar {
     position: absolute;
@@ -134,6 +134,7 @@
 
     .custom-rug-top-toolbar {
       right: 0;
+      top: 80px;
     }
     .custom-rug-bottom-toolbar {
       right: 0;
@@ -149,7 +150,8 @@
 /* -------------------------------------------------------------
    CONSTANTS
 ------------------------------------------------------------- */
-const API_BASE_URL = "https://rt-next-omega.vercel.app"
+let FIRST_TIME_USING = true;
+const API_BASE_URL = "https://api.rugtomize.co"
 const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
 const canvas = document.getElementById("rug-canvas");
 const changePhotoButton = document.getElementById("rug-canvas-change-photo");
@@ -163,42 +165,81 @@ let canvasScale = {
     w: 14,
     h: 14,
 }
-const sizes = {
+
+const rectangleDefaultDimensions = {
+  "2'X3'": {
+      name: "2'X3'",
+      wFeet: 3,
+      hFeet: 2,
+      w: 8,
+      h: 2 * 8 / 3,
+  },
+  "3'X5'": {
+      name: "3'X5'",
+      wFeet: 5,
+      hFeet: 3,
+      w: 10 * 0.8,
+      h: 6 * 0.8,
+  },
+  "5'X7'": {
+      name: "5'X7'",
+      wFeet: 7,
+      hFeet: 5,
+      w: 10 * 0.8,
+      h: 5 * 10 / 7 * 0.8,
+  },
+  "8'X10'": {
+      name: "8'X10'",
+      wFeet: 10,
+      hFeet: 8,
+      w: 10 * 0.8,
+      h: 8 * 0.8,
+  },
+  "8'X12'": {
+      name: "8'X12'",
+      wFeet: 12,
+      hFeet: 8,
+      w: 10 * 0.8,
+      h: 8 * 0.8,
+  }
+}
+const circleR = 6;
+let sizes = {
     'circle': {
         "3'X3'": {
             name: "3'X3'",
             wFeet: 3,
             hFeet: 3,
-            w: 10,
-            h: 10,
+            w: circleR,
+            h: circleR,
         },
         "4'X4'": {
             name: "4'X4'",
             wFeet: 4,
             hFeet: 4,
-            w: 10,
-            h: 10,
+            w: circleR,
+            h: circleR,
         },
         "5'X5'": {
             name: "5'X5'",
             wFeet: 5,
             hFeet: 5,
-            w: 10,
-            h: 10,
+            w: circleR,
+            h: circleR,
         },
         "6'X6'": {
             name: "6'X6'",
             wFeet: 6,
             hFeet: 6,
-            w: 10,
-            h: 10,
+            w: circleR,
+            h: circleR,
         },
         "8'X8'": {
             name: "8'X8'",
             wFeet: 8,
             hFeet: 8,
-            w: 10,
-            h: 10,
+            w: circleR,
+            h: circleR,
         }
     },
     'rectangle': {
@@ -206,36 +247,36 @@ const sizes = {
             name: "2'X3'",
             wFeet: 3,
             hFeet: 2,
-            w: 10,
-            h: 2 * 10 / 3,
+            w: 8,
+            h: 2 * 8 / 3,
         },
         "3'X5'": {
             name: "3'X5'",
             wFeet: 5,
             hFeet: 3,
-            w: 10,
-            h: 6,
+            w: 10 * 0.8,
+            h: 6 * 0.8,
         },
         "5'X7'": {
             name: "5'X7'",
             wFeet: 7,
             hFeet: 5,
-            w: 10,
-            h: 5 * 10 / 7,
+            w: 10 * 0.8,
+            h: 5 * 10 / 7 * 0.8,
         },
         "8'X10'": {
             name: "8'X10'",
             wFeet: 10,
             hFeet: 8,
-            w: 10,
-            h: 8,
+            w: 10 * 0.8,
+            h: 8 * 0.8,
         },
         "8'X12'": {
             name: "8'X12'",
             wFeet: 12,
             hFeet: 8,
-            w: 10,
-            h: 8,
+            w: 10 * 0.8,
+            h: 8 * 0.8,
         }
     },
     'runner': {
@@ -288,12 +329,36 @@ let interaction = null;
 /* -------------------------------------------------------------
    HELPER FUNCTIONS
 ------------------------------------------------------------- */
-// ADD
-const rotateIconImg = new Image();
-rotateIconImg.src = "data:image/svg+xml;utf8,{{ '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\"/><path d=\"M3 3v5h5\"/></svg>' | url_encode }}";
 
-const scaleIconImg = new Image();
-scaleIconImg.src = "data:image/svg+xml;utf8,{{ '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"black\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M19 13v6h-6\"/><path d=\"M5 11V5h6\"/><path d=\"m5 5 14 14\"/></svg>' | url_encode }}";
+
+function updateCircleDimensions(isMobile) {
+  let radius = isMobile ? 6 : 10;
+  sizes.circle = Object.fromEntries(Object.entries(sizes.circle).map((prop) => {
+    const key = prop[0];
+    const value = prop[1];
+    value.w = radius;
+    value.h = radius;
+
+    return [key, value];
+  }));
+}
+
+function updateRectangleDimensions(isMobile) {
+  if (isMobile) {
+    sizes.rectangle = rectangleDefaultDimensions;
+    return;
+  }
+  sizes.rectangle = Object.fromEntries(Object.entries(rectangleDefaultDimensions).map((prop) => {
+    const key = prop[0];
+    const value = prop[1];
+
+    return [key, {
+      ...value,
+      w: value.w * 1.2,
+      h: value.h * 1.2,
+    }];
+  }));
+}
 
 // Compute rug mask dimensions
 function maskDims(width, height) {
@@ -545,23 +610,25 @@ const topBannerHeight = drawCenteredBanner(
   isMobile
 );
 
-// ---------- BOTTOM BANNER ----------
-const bottomBannerHeight = drawCenteredBanner(
-  ctx,
-  width,
-  height,
-  "bottom",
-  {
-    title: "Post Purchase We Can",
-    lines: [
-      "Modify Background Color",
-      "Provide Proof Before Production"
-    ],
-    titleFont: `bold ${titleFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`,
-    lineFont: `${lineFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
-  },
-  isMobile
-);
+  if ("{{ bottom_banner }}" === "true") {
+    // ---------- BOTTOM BANNER ----------
+    const bottomBannerHeight = drawCenteredBanner(
+      ctx,
+      width,
+      height,
+      "bottom",
+      {
+        title: "Post Purchase We Can",
+        lines: [
+          "Modify Background Color",
+          "Provide Proof Before Production"
+        ],
+        titleFont: `bold ${titleFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`,
+        lineFont: `${lineFontSize}px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
+      },
+      isMobile
+    );
+  }
 
   let { w, h } = maskDims(width, height);
 
@@ -919,6 +986,9 @@ const ro = new ResizeObserver(function() {
 
   var dpr = window.devicePixelRatio || 1;
 
+  updateCircleDimensions(isMobile);
+  updateRectangleDimensions(isMobile);
+
   canvasScale = {
     h: isMobile ? 14 : 14 * ratio,
     w: isMobile ? 14 * ratio : 14
@@ -1013,6 +1083,9 @@ window.CanvasRugEditor = {
     // setUploadProgress(0);
     // setUseUploadedFile(false);
   },
+  afterAddToCart() {
+    $('.edit-notes-header-button[data-value="keep-mockup"]').click();
+  },
   loading(isLoading, infinite = false, textRaw = '') {
     const text = isLoading ? textRaw : '';
     const $loadingCircle = $(".circular-progress-wrapper");
@@ -1067,7 +1140,7 @@ window.CanvasRugEditor = {
     $('#custom-rug-properties-section').css('display', 'block');
     $('#custom-rug-proof-section').css('display', 'block');
     $('#custom-rug-comments-section').css('display', 'block');
-    $('.option_title-main').css('display', 'none');
+    //$('.product-main-custom .option_title-main').css('display', 'none');
     draw();
   },
   loadForeground(src) {
@@ -1078,6 +1151,11 @@ window.CanvasRugEditor = {
     fgImg.onload = () => {
       draw();
       this.loading(false);
+      
+      if (FIRST_TIME_USING) {
+        $('.custom-rug-bg-color-button #custom-rug-bg-color').click();
+        FIRST_TIME_USING = false;
+      }
     };
     fgImg.src = src;
   },
@@ -1210,6 +1288,9 @@ window.CanvasRugEditor = {
   },
   async removeBackground() {
     try {
+        $('html, body').animate({
+          scrollTop: $('#rug-canvas-container').offset().top - 80
+        }, 600);
         backgroundRemoving = true;
         this.loading(true, true, "Removing background...");
 

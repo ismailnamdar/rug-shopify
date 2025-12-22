@@ -328,6 +328,16 @@
   font-size: 12px !important;
 }
 /* RUG05 text area changes - END */
+
+.product-secondary .divider-secondary {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .product-secondary .option_title.opt_title_size {
+    margin-bottom: 0 !important;
+    width: auto;
+  }
+}
 </style>
 {% if product != blank and context == 'product' %}
   {% render 'product__structured-data', product: product %}
@@ -374,7 +384,7 @@
   {% endfor %}
 </div>
 
-<div class="product-main product-{{ product.id }} size-guide-{{ product.title | handleize }}">
+<div class="product-main product-secondary product-{{ product.id }} size-guide-{{ product.title | handleize }}">
   <div
     class="
       product_section
@@ -396,7 +406,7 @@
       {% assign current_variant = product.selected_or_first_available_variant %}
       {% assign shape = current_variant.option1 | downcase  %}
       {% assign size = current_variant.option2 | upcase %}
-      {% render "custom-rug-canvas", shape: shape, size: size, bg_url: 'background-example-1.jpg' %}
+      {% render "custom-rug-canvas", shape: shape, size: size, bg_url: 'background-example-1.jpg', bottom_banner: true %}
     </div>
     <div
       id="main-gallery"
@@ -1279,6 +1289,10 @@
 </div>
 
 {% style %}
+#main-gallery .product_gallery img {
+  object-position: bottom;
+}
+
 .product__details--product-page {
     width: 100%;
     max-width: 100%;

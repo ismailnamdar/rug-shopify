@@ -200,7 +200,7 @@
   .custom-rug-sticky-add-to-cart-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 2px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -317,6 +317,12 @@
       z-index: 10;
       border-top: 1px solid #e3e3e3;
     }
+
+    .custom-rug-sticky-add-to-cart-button {
+      gap: 12px;
+      font-size: 14px;
+      padding: 14px 14px;
+    }
   }
 </style>
 <script>
@@ -353,7 +359,7 @@
       'image/svg+xml',
     ]
     const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
-    const API_BASE_URL = "https://rt-next-omega.vercel.app"
+    const API_BASE_URL = "https://api.rugtomize.co"
 
     // Helper function for file
     function readFileAsDataURL(file) {
@@ -401,7 +407,7 @@
         setFgUrl(dataUrl);
         uploadInBackground(file);
         $('html, body').animate({
-          scrollTop: $('#rug-canvas-container').offset().top - 10
+          scrollTop: $('#rug-canvas-container').offset().top - 80
         }, 600);
       } finally {
         // Reset input so selecting the same file again will still trigger change
@@ -693,7 +699,7 @@
     addToCartButton.on('click', async () => {
       try {
         $('html, body').animate({
-          scrollTop: $('#rug-canvas-container').offset().top - 10
+          scrollTop: $('#rug-canvas-container').offset().top - 80
         }, 600);
         // Loading - change button style
         const addToCartButton = $(".custom-rug-sticky-add-to-cart-button")
@@ -762,6 +768,7 @@
                   addToCartButton.prop('disabled', false);
                   addToCartButtonText.text('Add to cart');
                   CanvasRugEditor.loading(false, true);
+                  CanvasRugEditor.afterAddToCart();
                 }, 500);
               }, 500);
             },

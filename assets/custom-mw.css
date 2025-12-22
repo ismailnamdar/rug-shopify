@@ -282,7 +282,7 @@ button#zakeke-product-button {
   font-size: 14px;
   font-weight: 600;
   text-transform: unset;
-  min-width: 62px;
+  min-width: 88px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -613,19 +613,6 @@ div.cart_content form{ margin: 10px 0 0;}
   }
 }
 
-.product-main .gallery-wrap.gallery-thumbnails--bottom .product_gallery_nav .gallery-cell.is-nav-selected {
-  border: 1px solid #101010;
-}
-
-.product-main .gallery-wrap.gallery-thumbnails--bottom .product_gallery_nav .gallery-cell {
-  padding: 5px;
-  margin: 0;
-  background: #ffffff;
-  border-radius: 5px;
-  border: 1px solid #e5e5e5;
-  margin-right: 10px;
-}
-
 @media screen and (min-width:799px) {
   .close_cart_btn { position: unset; margin-bottom: -15px; }
   #cart_content_container .cart_bottom_total .free-shipping-bar{ border-radius: 0 ; }
@@ -642,6 +629,10 @@ div.cart_content form{ margin: 10px 0 0;}
   }
 
   .ctm_prd_price_mobile {
+    display: block;
+  }
+
+  .custom-rug-sticky-add-to-cart-button .ctm_prd_price_mobile {
     display: block;
     margin: 0 0 20px 0;
   }
@@ -691,6 +682,19 @@ div.cart_content form{ margin: 10px 0 0;}
     box-shadow: 0px -4px 6px 0px rgba(0, 0, 0, 0.07843);
   }
 
+  .product-main .gallery-wrap.gallery-thumbnails--bottom .product_gallery_nav .gallery-cell.is-nav-selected {
+    border: 1px solid #101010;
+  }
+
+  .product-main .gallery-wrap.gallery-thumbnails--bottom .product_gallery_nav .gallery-cell {
+    padding: 5px;
+    margin: 0;
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #e5e5e5;
+    margin-right: 10px;
+  }
+
   .shopify-section.shopify-section--product-template.content .section {
     margin: 0;
     width: 100%;
@@ -719,7 +723,7 @@ div.cart_content form{ margin: 10px 0 0;}
   }
 
   .shopify-section.shopify-section--product-template.content .product-main .gallery-wrap.gallery-thumbnails--bottom .product_gallery.flickity-enabled {
-    margin: 0 -10px 4px -10px;
+    margin: 0 -10px 25px -10px;
   }
 
   .product-main .two-fifths.product__details--product-page div.product-block.product-block--price .modal_price {
@@ -747,7 +751,7 @@ div.cart_content form{ margin: 10px 0 0;}
 
   .product-main .swatch_options .swatch[data-option-index="1"] {
     width: calc(100% - 26px);
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     column-gap: unset;
   }
@@ -899,4 +903,8 @@ div.cart_content form{ margin: 10px 0 0;}
   body.ATC_btn_fix .purchase-details .purchase-details__buttons {
     position: unset !important;
   }
+}
+
+.promo-banner__close {
+  display: none !important;
 }

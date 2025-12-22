@@ -10521,7 +10521,8 @@ div#disqus_thread li {
   column-gap: 13px;
 }
 .swatch.is-flex.is-flex-wrap:first-of-type {
-  justify-content: flex-start;
+  justify-content: space-between;
+  gap: unset;
 }
 
 .swatch .swatch-element .crossed-out {
@@ -13406,7 +13407,7 @@ img[data-flickity-lazyload] {
   min-width: 50px;
 }
 .product_gallery_nav .gallery-cell {
-  width: 10%;
+  width: 20%;
   margin: 0 10px 10px 0;
   opacity: 0.7;
   display: inline-block;

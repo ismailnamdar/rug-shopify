@@ -1,12 +1,17 @@
 <div class="secondary-upload-button">
-  <span class="secondary-upload-button-span" data-lockedat="1"> </span><img alt="" data-newr="1" data-rotation="0" class="img_url" data_name="$149" data-frame="1" style="display:none;" data-psrc="https://cdn-zeptoapps.com/product-personalizer/images/blank.png?v=12319"><img alt="" class="crop_img_url" data-type="image/png" data_name="$149" data-frame="1" style="display:none;" src="https://cdn-zeptoapps.com/product-personalizer/images/blank.png?v=12319">
+  <span class="secondary-upload-button-span" data-lockedat="1"> </span>
+  <img alt="" data-newr="1" data-rotation="0" class="img_url" data_name="$149" data-frame="1" style="display:none;" data-psrc="https://cdn-zeptoapps.com/product-personalizer/images/blank.png?v=12319"><img alt="" class="crop_img_url" data-type="image/png" data_name="$149" data-frame="1" style="display:none;" src="https://cdn-zeptoapps.com/product-personalizer/images/blank.png?v=12319">
   {% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/tiff,image/HEIC,image/bmp,image/avif,.ico' %}
   <input style="opacity: 0 !important;
-  height: 55px;
-  padding: 0px;
-  width: 100%;
-  margin-bottom: 0px !important;" id="custom-rug-image" autocomplete="off" type="file" accept="{{SUPPORTED_FILE_TYPES}}"></div>
-<div data-main="2"><label class="pplrlabel" style="">Comments / Adjustments / Requests <span class="pplr_option_price_span"></span> </label><textarea class="edit-notes-textarea" type="text" class="pplr_text pplr_monogram p_u_t "style="border-color: #000000; border: 1px solid; min-height: 80px; color: #5f6a7d;text-transform:inherit;" rows="3" placeholder="Design requests: Edit logos, text, background color, or layout. Tell us your vision — we’ll make it happen and send a proof before production." ></textarea></div>
+    height: 55px;
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 0px !important;" id="custom-rug-image" autocomplete="off" type="file" accept="{{SUPPORTED_FILE_TYPES}}">
+</div>
+<div class="secondary-notes">
+  <label class="pplrlabel">Comments / Adjustments / Requests <span class="pplr_option_price_span"></span></label>
+  <textarea class="edit-notes-textarea" type="text" class="pplr_text pplr_monogram p_u_t "style="border-color: #000000; border: 1px solid; min-height: 80px; color: #5f6a7d;text-transform:inherit;" rows="3" placeholder="Design requests: Edit logos, text, background color, or layout. Tell us your vision — we’ll make it happen and send a proof before production." ></textarea>
+</div>
 <button type="button" data-value="needs-fixing" class="edit-notes-header-button" data-active="true" style="display: none;">Needs Fixing</button>
 
 <style>
@@ -30,6 +35,11 @@
     z-index: -1;
     background-position: center !important;
     cursor: pointer;
+  }
+
+  .secondary-notes .edit-notes-textarea::placeholder {
+    font-size: 12px;
+    color: #5f6a7d;
   }
 
   @media screen and (max-width: 600px) {
