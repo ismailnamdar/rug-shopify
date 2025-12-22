@@ -169,6 +169,43 @@ if (document.body.classList.contains("product")) {
     });
 	}
 
+	// Function to update size dropdown display
+	function updateSizeDropdownDisplay() {
+		const selectedSizeInput = document.querySelector('.swatch[data-option-index="1"] input.ctm_chage_var:checked');
+		const selectedSizeDisplay = document.getElementById('selectedSizeDisplay');
+		
+		if (selectedSizeInput && selectedSizeDisplay) {
+			selectedSizeDisplay.textContent = selectedSizeInput.value;
+		}
+	}
+
+	// Function to update shape selection in modal based on current selection
+	function syncModalWithCurrentSelection() {
+		const selectedShapeInput = document.querySelector('.swatch[data-option-index="0"] input.ctm_chage_var:checked');
+		const selectedSizeInput = document.querySelector('.swatch[data-option-index="1"] input.ctm_chage_var:checked');
+		
+		if (selectedShapeInput && selectedSizeInput) {
+			const shapeName = selectedShapeInput.value;
+			const sizeName = selectedSizeInput.value;
+			
+			// Update active shape tab in modal
+			const shapeTab = document.querySelector(`.shapeOption[data-shape="${shapeName}"]`);
+			if (shapeTab) {
+				shapeTab.click();
+			}
+			
+			// Update active size in modal
+			setTimeout(() => {
+				const sizeCard = document.querySelector(`.shapeImg[data-size="${sizeName}"][data-shape-value="${shapeName}"]`);
+				if (sizeCard) {
+					const parentContainer = sizeCard.closest('[data-image-shape]');
+					parentContainer?.querySelectorAll('.shapeImg').forEach((img) => img.classList.remove('active'));
+					sizeCard.classList.add('active');
+				}
+			}, 50);
+		}
+	}
+
 	document.addEventListener("DOMContentLoaded", function () {
 		const ATC_button = document.querySelector('.product-block--form');
 		if (ATC_button) stickyAtcBtn(ATC_button);
@@ -186,6 +223,19 @@ if (document.body.classList.contains("product")) {
 		const prdThumMessage = document.getElementById('main_thumb_message').cloneNode(true);
 		if (prdThumMessage) document.querySelector("[data-product-gallery]").appendChild(prdThumMessage);
 
+		// Initialize size dropdown with current selection
+		updateSizeDropdownDisplay();
+
+		// Listen for variant changes to update dropdown
+		document.querySelectorAll('.swatch[data-option-index="1"] input.ctm_chage_var').forEach(input => {
+			input.addEventListener('change', updateSizeDropdownDisplay);
+		});
+
+		// Sync modal when it opens
+		const openSizeModalBtn = document.getElementById('openSizeModal');
+		if (openSizeModalBtn) {
+			openSizeModalBtn.addEventListener('click', syncModalWithCurrentSelection);
+		}
 	});
 
 	document.addEventListener("click", function (event) {
@@ -260,12 +310,79 @@ if (document.body.classList.contains("product")) {
 		// 	// }
 		// }
 
-		///////////////////// SIZE GUIDE MODEL ////////////////////////
-		const sizeGuideModal = document.getElementById('sizeGuideModal');
+		///////////////////// SIZE GUIDE MODALS ////////////////////////
+		const sizeGuideModal = document.getElementById('sizeGuideModal'); // Original modal
+		const newSizeModal = document.getElementById('newSizeModal'); // New side drawer modal
 		const modalContent = document.querySelector('.ctm_sizeGuide');
-		const shapeImagesContainers = Array.from(document.querySelectorAll('.ctm_shapeImages > div'));
-		const ImgShapes = document.querySelectorAll(`.shapeImg[data-size]`)
+		const newModalContent = document.querySelector('.newSizeDrawer');
+		const openSizeModalBtn = document.getElementById('openSizeModal');
 
+		// Function to sync modal with currently selected shape
+		function syncNewModalWithSelectedShape() {
+			// Get currently selected shape from the form
+			const selectedShapeInput = document.querySelector('.swatch[data-option-index="0"] input.ctm_chage_var:checked');
+			if (!selectedShapeInput) return;
+			
+			const selectedShape = selectedShapeInput.value;
+			const newModalBody = newModalContent?.querySelector('.ctm_sizeGuide_body');
+			if (!newModalBody) return;
+			
+			// Find the corresponding shapeOption in the new modal
+			const shapeOption = newModalBody.querySelector(`.shapeOption[data-shape="${selectedShape}"]`);
+			if (!shapeOption) return;
+			
+			// Update active tab
+			newModalBody.querySelectorAll('.shapeOption').forEach((opt) => opt.classList.remove('active'));
+			shapeOption.classList.add('active');
+			
+			// Show/hide shape images
+			newModalBody.querySelectorAll('.ctm_shapeImages > div').forEach((elem) => elem.setAttribute('shape-active', false));
+			const shapeContainer = newModalBody.querySelector(`[data-image-shape="${selectedShape}"]`);
+			if (shapeContainer) {
+				shapeContainer.setAttribute('shape-active', true);
+				
+				// Auto-select the currently selected size for this shape
+				const selectedSizeInput = document.querySelector('.swatch[data-option-index="1"] input.ctm_chage_var:checked');
+				if (selectedSizeInput) {
+					const selectedSize = selectedSizeInput.value;
+					const sizeImg = shapeContainer.querySelector(`.shapeImg[data-size="${selectedSize}"]`);
+					if (sizeImg) {
+						shapeContainer.querySelectorAll('.shapeImg').forEach((img) => img.classList.remove('active'));
+						sizeImg.classList.add('active');
+					} else {
+						// If size not found, select first size
+						const firstSize = shapeContainer.querySelector('.shapeImg');
+						if (firstSize) {
+							shapeContainer.querySelectorAll('.shapeImg').forEach((img) => img.classList.remove('active'));
+							firstSize.classList.add('active');
+						}
+					}
+				} else {
+					// If no size selected, select first size
+					const firstSize = shapeContainer.querySelector('.shapeImg');
+					if (firstSize) {
+						shapeContainer.querySelectorAll('.shapeImg').forEach((img) => img.classList.remove('active'));
+						firstSize.classList.add('active');
+					}
+				}
+			}
+		}
+
+		// Open NEW side drawer modal when clicking dropdown button
+		if (event.target.closest('#openSizeModal')) {
+			event.stopPropagation();
+			event.preventDefault();
+			document.body.classList.add("size_guide_model_open");
+			newSizeModal.style.display = 'block';
+			setTimeout(() => {
+				newSizeModal.classList.add('active');
+				// Sync modal with currently selected shape
+				syncNewModalWithSelectedShape();
+			}, 10);
+			openSizeModalBtn?.classList.add('active');
+		}
+
+		// Open ORIGINAL centered modal when clicking "Size Guide" button
 		if (event.target.closest('.open-size-guide-btn') && !document.querySelector('[data-label="Add to Cart"]').contains(event.target)) {
 			event.stopPropagation();
 			event.preventDefault();
@@ -273,29 +390,86 @@ if (document.body.classList.contains("product")) {
 			sizeGuideModal.style.display = 'block';
 		}
 
+		// Close ORIGINAL modal
 		if ((event.target === sizeGuideModal && !modalContent.contains(event.target)) || event.target.closest('#closeModal')) {
 			sizeGuideModal.style.display = 'none';
 			document.body.classList.remove("size_guide_model_open");
 		}
 
-		if (event.target.closest('.shapeOption')) {
-			const option = event.target;
-			const selectedShape = option.getAttribute('data-shape');
+		// Close NEW modal
+		if ((event.target === newSizeModal && !newModalContent.contains(event.target)) || event.target.closest('#closeNewModal')) {
+			newSizeModal.classList.remove('active');
+			setTimeout(() => {
+				newSizeModal.style.display = 'none';
+			}, 300);
+			document.body.classList.remove("size_guide_model_open");
+			openSizeModalBtn?.classList.remove('active');
+		}
 
-			document.querySelectorAll('.shapeOption').forEach((opt) => opt.classList.remove('active'));
+		// Handle shape tab switching (works for both modals)
+		if (event.target.closest('.shapeOption')) {
+			const option = event.target.closest('.shapeOption');
+			const selectedShape = option.getAttribute('data-shape');
+			const parentBody = option.closest('.ctm_sizeGuide_body');
+
+			// Update active tab
+			parentBody.querySelectorAll('.shapeOption').forEach((opt) => opt.classList.remove('active'));
 			option.classList.add('active');
 
-			shapeImagesContainers.forEach((elem) => elem.setAttribute('shape-active', false));
-			document.querySelector(`[data-image-shape="${selectedShape}"]`).setAttribute('shape-active', true);
-			ImgShapes.forEach((imgSl) => imgSl.classList.remove("active"));
-			document.querySelector(`[data-image-shape="${selectedShape}"] .shapeImg`).classList.add("active");
+			// Show/hide shape images
+			parentBody.querySelectorAll('.ctm_shapeImages > div').forEach((elem) => elem.setAttribute('shape-active', false));
+			const shapeContainer = parentBody.querySelector(`[data-image-shape="${selectedShape}"]`);
+			shapeContainer.setAttribute('shape-active', true);
+
+			// Auto-select first size for the selected shape (only in new modal)
+			if (option.closest('.newSizeDrawer')) {
+				shapeContainer.querySelectorAll('.shapeImg').forEach((img) => img.classList.remove('active'));
+				const firstSize = shapeContainer.querySelector('.shapeImg');
+				if (firstSize) {
+					firstSize.classList.add('active');
+				}
+			}
 		}
 
-		if (event.target.closest('.shapeImg') || event.target.closest('.shapeImg img')) {
-			ImgShapes.forEach((imgSl) => imgSl.classList.remove("active"));
-			event.target.closest(".shapeImg").classList.add("active");
+		// Handle size selection (only for NEW modal)
+		if (event.target.closest('.newSizeDrawer .shapeImg')) {
+			const clickedImg = event.target.closest('.shapeImg');
+			const parentContainer = clickedImg.closest('[data-image-shape]');
+			
+			// Remove active from all sizes in this shape
+			parentContainer.querySelectorAll('.shapeImg').forEach((img) => img.classList.remove('active'));
+			
+			// Add active to clicked size
+			clickedImg.classList.add('active');
+
+			// Get selected shape and size
+			const selectedShape = clickedImg.getAttribute('data-shape-value');
+			const selectedSize = clickedImg.getAttribute('data-size');
+
+			// Update the form inputs
+			document.querySelector(`input[value="${selectedShape}"]`)?.click();
+			setTimeout(() => {
+				document.querySelector(`input[value="${selectedSize}"]`)?.click();
+			}, 100);
+
+			// Update dropdown display
+			const selectedSizeDisplay = document.getElementById('selectedSizeDisplay');
+			if (selectedSizeDisplay) {
+				selectedSizeDisplay.textContent = selectedSize;
+			}
+
+			// Close NEW modal after selection
+			setTimeout(() => {
+				newSizeModal.classList.remove('active');
+				setTimeout(() => {
+					newSizeModal.style.display = 'none';
+				}, 300);
+				document.body.classList.remove("size_guide_model_open");
+				openSizeModalBtn?.classList.remove('active');
+			}, 300);
 		}
 
+		// Legacy select size button (if it exists)
 		if (event.target.closest(".ctm_selectSize #size_guide_submit")) {
 			const selectOption = document.querySelector("[data-active] .shapeOption.active");
 			const selImg = document.querySelector("[data-active] .shapeImg.active");

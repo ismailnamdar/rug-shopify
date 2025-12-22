@@ -381,6 +381,62 @@ button.open-size-guide-btn {
   letter-spacing: 0%;
 }
 
+/* New Size Selector Dropdown */
+.size-selector-dropdown-wrapper {
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.size-selector-dropdown-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  gap: 12px;
+}
+
+.size-selector-dropdown-btn:hover {
+  border-color: #999;
+}
+
+.size-selector-dropdown-btn:active {
+  border-color: #000;
+}
+
+.size-selector-value {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  flex: 1;
+  text-align: center;
+}
+
+.size-selector-arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  margin-left: auto;
+}
+
+.size-selector-dropdown-btn.active .size-selector-arrow {
+  transform: rotate(180deg);
+}
+
+/* Hide original size swatches - only hide the size option swatch elements, not the shape swatches */
+.swatch_options .swatch[data-option-index="1"] .swatch-element {
+  display: none !important;
+}
+
+.swatch_options .swatch[data-option-index="1"] .option_title {
+  display: none !important;
+}
+
 .request_block_active,
 .open_ctm_preview {
   color: #097FCE;
@@ -601,6 +657,10 @@ div.cart_content form{ margin: 10px 0 0;}
   .pplr-wrapper.pplr-background-color {
     margin-bottom: 20px;
   }
+
+  .option_title .opt_title_size {
+    margin-top: 24px;
+  }
 }
 
 @media screen and (min-width:799px) {
@@ -620,6 +680,26 @@ div.cart_content form{ margin: 10px 0 0;}
 
   .ctm_prd_price_mobile {
     display: block;
+  }
+
+  /* Size selector dropdown mobile styles */
+  .size-selector-dropdown-wrapper {
+    margin: 0 10px 0 13px;
+  }
+
+  .size-selector-dropdown-btn {
+    padding: 12px 16px;
+  }
+
+  .size-selector-value {
+    font-size: 14px;
+  }
+
+  /* Mobile styles for size selector title */
+  [data-option-title="Size "] {
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-bottom: 0 !important;
   }
 
   .order-info-box p {
@@ -876,5 +956,16 @@ div.cart_content form{ margin: 10px 0 0;}
   body.ATC_btn_fix .cp-sel-Photos .pplrfileuploadbutton,
   body.ATC_btn_fix .purchase-details .purchase-details__buttons {
     position: unset !important;
+  }
+}
+
+/* RUG05 - Hide duplicate Okendo rating blocks */
+[id*="okendo_star_rating"][id$="-2"] {
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .product__details--product-page .okeReviews {
+    display: none !important;
   }
 }
