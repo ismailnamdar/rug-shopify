@@ -1151,8 +1151,8 @@ window.CanvasRugEditor = {
     fgUrl = src;
     fgImg = new Image();
     fgImg.onload = () => {
-      draw();
-      this.loading(false);
+      // draw();
+      // this.loading(false);
     };
     fgImg.src = src;
   },
@@ -1289,7 +1289,7 @@ window.CanvasRugEditor = {
           scrollTop: $('#rug-canvas-container').offset().top - 80
         }, 600);
         backgroundRemoving = true;
-        this.loading(true, true, "Removing background...");
+        this.loading(true, true, "Creating your rug...");
 
         // Wait for uploaded image preview url for better performance on remove bg.
         if (uploadedImage.previewDataUrl == null) return;
@@ -1314,7 +1314,9 @@ window.CanvasRugEditor = {
             fgImg = img;
             draw();
             backgroundRemoving = false;
-            this.loading(false, true);
+            setTimeout(() => {
+              this.loading(false, true);
+            }, 500);
             shownImage = "background-removed";
             fgUrlRemoved = previewUrl;
             removedBackground = true;
