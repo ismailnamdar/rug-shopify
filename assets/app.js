@@ -623,9 +623,12 @@ document.addEventListener('DOMContentLoaded', function () {
                   cartItemsHTML += `<div class="mini-cart__item-property"><a class="pplr_slide" href="${value}">${(imgUrlExist < 1 || isOriginalImage) ? 'Original image' : 'Preview image'}</a></div>`;
                   imgUrlExist++;
                 }
-                else if (imgUrlExist <= 2){
+                else if (imgUrlExist <= 1){
                   cartItemsHTML += `<div class="mini-cart__item-property">${title}: ${value}</div>`;
-                } 
+                }
+                else if (title.toLowerCase() === 'comments') {
+                    cartItemsHTML += `<div class="mini-cart__item-property">${title}: ${value}</div>`;
+                }
               }
             }
           });
@@ -991,7 +994,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       else if(cart_qty > 1){
         i.classList.remove('dis--active')
-        fetch('/discount/BUY2GET20'); //There are two codes AUTO & CODED
+        // fetch('/discount/BUY2GET20'); //There are two codes AUTO & CODED
       }  
       else if(cart_qty > 0){
         i.classList.add('dis--active')

@@ -150,7 +150,6 @@
 /* -------------------------------------------------------------
    CONSTANTS
 ------------------------------------------------------------- */
-let FIRST_TIME_USING = true;
 const API_BASE_URL = "https://api.rugtomize.co"
 const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
 const canvas = document.getElementById("rug-canvas");
@@ -550,9 +549,10 @@ function drawRotateIcon(ctx, x, y) {
   ctx.restore();
 }
 
-function drawScaleIcon(ctx, x, y) {
+function drawScaleIcon(ctx, x, y, rotationDeg) {
   ctx.save();
   ctx.translate(x, y);
+  ctx.rotate(rotationDeg * Math.PI / 180); // ✅ rotate icon
 
   ctx.beginPath();
   ctx.moveTo(-6, -6);
@@ -802,14 +802,16 @@ const topBannerHeight = drawCenteredBanner(
     const s = 10;
 
     // SCALE ICON (bottom-right)
-    const scalePos = {
-      x: corners.se.x + dirX / len * 16,
-      y: corners.se.y - dirY / len * 16
-    }
-    handlePositions.scale = scalePos;
+    const sdx = corners.se.x - cx;
+    const sdy = corners.se.y - cy;
+    const slen = Math.hypot(sdx, sdy);
 
-    // ROTATE ICON (top-right)
-    handlePositions.rotate = rotatePos;
+    const scalePos = {
+      x: corners.se.x + (sdx / slen) * 16,
+      y: corners.se.y + (sdy / slen) * 16
+    };
+
+    handlePositions.scale = scalePos;
 
     const iconRadius = 16;
 
@@ -824,7 +826,7 @@ const topBannerHeight = drawCenteredBanner(
 
     ctx.strokeStyle = "#000000";
     ctx.lineWidth = 2;
-    drawScaleIcon(ctx, scalePos.x, scalePos.y);
+    drawScaleIcon(ctx, scalePos.x, scalePos.y, rotationDeg);
 
     // ---- ROTATE ICON (top-right) ----
     ctx.beginPath();
@@ -1149,13 +1151,8 @@ window.CanvasRugEditor = {
     fgUrl = src;
     fgImg = new Image();
     fgImg.onload = () => {
-      draw();
-      this.loading(false);
-      
-      if (FIRST_TIME_USING) {
-        $('.custom-rug-bg-color-button #custom-rug-bg-color').click();
-        FIRST_TIME_USING = false;
-      }
+      // draw();
+      // this.loading(false);
     };
     fgImg.src = src;
   },
@@ -1292,7 +1289,7 @@ window.CanvasRugEditor = {
           scrollTop: $('#rug-canvas-container').offset().top - 80
         }, 600);
         backgroundRemoving = true;
-        this.loading(true, true, "Removing background...");
+        this.loading(true, true, "Creating your rug...");
 
         // Wait for uploaded image preview url for better performance on remove bg.
         if (uploadedImage.previewDataUrl == null) return;
@@ -1317,7 +1314,9 @@ window.CanvasRugEditor = {
             fgImg = img;
             draw();
             backgroundRemoving = false;
-            this.loading(false, true);
+            setTimeout(() => {
+              this.loading(false, true);
+            }, 500);
             shownImage = "background-removed";
             fgUrlRemoved = previewUrl;
             removedBackground = true;

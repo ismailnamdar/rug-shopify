@@ -405,7 +405,8 @@
         // 2. If image is supported, start "Default flow"
         CanvasRugEditor.reset();
         setFgUrl(dataUrl);
-        uploadInBackground(file);
+        CanvasRugEditor.showCanvas()
+        uploadInBackground(file, { useUploadedFile: true });
         $('html, body').animate({
           scrollTop: $('#rug-canvas-container').offset().top - 80
         }, 600);
@@ -417,13 +418,14 @@
 
     function handleRemoveBG() {
       const shownImage = CanvasRugEditor.startRemoveBg()
-      
+      const removeBgInput = $('#custom-rug-remove-bg');
+
       if (shownImage === 'main') {
-        this.style.backgroundColor = "white";
-        this.style.color = "black";
+        removeBgInput.css('backgroundColor', "white");
+        removeBgInput.css('color', "black");
       } else {
-        this.style.backgroundColor = "#272726";
-        this.style.color = "white";
+        removeBgInput.css('backgroundColor', "#272726");
+        removeBgInput.css('color', "white");
       }
     }
     
@@ -669,6 +671,7 @@
           previewDataUrl: blobP // note: this is a Blob, not a dataURL
         });
 
+        handleRemoveBG()
       } catch (error) {
         console.error(error);
         if (res.status === 429) {

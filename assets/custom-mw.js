@@ -1,8 +1,8 @@
 const swachesSizeHandler = (swatchType, cusClass, value) => {
 	// Adjust custom rug
 	try {
-		if (CanvasRugEditor && swatchType.toLowerCase() === 'shape') {
-			CanvasRugEditor.setShape(value.toLowerCase())
+		if (window.CanvasRugEditor && swatchType.toLowerCase() === 'shape') {
+			window.CanvasRugEditor.setShape(value.toLowerCase())
 		}
 	} catch (error) {
 		console.error(error);

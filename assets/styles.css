@@ -13329,13 +13329,19 @@ img[data-flickity-lazyload] {
 }
 
 .product_gallery {
+  margin-bottom: 30px;
   position: relative;
   opacity: 0;
   transition: opacity 0.2s;
 }
+
+.product-main-custom .product_gallery {
+  margin-bottom: 12px;
+}
+
 @media only screen and (max-width: 798px) {
   .product_gallery {
-    margin-bottom: 30px;
+    margin-bottom: 12px;
   }
 }
 @media only screen and (max-width: 480px) {

@@ -267,6 +267,10 @@ button#zakeke-product-button {
 
 .product-main .product-block--price .price .money {
   font-size: 24px;
+  font-weight: 700;
+}
+
+.product-main-custom .product-block--price .price .money {
   font-weight: 400;
 }
 
@@ -431,11 +435,11 @@ button.open-size-guide-btn {
 }
 
 /* Hide original size swatches - only hide the size option swatch elements, not the shape swatches */
-.swatch_options .swatch[data-option-index="1"] .swatch-element {
+.product-template .swatch_options .swatch[data-option-index="1"] .swatch-element {
   display: none !important;
 }
 
-.swatch_options .swatch[data-option-index="1"] .option_title {
+.product-template .swatch_options .swatch[data-option-index="1"] .option_title {
   display: none !important;
 }
 
@@ -492,13 +496,17 @@ button.open-size-guide-btn {
 .ctm_prd_price_mobile {
   margin: 0;
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 24px;
   letter-spacing: 0.04em;
   text-align: center;
   color: #000000;
   margin-top: 24px;
   display: none;
+}
+
+.product-main-custom .ctm_prd_price_mobile {
+  font-weight: 400;
 }
 
 .request_block_active {
@@ -668,7 +676,7 @@ div.cart_content form{ margin: 10px 0 0;}
     margin-bottom: 20px;
   }
 
-  .option_title .opt_title_size {
+  .product-template .option_title .opt_title_size {
     margin-top: 24px;
   }
 }

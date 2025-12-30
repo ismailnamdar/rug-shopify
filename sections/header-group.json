@@ -14,7 +14,7 @@
     "header": {
       "type": "header",
       "settings": {
-        "promo_text": "<p><a href=\"\/products\/custom-rug-carpet\" title=\"\/products\/custom-rug-carpet\">Buy 2+ Rugs Get 15% Off  - use code BUYGET15 →<\/a><\/p>",
+        "promo_text": "<p><a href=\"/products/custom-rug-carpet\" title=\"/products/custom-rug-carpet\">Buy 2+ Rugs Get 15% Off  - use code BUY2GET15 →</a></p>",
         "social_icons_header": false,
         "phone_number": "949-478-4886",
         "email_address": "info@rugtomize.co",
@@ -24,7 +24,7 @@
         "show_locale_selector": true,
         "show_currency_selector": false,
         "logo_display_width": 205,
-        "logo": "shopify:\/\/shop_images\/Rugtomize_logo_blk_4fa09a25-cffb-44d2-8a61-e96932009aca.png",
+        "logo": "shopify://shop_images/Rugtomize_logo_blk_4fa09a25-cffb-44d2-8a61-e96932009aca.png",
         "main_linklist": "main-menu-for-turbo-theme-v3-isaac",
         "main_linklist2": "",
         "vertical_menu": true,
@@ -35,8 +35,8 @@
         "logo_alignment": "center",
         "menu_position": "block",
         "menu_alignment": "center",
-        "svg_icon1": "shopify:\/\/shop_images\/fast_turn_around.svg",
-        "svg_icon2": "shopify:\/\/shop_images\/satisfaction.svg"
+        "svg_icon1": "shopify://shop_images/fast_turn_around.svg",
+        "svg_icon2": "shopify://shop_images/satisfaction.svg"
       }
     }
   },
