@@ -52,7 +52,7 @@
 <div class="gallery-wrap
             gallery-arrows--{{ gallery_arrows }}
             {% if set_product_height != blank %}product-height-set{% endif %}
-            gallery-thumbnails--{{ gallery_thumbnail_position }}">
+            gallery-thumbnails--{{ gallery_thumbnail_position }}" style="padding-right: 0;">
   <div class="product_gallery
               js-product-gallery product-{{ product.id }}-gallery
               transparentBackground--{{ settings.slideshow_button_style }}
@@ -136,7 +136,8 @@
                       data-image-id="{{ product.media[forloop.index0].id }}"
                       data-index="{{ forloop.index0 }}"
                       data-sizes="{% if gallery_click_to_zoom %}100vw{% else %}auto{% endif %}"
-                      data-aspectratio="{{ media.width }}/{{ media.height }}"
+                      data-aspectratio="1/1"
+                      {% comment %}data-aspectratio="{{ media.width }}/{{ media.height }}"{% endcomment %}
                       data-src="{{ media | img_url: '1200x' }}"
                       data-srcset="{{ srcset }}"
                       height="{{ media.height }}"
@@ -155,6 +156,7 @@
                         height: media.height,
                         srcset: srcset,
                         data-image-id: product.media[forloop.index0].id,
+                        data-aspectratio: '1/1',
                         data-index: forloop.index0,
                         data-zoom-src: image_5000x
                     }}
@@ -193,7 +195,15 @@
       </div>
     {% endfor %}
   </div>
-
+  <div id="main_thumb_message" style="display: none;">
+    <div class="ctm_prd_main_thum">
+      <div class="main_thum_item_1">4K IMAGE QUALITY</div>
+      <div class="main_thum_item_2">
+        <img src="{{ 'pr_main_thumb.png' |  asset_url }}" class="prd_main_stain" alt="STAIN RESISTANT"  width="20px" height="20px"/> 
+        <span>STAIN RESISTANT</span>
+      </div>
+    </div>
+  </div>
   {% if gallery_thumbnails == true %}
     {% if image_width != 'full' %}
       <div class="
@@ -205,7 +215,7 @@
             product_gallery_nav--{{ thumbnail_position }}
             product-{{ product.id }}-gallery-nav
           "
-        >
+        style="margin-top: 12px;">
       {% if product.media.size > 1 %}
         {% for media in product.media %}
           {% if media.media_type contains 'video' %}
@@ -233,18 +243,12 @@
       </div>
     {% endif %}
   {% endif %}
-  <div id="main_thumb_message" style="display: none;">
-    <div class="ctm_prd_main_thum">
-      <div class="main_thum_item_1">4K IMAGE QUALITY</div>
-      <div class="main_thum_item_2">
-        {% comment %} <img src="{{ 'pr_main_thumb.png' |  asset_url }}" class="prd_main_stain" alt="STAIN RESISTANT"  width="20px" height="20px"/> {% endcomment %}
-        <span>SHIPS IN 2-4 BUSINESS DAYS</span>
-      </div>
-    </div>
-  </div>
 </div>
 
 <style>
+  .product-gallery__image {
+    max-height: 600px;
+  }
   .aded_head,
   .aded_head_mobile {
     text-align: center;
@@ -277,6 +281,11 @@
     display: none;
   }
 
+  #shopify-block-AUlkxcHl1Lzk3bVFNM__okendo_star_rating_ydA4LC,
+  shopify-block-AMmJzZHZZbmN5dzVqV__okendo_star_rating_ydA4LC-2 {
+    margin-bottom: 20px;
+  }
+
   @media screen and (max-width: 768px) {
     .manyImg_wrapper {
       gap: 4px;
@@ -284,7 +293,7 @@
 
     .aded_head,
     .manyImg_wrapper,
-    #shopify-block-AMGh2VGxoU1E4TC9lY__okendo_star_rating_ydA4LC-2 {
+    #shopify-block-AUlkxcHl1Lzk3bVFNM__okendo_star_rating_ydA4LC-1 {
       display: none;
     }
 
@@ -300,62 +309,3 @@
     }
   }
 </style>
-<div class="aded_head">Trusted by 10,000+ Businesses and Fans</div>
-<div class="manyImg_wrapper">
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-wb.png?v=1762508456" alt="WB" width="72px"
-      height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-lego.png?v=1762508456" alt="Lego" width="72px"
-      height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-disney.png?v=1762508456" alt="Disney"
-      width="72px" height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-netflix.png?v=1762508456" alt="Netflix"
-      width="72px" height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-spotify.png?v=1762508456" alt="Spotify"
-      width="72px" height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-nbc.png?v=1762508456" alt="NBC" width="72px"
-      height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-ford.png?v=1762508456" alt="Ford" width="72px"
-      height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/logo-cadillac.png?v=1762508456" alt="Cadillac"
-      width="72px" height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/MD.png?v=1762952775" alt="McDonald"
-      width="72px" height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Lakers.png?v=1762790976" alt="Lakers" width="72px"
-      height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Hard_Rock.png?v=1762952775" alt="HR_Cafe"
-      width="72px" height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Fox.png?v=1762952775" alt="FSports"
-      width="72px" height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Dove.png?v=1762790976" alt="Dove" width="72px"
-      height="72px" />
-  </div>
-  <div class="manyImg_item">
-    <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/DHL.png?v=1762790977" alt="DHL" width="72px"
-      height="72px" />
-  </div>
-</div>

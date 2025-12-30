@@ -1,4 +1,13 @@
-const swachesSizeHandler = (cusClass, value) => {
+const swachesSizeHandler = (swatchType, cusClass, value) => {
+	// Adjust custom rug
+	try {
+		if (window.CanvasRugEditor && swatchType.toLowerCase() === 'shape') {
+			window.CanvasRugEditor.setShape(value.toLowerCase())
+		}
+	} catch (error) {
+		console.error(error);
+	}
+
 	const swatchElements = document.getElementsByClassName('all-sizes-cls');
 	swatchElements.forEach(element => {
 		element.classList.remove('soldout')
@@ -26,6 +35,12 @@ const swachesSizeHandler = (cusClass, value) => {
 	}
 }
 
+function swatchShapeHandler (swatchType, value) {
+	if (swatchType.toLowerCase() === 'size' && CanvasRugEditor != null) {
+		CanvasRugEditor.setSize(value.toUpperCase());
+	}
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
 	function isMobile() { return window.innerWidth <= 768 }
@@ -47,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		elem.addEventListener("change", function () {
 			setTimeout(() => {
 				copyElementsOnMobile();
-				document.querySelector(".ctm_prd_price_mobile").innerHTML = document.querySelector("[data-price-ui]").innerHTML;
+				$(".ctm_prd_price_mobile").html(document.querySelector("[data-price-ui]").innerHTML);
 			}, 100);
 		})
 	})
@@ -86,7 +101,7 @@ $('body').on('click', '.pplr_monogram.fileupload', function () {
 });
 
 /////////////////////////////// PRODUCT PAGE ///////////////////////////////
-if (document.body.classList.contains("product")) {
+if (document.body.classList.contains("product") || document.body.classList.contains("product-custom-rug-builder") || document.body.classList.contains("product-custom-rug-builder-2")) {
 
 	// const hIdeComment = () => {
 	// 	const CommentElem = document.querySelectorAll(".pplr-comments--requests");
@@ -111,7 +126,7 @@ if (document.body.classList.contains("product")) {
 	const el = document.querySelector('[data-option-size-title]');
 	if (!el) return;
 	const desired = `<div class="option_title opt_title_size">Select size:</div>  
-		 <button class="open-size-guide-btn">Size Guide</button>`;
+		 <button type="button" class="open-size-guide-btn">Size Guide</button>`;
 	// only update if content changed to avoid continuous reflows
 	if (el.innerHTML.trim() !== desired.trim()) {
 		el.innerHTML = desired;
@@ -210,7 +225,7 @@ if (document.body.classList.contains("product")) {
 		const ATC_button = document.querySelector('.product-block--form');
 		if (ATC_button) stickyAtcBtn(ATC_button);
 
-		document.querySelector(".ctm_prd_price_mobile").innerHTML = document.querySelector("[data-price-ui]").innerHTML;
+		$(".ctm_prd_price_mobile").html(document.querySelector("[data-price-ui]").innerHTML);
 		classAddToComment();
 		document.querySelector(".collapsible-tab__heading")?.click();
 
@@ -383,7 +398,7 @@ if (document.body.classList.contains("product")) {
 		}
 
 		// Open ORIGINAL centered modal when clicking "Size Guide" button
-		if (event.target.closest('.open-size-guide-btn') && !document.querySelector('[data-label="Add to Cart"]').contains(event.target)) {
+		if (event.target.closest('.open-size-guide-btn') && (document.querySelector('[data-label="Add to Cart"]') == null || !document.querySelector('[data-label="Add to Cart"]').contains(event.target))) {
 			event.stopPropagation();
 			event.preventDefault();
 			document.body.classList.add("size_guide_model_open");

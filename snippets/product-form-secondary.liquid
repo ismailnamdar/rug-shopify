@@ -46,7 +46,9 @@
   data-product-id="{{ product.id }}"
 >
   <div class="ctm_prd_price_mobile">$149</div>
-  {% form 'product', product %}
+  {% assign form_id_prefix = "product-form-section-" %}
+  {% assign form_id = form_id_prefix | append: product.id %}
+  {% form 'product', product, id: form_id %}
 
   <div
     class="
@@ -75,34 +77,34 @@
     <div class="swatch_options">
       {% for option in product.options %}
         {%
-          render 'product-swatch',
+          render 'product-swatch-main',
           option: option,
           product: product
         %}
       {% endfor %}
-      
-      {% if product.handle == 'custom-rug-carpet' %}
-        {%- comment -%} Original Size Title with Size Guide Button {%- endcomment -%}
-        <div class="option_title" data-option-size-title="" data-option-title="Size ">
-          <div class="option_title opt_title_size">Select size:</div>  
-          <button class="open-size-guide-btn" style="display: none;">Size Guide</button>
-        </div>
-        
-        {%- comment -%} New Size Selector Dropdown Button {%- endcomment -%}
-        <div class="size-selector-dropdown-wrapper">
-          <button type="button" class="size-selector-dropdown-btn" id="openSizeModal">
-            <span class="size-selector-value" id="selectedSizeDisplay">2'x3'</span>
-            <svg class="size-selector-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1.5L6 6.5L11 1.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-      {% endif %}
-      
       {% render "size-guide" product: product, option: option %}
       </div>
     {% endif %}
 
+  {% render 'upload-photo-button-secondary' %}
+  <div id="custom-rug-add-to-cart" class="custom-rug-sticky-add-to-cart-container" style="display: none;">
+    <button type="button" class="custom-rug-sticky-add-to-cart-button">
+      <div class="custom-rug-sticky-add-to-cart-button-text" style="position: relative; bottom: 2px;">Add to cart</div>
+    </button>
+  </div>
+  <button id="custom-rug-submit-button" type="submit" style="display: none;"></button>
+
+  <div id="custom-rug-properties-section" style="display: block;">
+    <input name="properties[__mediaId]" type="text" hidden style="display: none;" />
+    <input name="properties[__Send Proof]" type="text" hidden style="display: none;" />
+    <input name="properties[__Background Color]" type="text" hidden style="display: none;" />
+    <input name="properties[__Remove Background]" type="text" hidden style="display: none;" />
+    <input name="properties[__Scale]" type="text" hidden style="display: none;" />
+    <input name="properties[__Rotation]" type="text" hidden style="display: none;" />
+    <input name="properties[__Original image]" type="text" hidden style="display: none;" />
+    <input name="properties[Product preview image]" type="text" hidden style="display: none;" />
+    <input name="properties[Comments]" type="text" hidden style="display: none;" />
+  </div>
   {% if product.available %}
     {% if settings.display_inventory_left %}
       <div class="items_left">
@@ -789,3 +791,629 @@
   <div class="surface-pick-up surface-pick-up--loading" data-surface-pick-up></div>
   <div class="surface-pick-up__modal" data-surface-pick-up-modal></div>
 </div>
+<style>
+  .custom-rug-upload-image-container {
+    background-color: white;
+    padding: 12px;
+  }
+
+  .custom-rug-upload-image-container[data-mobile] {
+    display: none;
+  }
+
+  .custom-rug-upload-image {
+    background-color: rgb(255, 192, 54);
+    text-align: center;
+    width: 100%;
+    padding: 16px 24px;
+    font-weight: 900;
+    gap: 12px;
+    border-radius: 37px;
+    justify-content: center;
+  }
+  .custom-rug-upload-image__text {
+    font-size: 16px;
+    color: black;
+  }
+  .custom-rug-upload-image__subtext {
+    font-weight: 400;
+    color: #5e6470;
+    margin-top: 4px;
+  }
+  .custom-rug-upload-image__supported-files {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .custom-rug-sticky-add-to-cart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: static;
+    padding: 12px 0;
+    background-color: white;
+  }
+
+  .custom-rug-quantity-input {
+    border: 1px solid black;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .custom-rug-quantity-input input {
+    width: 30px;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+  }
+
+  .custom-rug-quantity-input button {
+    padding: 10px 10px 10px 14px;
+    height: 100%;
+    border: none;
+    color: black;
+    background-color: transparent;
+  }
+
+  .custom-rug-sticky-add-to-cart-button {
+    color: black !important;
+    background-color: rgb(255, 192, 54);
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 14px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .custom-rug-sticky-add-to-cart-button div {
+    font-size: 18px;
+    margin-top: 0;
+    font-weight: 600;
+  }
+
+  .custom-rug-background-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .custom-rug-remove-bg-button {
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    padding: 10px 12px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
+  }
+  .custom-rug-bg-color-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    padding: 10px 16px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
+  }
+
+  .custom-rug-edit-notes {
+    color: black;
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    padding: 10px 16px;
+    cursor: pointer;
+    box-shadow: 0 1px 1px #23232347;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-rug-upload-image-container[data-desktop] {
+      display: none;
+    }
+    .custom-rug-upload-image-container[data-mobile] {
+      display: block;
+    }
+
+    .custom-rug-upload-image-container[data-mobile-fixed] {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 1px solid #262627;
+      z-index: 50;
+    }
+
+    .custom-rug-sticky-add-to-cart-container {
+      padding: 12px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      border-top: 1px solid #e3e3e3;
+    }
+
+    .custom-rug-sticky-add-to-cart-button {
+      gap: 12px;
+      font-size: 14px;
+      padding: 14px 14px;
+    }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const ids = {
+      uploadButton: '.custom-rug-upload-image',
+      imageInput: '#custom-rug-image',
+      bgColorInput: '[data-bg-color="color"]',
+      bgColorInputButton: '.custom-rug-bg-color-button',
+      removeBgInput: '#custom-rug-remove-bg',
+      addToCartButton: '#custom-rug-add-to-cart .custom-rug-sticky-add-to-cart-button',
+      editNotesButton: '.custom-rug-edit-notes',
+      saveNotesButton: '.edit-note-save-button',
+    };
+    const CANVAS_SUPPORTED_FILE_SIZE = 10 * 1024 * 1024 // 10MB
+    const MAX_SUPPORTED_TRANSFORM_FILE_SIZE = 50 * 1024 * 1024 // 50MB
+    const MAX_SUPPORTED_FILE_SIZE = 250 * 1024 * 1024 // 250MB
+     const ONLY_RESIZE_SUPPORTED_FORMATS = [
+      'application/pdf'
+    ];
+    const RESIZE_SUPPORTED_FILE_TYPES = [
+      'image/jpg',
+      'image/jpeg',
+      'image/webp',
+      'image/png',
+      '.ico',
+      'image/HEIC'
+    ];
+    const CANVAS_SUPPORTED_FILE_TYPES = [
+      'image/jpg',
+      'image/jpeg',
+      'image/webp',
+      'image/png',
+      'image/svg+xml',
+    ]
+    const SUPABASE_URL = "https://mgettdoycdkgplgaknqd.supabase.co";
+    const API_BASE_URL = "https://api.rugtomize.co"
+
+    // Helper function for file
+    function readFileAsDataURL(file) {
+      return new Promise(function (resolve, reject) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          resolve(e.target.result);
+        };
+        reader.onerror = function (err) {
+          reject(err);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handleFile(event) {
+      var input = event.target;
+      var file = input.files && input.files[0];
+      selectedFile = file;
+
+      if (!file) return;
+
+      try {
+        var dataUrl = await readFileAsDataURL(file);
+
+        if (file.size > MAX_SUPPORTED_FILE_SIZE) {
+          alert('Maximum supported file size is 250MB.');
+          return;
+        }
+
+        // 1. If image is not supported, start "Upload flow"
+        var isSupportedType = Array.isArray(CANVAS_SUPPORTED_FILE_TYPES)
+          ? CANVAS_SUPPORTED_FILE_TYPES.indexOf(file.type) !== -1
+          : false;
+
+        if (file.size > CANVAS_SUPPORTED_FILE_SIZE || !isSupportedType) {
+          CanvasRugEditor.reset();
+          CanvasRugEditor.showCanvas();
+          uploadInBackground(file, { useUploadedFile: true });
+          return;
+        }
+
+        // 2. If image is supported, start "Default flow"
+        CanvasRugEditor.reset();
+        setFgUrl(dataUrl);
+        uploadInBackground(file);
+        $('html, body').animate({
+          scrollTop: $('#rug-canvas-container').offset().top - 80
+        }, 600);
+      } finally {
+        // Reset input so selecting the same file again will still trigger change
+        input.value = "";
+      }
+    }
+
+    function handleRemoveBG() {
+      const shownImage = CanvasRugEditor.startRemoveBg()
+      
+      if (shownImage === 'main') {
+        this.style.backgroundColor = "white";
+        this.style.color = "black";
+      } else {
+        this.style.backgroundColor = "#272726";
+        this.style.color = "white";
+      }
+    }
+    
+    function handleColorChange(event) {
+      event.stopPropagation();
+      event.preventDefault();
+      const newColor = event.target.value;
+      CanvasRugEditor.setBgColor(newColor);
+    }
+    // These should be implemented elsewhere in your theme code:
+    function setUseUploadedFile(useUploadedFile) {
+      window.useUploadedFileFlag = !!useUploadedFile;
+    }
+
+    function setUploading(isUploading) {
+      CanvasRugEditor.loading(isUploading, false, "Uploading your design...");
+    }
+
+    function setUploadProgress(pct) {
+      CanvasRugEditor.setCircularProgressStatic(pct);
+    }
+
+    function setFgUrl(url) {
+      CanvasRugEditor.loadForeground(url);
+    }
+
+    function setUploadedImage(data) {
+      CanvasRugEditor.setUploadedImage(data);
+    }
+
+    function svgFileToPngBlob(file, options = {}) {
+      const {
+        width = 400,
+        height = 400,
+        background = null, // set to "#fff" if you want white bg
+        scale = 1, // use 2 for retina
+      } = options;
+    
+      return new Promise(async (resolve, reject) => {
+        try {
+          if (!file || file.type !== "image/svg+xml") {
+            return reject(new Error("Input must be an SVG file"));
+          }
+    
+          const svgText = await file.text();
+    
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(svgText, "image/svg+xml");
+          const svg = doc.documentElement;
+    
+          const svgWidth =
+            svg.getAttribute("width") ||
+            svg.viewBox?.baseVal?.width ||
+            width;
+    
+          const svgHeight =
+            svg.getAttribute("height") ||
+            svg.viewBox?.baseVal?.height ||
+            height;
+    
+          svg.setAttribute("width", svgWidth);
+          svg.setAttribute("height", svgHeight);
+    
+          const serializedSvg = new XMLSerializer().serializeToString(svg);
+    
+          const svgBlob = new Blob([serializedSvg], {
+            type: "image/svg+xml;charset=utf-8",
+          });
+    
+          const url = URL.createObjectURL(svgBlob);
+          const img = new Image();
+    
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = svgWidth * scale;
+            canvas.height = svgHeight * scale;
+    
+            const ctx = canvas.getContext("2d");
+            ctx.scale(scale, scale);
+    
+            if (background) {
+              ctx.fillStyle = background;
+              ctx.fillRect(0, 0, svgWidth, svgHeight);
+            }
+    
+            ctx.drawImage(img, 0, 0, svgWidth, svgHeight);
+            URL.revokeObjectURL(url);
+    
+            canvas.toBlob(
+              (pngBlob) => {
+                if (!pngBlob) {
+                  reject(new Error("PNG conversion failed"));
+                } else {
+                  resolve(pngBlob);
+                }
+              },
+              "image/png"
+            );
+          };
+    
+          img.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("Failed to load SVG into image"));
+          };
+    
+          img.src = url;
+        } catch (err) {
+          reject(err);
+        }
+      });
+    }    
+
+    async function uploadInBackground(file, options) {
+      options = options || {};
+      const useUploadedFile = !!options.useUploadedFile;
+
+      // You created formData in the original but never used it – safe to keep/remove.
+      const formData = new FormData();
+      formData.append("file", file);
+
+      let res;
+      try {
+        setUseUploadedFile(useUploadedFile);
+        if (useUploadedFile) {
+          setUploading(true);
+        }
+        setUploadProgress(0);
+
+        // 1. Get the Signed Upload URL
+        res = await fetch(`${API_BASE_URL}/api/media/upload-url`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fileName: file.name,
+            fileSize: file.size,
+            contentType: file.type
+          })
+        });
+        
+        if (!res.ok) {
+          throw new Error("Failed to get upload URL: " + res.status);
+        }
+
+        var json = await res.json();
+        var bucket = json.bucket;
+        var path   = json.path;
+        var token  = json.token;
+
+        // 2. Build upload endpoint (Supabase URL exposed via Liquid/global var)
+        var uploadUrl = SUPABASE_URL +
+          "/storage/v1/object/upload/sign/" +
+          encodeURIComponent(bucket) + "/" +
+          encodeURIComponent(path) +
+          "?token=" + encodeURIComponent(token);
+
+        // 3. Upload via XHR to get progress
+        await new Promise(function (resolve, reject) {
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", uploadUrl);
+          xhr.setRequestHeader("Content-Type", file.type);
+
+          xhr.upload.onprogress = function (evt) {
+            if (evt.lengthComputable) {
+              var pct = Math.round((evt.loaded / evt.total) * 100);
+              setUploadProgress(pct);
+            }
+          };
+
+          xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve(xhr.response);
+            } else {
+              reject("Upload failed with status " + xhr.status);
+            }
+          };
+
+          xhr.onerror = function () {
+            reject("XHR Error");
+          };
+
+          xhr.send(file);
+        });
+
+        if (useUploadedFile) {
+          CanvasRugEditor.loading(true, false, "Creating your rug...");
+        }
+
+        let blobP;
+        let originalUrl;
+
+        // If SVG is uploaded, we will conver it to PNG to create the preview 
+        // to be sent to remove background service.
+        if (file.type.toLowerCase().includes('svg')) {
+          blobP = await svgFileToPngBlob(file);
+        } else if (ONLY_RESIZE_SUPPORTED_FORMATS.includes(file.type) || (file.size > MAX_SUPPORTED_TRANSFORM_FILE_SIZE && RESIZE_SUPPORTED_FILE_TYPES.includes(file.type))) {
+          // 4. Get a signed preview URL from your backend
+          let resResize = await fetch(`${API_BASE_URL}/api/media/resize`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path: path })
+          });
+          if (!resResize.ok) throw new Error("Resize failed");
+
+          blobP = await resResize.blob();
+        } else {
+          // 4. Get a signed preview URL from your backend
+          let signedUrlResponse = await fetch(`${API_BASE_URL}/api/media/preview`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path: path })
+          });
+
+          if (!signedUrlResponse.ok) {
+            throw new Error("Failed to get preview URL");
+          }
+
+          var signedUrlData = await signedUrlResponse.json();
+          originalUrl = signedUrlData.url;
+
+          // 5. Download the image blob from that URL
+          var imageRes = await fetch(originalUrl);
+          if (!imageRes.ok) {
+            throw new Error("Failed to download image from URL");
+          }
+          
+          blobP = await imageRes.blob();
+        }
+
+        // 6. Use uploaded file as FG if requested
+        if (useUploadedFile) {
+          var objectUrl = URL.createObjectURL(blobP);
+          setFgUrl(objectUrl);
+        }
+
+        // 7. Store metadata
+        setUploadedImage({
+          path: path,
+          token: token,
+          bucket: bucket,
+          mimeType: file.type,
+          originalPreviewFileUrl: originalUrl,
+          previewDataUrl: blobP // note: this is a Blob, not a dataURL
+        });
+
+      } catch (error) {
+        console.error(error);
+        if (res.status === 429) {
+          alert('Maximum upload limit reached. Please contact support.');
+        }
+          
+        // TODO: log error to your backend, etc.
+        setUploading(false);
+      }
+    }
+
+    const uploadButton = $(ids.uploadButton);
+    const imageInput = $(ids.imageInput);
+    const bgColorInput = $(ids.bgColorInput);
+    const removeBgInput = $(ids.removeBgInput);
+    const addToCartButton = $(ids.addToCartButton);
+    const bgColorInputButton = $(ids.bgColorInputButton);
+    const editNotesButton = $(ids.editNotesButton);
+    const saveNotesButton = $(ids.saveNotesButton);
+    const editNoteHeaderButton = $('.edit-notes-header-button');
+
+    imageInput.change(handleFile);
+    bgColorInput.on("input", handleColorChange)
+    removeBgInput.on("click", handleRemoveBG);
+    uploadButton.on('click', function () {
+      imageInput.click();
+    });
+    addToCartButton.on('click', async () => {
+      try {
+        $('html, body').animate({
+          scrollTop: $('#rug-canvas-container').offset().top - 80
+        }, 600);
+        // Loading - change button style
+        const addToCartButton = $(".custom-rug-sticky-add-to-cart-button")
+        const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
+        addToCartButton.prop('disabled', true);
+        addToCartButtonText.text('Adding to cart');
+        CanvasRugEditor.loading(true, true, 'Preparing your rug...');
+        await CanvasRugEditor.handleClickAddToCart()
+        $('#custom-rug-submit-button').click();
+      } catch(error) {
+        console.error(error);
+        CanvasRugEditor.loading(false, true);
+      }
+    });
+    
+    editNotesButton.on("click", function() {
+      $("#product-main-form-container").css('transform', 'translateX(calc(-100%))');
+      $(".edit-notes-section-container").css('display', 'block');
+    })
+    saveNotesButton.on("click", function() {
+      $("#product-main-form-container").css('transform', 'unset');
+      $(".edit-notes-section-container").css('display', 'none');
+    })
+    editNoteHeaderButton.on("click", function() {
+      const value = $(this).data('value');
+      if (value === 'needs-fixing') {
+        // Set the current tab style
+        $(this).attr('data-active', 'true');
+        $('.edit-notes-header-button[data-value="keep-mockup"]').removeAttr('data-active')
+        $('.edit-notes-textarea').css('display', 'block');
+        // Clear the 
+      } else if (value === 'keep-mockup') {
+        $(this).attr('data-active', 'true');
+        $('.edit-notes-header-button[data-value="needs-fixing"]').removeAttr('data-active')
+        $('.edit-notes-textarea').css('display', 'none');
+      }
+    });
+
+    const $form = $('#product-form-section-{{ product.id }}');
+    $form.on("submit", function (e) {
+      const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
+      // Stop normal redirect
+      e.preventDefault();
+
+      // Build form data
+      const formData = new FormData($form[0]);
+
+      CanvasRugEditor.loading(true, true, 'Adding to cart...');
+      fetch("/cart/add.js", {
+        method: "POST",
+        body: formData,
+      })
+      .then(res => res.json())
+      .then(data => {
+        // fetch updated cart
+        $.ajax({
+          url: '/cart.js',
+          dataType: 'json',
+          cache: false,
+          success(cart) {
+            setTimeout(() => {
+              refreshCart(cart);
+              setTimeout(() => {
+                $('.top-bar .cart-container:visible').click()
+                // TODO: fix there is a double click here.
+                addToCartButton.prop('disabled', false);
+                addToCartButtonText.text('Add to cart');
+                CanvasRugEditor.loading(false, true);
+                CanvasRugEditor.afterAddToCart();
+              }, 500);
+            }, 500);
+          },
+          error() {
+            // silent
+            addToCartButton.prop('disabled', false);
+            addToCartButtonText.text('Add to cart');
+            CanvasRugEditor.loading(false, true);
+          }
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        addToCartButton.prop('disabled', false);
+        addToCartButtonText.text('Add to cart');
+        CanvasRugEditor.loading(false, true);
+      });
+    });
+  })
+</script>

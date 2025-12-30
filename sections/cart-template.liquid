@@ -131,9 +131,17 @@
                         {%- if property.last != blank and property_first_char != '_' -%}
                           <li class="cart__product-option">
                             {%- unless property.last contains '/uploads/' -%}
-                              <span class="cart__product-option-name">
-                                {{- property.first -}}:
-                              </span>
+                              {% if property.last contains 'https://' %}
+                                <span class="cart__product-option-name">
+                                  <a href="{{- property.last -}}" target="_blank">
+                                    {{- property.first -}}
+                                  </a>
+                                </span>
+                              {% else  %}
+                                <span class="cart__product-option-name">
+                                  {{- property.first -}}:
+                                </span>
+                              {% endif %}
                             {% endunless %}
 
                             <span class="cart__product-option-value">
@@ -143,14 +151,16 @@
                                 </a> {% endcomment %}
                                 <a class="pplr_slide" href="{{ property.last }}">
                                   {% if imageLoop == 0 %}
-                                    Orignal image
+                                    Original image
                                     {% assign imageLoop = imageLoop | plus: 1 %}
                                   {% else %}
-                                    Product perview image
+                                    Product preview image
                                   {% endif %}
                                 </a>
                               {%- else -%}
-                                {{- property.last -}}
+                                {% unless property.last contains 'https://' %}
+                                  {{- property.last -}}
+                                {% endunless %}
                               {%- endif -%}
                             </span>
                           </li>

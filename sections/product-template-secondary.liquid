@@ -40,13 +40,12 @@
 
     <section
       class="
-        product-template
         product-container
         is-flex
         is-flex-wrap
       "
     >
-      {% render 'product',
+      {% render 'product-secondary',
         context: 'product',
         product: product,
         variant: product.selected_or_first_available_variant,

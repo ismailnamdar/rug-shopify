@@ -77,7 +77,7 @@
       empty if used as a template
 {%- endcomment -%}
 
-{%- capture _price -%}<span class="money" data-price>{%- if value != blank -%}{{- value | money -}}{%- endif -%}</span>{%- endcapture -%}
+{%- capture _price -%}<span class="money" data-price>{%- if value != blank -%}{{- value | money_without_trailing_zeros -}}{%- endif -%}</span>{%- endcapture -%}
 
 {%- if template == 'price' -%}
   {{- _price -}}
@@ -94,9 +94,9 @@
 {%- elsif template == 'unit-measurement' -%}
   <span class="unit-measurement" data-unit-measurement>{%- if value != blank -%}{{- value -}}{%- endif -%}</span>
 {%- elsif template == 'price-ui' -%}
-  <span class="price {% if compare_at_price != blank and compare_at_price != false -%}price--sale{%- endif -%}" data-price>{%- if price != blank -%}{{- price -}}{%- endif -%}</span>
+  <span class="price {% if compare_at_price != blank and compare_at_price != false -%}price--sale{%- endif -%}" data-price>{%- if price != blank -%}{{- price | money_without_trailing_zeros -}}{%- endif -%}</span>
   {%- if compare_at_price != false -%}<span class="compare-at-price" data-compare-at-price>{%- if compare_at_price != blank -%}{{- compare_at_price -}}{%- endif -%}</span>{%- endif -%}
-  {%- if unit_pricing != false -%}<span class="unit-pricing" data-unit-pricing>{%- if unit_pricing != blank -%}{{- unit_pricing -}}{%- endif -%}</span>{%- endif -%}
+  {%- if unit_pricing != false -%}<span class="unit-pricing" data-unit-pricing>{%- if unit_pricing != blank -%}{{- unit_pricing | money_without_trailing_zeros -}}{%- endif -%}</span>{%- endif -%}
 {%- elsif template == 'price-ui-badge' -%}
   <div class="price-ui-badge__sticker price-ui-badge__sticker--{{ badge | handleize }}">
     <span class="price-ui-badge__sticker-text" data-badge>{%- if badge != blank -%}{{- badge -}}{%- endif -%}</span>
