@@ -1358,7 +1358,6 @@
         addToCartButtonText.text('Adding to cart');
         CanvasRugEditor.loading(true, true, 'Preparing your rug...');
         await CanvasRugEditor.handleClickAddToCart()
-        $('#custom-rug-submit-button').click();
       } catch(error) {
         console.error(error);
         CanvasRugEditor.loading(false, true);
@@ -1413,7 +1412,7 @@
             setTimeout(() => {
               refreshCart(cart);
               setTimeout(() => {
-                $('.top-bar .cart-container:visible').click()
+                // $('.top-bar .cart-container:visible').click()
                 // TODO: fix there is a double click here.
                 addToCartButton.prop('disabled', false);
                 addToCartButtonText.text('Add to cart');
@@ -1427,6 +1426,7 @@
             addToCartButton.prop('disabled', false);
             addToCartButtonText.text('Add to cart');
             CanvasRugEditor.loading(false, true);
+            CanvasRugEditor.afterAddToCart();
           }
         });
       })

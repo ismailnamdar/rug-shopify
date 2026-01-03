@@ -309,6 +309,7 @@ let sizes = {
 let fgImg = null;
 let bgImg = null;
 let backgroundRemoving = false;
+let addToCart = false;
 let shownImage = 'main'; // 'main' | 'background-removed'
 let fgUrl = null;
 let fgUrlRemoved = null;
@@ -1074,6 +1075,7 @@ window.CanvasRugEditor = {
     fgImg = null;
 
     backgroundRemoving = false;
+    addToCart = false;
     shownImage = 'main';
     removedBackground = false;
     uploadedImage = {};
@@ -1194,6 +1196,11 @@ window.CanvasRugEditor = {
     if (backgroundRemoving) {
         this.removeBackground();
     }
+
+    // If addToCart already true, that means user is already trying to add to cart
+    if (addToCart) {
+      this.handleClickAddToCart();
+    }
   },
   startRemoveBg() {
     if (removedBackground) {
@@ -1213,18 +1220,51 @@ window.CanvasRugEditor = {
   async exportPNG() {
     draw({ hideBorder: true });
 
-    return await new Promise((resolve, reject) => {
-      canvas.toBlob(async function(blob) {
-        if (!blob) return reject("Error");
+    const MAX_SIZE = 600;
+    const scale = Math.min(
+      1,
+      MAX_SIZE / Math.max(canvas.width, canvas.height)
+    );
 
-        const path = await uploadPreview(blob);
+    const targetW = Math.round(canvas.width * scale);
+    const targetH = Math.round(canvas.height * scale);
 
-        // Update global reference
-        uploadedImage.previewPath = path;
+    const offscreen =
+      'OffscreenCanvas' in window
+        ? new OffscreenCanvas(targetW, targetH)
+        : document.createElement('canvas');
 
-        resolve(path);
-      }, "image/webp", 0.8);
-    });
+    offscreen.width = targetW;
+    offscreen.height = targetH;
+
+    const ctx = offscreen.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
+    ctx.drawImage(
+      canvas,
+      0, 0, canvas.width, canvas.height,
+      0, 0, targetW, targetH
+    );
+
+    const blob =
+      offscreen.convertToBlob
+        ? await offscreen.convertToBlob({
+            type: 'image/webp',
+            quality: 0.65
+          })
+        : await new Promise(res =>
+            offscreen.toBlob(
+              res,
+              'image/webp',
+              0.65
+            )
+          );
+
+    const path = await uploadPreview(blob);
+    uploadedImage.previewPath = path;
+
+    return path;
   },
   async createMedia(originalPath, previewPath, mimeType, backgroundColor, removeBg) {
     const response = await fetch(`${API_BASE_URL}/api/media`, {
@@ -1242,14 +1282,20 @@ window.CanvasRugEditor = {
     return await response.json();
   },
   async handleClickAddToCart() {
-    // 1. Export PNG preview
-    const previewPath = await this.exportPNG();
-
     const {
       path: originalPath,
       mimeType,
       originalPreviewFileUrl,
     } = uploadedImage;
+
+    // Wait for upload and original path to be true.
+    if (originalPath == null) {
+      addToCart = true;
+      return;
+    };
+
+    // 1. Export PNG preview
+    const previewPath = await this.exportPNG();
 
     // 2. Tell your backend to create entry
     const {
@@ -1282,6 +1328,9 @@ window.CanvasRugEditor = {
     } else {
       $('#custom-rug-properties-section input[name=\"properties[Comments]\"]').val('');
     }
+
+    $('#custom-rug-submit-button').click();
+    addToCart = false;
   },
   async removeBackground() {
     try {

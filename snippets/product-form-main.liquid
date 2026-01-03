@@ -730,7 +730,6 @@
         addToCartButtonText.text('Adding to cart');
         CanvasRugEditor.loading(true, true, 'Preparing your rug...');
         await CanvasRugEditor.handleClickAddToCart()
-        $('#custom-rug-submit-button').click();
       } catch(error) {
         console.error(error);
         CanvasRugEditor.loading(false, true);
