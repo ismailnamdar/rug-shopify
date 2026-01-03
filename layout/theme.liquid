@@ -205,7 +205,41 @@
   }, 500);
 })();
 </script>
-  
+
+<script>
+  // This is a global event catch for the Checkout clicks. Sends an event to Clarity
+  document.addEventListener("click", function (e) {
+    const checkoutButton = e.target.closest(
+      'button[type="submit"][name="checkout"][data-minicart-checkout-button]'
+    );
+    if (!checkoutButton) return;
+
+    const priceEl = checkoutButton.querySelector(".pplr_subtotal_price");
+    const price = priceEl ? priceEl.innerText.trim() : null;
+
+    if (window.clarity) {
+      clarity("event", "Checkout Clicked");
+      clarity("set", "checkout", {
+        price: price
+      });
+    }
+  });
+
+  // This is a global event catch for the Upload clicks. Sends an event to Clarity
+  document.addEventListener("change", function (e) {
+    const fileInput = e.target.closest(
+      'input[type="file"].pplr_monogram[name^="properties["]'
+    );
+    if (!fileInput) return;
+
+    // Ensure an actual file was selected
+    if (!fileInput.files || fileInput.files.length === 0) return;
+
+    if (window.clarity) {
+      clarity("event", "File Upload");
+    }
+  });
+</script>  
 
     {% render 'social-meta-info' %}
 
