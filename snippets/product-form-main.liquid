@@ -382,6 +382,19 @@
 
       if (!file) return;
 
+      // Track in clarity
+      try {
+        if (window.clarity) {
+          clarity("event", "File Upload");
+          clarity("set", "File Upload", {
+            fileType: file.type,
+            fileName: file.name
+          });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+
       try {
         var dataUrl = await readFileAsDataURL(file);
 
@@ -697,6 +710,15 @@
       imageInput.click();
     });
     addToCartButton.on('click', async () => {
+      // Track in clarity
+      try {
+        if (window.clarity) {
+          clarity("event", "Add to cart [Custom]");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+
       try {
         $('html, body').animate({
           scrollTop: $('#rug-canvas-container').offset().top - 80
