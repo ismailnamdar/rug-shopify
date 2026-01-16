@@ -263,6 +263,19 @@ if (document.body.classList.contains("product") || document.body.classList.conta
 		const previewOpenBlock = `<div class="open_ctm_preview">PREVIEW</div>`
 
 		if (event.target.closest('.js-modal-close.pplr_close.p_r_c')) {
+			// RUG07 script Start
+			// Notify analytics/hooks on modal close.
+			window.dispatchEvent(new CustomEvent('pplr:modal_close_clicked'));
+
+			// Trigger add-to-cart after modal close, if available.
+			const addToCartBtn = document.querySelector(
+				'.add_to_cart.global-button.global-button--primary.ajax-submit.p_a_t_c'
+			);
+			if (addToCartBtn && !addToCartBtn.disabled && addToCartBtn.getAttribute('aria-disabled') !== 'true') {
+				addToCartBtn.click();
+			}
+			// RUG07 script End
+
 			if (document.querySelector(".pplr-c-button")) return;
 
 			// hIdeComment();

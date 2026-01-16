@@ -17,7 +17,7 @@
         "footer_0": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/Rugtomize_logo_wht.png",
+            "image": "shopify:\/\/shop_images\/Rugtomize_logo_wht.png",
             "text_align": "left",
             "social_icons_footer": false
           }
@@ -33,7 +33,7 @@
           "type": "text",
           "settings": {
             "title": "Shipping",
-            "content": "<p><em>*Shipping Exclusions Apply</em></p><p>Excluding Hawaii, Alaska, U.S. Territories, and Canada. We do not ship to P.O. Boxes (including APO and FPO) or the U.S. Territories.</p><p><a href=\"/policies/shipping-policy\" title=\"Shipping Policy\">Shipping Policy</a></p><p><a href=\"tel:9494784886\" target=\"_blank\" title=\"tel:9494784886\">+1 (949)-478-4886</a></p>",
+            "content": "<p><em>*Shipping Exclusions Apply<\/em><\/p><p>Excluding Hawaii, Alaska, U.S. Territories, and Canada. We do not ship to P.O. Boxes (including APO and FPO) or the U.S. Territories.<\/p><p><a href=\"\/policies\/shipping-policy\" title=\"Shipping Policy\">Shipping Policy<\/a><\/p><p><a href=\"tel:9494784886\" target=\"_blank\" title=\"tel:9494784886\">+1 (949)-478-4886<\/a><\/p>",
             "social_icons_footer": false
           }
         },
@@ -49,7 +49,7 @@
           "settings": {
             "title": "Subscribe",
             "newsletter_text": "",
-            "footer_flag": "shopify://shop_images/pnghut_united-states-map-clip-art-green_09ffa632-8bd4-4848-86e5-4df4f31c1747.png",
+            "footer_flag": "shopify:\/\/shop_images\/pnghut_united-states-map-clip-art-green_09ffa632-8bd4-4848-86e5-4df4f31c1747.png",
             "show_firstname": false,
             "show_lastname": false,
             "show_social": false

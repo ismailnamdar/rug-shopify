@@ -19,9 +19,9 @@
         "mute_video": false,
         "show_controls": true,
         "video_dark_overlay": false,
-        "iframe_video": "https://www.youtube.com/watch?v=mIK55-6a9fk&feature=youtu.be",
+        "iframe_video": "https:\/\/www.youtube.com\/watch?v=mIK55-6a9fk&feature=youtu.be",
         "html5_video": "",
-        "image": "shopify://shop_images/slide3_2000x.progressive_b7ceb256-6688-4ed6-9eae-faeaa53d13ee.jpg",
+        "image": "shopify:\/\/shop_images\/slide3_2000x.progressive_b7ceb256-6688-4ed6-9eae-faeaa53d13ee.jpg",
         "display_text_over_video": false,
         "preheading": "",
         "heading": "This is our calling",
@@ -56,9 +56,9 @@
         "164790110618d1bf6e-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/geoffrey.jpg",
+            "image": "shopify:\/\/shop_images\/geoffrey.jpg",
             "title": "the brand",
-            "text": "<p>Launched in 2016 by Geoffrey and Alex Ciantar, DUBAI is a luxury leather goods and jewelry label that explores the relationship between high end functionality and artisanal craftsmanship.</p><p>Designer Alex Ciantar studied the art of bag making in Florence under some of Italy’s leading leather workers and designers. Geoffrey worked under his father from a young age, and has designed collections for other leading brands in the industry. Inspired to carry on this enduring tradition, DUBAI practises traditional Italian expertise under ultramodern design sensibility.</p>",
+            "text": "<p>Launched in 2016 by Geoffrey and Alex Ciantar, DUBAI is a luxury leather goods and jewelry label that explores the relationship between high end functionality and artisanal craftsmanship.<\/p><p>Designer Alex Ciantar studied the art of bag making in Florence under some of Italy’s leading leather workers and designers. Geoffrey worked under his father from a young age, and has designed collections for other leading brands in the industry. Inspired to carry on this enduring tradition, DUBAI practises traditional Italian expertise under ultramodern design sensibility.<\/p>",
             "button_label": "",
             "link": "",
             "bg_color": "",
@@ -68,9 +68,9 @@
         "164790110618d1bf6e-1": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/alex.jpg",
+            "image": "shopify:\/\/shop_images\/alex.jpg",
             "title": "",
-            "text": "<p>With a design-led approach to luxury, DUBAI goes beyond fashion trends and offers timeless, exceptional pieces that complement a modern lifestyle. DUBAI encourages those who delve away from the limitations of fast fashion and run toward the openness and honesty of consciously produced products. Based on the southeast coast of the Persian Gulf, DUBAI heralds a slower approach to manufacturing and a strong commitment to sustainability.</p><p>With their first release of leather handbags and jewelry, DUBAI reconnects their customer with artisanship, quality and subtlety. The products' blank canvas-like quality encourages true freedom for the wearer’s own creativity and individualism. The DUBAI collector wears a bag, bracelet or ring, not as a sign of inclusion, but as a way of self-expression.</p>",
+            "text": "<p>With a design-led approach to luxury, DUBAI goes beyond fashion trends and offers timeless, exceptional pieces that complement a modern lifestyle. DUBAI encourages those who delve away from the limitations of fast fashion and run toward the openness and honesty of consciously produced products. Based on the southeast coast of the Persian Gulf, DUBAI heralds a slower approach to manufacturing and a strong commitment to sustainability.<\/p><p>With their first release of leather handbags and jewelry, DUBAI reconnects their customer with artisanship, quality and subtlety. The products' blank canvas-like quality encourages true freedom for the wearer’s own creativity and individualism. The DUBAI collector wears a bag, bracelet or ring, not as a sign of inclusion, but as a way of self-expression.<\/p>",
             "button_label": "",
             "link": "",
             "bg_color": "",
@@ -97,28 +97,28 @@
         "165791158516dbcb63-0": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/instyle.webp",
+            "image": "shopify:\/\/shop_images\/instyle.webp",
             "link": ""
           }
         },
         "165791158516dbcb63-1": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/GQBlackAndGoldLogo.webp",
+            "image": "shopify:\/\/shop_images\/GQBlackAndGoldLogo.webp",
             "link": ""
           }
         },
         "165791158516dbcb63-2": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/elle-can-dark.png",
+            "image": "shopify:\/\/shop_images\/elle-can-dark.png",
             "link": ""
           }
         },
         "165791158516dbcb63-3": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify://shop_images/VOGUE_LOGO.svg_2000x_59a733b7-857f-4ee0-b2b7-e87410189499.png",
+            "image": "shopify:\/\/shop_images\/VOGUE_LOGO.svg_2000x_59a733b7-857f-4ee0-b2b7-e87410189499.png",
             "link": ""
           }
         }
@@ -181,7 +181,7 @@
       "settings": {
         "contact_heading": "",
         "contact_subheading": "drop us a line",
-        "contact_content": "<p>We're keen to hear from our fan base and get to know what your needs, loves and dislikes are. We are always inspired by real people and real stories, so if you have any requests or suggestions for future products, please do not hesitate to reach out and let us know.</p>",
+        "contact_content": "<p>We're keen to hear from our fan base and get to know what your needs, loves and dislikes are. We are always inspired by real people and real stories, so if you have any requests or suggestions for future products, please do not hesitate to reach out and let us know.<\/p>",
         "contact_text_position": "center",
         "contact_text_alignment": "left",
         "contact_social_buttons": false,

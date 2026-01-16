@@ -17,10 +17,10 @@
       "type": "image-with-text-overlay",
       "settings": {
         "wide_display": true,
-        "image": "shopify://shop_images/pexels-karolina-grabowska-4194853.jpg",
+        "image": "shopify:\/\/shop_images\/pexels-karolina-grabowska-4194853.jpg",
         "pretext": "",
         "title": "Turbo Shopify Theme",
-        "subtitle": "<p>Uplift & refresh your shop</p>",
+        "subtitle": "<p>Uplift & refresh your shop<\/p>",
         "button1": "Get started",
         "button1_link": "",
         "button1_style": "global-button--banner-highlighted",
@@ -49,7 +49,7 @@
       "type": "featured-text",
       "settings": {
         "title": "Built for speed. Styled with love.",
-        "content": "<p>Turbo is a highly configurable, blazing fast theme that has been optimized for both speed and mobile experience. Turbo fully supports sections and is packed with features like product row sliders, mega menus, testimonials, homepage image gallery, FAQ template, interactive mini cart, team page template, and infinite scrolling. It also boasts features like instantaneous page transitions for ultra-fast navigation and two separate speed modes.</p>",
+        "content": "<p>Turbo is a highly configurable, blazing fast theme that has been optimized for both speed and mobile experience. Turbo fully supports sections and is packed with features like product row sliders, mega menus, testimonials, homepage image gallery, FAQ template, interactive mini cart, team page template, and infinite scrolling. It also boasts features like instantaneous page transitions for ultra-fast navigation and two separate speed modes.<\/p>",
         "button_label": "",
         "button_link": "",
         "text_size": "featured_text",
@@ -73,9 +73,9 @@
         "16312833901b2aa296-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/pexels-cottonbro-4972598.jpg",
+            "image": "shopify:\/\/shop_images\/pexels-cottonbro-4972598.jpg",
             "title": "Velocity, refined.",
-            "text": "<p>Turbo is a fully-loaded theme that can easily accommodate high volume, large catalog shops and especially <strong>Shopify Plus</strong> merchants. But it's also an excellent choice for any size shop that's looking for an edge - one that won't sacrifice style and flexibility for enhanced performance.</p>",
+            "text": "<p>Turbo is a fully-loaded theme that can easily accommodate high volume, large catalog shops and especially <strong>Shopify Plus<\/strong> merchants. But it's also an excellent choice for any size shop that's looking for an edge - one that won't sacrifice style and flexibility for enhanced performance.<\/p>",
             "button_label": "Purchase theme",
             "link": "",
             "bg_color": "rgba(0,0,0,0)",
@@ -108,7 +108,7 @@
       "type": "featured-text",
       "settings": {
         "title": "",
-        "content": "<p><strong>40% of online shoppers abandon a site that takes more than 3 seconds to load!</strong></p>",
+        "content": "<p><strong>40% of online shoppers abandon a site that takes more than 3 seconds to load!<\/strong><\/p>",
         "button_label": "",
         "button_link": "",
         "text_size": "featured_text",
@@ -130,7 +130,7 @@
       "type": "image-with-text-overlay",
       "settings": {
         "wide_display": true,
-        "image": "shopify://shop_images/about-banner.jpg",
+        "image": "shopify:\/\/shop_images\/about-banner.jpg",
         "pretext": "",
         "title": "Dynamic & packed with features",
         "subtitle": "",
@@ -169,7 +169,7 @@
       "type": "featured-text",
       "settings": {
         "title": "Turbo Theme Support",
-        "content": "<p>Our comprehensive <a href=\"https://help.outofthesandbox.com/hc/en-us\">Theme Help Center</a> is where you'll find extensive documentation and video guides for all our themes, including <a href=\"https://help.outofthesandbox.com/hc/en-us/categories/115001109307-Turbo-Shopify-Theme\">Turbo Support Articles.</a> Updating your theme is also quick and easy, using our unique <a href=\"https://outofthesandbox.com/pages/theme-updater-app\">Shopify Theme Updater App</a>!</p>",
+        "content": "<p>Our comprehensive <a href=\"https:\/\/help.outofthesandbox.com\/hc\/en-us\">Theme Help Center<\/a> is where you'll find extensive documentation and video guides for all our themes, including <a href=\"https:\/\/help.outofthesandbox.com\/hc\/en-us\/categories\/115001109307-Turbo-Shopify-Theme\">Turbo Support Articles.<\/a> Updating your theme is also quick and easy, using our unique <a href=\"https:\/\/outofthesandbox.com\/pages\/theme-updater-app\">Shopify Theme Updater App<\/a>!<\/p>",
         "button_label": "Get Support",
         "button_link": "",
         "text_size": "featured_text",

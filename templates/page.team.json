@@ -13,7 +13,7 @@
       "type": "image-with-text-overlay",
       "settings": {
         "wide_display": true,
-        "image": "shopify://shop_images/T.Banner.1.png",
+        "image": "shopify:\/\/shop_images\/T.Banner.1.png",
         "pretext": "",
         "title": "A Platform of Limitless Rugabilities",
         "subtitle": "",
@@ -48,7 +48,7 @@
         "image_bxzYhW": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/ChapPic.png"
+            "image": "shopify:\/\/shop_images\/ChapPic.png"
           }
         }
       },
@@ -69,7 +69,7 @@
       "type": "featured-text",
       "settings": {
         "title": "Slogan",
-        "content": "<p><strong>The Original Custom Rug Company</strong></p>",
+        "content": "<p><strong>The Original Custom Rug Company<\/strong><\/p>",
         "button_label": "",
         "button_link": "",
         "text_size": "featured_text",
@@ -84,7 +84,7 @@
         "image_zzWiMx": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/2.png"
+            "image": "shopify:\/\/shop_images\/2.png"
           }
         }
       },
@@ -105,7 +105,7 @@
       "type": "featured-text",
       "settings": {
         "title": "Mission",
-        "content": "<p>To innovate the process allowing limitless customization at competitive pricing with drastically reduced Lead-time. Cultivating ambiance through expressing identity.</p>",
+        "content": "<p>To innovate the process allowing limitless customization at competitive pricing with drastically reduced Lead-time. Cultivating ambiance through expressing identity.<\/p>",
         "button_label": "",
         "button_link": "",
         "text_size": "regular_text",
@@ -120,13 +120,13 @@
         "image_8RPVgK": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/3.png"
+            "image": "shopify:\/\/shop_images\/3.png"
           }
         },
         "image_W8thUe": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/4_86fea587-5944-4a20-b0d4-9b814e94dc37.png"
+            "image": "shopify:\/\/shop_images\/4_86fea587-5944-4a20-b0d4-9b814e94dc37.png"
           }
         }
       },
@@ -148,7 +148,7 @@
       "type": "featured-text",
       "settings": {
         "title": "Vision",
-        "content": "<p>Transcend the traditional rug into personal statements by representing individuals unique tastes and preferences.</p>",
+        "content": "<p>Transcend the traditional rug into personal statements by representing individuals unique tastes and preferences.<\/p>",
         "button_label": "",
         "button_link": "",
         "text_size": "regular_text",
@@ -168,7 +168,7 @@
         "show_controls": true,
         "video_dark_overlay": false,
         "iframe_video": "",
-        "html5_video": "https://cdn.shopify.com/videos/c/o/v/bb1d06c113ed416f97bc8e8b37b255ff.mp4",
+        "html5_video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/bb1d06c113ed416f97bc8e8b37b255ff.mp4",
         "display_text_over_video": false,
         "preheading": "",
         "heading": "",
@@ -195,7 +195,7 @@
           "type": "image",
           "settings": {
             "title": "",
-            "testimonial": "<p><em><strong>\"Our goal is to pioneer and reinvent the industry. For centuries, rugs have been handmade and crafted by the traditional knot and weave method. After years of R & D an opportunity surfaced from the demand of customization to the limited selection of the existing market. We saw an opportunity in crafting unique, personalized rug. Tailored to the owners tastes & preferences.\"</strong></em></p>",
+            "testimonial": "<p><em><strong>\"Our goal is to pioneer and reinvent the industry. For centuries, rugs have been handmade and crafted by the traditional knot and weave method. After years of R & D an opportunity surfaced from the demand of customization to the limited selection of the existing market. We saw an opportunity in crafting unique, personalized rug. Tailored to the owners tastes & preferences.\"<\/strong><\/em><\/p>",
             "name": "",
             "store_name": "",
             "link": "",
@@ -226,7 +226,7 @@
           "type": "employee",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Mario.jpg",
+            "image": "shopify:\/\/shop_images\/Mario.jpg",
             "title": "Mario Leone",
             "job_title": "Advisor",
             "description": "",
@@ -236,7 +236,7 @@
         "employee_krCYnL": {
           "type": "employee",
           "settings": {
-            "image": "shopify://shop_images/Joshua_Tatum.webp",
+            "image": "shopify:\/\/shop_images\/Joshua_Tatum.webp",
             "title": "Joshua Tatum",
             "job_title": "Advisor",
             "description": "",
@@ -247,7 +247,7 @@
           "type": "employee",
           "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Ryan_okeef.jpg",
+            "image": "shopify:\/\/shop_images\/Ryan_okeef.jpg",
             "title": "Ryan O'Keef",
             "job_title": "Administrator",
             "description": "",
@@ -257,7 +257,7 @@
         "employee_EWEYdd": {
           "type": "employee",
           "settings": {
-            "image": "shopify://shop_images/christian_apodaca_linkdin.jpg",
+            "image": "shopify:\/\/shop_images\/christian_apodaca_linkdin.jpg",
             "title": "Christian Apodaca",
             "job_title": "CFO",
             "description": "",
@@ -267,7 +267,7 @@
         "employee_ECAnbe": {
           "type": "employee",
           "settings": {
-            "image": "shopify://shop_images/Mason_linkdin.jpg",
+            "image": "shopify:\/\/shop_images\/Mason_linkdin.jpg",
             "title": "Mason Littlejohn",
             "job_title": "CMO",
             "description": "",
@@ -277,9 +277,9 @@
         "employee_gnTtgp": {
           "type": "employee",
           "settings": {
-            "image": "shopify://shop_images/FullSizeRender.jpg",
+            "image": "shopify:\/\/shop_images\/FullSizeRender.jpg",
             "title": "John Sho.",
-            "job_title": "Production / Design",
+            "job_title": "Production \/ Design",
             "description": "",
             "twitter": ""
           }
@@ -287,7 +287,7 @@
         "employee_CJkbpK": {
           "type": "employee",
           "settings": {
-            "image": "shopify://shop_images/IMG_7497.jpg",
+            "image": "shopify:\/\/shop_images\/IMG_7497.jpg",
             "title": "Iman Nian",
             "job_title": "Founder",
             "description": "",

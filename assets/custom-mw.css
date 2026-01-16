@@ -249,6 +249,10 @@ button#zakeke-product-button {
   visibility: visible !important;
 }
 
+#pplr_canvas {
+  background-color: black;
+}
+
 .mobile_logo .pplr_preview_wrapper .mobile_logo #pplr_canvas {
   display: none !important;
 }

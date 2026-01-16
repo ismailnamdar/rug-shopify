@@ -17194,6 +17194,11 @@ footer .social_icons a:hover {
   position: relative;
 }
 
+/* RUG09 */
+.nav-desktop__tier-1-item--dropdown-parent summary, .parent-link--false {
+  color: black !important;
+}
+
 .nav-desktop__tier-2-link--parent {
   display: flex;
   justify-content: space-between;

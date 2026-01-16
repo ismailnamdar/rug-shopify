@@ -133,6 +133,7 @@
                         lazyload
                         {{ settings.image_loading_style }}
                       "
+                      loading="lazy"
                       data-image-id="{{ product.media[forloop.index0].id }}"
                       data-index="{{ forloop.index0 }}"
                       data-sizes="{% if gallery_click_to_zoom %}100vw{% else %}auto{% endif %}"

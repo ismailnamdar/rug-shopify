@@ -384,7 +384,7 @@
           {% case block.type %}
             {% when 'collapsible-tab' %}
               {% if block.settings.collapsible_tab_heading != blank %}
-                <details class="collapsible-tab">
+                <details class="collapsible-tab" data-value="{{ block.settings.collapsible_tab_heading }}">
                   <summary class="collapsible-tab__heading">
                     <span>{{ block.settings.collapsible_tab_heading | escape }}</span>
                   </summary>
@@ -1343,6 +1343,31 @@
     tracks.forEach(track => {
       const clone = track.innerHTML;
       track.innerHTML += clone;
+    });
+
+    const faqs = document.querySelectorAll('details.collapsible-tab');
+    [...faqs].forEach((f, index) => {
+      let firstOpen = false;
+      f.addEventListener('click', function() {
+        const value = this.dataset.value;
+        const that = this;
+        if (index === 0 && !firstOpen) {
+          firstOpen = true;
+          return;
+        }
+        // It should be checked with false because open is added/removed before this click event calls
+        setTimeout(() => {
+          const isOpened = that.hasAttribute("open");
+          // Track in clarity
+          try {
+            if (window.clarity && isOpened) {
+              clarity("event", `PDP FAQ - ${value}`);
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        }, 0);
+      })
     });
   });
 </script>

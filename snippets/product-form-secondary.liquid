@@ -1358,7 +1358,6 @@
         addToCartButtonText.text('Adding to cart');
         CanvasRugEditor.loading(true, true, 'Preparing your rug...');
         await CanvasRugEditor.handleClickAddToCart()
-        $('#custom-rug-submit-button').click();
       } catch(error) {
         console.error(error);
         CanvasRugEditor.loading(false, true);
@@ -1413,12 +1412,21 @@
             setTimeout(() => {
               refreshCart(cart);
               setTimeout(() => {
-                $('.top-bar .cart-container:visible').click()
-                // TODO: fix there is a double click here.
                 addToCartButton.prop('disabled', false);
                 addToCartButtonText.text('Add to cart');
                 CanvasRugEditor.loading(false, true);
                 CanvasRugEditor.afterAddToCart();
+
+                if ($('body').hasClass('fancybox-active')) {
+                  $.fancybox.close();
+                }
+                if ($('#header').is(':visible')) {
+                  $('#header .cart-container').addClass('active_link');
+                } else if ($('.sticky_nav--stick').length) {
+                  $('.sticky_nav .cart-container').addClass('active_link');
+                } else {
+                  $('.top-bar .cart-container').addClass('active_link');
+                }
               }, 500);
             }, 500);
           },
@@ -1427,6 +1435,7 @@
             addToCartButton.prop('disabled', false);
             addToCartButtonText.text('Add to cart');
             CanvasRugEditor.loading(false, true);
+            CanvasRugEditor.afterAddToCart();
           }
         });
       })

@@ -333,6 +333,7 @@
           "type": "product"
         }
       },
+      "disabled": true,
       "name": "Product List",
       "settings": {
         "title": "Featured Products"

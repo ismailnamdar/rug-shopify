@@ -15,9 +15,9 @@
         "16480714442a1a08bf-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/lip-balm-collection.jpg",
+            "image": "shopify:\/\/shop_images\/lip-balm-collection.jpg",
             "title": "We value your input and opinons!",
-            "text": "<p>We love to hear from our customers and learn about how we can best serve your needs. We also enjoy hearing about how our products have helped you and any stories you have about your journey to wellness, so please share!</p>",
+            "text": "<p>We love to hear from our customers and learn about how we can best serve your needs. We also enjoy hearing about how our products have helped you and any stories you have about your journey to wellness, so please share!<\/p>",
             "button_label": "",
             "link": "",
             "bg_color": "",
@@ -43,7 +43,7 @@
         "7caf8d31-9352-4ce2-8d19-befae3ea93c7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/chicago-day-colour-2_ee293620-d8a8-42ee-ae58-3b5491dc2500.png",
+            "image": "shopify:\/\/shop_images\/chicago-day-colour-2_ee293620-d8a8-42ee-ae58-3b5491dc2500.png",
             "logo_display_width": 150,
             "text": ""
           }
@@ -94,7 +94,7 @@
           "type": "image",
           "settings": {
             "logo_display_width": 150,
-            "text": "<p>Please allow two business days for a reply.</p>"
+            "text": "<p>Please allow two business days for a reply.<\/p>"
           }
         }
       },
@@ -150,7 +150,7 @@
         "display_first_name": false,
         "display_last_name": false,
         "newsletter_title": "Subscribe today",
-        "newsletter_text": "<p>Stay in the know, and receive 10% OFF your next <strong>Chicago </strong>purchase!</p>",
+        "newsletter_text": "<p>Stay in the know, and receive 10% OFF your next <strong>Chicago <\/strong>purchase!<\/p>",
         "newsletter_section_text_align": "center",
         "css_class": "",
         "custom_css": ""

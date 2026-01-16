@@ -635,37 +635,37 @@ document.addEventListener('DOMContentLoaded', function () {
           cartItemsHTML += '</div>';
         }
         cartItemsHTML += '</div><div class="mini-cart__item-price-quantity-container"><div class="mini-cart__item-price">';
-          $.ajax({
-            dataType: 'json',
-            async: false,
-            cache: false,
-            url: `/products/${item.handle}.js`,
-            success(data) {
-              let productData = data;
-              // If item has more than one variant, need to make sure we are pulling data from the correct variant
-              if (productData.variants) {
-                const itemVariants = productData.variants;
-                if (itemVariants.length > 1) {
-                  for (let v = 0; v < itemVariants.length; v++) {
-                    if (itemVariants[v].id === item.id) {
-                      productData = itemVariants[v];
-                    }
-                  }
-                }
-              }
+        //   $.ajax({
+        //     dataType: 'json',
+        //     async: false,
+        //     cache: false,
+        //     url: `/products/${item.handle}.js`,
+        //     success(data) {
+        //       let productData = data;
+        //       // If item has more than one variant, need to make sure we are pulling data from the correct variant
+        //       if (productData.variants) {
+        //         const itemVariants = productData.variants;
+        //         if (itemVariants.length > 1) {
+        //           for (let v = 0; v < itemVariants.length; v++) {
+        //             if (itemVariants[v].id === item.id) {
+        //               productData = itemVariants[v];
+        //             }
+        //           }
+        //         }
+        //       }
 
-              // If compare at price exists then item is on sale CURRENTLY OFF
-              if (productData.compare_at_price && productData.compare_at_price > productData.price && false) {
-                productHasSale = true;
-                productCompareAtPrice = productData.compare_at_price;
-                productFinalPrice = productData.price;
+        //       // If compare at price exists then item is on sale CURRENTLY OFF
+        //       if (productData.compare_at_price && productData.compare_at_price > productData.price && false) {
+        //         productHasSale = true;
+        //         productCompareAtPrice = productData.compare_at_price;
+        //         productFinalPrice = productData.price;
                 
-              } else {
-                // Check required for non-sale items
-                productHasSale = false;
-              }
-            }
-          });
+        //       } else {
+        //         // Check required for non-sale items
+        //         productHasSale = false;
+        //       }
+        //     }
+        //   });
           if (productHasSale === true) {
             // puts the slash through the old item price
             const itemPrice = `${window.Shopify.formatMoney(productFinalPrice, $('body').data('money-format'))} </span><span class="money was_price">${window.Shopify.formatMoney(productCompareAtPrice, $('body').data('money-format'))}</span>`;

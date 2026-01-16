@@ -42,7 +42,7 @@
     "custom_html_nPE8ic": {
       "type": "custom-html",
       "settings": {
-        "custom_html": "<style>\n.stamped-full-page-tabs ul li{display:none !important;}\n.stamped-full-page-tabs ul li.active,\n.stamped-full-page-tabs ul li:first-of-type{display:inline-block !important; margin-right:0;}\n</style>",
+        "custom_html": "<style>\n.stamped-full-page-tabs ul li{display:none !important;}\n.stamped-full-page-tabs ul li.active,\n.stamped-full-page-tabs ul li:first-of-type{display:inline-block !important; margin-right:0;}\n<\/style>",
         "css_class": "",
         "custom_css": ""
       }
@@ -51,7 +51,7 @@
       "type": "apps",
       "blocks": {
         "okendo_media_grid_ANbiHq": {
-          "type": "shopify://apps/okendo/blocks/media-grid/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "type": "shopify:\/\/apps\/okendo\/blocks\/media-grid\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
           "settings": {
             "product": ""
           }
@@ -67,7 +67,7 @@
       "type": "apps",
       "blocks": {
         "okendo_reviews_widget_8UyyKa": {
-          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "type": "shopify:\/\/apps\/okendo\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
           "settings": {
             "product": "",
             "widget_type": "reviews_widget"

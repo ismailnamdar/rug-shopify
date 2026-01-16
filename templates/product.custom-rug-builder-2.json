@@ -424,6 +424,7 @@
         "product_wqCxV4",
         "product_RMb7P7"
       ],
+      "disabled": true,
       "name": "Product List",
       "settings": {
         "title": "Featured Products"
