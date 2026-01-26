@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       51252103938369,
       // FREE Non Slip Backing
       51252413104449,
+      // FREE Color Matching
+      51266493251905,
     ];
   
     const cart = cartObj || await fetch('/cart.js').then(r => r.json());
