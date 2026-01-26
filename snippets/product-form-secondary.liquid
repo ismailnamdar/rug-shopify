@@ -1388,7 +1388,7 @@
     });
 
     const $form = $('#product-form-section-{{ product.id }}');
-    $form.on("submit", function (e) {
+    $form.on("submit", async function (e) {
       const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
       // Stop normal redirect
       e.preventDefault();
@@ -1397,6 +1397,7 @@
       const formData = new FormData($form[0]);
 
       CanvasRugEditor.loading(true, true, 'Adding to cart...');
+      await window.checkFreeProducts(true);
       fetch("/cart/add.js", {
         method: "POST",
         body: formData,

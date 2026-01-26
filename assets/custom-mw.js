@@ -253,7 +253,7 @@ if (document.body.classList.contains("product") || document.body.classList.conta
 		}
 	});
 
-	document.addEventListener("click", function (event) {
+	document.addEventListener("click", async function (event) {
 
 		////////////////// PRODUCT PAGE.. //////////////////
 		const productDetail = document.querySelector('form[action="/cart/add"] .purchase-details');
@@ -272,6 +272,9 @@ if (document.body.classList.contains("product") || document.body.classList.conta
 				'.add_to_cart.global-button.global-button--primary.ajax-submit.p_a_t_c'
 			);
 			if (addToCartBtn && !addToCartBtn.disabled && addToCartBtn.getAttribute('aria-disabled') !== 'true') {
+				if (typeof window.checkFreeProducts === "function") {
+					window.checkFreeProducts(true);
+				}
 				addToCartBtn.click();
 			}
 			// RUG07 script End
