@@ -272,9 +272,6 @@ if (document.body.classList.contains("product") || document.body.classList.conta
 				'.add_to_cart.global-button.global-button--primary.ajax-submit.p_a_t_c'
 			);
 			if (addToCartBtn && !addToCartBtn.disabled && addToCartBtn.getAttribute('aria-disabled') !== 'true') {
-				if (typeof window.checkFreeProducts === "function") {
-					window.checkFreeProducts(true);
-				}
 				addToCartBtn.click();
 			}
 			// RUG07 script End
