@@ -386,7 +386,17 @@
                     <div class="discount-atc--applied-text">🎉 Congrats 15% off coupon applied!</div>
                   </div> {% endcomment %}
 
-                  <div class="discount-atc conv {% if cart.item_count >= 2 %}dis--active{% endif %}">
+                  {% assign free_variants = "51251607863617,51251475611969,51252103938369,51252413104449,51266493251905" | split: "," %}
+                  {% assign valid_item_count = 0 %}
+
+                  {% for item in cart.items %}
+                    {% assign variant_id_string = item.variant_id | append: "" %}
+                    {% unless free_variants contains variant_id_string %}
+                      {% assign valid_item_count = valid_item_count | plus: item.quantity %}
+                    {% endunless %}
+                  {% endfor %}
+
+                  <div class="discount-atc conv {% if valid_item_count >= 2 %}dis--active{% endif %}">
                     <div class="conv-text">YOU UNLOCK FREE SHIPPING - BUY 2 GET 15% OFF</div>
                     <div class="conv-text applied">YOU UNLOCK FREE SHIPPING AND GET 15% OFF</div>
                     <div class="discount-atc--section">
