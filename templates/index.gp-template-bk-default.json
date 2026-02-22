@@ -308,14 +308,14 @@
       "name": "Hero Trust with Video",
       "settings": {
         "cta_link": "shopify://products/custom-rug-carpet",
-        "cta_text": "CREATE MY RUG →",
-        "overlay_opacity": 40,
+        "cta_text": "See Your Logo on a Rug",
+        "overlay_opacity": 35,
         "rating_value": "4.55",
         "show_features": true,
-        "subhead": "From Image to Iconic Rug.",
-        "title": "Your Design. Our Craftsmanship. Commercial-Grade Premium Rugs Hand-Tailored in USA.",
-        "trust_text": "Trusted by 10,000+ businesses and fans of unique spaces",
-        "video": "shopify://files/videos/RG03-edited-video.webm",
+        "subhead": "Indoor & Outdoor. Built for Any Floor",
+        "title": "Custom Logo Rugs Built for High Traffic.",
+        "trust_text": "Trusted by 10,000+ Businesses",
+        "video": "shopify://files/videos/CL_RUG_C25_CUSTOM_02_16x9 (1).mp4",
         "video_url": ""
       },
       "type": "hero-trust-with-video"

@@ -3929,16 +3929,16 @@ body.is-active #header {
 }
 
 .mobile_nav div span:nth-child(1) {
-  top: 10px;
+  top: 12px;
 }
 
 .mobile_nav div span:nth-child(2),
 .mobile_nav div span:nth-child(3) {
-  top: 20px;
+  top: 18px;
 }
 
 .mobile_nav div span:nth-child(4) {
-  top: 30px;
+  top: 24px;
 }
 
 .mobile_nav div.open span:nth-child(1) {
@@ -4479,13 +4479,16 @@ p.cart-message a {
   .mini_cart,
   .nav a.mini_cart {
     padding-left: 15px;
-    padding-right: 15px;
   }
 }
 @media only screen and (max-width: 798px) {
   .mini_cart,
   .nav a.mini_cart {
     right: 0;
+  }
+
+  #header .top-bar {
+    padding: 6px 0;
   }
 }
 
@@ -11393,10 +11396,12 @@ h4 span,
 }
 /* Promo banner */
 .header .promo-banner a,
-.header .promo-banner a:visited a:hover,
-#header .promo-banner a,
-#header .promo-banner a:visited a:hover {
+#header .promo-banner a {
   color: #ffffff;
+}
+
+.header .promo-banner a:hover,
+#header .promo-banner a:hover {
   text-decoration: underline;
 }
 
@@ -17076,7 +17081,7 @@ footer .social_icons a:hover {
 .feature_image .nav-desktop__tier-1-link:visited {
   color: #000000;
 }
-.feature_image .nav-desktop__tier-1-link:hover, .feature_image .nav-desktop__tier-1-link:active, .feature_image .nav-desktop__tier-1-link:focus, .feature_image .nav-desktop__tier-1-link.nav-desktop__tier-1-link--active {
+.feature_image .nav-desktop__tier-1-link:hover, .feature_image .nav-desktop__tier-1-link:active, .feature_image .nav-desktop__tier-1-link:focus, .feature_image {
   color: #878787;
 }
 
@@ -17131,7 +17136,7 @@ footer .social_icons a:hover {
 .nav-desktop__tier-3-link:visited span {
   color: inherit;
 }
-.nav-desktop__tier-1-link:hover, .nav-desktop__tier-1-link:active, .nav-desktop__tier-1-link:focus, .nav-desktop__tier-1-link:focus-within, .nav-desktop__tier-1-link.nav-desktop__tier-1-link--active,
+.nav-desktop__tier-1-link:hover, .nav-desktop__tier-1-link:active, .nav-desktop__tier-1-link:focus, .nav-desktop__tier-1-link:focus-within,
 .nav-desktop__tier-2-link:hover,
 .nav-desktop__tier-2-link:active,
 .nav-desktop__tier-2-link:focus,
@@ -17170,10 +17175,11 @@ footer .social_icons a:hover {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: 13px;
+  column-gap: 24px;
   padding: 0;
   margin: 0;
   list-style: none;
+  margin-left: 12px;
 }
 .align_right .nav-desktop__tier-1 {
   justify-content: flex-end;
@@ -17186,8 +17192,9 @@ footer .social_icons a:hover {
 }
 .nav-desktop__tier-1 .nav-desktop__tier-1-link {
   display: block;
-  padding: 12px 0;
+  padding: 6px 0 6px 0;
   white-space: nowrap;
+  line-height: 16px;
 }
 
 .nav-desktop__tier-1-item--dropdown-parent {

@@ -209,7 +209,7 @@
               {{ 'layout.general.designer_credits_html' | t }}
             {% endif %}
 
-            {{ powered_by_link }}
+            {% comment %} {{ powered_by_link }} {% endcomment %}
           </p>
           {% if section.settings.display_payment_methods %}
             <div class="payment_methods">

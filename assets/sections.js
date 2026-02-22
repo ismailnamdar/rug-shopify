@@ -2273,56 +2273,56 @@ window.header = {
             scrollTop: $(anchorLink).offset().top - headerHeight
           }, 2000);
         });
-        if (!$('.main-nav__wrapper').hasClass('sticky_nav')) {
-          let stickyNavAnimation;
-          window.sticky_nav = new Headhesive('.main-nav__wrapper', {
-            offset: 700,
-            throttle: 300,
-            classes: {
-              clone: 'sticky_nav',
-              stick: 'sticky_nav--stick',
-              unstick: 'sticky_nav--unstick'
-            },
-            onInit: function () {
-              $('.sticky_nav .secondary_logo').css('display', 'none');
-              $('.sticky_nav .primary_logo').css('display', 'block');
-              $('.sticky_nav .icon-search').css('display', 'block');
-              $('.sticky_nav .search-form').css('display', 'none');
-              $('.sticky_nav .search-link').css('display', 'block');
-              $('.sticky_nav .main-nav').append($(".header .cart-container").clone());
-              window.navigationDesktopManager.initAll();
-              stickyNavAnimation = new window.animations.transition({
-                el: document.querySelector('.sticky_nav'),
-                state: 'closed'
-              });
-            },
-            onStick: function () {
-              stickyNavAnimation.animateTo('open', {
-                onStart: () => {
-                  var maxHeight = 0;
-                  var $targetHeightElement = $('.sticky_nav .main-nav');
-                  $targetHeightElement.each(function () {
-                    maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
-                  });
-                  $('.sticky_nav .mini_cart').css('height', maxHeight);
-                  $('.sticky_nav .cart_content').css('top', maxHeight);
-                  document.querySelector('.sticky_nav').style.setProperty('--sticky-header-height', `${maxHeight}px`);
-                }
-              });
-            },
-            onUnstick: function () {
-              $('.cart-container').removeClass('active_link');
-              stickyNavAnimation.animateTo('closed', {
-                force: true
-              });
-            },
-            onDestroy: () => {
-              if (stickyNavAnimation) {
-                stickyNavAnimation.unload();
-              }
-            }
-          });
-        }
+        // if (!$('.main-nav__wrapper').hasClass('sticky_nav')) {
+        //   let stickyNavAnimation;
+        //   window.sticky_nav = new Headhesive('.main-nav__wrapper', {
+        //     offset: 700,
+        //     throttle: 300,
+        //     classes: {
+        //       clone: 'sticky_nav',
+        //       stick: 'sticky_nav--stick',
+        //       unstick: 'sticky_nav--unstick'
+        //     },
+        //     onInit: function () {
+        //       $('.sticky_nav .secondary_logo').css('display', 'none');
+        //       $('.sticky_nav .primary_logo').css('display', 'block');
+        //       $('.sticky_nav .icon-search').css('display', 'block');
+        //       $('.sticky_nav .search-form').css('display', 'none');
+        //       $('.sticky_nav .search-link').css('display', 'block');
+        //       // $('.sticky_nav .main-nav').append($(".header .cart-container").clone());
+        //       window.navigationDesktopManager.initAll();
+        //       stickyNavAnimation = new window.animations.transition({
+        //         el: document.querySelector('.sticky_nav'),
+        //         state: 'closed'
+        //       });
+        //     },
+        //     onStick: function () {
+        //       stickyNavAnimation.animateTo('open', {
+        //         onStart: () => {
+        //           var maxHeight = 0;
+        //           var $targetHeightElement = $('.sticky_nav .main-nav');
+        //           $targetHeightElement.each(function () {
+        //             maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
+        //           });
+        //           $('.sticky_nav .mini_cart').css('height', maxHeight);
+        //           $('.sticky_nav .cart_content').css('top', maxHeight);
+        //           document.querySelector('.sticky_nav').style.setProperty('--sticky-header-height', `${maxHeight}px`);
+        //         }
+        //       });
+        //     },
+        //     onUnstick: function () {
+        //       $('.cart-container').removeClass('active_link');
+        //       stickyNavAnimation.animateTo('closed', {
+        //         force: true
+        //       });
+        //     },
+        //     onDestroy: () => {
+        //       if (stickyNavAnimation) {
+        //         stickyNavAnimation.unload();
+        //       }
+        //     }
+        //   });
+        // }
       } else {
         $('.header-fixed--true').removeClass('header-fixed--true');
         if ($('.main-nav__wrapper').length > 1) {
@@ -2373,6 +2373,7 @@ window.header = {
         }
       });
       $('.cart-container').on('click', function (e) {
+        console.log('CLICKED');
         document.body?.classList.add('side_cart_active');
         const $cartContainer = $(this);
         clearTimeout(closeTimer);

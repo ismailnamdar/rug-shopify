@@ -112,9 +112,9 @@
 
     <div id="custom-rug-comments-section" style="display: none; width: 100%;">
       <div style="display: flex; width: 100%; flex-direction: row; justify-content: space-between;">
-        <div style="font-weight: 900; margin-bottom: 8px;">Add Notes:</div>
+        <div style="font-weight: 900; margin-bottom: 8px; display: none;">Add Notes:</div>
         <div>
-          <button type="button" class="custom-rug-edit-notes">Edit Notes</button>
+          <button type="button" class="custom-rug-edit-notes">Add Notes</button>
         </div>
       </div>
       {% render 'divider' %}
@@ -760,7 +760,7 @@
     });
 
     const $form = $('#product-form-section-{{ product.id }}');
-    $form.on("submit", function (e) {
+    $form.on("submit", async function (e) {
       const addToCartButtonText = $(".custom-rug-sticky-add-to-cart-button-text")
       // Stop normal redirect
       e.preventDefault();
@@ -769,6 +769,7 @@
       //const formData = new FormData($form[0]);
 
       CanvasRugEditor.loading(true, true, 'Adding to cart...');
+      // await window.checkFreeProducts(true);
       $.ajax({
         url: '/cart/add.js',
         dataType: 'json',
