@@ -3839,7 +3839,7 @@ body.is-active #header {
   position: fixed;
   z-index: 998;
   width: 100%;
-  top: 0;
+  top: 30px;
   left: 0;
   background-color: #000000e6
 }

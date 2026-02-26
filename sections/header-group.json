@@ -11,10 +11,78 @@
   "type": "header",
   "name": "Header",
   "sections": {
+    "announcement_bar_PTw6zq": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_dNbj3F": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "text": "<a href=\"https://rugtomize.co/products/custom-rug-carpet\" title=\"/products/custom-rug-carpet\">BUY 2+ RUGS GET 15% OFF - USE CODE BUY2GET15 →</a>",
+            "link": "",
+            "hide_icon_mobile": true,
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "announcement_DRVCpW": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "text": "SHIPS IN 2-4 BUSINESS DAYS",
+            "link": "",
+            "hide_icon_mobile": true,
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "announcement_CHEbRK": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "text": "FREE PROOF BEFORE PRODUCTION",
+            "link": "",
+            "hide_icon_mobile": true,
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_dNbj3F",
+        "announcement_DRVCpW",
+        "announcement_CHEbRK"
+      ],
+      "name": "Announcement Bar v2",
+      "settings": {
+        "show_social": true,
+        "enable_language_selector": true,
+        "enable_country_selector": true,
+        "invert_icons_selectors": false,
+        "announcement_position": "center",
+        "announcement_layout": "carousel",
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "show_navigation": true,
+        "direction": "left",
+        "speed": 20,
+        "color_text": "#fafafa",
+        "color_background": "#ff0000",
+        "gradient_background": "",
+        "color_highlight": "#ffddbf",
+        "gradient_highlight": "",
+        "hide_homepage": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
     "header": {
       "type": "header",
       "settings": {
-        "promo_text": "<p><a href=\"/products/custom-rug-carpet\" title=\"/products/custom-rug-carpet\">Buy 2+ Rugs Get 15% Off  - use code BUY2GET15 →</a></p>",
+        "promo_text": "",
         "social_icons_header": false,
         "phone_number": "949-478-4886",
         "email_address": "info@rugtomize.co",
@@ -41,6 +109,7 @@
     }
   },
   "order": [
+    "announcement_bar_PTw6zq",
     "header"
   ]
 }
