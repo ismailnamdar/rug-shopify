@@ -49,9 +49,12 @@
       ],
       "name": "Hero Trust with Video",
       "settings": {
+        "media_type": "image",
         "video": "shopify://files/videos/CL_RUG_C25_CUSTOM_02_16x9 (1).mp4",
         "video_url": "",
-        "overlay_opacity": 35,
+        "poster_desktop": "shopify://shop_images/BannerDesktop.collage_version_2_Webp.jpg",
+        "poster_mobile": "shopify://shop_images/BannerMobile.collage_version_2_Webp.webp",
+        "overlay_opacity": 25,
         "rating_value": "4.55",
         "trust_text": "Trusted by 10,000+ Businesses",
         "title": "Custom Logo Rugs Built for High Traffic.",

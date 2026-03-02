@@ -1,0 +1,536 @@
+<style>
+  .faq-section {
+    padding: 40px 0px;
+    max-width: 900px;
+    margin: auto;
+  }
+  .faq-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .faq-item {
+    border-top: 1px solid #000;
+  }
+  .faq-question,
+  .nested-question {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .faq-question {
+    padding: 16px 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .nested-question {
+    padding: 12px 0;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .faq-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+  }
+  .faq-answer,
+  .nested-answer {
+    display: none;
+    line-height: 1.5;
+  }
+  .faq-answer {
+    font-size: 15px;
+    padding-bottom: 16px;
+  }
+  .nested-answer {
+    font-size: 14px;
+    padding-bottom: 12px;
+  }
+  .nested-group {
+    padding-left: 15px;
+    border-left: 2px solid #ccc;
+    margin-top: 10px;
+  }
+
+  /* only rotate the clicked question’s icon */
+  .faq-item.open  > .faq-question  .faq-icon,
+  .nested-item.open > .nested-question .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  /* show the opened answers */
+  .faq-item.open  .faq-answer,
+  .nested-item.open .nested-answer {
+    display: block;
+  }
+</style>
+
+<div class="faq-section">
+  <h2 class="faq-title">FAQs</h2>
+
+
+  <!-- SECTION 3 -->
+  <div class="faq-item" data-value="Backgrounds, Color, & Logo Styling">
+    <div class="faq-question">
+      <span>1. Backgrounds, Color, & Logo Styling</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="nested-group">
+        <div class="nested-item">
+          <div class="nested-question" data-value="How do I choose or change the background color?">
+            <span>How do I choose or change the background color?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Include your hex code or reference in checkout notes or email us.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can I change the background color after ordering?">
+            <span>Can I change the background color after ordering?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—within 24 hours of purchase.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can I request a black/grey background with a white logo?">
+            <span>Can I request a black/grey background with a white logo?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Absolutely—specify it in your notes.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can you invert my logo?">
+            <span>Can you invert my logo?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Of course—let us know light-to-dark or vice versa.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Will the colors match the final product?">
+            <span>Will the colors match the final product?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            We aim for 95–100% accuracy; slight variation may occur.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="faq-item" data-value="Shapes & Sizes">
+    <div class="faq-question">
+      <span>2. Shapes & Sizes</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="nested-group">
+        <div class="nested-item">
+          <div class="nested-question" data-value="Do you offer custom shapes?">
+            <span>Do you offer custom shapes?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—describe your shape in checkout notes or email us.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Do you offer custom sizes?">
+            <span>Do you offer custom sizes?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Pick the closest size and give exact dimensions; we’ll invoice any upcharge.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="faq-item" data-value="Customization & Design Options">
+    <div class="faq-question">
+      <span>3. Customization & Design Options</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="nested-group">
+        <div class="nested-item">
+          <div class="nested-question" data-value="Do you offer design assistance?">
+            <span>Do you offer design assistance?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—free logo cleanup, layout help, color guidance, and concept creation.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Will my design be centered and sized correctly?">
+            <span>Will my design be centered and sized correctly?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Absolutely—every design is manually adjusted for balance.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can I add text, images, or multiple logos?">
+            <span>Can I add text, images, or multiple logos?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Sure—upload everything at checkout or email us within 24 hours.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can you rotate my design?">
+            <span>Can you rotate my design?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—just specify your rotation preference.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="faq-item" data-value="Product Details & Quality">
+    <div class="faq-question">
+      <span>4. Product Details & Quality</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="nested-group">
+        <div class="nested-item">
+          <div class="nested-question" data-value="What are your rugs made of?">
+            <span>What are your rugs made of?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Commercial-grade polyester with non-slip rubber or vinyl backing.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Will rugs stay flat in high-traffic areas?">
+            <span>Will rugs stay flat in high-traffic areas?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—weight-balanced and reinforced.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Are they durable enough for daily use?">
+            <span>Are they durable enough for daily use?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Absolutely—built to last under heavy traffic.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Are they easy to clean?">
+            <span>Are they easy to clean?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Vacuum regularly or hose down with mild soap.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can they be used outdoors?">
+            <span>Can they be used outdoors?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—fade and moisture resistant.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Do they have non-slip backing?">
+            <span>Do they have non-slip backing?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Every rug ships with an anti-slip base.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="How thick are the rugs?">
+            <span>How thick are the rugs?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            About 0.4″ (10 mm)—ADA-compliant.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="faq-item" data-value="Trust & Satisfaction">
+    <div class="faq-question">
+      <span>5. Trust & Satisfaction (Proofs, Guarantees, Design Assurance)</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="nested-group">
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can I see a free proof or mockup before production?">
+            <span>Can I see a free proof or mockup before production?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Request a free digital proof by adding a note at checkout or replying to your confirmation email within 24 hours.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can I request a refund if I don’t like the proof?">
+            <span>Can I request a refund if I don’t like the proof?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—reply within 24 hours and we’ll issue a full refund before production.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="How long do I have to request design or color changes?">
+            <span>How long do I have to request design or color changes?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            You have 24 hours after ordering to submit any change requests.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="What happens if I don't submit design instructions?">
+            <span>What happens if I don't submit design instructions?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            We’ll proceed with your uploaded artwork and our design standards.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="How many design variations can I request?">
+            <span>How many design variations can I request?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Up to four variations per rug to ensure your vision.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="faq-item" data-value="Ordering & File Upload Help">
+    <div class="faq-question">
+      <span>6. Ordering & File Upload Help</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="nested-group">
+        <div class="nested-item">
+          <div class="nested-question" data-value="What file types do you accept?">
+            <span>What file types do you accept?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            PNG, JPEG, SVG, PDF, WebP (200 KB–20 MB; 2 MB+ preferred).
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can I check out without uploading my design?">
+            <span>Can I check out without uploading my design?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—complete checkout, then email us your file within 24 hours.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="I’m having trouble uploading—what should I do?">
+            <span>I’m having trouble uploading—what should I do?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Finish checkout and send the file later; we’ll confirm receipt.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="I can’t complete checkout—what now?">
+            <span>I can’t complete checkout—what now?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Refresh, try another browser, or contact us to place it manually.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Can I cancel or modify my order?">
+            <span>Can I cancel or modify my order?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—within 24 hours and before production starts.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="faq-item" data-value="Discounts & Bulk Orders">
+    <div class="faq-question">
+      <span>7. Discounts & Bulk Orders</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="nested-group">
+        <div class="nested-item">
+          <div class="nested-question" data-value="My discount code isn’t working—what do I do?">
+            <span>My discount code isn’t working—what do I do?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Place your order, mention the code, and we’ll refund the difference.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Do you offer bulk pricing?">
+            <span>Do you offer bulk pricing?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Yes—for 10, 50, 100, 200+ units. Contact us for a quote.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="faq-item" data-value="Production, Shipping & Delivery">
+    <div class="faq-question">
+      <span>8. Production, Shipping & Delivery</span>
+      <span class="faq-icon">+</span>
+    </div>
+    <div class="faq-answer">
+      <div class="nested-group">
+        <div class="nested-item">
+          <div class="nested-question" data-value="What is the production & shipping turnaround?">
+            <span>What is the production & shipping turnaround?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Production: 3–5 business days. Then ships via express ground.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="Where do you ship from?">
+            <span>Where do you ship from?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            Orange County, California.
+          </div>
+        </div>
+        <div class="nested-item">
+          <div class="nested-question" data-value="How do I track my order?">
+            <span>How do I track my order?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="nested-answer">
+            We’ll email tracking on ship. If not received, reply to your order confirmation.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // toggle top-level sections
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      q.closest('.faq-item').classList.toggle('open');
+    });
+  });
+  // toggle nested questions
+  document.querySelectorAll('.nested-question').forEach(q => {
+    q.addEventListener('click', () => {
+      q.closest('.nested-item').classList.toggle('open');
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqs = document.querySelectorAll('.faq-section .faq-item');
+    [...faqs].forEach((f, index) => {
+            f.addEventListener('click', function() {
+            const value = this.dataset.value;
+            const that = this;
+            setTimeout(() => {
+            const isOpened = that.classList.contains('open');
+            // Track in clarity
+            try {
+                if (window.clarity && isOpened) {
+                clarity("event", `FAQ Section - ${value}`);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+            }, 0);
+        })
+    });
+
+    const nestedQuestions = document.querySelectorAll('.nested-question');
+    console.log('sent', nestedQuestions);
+    [...nestedQuestions].forEach((f, index) => {
+        f.addEventListener('click', function() {
+            const value = this.dataset.value;
+            const that = this;
+            setTimeout(() => {
+            const isOpened = that.parentNode.classList.contains('open');
+            // Track in clarity
+            try {
+                if (window.clarity && isOpened) {
+                clarity("event", `FAQ Sub Section - ${value}`);
+                console.log('sent', `FAQ Sub Section - ${value}`);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+            }, 0);
+        })
+    });
+});
+</script>
+
+{%- schema -%}
+  {
+    "name": "PDP FAQ",
+    "settings": [],
+    "presets": [
+      {
+        "name": "PDP FAQ",
+      }
+    ]
+  }
+{% endschema %}
