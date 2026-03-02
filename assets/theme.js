@@ -242,7 +242,6 @@ class AnnouncementBar extends HTMLElement {
   }
 
   init() {
-    console.log("@@", this.initialized, this.items)
     if (this.initialized) return;
     this.initialized = true;
 
@@ -261,8 +260,6 @@ class AnnouncementBar extends HTMLElement {
           }
         }
       });
-
-      console.log("@@@", this.slider);
   
       this.slider.on('change', this.onChange.bind(this));
       this.addEventListener('slider:previous', () => this.slider.previous());
