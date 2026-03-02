@@ -5,9 +5,17 @@
     --section-blocks-count: {{ section.blocks.size }};
   }
 
-  @media screen and (min-width: 1024px) {
+  .section-number-counter .flickity-button {
+    display: none !important;
+  }
+
+  #shopify-section-{{ section.id }} .multicolumn {
+    gap: {% if section.settings.gap == 'small' %}var(--sp-4){% elsif section.settings.gap == 'medium' %}var(--sp-6){% else %}100px{% endif %};
+  }
+
+  @media screen and (max-width: 768px) {
     #shopify-section-{{ section.id }} .multicolumn {
-      --card-grid-gap: {% if section.settings.gap == 'small' %}var(--sp-4){% elsif section.settings.gap == 'medium' %}var(--sp-6){% else %}clamp(40px, 3.5vw, 60px){% endif %};
+      gap: 40px;
     }
   }
   
@@ -25,14 +33,14 @@
   }
 </style>
 
-<div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}" style="background-color: {{ section.settings.color_background }}; color: {{ section.settings.color_text }}; width: 100%; max-width: 100%;
+<div class="section section-number-counter section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}" style="background-color: {{ section.settings.color_background }}; color: {{ section.settings.color_text }}; width: 100%; max-width: 100%;
     background-image: url({{ section.settings.background_image | image_url: width: 800 }});
   background-repeat: repeat-x;
   background-position: center;
   background-size: auto;">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
-    <slider-element class="grid slider{% if section.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card"{% if section.settings.swipe_on_mobile %} tabindex="0"{% endif %}>
-      <div class="multicolumn with-{{ section.blocks.size }} card-grid card-grid--{{ section.settings.columns }} gap-6 mobile:card-grid--{{ section.settings.columns_mobile }} grid relative z-1">
+    <div class="grid slider{% if section.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card"{% if section.settings.swipe_on_mobile %} tabindex="0"{% endif %}>
+      <div class="multicolumn with-{{ section.blocks.size }} card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid relative z-1">
         {%- for block in section.blocks -%}
           <div class="counter-card card flex gap-2 w-full flex-col items-start xl:flex-row md:text-{{ section.settings.text_alignment }} text-{{ section.settings.text_alignment_mobile }}" {{ block.shopify_attributes }}>
             <div class="grid w-full">
@@ -49,7 +57,11 @@
           </div>
         {%- endfor -%}
       </div>
+<<<<<<< HEAD
     </slider-element>
+=======
+    </div>
+>>>>>>> main
   </div>
 </div>
 
