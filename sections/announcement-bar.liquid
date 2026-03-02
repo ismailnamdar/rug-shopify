@@ -403,103 +403,32 @@
         {
           "type": "inline_richtext",
           "id": "text",
-          "label": "t:sections.global.settings.text.label",
+          "label": "Text",
           "default": "Welcome to our store"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "t:sections.global.settings.link.label"
+          "label": "Link"
         },
         {
           "type": "header",
-          "content": "t:sections.global.settings.header__mobile.content"
+          "content": "Header"
         },
         {
           "type": "checkbox",
           "id": "hide_icon_mobile",
           "default": true,
-          "label": "t:sections.announcement-bar.blocks.announcement.settings.hide_icon_mobile.label"
+          "label": "Header icon"
         },
         {
           "type": "inline_richtext",
           "id": "text_mobile",
-          "label": "t:sections.announcement-bar.blocks.announcement.settings.text_mobile.label"
+          "label": "Text mobile"
         },
         {
           "type": "header",
-          "content": "t:sections.global.settings.header__highlight.content",
-          "info": "t:sections.global.settings.header__highlight.info"
-        },
-        {
-          "type": "select",
-          "id": "highlighted_text",
-          "options": [
-            {
-              "value": "none",
-              "label": "t:sections.global.settings.highlighted_text.options__1.label"
-            },
-            {
-              "value": "text",
-              "label": "t:sections.global.settings.highlighted_text.options__2.label"
-            },
-            {
-              "value": "full_text",
-              "label": "t:sections.global.settings.highlighted_text.options__3.label"
-            },
-            {
-              "value": "half_text",
-              "label": "t:sections.global.settings.highlighted_text.options__4.label"
-            },
-            {
-              "value": "underline",
-              "label": "t:sections.global.settings.highlighted_text.options__5.label"
-            },
-            {
-              "value": "marker",
-              "label": "t:sections.global.settings.highlighted_text.options__6.label"
-            },
-            {
-              "value": "stencil",
-              "label": "t:sections.global.settings.highlighted_text.options__7.label"
-            },
-            {
-              "value": "scribble",
-              "label": "t:sections.global.settings.highlighted_text.options__8.label"
-            }
-          ],
-          "default": "none",
-          "label": "t:sections.global.settings.highlighted_text.label"
-        },
-        {
-          "visible_if": "{{ block.settings.highlighted_text == 'scribble' }}",
-          "type": "select",
-          "id": "highlighted_scribble",
-          "options": [
-            {
-              "value": "circle",
-              "label": "t:sections.global.settings.highlighted_scribble.options__1.label"
-            },
-            {
-              "value": "basic-underline",
-              "label": "t:sections.global.settings.highlighted_scribble.options__2.label"
-            },
-            {
-              "value": "sketch-underline",
-              "label": "t:sections.global.settings.highlighted_scribble.options__3.label"
-            },
-            {
-              "value": "squiggle-underline",
-              "label": "t:sections.global.settings.highlighted_scribble.options__4.label"
-            },
-            {
-              "value": "squiggle-underline-2",
-              "label": "t:sections.global.settings.highlighted_scribble.options__5.label"
-            }
-          ],
-          "default": "circle",
-          "label": "t:sections.global.settings.highlighted_scribble.label",
-          "info": "t:sections.global.settings.highlighted_scribble.info"
+          "content": "Header"
         }
       ]
     }

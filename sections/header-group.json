@@ -26,18 +26,6 @@
             "highlighted_scribble": "circle"
           }
         },
-        "announcement_CHEbRK": {
-          "type": "announcement",
-          "settings": {
-            "icon": "truck",
-            "text": "FREE SHIPPING",
-            "link": "",
-            "hide_icon_mobile": true,
-            "text_mobile": "",
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        },
         "announcement_DRVCpW": {
           "type": "announcement",
           "settings": {
@@ -49,12 +37,24 @@
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
+        },
+        "announcement_CHEbRK": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "text": "FREE PROOF BEFORE PRODUCTION",
+            "link": "",
+            "hide_icon_mobile": true,
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
         }
       },
       "block_order": [
         "announcement_dNbj3F",
-        "announcement_CHEbRK",
-        "announcement_DRVCpW"
+        "announcement_DRVCpW",
+        "announcement_CHEbRK"
       ],
       "name": "Announcement Bar v2",
       "settings": {
