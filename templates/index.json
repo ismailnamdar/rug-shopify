@@ -392,122 +392,10 @@
         "alt_3": ""
       }
     },
-    "comparison_table_ggeqCE": {
-      "type": "comparison-table",
-      "blocks": {
-        "row_header_f84JUz": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "Heavy Duty"
-          }
-        },
-        "row_header_aFBtdP": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "4K Resolution"
-          }
-        },
-        "row_header_qigTRp": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "Easy To Clean"
-          }
-        },
-        "row_header_pQRkiH": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "Ships in 2 Business Days"
-          }
-        },
-        "row_header_KnkeMX": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "Free Proof Before Production"
-          }
-        },
-        "row_header_kjFQCx": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "24/7 Support"
-          }
-        },
-        "row_header_xiP4kM": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "No Contracts"
-          }
-        },
-        "column_BHq3pX": {
-          "type": "column",
-          "settings": {
-            "title": "Rugtomize",
-            "price": "$ $",
-            "reviews": 4.5,
-            "row_1": true,
-            "row_2": true,
-            "row_3": true,
-            "row_4": true,
-            "row_5": true,
-            "row_6": true,
-            "row_7": true,
-            "row_8": false,
-            "row_9": false,
-            "row_10": false
-          }
-        },
-        "column_jJ7A3G": {
-          "type": "column",
-          "settings": {
-            "title": "Rental Mats",
-            "price": "$ $ $",
-            "reviews": 1.5,
-            "row_1": true,
-            "row_2": true,
-            "row_3": false,
-            "row_4": false,
-            "row_5": true,
-            "row_6": false,
-            "row_7": false,
-            "row_8": false,
-            "row_9": false,
-            "row_10": false
-          }
-        },
-        "column_KT8Tag": {
-          "type": "column",
-          "settings": {
-            "title": "Other Business Mats",
-            "price": "$",
-            "reviews": 2,
-            "row_1": false,
-            "row_2": false,
-            "row_3": true,
-            "row_4": false,
-            "row_5": false,
-            "row_6": false,
-            "row_7": true,
-            "row_8": false,
-            "row_9": false,
-            "row_10": false
-          }
-        }
-      },
-      "block_order": [
-        "row_header_f84JUz",
-        "row_header_aFBtdP",
-        "row_header_qigTRp",
-        "row_header_pQRkiH",
-        "row_header_KnkeMX",
-        "row_header_kjFQCx",
-        "row_header_xiP4kM",
-        "column_BHq3pX",
-        "column_jJ7A3G",
-        "column_KT8Tag"
-      ],
-      "name": "Comparison Table",
-      "settings": {
-        "title": "How does Rugtomize compare?"
-      }
+    "comparison_chart_JPqPFF": {
+      "type": "comparison-chart",
+      "name": "Comparison Chart",
+      "settings": {}
     },
     "customer_reviews_xgWmeN": {
       "type": "customer-reviews",
@@ -871,7 +759,7 @@
     "custom_liquid_x3mfXd",
     "ugc_section_ALNbxE",
     "three_image_showcase_AYELMM",
-    "comparison_table_ggeqCE",
+    "comparison_chart_JPqPFF",
     "customer_reviews_xgWmeN",
     "gallery_8zmBEQ",
     "image_with_text_overlay_MiK4gr",
