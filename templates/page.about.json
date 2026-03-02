@@ -13,6 +13,53 @@
       "type": "page-no-title-template",
       "settings": {}
     },
+    "number_counter_PMhcK9": {
+      "type": "number-counter",
+      "blocks": {
+        "counter_ND7dAQ": {
+          "type": "counter",
+          "settings": {
+            "title": "Businesses Served",
+            "number": "11000",
+            "unit": "+",
+            "duration": 2
+          }
+        },
+        "counter_UrqhzL": {
+          "type": "counter",
+          "settings": {
+            "title": "Years of Fine Rug Making",
+            "number": "125",
+            "unit": "+",
+            "duration": 2
+          }
+        }
+      },
+      "block_order": [
+        "counter_ND7dAQ",
+        "counter_UrqhzL"
+      ],
+      "name": "t:sections.number-counter.name",
+      "settings": {
+        "gap": "large",
+        "columns": 2,
+        "text_alignment": "center",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "text_alignment_mobile": "center",
+        "color_text": "#000000",
+        "color_background": "rgba(0,0,0,0)",
+        "background_image": "shopify://shop_images/ChatGPT_Image_Feb_26_2026_01_36_16_AM.png",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": true,
+        "full_width": true,
+        "rounded": true
+      }
+    },
     "custom_liquid_44EhFa": {
       "type": "custom-liquid",
       "name": "Custom liquid",
@@ -25,6 +72,7 @@
   },
   "order": [
     "main",
+    "number_counter_PMhcK9",
     "custom_liquid_44EhFa"
   ]
 }
