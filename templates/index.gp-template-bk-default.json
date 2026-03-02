@@ -19,7 +19,7 @@
     "custom_liquid_x3mfXd",
     "ugc_section_ALNbxE",
     "three_image_showcase_AYELMM",
-    "comparison_chart_JPqPFF",
+    "comparison_table_ggeqCE",
     "customer_reviews_xgWmeN",
     "gallery_8zmBEQ",
     "image_with_text_overlay_MiK4gr",
@@ -106,10 +106,122 @@
       },
       "type": "shoppable-image"
     },
-    "comparison_chart_JPqPFF": {
-      "name": "Comparison Chart",
-      "settings": {},
-      "type": "comparison-chart"
+    "comparison_table_ggeqCE": {
+      "block_order": [
+        "row_header_f84JUz",
+        "row_header_aFBtdP",
+        "row_header_qigTRp",
+        "row_header_pQRkiH",
+        "row_header_KnkeMX",
+        "row_header_kjFQCx",
+        "row_header_xiP4kM",
+        "column_BHq3pX",
+        "column_jJ7A3G",
+        "column_KT8Tag"
+      ],
+      "blocks": {
+        "column_BHq3pX": {
+          "settings": {
+            "price": "$ $",
+            "reviews": 4.5,
+            "row_1": true,
+            "row_10": false,
+            "row_2": true,
+            "row_3": true,
+            "row_4": true,
+            "row_5": true,
+            "row_6": true,
+            "row_7": true,
+            "row_8": false,
+            "row_9": false,
+            "title": "Rugtomize"
+          },
+          "type": "column"
+        },
+        "column_KT8Tag": {
+          "settings": {
+            "price": "$",
+            "reviews": 2,
+            "row_1": false,
+            "row_10": false,
+            "row_2": false,
+            "row_3": true,
+            "row_4": false,
+            "row_5": false,
+            "row_6": false,
+            "row_7": true,
+            "row_8": false,
+            "row_9": false,
+            "title": "Other Business Mats"
+          },
+          "type": "column"
+        },
+        "column_jJ7A3G": {
+          "settings": {
+            "price": "$ $ $",
+            "reviews": 1.5,
+            "row_1": true,
+            "row_10": false,
+            "row_2": true,
+            "row_3": false,
+            "row_4": false,
+            "row_5": true,
+            "row_6": false,
+            "row_7": false,
+            "row_8": false,
+            "row_9": false,
+            "title": "Rental Mats"
+          },
+          "type": "column"
+        },
+        "row_header_KnkeMX": {
+          "settings": {
+            "row_header": "Free Proof Before Production"
+          },
+          "type": "row_header"
+        },
+        "row_header_aFBtdP": {
+          "settings": {
+            "row_header": "4K Resolution"
+          },
+          "type": "row_header"
+        },
+        "row_header_f84JUz": {
+          "settings": {
+            "row_header": "Heavy Duty"
+          },
+          "type": "row_header"
+        },
+        "row_header_kjFQCx": {
+          "settings": {
+            "row_header": "24/7 Support"
+          },
+          "type": "row_header"
+        },
+        "row_header_pQRkiH": {
+          "settings": {
+            "row_header": "Ships in 2 Business Days"
+          },
+          "type": "row_header"
+        },
+        "row_header_qigTRp": {
+          "settings": {
+            "row_header": "Easy To Clean"
+          },
+          "type": "row_header"
+        },
+        "row_header_xiP4kM": {
+          "settings": {
+            "row_header": "No Contracts"
+          },
+          "type": "row_header"
+        }
+      },
+      "name": "Comparison Table",
+      "settings": {
+        "title": "How does Rugtomize compare?"
+      },
+      "type": "comparison-table"
     },
     "custom_liquid_x3mfXd": {
       "disabled": true,
@@ -310,9 +422,9 @@
         "cta_link": "shopify://products/custom-rug-carpet",
         "cta_text": "See Your Logo on a Rug",
         "media_type": "image",
-        "overlay_opacity": 35,
-        "poster_desktop": "shopify://shop_images/collage_text_v2_1.png",
-        "poster_mobile": "shopify://shop_images/collage_text_v2_0d957722-a98b-4170-a70b-b4d18ef8d0ff.png",
+        "overlay_opacity": 25,
+        "poster_desktop": "shopify://shop_images/BannerDesktop.collage_version_2_Webp.jpg",
+        "poster_mobile": "shopify://shop_images/BannerMobile.collage_version_2_Webp.webp",
         "rating_value": "4.55",
         "show_features": true,
         "subhead": "Indoor & Outdoor. Built for Any Floor",
