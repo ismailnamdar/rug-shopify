@@ -1,0 +1,384 @@
+{% assign row_headers = section.blocks | where: "type", "row_header" %}
+{% assign columns = section.blocks | where: "type", "column" %}
+
+<section class="section rt-compare-section" style="background: #FFFFFF; padding: 80px 0; font-family: 'Inter', sans-serif;">
+  {% if section.settings.title != blank %}
+    <h2 style="text-align: center; margin-bottom: 36px;">{{section.settings.title}}</h2>
+  {% endif %}
+  <div class="rt-compare-wrap" style="max-width: 100%; margin: 0 auto; padding: 0 60px;">
+    <div class="rt-compare-scroll">
+      <table class="rt-compare" style="width: 100%; border-collapse: separate; border-spacing: 0; color: #000000;">
+
+        <colgroup>
+          <col style="width: 22%;">
+          {% for column in columns %}
+            <col class="rt-compare-column-{{ forloop.index0 }}" style="width: {{ 78 | divided_by: columns.size }}%;">
+          {% endfor %}
+        </colgroup>
+
+        <thead>
+          <tr>
+            <th style="background:#fff;padding:32px 24px;text-align:left;border-bottom:1px solid #E5E5E5;"></th>
+
+            {% for column in columns %}
+              {% assign is_rugtomize = false %}
+              {% if column.settings.title == "Rugtomize" %}
+                {% assign is_rugtomize = true %}
+              {% endif %}
+
+              <th style="
+                padding:32px 24px;
+                text-align:center;
+                {% if is_rugtomize %}
+                  background:#000;
+                  border-radius:16px 16px 0 0;
+                {% else %}
+                  border-bottom:1px solid #E5E5E5;
+                {% endif %}
+              ">
+                {% if is_rugtomize %}
+                  <img src="https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Rugtomize_logo_blk_ca404d02-0098-45cb-b2ad-02904e0125d8.png?v=1772080776"
+                       alt="Rugtomize"
+                       style="max-width:160px;filter:brightness(0) invert(1);display:block;margin:0 auto;">
+                {% else %}
+                  <span style="font-size:16px;font-weight:600;">
+                    {{ column.settings.title }}
+                  </span>
+                {% endif %}
+              </th>
+            {% endfor %}
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- PRICE ROW (STATIC HEADER) -->
+          <tr>
+            <td style="padding:28px 24px;border-bottom:1px solid #E5E5E5;font-size:16px;font-weight:500;">
+              Price
+            </td>
+
+            {% for column in columns %}
+              {% assign is_rugtomize = false %}
+              {% if column.settings.title == "Rugtomize" %}
+                {% assign is_rugtomize = true %}
+              {% endif %}
+
+              <td style="
+                padding:28px 24px;
+                text-align:center;
+                {% if is_rugtomize %}
+                  background:#000;
+                  border-bottom:1px solid #333;
+                  color:#fff;
+                {% else %}
+                  border-bottom:1px solid #E5E5E5;
+                {% endif %}
+              ">
+                <span style="font-size:18px;">
+                  {{ column.settings.price }}
+                </span>
+              </td>
+            {% endfor %}
+          </tr>
+
+          <!-- REVIEWS ROW (STATIC HEADER) -->
+          <tr>
+            <td style="padding:28px 24px;border-bottom:1px solid #E5E5E5;font-size:16px;font-weight:500;">
+              Reviews
+            </td>
+
+            {% for column in columns %}
+              {% assign is_rugtomize = false %}
+              {% if column.settings.title == "Rugtomize" %}
+                {% assign is_rugtomize = true %}
+              {% endif %}
+              {% assign rating_value = column.settings.reviews | default: 0 %}
+              {% assign rating = rating_value | floor %}
+              {% assign has_half = rating_value | minus: rating %}
+              {% if has_half >= 0.5 %}
+                {% assign has_half = true %}
+              {% else %}
+                {% assign has_half = false %}
+              {% endif %}
+              {% assign empty_stars = 5 | minus: rating %}
+              {% if has_half %}
+                {% assign empty_stars = empty_stars | minus: 1 %}
+              {% endif %}
+              {% if is_rugtomize %}
+                {% assign rating = 5 %}
+                {% assign empty_stars = 0 %}
+                {% assign has_half = false %}
+              {% endif %}
+              <td style="
+                padding:28px 24px;
+                text-align:center;
+                {% if is_rugtomize %}
+                  background:#000;
+                  border-bottom:1px solid #333;
+                  color:#fff;
+                {% else %}
+                  border-bottom:1px solid #E5E5E5;
+                {% endif %}
+              ">
+                <div class="rt-compare-reviews">
+                  <span style="font-size:16px;font-weight:700;">
+                    {{ column.settings.reviews }}
+                  </span>
+
+                  <span style="font-size:20px;color:#FFB800;margin-left:6px;display: flex; gap: 5px;">
+                    <span class="comparison-table-stars">{% for i in (1..rating) %}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>{% endfor %}</span>
+                    {% if has_half %}
+                    <span class="comparison-table-stars-half">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                      <svg class="star-half" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M11.525 2.295...z"/>
+                      </svg>
+                    </span>
+                  {% endif %}
+                    <span class="comparison-table-stars-empty">{% for i in (1..empty_stars) %}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star-icon lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>{% endfor %}</span>
+                  </span>
+                </div>
+              </td>
+            {% endfor %}
+          </tr>
+
+          <!-- DYNAMIC CHECKBOX ROWS -->
+          {% for header in row_headers %}
+            {% assign row_index = forloop.index %}
+            <tr>
+              <td style="padding:28px 24px;border-bottom:1px solid #E5E5E5;font-size:16px;font-weight:500;">
+                {{ header.settings.row_header }}
+              </td>
+
+              {% for column in columns %}
+                {% assign is_rugtomize = false %}
+                {% if column.settings.title == "Rugtomize" %}
+                  {% assign is_rugtomize = true %}
+                {% endif %}
+                {% assign checkbox_id = 'row_' | append: row_index %}
+
+                <td class="rt-compare-rows" style="
+                  padding:28px 24px;
+                  text-align:center;
+                  {% if is_rugtomize %}
+                    background:#000;
+                    border-bottom:1px solid #333;
+                  {% else %}
+                    border-bottom:1px solid #E5E5E5;
+                  {% endif %}
+                ">
+                  {% if column.settings[checkbox_id] %}
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#22C55E"/><path d="M9 16.5L14 21.5L23 12.5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  {% else %}
+                    <svg width="32" height="32" viewBox="0 0 32 32">
+                      <circle cx="16" cy="16" r="16" fill="#E5E5E5"/>
+                      <path d="M11 11L21 21M21 11L11 21" stroke="#999" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  {% endif %}
+                </td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<style>
+  .rt-compare td, .rt-compare th { text-align: center !important; vertical-align: middle !important; }
+  .rt-compare td:first-child, .rt-compare th:first-child { text-align: left !important; }
+  .rt-compare svg { display: inline-block; vertical-align: middle; }
+  .rt-compare thead tr th {
+    border-top: 1px solid #E5E5E5;
+  }
+  .rt-compare thead tr th:first-child {
+    border-top-left-radius: 16px;
+  }
+  .rt-compare thead tr th:last-child {
+    border-top-right-radius: 16px;
+  }
+
+  .comparison-table-stars {
+    display: flex;
+  }
+
+  .comparison-table-stars svg {
+    fill: currentColor;
+  }
+  .comparison-table-stars-empty {
+    margin-left: -4px;
+    display: flex;
+  }
+
+  .comparison-table-stars-half {
+    position: relative;
+    margin-left: -4px;
+    display: flex;
+  }
+
+  .star-half {
+    fill: currentColor;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+
+  }
+
+  .star-half path {
+    fill: currentColor;
+  }
+
+  .star-half {
+    background: linear-gradient(to right, currentColor 50%, transparent 50%);
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>') no-repeat center / contain;
+  }
+
+  .rt-compare-reviews {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 1024px) {
+    .rt-compare-reviews {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .rt-compare-wrap { padding: 0 0 0 12px !important; }
+    .rt-compare-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .rt-compare { min-width: 520px; }
+    .rt-compare td, .rt-compare th { padding: 10px 10px !important; font-size: 13px !important; line-height: 1.3 !important; }
+    .rt-compare-rows svg { width: 22px !important; height: 22px !important; }
+    .rt-compare td:first-child, .rt-compare th:first-child {
+      position: sticky; left: 0; z-index: 2; background: #fff !important; min-width: 100px; max-width: 120px;
+    }
+    .rt-compare td:nth-child(2), .rt-compare th:nth-child(2) {
+      position: sticky; left: 115px; z-index: 1;
+    }
+    .rt-compare th:first-child { background: #fff !important; }
+    .rt-compare th:nth-child(2) img { max-width: 80px !important; }
+    .rt-compare-section {
+      width: 100%;
+    }
+    .rt-compare-reviews svg {
+      width: 16px;
+      height: 16px;
+    }
+    .rt-compare-column-0 {
+      width: 22% !important;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Comparison Table",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+      }
+    ],
+    "blocks": [
+        {
+            "type": "row_header",
+            "name": "Row Header",
+            "limit": 30,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "row_header",
+                    "label": "Row Header"
+                }
+            ]
+        },
+        {
+            "type": "column",
+            "name": "Column",
+            "limit": 30,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "price",
+                    "label": "Price"
+                },
+                {
+                    "type": "number",
+                    "id": "reviews",
+                    "label": "Reviews"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_1",
+                    "label": "Row 1"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_2",
+                    "label": "Row 2"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_3",
+                    "label": "Row 3"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_4",
+                    "label": "Row 4"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_5",
+                    "label": "Row 5"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_6",
+                    "label": "Row 6"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_7",
+                    "label": "Row 7"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_8",
+                    "label": "Row 8"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_9",
+                    "label": "Row 9"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "row_10",
+                    "label": "Row 10"
+                },
+            ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Comparison Table"
+      }
+    ]
+  }
+{% endschema %}
