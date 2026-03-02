@@ -199,9 +199,11 @@
   }
 
   setTimeout(() => {
-    gtag('event', type, {
-      send_to: ['G-YZDNF9QY1T']
-    });
+    if (window.gtag) {
+      gtag('event', type, {
+        send_to: ['G-YZDNF9QY1T']
+      });
+    }
   }, 500);
 })();
 </script>

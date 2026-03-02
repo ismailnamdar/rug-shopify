@@ -14,11 +14,12 @@
   .hf-hero {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     text-align: center;
     color: #fff;
-    min-height: 68vh;
+    aspect-ratio: {{ section.settings.poster_desktop.width }} / {{ section.settings.poster_desktop.height }};
+    /* min-height: {{ section.settings.poster_desktop.height }}px; */
     padding: 56px 16px;
     overflow: hidden;
   }
@@ -30,6 +31,14 @@
     height: 100%;
     object-fit: cover;
     pointer-events: none;
+  }
+
+  .hf-hero__mobile-image {
+    display: none;
+  }
+
+  .hf-hero__desktop-image {
+    display: block;
   }
 
   .hf-hero__overlay {
@@ -78,32 +87,38 @@
   .hf-rating {
     font-weight: 400;
     font-size: 20px;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
   }
 
   .hf-trust__text {
     font-size: 24px;
     line-height: normal;
     max-width: 476px;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
   }
 
   /* Main heading */
   .hf-title {
-    font-size: 48px;
-    margin: 64px 0 24px;
+    font-size: 56px;
+    margin: 44px 0 24px;
     color: white;
     font-style: normal;
     line-height: 56px;
     text-transform: none;
     max-width: 850px;
-    font-weight: 400;
+    font-weight: 800;
     letter-spacing: 0px;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
   }
 
   /* Subhead */
   .hf-sub {
+    margin-top: 120px;
     font-size: 32px;
     line-height: normal;
     margin-bottom: 64px;
+    font-weight: 800;
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
   }
 
   /* CTA */
@@ -114,16 +129,16 @@
     background: #febf00;
     color: #000;
     font-weight: 800;
-    padding: 8px 16px;
+    padding: 12px 24px;
     border-radius: 4px;
     text-decoration: none;
     min-width: 310px;
-    min-height: 64px;
+    min-height: 80px;
     justify-content: center;
   }
 
   .hf-cta span {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     line-height: normal;
   }
@@ -164,6 +179,12 @@
     text-align: center;
   }
 
+  @media (max-width: 1200px) {
+    .hf-sub {
+      margin-top: 20px;
+    }
+  }
+
   /* Responsive */
   @media (max-width: 1024px) {
     .hf-title {
@@ -171,12 +192,23 @@
       margin: 8px 0 42px;
       line-height: normal;
     }
+
+    .hf-sub {
+      margin-top: 20px;
+      font-size: 32px;
+      line-height: normal;
+      margin-bottom: 64px;
+      font-weight: 800;
+      text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
+    }
   }
 
-  @media (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     .hf-hero {
-      min-height: 60vh;
       padding: 40px 16px;
+      max-width: 100%;
+      align-items: center;
+      aspect-ratio: {{ section.settings.poster_mobile.width }} / {{ section.settings.poster_mobile.height }};
     }
 
     .hf-trust__text {
@@ -197,19 +229,81 @@
     .hf-features__grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .hf-hero__mobile-image {
+      display: block;
+    }
+
+    .hf-hero__desktop-image {
+      display: none;
+    }
+
+    .hf-cta {
+      margin-top: {{ section.settings.poster_mobile.height | divided_by: 8 }}px;
+      min-height: 64px;
+      min-width: unset;
+    }
+
+    .hf-cta span {
+      font-size: 16px;
+    }
   }
 </style>
 
 <section class="hf-hero" style="--hf-overlay-opacity: {{ section.settings.overlay_opacity | default: 40 | divided_by: 100.0 }}">
   {% comment %} Video background: prefer uploaded video; fallback to external URL; optional poster {% endcomment %}
-  {% if section.settings.video != blank %}
-    {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'hf-hero__video' }}
-  {% elsif section.settings.video_url != blank %}
-    <video class="hf-hero__video" autoplay loop muted playsinline {% if section.settings.poster %}poster="{{ section.settings.poster | img_url: '2000x' }}"{% endif %}>
-      <source src="{{ section.settings.video_url }}" type="video/mp4">
-    </video>
-  {% elsif section.settings.poster %}
-    <img class="hf-hero__video" src="{{ section.settings.poster | img_url: '2000x' }}" alt="" />
+  {% if section.settings.media_type == "video" %}
+    {% if section.settings.video != blank %}
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'hf-hero__video' }}
+    {% elsif section.settings.video_url != blank %}
+      <video class="hf-hero__video" autoplay loop muted playsinline {% if section.settings.poster %}poster="{{ section.settings.poster | img_url: '2000x' }}"{% endif %}>
+        <source src="{{ section.settings.video_url }}" type="video/mp4">
+      </video>
+    {% endif %}
+  {% elsif section.settings.media_type == "image" %}
+    {% if section.settings.poster_desktop or section.settings.poster_mobile or section.settings.poster %}
+      {% assign poster_desktop = section.settings.poster_desktop | default: section.settings.poster %}
+      {% assign poster_mobile = section.settings.poster_mobile | default: section.settings.poster %}
+      {% assign poster_alt = section.settings.poster_alt | default: section.settings.title | escape %}
+
+      <picture class="hf-hero__mobile-image">
+        {% if poster_mobile != blank %}
+          <source
+            media="(max-width: 768px)"
+            srcset="{{ poster_mobile | img_url: '480x' }} 480w, {{ poster_mobile | img_url: '800x' }} 800w"
+            sizes="(max-width: 768px) 100vw, 50vw">
+          <source
+            media="(min-width: 769px)"
+            srcset="{{ poster_mobile | img_url: '800x' }} 800w, {{ poster_mobile | img_url: '1200x' }} 1200w, {{ poster_mobile | img_url: '2000x' }} 2000w"
+            sizes="100vw">
+        {% endif %}
+
+        <img
+          class="hf-hero__video"
+          src="{{ poster_mobile | img_url: '1200x' }}"
+          alt="{{ poster_alt }}"
+          loading="lazy" />
+      </picture>
+
+      <picture class="hf-hero__desktop-image">
+        {% if poster_desktop != blank %}
+          <source
+            media="(max-width: 768px)"
+            srcset="{{ poster_desktop | img_url: '480x' }} 480w, {{ poster_desktop | img_url: '800x' }} 800w"
+            sizes="(max-width: 768px) 100vw, 50vw">
+          <source
+            media="(min-width: 769px)"
+            srcset="{{ poster_desktop | img_url: '800x' }} 800w, {{ poster_desktop | img_url: '1200x' }} 1200w, {{ poster_desktop | img_url: '2000x' }} 2000w"
+            sizes="100vw">
+        {% endif %}
+
+        <img
+          class="hf-hero__video"
+          src="{{ poster_desktop | img_url: '1200x' }}"
+          alt="{{ poster_alt }}"
+          loading="lazy" />
+      </picture>
+    {% endif %}
   {% endif %}
   <div class="hf-hero__overlay" aria-hidden="true"></div>
 
@@ -246,7 +340,7 @@
     {% endif %}
 
     {% if section.settings.cta_text != blank %}
-      <a class="hf-cta" href="{{ section.settings.cta_link | default: '#' }}">
+      <a class="hf-cta" href="{{ section.settings.cta_link | default: '#' }}" onclick="if (window.clarity) { clarity('event', 'Hero primary CTA click'); }">
         <span>{{ section.settings.cta_text }}</span>
       </a>
     {% endif %}
@@ -276,8 +370,25 @@
 {
   "name": "Hero Trust with Video",
   "settings": [
+    { "type": "select",
+      "id": "media_type", 
+      "label": "Media Type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "video"
+    },
     { "type": "video", "id": "video", "label": "Background video (uploaded)" },
     { "type": "url", "id": "video_url", "label": "Background video URL (mp4)" },
+    { "type": "image_picker", "id": "poster_desktop", "label": "Hero image desktop" },
+    { "type": "image_picker", "id": "poster_mobile", "label": "Hero image mobile" },
     { "type": "image_picker", "id": "poster", "label": "Fallback poster image" },
     { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 40 },
 

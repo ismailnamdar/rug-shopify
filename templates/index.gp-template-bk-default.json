@@ -309,7 +309,10 @@
       "settings": {
         "cta_link": "shopify://products/custom-rug-carpet",
         "cta_text": "See Your Logo on a Rug",
+        "media_type": "image",
         "overlay_opacity": 35,
+        "poster_desktop": "shopify://shop_images/collage_text_v2_1.png",
+        "poster_mobile": "shopify://shop_images/collage_text_v2_0d957722-a98b-4170-a70b-b4d18ef8d0ff.png",
         "rating_value": "4.55",
         "show_features": true,
         "subhead": "Indoor & Outdoor. Built for Any Floor",
