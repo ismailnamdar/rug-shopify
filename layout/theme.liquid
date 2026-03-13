@@ -47,6 +47,8 @@
     <link rel="dns-prefetch" href="https://www.youtube.com">
     <link rel="dns-prefetch" href="https://vimeo.com">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    {{ 'Campton.Light.woff2' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'Campton.Medium.woff2' | asset_url | stylesheet_tag: preload: true }}
 
     {{ 'jquery.min.js' | asset_url | preload_tag: as: 'script' }}
 

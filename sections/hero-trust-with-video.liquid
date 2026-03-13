@@ -15,18 +15,19 @@
     position: relative;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: left;
     color: #fff;
     aspect-ratio: {{ section.settings.poster_desktop.width }} / {{ section.settings.poster_desktop.height }};
-    /* min-height: {{ section.settings.poster_desktop.height }}px; */
-    padding: 56px 16px;
+    min-height: 600px;
+    max-height: calc(100vh - 210px);
+    padding: 10px 16px 56px 13px;
   }
 
   .hf-hero__video {
     position: absolute;
     inset: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     object-fit: cover;
     pointer-events: none;
@@ -50,15 +51,17 @@
     position: relative;
     z-index: 1;
     max-width: 1100px;
-    margin: 0 auto;
+    gap: 9px;
+    display: flex;
+    flex-direction: column;
   }
 
   /* Trust line + rating stars */
   .hf-trust {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 6px;
+    align-items: flex-start;
+    gap: 9px;
     font-weight: 400;
     font-size: 14px;
     margin-bottom: 10px;
@@ -67,8 +70,8 @@
   .hf-trust__line {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 6px;
+    color: black;
   }
 
   .hf-stars {
@@ -85,39 +88,42 @@
 
   .hf-rating {
     font-weight: 400;
-    font-size: 20px;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
+    font-size: 17px;
+    font-family: 'Campton', sans-serif;
   }
 
   .hf-trust__text {
-    font-size: 24px;
+    font-size: 18px;
     line-height: normal;
     max-width: 476px;
-    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
+    color: black;
+    font-family: 'Campton', sans-serif;
+    font-weight: 400;
   }
 
   /* Main heading */
   .hf-title {
-    font-size: 56px;
-    margin: 44px 0 24px;
-    color: white;
-    font-style: normal;
-    line-height: 56px;
+    font-family: 'Campton', sans-serif;
+    font-size: 52px;
+    line-height: 69px;
+    color: black;
+    font-style: normal;    
     text-transform: none;
-    max-width: 850px;
-    font-weight: 800;
+    max-width: 650px;
+    font-weight: 500;
     letter-spacing: 0px;
-    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
+    margin: 0;
   }
 
   /* Subhead */
   .hf-sub {
-    margin-top: 8rem;
-    font-size: 32px;
-    line-height: normal;
-    margin-bottom: 64px;
-    font-weight: 800;
-    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
+    font-size: 27px;
+    line-height: 33px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: black;
+    font-family: 'Campton', sans-serif;
+    font-weight: 300;
   }
 
   /* CTA */
@@ -126,19 +132,21 @@
     align-items: center;
     gap: 8px;
     background: #febf00;
-    color: #000;
+    color: black;
     font-weight: 800;
-    padding: 12px 24px;
-    border-radius: 4px;
+    padding: 23px 10px;
+    border-radius: 10px;
     text-decoration: none;
     min-width: 310px;
     min-height: 80px;
     justify-content: center;
+
   }
 
   .hf-cta span {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 28px;
+    font-family: 'Campton', sans-serif;
+    font-weight: 300;
     line-height: normal;
   }
 
@@ -174,65 +182,51 @@
   .hf-feature__text {
     font-weight: 700;
     color: #111;
-    font-size: 16px;
+    font-size: 17px;
+    line-height: 21px;
     text-align: center;
-  }
-
-  @media (max-width: 1200px) {
-    .hf-title {
-      margin-top: 12px;
-    }
-    .hf-sub {
-      margin-top: 60px;
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .hf-title {
-      font-size: 36px;
-      margin: 8px 0 42px;
-      line-height: normal;
-    }
-
-    .hf-sub {
-      margin-top: 70px;
-      font-size: 32px;
-      line-height: normal;
-      margin-bottom: 64px;
-      font-weight: 800;
-      text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
-    }
-  }
-
-  @media screen and (max-width: 840px) {
-    .hf-sub {
-      margin-top: 40px;
-      line-height: normal;
-    }
   }
 
   @media screen and (max-width: 768px) {
     .hf-hero {
-      padding: 40px 16px;
+      padding: 19px 15px;
       max-width: 100%;
       align-items: flex-start;
+      justify-content: center;
+      text-align: center;
       aspect-ratio: {{ section.settings.poster_mobile.width }} / {{ section.settings.poster_mobile.height }};
+      min-height: 400px;
+      height: calc(100vh - 400px);
+      width: 100%;
+    }
+
+    .hf-hero__video {
+      
+    }
+
+    .hf-hero__inner {
+      gap: 9px;
+    }
+
+    .hf-trust {
+      align-items: center;
+      margin-bottom: 0;
     }
 
     .hf-trust__text {
-      display: none;}
+      display: none;
+    }
 
     .hf-title {
-      font-size: 30px;
-      margin: 8px 0 30px;
-      line-height: normal;
+      font-size: 29px;
+      line-height: 34px;
+      max-width: 400px;x
     }
 
     .hf-sub {
-      display: none;
-      font-size: 18px;
-      margin-bottom: 16px;
+      font-size: 15px;
+      line-height: 19px;
+      letter-spacing: 1px;
     }
 
     .hf-features__grid {
@@ -248,13 +242,16 @@
     }
 
     .hf-cta {
-      margin-top: 70px;
       min-height: 64px;
       min-width: unset;
+      padding: 11px;
+      min-height: unset;
+      border-radius: 6px;
     }
 
     .hf-cta span {
-      font-size: 16px;
+      font-size: 14px;
+      line-height: 17px;
     }
   }
 </style>
@@ -317,10 +314,24 @@
   <div class="hf-hero__overlay" aria-hidden="true"></div>
 
   <div class="hf-hero__inner">
+    {% if section.settings.title != blank %}
+      <h1 class="hf-title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.subhead != blank %}
+      <div class="hf-sub">{{ section.settings.subhead }}</div>
+    {% endif %}
+
     <div class="hf-trust">
       <div class="hf-trust__line">
         <span class="hf-stars" aria-hidden="true">
-          {% for i in (1..5) %}
+          <img
+            src="{{ 'review-stars.png' | asset_url }}"
+            alt="{{ product.title }}"
+            width="135"
+            height="26"
+          >
+          {% comment %} {% for i in (1..5) %}
             {% if forloop.index == 5 %}
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <mask id="mask0_136_2035" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -333,25 +344,19 @@
             {% else %}
               <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polygon points="10,1 12.6,7.3 19.5,7.3 13.9,11.8 16.4,18 10,14 3.6,18 6.1,11.8 0.5,7.3 7.4,7.3"/></svg>
             {% endif %}
-          {% endfor %}
+          {% endfor %} {% endcomment %}
         </span>
         {% if section.settings.rating_value != blank %}<span class="hf-rating">{{ section.settings.rating_value }}</span>{% endif %}
       </div>
       {% if section.settings.trust_text != blank %}<div class="hf-trust__text">{{ section.settings.trust_text }}</div>{% endif %}
     </div>
 
-    {% if section.settings.title != blank %}
-      <h1 class="hf-title">{{ section.settings.title }}</h1>
-    {% endif %}
-
-    {% if section.settings.subhead != blank %}
-      <div class="hf-sub">{{ section.settings.subhead }}</div>
-    {% endif %}
-
     {% if section.settings.cta_text != blank %}
+      <div>
       <a class="hf-cta" href="{{ section.settings.cta_link | default: '#' }}" onclick="if (window.clarity) { clarity('event', 'Hero primary CTA click'); }">
         <span>{{ section.settings.cta_text }}</span>
       </a>
+      </div>
     {% endif %}
   </div>
 </section>

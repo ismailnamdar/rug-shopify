@@ -1,4 +1,21 @@
 @charset "UTF-8";
+
+@font-face {
+  font-family: "Campton";
+  src: url('{{ "Campton.Light.woff2" | asset_url }}') format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Campton";
+  src: url('{{ "Campton.Medium.woff2" | asset_url }}') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 .surface-pick-up-embed {
   --surface-pick-up-embed-theme-success-color: rgb(50, 205, 50);
   --surface-pick-up-embed-theme-error-color: rgb(179, 58, 58);
