@@ -21,7 +21,6 @@
     aspect-ratio: {{ section.settings.poster_desktop.width }} / {{ section.settings.poster_desktop.height }};
     /* min-height: {{ section.settings.poster_desktop.height }}px; */
     padding: 56px 16px;
-    overflow: hidden;
   }
 
   .hf-hero__video {
@@ -87,7 +86,7 @@
   .hf-rating {
     font-weight: 400;
     font-size: 20px;
-    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black, 0px 2px 0 black, 2px 0px 0 black, 0px -2px 0 black, -2px 0px 0 black;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
   }
 
   .hf-trust__text {
@@ -217,7 +216,7 @@
     .hf-hero {
       padding: 40px 16px;
       max-width: 100%;
-      align-items: center;
+      align-items: flex-start;
       aspect-ratio: {{ section.settings.poster_mobile.width }} / {{ section.settings.poster_mobile.height }};
     }
 
@@ -249,7 +248,7 @@
     }
 
     .hf-cta {
-      margin-top: {{ section.settings.poster_mobile.height | divided_by: 8 }}px;
+      margin-top: 70px;
       min-height: 64px;
       min-width: unset;
     }
