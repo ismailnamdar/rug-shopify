@@ -28,7 +28,7 @@
             {{ link.title }}
           </a>
         {% else %}
-          <a data-nav-title data-no-instant href="{{ link.url }}" class="parent-link--true">
+          <a data-nav-title data-no-instant href="{{ link.url }}" class="parent-link--true" onclick="if (window.clarity) { clarity('event', 'Menu Mobile {{ link.title | escape }}');}">
             {{ link.title }}
           </a>
         {% endif %}

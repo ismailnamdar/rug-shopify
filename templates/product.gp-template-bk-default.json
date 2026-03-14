@@ -483,29 +483,21 @@
     },
     "testimonial_section_aCmWcJ": {
       "block_order": [
-        "testimonial_block_36YwVG",
-        "testimonial_block_rRrAU4",
-        "testimonial_block_9WFjUY",
-        "testimonial_block_p63U33",
         "testimonial_block_NC6bV9",
+        "testimonial_block_kzBEmM",
+        "testimonial_block_p63U33",
+        "testimonial_block_rRrAU4",
+        "testimonial_block_g3b7xi",
+        "testimonial_block_mpqfnU",
+        "testimonial_block_9WFjUY",
         "testimonial_block_xY3PRH"
       ],
       "blocks": {
-        "testimonial_block_36YwVG": {
-          "settings": {
-            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
-            "stars_color": "#1e1e1e",
-            "stars_count": 5,
-            "subtitle_author": "Antonio R.",
-            "testimonial_image": "shopify://shop_images/Improvedversion.png"
-          },
-          "type": "testimonial-block"
-        },
         "testimonial_block_9WFjUY": {
           "settings": {
             "feature_text": "<p>Plush and handsome, right from the photo we supplied!! Very happy with the product and thank you!!</p>",
-            "stars_color": "#1e1e1e",
-            "stars_count": 4,
+            "stars_color": "#ffbf00",
+            "stars_count": 5,
             "subtitle_author": "Jessica C.",
             "testimonial_image": "shopify://shop_images/image4.jpg"
           },
@@ -514,40 +506,70 @@
         "testimonial_block_NC6bV9": {
           "settings": {
             "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
-            "stars_color": "#1e1e1e",
+            "stars_color": "#ffbf00",
             "stars_count": 5,
             "subtitle_author": "Lineo Y.",
-            "testimonial_image": "shopify://shop_images/gempages_547641604358276043-47570370-fc3f-4f0f-bd37-bfd048c0f836.jpg"
+            "testimonial_image": "shopify://shop_images/Copy_of_r.3_image_1.png"
+          },
+          "type": "testimonial-block"
+        },
+        "testimonial_block_g3b7xi": {
+          "settings": {
+            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
+            "stars_color": "#ffbf00",
+            "stars_count": 5,
+            "subtitle_author": "Adam G.",
+            "testimonial_image": "shopify://shop_images/Copy_of_Rugs.entrance.png"
+          },
+          "type": "testimonial-block"
+        },
+        "testimonial_block_kzBEmM": {
+          "settings": {
+            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
+            "stars_color": "#ffbf00",
+            "stars_count": 5,
+            "subtitle_author": "Tony F.",
+            "testimonial_image": "shopify://shop_images/Copy_of_r.1.png"
+          },
+          "type": "testimonial-block"
+        },
+        "testimonial_block_mpqfnU": {
+          "settings": {
+            "feature_text": "<p>We ordered a rug for our store and it makes such a great first impression. The craftsmanship is excellent and the whole process was smooth from start to finish.</p>",
+            "stars_color": "#ffbf00",
+            "stars_count": 5,
+            "subtitle_author": "Ashley O.",
+            "testimonial_image": "shopify://shop_images/Copy_of_review.products.png"
           },
           "type": "testimonial-block"
         },
         "testimonial_block_p63U33": {
           "settings": {
-            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
-            "stars_color": "#1e1e1e",
-            "stars_count": 4,
-            "subtitle_author": "Tony F.",
-            "testimonial_image": "shopify://shop_images/image3.png"
+            "feature_text": "<p>The custom rug turned out even better than we imagined. Our logo is crisp, the colors are perfect, and it instantly elevated the entrance to our office. We've already had several clients comment on it!</p>",
+            "stars_color": "#ffbf00",
+            "stars_count": 5,
+            "subtitle_author": "Jason K.",
+            "testimonial_image": "shopify://shop_images/runner_pdp_final.v3.png"
           },
           "type": "testimonial-block"
         },
         "testimonial_block_rRrAU4": {
           "settings": {
             "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
-            "stars_color": "#1e1e1e",
-            "stars_count": 4.5,
-            "subtitle_author": "Lineo Y.",
-            "testimonial_image": "shopify://shop_images/image6.jpg"
+            "stars_color": "#ffbf00",
+            "stars_count": 5,
+            "subtitle_author": "Allison D.",
+            "testimonial_image": "shopify://shop_images/oneofakinf_rug_review.png"
           },
           "type": "testimonial-block"
         },
         "testimonial_block_xY3PRH": {
           "settings": {
             "feature_text": "<p>Easy to upload graphic… high quality item shipped fast!  Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
-            "stars_color": "#1e1e1e",
+            "stars_color": "#ffbf00",
             "stars_count": 5,
-            "subtitle_author": "Daniel W",
-            "testimonial_image": "shopify://shop_images/PDP.8.jpg"
+            "subtitle_author": "Tyler H.",
+            "testimonial_image": "shopify://shop_images/circle_cofee.png"
           },
           "type": "testimonial-block"
         }

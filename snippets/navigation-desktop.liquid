@@ -92,6 +92,7 @@
             aria-controls="nav-tier-2-{{ forloop.index }}"
             role="button"
           {% endif %}
+          onclick="if (window.clarity) { clarity('event', 'Menu {{ link_tier_1.title | escape }}');}"
         >
           <span data-nav-title>{{ link_tier_1.title | escape }}</span>
           {% if has_tier_2 %}<span class="icon-down-arrow"></span>{% endif %}
