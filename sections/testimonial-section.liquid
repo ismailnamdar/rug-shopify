@@ -52,40 +52,72 @@
     font-weight: 600;
   }
 
+  .testimonial_slider_body {
+    position: relative;
+  }
+
   .testimonial_section .swiper-button-next,
   .testimonial_section .swiper-button-prev {
-    background-color: #ffffff;
-    width: 40px;
-    height: 40px;
-    padding: 12px;
-    color: #000;
-    border: 1px solid #212121;
-    border-radius: 100%;
-    position: relative !important;
-    left: unset !important;
+    position: absolute !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+    background-color: #212121;
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid #212121;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: background-color 0.2s, color 0.2s;
+    z-index: 10;
+  }
+
+  .testimonial_section .swiper-button-prev {
+    left: -50px !important;
     right: unset !important;
-    top: unset !important;
-    bottom: unset !important;
-    margin-top: 0px !important;
+  }
+
+  .testimonial_section .swiper-button-next {
+    right: -50px !important;
+    left: unset !important;
+  }
+
+  .testimonial_section .swiper-button-next:hover,
+  .testimonial_section .swiper-button-prev:hover {
+    background-color: #ffffff;
+    color: #212121;
   }
 
   .testimonial_section .swiper-button-next:after,
   .testimonial_section .swiper-button-prev:after {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 900;
   }
 
-  .testimonial_slider_button_container{
-    text-align: center;
-  }
+  @media screen and (max-width: 1350px) {
+    .testimonial_section .swiper-button-prev {
+      left: 10px !important;
+    }
 
-  .slider_button_wrapper{
-    display: inline-flex;
-    position: relative;
-    gap: 40px;
+    .testimonial_section .swiper-button-next {
+      right: 10px !important;
+    }
   }
 
   @media screen and (max-width: 768px) {
+    .testimonial_section .swiper-button-prev {
+      left: 10px !important;
+    }
+
+    .testimonial_section .swiper-button-next {
+      right: 10px !important;
+    }
   }
 </style>
 
@@ -132,13 +164,9 @@
             </div>
           {% endfor %}
         </div>
-        <div class="testimonial_slider_button_container">
-          <div class="slider_button_wrapper">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-          </div>
-        </div>
       </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </div>
 </div>
@@ -249,6 +277,19 @@
 {% endschema %}
 
 <script>
+  function positionTestimonialArrows() {
+    const img = document.querySelector('.testimonial_swiper .testimonial_img');
+    const buttons = document.querySelectorAll('.testimonial_section .swiper-button-prev, .testimonial_section .swiper-button-next');
+    if (!img || !buttons.length) return;
+
+    const isMobile = window.innerWidth <= 768;
+    const top = isMobile ? img.offsetHeight * 0.5 : img.offsetHeight / 2;
+
+    buttons.forEach(function (btn) {
+      btn.style.top = top + 'px';
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     const swiper = new Swiper('.testimonial_swiper', {
       slidesPerView: 3,
@@ -276,5 +317,8 @@
         },
       }
     });
+
+    positionTestimonialArrows();
+    window.addEventListener('resize', positionTestimonialArrows);
   });
 </script>
