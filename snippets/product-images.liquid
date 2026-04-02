@@ -173,7 +173,7 @@
             </div>
           {% when 'video' %}
             <div class="product-gallery__video" data-html5-video>
-              {{ media | video_tag: controls: true }}
+              {{ media | video_tag: controls: true, aria-label: "product description" }}
             </div>
           {% when 'model' %}
             <div class="product-gallery__model">

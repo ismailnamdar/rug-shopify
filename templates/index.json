@@ -57,7 +57,7 @@
         "overlay_opacity": 25,
         "rating_value": "4.55",
         "trust_text": "Trusted by 10,000+ Businesses",
-        "title": "Custom Logo Rugs Built for High Traffic",
+        "title": "Custom Rugs Built for High Traffic",
         "subhead": "Indoor & Outdoor. Built for Any Floor",
         "cta_text": "See Your Logo on a Rug",
         "cta_link": "shopify://products/custom-rug-carpet",
@@ -71,98 +71,98 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo-wb.png",
-            "alt": ""
+            "alt": "wb logo"
           }
         },
         "logo_4FpUEb": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo-lego.png",
-            "alt": ""
+            "alt": "LEGO logo"
           }
         },
         "logo_48p79L": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo-disney.png",
-            "alt": ""
+            "alt": "Disney logo"
           }
         },
         "logo_Q7hNbm": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo-netflix.png",
-            "alt": ""
+            "alt": "Netflix logo"
           }
         },
         "logo_HjJdnQ": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo-spotify.png",
-            "alt": ""
+            "alt": "Spotify logo"
           }
         },
         "logo_VQwyVJ": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo-nbc.png",
-            "alt": ""
+            "alt": "NBC logo"
           }
         },
         "logo_Y7yUNA": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo-ford.png",
-            "alt": ""
+            "alt": "Ford logo"
           }
         },
         "logo_Cbdf7F": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/logo-cadillac.png",
-            "alt": ""
+            "alt": "Cadillac logo"
           }
         },
         "logo_7LNzYk": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/MD.png",
-            "alt": ""
+            "alt": "McDonalds logo"
           }
         },
         "logo_gJpmmp": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/Lakers.png",
-            "alt": ""
+            "alt": "Lakers logo"
           }
         },
         "logo_8WPKYY": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/Hard_Rock.png",
-            "alt": ""
+            "alt": "Hard Rock Cafe logo"
           }
         },
         "logo_rmXD3Q": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/Fox.png",
-            "alt": ""
+            "alt": "Fox Sports logo"
           }
         },
         "logo_9fiFUp": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/Dove.png",
-            "alt": ""
+            "alt": "Dove logo"
           }
         },
         "logo_VpGMmE": {
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/DHL.png",
-            "alt": ""
+            "alt": "DHL logo"
           }
         }
       },
