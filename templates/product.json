@@ -8,594 +8,1052 @@
  * ------------------------------------------------------------
  */
 {
-  "wrapper": "div.shopify-section-wrapper.section",
   "sections": {
-    "sidebar": {
-      "type": "product-sidebar",
-      "disabled": true,
-      "settings": {
-        "toggle": false
-      }
-    },
-    "main": {
-      "type": "product-template",
+    "main-product": {
+      "type": "main-product",
       "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "icon": "none",
+            "iwidth": "custom",
+            "icon_width": 26,
+            "text": "<strong>{{ product.vendor }}</strong>",
+            "text_size": "text-base"
+          }
+        },
         "title": {
           "type": "title",
-          "settings": {}
-        },
-        "zepto_product_personalizer_product_personalizer_page_dQJwma": {
-          "type": "shopify://apps/zepto-product-personalizer/blocks/product_personalizer_page/7411210d-7b32-4c09-9455-e129e3be4729",
-          "disabled": true,
           "settings": {
-            "product": "custom-rug-carpet"
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "display_savings": true
-          }
-        },
-        "okendo_star_rating_ydA4LC": {
-          "type": "shopify://apps/okendo/blocks/star-rating/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "afterpay_on_site_messaging_payments_messaging_VExiYb": {
-          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
-          "disabled": true,
-          "settings": {
-            "text_align": "inherit",
-            "margin_top": 16,
-            "margin_bottom": 16,
-            "color": "",
-            "size": "md",
-            "intro_text": "or",
-            "show_interest_free": true,
-            "payment_amount_is_bold": true,
-            "show_with": true,
-            "logo_type": "badge",
-            "logo_theme": "black-on-mint",
-            "modal_link_style": "circled-info-icon",
-            "modal_theme": "mint",
-            "breakpoint": 749,
-            "text_align_mobile": "inherit",
-            "margin_top_mobile": 16,
-            "margin_bottom_mobile": 16,
-            "show_lower_limit": true,
-            "show_upper_limit": true,
-            "show_if_outside_limits": true,
-            "product": "{{product}}"
-          }
-        },
-        "form": {
-          "type": "form",
-          "settings": {
-            "show_gift_card_recipient_form": false
-          }
-        },
-        "icon_text_86eAfn": {
-          "type": "Icon_text",
-          "settings": {
-            "icon_text_image": "shopify://shop_images/Paint_Brush_-_The_Noun_Project.svg",
-            "icon_text_text": "<p>Design proof sent before making your rug, 100% refund if you don't like it.</p>",
-            "background_color": "#f1f1f1"
-          }
-        },
-        "custom_image_znAtUH": {
-          "type": "Custom_image",
-          "disabled": true,
-          "settings": {
-            "image_item": "shopify://shop_images/TrustedBy_5bd3770b-703e-4fd5-827c-f9eab969756a.png"
+            "title_size": "product-title-md",
+            "title_size_mobile": "product-title-md",
+            "title_tag": "h1",
+            "show_price": true,
+            "show_rating": true
           }
         },
         "description": {
           "type": "description",
-          "settings": {}
-        },
-        "blinking_icon_text_zKgJqG": {
-          "type": "blinking_icon_text",
-          "settings": {}
-        },
-        "icon_text_rzFNXm": {
-          "type": "Icon_text",
           "settings": {
-            "icon_text_image": "shopify://shop_images/Headset_mic.png",
-            "icon_text_text": "<p>Questions or special requests? Our California concierge team is ready to help: <strong>(949) 478-4886.</strong></p>",
-            "background_color": "#FFFBF0"
+            "text_size": "text-base"
           }
         },
-        "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c": {
-          "type": "collapsible-tab",
-          "name": "Material & Build",
+        "countdown": {
+          "type": "countdown",
           "settings": {
-            "collapsible_tab_heading": "Material & Build",
-            "collapsible_tab_text": "<p>Our premium custom rug is built with the most advanced textile technology available today - combining durability, comfort, and easy maintenance in one sleek solution.<br/>                                                                    <br/><strong>Triple-Layer Construction:      </strong>                           <br/>• Top Layer: High-grade polyester engineered for rich, lasting color.                                                                        <br/>• Core: Cushioned non-woven padding for comfort and resilience.                                                                        <br/>• Base: Non-slip, anti-skid backing that stays firmly in place.                                                                        <br/><br/><strong>Made to Last:</strong><br/>Stain-resistant, fade-proof, and wear-tested for high-traffic commercial use.                                                                        <br/><br/><strong>Effortless Care:</strong><br/>Easy to clean, vacuum-friendly, and machine washable (select sizes).<br/>                                                       <br/><strong>Designed for Impact:</strong><br/>Ultra-vivid prints that elevate any business environment - from offices to retail floors.<br/><br/>This is not just a rug. It’s a precision-engineered foundation for your space - delivering comfort and confidence, backed by the latest in textile innovation.  </p>",
-            "collapsible_tab_text_two": ""
+            "heading": "Hurry up!",
+            "subheading": "Sale end in:",
+            "color_text": "#e11d48",
+            "color_background": "#fff1f2",
+            "gradient_background": ""
           }
         },
-        "collapsible_tab_JztnGb": {
-          "type": "collapsible-tab",
-          "name": "How It Works",
+        "variant_picker": {
+          "type": "variant_picker",
           "settings": {
-            "collapsible_tab_heading": "How It Works",
-            "collapsible_tab_text": "<p>Your art, our craftsmanship—three easy steps:  <br/>1. <strong>Choose Your Shape:</strong> classic rectangle, bold circle, or a custom cut.  <br/>2. <strong>Select Your Size:</strong> from small statement pieces to full-room centerpieces.</p>",
-            "collapsible_tab_image": "shopify://shop_images/2nd_version_Main.jpg",
-            "collapsible_tab_text_two": "<p>3. <strong>Upload Your Design:</strong> we’ll create a proof so you see exactly how it will look before production.</p>"
+            "enable_dynamic_variants": true,
+            "show_variant_labels": true,
+            "picker_type": "button",
+            "enable_color_swatches": true,
+            "color_swatch_type": "variant",
+            "size_chart": ""
           }
         },
-        "collapsible_tab_UF4WJG": {
-          "type": "collapsible-tab",
-          "name": "Image & Resolution",
+        "inventory": {
+          "type": "inventory",
           "settings": {
-            "collapsible_tab_heading": "Image & Resolution",
-            "collapsible_tab_text": "<p>High-resolution files mean sharper details. Upload JPG, PNG, WebP, or SVG—if you have another format, just email it after checkout.</p>",
-            "collapsible_tab_text_two": ""
+            "inventory_threshold": 15,
+            "show_inventory_transfer": true,
+            "show_inventory_quantity": "low",
+            "color_scheme": "accent-1"
           }
         },
-        "collapsible_tab_ijFrJi": {
-          "type": "collapsible-tab",
-          "name": "Design Tweaks",
+        "buy_buttons": {
+          "type": "buy_buttons",
           "settings": {
-            "collapsible_tab_heading": "Design Tweaks",
-            "collapsible_tab_text": "<p>Need a background color change or small adjustment? Reply to your order email and our design team will refine it before production—no extra forms or fees.</p>",
-            "collapsible_tab_text_two": ""
+            "show_quantity_selector": true,
+            "show_price": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true,
+            "enable_back_in_stock": true,
+            "show_back_in_stock_name": true,
+            "show_back_in_stock_phone": true
           }
         },
-        "collapsible_tab_qNTFGV": {
-          "type": "collapsible-tab",
-          "name": "Trusted Quality",
-          "settings": {
-            "collapsible_tab_heading": "Trusted Quality & Craftsmanship",
-            "collapsible_tab_text": "<p>Every rug is hand-tailored in California using commercial-grade materials built to last. Trusted by Fortune 500 brands and thousands of creators, Rugtomize rugs stay vibrant and durable for years of foot traffic and admiration.</p>",
-            "collapsible_tab_text_two": ""
-          }
-        },
-        "collapsible_tab_kE8Q4j": {
-          "type": "collapsible-tab",
-          "settings": {
-            "collapsible_tab_heading": "Production & Shipping",
-            "collapsible_tab_text": "<p>We craft and ship within 3–5 business days, then deliver straight to your door. You’ll receive updates at every step so there are no surprises.</p>",
-            "collapsible_tab_text_two": ""
-          }
-        },
-        "order_LYi88b": {
-          "type": "order",
+        "text_LQKWgX": {
+          "type": "text",
           "disabled": true,
           "settings": {
-            "icon": "2",
-            "icon_name": "truck",
-            "fade": true,
-            "txt": "Order in the next 30 min to get it between  [date_start] and [date_end]",
-            "ds": 10,
-            "de": 15,
-            "cut": "SAT,SUN",
-            "frm": "1",
-            "timezone": false,
-            "time": "16:00:00",
-            "hr": "hours",
-            "min": "minutes"
+            "icon": "clipboard",
+            "icon_image": "shopify://shop_images/Paint_Brush_-_The_Noun_Project_36898a27-51c6-4844-b8b2-d945e5f51528.svg",
+            "iwidth": "custom",
+            "icon_width": 30,
+            "text": "Design proof sent before making your rug, 100% refund if you don't like it.",
+            "text_size": "text-base lg:text-lg"
           }
         },
-        "four_images_with_text_GVJwGC": {
-          "type": "Four_images_with_text",
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
           "settings": {
-            "Four_images_with_text_img_one": "shopify://shop_images/Truck.jpg",
-            "Four_images_with_text_text_one": "<p>Fast and Free Delivery</p>",
-            "Four_images_with_text_img_two": "shopify://shop_images/Brush.jpg",
-            "Four_images_with_text_text_two": "<p>Durable & Easy-Clean</p>",
-            "Four_images_with_text_img_three": "shopify://shop_images/Star.jpg",
-            "Four_images_with_text_text_three": "<p>4.55★ User Satisfaction</p>",
-            "Four_images_with_text_img_four": "shopify://shop_images/Bucket.jpg",
-            "Four_images_with_text_text_four": "<p>Concierge Team</p>"
+            "share_label": "Share",
+            "show_help_desk": true,
+            "help_label": "Need help?",
+            "help_type": "drawer",
+            "help_page": "",
+            "help_page_external": false
+          }
+        },
+        "text_wnVAMV": {
+          "type": "text",
+          "settings": {
+            "icon": "ruler",
+            "iwidth": "custom",
+            "icon_width": 18,
+            "text": "<strong>Design proof sent before making your rug, 100% refund if you don't like it.</strong>",
+            "text_size": "text-base"
+          }
+        },
+        "text_PiYCGC": {
+          "type": "text",
+          "settings": {
+            "icon": "truck",
+            "iwidth": "custom",
+            "icon_width": 18,
+            "text": "<strong>Free shipping on all rugs.</strong>",
+            "text_size": "text-base"
+          }
+        },
+        "text_zetKX7": {
+          "type": "text",
+          "settings": {
+            "icon": "phone",
+            "iwidth": "custom",
+            "icon_width": 34,
+            "text": "Questions or special requests? Our California concierge team is ready to help: <strong>(949) 478-4886.</strong>",
+            "text_size": "text-base"
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "heading": "Pairs well with",
+            "product_limit": 4,
+            "show_vendor": false,
+            "show_price": true
+          }
+        },
+        "text-1": {
+          "type": "text",
+          "settings": {
+            "icon": "truck",
+            "iwidth": "custom",
+            "icon_width": 20,
+            "text": "Fast and Free Delivery",
+            "text_size": "text-sm"
+          }
+        },
+        "text-2": {
+          "type": "text",
+          "settings": {
+            "icon": "check_mark",
+            "iwidth": "custom",
+            "icon_width": 20,
+            "text": "Durable & Easy-Clean",
+            "text_size": "text-sm"
+          }
+        },
+        "text-3": {
+          "type": "text",
+          "settings": {
+            "icon": "trophy",
+            "iwidth": "custom",
+            "icon_width": 20,
+            "text": "4.55 ★ User Satisfaction",
+            "text_size": "text-sm"
+          }
+        },
+        "text-4": {
+          "type": "text",
+          "settings": {
+            "icon": "support",
+            "iwidth": "custom",
+            "icon_width": 20,
+            "text": "Concierge Team",
+            "text_size": "text-sm"
+          }
+        },
+        "sticky_buy_button": {
+          "type": "sticky_buy_button",
+          "settings": {}
+        },
+        "collapsible_tab_6atjjV": {
+          "type": "collapsible_tab",
+          "settings": {
+            "opened": false,
+            "style": "with-border",
+            "icon": "none",
+            "heading": "Material & Build",
+            "content": "<p>Our premium custom rug is built with the most advanced textile technology available today - combining durability, comfort, and easy maintenance in one sleek solution.<br/><br/><strong>Triple-Layer Construction:</strong>• Top Layer: High-grade polyester engineered for rich, lasting color.<br/>• Core: Cushioned non-woven padding for comfort and resilience.<br/>• Base: Non-slip, anti-skid backing that stays firmly in place.<br/><br/><strong>Made to Last:</strong>Stain-resistant, fade-proof, and wear-tested for high-traffic commercial use.<br/><br/><strong>Effortless Care:</strong>Easy to clean, vacuum-friendly, and machine washable (select sizes).<br/><br/><strong>Designed for Impact:</strong>Ultra-vivid prints that elevate any business environment - from offices to retail floors.<br/><br/>This is not just a rug. It’s a precision-engineered foundation for your space - delivering comfort and confidence, backed by the latest in textile innovation.</p>",
+            "page": "",
+            "liquid": "",
+            "text_size": "text-sm"
+          }
+        },
+        "collapsible_tab_4fWxMA": {
+          "type": "collapsible_tab",
+          "settings": {
+            "opened": false,
+            "style": "with-border",
+            "icon": "none",
+            "heading": "How It Works",
+            "content": "<p>Your art, our craftsmanship—three easy steps:  <br/><br/>1. <strong>Choose Your Shape:</strong>classic rectangle, bold circle, or a custom cut. <br/> <br/>2. <strong>Select Your Size:</strong>from small statement pieces to full-room centerpieces.<br/><br/>3. <strong>Upload Your Design:</strong>we’ll create a proof so you see exactly how it will look before production.</p>",
+            "page": "",
+            "liquid": "",
+            "text_size": "text-sm"
+          }
+        },
+        "collapsible_tab_W6RJXF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "opened": false,
+            "style": "with-border",
+            "icon": "none",
+            "heading": "Image & Resolution",
+            "content": "<p>High-resolution files mean sharper details. Upload JPG, PNG, WebP, or SVG—if you have another format, just email it after checkout.</p>",
+            "page": "",
+            "liquid": "",
+            "text_size": "text-sm"
+          }
+        },
+        "collapsible_tab_xwFM7H": {
+          "type": "collapsible_tab",
+          "settings": {
+            "opened": false,
+            "style": "with-border",
+            "icon": "none",
+            "heading": "Design Tweaks",
+            "content": "<p>Need a background color change or small adjustment? Reply to your order email and our design team will refine it before production—no extra forms or fees.</p>",
+            "page": "",
+            "liquid": "",
+            "text_size": "text-sm"
+          }
+        },
+        "collapsible_tab_4EAwin": {
+          "type": "collapsible_tab",
+          "settings": {
+            "opened": false,
+            "style": "with-border",
+            "icon": "none",
+            "heading": "Trusted Quality & Craftmanship",
+            "content": "<p>Every rug is hand-tailored in California using commercial-grade materials built to last. Trusted by Fortune 500 brands and thousands of creators, Rugtomize rugs stay vibrant and durable for years of foot traffic and admiration.</p>",
+            "page": "",
+            "liquid": "",
+            "text_size": "text-sm"
+          }
+        },
+        "collapsible_tab_f8U9QH": {
+          "type": "collapsible_tab",
+          "settings": {
+            "opened": false,
+            "style": "with-border",
+            "icon": "none",
+            "heading": "Production & Shipping",
+            "content": "<p>We craft and ship within 3–5 business days, then deliver straight to your door. You’ll receive updates at every step so there are no surprises.</p>",
+            "page": "",
+            "liquid": "",
+            "text_size": "text-sm"
           }
         }
       },
       "block_order": [
+        "vendor",
         "title",
-        "zepto_product_personalizer_product_personalizer_page_dQJwma",
-        "price",
-        "okendo_star_rating_ydA4LC",
-        "afterpay_on_site_messaging_payments_messaging_VExiYb",
-        "form",
-        "icon_text_86eAfn",
-        "custom_image_znAtUH",
         "description",
-        "blinking_icon_text_zKgJqG",
-        "icon_text_rzFNXm",
-        "6b9a8d0f-bb3d-4844-9fbe-529b6cdaae2c",
-        "collapsible_tab_JztnGb",
-        "collapsible_tab_UF4WJG",
-        "collapsible_tab_ijFrJi",
-        "collapsible_tab_qNTFGV",
-        "collapsible_tab_kE8Q4j",
-        "order_LYi88b",
-        "four_images_with_text_GVJwGC"
-      ],
-      "custom_css": [
-        ".feature-divider {display: none !important;}",
-        ".loox-rating .loox-rating-content {gap: 6px; margin-bottom: 12px;}",
-        "#shopify-block-AMGh2VGxoU1E4TC9lY__okendo_star_rating_ydA4LC-1 {display: none;}"
+        "countdown",
+        "variant_picker",
+        "inventory",
+        "buy_buttons",
+        "text_LQKWgX",
+        "pickup_availability",
+        "share",
+        "text_wnVAMV",
+        "text_PiYCGC",
+        "text_zetKX7",
+        "complementary",
+        "text-1",
+        "text-2",
+        "text-3",
+        "text-4",
+        "sticky_buy_button",
+        "collapsible_tab_6atjjV",
+        "collapsible_tab_4fWxMA",
+        "collapsible_tab_W6RJXF",
+        "collapsible_tab_xwFM7H",
+        "collapsible_tab_4EAwin",
+        "collapsible_tab_f8U9QH"
       ],
       "settings": {
-        "product_breadcrumb": false,
-        "media_position": "is-flex-row",
-        "show_free_shipping": true,
-        "set_product_height": false,
-        "product_height": 390,
-        "video_looping": false,
-        "product_thumbs": true,
-        "gallery_arrows": false,
-        "enable_product_lightbox": false,
-        "activate_zoom": false,
-        "slideshow_speed": 0,
-        "slideshow_animation": "slide",
-        "thumbnail_position": "bottom",
-        "enable_thumbnail_slider": true
+        "enable_sticky_info": true,
+        "media_size": 70,
+        "gallery_layout": "thumbnail",
+        "thumbnail_position": "beside",
+        "image_ratio": "adapt_first",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "mobile_layout": "full_width",
+        "image_ratio_mobile": "adapt_first",
+        "mobile_thumbnail": false,
+        "padding_top": 0,
+        "padding_bottom": 84,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
       }
     },
-    "custom_liquid_JEpPmQ": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "Custom liquid",
-      "settings": {
-        "custom_liquid": "<style>\n  .faq-section {\n    padding: 40px 0px;\n    max-width: 900px;\n    margin: auto;\n  }\n  .faq-title {\n    font-size: 28px;\n    margin-bottom: 20px;\n    text-align: center;\n  }\n  .faq-item {\n    border-top: 1px solid #000;\n  }\n  .faq-question,\n  .nested-question {\n    display: flex;\n    justify-content: space-between;\n    cursor: pointer;\n  }\n  .faq-question {\n    padding: 16px 0;\n    font-size: 16px;\n    font-weight: bold;\n  }\n  .nested-question {\n    padding: 12px 0;\n    font-size: 15px;\n    font-weight: bold;\n  }\n  .faq-icon {\n    display: inline-block;\n    transition: transform 0.3s ease;\n    transform-origin: center center;\n  }\n  .faq-answer,\n  .nested-answer {\n    display: none;\n    line-height: 1.5;\n  }\n  .faq-answer {\n    font-size: 15px;\n    padding-bottom: 16px;\n  }\n  .nested-answer {\n    font-size: 14px;\n    padding-bottom: 12px;\n  }\n  .nested-group {\n    padding-left: 15px;\n    border-left: 2px solid #ccc;\n    margin-top: 10px;\n  }\n\n  /* only rotate the clicked question’s icon */\n  .faq-item.open  > .faq-question  .faq-icon,\n  .nested-item.open > .nested-question .faq-icon {\n    transform: rotate(45deg);\n  }\n\n  /* show the opened answers */\n  .faq-item.open  .faq-answer,\n  .nested-item.open .nested-answer {\n    display: block;\n  }\n</style>\n\n<div class=\"faq-section\">\n  <h2 class=\"faq-title\">FAQs</h2>\n\n  <!-- SECTION 1 -->\n  <div class=\"faq-item\" data-value=\"Trust & Satisfaction\">\n    <div class=\"faq-question\">\n      <span>1. Trust & Satisfaction (Proofs, Guarantees, Design Assurance)</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I see a free proof or mockup before production?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Request a free digital proof by adding a note at checkout or replying to your confirmation email within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I request a refund if I don’t like the proof?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—reply within 24 hours and we’ll issue a full refund before production.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How long do I have to request design or color changes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            You have 24 hours after ordering to submit any change requests.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What happens if I don't submit design instructions?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We’ll proceed with your uploaded artwork and our design standards.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How many design variations can I request?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Up to four variations per rug to ensure your vision.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 2 -->\n  <div class=\"faq-item\" data-value=\"Customization & Design Options\">\n    <div class=\"faq-question\">\n      <span>2. Customization & Design Options</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer design assistance?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—free logo cleanup, layout help, color guidance, and concept creation.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will my design be centered and sized correctly?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—every design is manually adjusted for balance.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I add text, images, or multiple logos?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Sure—upload everything at checkout or email us within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can you rotate my design?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—just specify your rotation preference.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 3 -->\n  <div class=\"faq-item\" data-value=\"Backgrounds, Color, & Logo Styling\">\n    <div class=\"faq-question\">\n      <span>3. Backgrounds, Color, & Logo Styling</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How do I choose or change the background color?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Include your hex code or reference in checkout notes or email us.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I change the background color after ordering?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—within 24 hours of purchase.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I request a black/grey background with a white logo?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—specify it in your notes.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can you invert my logo?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Of course—let us know light-to-dark or vice versa.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will the colors match the final product?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We aim for 95–100% accuracy; slight variation may occur.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 4 -->\n  <div class=\"faq-item\" data-value=\"Shapes & Sizes\">\n    <div class=\"faq-question\">\n      <span>4. Shapes & Sizes</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer custom shapes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—describe your shape in checkout notes or email us.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer custom sizes?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Pick the closest size and give exact dimensions; we’ll invoice any upcharge.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 5 -->\n  <div class=\"faq-item\" data-value=\"Product Details & Quality\">\n    <div class=\"faq-question\">\n      <span>5. Product Details & Quality</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What are your rugs made of?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Commercial-grade polyester with non-slip rubber or vinyl backing.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Will rugs stay flat in high-traffic areas?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—weight-balanced and reinforced.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Are they durable enough for daily use?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Absolutely—built to last under heavy traffic.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Are they easy to clean?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Vacuum regularly or hose down with mild soap.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can they be used outdoors?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—fade and moisture resistant.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do they have non-slip backing?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Every rug ships with an anti-slip base.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How thick are the rugs?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            About 0.4″ (10 mm)—ADA-compliant.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 6 -->\n  <div class=\"faq-item\" data-value=\"Ordering & File Upload Help\">\n    <div class=\"faq-question\">\n      <span>6. Ordering & File Upload Help</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What file types do you accept?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            PNG, JPEG, SVG, PDF, WebP (200 KB–20 MB; 2 MB+ preferred).\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I check out without uploading my design?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—complete checkout, then email us your file within 24 hours.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>I’m having trouble uploading—what should I do?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Finish checkout and send the file later; we’ll confirm receipt.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>I can’t complete checkout—what now?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Refresh, try another browser, or contact us to place it manually.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Can I cancel or modify my order?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—within 24 hours and before production starts.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 7 -->\n  <div class=\"faq-item\" data-value=\"Discounts & Bulk Orders\">\n    <div class=\"faq-question\">\n      <span>7. Discounts & Bulk Orders</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>My discount code isn’t working—what do I do?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Place your order, mention the code, and we’ll refund the difference.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Do you offer bulk pricing?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Yes—for 10, 50, 100, 200+ units. Contact us for a quote.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- SECTION 8 -->\n  <div class=\"faq-item\" data-value=\"Production, Shipping & Delivery\">\n    <div class=\"faq-question\">\n      <span>8. Production, Shipping & Delivery</span>\n      <span class=\"faq-icon\">+</span>\n    </div>\n    <div class=\"faq-answer\">\n      <div class=\"nested-group\">\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>What is the production & shipping turnaround?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Production: 3–5 business days. Then ships via express ground.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>Where do you ship from?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            Orange County, California.\n          </div>\n        </div>\n        <div class=\"nested-item\">\n          <div class=\"nested-question\">\n            <span>How do I track my order?</span>\n            <span class=\"faq-icon\">+</span>\n          </div>\n          <div class=\"nested-answer\">\n            We’ll email tracking on ship. If not received, reply to your order confirmation.\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n\n</div>\n\n<script>\n  // toggle top-level sections\n  document.querySelectorAll('.faq-question').forEach(q => {\n    q.addEventListener('click', () => {\n      q.closest('.faq-item').classList.toggle('open');\n    });\n  });\n  // toggle nested questions\n  document.querySelectorAll('.nested-question').forEach(q => {\n    q.addEventListener('click', () => {\n      q.closest('.nested-item').classList.toggle('open');\n    });\n  });\n</script>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    const faqs = document.querySelectorAll('.faq-section .faq-item');\n    [...faqs].forEach((f, index) => {\n\nf.addEventListener('click', function() {\n        const value = this.dataset.value;\n        const that = this;\n        setTimeout(() => {\n          const isOpened = that.classList.contains('open');\n          // Track in clarity\n          try {\n            if (window.clarity && isOpened) {\n              clarity(\"event\", `FAQ Section - ${value}`);\nconsole.log('sent', `FAQ Section - ${value}`);\n            }\n          } catch (error) {\n            console.error(error);\n          }\n        }, 0);\n      })\n    });\n  });\n</script>",
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "pdp_faq_x9PtnV": {
-      "type": "pdp-faq",
-      "name": "PDP FAQ",
-      "settings": {}
-    },
-    "comparison_table_VKYrnp": {
-      "type": "comparison-table",
+    "help-drawer": {
+      "type": "help-drawer",
       "blocks": {
-        "row_header_pyLbFf": {
-          "type": "row_header",
+        "content-1": {
+          "type": "content",
           "settings": {
-            "row_header": "Heavy Duty"
+            "icon": "rocket",
+            "heading": "Shipping Information",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#b45309",
+            "color_background": "#fffbeb",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
           }
         },
-        "row_header_b4E8L3": {
-          "type": "row_header",
+        "content-2": {
+          "type": "content",
           "settings": {
-            "row_header": "4K Resolution"
+            "icon": "headphone",
+            "heading": "Customer Support",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#0369a1",
+            "color_background": "#f0f9ff",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
           }
         },
-        "row_header_ad77VB": {
-          "type": "row_header",
+        "content-3": {
+          "type": "content",
           "settings": {
-            "row_header": "Easy To Clean"
+            "icon": "chat_bubble",
+            "heading": "FAQ’s",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#be123c",
+            "color_background": "#fff1f2",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
           }
         },
-        "row_header_FfPn6y": {
-          "type": "row_header",
+        "content-4": {
+          "type": "content",
           "settings": {
-            "row_header": "Ships in 2 Business Days"
-          }
-        },
-        "row_header_cXtWVU": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "Free Proof Before Production"
-          }
-        },
-        "row_header_GY7GTG": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "24/7 Support"
-          }
-        },
-        "row_header_UPJ44c": {
-          "type": "row_header",
-          "settings": {
-            "row_header": "No Contracts"
-          }
-        },
-        "column_RxU8bH": {
-          "type": "column",
-          "settings": {
-            "title": "Rugtomize",
-            "price": "$ $",
-            "reviews": 4.5,
-            "row_1": true,
-            "row_2": true,
-            "row_3": true,
-            "row_4": true,
-            "row_5": true,
-            "row_6": true,
-            "row_7": true,
-            "row_8": false,
-            "row_9": false,
-            "row_10": false
-          }
-        },
-        "column_3N3hgx": {
-          "type": "column",
-          "settings": {
-            "title": "Rental Mats",
-            "price": "$ $ $",
-            "reviews": 1.5,
-            "row_1": true,
-            "row_2": true,
-            "row_3": false,
-            "row_4": false,
-            "row_5": true,
-            "row_6": false,
-            "row_7": false,
-            "row_8": false,
-            "row_9": false,
-            "row_10": false
-          }
-        },
-        "column_aXyMQQ": {
-          "type": "column",
-          "settings": {
-            "title": "Other Business Mats",
-            "price": "$",
-            "reviews": 2,
-            "row_1": false,
-            "row_2": false,
-            "row_3": true,
-            "row_4": false,
-            "row_5": false,
-            "row_6": false,
-            "row_7": true,
-            "row_8": false,
-            "row_9": false,
-            "row_10": false
+            "icon": "phone",
+            "heading": "Contact Us",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "color_text": "#4d7c0f",
+            "color_background": "#f7fee7",
+            "gradient_background": "",
+            "color_highlight": "#ffddbf",
+            "gradient_highlight": ""
           }
         }
       },
       "block_order": [
-        "row_header_pyLbFf",
-        "row_header_b4E8L3",
-        "row_header_ad77VB",
-        "row_header_FfPn6y",
-        "row_header_cXtWVU",
-        "row_header_GY7GTG",
-        "row_header_UPJ44c",
-        "column_RxU8bH",
-        "column_3N3hgx",
-        "column_aXyMQQ"
-      ],
-      "name": "Comparison Table",
-      "settings": {
-        "title": "How does Rugtomize compare?"
-      }
-    },
-    "three_image_showcase_q4KkXm": {
-      "type": "three-image-showcase",
-      "name": "Three Image Showcase",
-      "settings": {
-        "title": "Design. Approve. Impress.",
-        "subtitle": "",
-        "image_1": "shopify://shop_images/UPLOAD.png",
-        "alt_1": "",
-        "image_2": "shopify://shop_images/ReDESIGN.png",
-        "alt_2": "",
-        "image_3": "shopify://shop_images/FINAL.png",
-        "alt_3": ""
-      }
-    },
-    "testimonial_section_aCmWcJ": {
-      "type": "testimonial-section",
-      "blocks": {
-        "testimonial_block_NC6bV9": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#ffbf00",
-            "testimonial_image": "shopify://shop_images/Copy_of_r.3_image_1.png",
-            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
-            "subtitle_author": "Lineo Y."
-          }
-        },
-        "testimonial_block_kzBEmM": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#ffbf00",
-            "testimonial_image": "shopify://shop_images/Copy_of_r.1.png",
-            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
-            "subtitle_author": "Tony F."
-          }
-        },
-        "testimonial_block_p63U33": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#ffbf00",
-            "testimonial_image": "shopify://shop_images/runner_pdp_final.v3.png",
-            "feature_text": "<p>The custom rug turned out even better than we imagined. Our logo is crisp, the colors are perfect, and it instantly elevated the entrance to our office. We've already had several clients comment on it!</p>",
-            "subtitle_author": "Jason K."
-          }
-        },
-        "testimonial_block_rRrAU4": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#ffbf00",
-            "testimonial_image": "shopify://shop_images/oneofakinf_rug_review.png",
-            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
-            "subtitle_author": "Allison D."
-          }
-        },
-        "testimonial_block_g3b7xi": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#ffbf00",
-            "testimonial_image": "shopify://shop_images/Copy_of_Rugs.entrance.png",
-            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
-            "subtitle_author": "Adam G."
-          }
-        },
-        "testimonial_block_mpqfnU": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#ffbf00",
-            "testimonial_image": "shopify://shop_images/Copy_of_review.products.png",
-            "feature_text": "<p>We ordered a rug for our store and it makes such a great first impression. The craftsmanship is excellent and the whole process was smooth from start to finish.</p>",
-            "subtitle_author": "Ashley O."
-          }
-        },
-        "testimonial_block_9WFjUY": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#ffbf00",
-            "testimonial_image": "shopify://shop_images/image4.jpg",
-            "feature_text": "<p>Plush and handsome, right from the photo we supplied!! Very happy with the product and thank you!!</p>",
-            "subtitle_author": "Jessica C."
-          }
-        },
-        "testimonial_block_xY3PRH": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#ffbf00",
-            "testimonial_image": "shopify://shop_images/circle_cofee.png",
-            "feature_text": "<p>Easy to upload graphic… high quality item shipped fast!  Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
-            "subtitle_author": "Tyler H."
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_block_NC6bV9",
-        "testimonial_block_kzBEmM",
-        "testimonial_block_p63U33",
-        "testimonial_block_rRrAU4",
-        "testimonial_block_g3b7xi",
-        "testimonial_block_mpqfnU",
-        "testimonial_block_9WFjUY",
-        "testimonial_block_xY3PRH"
-      ],
-      "settings": {
-        "title": "<h2>Trusted by many rug Lovers!</h2>",
-        "subtitle": "",
-        "padding_top": 10,
-        "padding_bottom": 30
-      }
-    },
-    "image_with_text_overlay_EtXBR6": {
-      "type": "image-with-text-overlay",
-      "disabled": true,
-      "name": "Image with text overlay",
-      "settings": {
-        "wide_display": true,
-        "image": "shopify://shop_images/top5_benefits.png",
-        "pretext": "",
-        "title": "",
-        "show_stars": true,
-        "show_review_text": true,
-        "review_count_text": "",
-        "subtitle": "",
-        "button1": "",
-        "button1_link": "",
-        "button1_style": "global-button--banner",
-        "button2": "",
-        "button2_link": "",
-        "button2_style": "global-button--banner",
-        "text_position": "center",
-        "text_align": "center",
-        "caption_content_background": "original",
-        "mobile_image_crop": false,
-        "mobile_text_below_image": true,
-        "show_extra_icons": true,
-        "mobile_text_color": "",
-        "css_class": "",
-        "custom_css": ""
-      }
-    },
-    "17496056993e01ea80": {
-      "type": "apps",
-      "blocks": {
-        "okendo_reviews_widget_mzKjK9": {
-          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-          "settings": {
-            "product": "custom-area-rugs",
-            "widget_type": "reviews_widget"
-          }
-        }
-      },
-      "block_order": [
-        "okendo_reviews_widget_mzKjK9"
-      ],
-      "settings": {}
-    },
-    "product_list_custom_jpr7da": {
-      "type": "product-list-custom",
-      "blocks": {
-        "product_BDrjQL": {
-          "type": "product",
-          "settings": {
-            "product": "custom-square-rug"
-          }
-        },
-        "product_gk9QJA": {
-          "type": "product",
-          "settings": {
-            "product": "custom-area-rugs"
-          }
-        },
-        "product_wqCxV4": {
-          "type": "product",
-          "settings": {
-            "product": "custom-runners"
-          }
-        },
-        "product_RMb7P7": {
-          "type": "product",
-          "settings": {
-            "product": "custom-circle-rug-1"
-          }
-        }
-      },
-      "block_order": [
-        "product_BDrjQL",
-        "product_gk9QJA",
-        "product_wqCxV4",
-        "product_RMb7P7"
+        "content-1",
+        "content-2",
+        "content-3",
+        "content-4"
       ],
       "disabled": true,
-      "name": "Product List",
       "settings": {
-        "title": "Featured Products"
+        "heading": "Need help?",
+        "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.</p>"
       }
     },
-    "recommendations": {
+    "video-hero": {
+      "type": "video-hero",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "heading": "Video slide 1",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "heading": "Video slide 2",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "heading": "Video slide 3",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "slide-4": {
+          "type": "slide",
+          "settings": {
+            "heading": "Video slide 4",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3",
+        "slide-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "transparent_header": false,
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "content_width": "medium",
+        "video_url_mobile": "",
+        "color_text": "#ffffff",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_overlay": "#171717",
+        "overlay_opacity": 30,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": true,
+        "rounded": false
+      }
+    },
+    "collage": {
+      "type": "collage",
+      "blocks": {
+        "image-1": {
+          "type": "image",
+          "settings": {
+            "subheading": "<em>Tagline</em>",
+            "heading": "Example heading",
+            "link": "",
+            "invert_subheading_heading": false,
+            "image_ratio": "landscape",
+            "content_position": "md:items-end md:justify-center",
+            "text_alignment": "center",
+            "image_ratio_mobile": "landscape",
+            "content_position_mobile": "items-end justify-center",
+            "text_alignment_mobile": "center",
+            "highlighted_text": "text",
+            "highlighted_scribble": "circle",
+            "color_text": "#ffffff",
+            "color_highlight": "#fde047",
+            "gradient_highlight": "",
+            "color_overlay": "#171717",
+            "overlay_opacity": 30
+          }
+        },
+        "image-2": {
+          "type": "image",
+          "settings": {
+            "subheading": "<em>Tagline</em>",
+            "heading": "Example heading",
+            "link": "",
+            "invert_subheading_heading": false,
+            "image_ratio": "portrait",
+            "content_position": "md:items-end md:justify-start",
+            "text_alignment": "left",
+            "image_ratio_mobile": "portrait",
+            "content_position_mobile": "items-end justify-start",
+            "text_alignment_mobile": "left",
+            "highlighted_text": "text",
+            "highlighted_scribble": "circle",
+            "color_text": "#ffffff",
+            "color_highlight": "#fde047",
+            "gradient_highlight": "",
+            "color_overlay": "#171717",
+            "overlay_opacity": 30
+          }
+        },
+        "image-3": {
+          "type": "image",
+          "settings": {
+            "subheading": "<em>Tagline</em>",
+            "heading": "Example heading",
+            "link": "",
+            "invert_subheading_heading": false,
+            "image_ratio": "portrait",
+            "content_position": "md:items-start md:justify-end",
+            "text_alignment": "right",
+            "image_ratio_mobile": "portrait",
+            "content_position_mobile": "items-start justify-end",
+            "text_alignment_mobile": "right",
+            "highlighted_text": "text",
+            "highlighted_scribble": "circle",
+            "color_text": "#ffffff",
+            "color_highlight": "#fde047",
+            "gradient_highlight": "",
+            "color_overlay": "#171717",
+            "overlay_opacity": 30
+          }
+        },
+        "image-4": {
+          "type": "image",
+          "settings": {
+            "subheading": "<em>Tagline</em>",
+            "heading": "Example heading",
+            "link": "",
+            "invert_subheading_heading": true,
+            "image_ratio": "landscape",
+            "content_position": "md:items-end md:justify-end",
+            "text_alignment": "right",
+            "image_ratio_mobile": "landscape",
+            "content_position_mobile": "items-end justify-end",
+            "text_alignment_mobile": "right",
+            "highlighted_text": "text",
+            "highlighted_scribble": "circle",
+            "color_text": "#ffffff",
+            "color_highlight": "#fde047",
+            "gradient_highlight": "",
+            "color_overlay": "#171717",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "image-1",
+        "image-2",
+        "image-3",
+        "image-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Collage",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+        "button_label": "View more",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "scribble",
+        "highlighted_scribble": "basic-underline",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 0,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": true
+      }
+    },
+    "image-with-text-1": {
+      "type": "image-with-text",
+      "blocks": {
+        "image": {
+          "type": "image",
+          "settings": {
+            "image_width": "custom",
+            "image_max_width": 50,
+            "image_max_width_mobile": 50
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "text_font": "body",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "image",
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_height": "600px",
+        "image_width": "medium",
+        "layout": "image_first",
+        "text_alignment": "left",
+        "content_position": "align-self-center",
+        "image_height_mobile": "400px",
+        "text_alignment_mobile": "left",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_background_2": "#fafafa",
+        "gradient_background_2": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "scrolling-text": {
+      "type": "scrolling-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<em><strong>Free shipping and returns</strong></em>",
+            "text_size": 160,
+            "text_font": "heading",
+            "highlighted_text": "stencil",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "direction": "left",
+        "speed": 20,
+        "grid_horizontal": 70,
+        "enable_twin": false,
+        "enable_parallax": true,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "divider": false,
+        "rounded": false
+      }
+    },
+    "image-with-text-2": {
+      "type": "image-with-text",
+      "blocks": {
+        "image": {
+          "type": "image",
+          "settings": {
+            "image_width": "custom",
+            "image_max_width": 50,
+            "image_max_width_mobile": 50
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "text_font": "body",
+            "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "image",
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "image_height": "600px",
+        "image_width": "medium",
+        "layout": "text_first",
+        "text_alignment": "left",
+        "content_position": "align-self-center",
+        "image_height_mobile": "400px",
+        "text_alignment_mobile": "left",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_background_2": "#fafafa",
+        "gradient_background_2": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical"
+      }
+    },
+    "product-details": {
+      "type": "product-details",
+      "blocks": {
+        "collapsible_tab-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Collapsible row 1",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Collapsible row 2",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Collapsible row 3",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab-4": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "none",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Collapsible row 4",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "specification": {
+          "type": "specification",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "text_size": "text-sm"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab-1",
+        "collapsible_tab-2",
+        "collapsible_tab-3",
+        "collapsible_tab-4",
+        "specification"
+      ],
+      "disabled": true,
+      "settings": {
+        "style": "with-border",
+        "open_first_row": true,
+        "specifications_heading": "Included in the Box",
+        "heading": "Product details",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question-5": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "contact": {
+          "type": "contact",
+          "settings": {
+            "heading": "Didn’t find your answer?",
+            "text": "<p>Don't hestitate to contact us</p>",
+            "show_phone": false,
+            "avatar_height": 60,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4",
+        "question-5",
+        "contact"
+      ],
+      "disabled": true,
+      "settings": {
+        "style": "with-background",
+        "heading": "FAQs",
+        "heading_size": "title-lg tracking-heading",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "<p>Please read our <a href=\"#\" title=\"FAQ's\">FAQs</a> page to find out more.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "#ffffff",
+        "color_background": "#171717",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "#171717",
+        "color_button_background": "#ffffff",
+        "color_button_gradient": "",
+        "color_overlay": "#ffffff",
+        "overlay_opacity": 4,
+        "padding_top": 84,
+        "padding_bottom": 84,
+        "divider": false,
+        "narrow": false,
+        "rounded": false
+      }
+    },
+    "product-recommendations": {
       "type": "product-recommendations",
       "disabled": true,
-      "custom_css": [
-        ".current_price {display: flex; justify-content: center; gap: 1rem;}"
-      ],
       "settings": {
-        "show_product_recommendations": true,
-        "wide_display": false,
-        "product_recommendations_style": "grid",
-        "product_recommendations_heading": "You may also like",
-        "products_per_row": 4,
-        "recommended_products_limit": 4
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "You may also like",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": true
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "product_limit": 6,
+        "columns": 4,
+        "carousel_on_desktop": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "Recently Viewed",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
       }
     }
   },
   "order": [
-    "sidebar",
-    "main",
-    "custom_liquid_JEpPmQ",
-    "pdp_faq_x9PtnV",
-    "comparison_table_VKYrnp",
-    "three_image_showcase_q4KkXm",
-    "testimonial_section_aCmWcJ",
-    "image_with_text_overlay_EtXBR6",
-    "17496056993e01ea80",
-    "product_list_custom_jpr7da",
-    "recommendations"
+    "main-product",
+    "help-drawer",
+    "video-hero",
+    "collage",
+    "image-with-text-1",
+    "scrolling-text",
+    "image-with-text-2",
+    "product-details",
+    "faq",
+    "product-recommendations",
+    "recently-viewed"
   ]
 }

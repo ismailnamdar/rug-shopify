@@ -27,7 +27,6 @@
       --color-background: {{ section.settings.color_background.rgb }};
       --color-foreground: {{ section.settings.color_text.rgb }};
       --color-highlight: {{ section.settings.color_highlight.rgb }};
-      --animation-smooth: 0.7s cubic-bezier(0.7, 0, 0.3, 1);
     }
   </style>
 
@@ -44,7 +43,7 @@
   <nav class="topbar topbar--{{ section.settings.announcement_position }}{% if section.settings.invert_icons_selectors %} topbar--inverted{% endif %}{% unless section.settings.show_social or enable_language_selector or enable_country_selector %} topbar--only{% endunless %} page-width{% if section.settings.full_width %} page-width--full{% endif %} section{% if section.settings.rounded %} section--rounded{% endif %} relative grid py-0 h-full w-full items-center" aria-label="{{ 'sections.announcements.announcement_bar' | t | escape }}">
     {%- if section.settings.show_social -%}
       <div class="social-icons hidden lg:flex items-center">
-        {%- render 'social-icons-v2', size: 'sm', gap: '6' -%}
+        {%- render 'social-icons', size: 'sm', gap: '6' -%}
       </div>
     {%- endif -%}
 
@@ -151,36 +150,39 @@
 
 {% schema %}
 {
-  "name": "Announcement Bar v2",
+  "name": "t:sections.announcement-bar.name",
   "class": "topbar-section",
   "settings": [
     {
       "type": "checkbox",
       "id": "show_social",
       "default": true,
-      "label": "Show social media icons"
+      "label": "t:sections.announcement-bar.settings.show_social.label",
+      "info": "t:sections.announcement-bar.settings.show_social.info"
     },
     {
       "type": "checkbox",
       "id": "enable_language_selector",
       "default": true,
-      "label": "Enable language selector"
+      "label": "t:sections.announcement-bar.settings.enable_language_selector.label",
+      "info": "t:sections.announcement-bar.settings.enable_language_selector.info"
     },
     {
       "type": "checkbox",
       "id": "enable_country_selector",
       "default": true,
-      "label": "Enable country/region selector"
+      "label": "t:sections.announcement-bar.settings.enable_country_selector.label",
+      "info": "t:sections.announcement-bar.settings.enable_country_selector.info"
     },
     {
       "type": "checkbox",
       "id": "invert_icons_selectors",
       "default": false,
-      "label": "Invert icons and selectors"
+      "label": "t:sections.announcement-bar.settings.invert_icons_selectors.label"
     },
     {
       "type": "header",
-      "content": "Announcement"
+      "content": "t:sections.announcement-bar.settings.header__announcement.content"
     },
     {
       "type": "select",
@@ -188,20 +190,20 @@
       "options": [
         {
           "value": "start",
-          "label": "Left"
+          "label": "t:sections.announcement-bar.settings.announcement_position.options__1.label"
         },
         {
           "value": "center",
-          "label": "Center"
+          "label": "t:sections.announcement-bar.settings.announcement_position.options__2.label"
         },
         {
           "value": "end",
-          "label": "Right"
+          "label": "t:sections.announcement-bar.settings.announcement_position.options__3.label"
         }
       ],
       "default": "center",
-      "label": "Announcement position",
-      "info": "Position is automatically optimized for mobile."
+      "label": "t:sections.announcement-bar.settings.announcement_position.label",
+      "info": "t:sections.announcement-bar.settings.announcement_position.info"
     },
     {
       "type": "select",
@@ -209,28 +211,28 @@
       "options": [
         {
           "value": "carousel",
-          "label": "Carousel"
+          "label": "t:sections.announcement-bar.settings.announcement_layout.options__1.label"
         },
         {
           "value": "marquee",
-          "label": "Marquee"
+          "label": "t:sections.announcement-bar.settings.announcement_layout.options__2.label"
         }
       ],
       "default": "carousel",
-      "label": "Announcement layout"
+      "label": "t:sections.announcement-bar.settings.announcement_layout.label"
     },
     {
       "visible_if": "{{ section.settings.announcement_layout == 'carousel' }}",
       "type": "checkbox",
       "id": "autoplay",
       "default": true,
-      "label": "Autoplay"
+      "label": "t:sections.announcement-bar.settings.autoplay.label"
     },
     {
       "visible_if": "{{ section.settings.announcement_layout == 'carousel' and section.settings.autoplay == true }}",
       "type": "range",
       "id": "autoplay_speed",
-      "label": "Autospeed",
+      "label": "t:sections.announcement-bar.settings.autoplay_speed.label",
       "max": 10,
       "min": 3,
       "step": 1,
@@ -242,7 +244,7 @@
       "type": "checkbox",
       "id": "show_navigation",
       "default": false,
-      "label": "Show navigation"
+      "label": "t:sections.announcement-bar.settings.show_navigation.label"
     },
     {
       "visible_if": "{{ section.settings.announcement_layout == 'marquee' }}",
@@ -251,15 +253,15 @@
       "options": [
         {
           "value": "left",
-          "label": "Left"
+          "label": "t:sections.scrolling-text.settings.direction.options__1.label"
         },
         {
           "value": "right",
-          "label": "Right"
+          "label": "t:sections.scrolling-text.settings.direction.options__2.label"
         }
       ],
       "default": "left",
-      "label": "Direction"
+      "label": "t:sections.scrolling-text.settings.direction.label"
     },
     {
       "visible_if": "{{ section.settings.announcement_layout == 'marquee' }}",
@@ -268,176 +270,416 @@
       "min": 1,
       "max": 30,
       "step": 1,
-      "label": "Speed",
+      "label": "t:sections.scrolling-text.settings.speed.label",
       "unit": "x",
       "default": 20
     },
     {
       "type": "header",
-      "content": "Colors",
-      "info": "Gradient replaces solid colors when set"
+      "content": "t:sections.global.settings.header__colors.content",
+      "info": "t:sections.global.settings.header__colors.info"
     },
     {
       "type": "color",
       "id": "color_text",
-      "label": "Text",
+      "label": "t:sections.global.settings.color_text.label",
       "default": "#fafafa"
     },
     {
       "type": "color",
       "id": "color_background",
-      "label": "Background",
+      "label": "t:sections.global.settings.color_background.label",
       "default": "#1f1f1f"
     },
     {
       "type": "color_background",
       "id": "gradient_background",
-      "label": "Background gradient"
+      "label": "t:sections.global.settings.gradient_background.label"
     },
     {
       "type": "color",
       "id": "color_highlight",
-      "label": "Highlight",
+      "label": "t:sections.global.settings.color_highlight.label",
       "default": "#ffddbf"
     },
     {
       "type": "color_background",
       "id": "gradient_highlight",
-      "label": "Highlight gradient"
+      "label": "t:sections.global.settings.gradient_highlight.label"
     },
     {
       "type": "header",
-      "content": "Section"
+      "content": "t:sections.global.settings.header__section.content"
     },
     {
       "type": "checkbox",
       "id": "hide_homepage",
-      "label": "Do not show on home page",
+      "label": "t:sections.announcement-bar.settings.hide_homepage.label",
       "default": false
     },
     {
       "type": "checkbox",
       "id": "full_width",
-      "label": "Make section full width",
+      "label": "t:sections.global.settings.full_width.label",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "rounded",
       "default": false,
-      "label": "Make section rounded"
+      "label": "t:sections.global.settings.rounded.label"
     }
   ],
   "blocks": [
     {
       "type": "announcement",
-      "name": "Announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
       "limit": 6,
       "settings": [
         {
           "type": "select",
           "id": "icon",
-          "label": "Icon",
+          "label": "t:sections.global.settings.icon.label",
           "default": "none",
           "options": [
-            { "value": "none", "label": "None" },
-            { "value": "alert", "label": "Alert" },
-            { "value": "award", "label": "Award" },
-            { "value": "bag", "label": "Bag" },
-            { "value": "box", "label": "Box" },
-            { "value": "briefcase", "label": "Briefcase" },
-            { "value": "calendar", "label": "Calendar" },
-            { "value": "chat_bubble", "label": "Chat bubble" },
-            { "value": "check_mark", "label": "Check mark" },
-            { "value": "clipboard", "label": "Clipboard" },
-            { "value": "cosmetics", "label": "Cosmetics" },
-            { "value": "creadit_card", "label": "Credit card" },
-            { "value": "dairy", "label": "Dairy" },
-            { "value": "dairy_free", "label": "Dairy free" },
-            { "value": "devices", "label": "Devices" },
-            { "value": "email", "label": "Email" },
-            { "value": "eye", "label": "Eye" },
-            { "value": "file_text", "label": "File text" },
-            { "value": "gift", "label": "Gift" },
-            { "value": "gluten", "label": "Gluten" },
-            { "value": "gluten_free", "label": "Gluten free" },
-            { "value": "headphone", "label": "Headphone" },
-            { "value": "heart", "label": "Heart" },
-            { "value": "iron", "label": "Iron" },
-            { "value": "lightning", "label": "Lightning" },
-            { "value": "lock", "label": "Lock" },
-            { "value": "map_pin", "label": "Map pin" },
-            { "value": "newspaper", "label": "Newspaper" },
-            { "value": "organic", "label": "Organic" },
-            { "value": "perfume", "label": "Perfume" },
-            { "value": "phone", "label": "Phone" },
-            { "value": "plane", "label": "Plane" },
-            { "value": "planet", "label": "Planet" },
-            { "value": "planet_2", "label": "Planet 2" },
-            { "value": "recycling", "label": "Recycling" },
-            { "value": "return", "label": "Return" },
-            { "value": "rocket", "label": "Rocket" },
-            { "value": "ruler", "label": "Ruler" },
-            { "value": "ruler_2", "label": "Ruler 2" },
-            { "value": "ruler_3", "label": "Ruler 3" },
-            { "value": "sale", "label": "Sale" },
-            { "value": "shield", "label": "Shield check" },
-            { "value": "shirt", "label": "Shirt" },
-            { "value": "shoe", "label": "Shoe" },
-            { "value": "star", "label": "Star" },
-            { "value": "support", "label": "Support" },
-            { "value": "swatchbook", "label": "Swatchbook" },
-            { "value": "tag", "label": "Tag" },
-            { "value": "tags", "label": "Tags" },
-            { "value": "time", "label": "Time" },
-            { "value": "trophy", "label": "Trophy" },
-            { "value": "truck", "label": "Truck" },
-            { "value": "users", "label": "Users" },
-            { "value": "wallet", "label": "Wallet free" },
-            { "value": "wash", "label": "Wash" },
-            { "value": "watch", "label": "Watch" },
-            { "value": "wrench", "label": "Wrench" }
+            {
+              "value": "none",
+              "label": "t:sections.global.settings.icon.options__1.label"
+            },
+            {
+              "value": "alert",
+              "label": "t:sections.global.settings.icon.options__2.label"
+            },
+            {
+              "value": "award",
+              "label": "t:sections.global.settings.icon.options__3.label"
+            },
+            {
+              "value": "bag",
+              "label": "t:sections.global.settings.icon.options__4.label"
+            },
+            {
+              "value": "box",
+              "label": "t:sections.global.settings.icon.options__5.label"
+            },
+            {
+              "value": "briefcase",
+              "label": "t:sections.global.settings.icon.options__6.label"
+            },
+            {
+              "value": "calendar",
+              "label": "t:sections.global.settings.icon.options__7.label"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "t:sections.global.settings.icon.options__8.label"
+            },
+            {
+              "value": "check_mark",
+              "label": "t:sections.global.settings.icon.options__9.label"
+            },
+            {
+              "value": "clipboard",
+              "label": "t:sections.global.settings.icon.options__10.label"
+            },
+            {
+              "value": "cosmetics",
+              "label": "t:sections.global.settings.icon.options__11.label"
+            },
+            {
+              "value": "creadit_card",
+              "label": "t:sections.global.settings.icon.options__12.label"
+            },
+            {
+              "value": "dairy",
+              "label": "t:sections.global.settings.icon.options__13.label"
+            },
+            {
+              "value": "dairy_free",
+              "label": "t:sections.global.settings.icon.options__14.label"
+            },
+            {
+              "value": "devices",
+              "label": "t:sections.global.settings.icon.options__15.label"
+            },
+            {
+              "value": "email",
+              "label": "t:sections.global.settings.icon.options__16.label"
+            },
+            {
+              "value": "eye",
+              "label": "t:sections.global.settings.icon.options__17.label"
+            },
+            {
+              "value": "file_text",
+              "label": "t:sections.global.settings.icon.options__18.label"
+            },
+            {
+              "value": "gift",
+              "label": "t:sections.global.settings.icon.options__19.label"
+            },
+            {
+              "value": "gluten",
+              "label": "t:sections.global.settings.icon.options__20.label"
+            },
+            {
+              "value": "gluten_free",
+              "label": "t:sections.global.settings.icon.options__21.label"
+            },
+            {
+              "value": "headphone",
+              "label": "t:sections.global.settings.icon.options__22.label"
+            },
+            {
+              "value": "heart",
+              "label": "t:sections.global.settings.icon.options__23.label"
+            },
+            {
+              "value": "iron",
+              "label": "t:sections.global.settings.icon.options__24.label"
+            },
+            {
+              "value": "lightning",
+              "label": "t:sections.global.settings.icon.options__25.label"
+            },
+            {
+              "value": "lock",
+              "label": "t:sections.global.settings.icon.options__26.label"
+            },
+            {
+              "value": "map_pin",
+              "label": "t:sections.global.settings.icon.options__27.label"
+            },
+            {
+              "value": "newspaper",
+              "label": "t:sections.global.settings.icon.options__28.label"
+            },
+            {
+              "value": "organic",
+              "label": "t:sections.global.settings.icon.options__29.label"
+            },
+            {
+              "value": "perfume",
+              "label": "t:sections.global.settings.icon.options__30.label"
+            },
+            {
+              "value": "phone",
+              "label": "t:sections.global.settings.icon.options__31.label"
+            },
+            {
+              "value": "plane",
+              "label": "t:sections.global.settings.icon.options__32.label"
+            },
+            {
+              "value": "planet",
+              "label": "t:sections.global.settings.icon.options__33.label"
+            },
+            {
+              "value": "planet_2",
+              "label": "t:sections.global.settings.icon.options__34.label"
+            },
+            {
+              "value": "recycling",
+              "label": "t:sections.global.settings.icon.options__35.label"
+            },
+            {
+              "value": "return",
+              "label": "t:sections.global.settings.icon.options__36.label"
+            },
+            {
+              "value": "rocket",
+              "label": "t:sections.global.settings.icon.options__37.label"
+            },
+            {
+              "value": "ruler",
+              "label": "t:sections.global.settings.icon.options__38.label"
+            },
+            {
+              "value": "ruler_2",
+              "label": "t:sections.global.settings.icon.options__39.label"
+            },
+            {
+              "value": "ruler_3",
+              "label": "t:sections.global.settings.icon.options__40.label"
+            },
+            {
+              "value": "sale",
+              "label": "t:sections.global.settings.icon.options__41.label"
+            },
+            {
+              "value": "shield",
+              "label": "t:sections.global.settings.icon.options__42.label"
+            },
+            {
+              "value": "shirt",
+              "label": "t:sections.global.settings.icon.options__43.label"
+            },
+            {
+              "value": "shoe",
+              "label": "t:sections.global.settings.icon.options__44.label"
+            },
+            {
+              "value": "star",
+              "label": "t:sections.global.settings.icon.options__45.label"
+            },
+            {
+              "value": "support",
+              "label": "t:sections.global.settings.icon.options__46.label"
+            },
+            {
+              "value": "swatchbook",
+              "label": "t:sections.global.settings.icon.options__47.label"
+            },
+            {
+              "value": "tag",
+              "label": "t:sections.global.settings.icon.options__48.label"
+            },
+            {
+              "value": "tags",
+              "label": "t:sections.global.settings.icon.options__49.label"
+            },
+            {
+              "value": "time",
+              "label": "t:sections.global.settings.icon.options__50.label"
+            },
+            {
+              "value": "trophy",
+              "label": "t:sections.global.settings.icon.options__51.label"
+            },
+            {
+              "value": "truck",
+              "label": "t:sections.global.settings.icon.options__52.label"
+            },
+            {
+              "value": "users",
+              "label": "t:sections.global.settings.icon.options__53.label"
+            },
+            {
+              "value": "wallet",
+              "label": "t:sections.global.settings.icon.options__54.label"
+            },
+            {
+              "value": "wash",
+              "label": "t:sections.global.settings.icon.options__55.label"
+            },
+            {
+              "value": "watch",
+              "label": "t:sections.global.settings.icon.options__56.label"
+            },
+            {
+              "value": "wrench",
+              "label": "t:sections.global.settings.icon.options__57.label"
+            }
           ]
         },
         {
           "type": "inline_richtext",
           "id": "text",
-          "label": "Text",
+          "label": "t:sections.global.settings.text.label",
           "default": "Welcome to our store"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link"
+          "label": "t:sections.global.settings.link.label"
         },
         {
           "type": "header",
-          "content": "Header"
+          "content": "t:sections.global.settings.header__mobile.content"
         },
         {
           "type": "checkbox",
           "id": "hide_icon_mobile",
           "default": true,
-          "label": "Header icon"
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.hide_icon_mobile.label"
         },
         {
           "type": "inline_richtext",
           "id": "text_mobile",
-          "label": "Text mobile"
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text_mobile.label"
         },
         {
           "type": "header",
-          "content": "Header"
+          "content": "t:sections.global.settings.header__highlight.content",
+          "info": "t:sections.global.settings.header__highlight.info"
+        },
+        {
+          "type": "select",
+          "id": "highlighted_text",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.global.settings.highlighted_text.options__1.label"
+            },
+            {
+              "value": "text",
+              "label": "t:sections.global.settings.highlighted_text.options__2.label"
+            },
+            {
+              "value": "full_text",
+              "label": "t:sections.global.settings.highlighted_text.options__3.label"
+            },
+            {
+              "value": "half_text",
+              "label": "t:sections.global.settings.highlighted_text.options__4.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.global.settings.highlighted_text.options__5.label"
+            },
+            {
+              "value": "marker",
+              "label": "t:sections.global.settings.highlighted_text.options__6.label"
+            },
+            {
+              "value": "stencil",
+              "label": "t:sections.global.settings.highlighted_text.options__7.label"
+            },
+            {
+              "value": "scribble",
+              "label": "t:sections.global.settings.highlighted_text.options__8.label"
+            }
+          ],
+          "default": "none",
+          "label": "t:sections.global.settings.highlighted_text.label"
+        },
+        {
+          "visible_if": "{{ block.settings.highlighted_text == 'scribble' }}",
+          "type": "select",
+          "id": "highlighted_scribble",
+          "options": [
+            {
+              "value": "circle",
+              "label": "t:sections.global.settings.highlighted_scribble.options__1.label"
+            },
+            {
+              "value": "basic-underline",
+              "label": "t:sections.global.settings.highlighted_scribble.options__2.label"
+            },
+            {
+              "value": "sketch-underline",
+              "label": "t:sections.global.settings.highlighted_scribble.options__3.label"
+            },
+            {
+              "value": "squiggle-underline",
+              "label": "t:sections.global.settings.highlighted_scribble.options__4.label"
+            },
+            {
+              "value": "squiggle-underline-2",
+              "label": "t:sections.global.settings.highlighted_scribble.options__5.label"
+            }
+          ],
+          "default": "circle",
+          "label": "t:sections.global.settings.highlighted_scribble.label",
+          "info": "t:sections.global.settings.highlighted_scribble.info"
         }
       ]
     }
   ],
-  "tag": "section",
-  "presets": [
-    {
-      "name": "Announcement Bar v2",
-      "category": "Custom"
-    }
-  ]
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
 }
 {% endschema %}

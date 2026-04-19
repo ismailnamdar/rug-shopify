@@ -1,22 +1,57 @@
-{% comment %}
+{%- doc -%}
+  Renders pagination controls with numbered pages or infinite scroll functionality.
 
-  This snippet renders a custom widget based on the current 'paginate' context,
-  defined in { % paginate XXXX by 5 % } tags wrapping the content.
+  Must be wrapped in Shopify's paginate tags to access paginate object.
 
-  Replace Text Example:
-    <div class="pagination">
-      {{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles'  }}
-    </div>
+  @param {object} paginate - Shopify pagination object from {% paginate %} tags
+  @param {string} [mode] - Loading behavior ('infinite', 'click', or default)
+  @param {string} [hash] - URL fragment to append to links (e.g., '#results')
 
-  More information:
-   - http://docs.shopify.com/themes/liquid-variables/paginate
+  @example
+  {% paginate results by 12 %}
+    {% render 'pagination', paginate: paginate %}
+  {% endpaginate %}
+{%- enddoc -%}
 
-{% endcomment %}
+<div class="pagination flex flex-wrap justify-center align-self-center md:gap-2 text-sm md:text-base">
+  {%- if mode == 'infinite' or mode == 'click' -%}
+    {%- if paginate.next -%}
+      <button type="button" class="infinite-scroll button button--primary button--fixed" action="{{ request.origin | append: paginate.next.url }}" mode="{{ mode }}" is="infinite-button">
+        <span class="btn-fill" data-fill></span>
+        <span class="btn-text" data-text>{{ 'general.pagination.show_more' | t }}</span>
+      </button>
+    {%- endif -%}
+  {%- else -%}
+    {%- if paginate.previous -%}
+      <a class="previous flex items-center justify-center gap-2 font-medium" href="{{ paginate.previous.url }}{{ hash }}" is="magnet-link" aria-label="{{ 'general.pagination.previous' | t | escape }}">
+        {%- render 'icon', icon: 'arrow-left', size: 'sm', class: 'transform stroke-1 shrink-0' -%}
+        <span class="btn-text" data-text>{{ 'general.pagination.previous' | t }}</span>
+      </a>
+    {%- endif -%}
 
-<div class="one-whole column">
-  <div class="paginate">
-    {% if paginate.pages > 1 %}
-      {{ paginate | default_pagination | replace: '&raquo;', '<span class="icon-right-arrow"></span>' | replace: '&laquo;', '<span class="icon-left-arrow"></span>' }}
-    {% endif %}
-  </div>
+    {%- for part in paginate.parts -%}
+      {%- if part.is_link -%}
+        <a class="page flex items-center justify-center rounded-full" href="{{ part.url }}{{ hash }}" is="magnet-link" aria-label="{{ 'general.pagination.page' | t: number: part.title | escape }}">
+          <span class="btn-text" data-text>{{ part.title }}</span>
+        </a>
+      {%- else -%}
+        {%- if part.title == paginate.current_page -%}
+          <span class="page current flex items-center justify-center rounded-full pointer-events-none" aria-current="page">
+            {{- part.title -}}
+          </span>
+        {%- else -%}
+          <span class="page flex items-center justify-center rounded-full" aria-label="{{ 'general.pagination.page' | t: number: part.title | escape }}">
+            {{- part.title -}}
+          </span>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if paginate.next -%}
+      <a class="next flex items-center justify-center gap-2 font-medium" href="{{ paginate.next.url }}{{ hash }}" is="magnet-link" aria-label="{{ 'general.pagination.next' | t | escape }}">
+        <span class="btn-text" data-text>{{ 'general.pagination.next' | t }}</span>
+        {%- render 'icon', icon: 'arrow-right', size: 'sm', class: 'transform stroke-1 shrink-0' -%}
+      </a>
+    {%- endif -%}
+  {%- endif -%}
 </div>

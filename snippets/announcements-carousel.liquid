@@ -22,7 +22,7 @@
       <div class="announcement__slide flex h-full"{% unless forloop.first %} aria-hidden="true"{% endunless %} {{ block.shopify_attributes }}>
         {%- capture announcement_content -%}
           {%- if block.settings.icon != 'none' -%}
-            <span class="announcement-icon{% if block.settings.hide_icon_mobile %} hidden md:flex{% endif %}">
+            <span class="announcement-icon{% if block.settings.hide_icon_mobile %} hidden md:block{% endif %}">
               {%- render 'icon-announcement', icon: block.settings.icon, size: 'xs', class: 'stroke-1' -%}
             </span>
           {%- endif -%}
@@ -62,17 +62,17 @@
     {%- endfor -%}
   </announcement-bar>
   {%- if section.settings.show_navigation and announcements_count > 1 -%}
-    <button type="button" is="previous-button" class="fader left relative flex items-center justify-start h-full" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" style="width: 20px;background:transparent;color:white;">
+    <button type="button" is="previous-button" class="fader left relative flex items-center justify-start h-full" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}">
       <svg class="icon icon-arrow-left icon-xs transform" viewBox="0 0 15 14" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" role="presentation">
         <path stroke-linecap="round" stroke-linejoin="round" d="M6.33333 2.91675L2.25 7.00004M2.25 7.00004L6.33333 11.0834M2.25 7.00004H12.75"></path>
       </svg>
     </button>
-    <button type="button" is="next-button" class="fader right relative flex items-center justify-end h-full" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}" style="width: 20px;background:transparent;color:white;">
+    <button type="button" is="next-button" class="fader right relative flex items-center justify-end h-full" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
       <svg class="icon icon-arrow-right icon-xs transform" viewBox="0 0 15 14" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" role="presentation">
         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.00004H12.75M12.75 7.00004L8.66667 2.91675M12.75 7.00004L8.66667 11.0834"></path>
       </svg>
     </button>
-    {% comment %} {%- if section.settings.autoplay -%}
+    {%- if section.settings.autoplay -%}
       <button
         type="button"
         class="slideshow-control flex items-center justify-center rounded-full sr-only"
@@ -90,6 +90,6 @@
           {%- render 'icon', icon: 'play' -%}
         </span>
       </button>
-    {%- endif -%} {% endcomment %}
+    {%- endif -%}
   {%- endif -%}
 </div>
