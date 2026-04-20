@@ -129,7 +129,13 @@
   <div class="product__media-container flex flex-col gap-4 
     {%- if gallery_layout == 'thumbnail' %} items-start{% if thumbnail_position == 'beside' %} xl:flex-row{% endif %}{% endif -%}"
   >
-    <div class="relative w-full h-full">
+    <div class="product-main-canvas-container w-full" style="display: none;">
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% assign shape = current_variant.option1 | downcase  %}
+      {% assign size = current_variant.option2 | upcase %}
+      {% render "custom-rug-canvas", shape: shape, size: size, bg_url: 'background-example.png', bottom_banner: true %}
+    </div>
+    <div id="SliderGallery-slider-wrapper" class="relative w-full h-full">
       <slider-element id="SliderGallery-{{ section_id }}-{{ product_id }}" class="slider slider--desktop slider--tablet block w-full h-full" selector=".product__media" tabindex="0">
         <div
           class="product__media-list flex gap-1

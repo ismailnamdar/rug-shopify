@@ -1,17 +1,24 @@
-<button
-    type="submit"
-    name="add"
-    form="{{ product_form_id }}"
-    class="product-form__submit button button--primary button--fixed grow w-full{% if show_price %} with-price{% endif %}"
-    is="hover-button"
-    aria-label="{{ add_to_cart_aria | escape }}"
-    {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %} disabled{% endif -%}
-    {%- if product.template_suffix == 'pre-order' %} data-pre-order{% endif -%}
-    {%- if enable_back_in_stock %} data-back-in-stock{% endif -%}
->
-    <span class="btn-fill" data-fill></span>
-    <span class="btn-text flex items-center gap-4">
-        <span class="font-bold text-xl">Upload Your Image</span>
-        {% render 'icon', icon: 'upload', size: 'xs' %}
-    </span>
-</button>
+<script src="{{ 'upload-button.js' | asset_url }}" defer></script>
+
+{% assign SUPPORTED_FILE_TYPES = 'image/jpg,image/jpeg,image/webp,image/png,image/svg+xml,image/tiff,image/HEIC,image/bmp,image/avif,.ico' %}
+
+<upload-button data-form-id="{{ product_form_id }}">
+  <input id="custom-rug-image" type="file" style="display: none;" accept="{{ SUPPORTED_FILE_TYPES }}" />
+  <button
+      type="submit"
+      name="add"
+      form="{{ product_form_id }}"
+      class="custom-rug-upload-image product-form__submit button button--primary button--fixed grow w-full{% if show_price %} with-price{% endif %}"
+      is="hover-button"
+      aria-label="{{ add_to_cart_aria | escape }}"
+      {%- if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %} disabled{% endif -%}
+      {%- if product.template_suffix == 'pre-order' %} data-pre-order{% endif -%}
+      {%- if enable_back_in_stock %} data-back-in-stock{% endif -%}
+  >
+      <span class="btn-fill" data-fill></span>
+      <span class="btn-text flex items-center gap-4">
+          <span class="font-bold text-xl">Upload Your Image</span>
+          {% render 'icon', icon: 'upload', size: 'xs' %}
+      </span>
+  </button>
+</upload-button>

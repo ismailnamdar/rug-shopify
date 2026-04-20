@@ -1,4 +1,8 @@
 <div>
-    {%  render 'upload-button' %}
-    {% render 'buy-buttons' %}
+  <div id="custom-upload-button">
+    {% render 'upload-button' %}
+  </div>
+  <div id="custom-buy-buttons-wrapper" style="display: none;">
+    {% render 'buy-buttons', id: "custom-rug-add-to-cart" %}
+  </div>
 </div>

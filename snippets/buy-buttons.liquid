@@ -3,6 +3,7 @@
 
   Handles add-to-cart, dynamic checkout, volume pricing, inventory rules, and back-in-stock notifications.
 
+  @param {string} id - Unique identifier for the main add-to-cart button
   @param {object} block - Block settings and configuration
   @param {object} product - Shopify product object
   @param {string} product_form_id - Unique form identifier for cart submission
@@ -12,6 +13,7 @@
 
   @example
   {% render 'buy-buttons',
+     id: 'buy-buttons-123',
      block: block,
      product: product,
      product_form_id: 'product-form-123',
@@ -254,6 +256,7 @@
           endif
         -%}
         <button
+          id={{ id }}
           type="submit"
           name="add"
           form="{{ product_form_id }}"
