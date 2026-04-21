@@ -37,11 +37,11 @@ if (!customElements.get('upload-button')) {
       }
 
       get addToCartButton() {
-        return document.querySelector('#custom-rug-add-to-cart .custom-rug-sticky-add-to-cart-button');
+        return document.querySelector('#custom-rug-add-to-cart');
       }
 
       get addToCartButtonText() {
-        return document.querySelector('.custom-rug-sticky-add-to-cart-button-text');
+        return document.querySelector('#custom-rug-add-to-cart .btn-text span');
       }
 
       get editNotesButton() {
@@ -144,12 +144,18 @@ if (!customElements.get('upload-button')) {
         try {
           this.scrollToCanvas();
           this.addToCartButton.disabled = true;
+          const defaultText = this.addToCartButtonText.textContent;
           this.addToCartButtonText.textContent = 'Adding to cart';
           CanvasRugEditor.loading(true, true, 'Preparing your rug...');
           await CanvasRugEditor.handleClickAddToCart();
+          CanvasRugEditor.loading(false, true);
+          this.addToCartButtonText.textContent = defaultText;
+          this.addToCartButton.disabled = false;
         } catch (error) {
           console.error(error);
-          CanvasRugEditor.loading(false, true);
+          CanvasRugEditor.loading(false, false);
+          this.addToCartButtonText.textContent = defaultText;
+          this.addToCartButton.disabled = false;
         }
       }
 

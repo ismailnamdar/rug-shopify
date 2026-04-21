@@ -5015,6 +5015,17 @@ class VariantPicker extends HTMLElement {
       this.updateAvailableOptions(target);
     }
 
+    console.log(this.findVariantByOptions(true));
+    if (this.findVariantByOptions(true) == null) {
+      const closestVariant = this.findClosestAvailableVariant(target);
+      if (closestVariant) {
+        console.log(closestVariant.option2, document.querySelector(`[data-label-option-value="${closestVariant.option2}"]`));
+        setTimeout(() => {
+          document.querySelector(`[data-label-option-value="${closestVariant.option2}"]`)?.click()
+        }, 1500);
+      }
+    }
+
     this.markSelectedOption(target);
     this.publishSelectionChange(event, this.getActualInput(target));
   }
@@ -5284,7 +5295,9 @@ class ProductInfo extends HTMLElement {
         return;
       }
 
-      this.updateSourceFromDestination(parsedHTML, 'ProductGallery');
+      // Updating product gallery is currently skipped due to custom rug builder.
+      // Before openning this test custom rug builder functionality.
+      // this.updateSourceFromDestination(parsedHTML, 'ProductGallery');
       this.updateSourceFromDestination(parsedHTML, 'Price');
       this.updateSourceFromDestination(parsedHTML, 'BuyButtonPrice');
       this.updateSourceFromDestination(parsedHTML, 'StickyPrice');
@@ -5929,7 +5942,7 @@ class MediaGallery extends HTMLElement {
       //setTimeout(() => this.pauseAllMedia(), 500);
     });
 
-    (this.productForm ?? document).addEventListener('variant:change', this.onVariantChanged.bind(this));
+    // (this.productForm ?? document).addEventListener('variant:change', this.onVariantChanged.bind(this));
     
     this.addEventListener('lightbox:open', (event) => this.openZoom(event.detail.index));
     this.sliderGallery.addEventListener('slider:change', this.onSlideChange.bind(this));
@@ -6004,10 +6017,11 @@ class MediaGallery extends HTMLElement {
   }
 
   onVariantChanged(event) {
+    console.log('variant changed, updating media gallery', event);
     const currentVariant = event.detail.variant;
     if (!currentVariant.featured_media) return;
 
-    this.countMediaGallery();
+    this.countMediaGallery();    
     this.setActiveMedia(currentVariant.featured_media.id);
   }
 

@@ -178,6 +178,7 @@
                   for="{{ section_id }}-{{ product_id }}-{{ option.name | handle }}-{{ forloop.index0 }}"
                   class="color-swatch{% if swatch_image != blank %} with-image{% endif %} cursor-pointer block relative{% if image_ratio %} aspect-{{ image_ratio }} mobile:aspect-{{ image_ratio_mobile }}{% unless image_fill %} aspect-contain{% endunless %}{% endif %}"
                   title="{{ value | escape }}"
+                  data-label-option-value="{{ value | escape }}"
                   style="--swatch-background: {{ swatch_fallback }};{% if swatch_fallback_override == false and swatch_image != blank %}--swatch-background-image: url({{ swatch_image }});{% endif %}"
                 >
                   <span class="sr-only">{{ value | escape }}</span>
@@ -190,7 +191,8 @@
                   for="{{ section_id }}-{{ product_id }}-{{ option.name | handle }}-{{ forloop.index0 }}"
                   class="label-swatch text-sm font-medium leading-none cursor-pointer flex flex-col items-center justify-between relative w-full h-full"
                   title="{{ value | escape }}"
-                  style="display: flex;"
+                  data-label-option-value="{{ value | escape }}"
+                  style="display: flex;{% if option.name == "Size " or option.name == "Size" %}{% if option.selected_value == value %}background-color: #D4D4D4;{% endif %}{% endif %}"
                 >
                   {% if is_shape %}
                     <div class="flex items-center justify-center" style="height: 81px; margin-bottom: 22px;">

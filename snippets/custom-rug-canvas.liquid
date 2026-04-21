@@ -1,10 +1,19 @@
 <script src="{{ 'custom-rug-canvas.js' | asset_url }}" defer></script>
 
+{%- assign shape_option_index = 0 -%}
+{%- assign size_option_index = 1 -%}
+{%- for opt in product.options -%}
+  {%- if opt == 'Shape' -%}{%- assign shape_option_index = forloop.index0 -%}{%- endif -%}
+  {%- if opt == 'Size' -%}{%- assign size_option_index = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+
 <custom-rug-canvas
   data-shape="{{ shape | default: 'rectangle' }}"
   data-size="{{ size | default: "2'X3'" }}"
   data-bottom-banner="{{ bottom_banner | default: false }}"
   data-bg-url="{{ bg_url | default: 'background-example.png' | asset_url }}"
+  data-shape-option-index="{{ shape_option_index }}"
+  data-size-option-index="{{ size_option_index }}"
 >
 
 <div id="rug-canvas-container w-full">
@@ -14,9 +23,9 @@
 
     <div class="custom-rug-top-toolbar">
       <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: row; text-align:center;">
-        <button id="rug-canvas-change-photo" class="custom-rug-action-button" style="margin-top: 6px;">
-          <span>Change Photo</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-upload" aria-hidden="true"><path d="M12 13v8"></path><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path><path d="m8 17 4-4 4 4"></path></svg>
+        <button id="rug-canvas-change-photo" class="custom-rug-action-button" style="margin-top: 6px; padding: 8px 40px; height: 57px; border-radius: 29px;">
+          <span style="font-weight: 700; font-size: 14px;">Change Photo</span>
+          {% render 'icon', icon: 'upload', size: 'xs' %}
         </button>
       </div>
     </div>
@@ -31,14 +40,14 @@
     {% endcomment %}
 
     <div class="custom-rug-bottom-toolbar">
-      <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: column; width: 40px; text-align:center; color: black; margin-bottom: 12px;">
+      <div class="rug-color-container flex justify-center items-center">
         Rug Color
         <input id="custom-rug-bg-color" data-bg-color="color" class="custom-rug-bg-color" type="color" />
       </div>
-      <button id="rug-canvas-rotate" class="custom-rug-action-button" style="margin-bottom: 10px;">
+      <button id="rug-canvas-rotate" class="custom-rug-action-button" style="margin-bottom: 10px; height: 57px; width: 57px;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
       </button>
-      <div style="display: flex; flex-direction: column; border-radius: 8px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 1px #23232347; background-color: white;border: 1px solid #e2e2e2;">
+      <div style="display: flex; flex-direction: column; border-radius: 10px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 1px #23232347; background-color: white;border: 1px solid black;">
         <button id="rug-canvas-scale-up" class="custom-rug-action-button-zoom">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
         </button>
@@ -74,17 +83,17 @@
     justify-content: center;
     gap: 8px;
     background-color: white;
-    border: 1px solid #e2e2e2;
-    border-radius: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
     margin: 6px 0;
-    padding: 7px 24px;
+    padding: 8px;
     cursor: pointer;
     box-shadow: 0 1px 1px #23232347;
   }
 
   .custom-rug-action-button-zoom {
-    height: 40px;
-    width: 40px;
+    height: 57px;
+    width: 57px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,7 +127,24 @@
     bottom: 85px !important
   }
 
+  .rug-color-container {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    width: 57px;
+    text-align:center;
+    color: black;
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 12px;
+    padding: 8px 8px 2px 8px;
+    border: 1px solid black;
+  }
+
   .custom-rug-bg-color {
+    height: 45px;
     border-radius: 7px;
     padding: 2px !important;
     margin-bottom: 0 !important;

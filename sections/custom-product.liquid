@@ -193,8 +193,8 @@
   
                     assign modulo = block_index | modulo: 2
                   -%}
-                  <div class="product__text{% if modulo == 0 %} even{% endif %}{% if prev_block.type != 'text' %} first{% endif %}{% if next_block.type != 'text' %} last{% endif %}" {{ block.shopify_attributes }}>
-                    <div class="product__text-inner flex items-center gap-2d5">
+                  <div class="product__text{% if modulo == 0 %} even{% endif %}{% if prev_block.type != 'text' %} first{% endif %}{% if next_block.type != 'text' %} last{% endif %}" {{ block.shopify_attributes }} style="padding: 0; margin-bottom: 6px;">
+                    <div class="product__text-inner flex items-center gap-2d5" style="background-color: #f4f4f4; border-radius: 10px;">
                       {%- if block.settings.icon_image != blank -%}
                         {%- liquid
                           if block.settings.iwidth == 'fit'
@@ -206,7 +206,7 @@
                           assign image_alt = image_alt | default: block.settings.text | escape
                           assign max_width = block.settings.icon_image.width
                         -%}
-                        <figure class="media media--transparent relative inline-block">
+                        <figure class="media media--transparent relative inline-block flex justify-center items-center"  style="height: 60px; width: 60px; padding: 16px; background-color: black; border-radius: 100%;">
                           {%- capture sizes -%}{{ icon_width }}px{%- endcapture -%}
                           {%- capture widths -%}{{ icon_width | times: 1.5 | at_most: max_width | round }}, {{ icon_width | times: 2 | at_most: max_width }}, {{ icon_width | times: 3 | at_most: max_width }}{%- endcapture -%}
                           {{- block.settings.icon_image | image_url: width: max_width | image_tag: loading: 'lazy', sizes: sizes, widths: widths, alt: image_alt, class: 'image-fit' -}}
@@ -220,7 +220,7 @@
                           endif
                         -%}
                       {%- endif -%}
-                      <p class="rte {{ block.settings.text_size }} leading-tight">{{ block.settings.text }}</p>
+                      <p class="rte {{ block.settings.text_size }} leading-tight" style="flex: 1;">{{ block.settings.text }}</p>
                     </div>
                   </div>
                 {%- else -%}

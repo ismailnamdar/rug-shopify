@@ -1,0 +1,60 @@
+<div class="flex flex-row gap-4 crf-features">
+  <div class="crf-feature">
+    <div class="crf-feature-icon">
+      {% render 'icon', icon: 'fast-delivery', size: 'xs' %}
+    </div>
+    <span>Fast & Free Delivery</span>
+  </div>
+  <div class="crf-feature">
+    <div class="crf-feature-icon">
+      {% render 'icon', icon: 'star-circle', size: 'xs' %}
+    </div>
+    <span>4.55★ User Satisfaction</span>
+  </div>
+  <div class="crf-feature">
+    <div class="crf-feature-icon">
+      {% render 'icon', icon: 'durable', size: 'xs' %}
+    </div>
+    <span>Durable & Easy-Clean</span>
+  </div>
+  <div class="crf-feature">
+    <div class="crf-feature-icon">
+      {% render 'icon', icon: 'concierge', size: 'xs' %}
+    </div>
+    <span>Concierge Team</span>
+  </div>
+</div>
+<style>
+  .crf-features {
+    padding: 25px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    border-top: 1px solid black;
+  }
+  .crf-feature-icon {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .crf-feature {
+    color: black;
+    border-radius: 43px;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 108%;
+    letter-spacing: 0px;
+    text-align: left;
+    display: flex;
+    gap: 17px;
+    justify-content: center;
+    align-items: center;
+  }
+  .crf-feature span {
+    flex: 1;
+  }
+</style>

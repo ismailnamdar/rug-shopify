@@ -16,26 +16,26 @@ if (!customElements.get('custom-rug-canvas')) {
       constructor() {
         super();
 
-        const circleR = 6;
+        const circleR = 10;
         this.sizes = {
           circle: {
-            "3'X3'": { name: "3'X3'", wFeet: 3, hFeet: 3, w: circleR, h: circleR },
-            "4'X4'": { name: "4'X4'", wFeet: 4, hFeet: 4, w: circleR, h: circleR },
-            "5'X5'": { name: "5'X5'", wFeet: 5, hFeet: 5, w: circleR, h: circleR },
-            "6'X6'": { name: "6'X6'", wFeet: 6, hFeet: 6, w: circleR, h: circleR },
-            "8'X8'": { name: "8'X8'", wFeet: 8, hFeet: 8, w: circleR, h: circleR },
+            "3'X3'": { name: "3'X3'", wFeet: 3, hFeet: 3, w: 5, h: 5 },
+            "4'X4'": { name: "4'X4'", wFeet: 4, hFeet: 4, w: 6, h: 6 },
+            "5'X5'": { name: "5'X5'", wFeet: 5, hFeet: 5, w: 7, h: 7 },
+            "6'X6'": { name: "6'X6'", wFeet: 6, hFeet: 6, w: 8, h: 8 },
+            "8'X8'": { name: "8'X8'", wFeet: 8, hFeet: 8, w: 10, h: 10 },
           },
           rectangle: { ...CustomRugCanvas.rectangleDefaultDimensions },
           runner: {
-            "2.5'X7'": { name: "2.5'X7'", wFeet: 7, hFeet: 2.5, w: 10, h: 5 },
-            "2.5'X10'": { name: "2.5'X10'", wFeet: 10, hFeet: 2.5, w: 10, h: 5 },
+            "2.5'X7'": { name: "2.5'X7'", wFeet: 7, hFeet: 2.5, w: 9, h: 2.5 * 9 / 7 },
+            "2.5'X10'": { name: "2.5'X10'", wFeet: 10, hFeet: 2.5, w: 10, h: 2.5 },
             "5'X10'": { name: "5'X10'", wFeet: 10, hFeet: 5, w: 10, h: 5 },
           },
         };
 
         this.handlePositions = {};
         this.center = { x: 0, y: 0 };
-        this.canvasScale = { w: 18, h: 18 };
+        this.canvasScale = { w: 14, h: 14 };
 
         this.fgImg = null;
         this.bgImg = null;
@@ -60,6 +60,7 @@ if (!customElements.get('custom-rug-canvas')) {
         this._onPointerDown = this._onPointerDown.bind(this);
         this._onPointerMove = this._onPointerMove.bind(this);
         this._onPointerUp = this._onPointerUp.bind(this);
+        this._onVariantChange = this._onVariantChange.bind(this);
       }
 
       get canvas() {
@@ -73,6 +74,9 @@ if (!customElements.get('custom-rug-canvas')) {
       connectedCallback() {
         this.shape = this.getAttribute('data-shape') || 'rectangle';
         this.shapeSize = this.getAttribute('data-size') || "2'X3'";
+        this._shapeOptionIndex = parseInt(this.getAttribute('data-shape-option-index') || '0');
+        this._sizeOptionIndex = parseInt(this.getAttribute('data-size-option-index') || '1');
+        document.addEventListener('variant:change', this._onVariantChange);
 
         const canvas = this.canvas;
         if (canvas) {
@@ -103,10 +107,22 @@ if (!customElements.get('custom-rug-canvas')) {
           canvas.removeEventListener('pointerup', this._onPointerUp);
         }
         this._resizeObserver?.disconnect();
+        document.removeEventListener('variant:change', this._onVariantChange);
+      }
+
+      /* ---- VARIANT CHANGE ---- */
+      _onVariantChange(event) {
+        const variant = event.detail?.variant;
+        if (!variant) return;
+        const shapeValue = variant.option1?.toLowerCase();
+        const sizeValue = variant.option2?.toUpperCase();
+        if (shapeValue) {
+          if (shapeValue !== this.shape) this.setShape(shapeValue);
+        }
+        if (sizeValue && sizeValue !== this.shapeSize) this.setSize(sizeValue);
       }
 
       /* ---- RESIZE ---- */
-
       _onResize() {
         const canvas = this.canvas;
         if (!canvas) return;
@@ -133,7 +149,7 @@ if (!customElements.get('custom-rug-canvas')) {
       }
 
       _updateCircleDimensions(isMobile) {
-        const radius = isMobile ? 6 : 10;
+        const radius = isMobile ? 6 : 12;
         this.sizes.circle = Object.fromEntries(
           Object.entries(this.sizes.circle).map(([key, val]) => [key, { ...val, w: radius, h: radius }])
         );
@@ -679,20 +695,25 @@ if (!customElements.get('custom-rug-canvas')) {
       }
 
       async handleClickAddToCart() {
+        console.log('called ');
         const { path: originalPath, mimeType, originalPreviewFileUrl } = this.uploadedImage;
 
+        console.log('called 2', this.uploadedImage);
         if (originalPath == null) { this.addToCartPending = true; return; }
 
+        console.log('called exportPNG');
         const previewPath = await this.exportPNG();
         const { data, original_file_url: originalFileUrl, preview_file_url: previewFileUrl } = await this.createMedia(
           originalPath, previewPath, mimeType, this.bgColor, this.shownImage === 'background-removed'
         );
 
+        console.log('called exportPNG finished');
+
         const originalUrl = originalPreviewFileUrl || originalFileUrl;
         const comments = document.querySelector('.edit-notes-textarea')?.value || '';
-        const addComment = document.querySelector('.edit-notes-header-button[data-value="needs-fixing"]')?.getAttribute('data-active') === 'true';
         const sendProof = document.querySelector('#custom-rug-proof-section #custom-rug-send-proof')?.checked;
 
+        console.log('called test');
         const setProp = (name, value) => {
           const el = document.querySelector(`#custom-rug-properties-section input[name="${name}"]`);
           if (el) el.value = value;
@@ -706,7 +727,7 @@ if (!customElements.get('custom-rug-canvas')) {
         setProp('properties[__Rotation]', this.rotationDeg);
         setProp('properties[__Original image]', originalUrl);
         setProp('properties[Product preview image]', previewFileUrl);
-        setProp('properties[Comments]', addComment ? comments : '');
+        setProp('properties[Comments]', comments);
 
         document.querySelector('#custom-rug-submit-button')?.click();
         this.addToCartPending = false;

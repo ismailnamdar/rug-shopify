@@ -183,7 +183,7 @@
                                           </a>
                                       </dd>
                                     </div>
-                                  {% elsif property.first == "__Original image" %}
+                                  {% elsif property.first == "__Original image" and property.last != blank %}
                                     <div class="text-xs text-opacity leading-tight">
                                       <dd class="inline"> 
                                           <a href="{{ property.last }}" class="link" target="_blank" aria-describedby="a11y-new-window-message">
