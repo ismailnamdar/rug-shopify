@@ -23,7 +23,7 @@
 
     <div class="custom-rug-top-toolbar">
       <div style="font-size: 12px; line-height: 14px; display: flex; flex-direction: row; text-align:center;">
-        <button id="rug-canvas-change-photo" class="custom-rug-action-button" style="margin-top: 6px; padding: 8px 40px; height: 57px; border-radius: 29px;">
+        <button id="rug-canvas-change-photo" class="custom-rug-action-button">
           <span style="font-weight: 700; font-size: 14px;">Change Photo</span>
           {% render 'icon', icon: 'upload', size: 'xs' %}
         </button>
@@ -44,7 +44,7 @@
         Rug Color
         <input id="custom-rug-bg-color" data-bg-color="color" class="custom-rug-bg-color" type="color" />
       </div>
-      <button id="rug-canvas-rotate" class="custom-rug-action-button" style="margin-bottom: 10px; height: 57px; width: 57px;">
+      <button id="rug-canvas-rotate" class="custom-rug-action-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
       </button>
       <div style="display: flex; flex-direction: column; border-radius: 10px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 1px #23232347; background-color: white;border: 1px solid black;">
@@ -165,23 +165,54 @@
     object-fit: cover;
   }
 
+  #rug-canvas-rotate {
+    margin-bottom: 10px;
+    height: 57px;
+    width: 57px;
+  }
+
+  #rug-canvas-change-photo {
+    margin-top: 6px;
+    padding: 8px 40px;
+    height: 57px;
+    border-radius: 29px;
+  }
+
   @media screen and (max-width: 768px) {
     .rug-canvas {
-      width: 100vw;
-      margin-left: -10px;
       height: 450px;
-    }
-
-    .custom-rug-top-toolbar {
-      right: 0;
-      top: 80px;
-    }
-    .custom-rug-bottom-toolbar {
-      right: 0;
     }
 
     .custom-rug-bottom-left-toolbar {
       left: 0;
+    }
+
+    .custom-rug-top-toolbar {
+      top: 10px;
+    }
+
+    .rug-color-container {
+      width: 40px;
+    }
+
+    .custom-rug-action-button-zoom {
+      height: 40px;
+      width: 40px;
+    }
+
+    #rug-canvas-change-photo {
+      height: 40px;
+      width: 220px;
+    }
+
+    #rug-canvas-rotate {
+      height: 40px;
+      width: 40px;
+    }
+
+    .custom-rug-bg-color {
+      width: 30px;
+      height: 30px;
     }
   }
 </style>

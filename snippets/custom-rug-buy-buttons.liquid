@@ -413,3 +413,147 @@
     </div>
   {%- endif -%}
 </div>
+
+<style>
+  @media (max-width: 749px) {
+    #buy-btn-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      padding: 12px 16px;
+      background: #fff;
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    #buy-btn-sticky-bar.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .buy-btn-sticky-inner {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .buy-btn-sticky-inner .product-form__submit {
+      flex: 1;
+      max-width: none;
+    }
+  }
+
+  @media (min-width: 750px) {
+    #buy-btn-sticky-bar {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var mq = window.matchMedia('(max-width: 749px)');
+
+    function init() {
+      var originalAtc = document.getElementById('custom-rug-add-to-cart');
+      if (!originalAtc || !window.IntersectionObserver) return;
+
+      var buyButtons = originalAtc.closest('.buy-buttons');
+      var originalQtyEl = buyButtons && buyButtons.querySelector('quantity-input');
+      var originalQtyInput = originalQtyEl && originalQtyEl.querySelector('input[type="number"]');
+
+      // Build bar — hidden until showCanvas() enables it
+      var bar = document.createElement('div');
+      bar.id = 'buy-btn-sticky-bar';
+      bar.setAttribute('aria-hidden', 'true');
+      bar.dataset.enabled = 'false';
+
+      var inner = document.createElement('div');
+      inner.className = 'buy-btn-sticky-inner';
+
+      // Clone quantity input if present
+      var stickyQtyInput = null;
+      if (originalQtyEl) {
+        var qtyClone = originalQtyEl.cloneNode(true);
+        var clonedInput = qtyClone.querySelector('input[type="number"]');
+        if (clonedInput) {
+          // Disconnect from form so it doesn't submit independently
+          clonedInput.removeAttribute('form');
+          clonedInput.removeAttribute('name');
+          clonedInput.removeAttribute('id');
+          stickyQtyInput = clonedInput;
+        }
+        inner.appendChild(qtyClone);
+      }
+
+      // Clone add-to-cart button (no form/id to avoid conflicts)
+      var stickyAtc = originalAtc.cloneNode(true);
+      stickyAtc.removeAttribute('id');
+      stickyAtc.removeAttribute('form');
+      inner.appendChild(stickyAtc);
+
+      bar.appendChild(inner);
+
+      // Move to body so position:fixed is never inside a transformed ancestor
+      document.body.appendChild(bar);
+
+      // Proxy ATC click to original
+      stickyAtc.addEventListener('click', function () {
+        originalAtc.click();
+      });
+
+      // Sync disabled state from original to sticky
+      new MutationObserver(function () {
+        stickyAtc.disabled = originalAtc.disabled;
+      }).observe(originalAtc, { attributes: true, attributeFilter: ['disabled'] });
+
+      // Sync quantity: sticky → original
+      if (stickyQtyInput && originalQtyInput) {
+        stickyQtyInput.addEventListener('change', function () {
+          originalQtyInput.value = stickyQtyInput.value;
+          originalQtyInput.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+        stickyQtyInput.addEventListener('input', function () {
+          originalQtyInput.value = stickyQtyInput.value;
+          originalQtyInput.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+
+        // Sync quantity: original → sticky (e.g. variant change updates min/max)
+        originalQtyInput.addEventListener('change', function () {
+          stickyQtyInput.value = originalQtyInput.value;
+        });
+      }
+
+      // IntersectionObserver on the original ATC button
+      var observer = new IntersectionObserver(function (entries) {
+        if (!mq.matches || bar.dataset.enabled !== 'true') {
+          bar.classList.remove('is-visible');
+          bar.setAttribute('aria-hidden', 'true');
+          return;
+        }
+        var isVisible = entries[0].isIntersecting;
+        bar.classList.toggle('is-visible', !isVisible);
+        bar.setAttribute('aria-hidden', isVisible ? 'true' : 'false');
+      }, { threshold: 0, rootMargin: '0px' });
+
+      observer.observe(originalAtc);
+
+      mq.addEventListener('change', function () {
+        if (!mq.matches) {
+          bar.classList.remove('is-visible');
+          bar.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

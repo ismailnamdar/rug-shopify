@@ -1,4 +1,4 @@
-<div class="flex flex-row gap-4 crf-features">
+<div class="flex flex-row gap-4 crf-features {{class}}">
   <div class="crf-feature">
     <div class="crf-feature-icon">
       {% render 'icon', icon: 'fast-delivery', size: 'xs' %}
@@ -56,5 +56,22 @@
   }
   .crf-feature span {
     flex: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    .crf-features {
+      row-gap: 10px;
+      column-gap: 20px;
+    }
+    .crf-feature {
+      font-size: 12px;
+      padding: 0;
+    }
+    
+    .crf-feature-icon {
+      width: 30px;
+      height: 30px;
+      padding: 6px;
+    }
   }
 </style>

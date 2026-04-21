@@ -129,7 +129,7 @@
   <div class="product__media-container flex flex-col gap-4 
     {%- if gallery_layout == 'thumbnail' %} items-start{% if thumbnail_position == 'beside' %} xl:flex-row{% endif %}{% endif -%}"
   >
-    <div style="flex: 1;">
+    <div class="w-full" style="flex: 1;">
       <div class="product-main-canvas-container w-full" style="display: none;">
         {% assign current_variant = product.selected_or_first_available_variant %}
         {% assign shape = current_variant.option1 | downcase  %}
@@ -206,8 +206,12 @@
           </button>
         </div>
       </div>
-      {% render 'custom-rug-pills' %}
-      {% render 'custom-rug-features' %}
+      <div class="hidden md:flex">
+        {% render 'custom-rug-pills' %}
+      </div>
+      <div class="hidden md:flex">
+        {% render 'custom-rug-features' %}
+      </div>
     </div>
 
     {%- if media_count > 1 -%}
@@ -288,6 +292,9 @@
     {%- endif -%}
   </div>
 </media-gallery>
+<div class="flex md:hidden w-full">
+  {% render 'custom-rug-pills', class: "w-full", style: "padding-bottom: 0;" %}
+</div>
 
 {%- if spinning_block != blank and spinning_block.settings.text != blank -%}
   <spinning-text class="product__spinning text-xs md:text-base lg:text-lg uppercase flex items-center justify-center absolute top-0 z-10 pointer-events-none" data-string="{{ spinning_block.settings.text | escape }}" style="--char-count: {{ spinning_block.settings.text.size | plus: 1 }};">

@@ -574,16 +574,34 @@ if (!customElements.get('custom-rug-canvas')) {
 
         hide('#SliderGallery-slider-wrapper');
         hide('#custom-upload-button');
+        hide('#upload-btn-sticky-bar');
 
         show('#custom-buy-buttons-wrapper');
         show('#custom-rug-background-section');
         show('#custom-rug-add-to-cart', 'flex');
         show('#rug-canvas-container');
         show('.product-main-canvas-container');
-        // show('#custom-rug-proof-section');
-        // show('#custom-rug-comments-section');
+
+        const buyBar = document.getElementById('buy-btn-sticky-bar');
+        if (buyBar) {
+          buyBar.dataset.enabled = 'true';
+          if (window.matchMedia('(max-width: 749px)').matches) {
+            const atc = document.getElementById('custom-rug-add-to-cart');
+            if (atc) {
+              const rect = atc.getBoundingClientRect();
+              const inView = rect.top < window.innerHeight && rect.bottom > 0;
+              buyBar.classList.toggle('is-visible', !inView);
+              buyBar.setAttribute('aria-hidden', inView ? 'true' : 'false');
+            }
+          }
+        }
 
         this.draw();
+
+        const canvasContainer = document.getElementById('rug-canvas');
+        if (canvasContainer) {
+          window.scrollTo({ top: canvasContainer.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        }
       }
 
       loadForeground(src) {
