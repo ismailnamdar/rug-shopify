@@ -12,16 +12,6 @@
     "custom-product": {
       "type": "custom-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "icon": "none",
-            "iwidth": "custom",
-            "icon_width": 26,
-            "text": "<strong>{{ product.vendor }}</strong>",
-            "text_size": "text-base"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -75,7 +65,7 @@
             "show_price": true,
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true,
-            "enable_back_in_stock": true,
+            "enable_back_in_stock": false,
             "show_back_in_stock_name": true,
             "show_back_in_stock_phone": true
           }
@@ -111,30 +101,33 @@
           "type": "text",
           "settings": {
             "icon": "ruler",
+            "icon_image": "shopify://shop_images/Layer_1_1_4447782a-7638-4fa2-908f-9736f1b30acb.svg",
             "iwidth": "custom",
             "icon_width": 18,
             "text": "<strong>Design proof sent before making your rug, 100% refund if you don't like it.</strong>",
-            "text_size": "text-base"
+            "text_size": "text-base lg:text-lg"
           }
         },
         "text_PiYCGC": {
           "type": "text",
           "settings": {
             "icon": "truck",
+            "icon_image": "shopify://shop_images/Layer_1_2_e440ac72-f7de-4357-a009-5a776519f2a2.svg",
             "iwidth": "custom",
             "icon_width": 18,
-            "text": "<strong>Free shipping on all rugs.</strong>",
-            "text_size": "text-base"
+            "text": "<strong>Free Shipping On All Rugs. </strong> Order within the next 30 min to get it between  <strong>Tuesday, March 31 </strong>and<strong> Friday, April 3</strong>",
+            "text_size": "text-base lg:text-lg"
           }
         },
         "text_zetKX7": {
           "type": "text",
           "settings": {
             "icon": "phone",
+            "icon_image": "shopify://shop_images/Layer_1_3_be2367a2-cec7-416a-8437-5061ce52d8ad.svg",
             "iwidth": "custom",
             "icon_width": 34,
-            "text": "Questions or special requests? Our California concierge team is ready to help: <strong>(949) 478-4886.</strong>",
-            "text_size": "text-base"
+            "text": "<strong>Questions or special requests?</strong> Our California concierge team is ready to help: <a href=\"tel:+19494784886\" title=\"tel:+19494784886\"><strong>(949) 478-4886</strong></a><strong>.</strong>",
+            "text_size": "text-base lg:text-lg"
           }
         },
         "complementary": {
@@ -144,46 +137,6 @@
             "product_limit": 4,
             "show_vendor": false,
             "show_price": true
-          }
-        },
-        "text-1": {
-          "type": "text",
-          "settings": {
-            "icon": "truck",
-            "iwidth": "custom",
-            "icon_width": 20,
-            "text": "Fast and Free Delivery",
-            "text_size": "text-sm"
-          }
-        },
-        "text-2": {
-          "type": "text",
-          "settings": {
-            "icon": "check_mark",
-            "iwidth": "custom",
-            "icon_width": 20,
-            "text": "Durable & Easy-Clean",
-            "text_size": "text-sm"
-          }
-        },
-        "text-3": {
-          "type": "text",
-          "settings": {
-            "icon": "trophy",
-            "iwidth": "custom",
-            "icon_width": 20,
-            "text": "4.55 ★ User Satisfaction",
-            "text_size": "text-sm"
-          }
-        },
-        "text-4": {
-          "type": "text",
-          "settings": {
-            "icon": "support",
-            "iwidth": "custom",
-            "icon_width": 20,
-            "text": "Concierge Team",
-            "text_size": "text-sm"
           }
         },
         "sticky_buy_button": {
@@ -200,7 +153,7 @@
             "content": "<p>Our premium custom rug is built with the most advanced textile technology available today - combining durability, comfort, and easy maintenance in one sleek solution.<br/><br/><strong>Triple-Layer Construction:</strong>• Top Layer: High-grade polyester engineered for rich, lasting color.<br/>• Core: Cushioned non-woven padding for comfort and resilience.<br/>• Base: Non-slip, anti-skid backing that stays firmly in place.<br/><br/><strong>Made to Last:</strong>Stain-resistant, fade-proof, and wear-tested for high-traffic commercial use.<br/><br/><strong>Effortless Care:</strong>Easy to clean, vacuum-friendly, and machine washable (select sizes).<br/><br/><strong>Designed for Impact:</strong>Ultra-vivid prints that elevate any business environment - from offices to retail floors.<br/><br/>This is not just a rug. It’s a precision-engineered foundation for your space - delivering comfort and confidence, backed by the latest in textile innovation.</p>",
             "page": "",
             "liquid": "",
-            "text_size": "text-sm"
+            "text_size": "text-base"
           }
         },
         "collapsible_tab_4fWxMA": {
@@ -213,7 +166,7 @@
             "content": "<p>Your art, our craftsmanship—three easy steps:  <br/><br/>1. <strong>Choose Your Shape:</strong>classic rectangle, bold circle, or a custom cut. <br/> <br/>2. <strong>Select Your Size:</strong>from small statement pieces to full-room centerpieces.<br/><br/>3. <strong>Upload Your Design:</strong>we’ll create a proof so you see exactly how it will look before production.</p>",
             "page": "",
             "liquid": "",
-            "text_size": "text-sm"
+            "text_size": "text-base"
           }
         },
         "collapsible_tab_W6RJXF": {
@@ -226,7 +179,7 @@
             "content": "<p>High-resolution files mean sharper details. Upload JPG, PNG, WebP, or SVG—if you have another format, just email it after checkout.</p>",
             "page": "",
             "liquid": "",
-            "text_size": "text-sm"
+            "text_size": "text-base"
           }
         },
         "collapsible_tab_xwFM7H": {
@@ -239,7 +192,7 @@
             "content": "<p>Need a background color change or small adjustment? Reply to your order email and our design team will refine it before production—no extra forms or fees.</p>",
             "page": "",
             "liquid": "",
-            "text_size": "text-sm"
+            "text_size": "text-base"
           }
         },
         "collapsible_tab_4EAwin": {
@@ -252,7 +205,7 @@
             "content": "<p>Every rug is hand-tailored in California using commercial-grade materials built to last. Trusted by Fortune 500 brands and thousands of creators, Rugtomize rugs stay vibrant and durable for years of foot traffic and admiration.</p>",
             "page": "",
             "liquid": "",
-            "text_size": "text-sm"
+            "text_size": "text-base"
           }
         },
         "collapsible_tab_f8U9QH": {
@@ -265,12 +218,11 @@
             "content": "<p>We craft and ship within 3–5 business days, then deliver straight to your door. You’ll receive updates at every step so there are no surprises.</p>",
             "page": "",
             "liquid": "",
-            "text_size": "text-sm"
+            "text_size": "text-base"
           }
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "description",
         "countdown",
@@ -284,10 +236,6 @@
         "text_PiYCGC",
         "text_zetKX7",
         "complementary",
-        "text-1",
-        "text-2",
-        "text-3",
-        "text-4",
         "sticky_buy_button",
         "collapsible_tab_6atjjV",
         "collapsible_tab_4fWxMA",
@@ -301,7 +249,7 @@
         "media_size": 70,
         "gallery_layout": "thumbnail",
         "thumbnail_position": "beside",
-        "image_ratio": "adapt_first",
+        "image_ratio": "square",
         "image_zoom": "lightbox",
         "hide_variants": false,
         "enable_video_autoplay": true,
