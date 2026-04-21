@@ -2499,8 +2499,8 @@ class QuantityInput extends HTMLElement {
     const quantityFormUpdated = parsedHTML.getElementById(`QuantityForm-${sectionId}-${this.productId}`);
     const quantityForm = this.closest(`#QuantityForm-${sectionId}-${this.productId}`);
     for (let selector of selectors) {
-      const current = quantityForm.querySelector(selector);
-      const updated = quantityFormUpdated.querySelector(selector);
+      const current = quantityForm?.querySelector(selector);
+      const updated = quantityFormUpdated?.querySelector(selector);
       if (!current || !updated) continue;
 
       if (selector === '.quantity__input') {

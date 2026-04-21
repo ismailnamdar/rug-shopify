@@ -233,7 +233,7 @@
                           endif
                         -%}
                       {%- endif -%}
-                      <p class="rte {{ block.settings.text_size }} leading-tight" style="flex: 1;">{{ block.settings.text }}</p>
+                      <div class="rte {{ block.settings.text_size }} leading-tight" style="flex: 1;">{{ block.settings.text }}</div>
                     </div>
                   </div>
                 {%- else -%}
@@ -1659,9 +1659,9 @@
           "visible_if": "{{ block.settings.iwidth == 'custom' }}"
         },
         {
-          "type": "inline_richtext",
+          "type": "richtext",
           "id": "text",
-          "default": "Text block",
+          "default": "<p>Text block</p>",
           "label": "t:sections.global.settings.text.label"
         },
         {
