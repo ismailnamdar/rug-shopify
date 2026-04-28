@@ -63,7 +63,7 @@
           "settings": {
             "show_quantity_selector": true,
             "show_price": true,
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true,
             "enable_back_in_stock": false,
             "show_back_in_stock_name": true,
@@ -264,6 +264,338 @@
         "rounded": false
       }
     },
+    "product-details": {
+      "type": "product-details",
+      "blocks": {
+        "collapsible_tab-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "award",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Backgrounds, Color & Logo Styling",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab-2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "ruler_3",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Shapes & Sizes",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "wrench",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Customization & Design Options",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab-4": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "box",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Product Details & Quality",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab_Tiw9wh": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "shield",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Trust & Satisfaction (Proofs, Guarantees, Design Assurance)",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab_ABydgM": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "support",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Ordering & File Upload Help",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab_w8QGBj": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "tags",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Discounts & Bulk Orders",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        },
+        "collapsible_tab_WJRtp4": {
+          "type": "collapsible_tab",
+          "settings": {
+            "icon": "truck",
+            "iwidth": "custom",
+            "icon_width": 24,
+            "heading": "Production, Shipping & Delivery",
+            "content": "<p>Use collapsible tabs for more detailed information that will help customers make a purchasing decision.</p><p>Ex: Shipping and return policies, size guides, and other common questions.</p>",
+            "metafields": "",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab-1",
+        "collapsible_tab-2",
+        "collapsible_tab-3",
+        "collapsible_tab-4",
+        "collapsible_tab_Tiw9wh",
+        "collapsible_tab_ABydgM",
+        "collapsible_tab_w8QGBj",
+        "collapsible_tab_WJRtp4"
+      ],
+      "settings": {
+        "style": "with-border",
+        "open_first_row": true,
+        "specifications_heading": "Included in the Box",
+        "heading": "Product details",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "#ffffff",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "divider": true,
+        "full_width": false,
+        "rounded": true
+      }
+    },
+    "faq_fGhdHX": {
+      "type": "faq",
+      "blocks": {
+        "question_UtN8nF": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_PiRALB": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "question_hRjYhe": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.</p>",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "question_UtN8nF",
+        "question_PiRALB",
+        "question_hRjYhe"
+      ],
+      "name": "t:sections.faq.name",
+      "settings": {
+        "style": "with-border",
+        "heading": "FAQs",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "color_overlay": "#ffffff",
+        "overlay_opacity": 4,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "custom_liquid_KQbDVC": {
+      "type": "custom-liquid",
+      "name": "Comparison Table",
+      "settings": {
+        "liquid": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">\n\n<section style=\"background: #FFFFFF; padding: 80px 0; font-family: 'Inter', sans-serif;\">\n  <div class=\"rt-compare-wrap\" style=\"max-width: 100%; margin: 0 auto; padding: 0 60px;\">\n    <div class=\"rt-compare-scroll\">\n    <table class=\"rt-compare\" style=\"width: 100%; border-collapse: separate; border-spacing: 0; color: #000000;\">\n      <colgroup>\n        <col style=\"width: 22%;\">\n        <col style=\"width: 26%;\">\n        <col style=\"width: 26%;\">\n        <col style=\"width: 26%;\">\n      </colgroup>\n      <thead>\n        <tr>\n          <th style=\"background: #fff; padding: 32px 24px; text-align: left; border-bottom: 1px solid #E5E5E5;\"></th>\n          <th style=\"background: #000000; padding: 32px 24px; text-align: center; border-radius: 16px 16px 0 0;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Rugtomize_logo_blk_ca404d02-0098-45cb-b2ad-02904e0125d8.png?v=1772080776\" alt=\"Rugtomize\" style=\"max-width: 160px; filter: brightness(0) invert(1); display: block; margin: 0 auto;\">\n          </th>\n          <th style=\"padding: 32px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 16px; font-weight: 600; color: #000000;\">Rental Mats</span>\n          </th>\n          <th style=\"padding: 32px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 16px; font-weight: 600; color: #000000;\">Other Business Mats</span>\n          </th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Price</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-bottom: 1px solid #333333;\">\n            <span style=\"font-size: 18px; color: #fff;\">$&thinsp;$</span>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 18px;\">$&thinsp;$&thinsp;$</span>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 18px;\">$</span>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Reviews</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-bottom: 1px solid #333333;\">\n            <span style=\"font-size: 16px; font-weight: 700; color: #fff;\">4.9</span>\n            <span style=\"color: #FFB800; font-size: 15px;\"> ★★★★★</span>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 16px; font-weight: 700;\">1.5</span>\n            <span style=\"color: #FFB800; font-size: 15px;\"> ★★☆☆☆</span>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 16px; font-weight: 700;\">2.0</span>\n            <span style=\"color: #FFB800; font-size: 15px;\"> ★★☆☆☆</span>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Heavy Duty</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">4K Resolution</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Easy Clean</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Fast Shipping</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Free Proof</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">24/7 Support</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 28px 24px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">No Contracts</td>\n          <td style=\"background: #000000; padding: 28px 24px; text-align: center; border-radius: 0 0 16px 16px;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 28px 24px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n    </div>\n  </div>\n<style>\n  .rt-compare td, .rt-compare th { text-align: center !important; vertical-align: middle !important; }\n  .rt-compare td:first-child, .rt-compare th:first-child { text-align: left !important; }\n  .rt-compare svg { display: inline-block; vertical-align: middle; }\n\n  @media (max-width: 768px) {\n    .rt-compare-wrap { padding: 0 12px !important; }\n    .rt-compare-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }\n    .rt-compare { min-width: 520px; }\n    .rt-compare td, .rt-compare th { padding: 10px 10px !important; font-size: 13px !important; line-height: 1.3 !important; }\n    .rt-compare svg { width: 22px !important; height: 22px !important; }\n    .rt-compare td:first-child, .rt-compare th:first-child {\n      position: sticky; left: 0; z-index: 2; background: #fff !important; min-width: 100px; max-width: 120px;\n    }\n    .rt-compare td:nth-child(2), .rt-compare th:nth-child(2) {\n      position: sticky; left: 100px; z-index: 1;\n    }\n    .rt-compare th:first-child { background: #fff !important; }\n    .rt-compare th:nth-child(2) img { max-width: 100px !important; }\n  }\n</style>\n</section>",
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "divider": false,
+        "narrow": false,
+        "rounded": false
+      }
+    },
+    "multicolumn_4gybcz": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_q6FcXx": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/23332.jpg",
+            "image_ratio": "adapt",
+            "heading": "<strong>STEP 1</strong>",
+            "heading_size": "text-base-xl",
+            "text": "<h6>Upload / Choose Your logo Shape</h6>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "secondary",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_hfzniT": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/332.jpg",
+            "image_ratio": "adapt",
+            "heading": "STEP 2",
+            "heading_size": "text-base-xl",
+            "text": "<h5>Approve Your FREE Mockup</h5>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "secondary",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
+        "column_NJGTxP": {
+          "type": "column",
+          "settings": {
+            "show_border": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": "left",
+            "image": "shopify://shop_images/Rug_Designs_Versions_23233.jpg",
+            "image_ratio": "adapt",
+            "heading": "STEP 3",
+            "heading_size": "text-base-xl",
+            "text": "<h5>Recieve Your Custom Rug In Days</h5>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "secondary",
+            "button_external": false,
+            "button_icon": true,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "column_q6FcXx",
+        "column_hfzniT",
+        "column_NJGTxP"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "gap": "large",
+        "columns": 3,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "heading": "How Rugtomize Works",
+        "heading_size": "title-sm",
+        "heading_alignment": "text-center md:items-center",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "See Your Logo on Rug",
+        "button_link": "shopify://products/custom-rug-carpet",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
     "help-drawer": {
       "type": "help-drawer",
       "blocks": {
@@ -334,7 +666,6 @@
         "content-3",
         "content-4"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Need help?",
         "description": "<p>If you have any questions, you are always welcome to contact us. We'll get back to you as soon as possible, within 24 hours on weekdays.</p>"
@@ -623,7 +954,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<em><strong>Free shipping and returns</strong></em>",
+            "text": "<em><strong>Free shipping and proof before production</strong></em>",
             "text_size": 160,
             "text_font": "heading",
             "highlighted_text": "stencil",
@@ -649,177 +980,6 @@
         "padding_top": 28,
         "padding_bottom": 28,
         "divider": false,
-        "rounded": false
-      }
-    },
-    "image-with-text-2": {
-      "type": "image-with-text",
-      "blocks": {
-        "image": {
-          "type": "image",
-          "settings": {
-            "image_width": "custom",
-            "image_max_width": 50,
-            "image_max_width_mobile": 50
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "title-md",
-            "heading_tag": "h2",
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle",
-            "highlighted_reveal": false
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "text_font": "body",
-            "text_size": "subtext-md",
-            "text_max_size": 32,
-            "text_line_height": 1.6,
-            "text_letter_spacing": 0,
-            "text_capitalize": false,
-            "secondary_color": false,
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        }
-      },
-      "block_order": [
-        "image",
-        "heading",
-        "text"
-      ],
-      "disabled": true,
-      "settings": {
-        "image_height": "600px",
-        "image_width": "medium",
-        "layout": "text_first",
-        "text_alignment": "left",
-        "content_position": "align-self-center",
-        "image_height_mobile": "400px",
-        "text_alignment_mobile": "left",
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_background_2": "#fafafa",
-        "gradient_background_2": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "divider": false,
-        "full_width": false,
-        "rounded": false,
-        "enable_parallax": false,
-        "parallax_direction": "vertical"
-      }
-    },
-    "product-details": {
-      "type": "product-details",
-      "blocks": {
-        "collapsible_tab-1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "icon": "none",
-            "iwidth": "custom",
-            "icon_width": 24,
-            "heading": "Collapsible row 1",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "metafields": "",
-            "text_size": "text-base"
-          }
-        },
-        "collapsible_tab-2": {
-          "type": "collapsible_tab",
-          "settings": {
-            "icon": "none",
-            "iwidth": "custom",
-            "icon_width": 24,
-            "heading": "Collapsible row 2",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "metafields": "",
-            "text_size": "text-base"
-          }
-        },
-        "collapsible_tab-3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "icon": "none",
-            "iwidth": "custom",
-            "icon_width": 24,
-            "heading": "Collapsible row 3",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "metafields": "",
-            "text_size": "text-base"
-          }
-        },
-        "collapsible_tab-4": {
-          "type": "collapsible_tab",
-          "settings": {
-            "icon": "none",
-            "iwidth": "custom",
-            "icon_width": 24,
-            "heading": "Collapsible row 4",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "metafields": "",
-            "text_size": "text-base"
-          }
-        },
-        "specification": {
-          "type": "specification",
-          "disabled": true,
-          "settings": {
-            "heading": "",
-            "text_size": "text-sm"
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_tab-1",
-        "collapsible_tab-2",
-        "collapsible_tab-3",
-        "collapsible_tab-4",
-        "specification"
-      ],
-      "disabled": true,
-      "settings": {
-        "style": "with-border",
-        "open_first_row": true,
-        "specifications_heading": "Included in the Box",
-        "heading": "Product details",
-        "heading_size": "title-md",
-        "heading_alignment": "text-left md:items-end md:flex-row",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "button_label": "",
-        "button_link": "",
-        "button_external": false,
-        "button_icon": true,
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 28,
-        "padding_bottom": 28,
-        "divider": false,
-        "full_width": false,
         "rounded": false
       }
     },
@@ -924,9 +1084,38 @@
         "rounded": false
       }
     },
+    "177741024991711c53": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_Q9Pdbw": {
+          "type": "shopify://apps/okendo/blocks/reviews-widget/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "custom-rug-carpet",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_Q9Pdbw"
+      ],
+      "settings": {
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
+      }
+    },
     "product-recommendations": {
       "type": "product-recommendations",
-      "disabled": true,
       "settings": {
         "product_limit": 6,
         "columns": 4,
@@ -956,52 +1145,21 @@
         "full_width": false,
         "rounded": true
       }
-    },
-    "recently-viewed": {
-      "type": "recently-viewed",
-      "disabled": true,
-      "settings": {
-        "product_limit": 6,
-        "columns": 4,
-        "carousel_on_desktop": true,
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "heading": "Recently Viewed",
-        "heading_size": "title-md",
-        "heading_alignment": "text-left md:items-end md:flex-row",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
-      }
     }
   },
   "order": [
     "custom-product",
+    "product-details",
+    "faq_fGhdHX",
+    "custom_liquid_KQbDVC",
+    "multicolumn_4gybcz",
     "help-drawer",
     "video-hero",
     "collage",
     "image-with-text-1",
     "scrolling-text",
-    "image-with-text-2",
-    "product-details",
     "faq",
-    "product-recommendations",
-    "recently-viewed"
+    "177741024991711c53",
+    "product-recommendations"
   ]
 }
