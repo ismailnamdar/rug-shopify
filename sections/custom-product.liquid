@@ -568,14 +568,6 @@
                 product_form_id: product_form_id
               -%}
 
-            {%- when 'inventory' -%}
-              {%- render 'product-inventory',
-                block: block,
-                product: product,
-                product_id: product.id,
-                section_id: section.id
-              -%}
-
             {%- when 'share' -%}
               <div class="flex justify-between items-center" {{ block.shopify_attributes }}>
                 {%- liquid

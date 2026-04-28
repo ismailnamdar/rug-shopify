@@ -78,7 +78,7 @@
             "icon_image": "shopify://shop_images/Paint_Brush_-_The_Noun_Project_36898a27-51c6-4844-b8b2-d945e5f51528.svg",
             "iwidth": "custom",
             "icon_width": 30,
-            "text": "Design proof sent before making your rug, 100% refund if you don't like it.",
+            "text": "<p>Design proof sent before making your rug, 100% refund if you don't like it.</p>",
             "text_size": "text-base lg:text-lg"
           }
         },
@@ -104,7 +104,7 @@
             "icon_image": "shopify://shop_images/Layer_1_1_4447782a-7638-4fa2-908f-9736f1b30acb.svg",
             "iwidth": "custom",
             "icon_width": 18,
-            "text": "<strong>Design proof sent before making your rug, 100% refund if you don't like it.</strong>",
+            "text": "<p><strong>Design Proof Sent Before Making Your Rug, 100% Refund If You Don't Like It.</strong></p>",
             "text_size": "text-base lg:text-lg"
           }
         },
@@ -115,7 +115,7 @@
             "icon_image": "shopify://shop_images/Layer_1_2_e440ac72-f7de-4357-a009-5a776519f2a2.svg",
             "iwidth": "custom",
             "icon_width": 18,
-            "text": "<strong>Free Shipping On All Rugs. </strong> Order within the next 30 min to get it between  <strong>Tuesday, March 31 </strong>and<strong> Friday, April 3</strong>",
+            "text": "<p><strong>Free Shipping On All Rugs. </strong> <br/><br/>Order within the next 30 min to get it between  <strong>Tuesday, March 31 </strong>and<strong> Friday, April 3</strong></p>",
             "text_size": "text-base lg:text-lg"
           }
         },
@@ -126,7 +126,7 @@
             "icon_image": "shopify://shop_images/Layer_1_3_be2367a2-cec7-416a-8437-5061ce52d8ad.svg",
             "iwidth": "custom",
             "icon_width": 34,
-            "text": "<strong>Questions or special requests?</strong> Our California concierge team is ready to help: <a href=\"tel:+19494784886\" title=\"tel:+19494784886\"><strong>(949) 478-4886</strong></a><strong>.</strong>",
+            "text": "<p><strong>Questions or special requests?</strong> </p><p>Our California concierge team is ready to help: <a href=\"tel:+19494784886\" title=\"tel:+19494784886\"><strong>(949) 478-4886</strong></a><strong>.</strong></p>",
             "text_size": "text-base lg:text-lg"
           }
         },
@@ -256,7 +256,7 @@
         "enable_video_looping": true,
         "mobile_layout": "full_width",
         "image_ratio_mobile": "adapt_first",
-        "mobile_thumbnail": false,
+        "mobile_thumbnail": true,
         "padding_top": 0,
         "padding_bottom": 84,
         "divider": false,

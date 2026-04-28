@@ -4391,7 +4391,9 @@ class SliderElement extends HTMLElement {
   }
 
   get itemsToShow() {
-    return Array.from(this.items).filter(element => element.clientWidth > 0);
+    // We removed the filter here because it doesn't work on custom rug builder when image is uploaded.
+    //.filter(element => element.clientWidth > 0);
+    return Array.from(this.items);
   }
 
   get itemOffset() {
@@ -6269,6 +6271,18 @@ class MediaDots extends SliderDots {
 
       newIndex++;
     });
+  }
+
+  onButtonClick(event) {
+    super.onButtonClick(event);
+
+    const target = event.currentTarget;
+    const index = parseInt(target.getAttribute('data-index')) - 1;
+
+    target.dispatchEvent(new CustomEvent('lightbox:open', {
+      bubbles: true,
+      detail: { index }
+    }));
   }
 }
 customElements.define('media-dots', MediaDots);
