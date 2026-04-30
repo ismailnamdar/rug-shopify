@@ -9,48 +9,40 @@
  */
 {
   "type": "header",
-  "name": "Header",
+  "name": "t:sections.header-group.name",
   "sections": {
-    "announcement_bar_PTw6zq": {
+    "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_dNbj3F": {
+        "announcement-1": {
           "type": "announcement",
           "settings": {
-            "icon": "none",
-            "text": "<a href=\"https://rugtomize.co/products/custom-rug-carpet\" title=\"/products/custom-rug-carpet\">BUY 2+ RUGS GET 15% OFF - USE CODE BUY2GET15 →</a>",
+            "icon": "truck",
+            "text": "Free shipping and returns",
             "link": "",
             "hide_icon_mobile": true,
-            "text_mobile": ""
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
           }
         },
-        "announcement_DRVCpW": {
+        "announcement-2": {
           "type": "announcement",
           "settings": {
-            "icon": "none",
-            "text": "SHIPS IN 2-4 BUSINESS DAYS",
+            "icon": "email",
+            "text": "A question? Visit our contact page",
             "link": "",
             "hide_icon_mobile": true,
-            "text_mobile": ""
-          }
-        },
-        "announcement_CHEbRK": {
-          "type": "announcement",
-          "settings": {
-            "icon": "none",
-            "text": "FREE PROOF BEFORE PRODUCTION",
-            "link": "",
-            "hide_icon_mobile": true,
-            "text_mobile": ""
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
           }
         }
       },
       "block_order": [
-        "announcement_dNbj3F",
-        "announcement_DRVCpW",
-        "announcement_CHEbRK"
+        "announcement-1",
+        "announcement-2"
       ],
-      "name": "Announcement Bar v2",
       "settings": {
         "show_social": true,
         "enable_language_selector": true,
@@ -64,46 +56,137 @@
         "direction": "left",
         "speed": 20,
         "color_text": "#fafafa",
-        "color_background": "#ff0000",
+        "color_background": "#1f1f1f",
         "gradient_background": "",
         "color_highlight": "#ffddbf",
         "gradient_highlight": "",
         "hide_homepage": false,
         "full_width": true,
-        "rounded": false
+        "rounded": true
       }
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "mega-menu": {
+          "type": "mega_menu_tab",
+          "disabled": true,
+          "settings": {
+            "menu_title": "Catalog",
+            "button_label": "View All Products",
+            "button_link": "shopify://collections/all",
+            "heading_1": "Collections",
+            "heading_2": "Most popular",
+            "show_vendor": false,
+            "show_price": true,
+            "tab_target_1": "Headphones",
+            "tab_target_link_1": "shopify://collections/all",
+            "tab_products_1": [],
+            "tab_product_limit_1": 4,
+            "tab_icon_width_1": 42,
+            "promo_image_ratio_1": "square",
+            "promo_heading_1": "Build your bundle",
+            "promo_subtext_1": "Buy 3 and save 30%",
+            "promo_overlay_content_1": true,
+            "promo_link_1": "",
+            "promo_tag_1": "",
+            "promo_color_text_1": "#ffffff",
+            "promo_color_overlay_1": "#171717",
+            "promo_overlay_opacity_1": 0,
+            "tab_target_2": "Earphones",
+            "tab_target_link_2": "shopify://collections/all",
+            "tab_products_2": [],
+            "tab_product_limit_2": 4,
+            "tab_icon_width_2": 42,
+            "promo_image_ratio_2": "adapt",
+            "promo_heading_2": "RhythmiQ",
+            "promo_subtext_2": "Compact Power Unleashed",
+            "promo_overlay_content_2": true,
+            "promo_link_2": "",
+            "promo_tag_2": "New Arrival",
+            "promo_color_text_2": "#ffffff",
+            "promo_color_overlay_2": "#171717",
+            "promo_overlay_opacity_2": 0,
+            "tab_target_3": "Speakers",
+            "tab_target_link_3": "shopify://collections/all",
+            "tab_products_3": [],
+            "tab_product_limit_3": 4,
+            "tab_icon_width_3": 42,
+            "promo_image_ratio_3": "adapt",
+            "promo_heading_3": "Home Audio",
+            "promo_subtext_3": "View the collection",
+            "promo_overlay_content_3": true,
+            "promo_link_3": "",
+            "promo_tag_3": "New Arrival",
+            "promo_color_text_3": "#ffffff",
+            "promo_color_overlay_3": "#171717",
+            "promo_overlay_opacity_3": 0,
+            "tab_target_4": "Accessories",
+            "tab_target_link_4": "shopify://collections/all",
+            "tab_products_4": [],
+            "tab_product_limit_4": 4,
+            "tab_icon_width_4": 42,
+            "promo_image_ratio_4": "adapt",
+            "promo_heading_4": "Build your bundle",
+            "promo_subtext_4": "Save $30 when buying all 3 items",
+            "promo_overlay_content_4": true,
+            "promo_link_4": "",
+            "promo_tag_4": "",
+            "promo_color_text_4": "#ffffff",
+            "promo_color_overlay_4": "#171717",
+            "promo_overlay_opacity_4": 0,
+            "tab_target_5": "",
+            "tab_target_link_5": "",
+            "tab_products_5": [],
+            "tab_product_limit_5": 4,
+            "tab_icon_width_5": 32,
+            "promo_image_ratio_5": "adapt",
+            "promo_heading_5": "",
+            "promo_subtext_5": "",
+            "promo_overlay_content_5": true,
+            "promo_link_5": "",
+            "promo_tag_5": "",
+            "promo_color_text_5": "#ffffff",
+            "promo_color_overlay_5": "#171717",
+            "promo_overlay_opacity_5": 30
+          }
+        }
+      },
+      "block_order": [
+        "mega-menu"
+      ],
       "settings": {
-        "promo_text": "",
-        "social_icons_header": false,
-        "phone_number": "949-478-4886",
-        "email_address": "info@rugtomize.co",
-        "top_bar_menu": "",
-        "show_cart": true,
-        "cart_icon": "cart",
-        "show_locale_selector": true,
-        "show_currency_selector": false,
-        "logo_display_width": 205,
-        "logo": "shopify://shop_images/Rugtomize_logo_blk_4fa09a25-cffb-44d2-8a61-e96932009aca.png",
-        "main_linklist": "main-menu-for-turbo-theme-v3-isaac",
-        "main_linklist2": "",
-        "vertical_menu": true,
-        "dropdown_click": false,
-        "search_enabled": false,
-        "fixed_header": true,
-        "logo_position": "left",
-        "logo_alignment": "left",
-        "menu_position": "inline",
-        "menu_alignment": "align_left",
-        "svg_icon1": "shopify://shop_images/fast_turn_around.svg",
-        "svg_icon2": "shopify://shop_images/satisfaction.svg"
+        "logo_h1": true,
+        "menu": "main-menu",
+        "menu_mobile": "",
+        "menu_active": "block",
+        "hover_menu": true,
+        "header_layout": "center-left",
+        "sticky_header_type": "always",
+        "icons_size": "sm",
+        "menu_drawer_icon_label": "",
+        "enable_language_selector_desktop": false,
+        "enable_country_selector_desktop": false,
+        "show_country_name_dekstop": false,
+        "show_country_flag_desktop": false,
+        "logo_position_mobile": "center",
+        "accordion_menu_mobile": true,
+        "show_social": true,
+        "enable_language_selector": true,
+        "enable_country_selector": true,
+        "transparent_color_text": "#ffffff",
+        "color_text": "#171717",
+        "color_background": "#ffffff",
+        "color_localization": "",
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "full_width": true,
+        "rounded": true
       }
     }
   },
   "order": [
-    "announcement_bar_PTw6zq",
+    "announcement-bar",
     "header"
   ]
 }

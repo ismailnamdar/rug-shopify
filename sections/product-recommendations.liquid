@@ -1,182 +1,428 @@
-<script
-  type="application/json"
-  data-section-type="product-recommendations"
-  data-section-id="{{ section.id }}"
->
-</script>
+<style>
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    {%- render 'section-variables', section: section -%}
+  }
+</style>
 
-{% comment %} Content settings {% endcomment %}
-{%- assign product_recommendations_heading = section.settings.product_recommendations_heading -%}
-
-{% comment %} End content settings {% endcomment %}
-
-{% comment %} NE compatibility {% endcomment %}
-{% comment%} This setting and conditional should be removed in the New Editor {% endcomment %}
-{% if section.settings.show_product_recommendations %}
-{% comment %} Ends NE compatibility {% endcomment %}
-  {% comment %} Check whether product has any tags for custom related products {% endcomment %}
-  {% for tag in product.tags %}
-    {% if tag contains 'meta-related-collection-' %}
-      {% assign related_collection_handle = tag | remove: 'meta-related-collection-' %}
-    {% endif %}
-  {% endfor %}
-
-  {% if related_collection_handle != blank %}
-    {% comment %} Show products based on merchant-added tags prepended with 'meta-related-collection-' {% endcomment %}
-    {% assign collection_size = collections[related_collection_handle].all_products_count %}
-
-    {% if collection_size > 0 %}
-      {% assign custom_collection = collections[related_collection_handle] %}
-      {% assign products = custom_collection.products %}
-    {% endif %}
-
-    {% if custom_collection and collection_size > 0 %}
-      {% assign show_custom_collection = true %}
-    {% endif %}
-
-  {% else %}
-    {% comment %} Shopify generated dynamic recommendations, falling back to default related products (based on parent collection) {% endcomment %}
-    {% assign dynamic_collection = recommendations %}
-    {% assign products = recommendations.products %}
-    {% assign show_dynamic_collection = true %}
-  {% endif %}
-
-  {% comment %} HTML markup {% endcomment %}
-  {% capture product_collections_markup %}
-    <div class="recommended-products__title" data-recommended-product-count="{% if show_dynamic_collection == true %}{{ recommendations.products_count }}{% else %}{{ collection_size }}{% endif %}">
-      <h2 class="title center">{{ section.settings.product_recommendations_heading }}</h2>
-      <div class="feature-divider"></div>
-    </div>
-
-    {% if section.settings.product_recommendations_style == 'slider' %}
-      {% comment %} Recommended Products Slider {% endcomment %}
-      <div class="recommended-products--slider js-recommended-products-slider">
-        {%
-          render 'product-slider',
-          limit: section.settings.recommended_products_limit,
-          products: products,
-          per_slide: section.settings.products_per_row - 1,
-          skip_product: product,
-        %}
-      </div>
-    {% else %}
-      {% comment %} Recommended Products Grid {% endcomment %}
-      <div class="recommended-products--grid">
-        <div class="container">
-          {%
-            render 'product-loop',
-            limit: section.settings.recommended_products_limit,
-            products: products,
-            skip_product: product,
-            products_per_row: section.settings.products_per_row,
-          %}
-        </div>
-      </div>
-    {% endif %}
-  {% endcapture %}
-
-  <section
-    class="
-      section
-      {% if section.settings.wide_display == true %}
-        is-width-wide
-      {% endif %}
-    "
-  >
-    <div class="container">
-      <div class="one-whole column">
-        {% if show_custom_collection %}
-          <div
-            class="
-              product-recommendations
-              product-recommendations--{{ template | replace: '.', '-' | handle }}
-              meta-related-recommended-collection
-            "
-            data-product-recommendations
-            data-enabled="{{ section.settings.show_product_recommendations }}"
-          >
-            {{ product_collections_markup }}
+<product-recommendations class="related-products block" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.product_limit }}&intent=related">
+  <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
+    {%- if recommendations.performed and recommendations.products_count > 0 -%}
+      <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative overflow-hidden md:overflow-visible">
+        {%- capture indicators -%}
+          <div class="indicators hidden lg:flex gap-2d5">
+            <button class="button button--secondary" type="button" is="previous-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" disabled>
+              <span class="btn-fill" data-fill></span>
+              <span class="btn-text">
+                {%- render 'icon', icon: 'chevron-left', class: 'transform' -%}
+              </span>
+            </button>
+            <button class="button button--secondary" type="button" is="next-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
+              <span class="btn-fill" data-fill></span>
+              <span class="btn-text">
+                {%- render 'icon', icon: 'chevron-right', class: 'transform' -%}
+              </span>
+            </button>
           </div>
-        {% elsif show_dynamic_collection %}
-          <div
-            class="
-              product-recommendations
-              product-recommendations--{{ template | replace: '.', '-' | handle }}
-            "
-            data-product-recommendations
-            data-section-id="{{ section.id }}"
-            data-recommendations-url="{{ routes.product_recommendations_url }}"
-            data-product-id="{{ product.id }}"
-            data-limit="{{ section.settings.recommended_products_limit }}"
-            data-enabled="{{ section.settings.show_product_recommendations }}"
-          >
-            {{ product_collections_markup }}
-          </div>
-        {% endif %}
+        {%- endcapture -%}
+        {%- render 'section-heading', section: section, section_button: indicators -%}
+
+        <slider-element id="Slider-{{ section.id }}" class="grid slider{% if section.settings.carousel_on_desktop %} slider--desktop{% endif %}{% if section.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card"{% if section.settings.carousel_on_desktop or section.settings.swipe_on_mobile %} tabindex="0"{% endif %}>
+          <motion-list class="card-grid card-grid--{{ section.settings.columns }} mobile:card-grid--{{ section.settings.columns_mobile }} grid">
+            {%- for recommendation in recommendations.products -%}
+              {%- render 'product-card',
+                product: recommendation,
+                product_id: recommendation.id,
+                section_id: section.id,
+                lazy_load: false,
+                image_ratio: settings.product_image_ratio,
+                image_fill: settings.product_image_fill,
+                show_secondary_image: settings.product_secondary_image,
+                show_multiple_images: settings.product_multiple_images,
+                show_vendor: settings.product_vendor,
+                title_truncation: settings.product_title_truncation,
+                title_line_limit: settings.product_title_line_limit,
+                show_rating: settings.product_rating,
+                show_color_swatches: settings.product_color_swatches,
+                show_countdown: settings.product_countdown,
+                show_quick_add: settings.product_quick_add,
+                show_quick_view: settings.product_quick_view,
+                vertical_badges: settings.product_vertical_badges,
+                show_sold_out: settings.product_sold_out,
+                show_save_amount: settings.product_save_amount,
+                save_type: settings.product_save_type,
+                show_icon_list: settings.product_icon_list
+              -%}
+            {%- endfor -%}
+          </motion-list>
+
+          {%- if section.settings.heading == blank and section.settings.subheading == blank and section.settings.description == blank -%}
+            {%- if section.settings.carousel_on_desktop -%}
+              <div class="indicators hidden lg:flex gap-2d5 items-center absolute top-0 left-0 w-full h-full pointer-events-none opacity-0 page-width">
+                <button class="button button--primary pointer-events-auto" type="button" is="previous-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" disabled>
+                  <span class="btn-fill" data-fill></span>
+                  <span class="btn-text">
+                    {%- render 'icon', icon: 'chevron-left', class: 'stroke-2 transform' -%}
+                  </span>
+                </button>
+                <button class="button button--primary pointer-events-auto" type="button" is="next-button" aria-controls="Slider-{{ section.id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
+                  <span class="btn-fill" data-fill></span>
+                  <span class="btn-text">
+                    {%- render 'icon', icon: 'chevron-right', class: 'stroke-2 transform' -%}
+                  </span>
+                </button>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        </slider-element>
       </div>
-    </div>
-  </section>
-{% endif %}
+    {%- endif -%}
+  </div>
+</product-recommendations>
 
 {% schema %}
 {
-  "name": "Related products",
-  "class": "shopify-section--recommended-products",
+  "name": "t:sections.product-recommendations.name",
+  "class": "recommendations-section",
   "settings": [
     {
+      "type": "paragraph",
+      "content": "t:sections.product-recommendations.settings.paragraph.content"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "t:sections.product-recommendations.settings.product_limit.label",
+      "default": 6,
+      "min": 2,
+      "max": 12,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.global.settings.columns.label"
+    },
+    {
       "type": "checkbox",
-      "id": "show_product_recommendations",
-      "label": "Show dynamic recommendations",
-      "info": "Dynamic recommendations change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)",
+      "id": "carousel_on_desktop",
+      "label": "t:sections.global.settings.carousel_on_desktop.label",
       "default": true
     },
     {
-      "type": "checkbox",
-      "id": "wide_display",
-      "label": "Wide display",
-      "default": false
+      "type": "header",
+      "content": "t:sections.global.settings.header__mobile.content"
     },
     {
-      "type": "radio",
-      "id": "product_recommendations_style",
-      "label": "Layout",
-      "default": "grid",
+      "type": "select",
+      "id": "columns_mobile",
       "options": [
         {
-          "value": "slider",
-          "label": "Slider"
+          "value": "1",
+          "label": "t:sections.global.settings.columns_mobile.options__1.label"
         },
         {
-          "value": "grid",
-          "label": "Grid"
+          "value": "2",
+          "label": "t:sections.global.settings.columns_mobile.options__2.label"
         }
-      ]
+      ],
+      "default": "1",
+      "label": "t:sections.global.settings.columns_mobile.label"
     },
     {
-      "type": "text",
-      "id": "product_recommendations_heading",
-      "label": "Heading",
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "label": "t:sections.global.settings.swipe_on_mobile.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.header__heading.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.global.settings.heading.label",
       "default": "You may also like"
     },
     {
-      "type": "range",
-      "id": "products_per_row",
-      "label": "Products per row",
-      "min": 2,
-      "max": 5,
-      "step": 1,
-      "default": 3
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "title-sm",
+          "label": "t:sections.global.settings.heading_size.options__1.label"
+        },
+        {
+          "value": "title-md",
+          "label": "t:sections.global.settings.heading_size.options__2.label"
+        },
+        {
+          "value": "title-lg tracking-heading",
+          "label": "t:sections.global.settings.heading_size.options__3.label"
+        },
+        {
+          "value": "title-xl tracking-heading",
+          "label": "t:sections.global.settings.heading_size.options__4.label"
+        }
+      ],
+      "default": "title-md",
+      "label": "t:sections.global.settings.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "t:sections.global.settings.heading_alignment.label",
+      "options": [
+        {
+          "value": "text-left md:items-end md:flex-row",
+          "label": "t:sections.global.settings.heading_alignment.options__1.label"
+        },
+        {
+          "value": "text-center md:items-center",
+          "label": "t:sections.global.settings.heading_alignment.options__2.label"
+        },
+        {
+          "value": "text-right md:items-end md:flex-row-reverse",
+          "label": "t:sections.global.settings.heading_alignment.options__3.label"
+        }
+      ],
+      "default": "text-left md:items-end md:flex-row"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:sections.global.settings.heading_tag.options__1.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.global.settings.heading_tag.options__2.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.global.settings.heading_tag.options__3.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.global.settings.heading_tag.options__4.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.global.settings.heading_tag.options__5.label"
+        },
+        {
+          "value": "h6",
+          "label": "t:sections.global.settings.heading_tag.options__6.label"
+        },
+        {
+          "value": "div",
+          "label": "t:sections.global.settings.heading_tag.options__7.label"
+        },
+        {
+          "value": "span",
+          "label": "t:sections.global.settings.heading_tag.options__8.label"
+        },
+        {
+          "value": "p",
+          "label": "t:sections.global.settings.heading_tag.options__9.label"
+        }
+      ],
+      "default": "h2",
+      "label": "t:sections.global.settings.heading_tag.label",
+      "info": "t:sections.global.settings.heading_tag.info"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:sections.global.settings.subheading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.global.settings.description.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.header__highlight.content",
+      "info": "t:sections.global.settings.header__highlight.info"
+    },
+    {
+      "type": "select",
+      "id": "highlighted_text",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.global.settings.highlighted_text.options__1.label"
+        },
+        {
+          "value": "text",
+          "label": "t:sections.global.settings.highlighted_text.options__2.label"
+        },
+        {
+          "value": "full_text",
+          "label": "t:sections.global.settings.highlighted_text.options__3.label"
+        },
+        {
+          "value": "half_text",
+          "label": "t:sections.global.settings.highlighted_text.options__4.label"
+        },
+        {
+          "value": "underline",
+          "label": "t:sections.global.settings.highlighted_text.options__5.label"
+        },
+        {
+          "value": "marker",
+          "label": "t:sections.global.settings.highlighted_text.options__6.label"
+        },
+        {
+          "value": "stencil",
+          "label": "t:sections.global.settings.highlighted_text.options__7.label"
+        },
+        {
+          "value": "scribble",
+          "label": "t:sections.global.settings.highlighted_text.options__8.label"
+        }
+      ],
+      "default": "none",
+      "label": "t:sections.global.settings.highlighted_text.label"
+    },
+    {
+      "visible_if": "{{ section.settings.highlighted_text == 'scribble' }}",
+      "type": "select",
+      "id": "highlighted_scribble",
+      "options": [
+        {
+          "value": "circle",
+          "label": "t:sections.global.settings.highlighted_scribble.options__1.label"
+        },
+        {
+          "value": "basic-underline",
+          "label": "t:sections.global.settings.highlighted_scribble.options__2.label"
+        },
+        {
+          "value": "sketch-underline",
+          "label": "t:sections.global.settings.highlighted_scribble.options__3.label"
+        },
+        {
+          "value": "squiggle-underline",
+          "label": "t:sections.global.settings.highlighted_scribble.options__4.label"
+        },
+        {
+          "value": "squiggle-underline-2",
+          "label": "t:sections.global.settings.highlighted_scribble.options__5.label"
+        }
+      ],
+      "default": "circle",
+      "label": "t:sections.global.settings.highlighted_scribble.label",
+      "info": "t:sections.global.settings.highlighted_scribble.info"
+    },
+    {
+      "visible_if": "{{ section.settings.highlighted_text != 'none' }}",
+      "type": "checkbox",
+      "id": "highlighted_reveal",
+      "label": "t:sections.global.settings.highlighted_reveal.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.header__colors.content",
+      "info": "t:sections.global.settings.header__colors.info"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "t:sections.global.settings.color_text.label"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "t:sections.global.settings.color_background.label"
+    },
+    {
+      "type": "color_background",
+      "id": "gradient_background",
+      "label": "t:sections.global.settings.gradient_background.label"
+    },
+    {
+      "type": "color",
+      "id": "color_highlight",
+      "label": "t:sections.global.settings.color_highlight.label"
+    },
+    {
+      "type": "color_background",
+      "id": "gradient_highlight",
+      "label": "t:sections.global.settings.gradient_highlight.label"
+    },
+    {
+      "type": "color",
+      "id": "color_button_text",
+      "label": "t:sections.global.settings.color_button_text.label"
+    },
+    {
+      "type": "color",
+      "id": "color_button_background",
+      "label": "t:sections.global.settings.color_button_background.label"
+    },
+    {
+      "type": "color_background",
+      "id": "color_button_gradient",
+      "label": "t:sections.global.settings.color_button_gradient.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.settings.header__section.content"
     },
     {
       "type": "range",
-      "id": "recommended_products_limit",
-      "label": "Limit products",
-      "min": 2,
-      "max": 10,
-      "step": 1,
-      "default": 4
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.global.settings.padding_top.label",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.global.settings.padding_bottom.label",
+      "default": 72
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "t:sections.global.settings.divider.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.global.settings.full_width.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "rounded",
+      "default": false,
+      "label": "t:sections.global.settings.rounded.label"
     }
-  ]
+  ],
+  "disabled_on": {
+    "templates": [
+      "password"
+    ]
+  }
 }
-
 {% endschema %}
