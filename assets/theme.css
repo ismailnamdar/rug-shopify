@@ -4590,6 +4590,10 @@ input[type=checkbox].switch:is(:disabled, .disabled):not(:checked)::after {
   .swatches--variant .color-swatch:is(.mobile\:aspect-square, .mobile\:aspect-portrait, .mobile\:aspect-landscape, .mobile\:aspect-wide, .mobile\:aspect-adapt_first) {
     height: auto;
   }
+
+  .label-swatch {
+    padding: var(--sp-3) var(--sp-4);
+  }
 }
 
 .swatches--variant .color-swatch {

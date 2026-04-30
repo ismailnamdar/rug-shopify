@@ -206,7 +206,7 @@
   
                     assign modulo = block_index | modulo: 2
                   -%}
-                  <div class="product__text{% if modulo == 0 %} even{% endif %}{% if prev_block.type != 'text' %} first{% endif %}{% if next_block.type != 'text' %} last{% endif %}" {{ block.shopify_attributes }} style="padding: 0; margin-bottom: 6px;">
+                  <div class="product__text{% if modulo == 0 %} even{% endif %}{% if prev_block.type != 'text' %} first{% endif %}{% if next_block.type != 'text' %} last{% endif %}" {{ block.shopify_attributes }} style="padding: 0; margin-bottom: 6px; {% if next_block.type != 'text' %}margin-top: 0;{% endif %}">
                     <div class="product__text-inner flex items-center gap-2d5" style="background-color: #f4f4f4; border-radius: 10px;">
                       {%- if block.settings.icon_image != blank -%}
                         {%- liquid
@@ -233,7 +233,7 @@
                           endif
                         -%}
                       {%- endif -%}
-                      <div class="rte {{ block.settings.text_size }} leading-tight" style="flex: 1;">{{ block.settings.text }}</div>
+                    <div {% if block.settings.use_calculate_order_date %}id="orderDate"{% endif %} class="rte {{ block.settings.text_size }} leading-tight" style="flex: 1;">{{ block.settings.text }}</div>
                     </div>
                   </div>
                 {%- else -%}
@@ -244,6 +244,26 @@
                     </a>
                   </p>
                 {%- endif -%}
+
+                {% if block.settings.use_calculate_order_date %}
+                <script>
+                  function calculateDeliveryDates() {
+                    const currentDate = new Date();
+                    const orderDeadline = new Date(currentDate.getTime() + 30 * 60000); // 30 minutes from now
+              
+                    const deliveryStart = new Date(orderDeadline);
+                    deliveryStart.setDate(deliveryStart.getDate() + 1);
+                    const deliveryEnd = new Date(orderDeadline);
+                    deliveryEnd.setDate(deliveryEnd.getDate() + 4);
+              
+                    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+                    document.getElementById('orderDate').innerHTML = `
+                    <p><strong>Free Shipping On All Rugs.</strong><br><br>Order within the next 30 min to get it between <strong>${deliveryStart.toLocaleDateString(undefined, options)}</strong> and <strong>${deliveryEnd.toLocaleDateString(undefined, options)}</strong></p>`
+                  }
+              
+                  calculateDeliveryDates();
+                </script>
+                {% endif %}
               {%- endif -%}
 
             {%- when 'sku' -%}
@@ -1679,6 +1699,11 @@
           ],
           "default": "text-base",
           "label": "t:sections.global.settings.text_size.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_calculate_order_date",
+          "label": "Calculate order date"
         }
       ]
     },
