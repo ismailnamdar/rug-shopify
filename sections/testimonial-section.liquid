@@ -13,34 +13,45 @@
 {%- endstyle -%}
 
 <style>
+  .testimonial_section_container {
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
   .testimonial_header {
     text-align: center;
     margin-bottom: 2.5rem;
     font-size: 28px;
   }
 
-  .testimonial_image,
   .testimonial_block {
     width: 100%;
     height: 100%;
+  }
+
+  .testimonial_image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 14px;
   }
 
   .testimonial_image .testimonial_img {
     width: 100%;
     height: 100%;
     display: block;
-    aspect-ratio: 1;
     object-fit: cover;
     object-position: center;
-    border-radius: 14px;
   }
 
   .testimonial_block {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     gap: 16px;
+    scroll-snap-align: start;
   }
 
   .testimonial_block_content_container {
@@ -54,13 +65,20 @@
 
   .testimonial_slider_body {
     position: relative;
+    overflow: visible;
+    padding-inline: 60px;
   }
 
-  .testimonial_section .swiper-button-next,
-  .testimonial_section .swiper-button-prev {
-    position: absolute !important;
-    transform: translateY(-50%) !important;
-    margin-top: 0 !important;
+  /* Prevent the theme slider from double-adding its own padding/negative-margin
+     since .testimonial_slider_body already handles the side spacing */
+  .testimonial_section slider-element {
+    --slider-padding: 0px;
+  }
+
+  .testimonial-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background-color: #212121;
     width: 44px;
     height: 44px;
@@ -68,56 +86,32 @@
     border-radius: 50%;
     color: #ffffff;
     cursor: pointer;
-    display: flex !important;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    opacity: 1 !important;
-    pointer-events: auto !important;
     transition: background-color 0.2s, color 0.2s;
     z-index: 10;
+    padding: 0;
   }
 
-  .testimonial_section .swiper-button-prev {
-    left: -50px !important;
-    right: unset !important;
-  }
-
-  .testimonial_section .swiper-button-next {
-    right: -50px !important;
-    left: unset !important;
-  }
-
-  .testimonial_section .swiper-button-next:hover,
-  .testimonial_section .swiper-button-prev:hover {
+  .testimonial-nav-btn:hover {
     background-color: #ffffff;
     color: #212121;
   }
 
-  .testimonial_section .swiper-button-next:after,
-  .testimonial_section .swiper-button-prev:after {
-    font-size: 14px;
-    font-weight: 900;
+  .testimonial-nav-btn[disabled] {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
   }
 
-  @media screen and (max-width: 1350px) {
-    .testimonial_section .swiper-button-prev {
-      left: 10px !important;
-    }
-
-    .testimonial_section .swiper-button-next {
-      right: 10px !important;
-    }
+  .testimonial-nav-btn--prev {
+    left: 0;
   }
 
-  @media screen and (max-width: 768px) {
-    .testimonial_section .swiper-button-prev {
-      left: 10px !important;
-    }
-
-    .testimonial_section .swiper-button-next {
-      right: 10px !important;
-    }
+  .testimonial-nav-btn--next {
+    right: 0;
   }
 </style>
 
@@ -137,10 +131,26 @@
       {% endif %}
     </div>
     <div class="testimonial_slider_body">
-      <div class="testimonial_block_container swiper testimonial_swiper">
-        <div class="swiper-wrapper">
+      <button
+        class="testimonial-nav-btn testimonial-nav-btn--prev"
+        type="button"
+        is="previous-button"
+        aria-controls="Slider-{{ section.id }}"
+        aria-label="{{ 'general.pagination.previous' | t | escape }}"
+        disabled
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <slider-element
+        id="Slider-{{ section.id }}"
+        class="grid slider slider--desktop slider--tablet"
+        selector=".testimonial-grid>.testimonial_block"
+        tabindex="0"
+      >
+        <div class="testimonial-grid card-grid card-grid--3 mobile:card-grid--1 grid">
           {% for block in section.blocks %}
-            <div class="testimonial_block swiper-slide">
+            <div class="testimonial_block">
               <div class="testimonial_image">
                 {% if block.settings.testimonial_image != blank %}
                   {{ block.settings.testimonial_image | image_url: width: 600 | image_tag: class: 'testimonial_img' }}
@@ -164,12 +174,33 @@
             </div>
           {% endfor %}
         </div>
-      </div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+      </slider-element>
+
+      <button
+        class="testimonial-nav-btn testimonial-nav-btn--next"
+        type="button"
+        is="next-button"
+        aria-controls="Slider-{{ section.id }}"
+        aria-label="{{ 'general.pagination.next' | t | escape }}"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
   </div>
 </div>
+
+<style>
+  .testimonial_rich_text {
+    margin-top: 12px;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .testimonial_author {
+    margin-top: 12px;
+    font-weight: 800;
+    font-size: 20px;
+  }
+</style>
 
 {% schema %}
 {
@@ -275,50 +306,3 @@
   ]
 }
 {% endschema %}
-
-<script>
-  function positionTestimonialArrows() {
-    const img = document.querySelector('.testimonial_swiper .testimonial_img');
-    const buttons = document.querySelectorAll('.testimonial_section .swiper-button-prev, .testimonial_section .swiper-button-next');
-    if (!img || !buttons.length) return;
-
-    const isMobile = window.innerWidth <= 768;
-    const top = isMobile ? img.offsetHeight * 0.5 : img.offsetHeight / 2;
-
-    buttons.forEach(function (btn) {
-      btn.style.top = top + 'px';
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const swiper = new Swiper('.testimonial_swiper', {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      freeMode: true,
-      loop: true,
-      grabCursor: true,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        1020: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        // when window width is >= 320px
-        320: {
-          slidesPerView: 1,
-          spaceBetween: 40,
-        },
-      }
-    });
-
-    positionTestimonialArrows();
-    window.addEventListener('resize', positionTestimonialArrows);
-  });
-</script>
