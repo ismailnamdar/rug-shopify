@@ -537,11 +537,9 @@
         return theme.Currency.formatMoney(amount, format);
       }
 
-      console.log({ originalPriceEl, stickyPriceEl });
       if (originalPriceEl && stickyPriceEl) {
         document.addEventListener('variant:change', function (e) {
           var variant = e.detail && e.detail.variant;
-          console.log({ e, variant });
           if (!variant) return;
           // Let the original element update first, then copy
           requestAnimationFrame(function () {

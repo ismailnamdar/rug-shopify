@@ -722,25 +722,19 @@ if (!customElements.get('custom-rug-canvas')) {
       }
 
       async handleClickAddToCart() {
-        console.log('called ');
         const { path: originalPath, mimeType, originalPreviewFileUrl } = this.uploadedImage;
 
-        console.log('called 2', this.uploadedImage);
         if (originalPath == null) { this.addToCartPending = true; return; }
 
-        console.log('called exportPNG');
         const previewPath = await this.exportPNG();
         const { data, original_file_url: originalFileUrl, preview_file_url: previewFileUrl } = await this.createMedia(
           originalPath, previewPath, mimeType, this.bgColor, this.shownImage === 'background-removed'
         );
 
-        console.log('called exportPNG finished');
-
         const originalUrl = originalPreviewFileUrl || originalFileUrl;
         const comments = document.querySelector('.edit-notes-textarea')?.value || '';
         const sendProof = document.querySelector('#custom-rug-proof-section #custom-rug-send-proof')?.checked;
 
-        console.log('called test');
         const setProp = (name, value) => {
           const el = document.querySelector(`#custom-rug-properties-section input[name="${name}"]`);
           if (el) el.value = value;
