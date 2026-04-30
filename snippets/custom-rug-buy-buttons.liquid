@@ -57,7 +57,7 @@
     class: 'product-form grid gap-8',
     is: 'product-form'
   -%}
-    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled />
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
 
     {%- liquid
       if gift_card_recipient_feature_active
@@ -356,6 +356,19 @@
       -%}
     </div>
   {%- endform -%}
+  <script>
+    (function () {
+      var form = document.getElementById('{{ product_form_id }}');
+      if (!form) return;
+      document.addEventListener('variant:change', function (e) {
+        var variant = e.detail && e.detail.variant;
+        if (!variant) return;
+        var input = form.querySelector('input[name="id"]');
+        if (!input) return;
+        input.value = variant.id;
+      });
+    })();
+  </script>
 
   {%- if enable_back_in_stock -%}
     <div id="BackInStock-{{ section_id }}-{{ product_id }}">
@@ -510,6 +523,36 @@
       new MutationObserver(function () {
         stickyAtc.disabled = originalAtc.disabled;
       }).observe(originalAtc, { attributes: true, attributeFilter: ['disabled'] });
+
+      // Sync price: mirror original price element into sticky on variant change
+      var originalPriceEl = originalAtc.querySelector('product-buy-price');
+      var stickyPriceEl = stickyAtc.querySelector('product-buy-price');
+
+
+      function updatePrice(amount) {
+        const format = theme.settings.currencyCodeEnabled
+          ? theme.settings.moneyWithCurrencyFormat
+          : theme.settings.moneyFormat;
+        
+        return theme.Currency.formatMoney(amount, format);
+      }
+
+      console.log({ originalPriceEl, stickyPriceEl });
+      if (originalPriceEl && stickyPriceEl) {
+        document.addEventListener('variant:change', function (e) {
+          var variant = e.detail && e.detail.variant;
+          console.log({ e, variant });
+          if (!variant) return;
+          // Let the original element update first, then copy
+          requestAnimationFrame(function () {
+            price = updatePrice(variant.price);
+            stickyPriceEl.innerHTML = price;
+            if (originalPriceEl.dataset.price) {
+              stickyPriceEl.dataset.price = variant.price
+            }
+          });
+        });
+      }
 
       // Sync quantity: sticky → original
       if (stickyQtyInput && originalQtyInput) {

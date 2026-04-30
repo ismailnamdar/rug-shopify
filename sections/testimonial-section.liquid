@@ -69,6 +69,48 @@
     padding-inline: 60px;
   }
 
+  @media screen and (max-width: 749px) {
+    .testimonial_header {
+        font-size: 18px;
+    }
+    .testimonial_slider_body {
+      padding-inline: 0;
+      overflow: hidden;
+    }
+
+    .testimonial-nav-btn {
+      display: none !important;
+    }
+
+    .testimonial_section slider-element {
+      --slider-padding: 0px;
+    }
+
+    .testimonial-grid {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 16px;
+      padding-inline: 20px;
+      padding-bottom: 8px;
+      /* hide scrollbar */
+      scrollbar-width: none;
+    }
+
+    .testimonial-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial_block {
+      flex: 0 0 calc((100% - 20px) / 1.5);
+      min-width: 0;
+      scroll-snap-align: start;
+    }
+  }
+
   /* Prevent the theme slider from double-adding its own padding/negative-margin
      since .testimonial_slider_body already handles the side spacing */
   .testimonial_section slider-element {
