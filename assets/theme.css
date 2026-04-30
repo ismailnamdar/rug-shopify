@@ -12412,7 +12412,6 @@ button.shopify-payment-button__button--hidden {
 .product__text+.product__text.even.last .product__text-inner {
   padding-block-end: 0;
 }
-
 .product-bundle__info {
   --cart-item-media-width: clamp(var(--sp-10), 3.368vw, var(--sp-16));
   padding: var(--sp-4) var(--sp-6);
