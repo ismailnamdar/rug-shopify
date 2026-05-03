@@ -30,10 +30,13 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p><em><strong>Add a tagline</strong></em></p>",
+            "text": "<p><em>A Journey Woven Through Generations and Reinvention</em></p><h3></h3>",
+            "text_font": "body",
             "text_size": "subtext-lg",
             "text_max_size": 32,
-            "text_font": "body",
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
             "secondary_color": false,
             "highlighted_text": "text",
             "highlighted_scribble": "circle"
@@ -42,11 +45,12 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text overlay",
+            "heading": "Our Story",
             "heading_size": "title-xl tracking-heading",
             "heading_tag": "h1",
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         }
       },
@@ -56,8 +60,8 @@
       ],
       "settings": {
         "transparent_header": true,
-        "image": "",
-        "image_height": "750px",
+        "image": "shopify://shop_images/about.png",
+        "image_height": "400px",
         "content_width": "large",
         "content_position": "md:items-end md:justify-start",
         "text_alignment": "left",
@@ -65,6 +69,8 @@
         "content_position_mobile": "items-end justify-start",
         "text_alignment_mobile": "left",
         "color_text": "#ffffff",
+        "color_background": "",
+        "gradient_background": "",
         "color_highlight": "#e0a580",
         "gradient_highlight": "",
         "color_button_text": "#171717",
@@ -81,51 +87,98 @@
         "parallax_direction": "vertical"
       }
     },
+    "rich_text_iP3yAA": {
+      "type": "rich-text",
+      "blocks": {
+        "text_A8AyNR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our story isn’t just about rugs; it’s about a legacy of creativity and resilience passed down through generations. It began with my great-grandfather, who crafted the finest Persian rug in Iran and earned our family the honor of using the royal crown as our crest.My grandfather continued that tradition, not only as a master of his craft but as someone who gave back to his community, building schools and hospitals.</p>",
+            "text_font": "body",
+            "text_size": "subtext-custom",
+            "text_max_size": 28,
+            "text_line_height": 1.5,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "text_A8AyNR"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
     "images-with-text": {
       "type": "images-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Example <em>heading</em>",
+            "heading": "Our Vision",
             "heading_size": "title-md",
             "heading_tag": "h2",
             "highlighted_text": "scribble",
-            "highlighted_scribble": "basic-underline"
+            "highlighted_scribble": "basic-underline",
+            "highlighted_reveal": false
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "text_size": "subtext-md",
-            "text_max_size": 32,
+            "text": "<p>Growing up, I moved around the world, attending 14 different schools in 15 years. I was always an outlier, always questioning things, and often feeling like I saw solutions that others didn’t.</p><p>It was a bit lonely at times, but it taught me how to form deep connections quickly and how to dream big.</p><p>I always had ideas about products and solutions, and I’d often see those ideas come to life on store shelves years later. People even encouraged me to go on Shark Tank. But first, I had to fulfill my promise to my parents and get my degree.</p>",
             "text_font": "body",
+            "text_size": "subtext-xl",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
             "secondary_color": false,
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "primary",
-            "button_size": "md",
-            "button_external": false,
-            "button_icon": true
           }
         }
       },
       "block_order": [
         "heading",
-        "text",
-        "button"
+        "text"
       ],
       "settings": {
-        "image": "",
-        "image_2": "",
+        "image": "shopify://shop_images/Screenshot_2026-05-04_at_00.52.35.png",
+        "image_2": "shopify://shop_images/Screenshot_2026-05-04_at_00.52.58.png",
         "image_ratio": "portrait",
         "image_width": "medium",
         "layout": "image_first",
@@ -139,8 +192,8 @@
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 120,
-        "padding_bottom": 100,
+        "padding_top": 32,
+        "padding_bottom": 20,
         "divider": false,
         "full_width": false,
         "rounded": true,
@@ -153,7 +206,6 @@
         "profile-1": {
           "type": "profile",
           "settings": {
-            "image": "",
             "heading": "Example title",
             "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "color_text": "#ffffff",
@@ -163,7 +215,6 @@
         "profile-2": {
           "type": "profile",
           "settings": {
-            "image": "",
             "heading": "Example title",
             "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "color_text": "#ffffff",
@@ -173,7 +224,6 @@
         "profile-3": {
           "type": "profile",
           "settings": {
-            "image": "",
             "heading": "Example title",
             "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "color_text": "#ffffff",
@@ -188,6 +238,7 @@
       ],
       "settings": {
         "columns": 4,
+        "carousel_on_desktop": false,
         "layout": "grid",
         "image_ratio": "portrait",
         "image_ratio_mobile": "portrait",
@@ -205,6 +256,7 @@
         "button_icon": true,
         "highlighted_text": "scribble",
         "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
         "color_text": "",
         "color_background": "",
         "gradient_background": "",
@@ -266,6 +318,7 @@
             "author_info": "",
             "author_url": "",
             "image_ratio": "rounded",
+            "image_height": 30,
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -287,6 +340,7 @@
         "button_icon": true,
         "highlighted_text": "none",
         "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
         "color_text": "",
         "color_background": "",
         "gradient_background": "",
@@ -307,7 +361,6 @@
         "content-1": {
           "type": "content",
           "settings": {
-            "image": "",
             "subheading": "2017",
             "heading": "Example title",
             "heading_tag": "h2",
@@ -318,13 +371,13 @@
             "button_external": false,
             "button_icon": true,
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         },
         "content-2": {
           "type": "content",
           "settings": {
-            "image": "",
             "subheading": "2019",
             "heading": "Example title",
             "heading_tag": "h2",
@@ -335,13 +388,13 @@
             "button_external": false,
             "button_icon": true,
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         },
         "content-3": {
           "type": "content",
           "settings": {
-            "image": "",
             "subheading": "2020",
             "heading": "Example title",
             "heading_tag": "h2",
@@ -352,13 +405,13 @@
             "button_external": false,
             "button_icon": true,
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         },
         "content-4": {
           "type": "content",
           "settings": {
-            "image": "",
             "subheading": "2021",
             "heading": "Example title",
             "heading_tag": "h2",
@@ -369,13 +422,13 @@
             "button_external": false,
             "button_icon": true,
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         },
         "content-5": {
           "type": "content",
           "settings": {
-            "image": "",
             "subheading": "2023",
             "heading": "Example title",
             "heading_tag": "h2",
@@ -386,13 +439,13 @@
             "button_external": false,
             "button_icon": true,
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         },
         "content-6": {
           "type": "content",
           "settings": {
-            "image": "",
             "subheading": "2024",
             "heading": "Example title",
             "heading_tag": "h2",
@@ -403,13 +456,13 @@
             "button_external": false,
             "button_icon": true,
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         },
         "content-7": {
           "type": "content",
           "settings": {
-            "image": "",
             "subheading": "2025",
             "heading": "Example title",
             "heading_tag": "h2",
@@ -420,7 +473,8 @@
             "button_external": false,
             "button_icon": true,
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         }
       },
@@ -434,6 +488,8 @@
         "content-7"
       ],
       "settings": {
+        "show_navigation": true,
+        "layout": "image_first",
         "image_ratio": "portrait",
         "image_ratio_mobile": "wide",
         "heading": "Example heading",
@@ -444,6 +500,7 @@
         "description": "",
         "highlighted_text": "none",
         "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
         "color_text": "#ffffff",
         "color_background": "#171717",
         "gradient_background": "",
@@ -466,9 +523,12 @@
           "type": "text",
           "settings": {
             "text": "<p>Add a tagline</p>",
+            "text_font": "body",
             "text_size": "subtext-md",
             "text_max_size": 32,
-            "text_font": "body",
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
             "secondary_color": false,
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
@@ -481,7 +541,8 @@
             "heading_size": "title-md",
             "heading_tag": "h2",
             "highlighted_text": "scribble",
-            "highlighted_scribble": "squiggle-underline"
+            "highlighted_scribble": "squiggle-underline",
+            "highlighted_reveal": false
           }
         }
       },
@@ -495,6 +556,7 @@
         "heading": "",
         "heading_size": "title-md",
         "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
         "heading_tag": "h2",
         "subheading": "",
         "description": "",
@@ -504,6 +566,7 @@
         "button_icon": true,
         "highlighted_text": "none",
         "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
         "color_text": "",
         "color_background": "#fafafa",
         "gradient_background": "",
@@ -525,7 +588,6 @@
         "logo-1": {
           "type": "logo",
           "settings": {
-            "image": "",
             "height": 60,
             "link": ""
           }
@@ -533,7 +595,6 @@
         "logo-2": {
           "type": "logo",
           "settings": {
-            "image": "",
             "height": 60,
             "link": ""
           }
@@ -541,7 +602,6 @@
         "logo-3": {
           "type": "logo",
           "settings": {
-            "image": "",
             "height": 60,
             "link": ""
           }
@@ -549,7 +609,6 @@
         "logo-4": {
           "type": "logo",
           "settings": {
-            "image": "",
             "height": 60,
             "link": ""
           }
@@ -557,7 +616,6 @@
         "logo-5": {
           "type": "logo",
           "settings": {
-            "image": "",
             "height": 60,
             "link": ""
           }
@@ -565,7 +623,6 @@
         "logo-6": {
           "type": "logo",
           "settings": {
-            "image": "",
             "height": 60,
             "link": ""
           }
@@ -573,7 +630,6 @@
         "logo-7": {
           "type": "logo",
           "settings": {
-            "image": "",
             "height": 60,
             "link": ""
           }
@@ -605,6 +661,7 @@
         "button_icon": true,
         "highlighted_text": "none",
         "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
         "color_text": "",
         "color_background": "#fafafa",
         "gradient_background": "",
@@ -624,6 +681,7 @@
   "order": [
     "main",
     "image-with-text-overlay",
+    "rich_text_iP3yAA",
     "images-with-text",
     "portfolio",
     "scrolling-text",
