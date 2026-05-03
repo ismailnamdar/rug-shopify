@@ -2972,6 +2972,11 @@ h6:empty {
   padding-inline: var(--page-padding);
 }
 
+.page-section-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 1536px) {
   .page-width--full {
     --page-padding: var(--sp-12);
