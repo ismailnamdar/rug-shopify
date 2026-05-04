@@ -35,12 +35,13 @@
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
-    {%- render 'section-heading', section: section -%}
+    {%- render 'section-heading', section: section, class: "image-comparison__heading" -%}
 
     <image-comparison class="image-comparison media--{{ section.settings.image_height }} mobile:media--{{ section.settings.image_height_mobile }} block relative overflow-hidden" data-layout="{{ section.settings.layout }}">
       {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
 
       {%- if before_image != blank -%}
+        {%- assign before_img_style = 'object-position: ' | append: before_image.settings.image_object_position -%}
         <div class="comparison__before w-full h-full" {{ before_image.shopify_attributes }}>
           <picture class="media media--height w-full h-full block relative">
             {%- if before_image.settings.image != blank -%}
@@ -52,8 +53,8 @@
                   height="{{ before_image.settings.image_mobile.height }}"
                 >
               {%- endif -%}
-  
-              {{- before_image.settings.image | image_url: width: before_image.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', is: 'lazy-image' -}}
+
+              {{- before_image.settings.image | image_url: width: before_image.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', is: 'lazy-image', style: before_img_style -}}
             {%- else -%}
               {{- 'lifestyle-1' | placeholder_svg_tag: 'placeholder' -}}
             {%- endif -%}
@@ -74,6 +75,7 @@
       {%- endif -%}
 
       {%- if after_image != blank -%}
+        {%- assign after_img_style = 'object-position: ' | append: after_image.settings.image_object_position -%}
         <div class="comparison__after absolute top-0 left-0 w-full h-full z-1" {{ after_image.shopify_attributes }}>
           <picture class="media media--height w-full h-full block relative">
             {%- if after_image.settings.image != blank -%}
@@ -85,8 +87,8 @@
                   height="{{ after_image.settings.image_mobile.height }}"
                 >
               {%- endif -%}
-  
-              {{- after_image.settings.image | image_url: width: after_image.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', is: 'lazy-image' -}}
+
+              {{- after_image.settings.image | image_url: width: after_image.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', is: 'lazy-image', style: after_img_style -}}
             {%- else -%}
               {{- 'lifestyle-2' | placeholder_svg_tag: 'placeholder' -}}
             {%- endif -%}
@@ -564,6 +566,23 @@
           "type": "image_picker",
           "id": "image_mobile",
           "label": "t:sections.global.settings.image_mobile.label"
+        },
+        {
+          "type": "select",
+          "id": "image_object_position",
+          "label": "Image position",
+          "options": [
+            { "value": "center", "label": "Center" },
+            { "value": "top", "label": "Top" },
+            { "value": "bottom", "label": "Bottom" },
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" },
+            { "value": "top left", "label": "Top left" },
+            { "value": "top right", "label": "Top right" },
+            { "value": "bottom left", "label": "Bottom left" },
+            { "value": "bottom right", "label": "Bottom right" }
+          ],
+          "default": "center"
         },
         {
           "type": "text",

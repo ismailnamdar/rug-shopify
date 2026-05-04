@@ -11,16 +11,6 @@
   "type": "footer",
   "name": "t:sections.footer-group.name",
   "sections": {
-    "empty_space_iTgH4T": {
-      "type": "empty-space",
-      "name": "t:sections.empty-space.name",
-      "settings": {
-        "desktop_height": 40,
-        "mobile_height": 28,
-        "color_background": "",
-        "gradient_background": ""
-      }
-    },
     "multicolumn-with-icons": {
       "type": "multicolumn-with-icons",
       "blocks": {
@@ -151,8 +141,8 @@
           "type": "brand_information",
           "settings": {
             "heading": "",
-            "button_label_1": "+21 (0) 987654321",
-            "button_link_1": "tel:+21(0)987654321",
+            "button_label_1": "+1 949-478-4886",
+            "button_link_1": "tel:+19494784886",
             "button_label_2": "hello@domain.com",
             "button_link_2": "mailto:hello@domain.com",
             "button_label_3": "",
@@ -215,7 +205,6 @@
     }
   },
   "order": [
-    "empty_space_iTgH4T",
     "multicolumn-with-icons",
     "footer",
     "footer-copyright"

@@ -1505,21 +1505,40 @@ class AccordionsDetails extends HTMLElement {
     super();
 
     this.addEventListener('toggle', this.onToggle);
+    this.addEventListener('toggle', this.onNestedToggle, true);
   }
 
   get items() {
-    return this._items = this._items || Array.from(this.querySelectorAll('details[is="accordion-details"]'));
+    return this._items = this._items || Array.from(
+      this.querySelectorAll('details[is="accordion-details"]')
+    ).filter(el => !el.parentElement.closest('details[is="accordion-details"]'));
+  }
+
+  onNestedToggle(event) {
+    if (event.detail || !event.target.matches('details') || !event.target.open) return;
+    const group = event.target.closest('.nested-accordions');
+    if (!group || !this.contains(group)) return;
+    group.querySelectorAll('details[open]').forEach(d => {
+      if (d !== event.target) d.removeAttribute('open');
+    });
   }
 
   onToggle(event) {
     const { current: target, open } = event.detail;
 
     if (!this.hasAttribute('data-allow-multiple')) {
-      this.items.forEach((item) => {
-        if (item !== target) {
-          item.close();
-        }
-      });
+      const nestedGroup = target.closest('.nested-accordions');
+      if (nestedGroup) {
+        nestedGroup.querySelectorAll('details[is="accordion-details"]').forEach(item => {
+          if (item !== target) item.close();
+        });
+      } else {
+        this.items.forEach((item) => {
+          if (item !== target) {
+            item.close();
+          }
+        });
+      }
     }
 
     // Disable scroll

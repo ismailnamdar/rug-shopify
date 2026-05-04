@@ -13,7 +13,7 @@
 </style>
 
 <div class="section-multi-column section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
-  <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
+  <div class="page-section-container page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
     {%- render 'section-heading', section: section -%}
 
     <slider-element id="Slider-{{ section.id }}" class="grid slider{% if section.settings.swipe_on_mobile %} slider--tablet{% endif %}" selector=".card-grid>.card"{% if section.settings.swipe_on_mobile %} tabindex="0"{% endif %}>
@@ -26,6 +26,9 @@
         -%}
         {%- for block in section.blocks -%}
           <div class="multicolumn-card{% if block.settings.show_border %} with-border{% endif %} card flex gap-5 w-full flex-col items-start xl:flex-row md:text-{{ block.settings.text_alignment }} text-{{ block.settings.text_alignment_mobile }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.column_heading != blank -%}
+              <p class="multicolumn-card__column-heading text-center font-bold {{ block.settings.column_heading_size }} leading-tight tracking-tight w-full">{{ block.settings.column_heading | escape }}</p>
+            {%- endif -%}
             <div class="grid gap-4 lg:gap-6 w-full">
               {%- if block.settings.video != blank -%}
                 {%- capture sizes -%}(max-width: 639px) 100vw, (max-width: 767px) 74vw, {{ settings.page_width | divided_by: section.settings.columns }}px{%- endcapture -%}
@@ -477,6 +480,23 @@
           "id": "text_alignment_mobile",
           "default": "left",
           "label": "t:sections.global.settings.text_alignment_mobile.label"
+        },
+        {
+          "type": "text",
+          "id": "column_heading",
+          "label": "Column heading"
+        },
+        {
+          "type": "select",
+          "id": "column_heading_size",
+          "label": "Column heading size",
+          "options": [
+            { "value": "title-sm", "label": "t:sections.global.settings.heading_size.options__1.label" },
+            { "value": "title-md", "label": "t:sections.global.settings.heading_size.options__2.label" },
+            { "value": "title-lg tracking-heading", "label": "t:sections.global.settings.heading_size.options__3.label" },
+            { "value": "title-xl tracking-heading", "label": "t:sections.global.settings.heading_size.options__4.label" }
+          ],
+          "default": "title-md"
         },
         {
           "type": "image_picker",

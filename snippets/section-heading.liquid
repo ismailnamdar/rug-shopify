@@ -15,9 +15,9 @@
 {%- enddoc -%}
 
 {%- if section.settings.heading != blank or section.settings.subheading != blank or section.settings.description != blank or section.settings.button_label != blank -%}
-  <div class="{% if section_full_width %}page-width {% endif %}title-wrapper{% if section.settings.heading_size == 'title-xl' %} title-wrapper-lg{% endif %} leading-none gap-4 lg:gap-8 flex flex-col {{ section.settings.heading_alignment }} md:justify-between relative z-1">
+  <div class="{% if section_full_width %}page-width {% endif %}title-wrapper{% if section.settings.heading_size == 'title-xl' %} title-wrapper-lg{% endif %} leading-none gap-4 lg:gap-8 flex flex-col {{ section.settings.heading_alignment }} md:justify-between relative z-1 {{ class }}">
     {%- if section.settings.heading != blank or section.settings.subheading != blank or section.settings.description != blank -%}
-      <div class="grid gap-4">
+      <div class="grid gap-2">
         {%- if section.settings.subheading != blank -%}
           {%- liquid
             if section.settings.heading_size == 'title-sm'
