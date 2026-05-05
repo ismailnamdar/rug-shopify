@@ -6,7 +6,7 @@ if (!customElements.get('custom-rug-canvas')) {
       static SUPABASE_URL = 'https://mgettdoycdkgplgaknqd.supabase.co';
 
       static rectangleDefaultDimensions = {
-        "2'X3'": { name: "2'X3'", wFeet: 3, hFeet: 2, w: 5, h: 2 * 5 / 3 },
+        "2'X3'": { name: "2'X3'", wFeet: 3, hFeet: 2, w: 6, h: 2 * 6 / 3 },
         "3'X5'": { name: "3'X5'", wFeet: 5, hFeet: 3, w: 25 / 3, h: 5 / 3 * 3 },
         "5'X7'": { name: "5'X7'", wFeet: 7, hFeet: 5, w: 35 / 3, h: 35 / 3 / 7 * 5 },
         "8'X10'": { name: "8'X10'", wFeet: 10, hFeet: 8, w: 10 * 0.8, h: 8 * 0.8 },
@@ -34,6 +34,7 @@ if (!customElements.get('custom-rug-canvas')) {
         };
 
         this._bgBigSizes = new Set(["8'X10'", "8'X12'", "2.5'X7'", "2.5'X10'", "5'X10'"]);
+        this._bgSmallSizes = new Set(["2'X3'", "3'X3'"]);
         this.handlePositions = {};
         this.center = { x: 0, y: 0 };
         this.canvasScale = { w: 14, h: 14 };
@@ -96,8 +97,9 @@ if (!customElements.get('custom-rug-canvas')) {
 
         this._bgUrl = this.getAttribute('data-bg-url');
         this._bgBigUrl = this.getAttribute('data-bg-big-url');
-        console.log('big url', this._bgBigUrl, this._bgUrl);
-        const bgUrl = this._bgBigSizes.has(this.shapeSize) ? (this._bgBigUrl || this._bgUrl) : this._bgUrl;
+        this._bgSmallUrl = this.getAttribute('data-bg-small-url');
+        
+        const bgUrl = this._bgBigSizes.has(this.shapeSize) ? (this._bgBigUrl || this._bgUrl) : this._bgSmallSizes.has(this.shapeSize) ? (this._bgSmallUrl || this._bgUrl) : this._bgUrl;
         if (bgUrl) this.loadBackground(bgUrl);
 
         window.CanvasRugEditor = this;
@@ -631,9 +633,9 @@ if (!customElements.get('custom-rug-canvas')) {
       setSize(s) {
         this.shapeSize = s;
         const bigUrl = this._bgBigUrl || this._bgUrl;
-        const url = this._bgBigSizes.has(s) ? bigUrl : this._bgUrl;
+        const smallUrl = this._bgSmallUrl || this._bgUrl;
+        const url = this._bgBigSizes.has(s) ? bigUrl : this._bgSmallSizes.has(s) ? smallUrl : this._bgUrl;
 
-        console.log('set size', s, url);
         if (url && url !== this.bgImg?.src) this.loadBackground(url);
         else this.draw();
       }
