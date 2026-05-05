@@ -230,9 +230,9 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "media_size": 70,
+        "media_size": 56,
         "gallery_layout": "thumbnail",
-        "thumbnail_position": "below",
+        "thumbnail_position": "beside",
         "image_ratio": "square",
         "image_zoom": "lightbox",
         "hide_variants": false,

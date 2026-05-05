@@ -301,7 +301,7 @@
         "media_size": 70,
         "gallery_layout": "thumbnail",
         "thumbnail_position": "beside",
-        "image_ratio": "adapt_first",
+        "image_ratio": "square",
         "image_zoom": "lightbox",
         "hide_variants": false,
         "enable_video_autoplay": true,
