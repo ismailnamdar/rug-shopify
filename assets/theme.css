@@ -8445,7 +8445,8 @@ details.active .drawer__promotions .mega-menu__item,
 
 @media screen and (min-width: 1280px) {
   .footer {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr 300px;
+    gap: 24px;
   }
 
   .footer--no-info {
@@ -8455,11 +8456,16 @@ details.active .drawer__promotions .mega-menu__item,
   .footer--inverted {
     grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
   }
+
+  .footer__right {
+    padding: 0 12px !important;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .footer__left {
-    gap: clamp(var(--sp-20), 8.421vw, var(--sp-40));
+    padding: 0 24px 0 0;
+    justify-content: space-between;
   }
 }
 
@@ -8604,8 +8610,7 @@ details.active .drawer__promotions .mega-menu__item,
   grid-template-columns: repeat(1, minmax(0, 1fr));
   align-content: space-between;
   border-block-start: 1px solid rgb(var(--color-foreground)/ 0.115);
-  margin-block-start: var(--sp-10);
-  padding-block-start: var(--sp-14)
+  padding-block-start: var(--sp-4)
 }
 
 @media screen and (min-width: 768px) {
@@ -14313,7 +14318,7 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
 }
 
 .comparison__button {
-  color: currentColor;
+  color: black;
   background: none;
   border: none;
 }
