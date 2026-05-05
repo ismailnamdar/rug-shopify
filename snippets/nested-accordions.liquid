@@ -1,0 +1,25 @@
+{%- assign has_nested_rows = false -%}
+{%- for i in (1..7) -%}
+  {%- assign sub_heading_key = 'sub_row_' | append: i | append: '_heading' -%}
+  {%- if settings[sub_heading_key] != blank -%}{%- assign has_nested_rows = true -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+{%- if has_nested_rows -%}
+  <div class="nested-accordions mt-4" style="margin-left: 20px;">
+    {%- for i in (1..7) -%}
+      {%- assign sub_heading_key = 'sub_row_' | append: i | append: '_heading' -%}
+      {%- assign sub_content_key = 'sub_row_' | append: i | append: '_content' -%}
+      {%- assign sub_heading = settings[sub_heading_key] -%}
+      {%- if sub_heading != blank -%}
+        <div class="accordion accordion--nested">
+          <details class="details" is="accordion-details">
+            <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
+              <span class="heading text-xl font-medium leading-none">{{- sub_heading | escape -}}</span>
+              {%- render 'icon', icon: 'plus-2', size: 'xs', class: 'shrink-0' -%}
+            </summary>
+            <div class="details__content rte text-xl">{{- settings[sub_content_key] -}}</div>
+          </details>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

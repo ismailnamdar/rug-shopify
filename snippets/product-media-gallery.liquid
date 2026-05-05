@@ -126,46 +126,30 @@
     {%- endif -%}
   {%- endif -%}
 
-  <div class="product__media-container flex flex-col gap-4 
+  <div class="product__media-container flex flex-col gap-2 
     {%- if gallery_layout == 'thumbnail' %} items-start{% if thumbnail_position == 'beside' %} xl:flex-row{% endif %}{% endif -%}"
   >
-    <div class="relative w-full h-full">
-      <slider-element id="SliderGallery-{{ section_id }}-{{ product_id }}" class="slider slider--desktop slider--tablet block w-full h-full" selector=".product__media" tabindex="0">
-        <div
-          class="product__media-list flex gap-1
-          {%- if gallery_layout == 'columns' %} lg:grid lg:gap-4 xl:gap-5 grid-cols-2{% endif -%}
-          {%- if gallery_layout == 'scroll' %} lg:grid lg:gap-4 xl:gap-5 grid-cols-2{% endif -%}"
-        >
-          {%- if featured_media != null -%}
-            {%- render 'product-media',
-              product: product,
-              product_id: product_id,
-              section_id: section_id,
-              product_variant: product_variant,
-              media: featured_media,
-              featured_media: featured_media,
-              variant_images: variant_images,
-              hide_variants: hide_variants,
-              gallery_layout: gallery_layout,
-              image_zoom: image_zoom,
-              image_fill: image_fill,
-              image_ratio: image_ratio,
-              image_ratio_mobile: image_ratio_mobile,
-              preload: true,
-              sizes: sizes,
-              autoplay: enable_video_autoplay,
-              loop: enable_video_looping
-            -%}
-          {%- endif -%}
-
-          {%- for media in product.media -%}
-            {%- if media.id != featured_media.id -%}
+    <div class="w-full" style="flex: 1;">
+      <div class="product-main-canvas-container w-full" style="display: none;">
+        {% assign current_variant = product.selected_or_first_available_variant %}
+        {% assign shape = current_variant.option1 | downcase  %}
+        {% assign size = current_variant.option2 | upcase %}
+        {% render "custom-rug-canvas", shape: shape, size: size, bg_url: 'background-example.png', bottom_banner: true %}
+      </div>
+      <div id="SliderGallery-slider-wrapper" class="relative w-full h-full">
+        <slider-element id="SliderGallery-{{ section_id }}-{{ product_id }}" class="slider slider--desktop slider--tablet block w-full h-full" selector=".product__media" tabindex="0">
+          <div
+            class="product__media-list flex gap-1
+            {%- if gallery_layout == 'columns' %} lg:grid lg:gap-4 xl:gap-5 grid-cols-2{% endif -%}
+            {%- if gallery_layout == 'scroll' %} lg:grid lg:gap-4 xl:gap-5 grid-cols-2{% endif -%}"
+          >
+            {%- if featured_media != null -%}
               {%- render 'product-media',
                 product: product,
                 product_id: product_id,
                 section_id: section_id,
                 product_variant: product_variant,
-                media: media,
+                media: featured_media,
                 featured_media: featured_media,
                 variant_images: variant_images,
                 hide_variants: hide_variants,
@@ -174,29 +158,59 @@
                 image_fill: image_fill,
                 image_ratio: image_ratio,
                 image_ratio_mobile: image_ratio_mobile,
-                preload: false,
+                preload: true,
                 sizes: sizes,
                 autoplay: enable_video_autoplay,
                 loop: enable_video_looping
               -%}
             {%- endif -%}
-          {%- endfor -%}
-        </div>
-      </slider-element>
 
-      <div class="indicators hidden items-center justify-between opacity-0 z-1 absolute top-0 left-0 w-full h-full pointer-events-none">
-        <button class="button button--secondary pointer-events-auto" type="button" is="previous-button" aria-controls="SliderGallery-{{ section_id }}-{{ product_id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" disabled>
-          <span class="btn-fill" data-fill></span>
-          <span class="btn-text">
-            {%- render 'icon', icon: 'chevron-left', class: 'transform' -%}
-          </span>
-        </button>
-        <button class="button button--secondary pointer-events-auto" type="button" is="next-button" aria-controls="SliderGallery-{{ section_id }}-{{ product_id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
-          <span class="btn-fill" data-fill></span>
-          <span class="btn-text">
-            {%- render 'icon', icon: 'chevron-right', class: 'transform' -%}
-          </span>
-        </button>
+            {%- for media in product.media -%}
+              {%- if media.id != featured_media.id -%}
+                {%- render 'product-media',
+                  product: product,
+                  product_id: product_id,
+                  section_id: section_id,
+                  product_variant: product_variant,
+                  media: media,
+                  featured_media: featured_media,
+                  variant_images: variant_images,
+                  hide_variants: hide_variants,
+                  gallery_layout: gallery_layout,
+                  image_zoom: image_zoom,
+                  image_fill: image_fill,
+                  image_ratio: image_ratio,
+                  image_ratio_mobile: image_ratio_mobile,
+                  preload: false,
+                  sizes: sizes,
+                  autoplay: enable_video_autoplay,
+                  loop: enable_video_looping
+                -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </slider-element>
+
+        <div class="indicators hidden items-center justify-between opacity-0 z-1 absolute top-0 left-0 w-full h-full pointer-events-none">
+          <button class="button button--secondary pointer-events-auto" type="button" is="previous-button" aria-controls="SliderGallery-{{ section_id }}-{{ product_id }}" aria-label="{{ 'general.pagination.previous' | t | escape }}" disabled>
+            <span class="btn-fill" data-fill></span>
+            <span class="btn-text">
+              {%- render 'icon', icon: 'chevron-left', class: 'transform' -%}
+            </span>
+          </button>
+          <button class="button button--secondary pointer-events-auto" type="button" is="next-button" aria-controls="SliderGallery-{{ section_id }}-{{ product_id }}" aria-label="{{ 'general.pagination.next' | t | escape }}">
+            <span class="btn-fill" data-fill></span>
+            <span class="btn-text">
+              {%- render 'icon', icon: 'chevron-right', class: 'transform' -%}
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="hidden md:flex">
+        {% render 'custom-rug-pills' %}
+      </div>
+      <div class="hidden md:flex">
+        {% render 'custom-rug-features' %}
       </div>
     </div>
 
@@ -278,6 +292,9 @@
     {%- endif -%}
   </div>
 </media-gallery>
+<div class="flex md:hidden w-full">
+  {% render 'custom-rug-pills', class: "w-full", style: "padding-bottom: 0;" %}
+</div>
 
 {%- if spinning_block != blank and spinning_block.settings.text != blank -%}
   <spinning-text class="product__spinning text-xs md:text-base lg:text-lg uppercase flex items-center justify-center absolute top-0 z-10 pointer-events-none" data-string="{{ spinning_block.settings.text | escape }}" style="--char-count: {{ spinning_block.settings.text.size | plus: 1 }};">

@@ -56,7 +56,7 @@
       {%- if section.blocks.size > 0 -%}
         <span class="banner__overlay absolute top-0 left-0 w-full h-full pointer-events-none"></span>
         <div class="banner__content overflow-hidden absolute z-1 top-0 left-0 w-full h-full">
-          <div class="page-width w-full h-full flex {{ section.settings.content_position }} {{ section.settings.content_position_mobile }}">
+          <div class="page-section-container page-width w-full h-full flex {{ section.settings.content_position }} {{ section.settings.content_position_mobile }}">
             <div class="banner__box banner__box--{{ section.settings.content_width }} md:text-{{ section.settings.text_alignment }} text-{{ section.settings.text_alignment_mobile }}">
               {%- liquid
                 assign with_gradient = false
@@ -227,6 +227,14 @@
         {
           "label": "t:sections.global.settings.image_height.options__1.label",
           "value": "adapt"
+        },
+        {
+          "label": "t:sections.global.settings.image_height_mobile.options__3.label",
+          "value": "250px"
+        },
+        {
+          "label": "t:sections.global.settings.image_height_mobile.options__4.label",
+          "value": "300px"
         },
         {
           "label": "t:sections.global.settings.image_height.options__2.label",

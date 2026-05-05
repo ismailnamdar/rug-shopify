@@ -1,0 +1,51 @@
+<div>
+  <div id="custom-upload-button">
+    {% render 'upload-button' %}
+  </div>
+  <div id="custom-buy-buttons-wrapper" style="display: none;">
+    {% render 'custom-rug-buy-buttons', id: "custom-rug-add-to-cart", block: block, product: product, product_form_id: 'product-form-custom', product_id: product.id, section_id: section.id, section: section %}
+  </div>
+
+  <div class="secondary-notes">
+    <span class="cart-notes-label">Notes:</span>
+    <label class="cart-notes-sublabel">Comments / Adjustments / Requests <span class="pplr_option_price_span"></span></label>
+    <textarea class="edit-notes-textarea" type="text" style="border-color: #000000; border: 1px solid; min-height: 80px; text-transform:inherit;" rows="3" placeholder="Design requests: Edit logos, text, background color, or layout. Tell us your vision - we'll make it happen and send a proof before production" ></textarea>
+  </div>
+
+  <div class="md:hidden" style="margin-top: 24px;">
+    {% render 'custom-rug-features' %}
+  </div>
+</div>
+
+<style>
+  .secondary-notes {
+    margin-top: 30px;
+  }
+  .cart-notes-label {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .cart-notes-sublabel {
+    font-size: 12px;
+    line-height: 14px;
+    color: black;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .edit-notes-textarea {
+    border-radius: 8px;
+    max-width: 100%;
+    width: 503px;
+    height: 166px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 20px 23px;
+    background-color: #e3e3e3;
+    color: black;
+  }
+</style>

@@ -1,0 +1,39 @@
+<div class="flex flex-row gap-4 crp-pills {{class}}" style="{{style}}">
+  <div class="crp-pill" style="flex: 3;">
+    4K Image Quality
+  </div>
+  <div class="crp-pill" style="flex: 4;">
+    Ships in 2-4 Business Days
+  </div>
+</div>
+<style>
+  .crp-pills {
+    padding: 25px 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .crp-pill {
+    background-color: #d4d4d4;
+    color: black;
+    border: 0.5px solid black;
+    border-radius: 43px;
+    padding: 14px 40px;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 108%;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .crp-pills {
+      gap: 12px;
+      padding-top: 10px;
+    }
+    .crp-pill {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+</style>

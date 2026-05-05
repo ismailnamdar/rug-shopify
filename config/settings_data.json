@@ -15,7 +15,7 @@
     "logo_mobile": "",
     "white_logo_mobile": "",
     "logo_width_mobile": 70,
-    "favicon": "",
+    "favicon": "shopify://shop_images/RugtO.png",
     "color_text": "#000000",
     "color_background": "#ffffff",
     "color_highlight": "#ffddbf",
@@ -63,7 +63,7 @@
     "type_product_size": 16,
     "type_product_capitalize": false,
     "icon_weight": 1.5,
-    "page_width": 1900,
+    "page_width": 1200,
     "rounded_button": "round",
     "rounded_input": "round-slight",
     "rounded_swatch": "round",
@@ -119,8 +119,8 @@
     "predictive_search_show_price": true,
     "typewriter_effect_enabled": false,
     "typewriter_starter_text": "",
-    "social_facebook_link": "https://www.facebook.com/customizerug/",
-    "social_twitter_link": "https://x.com/rugtomize?lang=en",
+    "social_facebook_link": "",
+    "social_twitter_link": "",
     "social_instagram_link": "https://www.instagram.com/rugtomize/?hl=en",
     "social_youtube_link": "",
     "social_tiktok_link": "",
@@ -178,7 +178,41 @@
         }
       }
     },
-    "content_for_index": []
+    "content_for_index": [],
+    "blocks": {
+      "733389323033596483": {
+        "type": "shopify://apps/okendo/blocks/theme-settings/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+        "disabled": false,
+        "settings": {
+          "show_preview_data": true
+        }
+      },
+      "10840395464443086010": {
+        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
+        "disabled": false,
+        "settings": {}
+      },
+      "2200952712151285029": {
+        "type": "shopify://apps/microsoft-clarity/blocks/brandAgents_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": true,
+        "settings": {}
+      },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "15351435345818755577": {
+        "type": "shopify://apps/pandectes-gdpr/blocks/banner/58c0baa2-6cc1-480c-9ea6-38d6d559556a",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "installed_preset_name": "Concept",
   "presets": {

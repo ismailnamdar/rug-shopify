@@ -1505,32 +1505,55 @@ class AccordionsDetails extends HTMLElement {
     super();
 
     this.addEventListener('toggle', this.onToggle);
+    this.addEventListener('toggle', this.onNestedToggle, true);
   }
 
   get items() {
-    return this._items = this._items || Array.from(this.querySelectorAll('details[is="accordion-details"]'));
+    return this._items = this._items || Array.from(
+      this.querySelectorAll('details[is="accordion-details"]')
+    ).filter(el => !el.parentElement.closest('details[is="accordion-details"]'));
+  }
+
+  onNestedToggle(event) {
+    if (event.detail || !event.target.matches('details') || !event.target.open) return;
+    const group = event.target.closest('.nested-accordions');
+    if (!group || !this.contains(group)) return;
+    group.querySelectorAll('details[open]').forEach(d => {
+      if (d !== event.target) d.removeAttribute('open');
+    });
   }
 
   onToggle(event) {
     const { current: target, open } = event.detail;
-    this.items.forEach((item) => {
-      if (item !== target) {
-        item.close();
-      }
-    });
 
-    if (open) {
-      let headerHeight = 0;
-      if (!theme.config.mqlSmall && document.querySelector('header.header')) {
-        headerHeight = Math.round(document.querySelector('header.header').clientHeight);
-      }
-      setTimeout(() => {
-        window.scrollTo({
-          top: target.getBoundingClientRect().top + window.scrollY - headerHeight,
-          behavior: theme.config.motionReduced ? 'auto' : 'smooth'
+    if (!this.hasAttribute('data-allow-multiple')) {
+      const nestedGroup = target.closest('.nested-accordions');
+      if (nestedGroup) {
+        nestedGroup.querySelectorAll('details[is="accordion-details"]').forEach(item => {
+          if (item !== target) item.close();
         });
-      }, 250);
+      } else {
+        this.items.forEach((item) => {
+          if (item !== target) {
+            item.close();
+          }
+        });
+      }
     }
+
+    // Disable scroll
+    // if (open) {
+    //   let headerHeight = 0;
+    //   if (!theme.config.mqlSmall && document.querySelector('header.header')) {
+    //     headerHeight = Math.round(document.querySelector('header.header').clientHeight);
+    //   }
+    //   setTimeout(() => {
+    //     window.scrollTo({
+    //       top: target.getBoundingClientRect().top + window.scrollY - headerHeight,
+    //       behavior: theme.config.motionReduced ? 'auto' : 'smooth'
+    //     });
+    //   }, 250);
+    // }
   }
 }
 customElements.define('accordions-details', AccordionsDetails);
@@ -2499,8 +2522,8 @@ class QuantityInput extends HTMLElement {
     const quantityFormUpdated = parsedHTML.getElementById(`QuantityForm-${sectionId}-${this.productId}`);
     const quantityForm = this.closest(`#QuantityForm-${sectionId}-${this.productId}`);
     for (let selector of selectors) {
-      const current = quantityForm.querySelector(selector);
-      const updated = quantityFormUpdated.querySelector(selector);
+      const current = quantityForm?.querySelector(selector);
+      const updated = quantityFormUpdated?.querySelector(selector);
       if (!current || !updated) continue;
 
       if (selector === '.quantity__input') {
@@ -4391,7 +4414,9 @@ class SliderElement extends HTMLElement {
   }
 
   get itemsToShow() {
-    return Array.from(this.items).filter(element => element.clientWidth > 0);
+    // We removed the filter here because it doesn't work on custom rug builder when image is uploaded.
+    //.filter(element => element.clientWidth > 0);
+    return Array.from(this.items);
   }
 
   get itemOffset() {
@@ -5015,6 +5040,17 @@ class VariantPicker extends HTMLElement {
       this.updateAvailableOptions(target);
     }
 
+    console.log(this.findVariantByOptions(true));
+    if (this.findVariantByOptions(true) == null) {
+      const closestVariant = this.findClosestAvailableVariant(target);
+      if (closestVariant) {
+        console.log(closestVariant.option2, document.querySelector(`[data-label-option-value="${closestVariant.option2}"]`));
+        setTimeout(() => {
+          document.querySelector(`[data-label-option-value="${closestVariant.option2}"]`)?.click()
+        }, 1500);
+      }
+    }
+
     this.markSelectedOption(target);
     this.publishSelectionChange(event, this.getActualInput(target));
   }
@@ -5284,7 +5320,9 @@ class ProductInfo extends HTMLElement {
         return;
       }
 
-      this.updateSourceFromDestination(parsedHTML, 'ProductGallery');
+      // Updating product gallery is currently skipped due to custom rug builder.
+      // Before openning this test custom rug builder functionality.
+      // this.updateSourceFromDestination(parsedHTML, 'ProductGallery');
       this.updateSourceFromDestination(parsedHTML, 'Price');
       this.updateSourceFromDestination(parsedHTML, 'BuyButtonPrice');
       this.updateSourceFromDestination(parsedHTML, 'StickyPrice');
@@ -5929,7 +5967,7 @@ class MediaGallery extends HTMLElement {
       //setTimeout(() => this.pauseAllMedia(), 500);
     });
 
-    (this.productForm ?? document).addEventListener('variant:change', this.onVariantChanged.bind(this));
+    // (this.productForm ?? document).addEventListener('variant:change', this.onVariantChanged.bind(this));
     
     this.addEventListener('lightbox:open', (event) => this.openZoom(event.detail.index));
     this.sliderGallery.addEventListener('slider:change', this.onSlideChange.bind(this));
@@ -6004,10 +6042,11 @@ class MediaGallery extends HTMLElement {
   }
 
   onVariantChanged(event) {
+    console.log('variant changed, updating media gallery', event);
     const currentVariant = event.detail.variant;
     if (!currentVariant.featured_media) return;
 
-    this.countMediaGallery();
+    this.countMediaGallery();    
     this.setActiveMedia(currentVariant.featured_media.id);
   }
 
@@ -6255,6 +6294,18 @@ class MediaDots extends SliderDots {
 
       newIndex++;
     });
+  }
+
+  onButtonClick(event) {
+    super.onButtonClick(event);
+
+    const target = event.currentTarget;
+    const index = parseInt(target.getAttribute('data-index')) - 1;
+
+    target.dispatchEvent(new CustomEvent('lightbox:open', {
+      bubbles: true,
+      detail: { index }
+    }));
   }
 }
 customElements.define('media-dots', MediaDots);

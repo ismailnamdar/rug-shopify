@@ -57,7 +57,7 @@
     class: 'product-form grid gap-8',
     is: 'product-form'
   -%}
-    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled />
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
 
     {%- liquid
       if gift_card_recipient_feature_active
@@ -255,9 +255,24 @@
             assign add_to_cart_aria = 'products.product.pre_order_label' | t: title: product.title
           endif
         -%}
+
+
+        {% comment %} USED ONLY IN CUSTOM RUG BUILDER {% endcomment %}
+        <div id="custom-rug-properties-section" style="display: block;">
+          <input name="properties[__mediaId]" type="text" hidden style="display: none;" />
+          <input name="properties[__Send Proof]" type="text" hidden style="display: none;" />
+          <input name="properties[__Background Color]" type="text" hidden style="display: none;" />
+          <input name="properties[__Remove Background]" type="text" hidden style="display: none;" />
+          <input name="properties[__Scale]" type="text" hidden style="display: none;" />
+          <input name="properties[__Rotation]" type="text" hidden style="display: none;" />
+          <input name="properties[__Original image]" type="text" hidden style="display: none;" />
+          <input name="properties[Product preview image]" type="text" hidden style="display: none;" />
+          <input name="properties[Comments]" type="text" hidden style="display: none;" />
+        </div>
+        <button id="custom-rug-submit-button" type="submit" style="display: none;"></button>
         <button
           id={{ id }}
-          type="submit"
+          type="button"
           name="add"
           form="{{ product_form_id }}"
           class="product-form__submit button button--primary button--fixed grow{% if show_price %} with-price{% endif %}"
@@ -341,6 +356,19 @@
       -%}
     </div>
   {%- endform -%}
+  <script>
+    (function () {
+      var form = document.getElementById('{{ product_form_id }}');
+      if (!form) return;
+      document.addEventListener('variant:change', function (e) {
+        var variant = e.detail && e.detail.variant;
+        if (!variant) return;
+        var input = form.querySelector('input[name="id"]');
+        if (!input) return;
+        input.value = variant.id;
+      });
+    })();
+  </script>
 
   {%- if enable_back_in_stock -%}
     <div id="BackInStock-{{ section_id }}-{{ product_id }}">
@@ -398,3 +426,177 @@
     </div>
   {%- endif -%}
 </div>
+
+<style>
+  @media (max-width: 749px) {
+    #buy-btn-sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      padding: 12px 16px;
+      background: #fff;
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    #buy-btn-sticky-bar.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .buy-btn-sticky-inner {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .buy-btn-sticky-inner .product-form__submit {
+      flex: 1;
+      max-width: none;
+    }
+  }
+
+  @media (min-width: 750px) {
+    #buy-btn-sticky-bar {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var mq = window.matchMedia('(max-width: 749px)');
+
+    function init() {
+      var originalAtc = document.getElementById('custom-rug-add-to-cart');
+      if (!originalAtc || !window.IntersectionObserver) return;
+
+      var buyButtons = originalAtc.closest('.buy-buttons');
+      var originalQtyEl = buyButtons && buyButtons.querySelector('quantity-input');
+      var originalQtyInput = originalQtyEl && originalQtyEl.querySelector('input[type="number"]');
+
+      // Build bar — hidden until showCanvas() enables it
+      var bar = document.createElement('div');
+      bar.id = 'buy-btn-sticky-bar';
+      bar.setAttribute('aria-hidden', 'true');
+      bar.dataset.enabled = 'false';
+
+      var inner = document.createElement('div');
+      inner.className = 'buy-btn-sticky-inner';
+
+      // Clone quantity input if present
+      var stickyQtyInput = null;
+      if (originalQtyEl) {
+        var qtyClone = originalQtyEl.cloneNode(true);
+        var clonedInput = qtyClone.querySelector('input[type="number"]');
+        if (clonedInput) {
+          // Disconnect from form so it doesn't submit independently
+          clonedInput.removeAttribute('form');
+          clonedInput.removeAttribute('name');
+          clonedInput.removeAttribute('id');
+          stickyQtyInput = clonedInput;
+        }
+        inner.appendChild(qtyClone);
+      }
+
+      // Clone add-to-cart button (no form/id to avoid conflicts)
+      var stickyAtc = originalAtc.cloneNode(true);
+      stickyAtc.removeAttribute('id');
+      stickyAtc.removeAttribute('form');
+      inner.appendChild(stickyAtc);
+
+      bar.appendChild(inner);
+
+      // Move to body so position:fixed is never inside a transformed ancestor
+      document.body.appendChild(bar);
+
+      // Proxy ATC click to original
+      stickyAtc.addEventListener('click', function () {
+        originalAtc.click();
+      });
+
+      // Sync disabled state from original to sticky
+      new MutationObserver(function () {
+        stickyAtc.disabled = originalAtc.disabled;
+      }).observe(originalAtc, { attributes: true, attributeFilter: ['disabled'] });
+
+      // Sync price: mirror original price element into sticky on variant change
+      var originalPriceEl = originalAtc.querySelector('product-buy-price');
+      var stickyPriceEl = stickyAtc.querySelector('product-buy-price');
+
+
+      function updatePrice(amount) {
+        const format = theme.settings.currencyCodeEnabled
+          ? theme.settings.moneyWithCurrencyFormat
+          : theme.settings.moneyFormat;
+        
+        return theme.Currency.formatMoney(amount, format);
+      }
+
+      console.log({ originalPriceEl, stickyPriceEl });
+      if (originalPriceEl && stickyPriceEl) {
+        document.addEventListener('variant:change', function (e) {
+          var variant = e.detail && e.detail.variant;
+          console.log({ e, variant });
+          if (!variant) return;
+          // Let the original element update first, then copy
+          requestAnimationFrame(function () {
+            price = updatePrice(variant.price);
+            stickyPriceEl.innerHTML = price;
+            if (originalPriceEl.dataset.price) {
+              stickyPriceEl.dataset.price = variant.price
+            }
+          });
+        });
+      }
+
+      // Sync quantity: sticky → original
+      if (stickyQtyInput && originalQtyInput) {
+        stickyQtyInput.addEventListener('change', function () {
+          originalQtyInput.value = stickyQtyInput.value;
+          originalQtyInput.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+        stickyQtyInput.addEventListener('input', function () {
+          originalQtyInput.value = stickyQtyInput.value;
+          originalQtyInput.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+
+        // Sync quantity: original → sticky (e.g. variant change updates min/max)
+        originalQtyInput.addEventListener('change', function () {
+          stickyQtyInput.value = originalQtyInput.value;
+        });
+      }
+
+      // IntersectionObserver on the original ATC button
+      var observer = new IntersectionObserver(function (entries) {
+        if (!mq.matches || bar.dataset.enabled !== 'true') {
+          bar.classList.remove('is-visible');
+          bar.setAttribute('aria-hidden', 'true');
+          return;
+        }
+        var isVisible = entries[0].isIntersecting;
+        bar.classList.toggle('is-visible', !isVisible);
+        bar.setAttribute('aria-hidden', isVisible ? 'true' : 'false');
+      }, { threshold: 0, rootMargin: '0px' });
+
+      observer.observe(originalAtc);
+
+      mq.addEventListener('change', function () {
+        if (!mq.matches) {
+          bar.classList.remove('is-visible');
+          bar.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
