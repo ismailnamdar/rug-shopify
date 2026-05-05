@@ -2462,7 +2462,7 @@
           "type": "button",
           "settings": {
             "button_label": "Create My Rug",
-            "button_link": "shopify://products/custom-rug-carpetz",
+            "button_link": "shopify://products/custom-rug-carpet",
             "button_style": "primary",
             "button_size": "md",
             "button_external": false,

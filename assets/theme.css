@@ -2977,8 +2977,19 @@ h6:empty {
   margin: 0 auto;
 }
 
+.page-main-section-container {
+  max-width: 1200px !important;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 1024px) {
   .page-section-container {
+    padding-inline: 0 !important;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .page-main-section-container {
     padding-inline: 0 !important;
   }
 }
@@ -8603,7 +8614,7 @@ details.active .drawer__promotions .mega-menu__item,
 }
 
 .footer__contact {
-  font-size: clamp(var(--text-xl), 1.578vw, var(--text-3xl));
+  font-size: 1.5rem;
 }
 
 .footer__right {
@@ -11883,7 +11894,6 @@ noscript .product-form__input {
 @media screen and (min-width: 1280px) {
   .product {
     grid: var(--product-grid);
-    gap: clamp(var(--sp-12), 4.73vw, var(--sp-23));
   }
 }
 
