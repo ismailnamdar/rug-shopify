@@ -1541,19 +1541,18 @@ class AccordionsDetails extends HTMLElement {
       }
     }
 
-    // Disable scroll
-    // if (open) {
-    //   let headerHeight = 0;
-    //   if (!theme.config.mqlSmall && document.querySelector('header.header')) {
-    //     headerHeight = Math.round(document.querySelector('header.header').clientHeight);
-    //   }
-    //   setTimeout(() => {
-    //     window.scrollTo({
-    //       top: target.getBoundingClientRect().top + window.scrollY - headerHeight,
-    //       behavior: theme.config.motionReduced ? 'auto' : 'smooth'
-    //     });
-    //   }, 250);
-    // }
+    if (open) {
+      let headerHeight = 0;
+      if (!theme.config.mqlSmall && document.querySelector('header.header')) {
+        headerHeight = Math.round(document.querySelector('header.header').clientHeight);
+      }
+      setTimeout(() => {
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - headerHeight,
+          behavior: theme.config.motionReduced ? 'auto' : 'smooth'
+        });
+      }, 250);
+    }
   }
 }
 customElements.define('accordions-details', AccordionsDetails);

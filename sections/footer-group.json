@@ -133,7 +133,7 @@
           "settings": {
             "heading": "Resources",
             "menu": "resources",
-            "container_width": 38,
+            "container_width": 50,
             "opened": false
           }
         },
@@ -149,7 +149,7 @@
             "button_link_3": "",
             "button_label_4": "",
             "button_link_4": "",
-            "container_width": 95,
+            "container_width": 48,
             "opened": false
           }
         }

@@ -312,7 +312,7 @@
         "padding_top": 0,
         "padding_bottom": 84,
         "divider": false,
-        "full_width": true,
+        "full_width": false,
         "rounded": false
       }
     },
@@ -787,7 +787,21 @@
             "heading": "Collapsible row 1",
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "metafields": "",
-            "text_size": "text-base"
+            "text_size": "text-base",
+            "sub_row_1_heading": "",
+            "sub_row_1_content": "",
+            "sub_row_2_heading": "",
+            "sub_row_2_content": "",
+            "sub_row_3_heading": "",
+            "sub_row_3_content": "",
+            "sub_row_4_heading": "",
+            "sub_row_4_content": "",
+            "sub_row_5_heading": "",
+            "sub_row_5_content": "",
+            "sub_row_6_heading": "",
+            "sub_row_6_content": "",
+            "sub_row_7_heading": "",
+            "sub_row_7_content": ""
           }
         },
         "collapsible_tab-2": {
@@ -799,7 +813,21 @@
             "heading": "Collapsible row 2",
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "metafields": "",
-            "text_size": "text-base"
+            "text_size": "text-base",
+            "sub_row_1_heading": "",
+            "sub_row_1_content": "",
+            "sub_row_2_heading": "",
+            "sub_row_2_content": "",
+            "sub_row_3_heading": "",
+            "sub_row_3_content": "",
+            "sub_row_4_heading": "",
+            "sub_row_4_content": "",
+            "sub_row_5_heading": "",
+            "sub_row_5_content": "",
+            "sub_row_6_heading": "",
+            "sub_row_6_content": "",
+            "sub_row_7_heading": "",
+            "sub_row_7_content": ""
           }
         },
         "collapsible_tab-3": {
@@ -811,7 +839,21 @@
             "heading": "Collapsible row 3",
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "metafields": "",
-            "text_size": "text-base"
+            "text_size": "text-base",
+            "sub_row_1_heading": "",
+            "sub_row_1_content": "",
+            "sub_row_2_heading": "",
+            "sub_row_2_content": "",
+            "sub_row_3_heading": "",
+            "sub_row_3_content": "",
+            "sub_row_4_heading": "",
+            "sub_row_4_content": "",
+            "sub_row_5_heading": "",
+            "sub_row_5_content": "",
+            "sub_row_6_heading": "",
+            "sub_row_6_content": "",
+            "sub_row_7_heading": "",
+            "sub_row_7_content": ""
           }
         },
         "collapsible_tab-4": {
@@ -823,7 +865,21 @@
             "heading": "Collapsible row 4",
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "metafields": "",
-            "text_size": "text-base"
+            "text_size": "text-base",
+            "sub_row_1_heading": "",
+            "sub_row_1_content": "",
+            "sub_row_2_heading": "",
+            "sub_row_2_content": "",
+            "sub_row_3_heading": "",
+            "sub_row_3_content": "",
+            "sub_row_4_heading": "",
+            "sub_row_4_content": "",
+            "sub_row_5_heading": "",
+            "sub_row_5_content": "",
+            "sub_row_6_heading": "",
+            "sub_row_6_content": "",
+            "sub_row_7_heading": "",
+            "sub_row_7_content": ""
           }
         },
         "specification": {
