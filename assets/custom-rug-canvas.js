@@ -6,11 +6,11 @@ if (!customElements.get('custom-rug-canvas')) {
       static SUPABASE_URL = 'https://mgettdoycdkgplgaknqd.supabase.co';
 
       static rectangleDefaultDimensions = {
-        "2'X3'": { name: "2'X3'", wFeet: 3, hFeet: 2, w: 6, h: 2 * 6 / 3 },
+        "2'X3'": { name: "2'X3'", wFeet: 3, hFeet: 2, w: 8, h: 2 * 8 / 3 },
         "3'X5'": { name: "3'X5'", wFeet: 5, hFeet: 3, w: 25 / 3, h: 5 / 3 * 3 },
-        "5'X7'": { name: "5'X7'", wFeet: 7, hFeet: 5, w: 35 / 3, h: 35 / 3 / 7 * 5 },
+        "5'X7'": { name: "5'X7'", wFeet: 7, hFeet: 5, w: 25 / 3, h: 25 / 3 / 7 * 5 },
         "8'X10'": { name: "8'X10'", wFeet: 10, hFeet: 8, w: 10 * 0.8, h: 8 * 0.8 },
-        "8'X12'": { name: "8'X12'", wFeet: 12, hFeet: 8, w: 12 * 0.8, h: 8 * 0.8 },
+        "8'X12'": { name: "8'X12'", wFeet: 12, hFeet: 8, w: 12 * 0.7, h: 8 * 0.7 },
       };
 
       constructor() {
@@ -33,7 +33,7 @@ if (!customElements.get('custom-rug-canvas')) {
           },
         };
 
-        this._bgBigSizes = new Set(["8'X10'", "8'X12'", "2.5'X7'", "2.5'X10'", "5'X10'"]);
+        this._bgBigSizes = new Set(["5'X7'", "8'X10'", "8'X12'", "2.5'X7'", "2.5'X10'", "5'X10'"]);
         this._bgSmallSizes = new Set(["2'X3'", "3'X3'"]);
         this.handlePositions = {};
         this.center = { x: 0, y: 0 };
@@ -626,7 +626,7 @@ if (!customElements.get('custom-rug-canvas')) {
 
       setShape(s) {
         this.shape = s;
-        this.shapeSize = Object.keys(this.sizes[s])[0];
+        this.setSize(Object.keys(this.sizes[s])[0]);
         this.draw();
       }
 
