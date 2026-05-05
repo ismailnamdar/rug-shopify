@@ -6298,6 +6298,11 @@ class MediaDots extends SliderDots {
   onButtonClick(event) {
     super.onButtonClick(event);
 
+    const canvasContainer = document.querySelector('.product-main-canvas-container');
+    const canvasActive = canvasContainer && canvasContainer.style.display !== 'none';
+    const imageUploaded = window.CanvasRugEditor && window.CanvasRugEditor.fgImg != null;
+    if (!canvasActive || !imageUploaded) return;
+
     const target = event.currentTarget;
     const index = parseInt(target.getAttribute('data-index')) - 1;
 
