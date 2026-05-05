@@ -132,7 +132,7 @@
         "collapsible_tab_6atjjV": {
           "type": "collapsible_tab",
           "settings": {
-            "opened": false,
+            "opened": true,
             "style": "with-border",
             "icon": "none",
             "heading": "Material & Build",
@@ -661,7 +661,7 @@
             "metafields": "",
             "text_size": "text-base",
             "sub_row_1_heading": "What file types do you accept?",
-            "sub_row_1_content": "<p>PNG, JPEG, SVG, PDF, WebP (200 KB–20 MB; 2 MB+ preferred).</p>",
+            "sub_row_1_content": "<p>PNG, JPEG, SVG, PDF, WebP, HEIC, TIFF, AVIF, BMP, ICO (200 KB–20 MB; 2 MB+ preferred).</p>",
             "sub_row_2_heading": "Can I check out without uploading my design?",
             "sub_row_2_content": "<p>Yes—complete checkout, then email us your file within 24 hours.</p>",
             "sub_row_3_heading": "I’m having trouble uploading—what should I do?",
@@ -828,7 +828,7 @@
     },
     "testimonial_section_aCmWcJ": {
       "type": "testimonial-section",
-            "blocks": {
+      "blocks": {
         "testimonial_block_yACqLL": {
           "type": "testimonial-block",
           "settings": {

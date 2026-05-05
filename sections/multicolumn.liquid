@@ -27,7 +27,7 @@
         {%- for block in section.blocks -%}
           <div class="multicolumn-card{% if block.settings.show_border %} with-border{% endif %} card flex gap-5 w-full flex-col items-start md:text-{{ block.settings.text_alignment }} text-{{ block.settings.text_alignment_mobile }}" {{ block.shopify_attributes }}>
             {%- if block.settings.column_heading != blank -%}
-              <p class="multicolumn-card__column-heading text-center font-bold {{ block.settings.column_heading_size }} leading-tight tracking-tight w-full">{{ block.settings.column_heading | escape }}</p>
+              <p class="multicolumn-card__column-heading text-center font-bold title-sm md:{{ block.settings.column_heading_size }} leading-tight tracking-tight w-full">{{ block.settings.column_heading | escape }}</p>
             {%- endif -%}
             <div class="grid gap-4 lg:gap-6 w-full">
               {%- if block.settings.video != blank -%}

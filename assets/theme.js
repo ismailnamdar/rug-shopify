@@ -5154,7 +5154,6 @@ class VariantPicker extends HTMLElement {
   }
 
   publishSelectionChange(event, target) {
-    console.log({ event, target, selectedOptionValues: this.selectedOptionValues });
     theme.pubsub.publish(theme.pubsub.PUB_SUB_EVENTS.optionValueSelectionChange, {
       data: { event, target, selectedOptionValues: this.selectedOptionValues }
     });
