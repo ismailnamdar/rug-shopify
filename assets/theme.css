@@ -14276,6 +14276,13 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
   top: 24px;
 }
 
+@media screen and (max-width: 768px) {
+  .image-comparison__heading {
+    width: 90%;
+    gap: 4px;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .image-comparison {
     --button-line: 4px;

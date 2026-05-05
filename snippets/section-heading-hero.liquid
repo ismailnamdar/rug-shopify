@@ -15,9 +15,9 @@
 {%- enddoc -%}
 
 {%- if section.settings.heading != blank or section.settings.subheading != blank or section.settings.description != blank or section.settings.button_label != blank -%}
-  <div class="{% if section_full_width %}page-width {% endif %}title-wrapper{% if section.settings.heading_size == 'title-xl' %} title-wrapper-lg{% endif %} leading-none gap-4 flex flex-col {{ section.settings.heading_alignment }} md:justify-between relative z-1 {{ class }}">
+  <div class="{% if section_full_width %}page-width {% endif %}title-wrapper{% if section.settings.heading_size == 'title-xl' %} title-wrapper-lg{% endif %} leading-none gap-1 md:gap-4 flex flex-col {{ section.settings.heading_alignment }} md:justify-between relative z-1 {{ class }}">
     {%- if section.settings.heading != blank or section.settings.subheading != blank or section.settings.description != blank -%}
-      <div class="grid gap-2">
+      <div class="grid gap-1 md:gap-2">
         {%- if section.settings.subheading != blank -%}
           {%- liquid
             if section.settings.heading_size == 'title-sm'
@@ -53,7 +53,7 @@
               assign subtext_size = 'subtext-lg'
             endif
           -%}
-          <div class="description rte leading-normal text-blur-bg {{ subtext_size }}">
+          <div class="hidden md:block description rte leading-normal text-blur-bg {{ subtext_size }}">
             {{- section.settings.description -}}
           </div>
         {%- endif -%}
