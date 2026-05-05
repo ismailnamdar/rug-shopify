@@ -3875,7 +3875,7 @@ button.shopify-payment-button__button--unbranded {
   }
 
   .media--550px {
-    height: 567.5px
+    height: 500px
   }
 
   .media--600px {
@@ -14377,7 +14377,7 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
 }
 
 .comparison__button span {
-  inset-block-start: 50%;
+  inset-block-start: 70%;
   inset-inline-start: 50%;
   width: var(--button-width);
   height: var(--button-height);
@@ -16370,4 +16370,13 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
 
 .scrollspy-section .header__menu>ul.with-block .back-to-top .btn-duplicate {
   padding: 0;
+}
+
+.text-blur-bg {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
 }

@@ -35,7 +35,7 @@
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
-    {%- render 'section-heading', section: section, class: "image-comparison__heading" -%}
+    {%- render 'section-heading-hero', section: section, class: "image-comparison__heading" -%}
 
     <image-comparison class="image-comparison media--{{ section.settings.image_height }} mobile:media--{{ section.settings.image_height_mobile }} block relative overflow-hidden" data-layout="{{ section.settings.layout }}">
       {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
