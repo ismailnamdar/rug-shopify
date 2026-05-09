@@ -1288,14 +1288,14 @@
           // 5. Download the image blob from that URL
           var imageRes = await fetch(originalUrl);
           if (!imageRes.ok) {
-            throw new Error("Failed to download image from URL");
+            console.error("Failed to download image from URL");
+          } else {
+            blobP = await imageRes.blob();
           }
-          
-          blobP = await imageRes.blob();
         }
 
         // 6. Use uploaded file as FG if requested
-        if (useUploadedFile) {
+        if (useUploadedFile && blobP != null) {
           var objectUrl = URL.createObjectURL(blobP);
           setFgUrl(objectUrl);
         }

@@ -46,10 +46,10 @@
 }
 
 #cart_content_container .cart_items {
-  max-height: calc(100vh - 317px);
-  height: 100%;
+  /* max-height: calc(100vh - 317px); */
+  /* height: 100%; */
   /* overflow-y: scroll; */
-  min-height: 100%;
+  /* min-height: 100%; */
 }
 
 #cart_content_container .cart_bottom_total {

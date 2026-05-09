@@ -508,8 +508,14 @@
                     {% endfor %}
 
                     <div class="discount-atc conv {% if valid_item_count >= 2 %}dis--active{% endif %}">
-                      <div class="conv-text">YOU UNLOCK FREE SHIPPING - BUY 2 GET 15% OFF</div>
-                      <div class="conv-text applied">YOU UNLOCK FREE SHIPPING AND GET 15% OFF</div>
+                      <div class="conv-text" style="text-align: center; flex-direction: column; align-items: center; justify-content: center;">
+                        YOU UNLOCK FREE SHIPPING - BUY 2 GET 15% OFF
+                        <span>USE CODE BUY2GET15</span>
+                      </div>
+                      <div class="conv-text applied" style="text-align: center; flex-direction: column; align-items: center; justify-content: center;">
+                        YOU UNLOCK FREE SHIPPING AND GET 15% OFF
+                        <span>USE CODE BUY2GET15</span>
+                      </div>
                       <div class="discount-atc--section">
                         <div class="line"></div>  
                         <div class="step">
@@ -1285,11 +1291,11 @@ details[data-mobile-menu] .drawer-footer-links {
 #cart_content_container .cart_bottom_total {
   position: unset;
 }
-#cart_content_container .cart_items {
+{% comment %} #cart_content_container .cart_items {
   height: -webkit-fill-available;
   min-height: unset;
   max-height: unset;
-}
+} {% endcomment %}
 .cart-additional-info {
   background: #F0F0F0;
   padding: 12px !important;

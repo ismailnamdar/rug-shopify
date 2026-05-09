@@ -93,6 +93,12 @@ const closeSideCart = (event) => {
 	event.stopPropagation();
 	document.querySelector('.cart-container.active_link')?.classList.remove('active_link');
 	document.querySelector('.side_cart_active')?.classList.remove('side_cart_active');
+
+	setTimeout(() => {
+		document.querySelector('a[href="/cart"]').click();
+		document.querySelector('.cart-container.active_link')?.classList.remove('active_link');
+		document.querySelector('.side_cart_active')?.classList.remove('side_cart_active');
+	}, 100);
 }
 window.closeSideCart = closeSideCart;
 
@@ -249,7 +255,7 @@ if (document.body.classList.contains("product") || document.body.classList.conta
 		// Sync modal when it opens
 		const openSizeModalBtn = document.getElementById('openSizeModal');
 		if (openSizeModalBtn) {
-			openSizeModalBtn.addEventListener('click', syncModalWithCurrentSelection);
+			// openSizeModalBtn.addEventListener('click', syncModalWithCurrentSelection);
 		}
 	});
 
@@ -412,10 +418,24 @@ if (document.body.classList.contains("product") || document.body.classList.conta
 
 		// Open ORIGINAL centered modal when clicking "Size Guide" button
 		if (event.target.closest('.open-size-guide-btn') && (document.querySelector('[data-label="Add to Cart"]') == null || !document.querySelector('[data-label="Add to Cart"]').contains(event.target))) {
-			event.stopPropagation();
-			event.preventDefault();
-			document.body.classList.add("size_guide_model_open");
-			sizeGuideModal.style.display = 'block';
+			// Open drawer if it is main PDP
+			if (window.location.href.includes('custom-rug-carpet')) {
+				event.stopPropagation();
+				event.preventDefault();
+				document.body.classList.add("size_guide_model_open");
+				newSizeModal.style.display = 'block';
+				setTimeout(() => {
+					newSizeModal.classList.add('active');
+					// Sync modal with currently selected shape
+					syncNewModalWithSelectedShape();
+				}, 10);
+				openSizeModalBtn?.classList.add('active');
+			} else {
+				event.stopPropagation();
+				event.preventDefault();
+				document.body.classList.add("size_guide_model_open");
+				sizeGuideModal.style.display = 'block';
+			}
 		}
 
 		// Close ORIGINAL modal

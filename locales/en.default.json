@@ -582,6 +582,13 @@
       "price_per_unit_html": "{{ total_quantity }} | {{ unit_price }} / {{ unit_measure }}"
     }
   },
+  "shopify": {
+    "checkout": {
+      "marketing": {
+        "accept_sms_checkbox_label": "By opting in to receive SMS messages from Rugtomize, you agree to receive text messages related to order updates, reminders, or customer service notifications. Message frequency varies based on your interactions with us. Message and data rates may apply. This is in accordance to our Privacy Policy and our Terms and Conditions at the bottom of the page. "
+      }
+    }
+  },
   "store_availability": {
     "general": {
       "in_stock": "In stock",
