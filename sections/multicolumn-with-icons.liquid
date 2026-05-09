@@ -4,13 +4,25 @@
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
     {%- render 'section-variables', section: section -%}
   }
+  {% if section.settings.mobile_grid %}
+    @media screen and (max-width: 768px) {
+      #shopify-section-{{ section.id }} .text-with-icons::after {
+        content: none;
+      }
+      #shopify-section-{{ section.id }} .text-with-icons {
+        display: grid;
+        grid-template-columns: repeat({{ section.settings.mobile_columns }}, minmax(0, 1fr));
+        gap: var(--sp-2);
+      }
+    }
+  {% endif %}
 </style>
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
   <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
     {%- render 'section-heading', section: section -%}
 
-    <carousel-element class="text-with-icons {{ section.settings.style }} block lg:grid grid--{{ section.settings.columns }} relative z-1" watch-css>
+    <carousel-element class="text-with-icons {{ section.settings.style }} block md:grid grid--{{ section.settings.columns }} relative z-1" watch-css>
       {%- liquid
         assign with_gradient = false
         if section.settings.gradient_highlight != blank and section.settings.gradient_highlight != 'rgba(0,0,0,0)'
@@ -75,6 +87,23 @@
       "step": 1,
       "default": 3,
       "label": "t:sections.global.settings.columns.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_grid",
+      "label": "Show as grid on mobile",
+      "default": false
+    },
+    {
+      "visible_if": "{{ section.settings.mobile_grid }}",
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Mobile columns",
+      "options": [
+        { "value": "2", "label": "2 columns" },
+        { "value": "3", "label": "3 columns" }
+      ],
+      "default": "2"
     },
     {
       "type": "text_alignment",

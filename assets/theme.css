@@ -3627,7 +3627,7 @@ button.shopify-payment-button__button--unbranded {
 
 .button-wrapper,
 .title-wrapper {
-  margin-block-end: clamp(var(--sp-8), 2.526vw, var(--sp-12));
+  margin-block-end: clamp(var(--sp-4), 2.526vw, var(--sp-6));
 }
 
 .title-wrapper-lg {
@@ -11143,7 +11143,7 @@ details.active .drawer__promotions .mega-menu__item,
   border-radius: var(--border-radius-small);
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .text-with-icons::after {
     content: none;
   }
@@ -16401,4 +16401,9 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
   color: white;
   padding: 4px 12px;
   border-radius: 12px;
+}
+
+/* This is to scroll to product reviews correctly */
+[data-oke-reviews-product-id] {
+  scroll-margin-top: var(--sticky-header-height, var(--header-height, 80px));
 }

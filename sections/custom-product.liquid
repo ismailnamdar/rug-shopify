@@ -309,7 +309,7 @@
 
                 {%- liquid
                   if rating_block == blank and block.settings.show_rating
-                    render 'product-rating', product: product
+                    render 'product-rating', product: product, scroll: true
                   endif
                 -%}
               </div>

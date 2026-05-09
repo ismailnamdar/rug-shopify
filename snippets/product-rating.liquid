@@ -20,7 +20,16 @@
       assign rating_decimal = 1
     endif
   %}
-  <div class="product__rating flex items-center gap-2" {{ block.shopify_attributes }}>
+  <div
+    class="product__rating flex items-center gap-2{% if scroll %} cursor-pointer{% endif %}"
+    {{ block.shopify_attributes }}
+    {% if scroll %}
+      role="button"
+      tabindex="0"
+      onclick="(function(){var el=document.querySelector('[data-oke-reviews-product-id]');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});})()"
+      onkeydown="if(event.key==='Enter'||event.key===' '){this.click();}"
+    {% endif %}
+  >
     <div
       class="rating text-lg leading-none"
       role="img"

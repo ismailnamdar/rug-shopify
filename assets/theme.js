@@ -6686,10 +6686,27 @@ class ImageComparison extends HTMLElement {
   animate() {
     this.setAttribute('animate', '');
 
-    this.classList.add('animated');
-    setTimeout(() => {
-      this.classList.remove('animated');
-    }, 1e3);
+    const cycleDuration = 3500;
+    const cycles = 2;
+    const totalDuration = cycleDuration * cycles;
+    const startTime = performance.now();
+
+    const step = (timestamp) => {
+      const elapsed = timestamp - startTime;
+
+      if (elapsed < totalDuration) {
+        const cycleProgress = (elapsed % cycleDuration) / cycleDuration;
+        const percent = cycleProgress < 0.5
+          ? cycleProgress * 2 * 100
+          : (1 - cycleProgress) * 2 * 100;
+        this.style.setProperty('--percent', percent + '%');
+        requestAnimationFrame(step);
+      } else {
+        this.style.setProperty('--percent', '5%');
+      }
+    };
+
+    requestAnimationFrame(step);
   }
 
   startHandler(event) {
