@@ -37,7 +37,7 @@
         style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }};--rating-max: {{ product.metafields.reviews.rating.value.scale_max }};--rating-decimal: {{ rating_decimal }};"
       ></span>
     </div>
-    <p class="rating-text text-sm leading-none">
+    <p class="rating-text font-bold text-xl leading-none">
       <span aria-hidden="true">{{ product.metafields.reviews.rating.value }}</span>
     </p>
     <p class="rating-count text-sm leading-none{% if block == blank %} hidden xl:block{% endif %}">

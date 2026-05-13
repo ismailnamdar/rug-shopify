@@ -67,6 +67,21 @@
     {%- endif -%}
 
     {%- render 'js-variables' -%}
+
+    {% comment %} Chatra Chat Widget {% endcomment %}
+    <script>
+      (function(d, w, c) {
+          w.ChatraID = 'GwLxrkRjsy83yf4uQ';
+          var s = d.createElement('script');
+          w[c] = w[c] || function() {
+              (w[c].q = w[c].q || []).push(arguments);
+          };
+          s.async = true;
+          s.src = 'https://call.chatra.io/chatra.js';
+          if (d.head) d.head.appendChild(s);
+      })(document, window, 'Chatra');
+    </script>
+    {% comment %} Chatra {% endcomment %}
   </head>
 
   <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-rounded-button="{{ settings.rounded_button }}" data-rounded-input="{{ settings.rounded_input }}" data-rounded-block="{{ settings.rounded_block }}" data-rounded-card="{{ settings.rounded_card }}" data-button-hover="{{ settings.buttons_hover }}"{% if settings.enable_page_transition %} data-page-transition{% endif %}{% if settings.enable_lazy_image %} data-lazy-image{% endif %}{% unless settings.show_modal_close_button %} data-modal-swipe-only{% endunless %} data-title-animation data-page-rendering>
@@ -101,5 +116,8 @@
     {%- if request.design_mode == false and settings.preload_links -%}
       <script src="{{ 'instant-page.js' | asset_url }}" type="module" fetchpriority="low" defer="defer"></script>
     {%- endif -%}
+
+    {% comment %} Floating Phone Button {% endcomment %}
+    {% render 'phone-button' %}
   </body>
 </html>

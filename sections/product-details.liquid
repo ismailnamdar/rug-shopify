@@ -61,7 +61,7 @@
             </div>
           </sticky-element>
         {%- endif -%}
-        <accordions-details class="accordions w-full">
+        <accordions-details class="accordions w-full" data-allow-multiple>
           {%- assign first_row = true -%}
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -225,6 +225,7 @@
                           <div class="specification grid grid-cols-12 gap-6 md:gap-10">
                             {{- collapsible_content -}}
                           </div>
+                          {%- render 'nested-accordions', settings: block.settings -%}
                         </div>
                       </details>
                     </div>
@@ -1241,7 +1242,25 @@
           ],
           "default": "text-base",
           "label": "t:sections.global.settings.text_size.label"
-        }
+        },
+        {
+          "type": "header",
+          "content": "Nested rows"
+        },
+        { "type": "text",     "id": "sub_row_1_heading", "label": "Sub-row 1 heading" },
+        { "type": "richtext", "id": "sub_row_1_content", "label": "Sub-row 1 content" },
+        { "type": "text",     "id": "sub_row_2_heading", "label": "Sub-row 2 heading" },
+        { "type": "richtext", "id": "sub_row_2_content", "label": "Sub-row 2 content" },
+        { "type": "text",     "id": "sub_row_3_heading", "label": "Sub-row 3 heading" },
+        { "type": "richtext", "id": "sub_row_3_content", "label": "Sub-row 3 content" },
+        { "type": "text",     "id": "sub_row_4_heading", "label": "Sub-row 4 heading" },
+        { "type": "richtext", "id": "sub_row_4_content", "label": "Sub-row 4 content" },
+        { "type": "text",     "id": "sub_row_5_heading", "label": "Sub-row 5 heading" },
+        { "type": "richtext", "id": "sub_row_5_content", "label": "Sub-row 5 content" },
+        { "type": "text",     "id": "sub_row_6_heading", "label": "Sub-row 6 heading" },
+        { "type": "richtext", "id": "sub_row_6_content", "label": "Sub-row 6 content" },
+        { "type": "text",     "id": "sub_row_7_heading", "label": "Sub-row 7 heading" },
+        { "type": "richtext", "id": "sub_row_7_content", "label": "Sub-row 7 content" }
       ]
     },
     {
