@@ -7,7 +7,7 @@
 </style>
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
-  <div class="page-width{% if section.settings.narrow %} page-width--narrow{% endif %} relative">
+  <div class="page-section-container page-width{% if section.settings.narrow %} page-width--narrow{% endif %} relative">
     {%- capture section_heading -%}
       {%- render 'section-heading', section: section -%}
     {%- endcapture -%}

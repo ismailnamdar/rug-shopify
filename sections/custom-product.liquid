@@ -4,10 +4,18 @@
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 
+  .custom-product-media {
+    height: 60px;
+    width: 60px;
+    padding: 16px;
+    background-color: black !important;
+    border-radius: 100%;
+  }
+
   @media screen and (min-width: 1024px) {
     #shopify-section-{{ section.id }} {
       {%- assign media_ratio = section.settings.media_size | divided_by: 50.0 -%}
-      --product-grid: auto / minmax(0, {{ media_ratio }}fr) minmax(0, {{ 2.0 | minus: media_ratio }}fr);
+      --product-grid: auto / minmax(0, 1.2fr) minmax(0, 0.8fr);
     }
   }
 
@@ -15,6 +23,11 @@
   @media screen and (max-width: 767px) {
     #shopify-section-{{ section.id }} {
       --aspect-ratio: {{ first_media.aspect_ratio }};
+    }
+    .custom-product-media {
+        height: 40px;
+        width: 40px;
+        padding: 8px;
     }
   }
 
@@ -116,8 +129,8 @@
 {%- endif  -%}
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}">
-  <div class="page-width{% if media_count > 0 %}{% if section.settings.full_width %} page-width--full{% endif %}{% else %} page-width--narrow{% endif %} relative">
-    <div class="featured-product product product--{{ section.settings.gallery_layout }}{% if media_count == 0 %} no-media{% endif %} flex flex-col items-start lg:grid gap-5 w-full relative">
+  <div class="page-main-section-container page-width{% if media_count > 0 %}{% if section.settings.full_width %} page-width--full{% endif %}{% else %} page-width--narrow{% endif %} relative">
+    <div class="featured-product product product--{{ section.settings.gallery_layout }}{% if media_count == 0 %} no-media{% endif %} flex flex-col items-start lg:grid gap-3 w-full relative">
       {%- if media_count > 0 -%}
         <div class="product__gallery-container{% if section.settings.enable_sticky_info %} lg:sticky{% endif %} flex flex-col gap-0 md:gap-8 relative w-full">
           {%- render 'product-media-gallery',
@@ -193,8 +206,8 @@
   
                     assign modulo = block_index | modulo: 2
                   -%}
-                  <div class="product__text{% if modulo == 0 %} even{% endif %}{% if prev_block.type != 'text' %} first{% endif %}{% if next_block.type != 'text' %} last{% endif %}" {{ block.shopify_attributes }}>
-                    <div class="product__text-inner flex items-center gap-10">
+                  <div class="product__text{% if modulo == 0 %} even{% endif %}{% if prev_block.type != 'text' %} first{% endif %}{% if next_block.type != 'text' %} last{% endif %}" {{ block.shopify_attributes }} style="padding: 0; margin-bottom: 6px; {% if next_block.type != 'text' %}margin-top: 0;{% endif %}">
+                    <div class="product__text-inner flex items-center gap-2d5" style="background-color: #f4f4f4; border-radius: 10px;">
                       {%- if block.settings.icon_image != blank -%}
                         {%- liquid
                           if block.settings.iwidth == 'fit'
@@ -206,7 +219,7 @@
                           assign image_alt = image_alt | default: block.settings.text | escape
                           assign max_width = block.settings.icon_image.width
                         -%}
-                        <figure class="media media--transparent relative inline-block">
+                        <figure class="media media--transparent relative inline-block flex justify-center items-center custom-product-media">
                           {%- capture sizes -%}{{ icon_width }}px{%- endcapture -%}
                           {%- capture widths -%}{{ icon_width | times: 1.5 | at_most: max_width | round }}, {{ icon_width | times: 2 | at_most: max_width }}, {{ icon_width | times: 3 | at_most: max_width }}{%- endcapture -%}
                           {{- block.settings.icon_image | image_url: width: max_width | image_tag: loading: 'lazy', sizes: sizes, widths: widths, alt: image_alt, class: 'image-fit' -}}
@@ -220,7 +233,7 @@
                           endif
                         -%}
                       {%- endif -%}
-                      <p class="rte {{ block.settings.text_size }} leading-tight">{{ block.settings.text }}</p>
+                    <div {% if block.settings.use_calculate_order_date %}id="orderDate"{% endif %} class="rte {{ block.settings.text_size }} leading-tight" style="flex: 1;">{{ block.settings.text }}</div>
                     </div>
                   </div>
                 {%- else -%}
@@ -231,6 +244,26 @@
                     </a>
                   </p>
                 {%- endif -%}
+
+                {% if block.settings.use_calculate_order_date %}
+                <script>
+                  function calculateDeliveryDates() {
+                    const currentDate = new Date();
+                    const orderDeadline = new Date(currentDate.getTime() + 30 * 60000); // 30 minutes from now
+              
+                    const deliveryStart = new Date(orderDeadline);
+                    deliveryStart.setDate(deliveryStart.getDate() + 1);
+                    const deliveryEnd = new Date(orderDeadline);
+                    deliveryEnd.setDate(deliveryEnd.getDate() + 4);
+              
+                    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+                    document.getElementById('orderDate').innerHTML = `
+                    <p><strong>Free Shipping On All Rugs.</strong><br><br>Order within the next 30 min to get it between <strong>${deliveryStart.toLocaleDateString(undefined, options)}</strong> and <strong>${deliveryEnd.toLocaleDateString(undefined, options)}</strong></p>`
+                  }
+              
+                  calculateDeliveryDates();
+                </script>
+                {% endif %}
               {%- endif -%}
 
             {%- when 'sku' -%}
@@ -263,7 +296,7 @@
                 </{{ block.settings.title_tag }}>
 
                 {%- if price_block == blank and block.settings.show_price -%}
-                  <div id="Price-{{ section.id }}-{{ product.id }}" class="product__price">
+                  <div id="Price-{{ section.id }}-{{ product.id }}" class="product__price" style="margin: auto 0;">
                     {%- render 'product-price', product: product, use_variant: true, class: 'flex flex-wrap items-baseline gap-2 lg:flex-col xl:items-end lg:gap-1d5' -%}
                     
                     {%- if product.quantity_price_breaks_configured? -%}
@@ -276,18 +309,19 @@
 
                 {%- liquid
                   if rating_block == blank and block.settings.show_rating
-                    render 'product-rating', product: product
+                    render 'product-rating', product: product, scroll: true
                   endif
                 -%}
               </div>
 
-              {%- if price_block == blank and block.settings.show_price -%}
+              {% comment %} // Hide payment installations {% endcomment %}
+              {% comment %} {%- if price_block == blank and block.settings.show_price -%}
                 {%- assign product_form_installment_id = 'ProductFormInstallment-' | append: section.id | append: '-' | append: product.id -%}
                 {%- form 'product', product, id: product_form_installment_id, class: 'installment text-sm leading-tight' -%}
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
                   {{ form | payment_terms }}
                 {%- endform -%}
-              {%- endif -%}
+              {%- endif -%} {% endcomment %}
 
             {%- when 'price' -%}
               <div class="product__price grid gap-3" {{ block.shopify_attributes }}>
@@ -536,7 +570,7 @@
               -%}
 
             {%- when 'buy_buttons' -%}
-              {%- render 'buy-buttons',
+              {%- render 'upload-buy-buttons',
                 block: block,
                 section: section,
                 product: product,
@@ -553,14 +587,6 @@
                 product_id: product.id,
                 section_id: section.id,
                 product_form_id: product_form_id
-              -%}
-
-            {%- when 'inventory' -%}
-              {%- render 'product-inventory',
-                block: block,
-                product: product,
-                product_id: product.id,
-                section_id: section.id
               -%}
 
             {%- when 'share' -%}
@@ -635,7 +661,7 @@
                 <summary class="details__summary flex items-center justify-between gap-2 cursor-pointer">
                   <div class="flex items-center gap-2d5">
                     {%- render 'icon-accordion', icon: block.settings.icon -%}
-                    <span class="text-sm-base font-medium leading-none">{{ block.settings.heading | default: block.settings.page.title | escape }}</span>
+                    <span class="font-medium leading-none {{ block.settings.text_size }}">{{ block.settings.heading | default: block.settings.page.title | escape }}</span>
                   </div>
                   {%- render 'icon', icon: 'plus-2', size: 'xs', class: 'shrink-0' -%}
                 </summary>
@@ -1646,9 +1672,9 @@
           "visible_if": "{{ block.settings.iwidth == 'custom' }}"
         },
         {
-          "type": "inline_richtext",
+          "type": "richtext",
           "id": "text",
-          "default": "Text block",
+          "default": "<p>Text block</p>",
           "label": "t:sections.global.settings.text.label"
         },
         {
@@ -1674,6 +1700,11 @@
           ],
           "default": "text-base",
           "label": "t:sections.global.settings.text_size.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_calculate_order_date",
+          "label": "Calculate order date"
         }
       ]
     },

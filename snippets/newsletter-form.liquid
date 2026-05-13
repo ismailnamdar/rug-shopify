@@ -36,6 +36,7 @@
       autocomplete="email"
       placeholder="{{ 'general.newsletter.label' | t | escape }}"
       required
+      style="border: 1px solid gray;"
       {%- if form.errors %} autofocus{% endif -%}
     />
     <label class="label is-floating" for="NewsletterForm--{{ section_id }}">{{ 'general.newsletter.label' | t }}</label>

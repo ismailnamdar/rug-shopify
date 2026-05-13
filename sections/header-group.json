@@ -14,11 +14,23 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_H4QHgT": {
+          "type": "announcement",
+          "settings": {
+            "icon": "none",
+            "text": "Buy 2+ Rugs Get 15% Off - Use Code: BUY2GET15",
+            "link": "",
+            "hide_icon_mobile": true,
+            "text_mobile": "",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        },
         "announcement-1": {
           "type": "announcement",
           "settings": {
             "icon": "truck",
-            "text": "Free shipping and returns",
+            "text": "SHIPS IN 2-4 BUSINESS DAYS",
             "link": "",
             "hide_icon_mobile": true,
             "text_mobile": "",
@@ -30,7 +42,7 @@
           "type": "announcement",
           "settings": {
             "icon": "email",
-            "text": "A question? Visit our contact page",
+            "text": "FREE PROOF BEFORE PRODUCTION",
             "link": "",
             "hide_icon_mobile": true,
             "text_mobile": "",
@@ -40,6 +52,7 @@
         }
       },
       "block_order": [
+        "announcement_H4QHgT",
         "announcement-1",
         "announcement-2"
       ],
@@ -178,10 +191,10 @@
         "color_text": "#171717",
         "color_background": "#ffffff",
         "color_localization": "",
-        "padding_top": 32,
-        "padding_bottom": 32,
+        "padding_top": 2,
+        "padding_bottom": 2,
         "full_width": true,
-        "rounded": true
+        "rounded": false
       }
     }
   },

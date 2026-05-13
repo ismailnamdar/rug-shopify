@@ -1505,19 +1505,41 @@ class AccordionsDetails extends HTMLElement {
     super();
 
     this.addEventListener('toggle', this.onToggle);
+    this.addEventListener('toggle', this.onNestedToggle, true);
   }
 
   get items() {
-    return this._items = this._items || Array.from(this.querySelectorAll('details[is="accordion-details"]'));
+    return this._items = this._items || Array.from(
+      this.querySelectorAll('details[is="accordion-details"]')
+    ).filter(el => !el.parentElement.closest('details[is="accordion-details"]'));
+  }
+
+  onNestedToggle(event) {
+    if (event.detail || !event.target.matches('details') || !event.target.open) return;
+    const group = event.target.closest('.nested-accordions');
+    if (!group || !this.contains(group)) return;
+    group.querySelectorAll('details[open]').forEach(d => {
+      if (d !== event.target) d.removeAttribute('open');
+    });
   }
 
   onToggle(event) {
     const { current: target, open } = event.detail;
-    this.items.forEach((item) => {
-      if (item !== target) {
-        item.close();
+
+    if (!this.hasAttribute('data-allow-multiple')) {
+      const nestedGroup = target.closest('.nested-accordions');
+      if (nestedGroup) {
+        nestedGroup.querySelectorAll('details[is="accordion-details"]').forEach(item => {
+          if (item !== target) item.close();
+        });
+      } else {
+        this.items.forEach((item) => {
+          if (item !== target) {
+            item.close();
+          }
+        });
       }
-    });
+    }
 
     if (open) {
       let headerHeight = 0;
@@ -2499,8 +2521,8 @@ class QuantityInput extends HTMLElement {
     const quantityFormUpdated = parsedHTML.getElementById(`QuantityForm-${sectionId}-${this.productId}`);
     const quantityForm = this.closest(`#QuantityForm-${sectionId}-${this.productId}`);
     for (let selector of selectors) {
-      const current = quantityForm.querySelector(selector);
-      const updated = quantityFormUpdated.querySelector(selector);
+      const current = quantityForm?.querySelector(selector);
+      const updated = quantityFormUpdated?.querySelector(selector);
       if (!current || !updated) continue;
 
       if (selector === '.quantity__input') {
@@ -4391,7 +4413,9 @@ class SliderElement extends HTMLElement {
   }
 
   get itemsToShow() {
-    return Array.from(this.items).filter(element => element.clientWidth > 0);
+    // We removed the filter here because it doesn't work on custom rug builder when image is uploaded.
+    //.filter(element => element.clientWidth > 0);
+    return Array.from(this.items);
   }
 
   get itemOffset() {
@@ -5015,6 +5039,19 @@ class VariantPicker extends HTMLElement {
       this.updateAvailableOptions(target);
     }
 
+    if (this.findVariantByOptions(true) == null) {
+      const closestVariant = this.findClosestAvailableVariant(target);
+      if (closestVariant) {
+        const sizeInput = this.querySelector(`fieldset input[value="${closestVariant.option2}"]`);
+        if (sizeInput && !sizeInput.checked) {
+          sizeInput.checked = true;
+          sizeInput.dispatchEvent(new Event('change', { bubbles: true }));
+          return;
+        }
+        this.currentVariant = closestVariant;
+      }
+    }
+
     this.markSelectedOption(target);
     this.publishSelectionChange(event, this.getActualInput(target));
   }
@@ -5207,6 +5244,9 @@ class ProductInfo extends HTMLElement {
       return;
     }
 
+    const currentVariant = this.variantSelectors?.currentVariant;
+    if (currentVariant) this.updateURL(currentVariant.id);
+
     this.renderProductInfo({
       requestUrl: this.buildRequestUrlWithParams(productUrl, selectedOptionValues),
       targetId: target.tagName === 'OPTION' ? target.parentElement.id : target.id,
@@ -5281,10 +5321,17 @@ class ProductInfo extends HTMLElement {
       
       if (!variant) {
         this.setUnavailable();
+        this.selectFirstAvailableUnselectedOption();
         return;
       }
 
-      this.updateSourceFromDestination(parsedHTML, 'ProductGallery');
+      // Updating product gallery if custom rug builder is not active.
+      const canvasContainer = document.querySelector('.product-main-canvas-container');
+      const canvasActive = canvasContainer && canvasContainer.style.display !== 'none';
+      const imageUploaded = window.CanvasRugEditor && window.CanvasRugEditor.fgImg != null;
+      if (!canvasActive || !imageUploaded) {
+        this.updateSourceFromDestination(parsedHTML, 'ProductGallery');
+      }
       this.updateSourceFromDestination(parsedHTML, 'Price');
       this.updateSourceFromDestination(parsedHTML, 'BuyButtonPrice');
       this.updateSourceFromDestination(parsedHTML, 'StickyPrice');
@@ -5358,6 +5405,21 @@ class ProductInfo extends HTMLElement {
     if (source && destination) {
       destination.innerHTML = source.innerHTML;
       destination.removeAttribute('hidden');
+    }
+  }
+
+  selectFirstAvailableUnselectedOption() {
+    const variantPicker = this.variantSelectors;
+    if (!variantPicker) return;
+
+    const uncheckedGroup = [...variantPicker.querySelectorAll('fieldset')]
+      .find(fs => !fs.querySelector('input:checked'));
+    if (!uncheckedGroup) return;
+
+    const firstAvailable = uncheckedGroup.querySelector('input:not(.disabled)') || uncheckedGroup.querySelector('input');
+    if (firstAvailable) {
+      firstAvailable.checked = true;
+      firstAvailable.dispatchEvent(new Event('change', { bubbles: true }));
     }
   }
 
@@ -5929,7 +5991,7 @@ class MediaGallery extends HTMLElement {
       //setTimeout(() => this.pauseAllMedia(), 500);
     });
 
-    (this.productForm ?? document).addEventListener('variant:change', this.onVariantChanged.bind(this));
+    // (this.productForm ?? document).addEventListener('variant:change', this.onVariantChanged.bind(this));
     
     this.addEventListener('lightbox:open', (event) => this.openZoom(event.detail.index));
     this.sliderGallery.addEventListener('slider:change', this.onSlideChange.bind(this));
@@ -6004,10 +6066,11 @@ class MediaGallery extends HTMLElement {
   }
 
   onVariantChanged(event) {
+    console.log('variant changed, updating media gallery', event);
     const currentVariant = event.detail.variant;
     if (!currentVariant.featured_media) return;
 
-    this.countMediaGallery();
+    this.countMediaGallery();    
     this.setActiveMedia(currentVariant.featured_media.id);
   }
 
@@ -6255,6 +6318,23 @@ class MediaDots extends SliderDots {
 
       newIndex++;
     });
+  }
+
+  onButtonClick(event) {
+    super.onButtonClick(event);
+
+    const canvasContainer = document.querySelector('.product-main-canvas-container');
+    const canvasActive = canvasContainer && canvasContainer.style.display !== 'none';
+    const imageUploaded = window.CanvasRugEditor && window.CanvasRugEditor.fgImg != null;
+    if (!canvasActive || !imageUploaded) return;
+
+    const target = event.currentTarget;
+    const index = parseInt(target.getAttribute('data-index')) - 1;
+
+    target.dispatchEvent(new CustomEvent('lightbox:open', {
+      bubbles: true,
+      detail: { index }
+    }));
   }
 }
 customElements.define('media-dots', MediaDots);
@@ -6606,10 +6686,27 @@ class ImageComparison extends HTMLElement {
   animate() {
     this.setAttribute('animate', '');
 
-    this.classList.add('animated');
-    setTimeout(() => {
-      this.classList.remove('animated');
-    }, 1e3);
+    const cycleDuration = 3500;
+    const cycles = 2;
+    const totalDuration = cycleDuration * cycles;
+    const startTime = performance.now();
+
+    const step = (timestamp) => {
+      const elapsed = timestamp - startTime;
+
+      if (elapsed < totalDuration) {
+        const cycleProgress = (elapsed % cycleDuration) / cycleDuration;
+        const percent = cycleProgress < 0.5
+          ? cycleProgress * 2 * 100
+          : (1 - cycleProgress) * 2 * 100;
+        this.style.setProperty('--percent', percent + '%');
+        requestAnimationFrame(step);
+      } else {
+        this.style.setProperty('--percent', '5%');
+      }
+    };
+
+    requestAnimationFrame(step);
   }
 
   startHandler(event) {

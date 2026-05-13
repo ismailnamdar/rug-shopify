@@ -30,10 +30,13 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p><em><strong>Add a tagline</strong></em></p>",
+            "text": "<p><em>A Journey Woven Through Generations and Reinvention</em></p><h3></h3>",
+            "text_font": "body",
             "text_size": "subtext-lg",
             "text_max_size": 32,
-            "text_font": "body",
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
             "secondary_color": false,
             "highlighted_text": "text",
             "highlighted_scribble": "circle"
@@ -42,11 +45,12 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text overlay",
+            "heading": "Our Story",
             "heading_size": "title-xl tracking-heading",
             "heading_tag": "h1",
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         }
       },
@@ -56,8 +60,8 @@
       ],
       "settings": {
         "transparent_header": true,
-        "image": "",
-        "image_height": "750px",
+        "image": "shopify://shop_images/about.png",
+        "image_height": "300px",
         "content_width": "large",
         "content_position": "md:items-end md:justify-start",
         "text_alignment": "left",
@@ -65,6 +69,8 @@
         "content_position_mobile": "items-end justify-start",
         "text_alignment_mobile": "left",
         "color_text": "#ffffff",
+        "color_background": "",
+        "gradient_background": "",
         "color_highlight": "#e0a580",
         "gradient_highlight": "",
         "color_button_text": "#171717",
@@ -81,51 +87,98 @@
         "parallax_direction": "vertical"
       }
     },
+    "rich_text_iP3yAA": {
+      "type": "rich-text",
+      "blocks": {
+        "text_A8AyNR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our story isn’t just about rugs; it’s about a legacy of creativity and resilience passed down through generations. It began with my great-grandfather, who crafted the finest Persian rug in Iran and earned our family the honor of using the royal crown as our crest.My grandfather continued that tradition, not only as a master of his craft but as someone who gave back to his community, building schools and hospitals.</p>",
+            "text_font": "body",
+            "text_size": "subtext-xl",
+            "text_max_size": 28,
+            "text_line_height": 1.5,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "text_A8AyNR"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 24,
+        "padding_bottom": 16,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
     "images-with-text": {
       "type": "images-with-text",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Example <em>heading</em>",
+            "heading": "Our Vision",
             "heading_size": "title-md",
             "heading_tag": "h2",
             "highlighted_text": "scribble",
-            "highlighted_scribble": "basic-underline"
+            "highlighted_scribble": "basic-underline",
+            "highlighted_reveal": false
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "text_size": "subtext-md",
-            "text_max_size": 32,
+            "text": "<p>Growing up, I moved around the world, attending 14 different schools in 15 years. I was always an outlier, always questioning things, and often feeling like I saw solutions that others didn’t.</p><p>It was a bit lonely at times, but it taught me how to form deep connections quickly and how to dream big.</p><p>I always had ideas about products and solutions, and I’d often see those ideas come to life on store shelves years later. People even encouraged me to go on Shark Tank. But first, I had to fulfill my promise to my parents and get my degree.</p>",
             "text_font": "body",
+            "text_size": "subtext-xl",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
             "secondary_color": false,
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "primary",
-            "button_size": "md",
-            "button_external": false,
-            "button_icon": true
           }
         }
       },
       "block_order": [
         "heading",
-        "text",
-        "button"
+        "text"
       ],
       "settings": {
-        "image": "",
-        "image_2": "",
+        "image": "shopify://shop_images/Screenshot_2026-05-04_at_00.52.35.png",
+        "image_2": "shopify://shop_images/Screenshot_2026-05-04_at_00.52.58.png",
         "image_ratio": "portrait",
         "image_width": "medium",
         "layout": "image_first",
@@ -139,154 +192,55 @@
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 120,
-        "padding_bottom": 100,
+        "padding_top": 32,
+        "padding_bottom": 20,
         "divider": false,
         "full_width": false,
         "rounded": true,
         "enable_parallax": true
       }
     },
-    "portfolio": {
-      "type": "portfolio",
+    "images_with_text_b4A9yW": {
+      "type": "images-with-text",
       "blocks": {
-        "profile-1": {
-          "type": "profile",
+        "heading_PxF3zy": {
+          "type": "heading",
           "settings": {
-            "image": "",
-            "heading": "Example title",
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "color_text": "#ffffff",
-            "color_background": "#4c5538"
+            "heading": "A Pivot",
+            "heading_size": "title-md",
+            "heading_tag": "h2",
+            "highlighted_text": "scribble",
+            "highlighted_scribble": "basic-underline",
+            "highlighted_reveal": false
           }
         },
-        "profile-2": {
-          "type": "profile",
-          "settings": {
-            "image": "",
-            "heading": "Example title",
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "color_text": "#ffffff",
-            "color_background": "#886a51"
-          }
-        },
-        "profile-3": {
-          "type": "profile",
-          "settings": {
-            "image": "",
-            "heading": "Example title",
-            "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<br/><br/>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store. Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "color_text": "#ffffff",
-            "color_background": "#2e2d45"
-          }
-        }
-      },
-      "block_order": [
-        "profile-1",
-        "profile-2",
-        "profile-3"
-      ],
-      "settings": {
-        "columns": 4,
-        "layout": "grid",
-        "image_ratio": "portrait",
-        "image_ratio_mobile": "portrait",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "heading": "Talk about your <em>brand</em>",
-        "heading_size": "title-md",
-        "heading_alignment": "text-left justify-start",
-        "heading_tag": "h2",
-        "subheading": "Add a tagline",
-        "description": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-        "button_label": "",
-        "button_link": "",
-        "button_external": false,
-        "button_icon": true,
-        "highlighted_text": "scribble",
-        "highlighted_scribble": "circle",
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "#ccd8b5",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "divider": false,
-        "full_width": false,
-        "rounded": false
-      }
-    },
-    "scrolling-text": {
-      "type": "scrolling-text",
-      "blocks": {
-        "text": {
+        "text_fHVYcX": {
           "type": "text",
           "settings": {
-            "text": "<em><strong>Free shipping and returns</strong></em>",
-            "text_size": 160,
-            "text_font": "heading",
-            "highlighted_text": "stencil",
-            "highlighted_scribble": "circle"
-          }
-        }
-      },
-      "block_order": [
-        "text"
-      ],
-      "settings": {
-        "direction": "left",
-        "speed": 20,
-        "grid_horizontal": 70,
-        "enable_twin": false,
-        "enable_parallax": true,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
-        "divider": false,
-        "rounded": false
-      }
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial": {
-          "type": "testimonial",
-          "settings": {
-            "icon": "quote",
-            "text": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>",
-            "author": "Author's name",
-            "author_info": "",
-            "author_url": "",
-            "image_ratio": "rounded",
+            "text": "<p>The journey was tough. I had to build the technology from scratch, test hundreds of materials, and just as we were ready to launch, the COVID-19 pandemic hit.</p><p>We had to let go of team members, and I found myself working alone on cold nights, trying to figure out how to pivot.</p><p>It was during those challenging times that I realized I needed to bring in a partner who could help me refine and return to the original vision.</p><p>That partner was Mason, someone with a background in advertising and fashion, who knew how to blend art and business.</p>",
+            "text_font": "body",
+            "text_size": "subtext-xl",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
         }
       },
       "block_order": [
-        "testimonial"
+        "heading_PxF3zy",
+        "text_fHVYcX"
       ],
       "settings": {
-        "heading": "",
-        "heading_size": "title-md",
-        "heading_alignment": "text-center md:items-center",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "button_label": "",
-        "button_link": "",
-        "button_external": false,
-        "button_icon": true,
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
+        "image": "shopify://shop_images/Screenshot_2026-05-04_at_01.10.23.png",
+        "image_ratio": "square",
+        "image_width": "medium",
+        "layout": "text_first",
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
         "color_text": "",
         "color_background": "",
         "gradient_background": "",
@@ -295,206 +249,123 @@
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 84,
-        "padding_bottom": 120,
-        "divider": false,
-        "rounded": false
-      }
-    },
-    "timeline": {
-      "type": "timeline",
-      "blocks": {
-        "content-1": {
-          "type": "content",
-          "settings": {
-            "image": "",
-            "subheading": "2017",
-            "heading": "Example title",
-            "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "primary",
-            "button_external": false,
-            "button_icon": true,
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        },
-        "content-2": {
-          "type": "content",
-          "settings": {
-            "image": "",
-            "subheading": "2019",
-            "heading": "Example title",
-            "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "primary",
-            "button_external": false,
-            "button_icon": true,
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        },
-        "content-3": {
-          "type": "content",
-          "settings": {
-            "image": "",
-            "subheading": "2020",
-            "heading": "Example title",
-            "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "primary",
-            "button_external": false,
-            "button_icon": true,
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        },
-        "content-4": {
-          "type": "content",
-          "settings": {
-            "image": "",
-            "subheading": "2021",
-            "heading": "Example title",
-            "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "primary",
-            "button_external": false,
-            "button_icon": true,
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        },
-        "content-5": {
-          "type": "content",
-          "settings": {
-            "image": "",
-            "subheading": "2023",
-            "heading": "Example title",
-            "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "primary",
-            "button_external": false,
-            "button_icon": true,
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        },
-        "content-6": {
-          "type": "content",
-          "settings": {
-            "image": "",
-            "subheading": "2024",
-            "heading": "Example title",
-            "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "primary",
-            "button_external": false,
-            "button_icon": true,
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        },
-        "content-7": {
-          "type": "content",
-          "settings": {
-            "image": "",
-            "subheading": "2025",
-            "heading": "Example title",
-            "heading_tag": "h2",
-            "text": "<p>Share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "primary",
-            "button_external": false,
-            "button_icon": true,
-            "highlighted_text": "none",
-            "highlighted_scribble": "circle"
-          }
-        }
-      },
-      "block_order": [
-        "content-1",
-        "content-2",
-        "content-3",
-        "content-4",
-        "content-5",
-        "content-6",
-        "content-7"
-      ],
-      "settings": {
-        "image_ratio": "portrait",
-        "image_ratio_mobile": "wide",
-        "heading": "Example heading",
-        "heading_size": "title-md",
-        "heading_alignment": "text-left md:items-end md:flex-row",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "color_text": "#ffffff",
-        "color_background": "#171717",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "#171717",
-        "color_button_background": "#ffffff",
-        "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 72,
+        "padding_top": 32,
+        "padding_bottom": 20,
         "divider": false,
         "full_width": false,
-        "rounded": true
+        "rounded": true,
+        "enable_parallax": true
       }
     },
-    "rich-text": {
+    "rich_text_qqxGBQ": {
       "type": "rich-text",
       "blocks": {
-        "text": {
+        "text_mjxHxh": {
           "type": "text",
           "settings": {
-            "text": "<p>Add a tagline</p>",
-            "text_size": "subtext-md",
-            "text_max_size": 32,
+            "text": "<p>Together, we launched <strong>The Woven Show</strong>, collaborating with artists and proving that there was a market for our vision. The overwhelming response showed us we were on the right track.</p><p></p>",
             "text_font": "body",
+            "text_size": "subtext-xl",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle"
+          }
+        }
+      },
+      "block_order": [
+        "text_mjxHxh"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
+        "heading": "",
+        "heading_size": "title-md",
+        "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
+        "heading_tag": "h2",
+        "subheading": "",
+        "description": "",
+        "button_label": "",
+        "button_link": "",
+        "button_external": false,
+        "button_icon": true,
+        "highlighted_text": "none",
+        "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
+        "color_text": "",
+        "color_background": "",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "color_button_text": "",
+        "color_button_background": "",
+        "color_button_gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 16,
+        "divider": false,
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "rich_text_TrxVat": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_DkiAge": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Mission Today",
+            "heading_size": "title-lg tracking-heading",
+            "heading_tag": "h2",
+            "highlighted_text": "none",
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
+          }
+        },
+        "text_BGNwWm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>In the end, we returned to the core idea: not just collectible art rugs, but truly <strong>custom rugs for everyone</strong>.</p><p>We wanted to make it easy for anyone to design a rug as unique as they are. That’s how we turned a legacy of craftsmanship into a modern vision—and brought our dream to life.</p>",
+            "text_font": "body",
+            "text_size": "subtext-xl",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
             "secondary_color": false,
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
         },
-        "heading": {
-          "type": "heading",
+        "button_TgtehG": {
+          "type": "button",
           "settings": {
-            "heading": "Example <em>heading</em>",
-            "heading_size": "title-md",
-            "heading_tag": "h2",
-            "highlighted_text": "scribble",
-            "highlighted_scribble": "squiggle-underline"
+            "button_label": "Create Custom Rug",
+            "button_link": "shopify://products/custom-rug-carpet",
+            "button_style": "primary",
+            "button_size": "md",
+            "button_external": false,
+            "button_icon": true
           }
         }
       },
       "block_order": [
-        "text",
-        "heading"
+        "heading_DkiAge",
+        "text_BGNwWm",
+        "button_TgtehG"
       ],
+      "name": "t:sections.rich-text.name",
       "settings": {
-        "text_alignment": "center",
-        "text_alignment_mobile": "center",
+        "text_alignment": "left",
+        "text_alignment_mobile": "left",
         "heading": "",
         "heading_size": "title-md",
         "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
         "heading_tag": "h2",
         "subheading": "",
         "description": "",
@@ -504,132 +375,77 @@
         "button_icon": true,
         "highlighted_text": "none",
         "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
         "color_text": "",
-        "color_background": "#fafafa",
-        "gradient_background": "",
-        "color_highlight": "#c5e8b8",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 120,
-        "padding_bottom": 20,
-        "divider": false,
-        "narrow": true,
-        "rounded": true
-      }
-    },
-    "logo-list": {
-      "type": "logo-list",
-      "blocks": {
-        "logo-1": {
-          "type": "logo",
-          "settings": {
-            "image": "",
-            "height": 60,
-            "link": ""
-          }
-        },
-        "logo-2": {
-          "type": "logo",
-          "settings": {
-            "image": "",
-            "height": 60,
-            "link": ""
-          }
-        },
-        "logo-3": {
-          "type": "logo",
-          "settings": {
-            "image": "",
-            "height": 60,
-            "link": ""
-          }
-        },
-        "logo-4": {
-          "type": "logo",
-          "settings": {
-            "image": "",
-            "height": 60,
-            "link": ""
-          }
-        },
-        "logo-5": {
-          "type": "logo",
-          "settings": {
-            "image": "",
-            "height": 60,
-            "link": ""
-          }
-        },
-        "logo-6": {
-          "type": "logo",
-          "settings": {
-            "image": "",
-            "height": 60,
-            "link": ""
-          }
-        },
-        "logo-7": {
-          "type": "logo",
-          "settings": {
-            "image": "",
-            "height": 60,
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo-1",
-        "logo-2",
-        "logo-3",
-        "logo-4",
-        "logo-5",
-        "logo-6",
-        "logo-7"
-      ],
-      "settings": {
-        "layout": "marquee",
-        "grid_horizontal": 120,
-        "direction": "right",
-        "speed": 5,
-        "heading": "",
-        "heading_size": "title-md",
-        "heading_alignment": "text-center md:items-center",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "button_label": "",
-        "button_link": "",
-        "button_external": false,
-        "button_icon": true,
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "color_text": "",
-        "color_background": "#fafafa",
+        "color_background": "",
         "gradient_background": "",
         "color_highlight": "",
         "gradient_highlight": "",
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 60,
-        "padding_bottom": 120,
+        "padding_top": 16,
+        "padding_bottom": 52,
         "divider": false,
-        "full_width": true,
-        "rounded": true
+        "narrow": true,
+        "rounded": false
+      }
+    },
+    "number_counter_4XkhtP": {
+      "type": "number-counter",
+      "blocks": {
+        "counter_p4gLg4": {
+          "type": "counter",
+          "settings": {
+            "title": "Businesses Served",
+            "number": "15000",
+            "unit": "+",
+            "duration": 2
+          }
+        },
+        "counter_8VRdHw": {
+          "type": "counter",
+          "settings": {
+            "title": "Years of Fine Rug Making",
+            "number": "125",
+            "unit": "+",
+            "duration": 2
+          }
+        }
+      },
+      "block_order": [
+        "counter_p4gLg4",
+        "counter_8VRdHw"
+      ],
+      "name": "t:sections.number-counter.name",
+      "settings": {
+        "gap": "small",
+        "columns": 2,
+        "text_alignment": "center",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "text_alignment_mobile": "center",
+        "color_text": "#ffffff",
+        "color_background": "#040404",
+        "gradient_background": "",
+        "color_highlight": "",
+        "gradient_highlight": "",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "divider": false,
+        "full_width": false,
+        "rounded": false
       }
     }
   },
   "order": [
     "main",
     "image-with-text-overlay",
+    "rich_text_iP3yAA",
     "images-with-text",
-    "portfolio",
-    "scrolling-text",
-    "testimonials",
-    "timeline",
-    "rich-text",
-    "logo-list"
+    "images_with_text_b4A9yW",
+    "rich_text_qqxGBQ",
+    "rich_text_TrxVat",
+    "number_counter_4XkhtP"
   ]
 }
