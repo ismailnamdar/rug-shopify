@@ -1541,19 +1541,18 @@ class AccordionsDetails extends HTMLElement {
       }
     }
 
-    // Disable scroll
-    // if (open) {
-    //   let headerHeight = 0;
-    //   if (!theme.config.mqlSmall && document.querySelector('header.header')) {
-    //     headerHeight = Math.round(document.querySelector('header.header').clientHeight);
-    //   }
-    //   setTimeout(() => {
-    //     window.scrollTo({
-    //       top: target.getBoundingClientRect().top + window.scrollY - headerHeight,
-    //       behavior: theme.config.motionReduced ? 'auto' : 'smooth'
-    //     });
-    //   }, 250);
-    // }
+    if (open) {
+      let headerHeight = 0;
+      if (!theme.config.mqlSmall && document.querySelector('header.header')) {
+        headerHeight = Math.round(document.querySelector('header.header').clientHeight);
+      }
+      setTimeout(() => {
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - headerHeight,
+          behavior: theme.config.motionReduced ? 'auto' : 'smooth'
+        });
+      }, 250);
+    }
   }
 }
 customElements.define('accordions-details', AccordionsDetails);
@@ -5040,14 +5039,16 @@ class VariantPicker extends HTMLElement {
       this.updateAvailableOptions(target);
     }
 
-    console.log(this.findVariantByOptions(true));
     if (this.findVariantByOptions(true) == null) {
       const closestVariant = this.findClosestAvailableVariant(target);
       if (closestVariant) {
-        console.log(closestVariant.option2, document.querySelector(`[data-label-option-value="${closestVariant.option2}"]`));
-        setTimeout(() => {
-          document.querySelector(`[data-label-option-value="${closestVariant.option2}"]`)?.click()
-        }, 1500);
+        const sizeInput = this.querySelector(`fieldset input[value="${closestVariant.option2}"]`);
+        if (sizeInput && !sizeInput.checked) {
+          sizeInput.checked = true;
+          sizeInput.dispatchEvent(new Event('change', { bubbles: true }));
+          return;
+        }
+        this.currentVariant = closestVariant;
       }
     }
 
@@ -5243,6 +5244,9 @@ class ProductInfo extends HTMLElement {
       return;
     }
 
+    const currentVariant = this.variantSelectors?.currentVariant;
+    if (currentVariant) this.updateURL(currentVariant.id);
+
     this.renderProductInfo({
       requestUrl: this.buildRequestUrlWithParams(productUrl, selectedOptionValues),
       targetId: target.tagName === 'OPTION' ? target.parentElement.id : target.id,
@@ -5317,12 +5321,17 @@ class ProductInfo extends HTMLElement {
       
       if (!variant) {
         this.setUnavailable();
+        this.selectFirstAvailableUnselectedOption();
         return;
       }
 
-      // Updating product gallery is currently skipped due to custom rug builder.
-      // Before openning this test custom rug builder functionality.
-      // this.updateSourceFromDestination(parsedHTML, 'ProductGallery');
+      // Updating product gallery if custom rug builder is not active.
+      const canvasContainer = document.querySelector('.product-main-canvas-container');
+      const canvasActive = canvasContainer && canvasContainer.style.display !== 'none';
+      const imageUploaded = window.CanvasRugEditor && window.CanvasRugEditor.fgImg != null;
+      if (!canvasActive || !imageUploaded) {
+        this.updateSourceFromDestination(parsedHTML, 'ProductGallery');
+      }
       this.updateSourceFromDestination(parsedHTML, 'Price');
       this.updateSourceFromDestination(parsedHTML, 'BuyButtonPrice');
       this.updateSourceFromDestination(parsedHTML, 'StickyPrice');
@@ -5396,6 +5405,21 @@ class ProductInfo extends HTMLElement {
     if (source && destination) {
       destination.innerHTML = source.innerHTML;
       destination.removeAttribute('hidden');
+    }
+  }
+
+  selectFirstAvailableUnselectedOption() {
+    const variantPicker = this.variantSelectors;
+    if (!variantPicker) return;
+
+    const uncheckedGroup = [...variantPicker.querySelectorAll('fieldset')]
+      .find(fs => !fs.querySelector('input:checked'));
+    if (!uncheckedGroup) return;
+
+    const firstAvailable = uncheckedGroup.querySelector('input:not(.disabled)') || uncheckedGroup.querySelector('input');
+    if (firstAvailable) {
+      firstAvailable.checked = true;
+      firstAvailable.dispatchEvent(new Event('change', { bubbles: true }));
     }
   }
 
@@ -6299,6 +6323,11 @@ class MediaDots extends SliderDots {
   onButtonClick(event) {
     super.onButtonClick(event);
 
+    const canvasContainer = document.querySelector('.product-main-canvas-container');
+    const canvasActive = canvasContainer && canvasContainer.style.display !== 'none';
+    const imageUploaded = window.CanvasRugEditor && window.CanvasRugEditor.fgImg != null;
+    if (!canvasActive || !imageUploaded) return;
+
     const target = event.currentTarget;
     const index = parseInt(target.getAttribute('data-index')) - 1;
 
@@ -6657,10 +6686,27 @@ class ImageComparison extends HTMLElement {
   animate() {
     this.setAttribute('animate', '');
 
-    this.classList.add('animated');
-    setTimeout(() => {
-      this.classList.remove('animated');
-    }, 1e3);
+    const cycleDuration = 3500;
+    const cycles = 2;
+    const totalDuration = cycleDuration * cycles;
+    const startTime = performance.now();
+
+    const step = (timestamp) => {
+      const elapsed = timestamp - startTime;
+
+      if (elapsed < totalDuration) {
+        const cycleProgress = (elapsed % cycleDuration) / cycleDuration;
+        const percent = cycleProgress < 0.5
+          ? cycleProgress * 2 * 100
+          : (1 - cycleProgress) * 2 * 100;
+        this.style.setProperty('--percent', percent + '%');
+        requestAnimationFrame(step);
+      } else {
+        this.style.setProperty('--percent', '5%');
+      }
+    };
+
+    requestAnimationFrame(step);
   }
 
   startHandler(event) {

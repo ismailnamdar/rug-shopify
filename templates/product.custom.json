@@ -46,7 +46,7 @@
             "picker_type": "button",
             "enable_color_swatches": true,
             "color_swatch_type": "variant",
-            "size_chart": ""
+            "size_chart": "sizechart-2025"
           }
         },
         "buy_buttons": {
@@ -132,7 +132,7 @@
         "collapsible_tab_6atjjV": {
           "type": "collapsible_tab",
           "settings": {
-            "opened": false,
+            "opened": true,
             "style": "with-border",
             "icon": "none",
             "heading": "Material & Build",
@@ -230,9 +230,9 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "media_size": 70,
+        "media_size": 56,
         "gallery_layout": "thumbnail",
-        "thumbnail_position": "below",
+        "thumbnail_position": "beside",
         "image_ratio": "square",
         "image_zoom": "lightbox",
         "hide_variants": false,
@@ -661,7 +661,7 @@
             "metafields": "",
             "text_size": "text-base",
             "sub_row_1_heading": "What file types do you accept?",
-            "sub_row_1_content": "<p>PNG, JPEG, SVG, PDF, WebP (200 KB–20 MB; 2 MB+ preferred).</p>",
+            "sub_row_1_content": "<p>PNG, JPEG, SVG, PDF, WebP, HEIC, TIFF, AVIF, BMP, ICO (200 KB–20 MB; 2 MB+ preferred).</p>",
             "sub_row_2_heading": "Can I check out without uploading my design?",
             "sub_row_2_content": "<p>Yes—complete checkout, then email us your file within 24 hours.</p>",
             "sub_row_3_heading": "I’m having trouble uploading—what should I do?",
@@ -774,129 +774,216 @@
         "rounded": true
       }
     },
-    "highlight_text_XzCh9w": {
-      "type": "highlight-text",
-      "name": "t:sections.highlight-text.name",
+    "comparison_table_mQ4Ciw": {
+      "type": "custom-comparison-table",
+      "blocks": {
+        "row_header_RmnHLq": {
+          "type": "row_header",
+          "settings": {
+            "row_header": "Heavy Duty"
+          }
+        },
+        "row_header_fXyc6J": {
+          "type": "row_header",
+          "settings": {
+            "row_header": "4K Resolution"
+          }
+        },
+        "row_header_njk4jQ": {
+          "type": "row_header",
+          "settings": {
+            "row_header": "Easy To Clean"
+          }
+        },
+        "row_header_G6qa7W": {
+          "type": "row_header",
+          "settings": {
+            "row_header": "Ships in 2 Business Days"
+          }
+        },
+        "row_header_VNdMFB": {
+          "type": "row_header",
+          "settings": {
+            "row_header": "Free Proof Before Production"
+          }
+        },
+        "row_header_MhTPxE": {
+          "type": "row_header",
+          "settings": {
+            "row_header": "24/7 Support"
+          }
+        },
+        "row_header_T6mawj": {
+          "type": "row_header",
+          "settings": {
+            "row_header": "No Contracts"
+          }
+        },
+        "column_XqNCfb": {
+          "type": "column",
+          "settings": {
+            "title": "Rugtomize",
+            "price": "$ $",
+            "reviews": 4.5,
+            "row_1": true,
+            "row_2": true,
+            "row_3": true,
+            "row_4": true,
+            "row_5": true,
+            "row_6": true,
+            "row_7": true,
+            "row_8": false,
+            "row_9": false,
+            "row_10": false
+          }
+        },
+        "column_7cdcpG": {
+          "type": "column",
+          "settings": {
+            "title": "Rental Mats",
+            "price": "$ $ $",
+            "reviews": 1.5,
+            "row_1": true,
+            "row_2": true,
+            "row_3": false,
+            "row_4": false,
+            "row_5": true,
+            "row_6": false,
+            "row_7": false,
+            "row_8": false,
+            "row_9": false,
+            "row_10": false
+          }
+        },
+        "column_KpxJXy": {
+          "type": "column",
+          "settings": {
+            "title": "Other Business Mats",
+            "price": "$",
+            "reviews": 2,
+            "row_1": false,
+            "row_2": false,
+            "row_3": true,
+            "row_4": false,
+            "row_5": false,
+            "row_6": false,
+            "row_7": true,
+            "row_8": false,
+            "row_9": false,
+            "row_10": false
+          }
+        }
+      },
+      "block_order": [
+        "row_header_RmnHLq",
+        "row_header_fXyc6J",
+        "row_header_njk4jQ",
+        "row_header_G6qa7W",
+        "row_header_VNdMFB",
+        "row_header_MhTPxE",
+        "row_header_T6mawj",
+        "column_XqNCfb",
+        "column_7cdcpG",
+        "column_KpxJXy"
+      ],
+      "name": "Custom Comparison Table",
       "settings": {
-        "text_alignment": "center",
-        "text_alignment_mobile": "center",
-        "heading": "How Does Rugtomize Compare?",
-        "heading_size": "title-sm",
-        "heading_alignment": "text-center md:items-center",
-        "heading_tag": "h2",
-        "subheading": "",
-        "description": "",
-        "button_label": "",
-        "button_link": "",
-        "button_external": false,
-        "button_icon": true,
-        "highlighted_text": "none",
-        "highlighted_scribble": "circle",
-        "highlighted_reveal": false,
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_highlight": "",
-        "gradient_highlight": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 24,
-        "padding_bottom": 0,
-        "divider": false,
-        "narrow": true,
-        "rounded": false
-      }
-    },
-    "custom_liquid_jQfWQN": {
-      "type": "custom-liquid",
-      "name": "Comparison Table",
-      "settings": {
-        "liquid": "<link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">\n\n<section style=\"background: #FFFFFF; padding: 0 0; font-family: 'Inter', sans-serif;\">\n  <div class=\"rt-compare-wrap\" style=\"max-width: 800px; margin: 0 auto; padding: 0 60px;\">\n    <div class=\"rt-compare-scroll\">\n    <table class=\"rt-compare\" style=\"width: 100%; border-collapse: separate; border-spacing: 0; color: #000000;\">\n      <colgroup>\n        <col style=\"width: 22%;\">\n        <col style=\"width: 26%;\">\n        <col style=\"width: 26%;\">\n        <col style=\"width: 26%;\">\n      </colgroup>\n      <thead>\n        <tr>\n          <th style=\"background: #fff; padding: 16px 12px; text-align: left; border-bottom: 1px solid #E5E5E5;\"></th>\n          <th style=\"background: #000000; padding: 16px 12px; text-align: center; border-radius: 16px 16px 0 0;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0766/1840/0065/files/Rugtomize_logo_blk_ca404d02-0098-45cb-b2ad-02904e0125d8.png?v=1772080776\" alt=\"Rugtomize\" style=\"max-width: 160px; filter: brightness(0) invert(1); display: block; margin: 0 auto;\">\n          </th>\n          <th style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 16px; font-weight: 600; color: #000000;\">Rental Mats</span>\n          </th>\n          <th style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 16px; font-weight: 600; color: #000000;\">Other Business Mats</span>\n          </th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Price</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-bottom: 1px solid #333333;\">\n            <span style=\"font-size: 18px; color: #fff;\">$&thinsp;$</span>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 18px;\">$&thinsp;$&thinsp;$</span>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 18px;\">$</span>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Reviews</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-bottom: 1px solid #333333;\">\n            <span style=\"font-size: 16px; font-weight: 700; color: #fff;\">4.5</span>\n            <span style=\"color: #FFB800; font-size: 15px;\"> ★★★★★</span>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 16px; font-weight: 700;\">1.5</span>\n            <span style=\"color: #FFB800; font-size: 15px;\"> ★★☆☆☆</span>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <span style=\"font-size: 16px; font-weight: 700;\">2.0</span>\n            <span style=\"color: #FFB800; font-size: 15px;\"> ★★☆☆☆</span>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Heavy Duty</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">4K Resolution</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Easy Clean</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Fast Shipping</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">Free Proof</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">24/7 Support</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-bottom: 1px solid #333333;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"padding: 16px 12px; border-bottom: 1px solid #E5E5E5; font-size: 16px; font-weight: 500;\">No Contracts</td>\n          <td style=\"background: #000000; padding: 16px 12px; text-align: center; border-radius: 0 0 16px 16px;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#E5E5E5\"/><path d=\"M11 11L21 21M21 11L11 21\" stroke=\"#999\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>\n          </td>\n          <td style=\"padding: 16px 12px; text-align: center; border-bottom: 1px solid #E5E5E5;\">\n            <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" fill=\"none\"><circle cx=\"16\" cy=\"16\" r=\"16\" fill=\"#22C55E\"/><path d=\"M9 16.5L14 21.5L23 12.5\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n    </div>\n  </div>\n<style>\n  .rt-compare td, .rt-compare th { text-align: center !important; vertical-align: middle !important; }\n  .rt-compare td:first-child, .rt-compare th:first-child { text-align: left !important; }\n  .rt-compare svg { display: inline-block; vertical-align: middle; }\n\n  @media (max-width: 768px) {\n    .rt-compare-wrap { padding: 0 12px !important; }\n    .rt-compare-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }\n    .rt-compare { min-width: 520px; }\n    .rt-compare td, .rt-compare th { padding: 10px 10px !important; font-size: 13px !important; line-height: 1.3 !important; }\n    .rt-compare svg { width: 22px !important; height: 22px !important; }\n    .rt-compare td:first-child, .rt-compare th:first-child {\n      position: sticky; left: 0; z-index: 2; background: #fff !important; min-width: 100px; max-width: 120px;\n    }\n    .rt-compare td:nth-child(2), .rt-compare th:nth-child(2) {\n      position: sticky; left: 100px; z-index: 1;\n    }\n    .rt-compare th:first-child { background: #fff !important; }\n    .rt-compare th:nth-child(2) img { max-width: 100px !important; }\n  }\n</style>\n</section>",
-        "color_text": "",
-        "color_background": "",
-        "gradient_background": "",
-        "color_button_text": "",
-        "color_button_background": "",
-        "color_button_gradient": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "divider": false,
-        "narrow": false,
-        "rounded": false
+        "title": "How does Rugtomize compare?"
       }
     },
     "testimonial_section_aCmWcJ": {
       "type": "testimonial-section",
       "blocks": {
-        "testimonial_block_36YwVG": {
+        "testimonial_block_yACqLL": {
           "type": "testimonial-block",
           "settings": {
             "stars_count": 5,
-            "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify://shop_images/Improvedversion.png",
-            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
-            "subtitle_author": "Antonio R."
-          }
-        },
-        "testimonial_block_rRrAU4": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 4.5,
-            "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify://shop_images/image6.jpg",
+            "stars_color": "#ffbf00",
+            "testimonial_image": "shopify://shop_images/Copy_of_r.3_image_1.png",
             "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
             "subtitle_author": "Lineo Y."
           }
         },
-        "testimonial_block_9WFjUY": {
+        "testimonial_block_jT83y3": {
           "type": "testimonial-block",
           "settings": {
-            "stars_count": 4,
-            "stars_color": "#1e1e1e",
+            "stars_count": 5,
+            "stars_color": "#ffbf00",
+            "testimonial_image": "shopify://shop_images/Copy_of_r.1.png",
+            "feature_text": "<p>Rugtomize went above and beyond to help me with a quick turn order for a trade show. Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
+            "subtitle_author": "Tony F."
+          }
+        },
+        "testimonial_block_X6Lx83": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#ffbf00",
+            "testimonial_image": "shopify://shop_images/runner_pdp_final.v3.png",
+            "feature_text": "<p>The custom rug turned out even better than we imagined. Our logo is crisp, the colors are perfect, and it instantly elevated the entrance to our office. We've already had several clients comment on it!</p>",
+            "subtitle_author": "Jason K."
+          }
+        },
+        "testimonial_block_Ca7Pcy": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#ffbf00",
+            "testimonial_image": "shopify://shop_images/oneofakinf_rug_review.png",
+            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
+            "subtitle_author": "Allison D."
+          }
+        },
+        "testimonial_block_UFXhGB": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#ffbf00",
+            "testimonial_image": "shopify://shop_images/Copy_of_Rugs.entrance.png",
+            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
+            "subtitle_author": "Adam G."
+          }
+        },
+        "testimonial_block_AdjtMn": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#ffbf00",
+            "testimonial_image": "shopify://shop_images/Copy_of_review.products.png",
+            "feature_text": "<p>We ordered a rug for our store and it makes such a great first impression. The craftsmanship is excellent and the whole process was smooth from start to finish.</p>",
+            "subtitle_author": "Ashley O."
+          }
+        },
+        "testimonial_block_LgNbLR": {
+          "type": "testimonial-block",
+          "settings": {
+            "stars_count": 5,
+            "stars_color": "#ffbf00",
             "testimonial_image": "shopify://shop_images/image4.jpg",
             "feature_text": "<p>Plush and handsome, right from the photo we supplied!! Very happy with the product and thank you!!</p>",
             "subtitle_author": "Jessica C."
           }
         },
-        "testimonial_block_p63U33": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 4,
-            "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify://shop_images/image3.png",
-            "feature_text": "<p>We love it! Very nice and high quality! We were impressed with the hand written note included as well... :) Would definitely get another one!</p>",
-            "subtitle_author": "Tony F."
-          }
-        },
-        "testimonial_block_NC6bV9": {
+        "testimonial_block_qMgnj4": {
           "type": "testimonial-block",
           "settings": {
             "stars_count": 5,
-            "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify://shop_images/gempages_547641604358276043-47570370-fc3f-4f0f-bd37-bfd048c0f836.jpg",
-            "feature_text": "<p>We are completely thrilled with our rug! It not only looks stunning but also feels incredibly soft. It has far surpassed our expectations, and we’re delighted that we chose Rugtomize.</p>",
-            "subtitle_author": "Lineo Y."
-          }
-        },
-        "testimonial_block_xY3PRH": {
-          "type": "testimonial-block",
-          "settings": {
-            "stars_count": 5,
-            "stars_color": "#1e1e1e",
-            "testimonial_image": "shopify://shop_images/PDP.8.jpg",
+            "stars_color": "#ffbf00",
+            "testimonial_image": "shopify://shop_images/circle_cofee.png",
             "feature_text": "<p>Easy to upload graphic… high quality item shipped fast!  Not only was the rug BEAUTIFUL but the customer service was top notch.</p>",
-            "subtitle_author": "Daniel W"
+            "subtitle_author": "Tyler H."
           }
         }
       },
       "block_order": [
-        "testimonial_block_36YwVG",
-        "testimonial_block_rRrAU4",
-        "testimonial_block_9WFjUY",
-        "testimonial_block_p63U33",
-        "testimonial_block_NC6bV9",
-        "testimonial_block_xY3PRH"
+        "testimonial_block_yACqLL",
+        "testimonial_block_jT83y3",
+        "testimonial_block_X6Lx83",
+        "testimonial_block_Ca7Pcy",
+        "testimonial_block_UFXhGB",
+        "testimonial_block_AdjtMn",
+        "testimonial_block_LgNbLR",
+        "testimonial_block_qMgnj4"
       ],
       "settings": {
         "title": "<h2>Trusted by many rug Lovers!</h2>",
@@ -1574,8 +1661,7 @@
     "highlight_text_Qxm7zK",
     "scrolling_text_BCk6Uq",
     "product-details",
-    "highlight_text_XzCh9w",
-    "custom_liquid_jQfWQN",
+    "comparison_table_mQ4Ciw",
     "testimonial_section_aCmWcJ",
     "multicolumn_4gybcz",
     "help-drawer",

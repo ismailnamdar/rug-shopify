@@ -194,7 +194,7 @@
                     assign modulo = block_index | modulo: 2
                   -%}
                   <div class="product__text{% if modulo == 0 %} even{% endif %}{% if prev_block.type != 'text' %} first{% endif %}{% if next_block.type != 'text' %} last{% endif %}" {{ block.shopify_attributes }}>
-                    <div class="product__text-inner flex items-center gap-2d5">
+                    <div class="product__text-inner flex items-center gap-10">
                       {%- if block.settings.icon_image != blank -%}
                         {%- liquid
                           if block.settings.iwidth == 'fit'

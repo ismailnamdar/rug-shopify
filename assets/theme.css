@@ -2977,8 +2977,19 @@ h6:empty {
   margin: 0 auto;
 }
 
+.page-main-section-container {
+  max-width: 1200px !important;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 1024px) {
   .page-section-container {
+    padding-inline: 0 !important;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .page-main-section-container {
     padding-inline: 0 !important;
   }
 }
@@ -3616,7 +3627,7 @@ button.shopify-payment-button__button--unbranded {
 
 .button-wrapper,
 .title-wrapper {
-  margin-block-end: clamp(var(--sp-8), 2.526vw, var(--sp-12));
+  margin-block-end: clamp(var(--sp-4), 2.526vw, var(--sp-6));
 }
 
 .title-wrapper-lg {
@@ -5796,7 +5807,8 @@ ol {
 }
 
 .topbar .announcement-bar {
-  grid-area: announcement
+  grid-area: announcement;
+  margin: 0 auto;
 }
 
 .topbar .localization {
@@ -8603,7 +8615,7 @@ details.active .drawer__promotions .mega-menu__item,
 }
 
 .footer__contact {
-  font-size: clamp(var(--text-xl), 1.578vw, var(--text-3xl));
+  font-size: 1.5rem;
 }
 
 .footer__right {
@@ -11132,7 +11144,7 @@ details.active .drawer__promotions .mega-menu__item,
   border-radius: var(--border-radius-small);
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .text-with-icons::after {
     content: none;
   }
@@ -11883,7 +11895,6 @@ noscript .product-form__input {
 @media screen and (min-width: 1280px) {
   .product {
     grid: var(--product-grid);
-    gap: clamp(var(--sp-12), 4.73vw, var(--sp-23));
   }
 }
 
@@ -12418,7 +12429,7 @@ button.shopify-payment-button__button--hidden {
 }
 
 .product__text-inner {
-  padding: var(--sp-5) var(--sp-6);
+  padding: var(--sp-4);
 }
 
 .product__text.first.last .product__text-inner {
@@ -15227,7 +15238,7 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
 }
 
 .specifications.with-background .accordion :is(.details__summary, .details__content) {
-  padding: var(--sp-7);
+  padding: var(--sp-4);
 }
 
 @media screen and (min-width: 1024px) {
@@ -16391,4 +16402,13 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
   color: white;
   padding: 4px 12px;
   border-radius: 12px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* This is to scroll to product reviews correctly */
+[data-oke-reviews-product-id] {
+  scroll-margin-top: var(--sticky-header-height, var(--header-height, 80px));
 }

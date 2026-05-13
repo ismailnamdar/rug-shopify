@@ -117,6 +117,12 @@
     --slider-padding: 0px;
   }
 
+  @media screen and (min-width: 1024px) {
+    .testimonial_section slider-element {
+      --slider-container: min(940px, calc(100vw - 160px));
+    }
+  }
+
   .testimonial-nav-btn {
     position: absolute;
     top: 50%;
