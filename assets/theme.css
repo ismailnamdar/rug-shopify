@@ -15238,7 +15238,7 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
 }
 
 .specifications.with-background .accordion :is(.details__summary, .details__content) {
-  padding: var(--sp-7);
+  padding: var(--sp-4);
 }
 
 @media screen and (min-width: 1024px) {
@@ -16402,6 +16402,10 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
   color: white;
   padding: 4px 12px;
   border-radius: 12px;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 /* This is to scroll to product reviews correctly */

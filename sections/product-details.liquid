@@ -217,7 +217,7 @@
                                 endif
                               -%}
                             {%- endif -%}
-                            {{- block.settings.heading | escape -}}
+                            <span class="flex-1">{{- block.settings.heading | escape -}}</span>
                           </span>
                           {%- render 'icon', icon: 'plus-2', size: 'xs', class: 'shrink-0' -%}
                         </summary>
