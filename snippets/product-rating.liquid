@@ -49,7 +49,7 @@
     <p class="rating-text font-bold text-xl leading-none">
       <span aria-hidden="true">{{ product.metafields.reviews.rating.value }}</span>
     </p>
-    <p class="rating-count text-sm leading-none{% if block == blank %} hidden xl:block{% endif %}">
+    <p class="rating-count text-lg leading-none{% if block == blank %} hidden xl:block{% endif %}">
       <span aria-hidden="true">{{ 'general.accessibility.star_reviews_count' | t: count: product.metafields.reviews.rating_count.value }}</span>
       <span class="sr-only">
         {{- product.metafields.reviews.rating_count.value }}

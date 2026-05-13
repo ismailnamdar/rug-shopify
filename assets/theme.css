@@ -5807,7 +5807,8 @@ ol {
 }
 
 .topbar .announcement-bar {
-  grid-area: announcement
+  grid-area: announcement;
+  margin: 0 auto;
 }
 
 .topbar .localization {
@@ -12428,7 +12429,7 @@ button.shopify-payment-button__button--hidden {
 }
 
 .product__text-inner {
-  padding: var(--sp-5) var(--sp-6);
+  padding: var(--sp-4);
 }
 
 .product__text.first.last .product__text-inner {

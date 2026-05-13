@@ -207,9 +207,6 @@
         </div>
       </div>
       <div class="hidden md:flex">
-        {% render 'custom-rug-pills' %}
-      </div>
-      <div class="hidden md:flex">
         {% render 'custom-rug-features' %}
       </div>
     </div>
@@ -292,9 +289,6 @@
     {%- endif -%}
   </div>
 </media-gallery>
-<div class="flex md:hidden w-full">
-  {% render 'custom-rug-pills', class: "w-full", style: "padding-bottom: 0;" %}
-</div>
 
 {%- if spinning_block != blank and spinning_block.settings.text != blank -%}
   <spinning-text class="product__spinning text-xs md:text-base lg:text-lg uppercase flex items-center justify-center absolute top-0 z-10 pointer-events-none" data-string="{{ spinning_block.settings.text | escape }}" style="--char-count: {{ spinning_block.settings.text.size | plus: 1 }};">

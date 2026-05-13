@@ -19,7 +19,7 @@
 -%}
 
 <div class="section section--padding{% if section.settings.divider %} section--divider{% endif %}{% if section.settings.rounded %} section--rounded relative{% endif %}{% if enable_split_mode == false %} specifications-section{% endif %}">
-  <div class="page-width{% if section.settings.full_width %} page-width--full{% endif %} relative">
+  <div class="{% if section.settings.full_width %} page-width--full{% endif %} relative">
     {%- render 'section-heading', section: section -%}
 
     <div class="specifications {{ section.settings.style }} flex flex-col lg:flex-row">
