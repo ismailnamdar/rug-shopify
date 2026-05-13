@@ -296,7 +296,7 @@
                 </{{ block.settings.title_tag }}>
 
                 {%- if price_block == blank and block.settings.show_price -%}
-                  <div id="Price-{{ section.id }}-{{ product.id }}" class="product__price">
+                  <div id="Price-{{ section.id }}-{{ product.id }}" class="product__price" style="margin: auto 0;">
                     {%- render 'product-price', product: product, use_variant: true, class: 'flex flex-wrap items-baseline gap-2 lg:flex-col xl:items-end lg:gap-1d5' -%}
                     
                     {%- if product.quantity_price_breaks_configured? -%}
@@ -309,7 +309,7 @@
 
                 {%- liquid
                   if rating_block == blank and block.settings.show_rating
-                    render 'product-rating', product: product
+                    render 'product-rating', product: product, scroll: true
                   endif
                 -%}
               </div>

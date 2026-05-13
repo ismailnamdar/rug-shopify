@@ -34,14 +34,21 @@
             "heading_size": "title-xl tracking-heading",
             "heading_tag": "h1",
             "highlighted_text": "none",
-            "highlighted_scribble": "circle"
+            "highlighted_scribble": "circle",
+            "highlighted_reveal": false
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Welcome to our FAQ, we are so happy to have you here and as a client. <br\/>We have tried to answer the most common questions.</p>",
+            "text": "<p>Welcome to our FAQ, we are so happy to have you here and as a client. <br/>We have tried to answer the most common questions.</p>",
+            "text_font": "body",
             "text_size": "subtext-md",
+            "text_max_size": 32,
+            "text_line_height": 1.6,
+            "text_letter_spacing": 0,
+            "text_capitalize": false,
+            "secondary_color": false,
             "highlighted_text": "none",
             "highlighted_scribble": "circle"
           }
@@ -57,6 +64,7 @@
         "heading": "",
         "heading_size": "title-md",
         "heading_alignment": "text-left md:items-end md:flex-row",
+        "heading_width": "small",
         "heading_tag": "h2",
         "subheading": "",
         "description": "",
@@ -66,6 +74,7 @@
         "button_icon": true,
         "highlighted_text": "none",
         "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
         "color_text": "",
         "color_background": "",
         "gradient_background": "",
@@ -74,20 +83,11 @@
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
-        "padding_top": 72,
-        "padding_bottom": 0,
+        "padding_top": 32,
+        "padding_bottom": 32,
         "divider": false,
         "narrow": false,
         "rounded": false
-      }
-    },
-    "empty-space": {
-      "type": "empty-space",
-      "settings": {
-        "desktop_height": 120,
-        "mobile_height": 44,
-        "color_background": "",
-        "gradient_background": ""
       }
     },
     "faq": {
@@ -262,6 +262,7 @@
         "button_icon": true,
         "highlighted_text": "none",
         "highlighted_scribble": "circle",
+        "highlighted_reveal": false,
         "color_text": "",
         "color_background": "",
         "gradient_background": "",
@@ -270,6 +271,8 @@
         "color_button_text": "",
         "color_button_background": "",
         "color_button_gradient": "",
+        "color_overlay": "#ffffff",
+        "overlay_opacity": 4,
         "padding_top": 0,
         "padding_bottom": 120,
         "divider": false,
@@ -281,7 +284,6 @@
   "order": [
     "main",
     "rich-text",
-    "empty-space",
     "faq"
   ]
 }
