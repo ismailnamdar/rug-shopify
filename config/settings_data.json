@@ -138,7 +138,7 @@
     "share_whatsapp": false,
     "share_email": true,
     "preload_links": true,
-    "external_links_new_tab": false,
+    "external_links_new_tab": true,
     "enable_tab_attention": false,
     "tab_attention_message_1": "Something we said?",
     "tab_attention_message_2": "We're still here!",
