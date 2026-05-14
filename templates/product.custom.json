@@ -258,7 +258,7 @@
         "text_alignment": "center",
         "text_alignment_mobile": "center",
         "heading": "Trusted by 15,000+ Businesses and Fans",
-        "heading_size": "title-md",
+        "heading_size": "title-sm",
         "heading_alignment": "text-center md:items-center",
         "heading_tag": "h2",
         "subheading": "",
@@ -747,7 +747,7 @@
         "open_first_row": false,
         "specifications_heading": "Included in the Box",
         "heading": "Product details",
-        "heading_size": "title-md",
+        "heading_size": "title-sm",
         "heading_alignment": "text-center md:items-center",
         "heading_tag": "h2",
         "subheading": "",
@@ -988,7 +988,7 @@
       "settings": {
         "title": "<h2>Trusted by many rug Lovers!</h2>",
         "subtitle": "",
-        "padding_top": 50,
+        "padding_top": 20,
         "padding_bottom": 20
       }
     },
@@ -1051,7 +1051,7 @@
             "image_ratio": "adapt",
             "heading": "STEP 3",
             "heading_size": "text-base-xl",
-            "text": "<h5>Recieve Your Custom Rug In Days</h5>",
+            "text": "<h5>Receive Your Custom Rug In Days</h5>",
             "button_label": "",
             "button_link": "",
             "button_style": "secondary",
