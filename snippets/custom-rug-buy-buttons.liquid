@@ -73,7 +73,7 @@
       endif
     -%}
 
-    <div class="product-form__buttons grid gap-4"{% unless product.quantity_price_breaks_configured? and show_quantity_selector %} id="QuantityForm-{{ section_id }}-{{ product_id }}"{% endunless %}>
+    <div class="product-form__buttons grid"{% unless product.quantity_price_breaks_configured? and show_quantity_selector %} id="QuantityForm-{{ section_id }}-{{ product_id }}"{% endunless %}>
       <div class="product-form__error-message alert alert--error text-sm font-medium leading-tight" role="alert" hidden></div>
 
       {%- if product.quantity_price_breaks_configured? and show_quantity_selector -%}
@@ -210,7 +210,21 @@
           {%- endif -%}
         </div>
       {%- endif -%}
-      <div class="buy-buttons{% if enable_back_in_stock %} back-in-stock{% endif %}{% if product.quantity_price_breaks_configured? != true and show_quantity_selector or show_price %} flex flex-wrap{% else %} grid{% endif %} gap-4">
+
+      {% comment %} USED ONLY IN CUSTOM RUG BUILDER {% endcomment %}
+      <div id="custom-rug-properties-section" style="display: block;">
+        <input name="properties[__mediaId]" type="text" hidden style="display: none;" />
+        <input name="properties[__Send Proof]" type="text" hidden style="display: none;" />
+        <input name="properties[__Background Color]" type="text" hidden style="display: none;" />
+        <input name="properties[__Remove Background]" type="text" hidden style="display: none;" />
+        <input name="properties[__Scale]" type="text" hidden style="display: none;" />
+        <input name="properties[__Rotation]" type="text" hidden style="display: none;" />
+        <input name="properties[__Original image]" type="text" hidden style="display: none;" />
+        <input name="properties[Product preview image]" type="text" hidden style="display: none;" />
+        <input name="properties[Comments]" type="text" hidden style="display: none;" />
+      </div>
+
+      <div class="buy-buttons{% if enable_back_in_stock %} back-in-stock{% endif %}{% if product.quantity_price_breaks_configured? != true and show_quantity_selector or show_price %} flex flex-wrap{% else %} grid{% endif %} gap-2">
         {%- if product.quantity_price_breaks_configured? != true and show_quantity_selector -%}
           {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
           <label for="Quantity-{{ section_id }}-{{ product_id }}" class="label sr-only">{{ 'products.quantity.label' | t }}</label>
@@ -255,20 +269,6 @@
             assign add_to_cart_aria = 'products.product.pre_order_label' | t: title: product.title
           endif
         -%}
-
-
-        {% comment %} USED ONLY IN CUSTOM RUG BUILDER {% endcomment %}
-        <div id="custom-rug-properties-section" style="display: block;">
-          <input name="properties[__mediaId]" type="text" hidden style="display: none;" />
-          <input name="properties[__Send Proof]" type="text" hidden style="display: none;" />
-          <input name="properties[__Background Color]" type="text" hidden style="display: none;" />
-          <input name="properties[__Remove Background]" type="text" hidden style="display: none;" />
-          <input name="properties[__Scale]" type="text" hidden style="display: none;" />
-          <input name="properties[__Rotation]" type="text" hidden style="display: none;" />
-          <input name="properties[__Original image]" type="text" hidden style="display: none;" />
-          <input name="properties[Product preview image]" type="text" hidden style="display: none;" />
-          <input name="properties[Comments]" type="text" hidden style="display: none;" />
-        </div>
         <button id="custom-rug-submit-button" type="submit" style="display: none;"></button>
         <button
           id={{ id }}

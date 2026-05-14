@@ -375,12 +375,12 @@ if (!customElements.get('custom-rug-canvas')) {
           ctx.lineWidth = 2;
           ctx.font = `bold 18px ${sansSerif}`;
 
-          const hLineY = y + h + 18;
+          const hLineY = y - 10;
           ctx.beginPath(); ctx.moveTo(x, hLineY); ctx.lineTo(x + w, hLineY); ctx.stroke();
           ctx.beginPath(); ctx.moveTo(x, hLineY - arrowSize); ctx.lineTo(x, hLineY + arrowSize); ctx.stroke();
           ctx.beginPath(); ctx.moveTo(x + w, hLineY - arrowSize); ctx.lineTo(x + w, hLineY + arrowSize); ctx.stroke();
           ctx.textAlign = 'center';
-          ctx.fillText(`${dim.wFeet}'`, x + w / 2, hLineY + 16);
+          ctx.fillText(`${dim.wFeet}'`, x + w / 2, hLineY - 6);
 
           const vLineX = x - 20;
           ctx.beginPath(); ctx.moveTo(vLineX, y); ctx.lineTo(vLineX, y + h); ctx.stroke();
@@ -588,6 +588,7 @@ if (!customElements.get('custom-rug-canvas')) {
         show('#custom-rug-add-to-cart', 'flex');
         show('#rug-canvas-container');
         show('.product-main-canvas-container');
+        show('.secondary-notes');
 
         const buyBar = document.getElementById('buy-btn-sticky-bar');
         if (buyBar) {

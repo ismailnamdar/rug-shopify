@@ -54,11 +54,11 @@
       <div class="crc-bottom-card">
         <div>
           <div class="crc-bottom-card-title flex items-start gap-1 md:gap-2">
-            {%- render 'icon', icon: 'check-circle-filled-custom', size: 'sm' -%}
-            <span class="text-base md:text-lg">Our Design Team Will:</span>
+            {%- render 'icon', icon: 'check-circle-filled-custom', size: 'sm', class: 'hidden md:block' -%}
+            <span class="text-3xs md:text-lg">Our Design Team Will:</span>
           </div>
           <div>
-              <ul style="list-style: disc; padding-left: 16px;">
+              <ul style="list-style: disc; padding-left: 10px;">
                 <li>
                 Center Design Appropriately
                 </li>
@@ -72,11 +72,11 @@
         <div style="width: 1px; background-color: black; display: block;"></div>
         <div>
           <div class="crc-bottom-card-title flex items-start gap-1 md:gap-2">
-            {%- render 'icon', icon: 'check-circle-filled-custom', size: 'sm' -%}
-            <span class="text-base md:text-lg">Post Purchase We Can:</span>
+            {%- render 'icon', icon: 'check-circle-filled-custom', size: 'sm', class: 'hidden md:block' -%}
+            <span class="text-3xs md:text-lg">Post Purchase We Can:</span>
           </div>
           <div>
-              <ul style="list-style: disc; padding-left: 16px;">
+              <ul style="list-style: disc; padding-left: 10px;">
                 <li>
                   Modify Background Color
                 </li>
@@ -234,7 +234,7 @@
 
   @media screen and (max-width: 768px) {
     .rug-canvas {
-      height: 450px;
+      height: 350px;
     }
 
     .custom-rug-bottom-toolbar {
@@ -243,6 +243,7 @@
       transform: unset;
       width: 440px;
       max-width: 80%;
+      font-size: 10px;
     }
 
     .custom-rug-right-toolbar {
@@ -299,8 +300,8 @@
       width: 350px;
     }
     .crc-bottom-card {
-      padding: 8px;
-      gap: 8px;
+      padding: 4px;
+      gap: 4px;
     }
 
     .crc-bottom-card-title {

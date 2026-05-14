@@ -12020,7 +12020,7 @@ noscript .product-form__input {
 }
 
 .product-form-wrapper {
-  margin-block-start: var(--sp-8);
+  margin-block-start: var(--sp-4);
 }
 
 .quantity {
@@ -16421,4 +16421,8 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
 
 .mobile-dock-section {
   display: none;
+}
+
+.chatra--style-round {
+  z-index: 30 !important;
 }
