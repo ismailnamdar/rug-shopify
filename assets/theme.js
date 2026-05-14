@@ -5247,6 +5247,7 @@ class ProductInfo extends HTMLElement {
     const currentVariant = this.variantSelectors?.currentVariant;
     if (currentVariant) this.updateURL(currentVariant.id);
 
+    this.updateCanvasVariant(currentVariant);
     this.renderProductInfo({
       requestUrl: this.buildRequestUrlWithParams(productUrl, selectedOptionValues),
       targetId: target.tagName === 'OPTION' ? target.parentElement.id : target.id,
@@ -5421,6 +5422,21 @@ class ProductInfo extends HTMLElement {
       firstAvailable.checked = true;
       firstAvailable.dispatchEvent(new Event('change', { bubbles: true }));
     }
+  }
+
+  updateCanvasVariant(variant) {
+    const editor = window.CanvasRugEditor;
+    if (!editor || !variant) return;
+
+    const canvasEl = document.querySelector('custom-rug-canvas');
+    const shapeIndex = parseInt(canvasEl?.getAttribute('data-shape-option-index') ?? '0');
+    const sizeIndex = parseInt(canvasEl?.getAttribute('data-size-option-index') ?? '1');
+
+    const shapeValue = variant[`option${shapeIndex + 1}`]?.toLowerCase();
+    const sizeValue = variant[`option${sizeIndex + 1}`]?.toUpperCase();
+
+    if (shapeValue && shapeValue !== editor.shape) editor.setShape(shapeValue);
+    if (sizeValue && sizeValue !== editor.shapeSize) editor.setSize(sizeValue);
   }
 
   setUnavailable() {
