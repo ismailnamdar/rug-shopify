@@ -53,7 +53,10 @@
     <div class="custom-rug-bottom-toolbar">
       <div class="crc-bottom-card">
         <div>
-          <div class="crc-bottom-card-title"><span>Our Design Team Will:</span></div>
+          <div class="crc-bottom-card-title flex items-start gap-1 md:gap-2">
+            {%- render 'icon', icon: 'check-circle-filled-custom', size: 'sm' -%}
+            <span class="text-base md:text-lg">Our Design Team Will:</span>
+          </div>
           <div>
               <ul style="list-style: disc; padding-left: 16px;">
                 <li>
@@ -68,7 +71,10 @@
         </div>
         <div style="width: 1px; background-color: black; display: block;"></div>
         <div>
-          <div class="crc-bottom-card-title"><span>Post Purchase We Can:</span></div>
+          <div class="crc-bottom-card-title flex items-start gap-1 md:gap-2">
+            {%- render 'icon', icon: 'check-circle-filled-custom', size: 'sm' -%}
+            <span class="text-base md:text-lg">Post Purchase We Can:</span>
+          </div>
           <div>
               <ul style="list-style: disc; padding-left: 16px;">
                 <li>

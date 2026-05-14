@@ -74,7 +74,7 @@
 
 @media screen and (max-width: 767px) {
   .footer-copyright {
-    padding-block-end: calc(var(--sp-5) + var(--mobile-dock-height));
+    padding-block-end: calc(var(--sp-5) + var(--mobile-dock-height) + 100px);
   }
 
   .header-sticky .header {

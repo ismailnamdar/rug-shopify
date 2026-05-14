@@ -29,7 +29,7 @@
             {%- if block.settings.column_heading != blank -%}
               <p class="multicolumn-card__column-heading text-center font-bold title-sm md:{{ block.settings.column_heading_size }} leading-tight tracking-tight w-full">{{ block.settings.column_heading | escape }}</p>
             {%- endif -%}
-            <div class="grid gap-4 lg:gap-6 w-full">
+            <div class="grid gap-4 w-full">
               {%- if block.settings.video != blank -%}
                 {%- capture sizes -%}(max-width: 639px) 100vw, (max-width: 767px) 74vw, {{ settings.page_width | divided_by: section.settings.columns }}px{%- endcapture -%}
                 <a class="block media media--{{ block.settings.image_ratio }} media--transparent relative overflow-hidden"{% if block.settings.button_link != blank %} href="{{ block.settings.button_link }}"{% if block.settings.button_external %} target="_blank" rel="noopener noreferrer"{% endif %}{% else %} role="link" aria-disabled="true"{% endif %} aria-label="{{ block.settings.heading | escape }}">
@@ -61,7 +61,7 @@
               {%- endif -%}
 
               {%- if block.settings.heading != blank or block.settings.text != blank or block.settings.button_label != blank -%}
-                <div class="multicolumn-card__info grid gap-4 lg:gap-6">
+                <div class="multicolumn-card__info grid gap-4">
                   {%- if block.settings.heading != blank -%}
                     <p class="heading {{ block.settings.heading_size }} leading-tight tracking-tight">
                       {%- render 'highlighted-text', content: block.settings.heading, style: block.settings.highlighted_text, scribble: block.settings.highlighted_scribble, gradient: with_gradient -%}
@@ -69,7 +69,7 @@
                   {%- endif -%}
     
                   {%- if block.settings.text != blank -%}
-                    <div class="rte leading-normal" style="margin-top: -12px;">
+                    <div class="rte leading-normal text-xl" style="margin-top: -12px;">
                       {{- block.settings.text -}}
                     </div>
                   {%- endif -%}

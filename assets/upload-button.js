@@ -141,20 +141,20 @@ if (!customElements.get('upload-button')) {
 
       async onAddToCart() {
         this.trackClarity('Add to cart [Custom]');
+        // const defaultText = this.addToCartButtonText.textContent;
         try {
           this.scrollToCanvas();
           this.addToCartButton.disabled = true;
-          const defaultText = this.addToCartButtonText.textContent;
-          this.addToCartButtonText.textContent = 'Adding to cart';
+          // this.addToCartButtonText.textContent = 'Adding to cart';
           CanvasRugEditor.loading(true, true, 'Preparing your rug...');
           await CanvasRugEditor.handleClickAddToCart();
           CanvasRugEditor.loading(false, true);
-          this.addToCartButtonText.textContent = defaultText;
+          // this.addToCartButtonText.textContent = defaultText;
           this.addToCartButton.disabled = false;
         } catch (error) {
           console.error(error);
           CanvasRugEditor.loading(false, false);
-          this.addToCartButtonText.textContent = defaultText;
+          // this.addToCartButtonText.textContent = defaultText;
           this.addToCartButton.disabled = false;
         }
       }

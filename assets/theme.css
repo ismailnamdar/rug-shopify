@@ -3791,7 +3791,7 @@ button.shopify-payment-button__button--unbranded {
 
 .media--wide>:is(img, svg, video-media),
 .aspect-wide {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 12;
 }
 
 .media--height>:is(img, svg, video-media) {
@@ -4017,7 +4017,7 @@ button.shopify-payment-button__button--unbranded {
 
   .mobile\:media--wide>:is(img, svg, video-media),
   .mobile\:aspect-wide {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 12;
   }
 
   .mobile\:aspect-adapt {
@@ -5802,13 +5802,18 @@ ol {
   }
 }
 
+@media screen and (min-width: 1280px) {
+  .topbar .announcement-bar {
+    margin: 0 auto;
+  }
+}
+
 .topbar .social-icons {
   grid-area: socials
 }
 
 .topbar .announcement-bar {
   grid-area: announcement;
-  margin: 0 auto;
 }
 
 .topbar .localization {
@@ -6729,12 +6734,12 @@ ol {
 
 .drawer__footer-bottom {
   background-color: rgb(var(--color-foreground)/ 0.025);
-  padding: clamp(var(--sp-6), 2.315vw, var(--sp-12)) var(--sp-5)
+  padding: clamp(var(--sp-4), 2.315vw, var(--sp-4)) var(--sp-5)
 }
 
 @media screen and (min-width: 1024px) {
   .drawer__footer-bottom {
-    padding-inline: var(--sp-12);
+    padding-inline: var(--sp-4);
   }
 }
 
@@ -11094,14 +11099,15 @@ details.active .drawer__promotions .mega-menu__item,
 }
 
 .multicolumn-card.with-border .multicolumn-card__info {
-  padding-inline: var(--sp-5);
-  padding-block: var(--sp-2) var(--sp-6);
+  padding-inline: var(--sp-4);
+  padding-block: var(--sp-2) var(--sp-2);
 }
 
 @media screen and (min-width: 1024px) {
   .multicolumn-card.with-border .multicolumn-card__info {
-    padding-inline: var(--sp-8d5);
-    padding-block: var(--sp-5) var(--sp-11);
+    padding-inline: var(--sp-4);
+    padding-block: var(--sp-4) var(--sp-4);
+    padding-top: 0;
   }
 }
 
@@ -11938,7 +11944,7 @@ noscript .product-form__input {
 }
 
 .product__info>*+* {
-  margin-block-start: var(--sp-4);
+  margin-block-start: var(--sp-2);
 }
 
 .product__breadcrumb {
@@ -16396,7 +16402,7 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
 }
 
 .text-blur-bg {
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   color: white;
@@ -16411,4 +16417,8 @@ video-media:not([playing]) .deferred-poster .play-button .icon:last-child:not(:o
 /* This is to scroll to product reviews correctly */
 [data-oke-reviews-product-id] {
   scroll-margin-top: var(--sticky-header-height, var(--header-height, 80px));
+}
+
+.mobile-dock-section {
+  display: none;
 }

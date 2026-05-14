@@ -206,9 +206,6 @@
           </button>
         </div>
       </div>
-      <div class="hidden md:flex">
-        {% render 'custom-rug-features' %}
-      </div>
     </div>
 
     {%- if media_count > 1 -%}
@@ -287,6 +284,10 @@
         </span>
       </button>
     {%- endif -%}
+
+    <div class="hidden md:flex">
+      {% render 'custom-rug-features' %}
+    </div>
   </div>
 </media-gallery>
 

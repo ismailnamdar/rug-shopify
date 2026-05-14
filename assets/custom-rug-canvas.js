@@ -91,6 +91,7 @@ if (!customElements.get('custom-rug-canvas')) {
         this.querySelector('#rug-canvas-scale-down')?.addEventListener('click', () => this.setScale(Math.max(10, this.scalePct - 10)));
         this.querySelector('#rug-canvas-rotate')?.addEventListener('click', () => this.setRotation((this.rotationDeg - 45) % 360));
         this.querySelector('#rug-canvas-change-photo')?.addEventListener('click', () => document.querySelector('#custom-rug-image')?.click());
+        this.querySelector('#custom-rug-bg-color')?.addEventListener('input', (e) => this.setBgColor(e.target.value));
 
         this._resizeObserver = new ResizeObserver(() => this._onResize());
         if (canvas) this._resizeObserver.observe(canvas);

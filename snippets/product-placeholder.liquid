@@ -74,7 +74,7 @@
         <media-dots class="product__thumbnails-list scroll-area grid items-end justify-start gap-4 w-full" aria-controls="SliderGallery-{{ section_id }}">
           {%- for i in (1..6) -%}
             <button type="button"
-              class="product__thumbnail media media--square relative overflow-hidden"
+              class="product__thumbnail media media--wide relative overflow-hidden"
               data-media-id="{{ forloop.index }}"
               aria-label="{{ 'general.accessibility.go_to_item' | t: index: forloop.index | escape }}"
               aria-current="{% if forloop.first %}true{% else %}false{% endif %}"

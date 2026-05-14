@@ -175,7 +175,8 @@ endif
           </div>
         {%- endif -%}
         <div class="drawer__footer-bottom flex items-center justify-between gap-6">
-          {%- if shop.customer_accounts_enabled -%}
+          {% comment %} Accounts disabled {% endcomment %}
+          {% comment %} {%- if shop.customer_accounts_enabled -%}
             <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="button button--primary icon-with-text" is="hover-link" rel="nofollow">
               <span class="btn-fill" data-fill></span>
               <span class="btn-text">
@@ -189,7 +190,7 @@ endif
                 -%}
               </span>
             </a>
-          {%- endif -%}
+          {%- endif -%} {% endcomment %}
           {%- liquid
             if section.settings.show_social
               render 'social-icons', size: 'sm', gap: '6'

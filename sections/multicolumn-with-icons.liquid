@@ -30,7 +30,7 @@
         endif
       -%}
       {%- for block in section.blocks -%}
-        <div class="column flex gap-5 w-full flex-col xl:flex-row xl:text-{{ section.settings.text_alignment }} text-center" {{ block.shopify_attributes }}>
+        <div class="column flex gap-3 w-full flex-col xl:flex-row xl:text-{{ section.settings.text_alignment }} text-center" {{ block.shopify_attributes }}>
           {%- if block.settings.custom_icon != blank -%}
             <div class="column__icon with-svg">
               {{- block.settings.custom_icon -}}
