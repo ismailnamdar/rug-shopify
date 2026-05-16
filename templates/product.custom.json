@@ -740,7 +740,7 @@
         "collapsible_tab_WJRtp4"
       ],
       "custom_css": [
-        ".specifications-section {max-width: 980px; margin: 0 auto;}"
+        ".specifications-section {max-width: 600px; margin: 0 auto;}"
       ],
       "settings": {
         "style": "with-background",
